@@ -66,13 +66,13 @@ ms.lasthandoff: 03/23/2017
 
 열기는 *Views\Shared\_Layout.cshtml* 파일 및 환경에 글꼴 awesome CSS 파일을 추가할 [태그 도우미](xref:mvc/views/tag-helpers/intro) 에 대 한 `Development`합니다. 솔루션 탐색기에서 끌어서 놓기 *글꼴 awesome.css* 내는 `<environment names="Development">` 요소입니다.
 
-[!code-html[주](bower\sample\_Layout.cshtml?highlight=4&range=9-13)]
+[!code-html[주](bower/sample/_Layout.cshtml?highlight=4&range=9-13)]
 
 프로덕션 응용 프로그램에 추가 *글꼴 awesome.min.css* 에 대 한 환경 태그 도우미를 `Staging,Production`합니다.
 
 내용을 대체는 *Views\Home\About.cshtml* Razor 파일의 다음 태그를 사용 합니다.
 
-[!code-html[주](bower\sample\About.cshtml)]
+[!code-html[주](bower/sample/About.cshtml)]
 
 앱을 실행 하 고 글꼴 awesome 패키지 작동 하는지 확인 하는 정보 보기를 이동 합니다.
 
@@ -95,7 +95,7 @@ Bower와 함께 클라이언트 쪽 빌드 프로세스를 사용 하는 일반�
 
 * 열기 *bower.json*, jquery를 추가 하 고 영역에 부트스트랩는 `dependencies` 섹션입니다. 그 결과 *bower.json* 파일은 다음 예제와 같이 표시 됩니다. 버전은 시간이 지남에 따라 변경 되 고 아래 이미지와 일치 하지 않을 수 있습니다.
 
-[!code-json[주](bower\sample\bower.json?highlight=5,6)]
+[!code-json[주](bower/sample/bower.json?highlight=5,6)]
 
 * 저장 된 *bower.json* 파일입니다.
 
