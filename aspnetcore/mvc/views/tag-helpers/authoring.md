@@ -256,7 +256,7 @@ ms.lasthandoff: 03/23/2017
     
     <div>
         <h3>Information about our website (outdated):</h3>
-        <Website-InforMation info=Model />
+        <website-information info=Model />
         <div condition="Model.Approved">
             <p>
                 This website has <strong surround="em"> @Model.Approved </strong> been approved yet.
