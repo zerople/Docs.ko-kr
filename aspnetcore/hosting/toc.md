@@ -1,5 +1,0 @@
-# [ASP.NET 핵심 모듈 구성 참조](xref:hosting/aspnet-core-module)
-# [ASP.NET Core IIS 모듈 사용](xref:hosting/iis-modules)
-# [디렉터리 구조](xref:hosting/directory-structure)
-# [서비스](xref:hosting/servicing)
-# [데이터 보호](xref:hosting/dataprotection)
