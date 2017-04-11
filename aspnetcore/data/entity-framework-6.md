@@ -5,7 +5,7 @@ description: "이 문서에서는 ASP.NET 핵심 응용 프로그램에서 Entit
 keywords: ASP.NET Core, Entity Framework EF 6
 ms.author: tdykstra
 manager: wpickett
-ms.date: 10/14/2016
+ms.date: 02/24/2017
 ms.topic: article
 ms.assetid: 016cc836-4c43-45a4-b9a7-9efaf53350df
 ms.technology: aspnet
