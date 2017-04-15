@@ -116,7 +116,7 @@ dotnet ef database update
 변경 내용을 저장 하 고 프로젝트를 빌드하십시오. 프로젝트 폴더에서 명령 창을 열고 하 고 다른 마이그레이션 만들려면 다음 명령을 입력 합니다.
 
 ```console
-dotnet ef migrations add ColummFirstName
+dotnet ef migrations add ColumnFirstName
 dotnet ef database update
 ```
 
