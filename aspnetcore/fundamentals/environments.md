@@ -83,7 +83,7 @@ ASP.NET 핵심 참조는 특정 [환경 변수](https://github.com/aspnet/Home/w
 
 **명령줄**
 ```
-set ASPNETCORE_ENVIRONMENT="Development"
+set ASPNETCORE_ENVIRONMENT=Development
 ```
 **PowerShell**
 ```
