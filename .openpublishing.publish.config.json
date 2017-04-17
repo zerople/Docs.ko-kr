@@ -8,7 +8,6 @@
       "build_source_folder": "aspnet",
       "build_output_subfolder": "aspnet",
       "locale": "ko-kr",
-      "version": 0,
       "open_to_public_contributors": false,
       "type_mapping": {
         "Conceptual": "Content",
@@ -23,7 +22,6 @@
       "build_source_folder": "aspnetcore",
       "build_output_subfolder": "aspnet/core",
       "locale": "ko-kr",
-      "version": 0,
       "open_to_public_contributors": false,
       "type_mapping": {
         "Conceptual": "Content",
