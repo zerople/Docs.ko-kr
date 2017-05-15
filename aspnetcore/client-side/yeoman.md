@@ -11,9 +11,10 @@ ms.assetid: fda0c2a8-1743-4505-be1a-7f8ceeef8647
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/yeoman
-translationtype: Machine Translation
+ms.translationtype: Machine Translation
 ms.sourcegitcommit: 0ebb9b63931ccb26126740de08270eda9b1ea486
 ms.openlocfilehash: 2970612b138d7a79c26bf52939418d6ee317b042
+ms.contentlocale: ko-kr
 ms.lasthandoff: 03/23/2017
 
 ---
@@ -39,7 +40,7 @@ npm install -g yo bower
 명령 프롬프트에서 ASP.NET 생성기를 설치 합니다.
 
 ```console
-npm install -g generator-aspnet@0.2.6
+npm install -g generator-aspnet
 ```
 
 > [!NOTE]
