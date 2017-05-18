@@ -11,9 +11,10 @@ ms.assetid: 737be5cd-3511-4f1c-b0ce-65403fb5eed3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/claims
-translationtype: Machine Translation
+ms.translationtype: Machine Translation
 ms.sourcegitcommit: 010b730d2716f9f536fef889bc2f767afb648ef4
 ms.openlocfilehash: 807195b82f3f2873ee4115a6d1efe3cf91d86c01
+ms.contentlocale: ko-kr
 ms.lasthandoff: 03/23/2017
 
 ---
@@ -99,7 +100,7 @@ public void ConfigureServices(IServiceCollection services)
     {
         options.AddPolicy("Founders", policy =>
                           policy.RequireClaim("EmployeeNumber", "1", "2", "3", "4", "5"));
-    }
+    });
 }
 ```
 
