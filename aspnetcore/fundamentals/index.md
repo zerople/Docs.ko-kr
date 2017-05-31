@@ -6,15 +6,16 @@ keywords: "ASP.NET 핵심 원칙, 개요"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
-ms.topic: article
+ms.topic: get-started-article
 ms.assetid: a19b7836-63e4-44e8-8250-50d426dd1070
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/index
 ms.custom: H1Hack27Feb2017
-translationtype: Machine Translation
+ms.translationtype: Machine Translation
 ms.sourcegitcommit: 010b730d2716f9f536fef889bc2f767afb648ef4
 ms.openlocfilehash: 29bdfeba06faf6d66a4dbd702b603deeb6cec4bf
+ms.contentlocale: ko-kr
 ms.lasthandoff: 03/23/2017
 
 ---
