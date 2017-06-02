@@ -11,9 +11,10 @@ ms.assetid: e6130638-c410-4161-9921-b658ce988bd1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/url-rewriting
-translationtype: Machine Translation
+ms.translationtype: Machine Translation
 ms.sourcegitcommit: ec31052983921540dc13052848c77bb88edf3b19
 ms.openlocfilehash: 1b74e87ab73b15f048c65983928f71ca5c04fc89
+ms.contentlocale: ko-kr
 ms.lasthandoff: 03/23/2017
 
 ---
@@ -79,6 +80,7 @@ URL 재작성을 설정 하 고 규칙의 인스턴스를 만들어 리디렉션
 
 대체 문자열을 캡처된 그룹의 달러 기호를 사용 하 여 문자열에 주입 되어 (`$`) 뒤에 캡처의 시퀀스 번호입니다. 첫 번째 캡처 그룹 값을 사용 하 여 가져오는 `$1`, 두 번째 `$2`, 정규식의 캡처 그룹에 대 한 순서 대로 계속 합니다. 캡처된 그룹이 하나만 리디렉션 규칙 regex에서에서이 샘플 응용 프로그램 인 대체 문자열에 삽입 된 그룹이 하나만 있으므로 `$1`합니다. URL은 규칙을 적용 하면 `/redirected/1234/5678`합니다.
 
+<a name=url-redirect-to-secure-endpoint></a>
 ### <a name="url-redirect-to-a-secure-endpoint"></a>보안 끝점 URL 리디렉션
 사용 하 여 `AddRedirectToHttps()` 안전 하지 않은 요청을 동일한 호스트와 보안 HTTPS 프로토콜을 사용 하 여 경로 리디렉션하도록 (`https://`) 상태 코드 및 포트를 선택할 수 있는 유연성. 상태 코드는 제공 되지 않은 경우 미들웨어 302 (Found) 기본값은입니다. 포트 제공 되지 않은 경우 미들웨어는 기본적으로 `null`, 바뀌어 프로토콜 의미 하는 `https://` 및 클라이언트가 포트 443에서 리소스에 액세스할 수 있습니다. 상태 코드 301 (영구적 이동)를 설정 하 고 포트 5001으로 변경 하는 방법을 보여 줍니다.
 ```csharp
