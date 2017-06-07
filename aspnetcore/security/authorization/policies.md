@@ -11,9 +11,10 @@ ms.assetid: e422a1b2-dc4a-4bcc-b8d9-7ee62009b6a3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/policies
-translationtype: Machine Translation
+ms.translationtype: Machine Translation
 ms.sourcegitcommit: 010b730d2716f9f536fef889bc2f767afb648ef4
 ms.openlocfilehash: a7af01a0e8457428b8947c544d9921e2511daee2
+ms.contentlocale: ko-kr
 ms.lasthandoff: 03/23/2017
 
 ---
@@ -69,12 +70,12 @@ public class AlcoholPurchaseRequirementsController : Controller
 ```csharp
 public class MinimumAgeRequirement : IAuthorizationRequirement
 {
-    public MinimumAgeRequirement(int age)
+    public int MinimumAge { get; private set; }
+    
+    public MinimumAgeRequirement(int minimumAge)
     {
-        MinimumAge = age;
+        MinimumAge = minimumAge;
     }
-
-    protected int MinimumAge { get; set; }
 }
 ```
 
@@ -236,9 +237,7 @@ MVC의 인스턴스를 전달 하는 예를 들어 `Microsoft.AspNetCore.Mvc.Fil
 <!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
 ```csharp
-var mvcContext = context.Resource as Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext;
-
-if (mvcContext != null)
+if (context.Resource is Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext mvcContext)
 {
     // Examine MVC specific things like routing data.
 }
