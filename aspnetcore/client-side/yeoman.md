@@ -139,7 +139,7 @@ dotnet run
 프로젝트가 만들어진 후에 Yeoman를 사용 하 여 새로 생성 된 파일을 추가할 수 있습니다. 사용 하 여 [생성기 하위](https://www.github.com/omnisharp/generator-aspnet#sub-generators) 프로젝트를 구성 하는 파일 형식 중 하나를 추가 합니다. 예를 들어, 프로젝트에 새 클래스를 추가 하려면 입력에서 `yo aspnet:Class` 명령 클래스의 이름이 차례로 나옵니다. 파일 만들지 디렉터리에서 다음 명령을 실행 합니다.
 
 ```console
-yo aspnet:Class Person
+yo aspnet:class Person
 ```
 
 결과 Person.cs 라는 클래스 라는 파일 `Person`:
