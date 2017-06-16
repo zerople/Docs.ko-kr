@@ -11,9 +11,10 @@ ms.assetid: a6a556ed-ba59-4107-9358-44cf20e5931b
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/introduction
-translationtype: Machine Translation
+ms.translationtype: Machine Translation
 ms.sourcegitcommit: 010b730d2716f9f536fef889bc2f767afb648ef4
 ms.openlocfilehash: 5305b451f9f6d7af83644e6205ff737c0bd10c3a
+ms.contentlocale: ko-kr
 ms.lasthandoff: 03/23/2017
 
 ---

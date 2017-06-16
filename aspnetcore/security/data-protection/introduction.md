@@ -11,9 +11,10 @@ ms.assetid: 4542cd37-b47c-454c-be19-d1b5810d67fe
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/introduction
-translationtype: Machine Translation
+ms.translationtype: Machine Translation
 ms.sourcegitcommit: 010b730d2716f9f536fef889bc2f767afb648ef4
 ms.openlocfilehash: e7f2c5527c369dbf2fae7d547f956a62b3cc9719
+ms.contentlocale: ko-kr
 ms.lasthandoff: 03/23/2017
 
 ---
