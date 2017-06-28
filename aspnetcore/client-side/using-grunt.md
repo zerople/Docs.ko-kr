@@ -11,9 +11,10 @@ ms.assetid: 471112e9-2c33-454b-96fc-32916102ce73
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/using-grunt
-translationtype: Machine Translation
+ms.translationtype: Machine Translation
 ms.sourcegitcommit: 010b730d2716f9f536fef889bc2f767afb648ef4
 ms.openlocfilehash: 3ceb0ef7dfbf597857153cad54c8ed725f364787
+ms.contentlocale: ko-kr
 ms.lasthandoff: 03/23/2017
 
 ---
@@ -59,13 +60,13 @@ Grunt은 스크립트 축소, TypeScript 컴파일, 코드 품질 lint 도구, C
 
 6.  마우스 오른쪽 단추로 클릭는 `TypeScript` 디렉터리 및 선택 **추가 > 새 항목** 상황에 맞는 메뉴에서 합니다. 선택 된 **JavaScript 파일** 항목 및 파일 이름을 *Tastes.ts* (참고는 \*.ts 확장). TypeScript는 아래 코드 줄을 파일에 복사 (저장할 때, 새 *Tastes.js* JavaScript 소스 파일이 표시 됩니다).
     
-    ```javascript
+    ```typescript
     enum Tastes { Sweet, Sour, Salty, Bitter }
     ```
 
 7.  두 번째 파일을 추가 **TypeScript** 디렉터리 이름을 `Food.ts`합니다. 아래 코드를 파일에 복사 합니다.
 
-    ```javascript
+    ```typescript
     class Food {
       constructor(name: string, calories: number) {
         this._name = name;
