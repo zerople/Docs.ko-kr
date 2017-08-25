@@ -1,9 +1,8 @@
 ---
 redirect_url: /aspnet/core/security/authentication/social/facebook-logins
-translationtype: Machine Translation
-ms.sourcegitcommit: 010b730d2716f9f536fef889bc2f767afb648ef4
 ms.openlocfilehash: fc53a769ce91ff92d7aaa47a09f15ea48bb8f488
-ms.lasthandoff: 03/23/2017
-
+ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/11/2017
 ---
-

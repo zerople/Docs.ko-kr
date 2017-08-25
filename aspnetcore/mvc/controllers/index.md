@@ -1,8 +1,8 @@
 ---
 redirect_url: /aspnet/core/mvc/controllers/actions
-translationtype: Machine Translation
-ms.sourcegitcommit: b1bd9f9ece156ca7ae8b80729fefe46a1ac8b8d0
 ms.openlocfilehash: 70d8d867c813e7c55ccdda44064835315558133c
-ms.lasthandoff: 03/23/2017
-
+ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/11/2017
 ---
