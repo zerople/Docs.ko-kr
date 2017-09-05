@@ -1,5 +1,5 @@
 ---
-title: "사용자 지정 정책 기반 권한 부여 | Microsoft 문서"
+title: "사용자 지정 정책 기반 권한 부여"
 author: rick-anderson
 description: 
 keywords: ASP.NET Core
@@ -11,20 +11,19 @@ ms.assetid: e422a1b2-dc4a-4bcc-b8d9-7ee62009b6a3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/policies
-ms.translationtype: Machine Translation
-ms.sourcegitcommit: 010b730d2716f9f536fef889bc2f767afb648ef4
-ms.openlocfilehash: a7af01a0e8457428b8947c544d9921e2511daee2
-ms.contentlocale: ko-kr
-ms.lasthandoff: 03/23/2017
-
+ms.openlocfilehash: dd7187f67887bb39a5ff425dcbae0927c7565cb8
+ms.sourcegitcommit: 41e3e007512c175a42910bc69678f3f0403cab04
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 09/01/2017
 ---
-# <a name="custom-policy-based-authorization"></a>사용자 지정 정책 기반 권한 부여
+# <a name="custom-policy-based-authorization"></a><span data-ttu-id="9e2b9-103">사용자 지정 정책 기반 권한 부여</span><span class="sxs-lookup"><span data-stu-id="9e2b9-103">Custom Policy-Based Authorization</span></span>
 
 <a name=security-authorization-policies-based></a>
 
-내부적는 [역할 권한 부여](roles.md#security-authorization-role-based) 및 [클레임 권한 부여](claims.md#security-authorization-claims-based) 요구는 사용, 요구 사항 및 미리 구성 된 정책에 대 한 처리기를 확인 합니다. 이러한 빌딩 블록에는 허용 다양 하며, 재사용 가능한 코드를 쉽게 테스트할 권한 부여 구조에서 권한 부여 평가 표현할 수 있습니다.
+<span data-ttu-id="9e2b9-104">내부적는 [역할 권한 부여](roles.md#security-authorization-role-based) 및 [권한 부여 클레임](claims.md#security-authorization-claims-based) 요구 사항의 사용, 요구 사항 및 미리 구성 된 정책에 대 한 처리기를 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-104">Underneath the covers the [role authorization](roles.md#security-authorization-role-based) and [claims authorization](claims.md#security-authorization-claims-based) make use of a requirement, a handler for the requirement and a pre-configured policy.</span></span> <span data-ttu-id="9e2b9-105">이러한 빌딩 블록을 사용 하면 코드를 다시 사용할 수는 다양 한 작업에 대 한 허용 및 쉽게 테스트할 권한 부여 구조에서 권한 부여 평가 표현할 수 있도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-105">These building blocks allow you to express authorization evaluations in code, allowing for a richer, reusable, and easily testable authorization structure.</span></span>
 
-권한 부여 정책 하나 이상의 요구 사항으로 구성 되며 응용 프로그램 시작 시에 권한 부여 서비스 구성의 일부로 등록 `ConfigureServices` 에 *Startup.cs* 파일입니다.
+<span data-ttu-id="9e2b9-106">권한 부여 정책 하나 이상의 요구 사항으로 구성 되며 응용 프로그램 시작 시에 권한 부여 서비스 구성의 일부로 등록 `ConfigureServices` 에 *Startup.cs* 파일입니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-106">An authorization policy is made up of one or more requirements and registered at application startup as part of the Authorization service configuration, in `ConfigureServices` in the *Startup.cs* file.</span></span>
 
 <!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
@@ -41,9 +40,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-여기서는 최소 연령의 변수로 전달 되는 매개 변수 요구 사항에 단일 요구 사항에는 "Over21" 정책이 만들어집니다 볼 수 있습니다.
+<span data-ttu-id="9e2b9-107">여기서는의 최소 연령 변수로 전달 되는 매개 변수 요구 사항에 단일 요구 사항에는 "Over21" 정책이 만들어지면이 볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-107">Here you can see an "Over21" policy is created with a single requirement, that of a minimum age, which is passed as a parameter to the requirement.</span></span>
 
-사용 하 여 정책이 적용 되는 `Authorize` 예를 들어 정책 이름을 지정 하 여 특성
+<span data-ttu-id="9e2b9-108">사용 하 여 정책이 적용 되는 `Authorize` 예를 들어 정책 이름을 지정 하 여 특성</span><span class="sxs-lookup"><span data-stu-id="9e2b9-108">Policies are applied using the `Authorize` attribute by specifying the policy name, for example;</span></span>
 
 <!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
@@ -61,9 +60,9 @@ public class AlcoholPurchaseRequirementsController : Controller
 }
 ```
 
-## <a name="requirements"></a>요구 사항
+## <a name="requirements"></a><span data-ttu-id="9e2b9-109">요구 사항</span><span class="sxs-lookup"><span data-stu-id="9e2b9-109">Requirements</span></span>
 
-권한 부여 요구 사항을 현재 사용자 보안 주체를 평가 하는 정책을 사용할 수 있는 데이터 매개 변수 컬렉션입니다. 최소 보존 기간 정책에는 요구 사항을 단일 매개 변수를 최소 기간. 요구 사항을 구현 해야 `IAuthorizationRequirement`합니다. 비어 있는 경우는 마커 인터페이스입니다. 매개 변수가 있는 최소 연령을 다음과 같이; 구현 될 수 있습니다.
+<span data-ttu-id="9e2b9-110">권한 부여 요구 사항은 현재 사용자 보안 주체를 평가 하는 정책을 사용할 수 있는 데이터 매개 변수 컬렉션입니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-110">An authorization requirement is a collection of data parameters that a policy can use to evaluate the current user principal.</span></span> <span data-ttu-id="9e2b9-111">보호 최소 보존 기간 정책 요구 사항이 있는 경우 단일 매개 변수를 최소 보존 기간</span><span class="sxs-lookup"><span data-stu-id="9e2b9-111">In our Minimum Age policy the requirement we have is a single parameter, the minimum age.</span></span> <span data-ttu-id="9e2b9-112">요구 사항을 구현 해야 `IAuthorizationRequirement`합니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-112">A requirement must implement `IAuthorizationRequirement`.</span></span> <span data-ttu-id="9e2b9-113">빈, 표식 인터페이스입니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-113">This is an empty, marker interface.</span></span> <span data-ttu-id="9e2b9-114">매개 변수가 있는 최소 연령 요구 사항을 다음과 같이; 구현 될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-114">A parameterized minimum age requirement might be implemented as follows;</span></span>
 
 <!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
@@ -79,17 +78,17 @@ public class MinimumAgeRequirement : IAuthorizationRequirement
 }
 ```
 
-데이터 또는 속성 요구 사항이 필요 하지 않습니다.
+<span data-ttu-id="9e2b9-115">데이터 또는 속성 요구 사항 필요 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-115">A requirement doesn't need to have data or properties.</span></span>
 
 <a name=security-authorization-policies-based-authorization-handler></a>
 
-## <a name="authorization-handlers"></a>권한 부여 처리기
+## <a name="authorization-handlers"></a><span data-ttu-id="9e2b9-116">권한 부여 처리기</span><span class="sxs-lookup"><span data-stu-id="9e2b9-116">Authorization Handlers</span></span>
 
-권한 부여 처리기의 요구 사항 속성의 계산 담당합니다. 권한 부여 처리기는 제공 된 기준으로 평가 해야 `AuthorizationHandlerContext` 권한 부여가 허용 하는 경우를 결정 합니다. 요구 사항이 있을 수 있습니다 [여러 처리기](policies.md#security-authorization-policies-based-multiple-handlers)합니다. 처리기에서 상속 해야 `AuthorizationHandler<T>` 여기서 T는 요구 사항을 처리 합니다.
+<span data-ttu-id="9e2b9-117">권한 부여 처리기는 요구 사항 속성의 계산 합니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-117">An authorization handler is responsible for the evaluation of any properties of a requirement.</span></span> <span data-ttu-id="9e2b9-118">권한 부여 처리기는 제공 된 기준으로 평가 해야 `AuthorizationHandlerContext` 권한 부여 허용 되는지 여부를 결정 합니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-118">The  authorization handler must evaluate them against a provided `AuthorizationHandlerContext` to decide if authorization is allowed.</span></span> <span data-ttu-id="9e2b9-119">요구 사항이 있을 수 있습니다 [여러 처리기](policies.md#security-authorization-policies-based-multiple-handlers)합니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-119">A requirement can have [multiple handlers](policies.md#security-authorization-policies-based-multiple-handlers).</span></span> <span data-ttu-id="9e2b9-120">처리기에서 상속 해야 합니다. `AuthorizationHandler<T>` 여기서 T는 요구 사항을 처리 합니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-120">Handlers must inherit `AuthorizationHandler<T>` where T is the requirement it handles.</span></span>
 
 <a name=security-authorization-handler-example></a>
 
-최소 보존 기간 처리기는 다음과 같이 표시 될 수 있습니다.
+<span data-ttu-id="9e2b9-121">최소 보존 기간 처리기는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-121">The minimum age handler might look like this:</span></span>
 
 <!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
@@ -123,11 +122,11 @@ public class MinimumAgeHandler : AuthorizationHandler<MinimumAgeRequirement>
 }
 ```
 
-위의 코드에는 생년월일 알고 발급자와 신뢰에 의해 발급 되었는지는 클레임에 게 현재 사용자 계정이 있는지 소개 했습니다. 클레임이 누락 된 경우 반환 하도록 권한을 부여할 수 없습니다 했습니다. 오래 된 사용자가 파악 클레임, 있는 경우 및 요구 사항에 의해 전달 된 최소 보존 기간을 충족 하는 경우 다음 권한 부여 완료 됨. 권한 부여는 성공적으로 호출 하 여 `context.Succeed()` 매개 변수로 성공적으로 실행 되었는지 요구 사항을 전달 합니다.
+<span data-ttu-id="9e2b9-122">위의 코드에 먼저 의견에 귀 현재 사용자 계정이 회원님의 발급자와 신뢰에서 실행 하지는 클레임 생년월일 날짜에 있는지를 합니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-122">In the code above we first look to see if the current user principal has a date of birth claim which has been issued by an Issuer we know and trust.</span></span> <span data-ttu-id="9e2b9-123">클레임이 없는 경우 반환 하므로 권한을 부여할 수 없습니다 것입니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-123">If the claim is missing we can't authorize so we return.</span></span> <span data-ttu-id="9e2b9-124">오래 된 사용자가 파악 클레임 있는데 하 고 요구 사항에 의해 전달 된 최소 보존 기간을 충족 하는 경우 다음 권한 부여에 성공한 키를 누릅니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-124">If we have a claim, we figure out how old the user is, and if they meet the minimum age passed in by the requirement then authorization has been successful.</span></span> <span data-ttu-id="9e2b9-125">일단 부여 된 이라고 `context.Succeed()` 매개 변수로 성공적으로 실행 되었는지 요구 사항을 전달 합니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-125">Once authorization is successful we call `context.Succeed()` passing in the requirement that has been successful as a parameter.</span></span>
 
 <a name=security-authorization-policies-based-handler-registration></a>
 
-예를 들어 처리기 구성 하는 동안 서비스 컬렉션에 등록 해야 합니다.
+<span data-ttu-id="9e2b9-126">예를 들어 처리기 구성 하는 동안 서비스 컬렉션에 등록 합니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-126">Handlers must be registered in the services collection during configuration, for example;</span></span>
 
 <!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
@@ -147,25 +146,25 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-각 처리기를 사용 하 여 서비스 컬렉션에 추가 됩니다 `services.AddSingleton<IAuthorizationHandler, YourHandlerClass>();` 처리기 클래스를 전달 합니다.
+<span data-ttu-id="9e2b9-127">서비스 컬렉션을 사용 하 여 각 처리기가 추가 `services.AddSingleton<IAuthorizationHandler, YourHandlerClass>();` 처리기 클래스를 전달 합니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-127">Each handler is added to the services collection by using `services.AddSingleton<IAuthorizationHandler, YourHandlerClass>();` passing in your handler class.</span></span>
 
-## <a name="what-should-a-handler-return"></a>처리기를 반환 해야?
+## <a name="what-should-a-handler-return"></a><span data-ttu-id="9e2b9-128">처리기를 반환 해야?</span><span class="sxs-lookup"><span data-stu-id="9e2b9-128">What should a handler return?</span></span>
 
-볼 수 있듯이 우리의 [처리기 예제](policies.md#security-authorization-handler-example) 하는 `Handle()` 메서드 반환 값이 없는, 어떻게 수행 우리 성공 또는 실패를 나타내는?
+<span data-ttu-id="9e2b9-129">볼 수 있듯이 우리의 [처리기 예제](policies.md#security-authorization-handler-example) 하는 `Handle()` 메서드 반환 값이 없는 어떻게 수행 म 성공 또는 실패를 나타내는?</span><span class="sxs-lookup"><span data-stu-id="9e2b9-129">You can see in our [handler example](policies.md#security-authorization-handler-example) that the `Handle()` method has no return value, so how do we indicate success or failure?</span></span>
 
-* 처리기를 호출 하 여 성공을 나타냅니다 `context.Succeed(IAuthorizationRequirement requirement)`, 된 요구 사항을 전달 성공적으로 확인 되었습니다.
+* <span data-ttu-id="9e2b9-130">처리기를 호출 하 여이 성공 했음을 의미 `context.Succeed(IAuthorizationRequirement requirement)`, 된 요구 사항을 전달 성공적으로 확인 되었습니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-130">A handler indicates success by calling `context.Succeed(IAuthorizationRequirement requirement)`, passing the requirement that has been successfully validated.</span></span>
 
-* 처리기를 배포할 수 있습니다. 동일한 요구 사항에 대해 다른 처리기 처럼 일반적으로 오류를 처리 하도록 필요는 없습니다.
+* <span data-ttu-id="9e2b9-131">처리기를 배포할 수 있습니다. 동일한 요구 사항에 대해 다른 처리기 처럼 일반적으로 오류를 처리 하도록 필요는 없습니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-131">A handler does not need to handle failures generally, as other handlers for the same requirement may succeed.</span></span>
 
-* 오류는 요구 사항에 대해 다른 처리기 성공 하는 경우를 위해 호출 `context.Fail`합니다.
+* <span data-ttu-id="9e2b9-132">실패 한 요구 사항에 대해 다른 처리기 성공 하는 경우에, 호출 `context.Fail`합니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-132">To guarantee failure even if other handlers for a requirement succeed, call `context.Fail`.</span></span>
 
-처리기 내 호출 하면 관계 없이 정책 요구 사항을 해야 하는 경우 요구 사항에 대 한 모든 처리기가 호출 됩니다. 이렇게 하면 요구 사항에는 항상 적용 하는 로깅 같은 의도 하지 않은 경우에 `context.Fail()` 다른 처리기에서 호출 했습니다.
+<span data-ttu-id="9e2b9-133">호출 하는 처리기 내에 관계 없이 정책 요구 사항에서 요구 하는 경우 요구 사항에 대 한 모든 처리기가 호출 됩니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-133">Regardless of what you call inside your handler all handlers for a requirement will be called when a policy requires the requirement.</span></span> <span data-ttu-id="9e2b9-134">이렇게 하면 요구 사항에는 항상 적용 하는 로깅 같은 의도 하지 않은 경우에 `context.Fail()` 다른 처리기에서 호출 되었습니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-134">This allows requirements to have side effects, such as logging, which will always take place even if `context.Fail()` has been called in another handler.</span></span>
 
 <a name=security-authorization-policies-based-multiple-handlers></a>
 
-## <a name="why-would-i-want-multiple-handlers-for-a-requirement"></a>이유는 여러 처리기 요구 사항에 대 한?
+## <a name="why-would-i-want-multiple-handlers-for-a-requirement"></a><span data-ttu-id="9e2b9-135">이유는 여러 처리기는 요구 사항에 대 한?</span><span class="sxs-lookup"><span data-stu-id="9e2b9-135">Why would I want multiple handlers for a requirement?</span></span>
 
-에 있는 것으로 평가 원하는 경우에는 **또는** 별로 하나의 요구 사항에 대해 여러 처리기를 구현 합니다. 예를 들어 Microsoft는 키 카드를 사용 하는 열만 있는 문. 키 카드를 집에 두고 접수원 임시 스티커를 인쇄 하 고 문을 자동으로 열립니다. 이 시나리오에서는 단일 요구 사항이 있을 *EnterBuilding*, 하지만 여러 처리기를 각각 하나의 단일 요구 사항을 검사 합니다.
+<span data-ttu-id="9e2b9-136">에 있는 것으로 평가 하려는 경우에는 **또는** 별로 단일 요구 사항에 대해 여러 처리기를 구현 합니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-136">In cases where you want evaluation to be on an **OR** basis you implement multiple handlers for a single requirement.</span></span> <span data-ttu-id="9e2b9-137">예를 들어 Microsoft는 주요 카드를 사용 하는 열만 있는 문.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-137">For example, Microsoft has doors which only open with key cards.</span></span> <span data-ttu-id="9e2b9-138">키 카드를 집에 두면는 접수원이 임시 스티커 인쇄를 문을 열립니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-138">If you leave your key card at home the receptionist prints a temporary sticker and opens the door for you.</span></span> <span data-ttu-id="9e2b9-139">이 시나리오에서는 단일 반드시 그래야 할 것 *EnterBuilding*, 하지만 단일 요구 사항 검사 하나씩 여러 처리기입니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-139">In this scenario you'd have a single requirement, *EnterBuilding*, but multiple handlers, each one examining a single requirement.</span></span>
 
 <!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
@@ -202,13 +201,13 @@ public class HasTemporaryStickerHandler : AuthorizationHandler<EnterBuildingRequ
 }
 ```
 
-이제는 두 처리기 가정 [등록](xref:security/authorization/policies#security-authorization-policies-based-handler-registration) 정책을 평가 하면는 `EnterBuildingRequirement` 처리기 중 하나에 성공 하면 정책 평가 성공 합니다.
+<span data-ttu-id="9e2b9-140">이제는 두 처리기 가정 [등록](xref:security/authorization/policies#security-authorization-policies-based-handler-registration) 정책을 평가 하면는 `EnterBuildingRequirement` 처리기 중 하나에 성공 하면 정책 평가 성공 합니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-140">Now, assuming both handlers are [registered](xref:security/authorization/policies#security-authorization-policies-based-handler-registration) when a policy evaluates the `EnterBuildingRequirement` if either handler succeeds the policy evaluation will succeed.</span></span>
 
-## <a name="using-a-func-to-fufill-a-policy"></a>Fufill 정책에 확인 되는 함수를 사용 하 여
+## <a name="using-a-func-to-fulfill-a-policy"></a><span data-ttu-id="9e2b9-141">Func는 정책을 처리 하는 데 사용 하 여</span><span class="sxs-lookup"><span data-stu-id="9e2b9-141">Using a func to fulfill a policy</span></span>
 
-경우가 fufilling 정책을 코드에서 표현 하기 간단 합니다. 간단히 제공 하는 것이 불가능 한 `Func<AuthorizationHandlerContext, bool>` 와 정책을 구성 하는 경우는 `RequireAssertion` 정책 작성기입니다.
+<span data-ttu-id="9e2b9-142">경우가 정책 처리는 코드에서 표현 하기 간단 합니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-142">There may be occasions where fulfilling a policy is simple to express in code.</span></span> <span data-ttu-id="9e2b9-143">만 제공 하는 것이 불가능 한 `Func<AuthorizationHandlerContext, bool>` 와 정책을 구성 하는 경우는 `RequireAssertion` 정책 작성기입니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-143">It is possible to simply supply a `Func<AuthorizationHandlerContext, bool>` when configuring your policy with the `RequireAssertion` policy builder.</span></span>
 
-예를 들어 이전 `BadgeEntryHandler` ; 다음과 같이 다시 작성할 수 있습니다
+<span data-ttu-id="9e2b9-144">예를 들어 이전 `BadgeEntryHandler` ; 다음과 같이 다시 작성할 수 있습니다</span><span class="sxs-lookup"><span data-stu-id="9e2b9-144">For example the previous `BadgeEntryHandler` could be rewritten as follows;</span></span>
 
 <!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
@@ -226,13 +225,13 @@ services.AddAuthorization(options =>
  }
 ```
 
-## <a name="accessing-mvc-request-context-in-handlers"></a>처리기에서 MVC 요청 컨텍스트 액세스
+## <a name="accessing-mvc-request-context-in-handlers"></a><span data-ttu-id="9e2b9-145">처리기에서 MVC 요청 컨텍스트 액세스</span><span class="sxs-lookup"><span data-stu-id="9e2b9-145">Accessing MVC Request Context In Handlers</span></span>
 
-`Handle` 권한 부여 처리기에서 구현 해야 하는 메서드에 두 개의 매개 변수는 `AuthorizationContext` 및 `Requirement` 를 처리 하는 합니다. MVC 또는 Jabbr과 같은 프레임 워크는 모든 개체를 추가할 수 있습니다는 `Resource` 속성에는 `AuthorizationContext` 추가 정보를 통과 하도록 합니다.
+<span data-ttu-id="9e2b9-146">`Handle` 권한 부여 처리기에서 구현 해야 하는 메서드에 두 개의 매개 변수가 있는 `AuthorizationContext` 및 `Requirement` 를 처리 하는 합니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-146">The `Handle` method you must implement in an authorization handler has two parameters, an `AuthorizationContext` and the `Requirement` you are handling.</span></span> <span data-ttu-id="9e2b9-147">MVC 또는 Jabbr 등의 프레임 워크는에 개체를 추가할 수는 `Resource` 속성에는 `AuthorizationContext` 추가 정보를 통과 하도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-147">Frameworks such as MVC or Jabbr are free to add any object to the `Resource` property on the `AuthorizationContext` to pass through extra information.</span></span>
 
-MVC의 인스턴스를 전달 하는 예를 들어 `Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext` 다른 MVC HttpContext, RouteData 및 모든 항목에 액세스 하는 데 사용 되는 리소스 속성을 제공 합니다.
+<span data-ttu-id="9e2b9-148">MVC의 인스턴스를 전달 하는 예를 들어 `Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext` 다른 MVC HttpContext RouteData 및 모든 항목에 액세스 하는 데 사용 되는 리소스 속성에 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-148">For example MVC passes an instance of `Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext` in the resource property which is used to access HttpContext, RouteData and everything else MVC provides.</span></span>
 
-사용 하 여 `Resource` 속성은 특정 프레임 워크입니다. 정보를 사용 하 여 `Resource` 속성은 권한 부여 정책을 특정 프레임 워크를 제한 합니다. 캐스팅 해야는 `Resource` 사용 하 여 속성의 `as` 키워드 및 캐스트에는 다음 체크 인 코드 충돌 하지 않도록 하려면 성공으로 `InvalidCastExceptions` ;의 다른 프레임 워크에서 실행할 때
+<span data-ttu-id="9e2b9-149">사용 하 여 `Resource` 속성은 특정 프레임 워크입니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-149">The use of the `Resource` property is framework specific.</span></span> <span data-ttu-id="9e2b9-150">정보를 사용 하 여 `Resource` 속성에는 권한 부여 정책을 특정 프레임 워크를 제한 합니다.</span><span class="sxs-lookup"><span data-stu-id="9e2b9-150">Using information in the `Resource` property will limit your authorization policies to particular frameworks.</span></span> <span data-ttu-id="9e2b9-151">캐스팅 해야는 `Resource` 사용 하 여 속성의 `as` 키워드 및 다음 확인은 캐스트에 성공 코드 충돌 하지 않는 되도록와 `InvalidCastExceptions` ; 다른 프레임 워크에서 실행할 때</span><span class="sxs-lookup"><span data-stu-id="9e2b9-151">You should cast the `Resource` property using the `as` keyword, and then check the cast has succeed to ensure your code doesn't crash with `InvalidCastExceptions` when run on other frameworks;</span></span>
 
 <!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
@@ -242,4 +241,3 @@ if (context.Resource is Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterCont
     // Examine MVC specific things like routing data.
 }
 ```
-
