@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/logging
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9e5c97ce868e281310aa75c16e73298e2aaa0d9d
-ms.sourcegitcommit: bd05f7ea8f87ad076ef6e8b704698ebcba5ca80c
+ms.openlocfilehash: 30e00e2a442225bbe04be0d343f7048efe484477
+ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/05/2017
 ---
 # <a name="introduction-to-logging-in-aspnet-core"></a>ASP.NET Core 로그인 소개
 
@@ -283,7 +283,7 @@ System.Exception: Item not found exception.
 
 구성 데이터 공급자 및 다음 예제와 같이 범주에서 최소 로그 수준을 지정합니다.
 
-[!code-json[](logging/sample2/AppSettings.json)]
+[!code-json[](logging/sample2/appsettings.json)]
 
 이 JSON 디버그 공급자에 대해 하나씩, 모든 공급자에 적용 되는 개와 콘솔 공급자에 대 한 4 6 개의 필터 규칙을 만듭니다. 각 공급자에 대 한 이러한 규칙 중 하나만 어떻게 선택 표시 때는 `ILogger` 개체가 만들어집니다.
 

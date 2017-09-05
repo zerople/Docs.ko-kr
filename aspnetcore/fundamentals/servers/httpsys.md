@@ -11,18 +11,18 @@ ms.assetid: 0a7286e4-6428-424e-b5c4-5c98815cf61c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 4173a2ef539859031674fb613b25031e3b343c67
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: cff6f171432febac5ec3e7adf9cf77953e0ece2d
+ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/05/2017
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 웹 서버 구현이 HTTP.sys
 
 여 [Tom Dykstra](http://github.com/tdykstra) 및 [Chris Ross](https://github.com/Tratcher)
 
 > [!NOTE]
-> 이 항목에는 이상 ASP.NET 코어 2.0에만 적용 됩니다. 이전 버전의 ASP.NET Core에서는 HTTP.sys 이름은 [WebListener](WebListener.md)합니다.
+> 이 항목에는 이상 ASP.NET 코어 2.0에만 적용 됩니다. 이전 버전의 ASP.NET Core에서는 HTTP.sys 이름은 [WebListener](xref:fundamentals/servers/weblistener)합니다.
 
 HTTP.sys는는 [ASP.NET Core 웹 서버로](index.md) windows를 실행 하 합니다. 상에 구축 되어는 [Http.Sys 커널 모드 드라이버](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx)합니다. HTTP.sys는 하는 대신 [Kestrel](kestrel.md) Kestel 하지 않는 일부 기능을 제공 하는 합니다. **HTTP.sys와 호환 되지 않습니다 IIS 또는 IIS Express를 사용할 수 없습니다는 [ASP.NET Core 모듈](aspnet-core-module.md)합니다.**
 
@@ -80,7 +80,7 @@ HTTP.sys는 내부 배포에 대 한 좋은 선택 기능에서에서 사용할 
 
 * 호출 된 `UseHttpSys` 확장 메서드를 `WebHostBuilder` 에 프로그램 `Main` 메서드를 지정 하 [HTTP.sys 옵션](https://github.com/aspnet/HttpSysServer/blob/rel/2.0.0/src/Microsoft.AspNetCore.Server.HttpSys/HttpSysOptions.cs) 다음 예제와 같이 필요한:
 
-  [!code-csharp[](HttpSys/sample/Program.cs?name=snippet_Main&highlight=11-19)]
+  [!code-csharp[](httpsys/sample/Program.cs?name=snippet_Main&highlight=11-19)]
 
 ### <a name="configure-httpsys-options"></a>HTTP.sys 옵션 구성
 
@@ -90,7 +90,7 @@ HTTP.sys는 내부 배포에 대 한 좋은 선택 기능에서에서 사용할 
 
 다음 코드는 전체 응용 프로그램에 대 한 동시에 열린 TCP 연결의 최대 수를 설정할 수 있습니다 *Program.cs*:
 
-[!code-csharp[](HttpSys/sample/Program.cs?name=snippet_Options&highlight=5)]
+[!code-csharp[](httpsys/sample/Program.cs?name=snippet_Options&highlight=5)]
 
 연결의 최대 수는 기본적으로 무제한 (null).
 
@@ -107,7 +107,7 @@ public IActionResult MyActionMethod()
 
 전체 응용 프로그램을 모든 요청에 대 한 제약 조건을 구성 하는 방법을 보여 주는 예제는 다음과 같습니다.
 
-[!code-csharp[](HttpSys/sample/Program.cs?name=snippet_Options&highlight=6)]
+[!code-csharp[](httpsys/sample/Program.cs?name=snippet_Options&highlight=6)]
 
 특정 요청에 대 한 설정을 재정의할 수 있습니다 *Startup.cs*:
 
@@ -121,7 +121,7 @@ public IActionResult MyActionMethod()
 
 기본적으로 ASP.NET Core을 바인딩합니다 `http://localhost:5000`합니다. URL 접두사와 포트를 구성 하려면 사용할 수 있습니다는 `UseUrls` 확장 메서드는 `urls` 명령줄 인수를 ASPNETCORE_URLS 환경 변수 또는 `UrlPrefixes` 속성 [HttpSysOptions](https://github.com/aspnet/HttpSysServer/blob/rel/2.0.0/src/Microsoft.AspNetCore.Server.HttpSys/HttpSysOptions.cs)합니다. 다음 코드 예제에서는 `UrlPrefixes`합니다.
 
-[!code-csharp[](HttpSys/sample/Program.cs?name=snippet_Main&highlight=17)]
+[!code-csharp[](httpsys/sample/Program.cs?name=snippet_Main&highlight=17)]
 
 경우의 이점은 `UrlPrefixes` 는 수를 가져올 오류 메시지가 즉시 서식이 잘못 지정 된 접두사를 추가 하려고 합니다. 경우의 이점은 `UseUrls` (공유 하면 `urls` 및 ASPNETCORE_URLS) 보다 쉽게 Kestrel 고 HTTP.sys 파일 간에 전환할 수는 있습니다.
 
