@@ -1,51 +1,46 @@
 ---
-title: "ASP.NET 핵심 응용 프로그램에서 SSL을 적용 합니다. | Microsoft 문서"
+title: "ASP.NET Core 응용 프로그램에서 SSL을 강제 적용"
 author: rick-anderson
-description: "웹 응용 프로그램에서 SSL을 요구 하는 방법과 IIS Express SSL을 사용 하도록 설정 하는 방법을 보여 줍니다."
+description: "웹 응용 프로그램에서 ASP.NET Core SSL을 요구 하는 방법을 보여 줍니다."
 keywords: ASP.NET Core, SSL, HTTPS, RequireHttpsAttribute, IIS Express
 ms.author: riande
 manager: wpickett
-ms.date: 03/19/2017
+ms.date: 07/19/2017
 ms.topic: article
-ms.assetid: 4694e563-e91a-4ecd-b7ed-00b3f1eee2b5
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/enforcing-ssl
-translationtype: Machine Translation
-ms.sourcegitcommit: 6d3767417ae4b0ed7bc4e0ddd20180473ac0f408
-ms.openlocfilehash: 9bc4adca1900863db3d6fe57d815f8cd9efba641
-ms.lasthandoff: 03/23/2017
-
+ms.openlocfilehash: 35554939bd574b2826053004ed437bee46154c2b
+ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/11/2017
 ---
-# <a name="enforcing-ssl-in-an-aspnet-core-app"></a>ASP.NET 핵심 응용 프로그램에서 SSL을 적용합니다.
+# <a name="enforcing-ssl-in-an-aspnet-core-app"></a>ASP.NET Core 응용 프로그램에서 SSL을 강제 적용
 
-이 문서에서는 방법:
+으로 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-- 모든 요청 (HTTPS 요청에만 해당)에 대해 SSL이 필요 합니다.
-- 모든 HTTP 요청이 HTTPS로 리디렉션됩니다.
-- IIS express SSL/HTTPS를 사용 하도록 설정 합니다.
+이 문서에서는 표시 하는 방법:
 
-## <a name="require-ssl"></a>SSL이 필요
+- 모든 요청 (HTTPS 요청에만 해당)에 대 한 SSL이 필요 합니다.
+- HTTPS에 대 한 모든 HTTP 요청을 리디렉션하십시오.
 
-[RequireHttpsAttribute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.requirehttpsattribute) ssl을 사용 하는 데 사용 됩니다. 컨트롤러 또는이 특성을 가진 메서드를 데코레이팅 할 수 있습니다 또는 아래와 같이 전체적으로 적용할 수 있습니다.
+## <a name="require-ssl"></a>SSL 필요
 
-다음 코드를 추가 `ConfigureServices` 에서 `Startup`:
+[RequireHttpsAttribute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.requirehttpsattribute) ssl을 사용 하는 데 사용 됩니다. 컨트롤러 또는이 특성을 사용 하 여 메서드를 데코레이팅 할 수 있습니다 하거나 아래와 같이 전체적으로 적용할 수 있습니다.
 
-[!code-csharp[주](authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet2&highlight=4-)]
+다음 코드를 추가 `ConfigureServices` 에 `Startup`:
 
-위의 강조 표시 된 코드를 실행 하려면 모든 요청에 사용 하 여 `HTTPS`, 따라서 HTTP 요청은 무시 됩니다. 다음 강조 표시 된 코드 HTTPS로 모든 HTTP 요청을 리디렉션합니다.
+[!code-csharp[Main](authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet2&highlight=4-)]
 
-[!code-csharp[주](authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet_AddRedirectToHttps&highlight=6-)]
+위의 강조 표시 된 코드에서는 모든 요청 사용 `HTTPS`, 따라서 HTTP 요청은 무시 됩니다. 다음 강조 표시 된 코드를 HTTPS로 모든 HTTP 요청을 리디렉션합니다.
 
-참조 [URL 다시 쓰기 미들웨어](xref:fundamentals/url-rewriting) 에 대 한 자세한 내용은 합니다.
+[!code-csharp[Main](authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet_AddRedirectToHttps&highlight=7-)]
 
-HTTPS를 전역적으로 요구 (`options.Filters.Add(new RequireHttpsAttribute());`)이 보안 모범 사례입니다. 적용 된 `[RequireHttps]` 컨트롤러에는 단점이 하지 않을 보장 새 컨트롤러 추가 프로젝트에이 보호 발생 합니다.
+참조 [URL 다시 쓰기 미들웨어](xref:fundamentals/url-rewriting) 자세한 정보에 대 한 합니다.
+
+HTTPS를 전역적으로 요구 (`options.Filters.Add(new RequireHttpsAttribute());`) 보안 모범 사례입니다. 적용 된 `[RequireHttps]` 모든 컨트롤러에는 특성을 전역으로 HTTPS를 요구 하는 것 만큼 안전 간주 되지 않습니다. 보장할 수 없습니다 적용할 저장 되므로 응용 프로그램에 추가 하는 새로운 컨트롤러는 `[RequireHttps]` 특성입니다.
 
 ## <a name="set-up-iis-express-for-sslhttps"></a>IIS Express SSL/HTTPS에 대 한 설정
 
-   * 솔루션 탐색기에서 프로젝트를 마우스 오른쪽 단추로 클릭 하 고 선택 **속성**합니다.
-   * 왼쪽된 창에서 선택 **디버그**합니다.
-   * 확인 **SSL 사용**
-   * SSL URL을 복사 하 고 붙여 넣습니다는 **앱 URL**
-
-![디버그 탭의 웹 응용 프로그램 속성](enforcing-ssl/_static/ssl.png)
+참조 [ASP.NET Core에서 개발을 위한 HTTPS 설정](xref:security/https#iisxpress)합니다.

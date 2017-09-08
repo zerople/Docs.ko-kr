@@ -8,11 +8,11 @@ ms.topic: article
 ms.assetid: BC36CA84-3DE8-496E-9AA2-2F1B74AE8309
 ms.prod: asp.net-core
 uid: security/authentication/otherlogins
-translationtype: Machine Translation
-ms.sourcegitcommit: 010b730d2716f9f536fef889bc2f767afb648ef4
 ms.openlocfilehash: 421db8c89e01cebba0c1f98cc9286288a75777f2
-ms.lasthandoff: 03/23/2017
-
+ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/11/2017
 ---
 # <a name="short-survey-of-other-authentication-providers"></a>다른 인증 공급자의 설문 조사
 
@@ -20,7 +20,7 @@ ms.lasthandoff: 03/23/2017
 
 여 [Rick Anderson](https://twitter.com/RickAndMSFT), [Pranav Rastogi](https://github.com/rustd), 및 [Valeriy Novytskyy](https://github.com/01binary)
 
-다음은 몇 가지 다른 일반 OAuth 공급자에 대 한 지침은를 설정 합니다. 타사 NuGet 패키지에서 유지 관리 하는 것과 같은 [aspnet contrib](https://www.nuget.org/packages?q=owners%3Aaspnet-contrib+title%3AOAuth) ASP.NET 핵심 팀에 의해 구현 되는 인증 공급자를 보완 하기 위해 사용할 수 있습니다.
+다음은 몇 가지 다른 일반 OAuth 공급자에 대 한 지침을 설정 합니다. 제 3 자 NuGet 패키지에서 유지 관리 하는 것과 같은 [aspnet contrib](https://www.nuget.org/packages?q=owners%3Aaspnet-contrib+title%3AOAuth) ASP.NET Core 팀에서 구현 된 인증 공급자를 보완 하기 위해 사용할 수 있습니다.
 
 * 설정 **LinkedIn** 로그인: [https://developer.linkedin.com/my-apps](https://developer.linkedin.com/my-apps)합니다. 참조 [공식 단계](https://developer.linkedin.com/docs/oauth2)합니다.
 
@@ -47,4 +47,3 @@ ms.lasthandoff: 03/23/2017
 * 설정 **SoundCloud** 로그인: [http://soundcloud.com/you/apps/new](http://soundcloud.com/you/apps/new)합니다. 참조 [공식 단계](https://developers.soundcloud.com/blog/we-love-oauth-2)합니다.
 
 * 설정 **VK** 로그인: [https://vk.com/apps?act=manage](https://vk.com/apps?act=manage)합니다. 참조 [공식 단계](https://vk.com/pages?oid=-17680044&p=Authorizing_Sites)합니다.
-

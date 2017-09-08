@@ -1,5 +1,5 @@
 ---
-title: "키 저장소 형식을 | Microsoft 문서"
+title: "키 저장소 형식"
 author: tdykstra
 description: 
 keywords: ASP.NET Core
@@ -11,11 +11,11 @@ ms.assetid: e8996478-f7bf-4b58-bab4-7fdb5d8556c5
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/key-storage-format
-translationtype: Machine Translation
-ms.sourcegitcommit: 010b730d2716f9f536fef889bc2f767afb648ef4
-ms.openlocfilehash: a98b02631b1f41b35e06b7a89cb0abf780e6cfce
-ms.lasthandoff: 03/23/2017
-
+ms.openlocfilehash: e761eaa406a9691e3fa36881d42c1a0c1bd8a206
+ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/11/2017
 ---
 # <a name="key-storage-format"></a>키 저장소 형식
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 03/23/2017
 
 ## <a name="the-key-element"></a>\<키 > 요소
 
-키 키 저장소에 있는 최상위 개체도 존재합니다. 규칙에 따라 키가 파일 이름을 **키-{guid}.xml**여기서 {guid}는 키의 id입니다. 이러한 각 파일에는 단일 키를 포함합니다. 파일의 형식은 다음과 같습니다.
+키의 키 저장소에는 최상위 개체도 존재합니다. 키 파일 이름에는 규칙에 따라 **키-{guid}.xml**, 여기서 {guid}이 키의 id입니다. 이러한 각 파일에는 단일 키를 포함합니다. 파일의 형식은 다음과 같습니다.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -48,35 +48,35 @@ ms.lasthandoff: 03/23/2017
 </key>
 ```
 
-\<키 > 요소는 다음 특성과 자식 요소를 포함 합니다.
+\<키 > 요소는 다음과 같은 특성 및 자식 요소를 포함 합니다.
 
-* 키 id입니다. 이 값은 정식으로; 처리 파일 이름이 능률이 사람이 인식 하면 됩니다.
+* 키 id입니다. 이 값은 정식으로; 처리 파일 이름이 휴먼 가독성을 높이기 위해 못했던 단순히입니다.
 
-* 버전은 \<키 > 요소를 1에서 현재 고정 합니다.
+* 버전의는 \<키 > 요소를 1에서 현재 고정 합니다.
 
-* 키의 생성, 활성화 및 만료 날짜입니다.
+* 키의 생성, 활성화, 및 만료 날짜입니다.
 
 * A \<설명자 >이 키에 포함 된 인증 된 암호화 구현에 대 한 정보를 포함 하는 요소입니다.
 
-위의 예제에서는 키의 id는 {80732141-ec8f-4b80-af9c-c4d2d1ff8901}, 만들어지고 2015 년 3 월 19 일에 활성화 된 이며 90 일의 수명은 합니다. (경우에 따라 정품 인증 날짜 약간 있을 수 있으며이 예제에서와 같이 만든 날짜 전에 합니다. 이 Api는 작동 하 고는 무시 해도 실제로 nit 인해) 됩니다.
+위의 예제에서는 키의 id가 {80732141-ec8f-4b80-af9c-c4d2d1ff8901}, 만들어지고 2015 년 3 월 19 일에 활성화 된 및 90 일의 수명은 합니다. (경우에 따라 활성화 날짜 약간 있을 수 있으며 다음이 예제와 같이 작성 날짜 전에 합니다. 이것은 Api 작동 하 고는 무시 해도 실제로 하는 방식에서 nit 인해.)
 
 ## <a name="the-descriptor-element"></a>\<설명자 > 요소
 
-외부 \<설명자 > IAuthenticatedEncryptorDescriptorDeserializer를 구현 하는 형식의 정규화 된 어셈블리 이름이 되는 특성 deserializerType 요소에 포함 되어 있습니다. 이 형식은 내부 읽는 역할을 \<설명자 > 요소 내에 포함 된 정보를 구문 분석 하 고 있습니다.
+외부 \<설명자 > 요소는이 IAuthenticatedEncryptorDescriptorDeserializer를 구현 하는 형식의 정규화 된 어셈블리 이름을 특성 deserializerType 포함 합니다. 이 형식은 내부 읽는 역할 \<설명자 > 요소 내에 포함 된 정보를 구문 분석 하 고 있습니다.
 
-특정 형식의 \<설명자 > 요소는 키에 의해 캡슐화 인증된 암호기 구현에 따라 및 deserializer 유형별로 약간 다른 형식을이 대 한 것으로 예상 합니다. 일반적으로 하지만,이 요소를 포함 합니다 알고리즘 정보 (이름, 형식, Oid, 또는 유사한 곳) 및 비밀 키 자료입니다. 위의 예제에서는 설명자가이 키 래핑하&256;-AES-CBC 암호화 + HMACSHA256 유효성 검사를 지정 합니다.
+특정 형식의 \<설명자 > 요소는 키에 의해 캡슐화 된 인증 된 암호기 구현에 따라 및 각 deserializer 유형에 대해이 약간 다른 형식을 필요로 합니다. 일반적으로 하지만,이 요소를 포함 합니다 알고리즘 정보 (이름, 형식, Oid를 또는 유사한 곳) 및 비밀 키 자료. 위의 예에서 설명자가이 키는 AES-256-CBC 암호화 + HMACSHA256 유효성 검사를 래핑하는 지정 합니다.
 
 ## <a name="the-encryptedsecret-element"></a>\<encryptedSecret > 요소
 
-<encryptedSecret> 비밀 키 자료의 암호화 된 형태를 포함 하는 요소 있을 수 경우 [비밀 휴지 상태의 데이터 암호화가 사용](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest)합니다. 특성 decryptorType IXmlDecryptor를 구현 하는 형식의 정규화 된 어셈블리 이름이 됩니다. 이 형식은 내부 읽는 역할을 <encryptedKey> 요소와 복구할 원래의 일반 텍스트 암호를 해독 합니다.
+<encryptedSecret> 비밀 키 자료의 암호화 된 형태를 포함 하는 요소 있을 수 경우 [비밀 미사용 데이터 암호화가 설정](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest)합니다. 특성 decryptorType IXmlDecryptor를 구현 하는 형식의 정규화 된 어셈블리 이름이 됩니다. 이 형식은 내부 읽는 역할 <encryptedKey> 요소와 복구를 원래의 일반 텍스트로 암호를 해독 합니다.
 
-와 마찬가지로 \<설명자 >, 특정 형식의 <encryptedSecret> 요소 사용에서에 암호화 메커니즘에 따라 다릅니다. 위의 예제에서는 Windows DPAPI를 사용 하 여 주석 당 마스터 키가 암호화 합니다.
+와 마찬가지로 \<설명자 >, 특정 형식의 <encryptedSecret> 요소 사용에서-휴지 암호화 메커니즘에 따라 달라 집니다. 위의 예에 마스터 키가 주석 당 Windows DPAPI를 사용 하 여 암호화 합니다.
 
 ## <a name="the-revocation-element"></a>\<해지 > 요소
 
-해지 키 저장소에 있는 최상위 개체도 존재합니다. 규칙에 따라 해지는 파일 이름을 가진 **해지-{timestamp}.xml** (에 대 한 특정 날짜 이전의 모든 키를 해지) 또는 **해지-{guid}.xml** (에 대 한 특정 키를 해지). 각 파일에는 단일 \<해지 > 요소입니다.
+해지 키 저장소에는 최상위 개체도 존재합니다. 규칙에 따라 해지는 파일 이름을 가진 **해지-{timestamp}.xml** (에 대 한 특정 날짜 이전의 모든 키를 해지) 또는 **해지-{guid}.xml** (예: 특정 키를 해지). 각 파일에는 단일 \<해지 > 요소입니다.
 
-개별 키 해지로에 대 한 파일의 내용이 됩니다 다음과 같이 합니다.
+해지의 개별 키에 대 한 파일 내용이 됩니다 다음과 같이 합니다.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -87,7 +87,7 @@ ms.lasthandoff: 03/23/2017
 </revocation>
 ```
 
-이 경우 지정된 된 키가 해지 되었습니다. 그러나 키 id가 "*",에서 같이 아래 예제에서는 모든 키를 만든 날짜 지정된 해지 날짜 전에 취소 됩니다.
+이 경우 지정된 된 키가 해지 되었습니다. 그러나 키 id가 "*",에서 같이 아래 예제에서는 모든 키를 가진 생성 날짜를 지정한 해지 날짜 전에 취소 됩니다.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -99,5 +99,4 @@ ms.lasthandoff: 03/23/2017
 </revocation>
 ```
 
-\<이유 > 요소를 시스템에서 읽이 되지 않습니다. 단순히 해지 하는 사람이 읽을 수 있는 이유를 저장 하는 편리한 위치는
-
+\<이유 > 요소는 시스템에서 읽지 않습니다. 단순히 해지 사람이 읽을 수 있는 이유를 저장할 수 있는 편리한 위치는

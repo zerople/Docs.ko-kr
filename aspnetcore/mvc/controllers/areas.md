@@ -1,5 +1,5 @@
 ---
-title: "영역 | Microsoft 문서"
+title: "영역"
 author: rick-anderson
 description: "영역을 사용 하는 방법을 보여 줍니다."
 keywords: "ASP.NET Core, 영역, 라우팅, 뷰"
@@ -11,39 +11,39 @@ ms.assetid: 5e16d5e8-5696-4cb2-8ec7-d36be305c922
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/areas
-translationtype: Machine Translation
-ms.sourcegitcommit: 115a74c97de6052ec707ee164641f9c41224b9b3
-ms.openlocfilehash: 59191bff0129ab3674a71a54c8df4c62e8017b72
-ms.lasthandoff: 03/23/2017
-
+ms.openlocfilehash: e0958d6ba87dd34a7bf455d37ea8b29a32715104
+ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/11/2017
 ---
 # <a name="areas"></a>영역
 
 여 [Dhananjay Kumar](https://twitter.com/debug_mode) 및 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-영역은 별도 네임 스페이스 (라우팅) 및 폴더 구조 (뷰)를 그룹으로 관련된 기능을 구성 하는 데 사용 되는 ASP.NET MVC 기능입니다. 영역을 사용 하는 계층 구조를 만들고 다른 경로 매개 변수를 추가 하 여 라우팅 목적으로 `area`, `controller` 및 `action`합니다.
+영역은 별도 네임 스페이스 (라우팅) 및 (views)에 대 한 폴더 구조와 관련 된 기능 그룹으로 구성 하는 데 사용 되는 ASP.NET MVC 기능입니다. 영역을 사용 하 여 다른 경로 매개 변수를 추가 하 여 라우팅 목적으로 계층 구조를 만듭니다 `area`을 `controller` 및 `action`합니다.
 
-영역에는 여러 개의 작은 기능 그룹으로 큰 ASP.NET 핵심 MVC 웹 앱을 분할 하는 방법을 제공 합니다. 영역은 응용 프로그램 내의 MVC 구조 효과적입니다. MVC 프로젝트에서는 모델, 컨트롤러 및 보기와 같은 논리적 구성 요소는 서로 다른 폴더에 고 MVC 명명 규칙을 사용 하 여 이러한 구성 요소 사이의 관계를 만듭니다. 큰 응용 프로그램에 대 한 별도 높은 수준 기능 영역으로 응용 프로그램을 분할 하는 것이 좋습니다 수 있습니다. 예를 들어, 체크 아웃, 청구 및 검색 등과 같은 여러 비즈니스 단위를 사용 하 여 전자 상거래 앱입니다. 이러한 단위 모두 자체 논리 구성 요소 뷰, 컨트롤러 및 모델 있습니다. 이 시나리오에서는 물리적으로 같은 프로젝트의 비즈니스 구성 요소를 분할 영역을 사용할 수 있습니다.
+영역은 여러 개의 작은 기능 그룹으로 큰 ASP.NET Core MVC 웹 응용 프로그램을 분할 하는 방법을 제공 합니다. 실질적으로 영역은 응용 프로그램 내의 MVC 구조입니다. MVC 프로젝트에서 모델, 컨트롤러 및 보기와 같은 논리적 구성 요소는 서로 다른 폴더에 저장 하는 및 MVC 명명 규칙을 사용 하 여 이러한 구성 요소 간의 관계를 만들 수 있습니다. 규모가 큰 앱에 대 한 별도 높은 수준의 기능 영역을를 응용 프로그램을 분할 하는 것이 도움이 수도 있습니다. 예를 들어, 체크 아웃, 청구 및 검색 등과 같은 여러 비즈니스 단위를 사용 하 여 전자 상거래 앱입니다. 각 이러한 단위가 있는 자신의 논리적 구성 요소 뷰, 컨트롤러 및 모델입니다. 이 시나리오에서는 물리적으로 같은 프로젝트에 비즈니스 구성 요소를 분할 영역을 사용할 수 있습니다.
 
-컨트롤러, 뷰 및 모델 자체 집합이 포함 된 ASP.NET 핵심 MVC 프로젝트에서 더 작은 기능 단위도 영역을 정의할 수 있습니다.
+영역은 컨트롤러, 뷰 및 모델의 자체 집합으로 ASP.NET Core MVC 프로젝트에 기능 단위 보다 작은으로 정의할 수 있습니다.
 
-MVC의 영역을 사용 하는 것이 좋습니다 때 프로젝트:
+MVC의 영역을 사용 하는 것이 좋습니다. 때 프로젝트:
 
 * 응용 프로그램은 논리적으로 분리 해야 하는 여러 기능 높은 수준의 구성 요소 구성
 
-* 각 기능 영역 작동할 수 없습니다 독립적으로 않도록 MVC 프로젝트를 분할.
+* 각 기능 영역 수 수에 독립적으로 작업 않도록 MVC 프로젝트를 분할.
 
 영역 기능:
 
-* ASP.NET 핵심 MVC 앱을 다양 한 영역을 가질 수 있습니다.
+* ASP.NET Core MVC 응용 프로그램에 다양 한 영역의 있을 수 있습니다.
 
 * 각 영역에는 자체 컨트롤러, 모델 및 뷰
 
-* 대규모 MVC 프로젝트를 작업할 수 있도록 하지에 독립적으로 여러 개의 상위 수준의 구성 요소를 구성할 수 있습니다.
+* 있습니다. 수에 독립적으로 작업을 여러 높은 수준의 구성 요소에 대형 MVC 프로젝트를 구성할 수 있습니다.
 
-* 서로 다른 것으로 같은 이름의 여러 컨트롤러 지원 *영역*
+* 서로 다른으로 동일한 이름의 여러 컨트롤러 지원 *영역*
 
-영역 생성 및 사용 방법을 설명 하는 예제를 살펴보겠습니다. 컨트롤러 및 보기의 두 고유 그룹화 된 스토어 앱이 있는 경우를 가정해: 제품 및 서비스입니다. 일반적인 폴더에 대 한 구조는 MVC 영역을 사용 하는 다음과 같습니다.
+영역 생성 및 사용 방법을 설명 하는 예제를 살펴보겠습니다. 컨트롤러와 뷰의 두 가지 그룹화 된 스토어 앱이 있는 경우를 가정해: 제품 및 서비스입니다. MVC 영역을 사용 하 여 다음과 같은 아래에 대 한 일반적인 폴더 구조:
 
 * 프로젝트 이름
 
@@ -79,7 +79,7 @@ MVC의 영역을 사용 하는 것이 좋습니다 때 프로젝트:
 
           * Index.cshtml
 
-MVC를 기본적으로는 영역에서 보기를 렌더링 하려고 하는 경우 다음 위치를 확인 하에서는 시도 합니다.
+MVC을 기본적으로는 영역에는 뷰를 렌더링 하려고 하는 경우 다음 위치에서 찾을 시도:
 
 ```text
 /Areas/<Area-Name>/Views/<Controller-Name>/<Action-Name>.cshtml
@@ -87,9 +87,9 @@ MVC를 기본적으로는 영역에서 보기를 렌더링 하려고 하는 경�
    /Views/Shared/<Action-Name>.cshtml
    ```
 
-이 통해 변경 될 수 있는 기본 위치는는 `AreaViewLocationFormats` 에 `Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions`합니다.
+이 위치는 통해 변경할 수 있는 기본 위치는 `AreaViewLocationFormats` 에 `Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions`합니다.
 
-예를 들어,는 아래 코드를 사용 하는 대신 폴더 이름의 '영역'으로, 변경 된 '범주'에 있습니다.
+예를 들어는 아래 '영역'으로 폴더 이름을 포함 하는 대신 코드를 변경 된 '범주'에 있습니다.
 
 ```csharp
 services.Configure<RazorViewEngineOptions>(options =>
@@ -101,9 +101,9 @@ services.Configure<RazorViewEngineOptions>(options =>
    });
    ```
 
-구조는 한 가지 주의할 점은는 *뷰* 폴더는 유일 하 게 여기는 것이 중요 간주 되는 고 나머지 폴더의 내용을 같은 *컨트롤러* 및 *모델* 않습니다 **하지** 중요 합니다. 예를 들어 하면 필요 하지는 *컨트롤러* 및 *모델* 전혀 폴더입니다. 에서는이 방법이 내용의 *컨트롤러* 및 *모델* 은 단지 코드의 내용으로 작업 하는 경우.dll으로 컴파일 가져옵니다입니다는 *뷰* 가 되어야만 하는 요청 보기 만들어졌음을.
+한 가지 주의할 점은의 구조는 *뷰* 폴더는 유일 하 게 여기 중요 한 선호 되 고 나머지 폴더의 콘텐츠 형식 *컨트롤러* 및 *모델* 않습니다 **하지** 중요 합니다. 예를 들어 필요 하면는 *컨트롤러* 및 *모델* 전혀 폴더입니다. 하므로이 작업이 내용의 *컨트롤러* 및 *모델* 는의 내용으로 작업 하는 경우.dll으로 컴파일 가져옵니다 정당한 코드는 *뷰* 가 요청을 하는 되어야만 보기는 다음과 같이 변경 되었습니다.
 
-폴더 계층 구조를 정의한 후에 각 컨트롤러는 영역과 관련이 MVC 지시 해야 합니다. 컨트롤러 이름으로 데코 레이트 하 여 그렇게는 `[Area]` 특성입니다.
+폴더 계층 구조를 정의 하 고 나면 영역 연결 된 각 컨트롤러에 MVC를 지시 해야 합니다. 그렇게 하려면 사용 하 여 컨트롤러 이름을 데코레이팅하여는 `[Area]` 특성입니다.
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [4]}} -->
 
@@ -129,7 +129,7 @@ services.Configure<RazorViewEngineOptions>(options =>
    }
    ```
 
-새로 만든된 분야와 함께 작동 하는 경로 정의를 설정 합니다. [컨트롤러 작업에 대 한 라우팅을](routing.md) 문서 특성 경로와 기본 경로 사용 하 여 포함 하는 경로 정의 만드는 방법에 대 한 세부 정보로 이동 합니다. 이 예제에서는 기본 경로 사용 합니다. 이렇게 하려면를 열고는 *Startup.cs* 파일을 추가 하 여 수정는 `areaRoute` 라는 아래 경로 정의 합니다.
+새로 만든된 사용자 영역을 사용 하는 경로 정의를 설정 합니다. [컨트롤러 작업에 대 한 라우팅을](routing.md) 문서 특성 경로와 규칙에 따른 경로 사용 하는 등의 route 정의 만드는 방법에 대 한 정보를 확인할 이동 합니다. 이 예제에서는 규칙에 따른 경로 사용 합니다. 이 위해 열고는 *Startup.cs* 파일을 추가 하 여 수정는 `areaRoute` 라는 아래 경로 정의 합니다.
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [4, 5, 6]}} -->
 
@@ -146,11 +146,11 @@ services.Configure<RazorViewEngineOptions>(options =>
    });
    ```
 
-찾아 `http://<yourApp>/products`, `Index` 작업 메서드는 `HomeController` 에 `Products` 영역 호출 됩니다.
+찾아 `http://<yourApp>/products`, `Index` 의 동작 메서드는 `HomeController` 에 `Products` 영역 호출 됩니다.
 
 ## <a name="link-generation"></a>링크 생성
 
-* 작업 영역 내에서 링크 생성 컨트롤러를 같은 컨트롤러 내에서 다른 작업을 기반으로 합니다.
+* 컨트롤러를 같은 컨트롤러 내에서 다른 작업을 기반으로 작업 영역 내에서 링크를 생성 합니다.
 
   현재 요청 경로 같은 경우를 가정해합니다`/Products/Home/Create`
 
@@ -158,9 +158,9 @@ services.Configure<RazorViewEngineOptions>(options =>
 
   TagHelper 구문을 사용 하십시오.`<a asp-action="Index">Go to Product's Home Page</a>`
 
-  참고 우리 필요 '영역' 및 '컨트롤러' 값을 제공 하지 않은 현재 요청의 컨텍스트에서 사용할 수 있는 이미 여기 있습니다. 이러한 종류의 값 이라고 `ambient` 값입니다.
+  '영역' 및 'controller' 값 제공 하지 않아도 म 참고 여기에 현재 요청의 컨텍스트에서 사용할 수 있는 이미 있습니다. 이러한 종류의 값 이라고 `ambient` 값입니다.
 
-* 컨트롤러를 다른 컨트롤러에 다른 작업을 기반으로 작업 영역 내에서 링크 생성
+* 컨트롤러를 다른 컨트롤러에 다른 작업을 기반으로 작업 영역 내에서 링크를 생성 합니다.
 
   현재 요청 경로 같은 경우를 가정해합니다`/Products/Home/Create`
 
@@ -168,7 +168,7 @@ services.Configure<RazorViewEngineOptions>(options =>
 
   TagHelper 구문을 사용 하십시오.`<a asp-controller="Manage" asp-action="Index">Go to Manage Products’  Home Page</a>`
 
-  Note '영역' 앰비언트 값이 사용 하는 여기는 위에서 '컨트롤러' 값은 명시적으로 지정 됩니다.
+  Note 앰비언트 값 '영역'를 사용 하는 여기 하지만 위에서 'controller' 값은 명시적으로 지정 됩니다.
 
 * 다른 컨트롤러와 다른 영역에 컨트롤러를 다른 작업 기반 작업 영역 내에서 링크를 생성 합니다.
 
@@ -178,17 +178,16 @@ services.Configure<RazorViewEngineOptions>(options =>
 
   TagHelper 구문을 사용 하십시오.`<a asp-area="Services" asp-controller="Home" asp-action="Index">Go to Services’ Home Page</a>`
 
-  앰비언트 값이 없는 여기 사용 됩니다.
+  앰비언트 값이 없는 여기서 사용 됩니다.
 
-* 다른 컨트롤러에 다른 작업 영역을 기반으로 컨트롤러 내에서 액션에서 링크를 생성 하 고 **하지** 영역에서입니다.
+* 이 지역의 컨트롤러 내에서 액션에서 다른 컨트롤러에 다른 작업에 링크를 생성 하 고 **하지** 영역에서입니다.
 
   HtmlHelper 구문을 사용 하십시오.`@Html.ActionLink("Go to Manage Products’  Home Page", "Index", "Home", new { area = "" })`
 
   TagHelper 구문을 사용 하십시오.`<a asp-area="" asp-controller="Manage" asp-action="Index">Go to Manage Products’  Home Page</a>`
 
-  생성 하려고 하므로 아닌 영역에 대 한 링크 값을 기반으로 빈 우리 컨트롤러 작업 앰비언트 '영역' 여기에 대 한 합니다.
+  생성 하는 데는 비 영역에 대 한 링크 기반에서는 빈 컨트롤러 동작 '영역' 여기에 대 한 앰비언트 값
 
 ## <a name="publishing-areas"></a>게시 영역
 
-모든 `*.cshtml` 및 `wwwroot/**` 파일 때 출력을 게시할 `<Project Sdk="Microsoft.NET.Sdk.Web">` 에 포함 되는 *.csproj* 파일.
-
+모든 `*.cshtml` 및 `wwwroot/**` 파일 경우 출력을 게시할 `<Project Sdk="Microsoft.NET.Sdk.Web">` 에 포함 되어는 *.csproj* 파일입니다.
