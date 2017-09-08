@@ -10,11 +10,11 @@ ms.assetid: e6c1ff3c-5673-43bf-9c2d-077f6ada1f29
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: 1140f4916ca39cb454eaa41fdf6adfe7ad26cc31
-ms.sourcegitcommit: dfd6af48cf66813eaf04b011cb9341339a751254
+ms.openlocfilehash: bc2896d0eeda7e84cef06ee3f235e637bfe04318
+ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/05/2017
 ---
 # <a name="sorting-filtering-paging-and-grouping---ef-core-with-aspnet-core-mvc-tutorial-3-of-10"></a>정렬, 필터링, 페이징 및 그룹화-EF 코어 ASP.NET Core MVC 자습서 (3 / 10)
 
@@ -213,7 +213,7 @@ Contoso 대학 웹 사이트에 대 한 **에 대 한** 페이지에서 각 등�
 
 만들기는 *SchoolViewModels* 폴더에는 *모델* 폴더입니다.
 
-새 폴더에 EnrollmentDateGroup.cs 클래스 파일을 추가 하 고 템플릿 코드를 다음 코드로 바꿉니다.
+새 폴더에 클래스 파일 추가 *EnrollmentDateGroup.cs* 템플릿 코드를 다음 코드로 바꿉니다.
 
 [!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
 

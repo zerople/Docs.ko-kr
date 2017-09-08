@@ -11,8 +11,8 @@ ms.assetid: 92a2986a-d005-4ff6-9559-6657fd466bb7
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: fa5e0a66f22cc14f34d05481ce2e4381085d122d
-ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
+ms.openlocfilehash: d1c6ece833672af3ef2003510ef96c4ff0d63fbf
+ms.sourcegitcommit: 418e6aa4ab79474ecc4d0a6af573a3759b113fe4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 09/05/2017
@@ -179,7 +179,7 @@ Entity Framework Core에 대 한 소스 코드에서 제공 됩니다. [https://
 
 리버스 엔지니어링 하는 기존 데이터베이스에서 엔터티 클래스를 포함 하 여 데이터 모델을 사용 하 여는 [스 캐 폴드 dbcontext](https://docs.microsoft.com/ef/core/miscellaneous/cli/powershell#scaffold-dbcontext) 명령입니다. 참조는 [-시작 자습서](https://docs.microsoft.com/ef/core/get-started/aspnetcore/existing-db)합니다.
 
-<a id="dynamic-linq">
+<a id="dynamic-linq"></a>
 ## <a name="use-dynamic-linq-to-simplify-sort-selection-code"></a>동적 LINQ를 사용 하 여 정렬 선택 코드를 단순화 합니다.
 
 [이 시리즈의 세 번째 자습서](sort-filter-page.md) 열 이름은 하드 코딩 하 여 LINQ 코드를 작성 하는 방법을 보여 줍니다는 `switch` 문. 중에서 선택 하려면 두 개의 열이 정상적으로 작동 하지만 코드 자세한 정보를 가져올 수 많은 열이 있는 경우. 이러한 문제를 해결 하기 위해 사용할 수 있습니다는 `EF.Property` 메서드를 문자열로 속성의 이름을 지정 합니다. 이 방법은 실행 하려면 대체는 `Index` 에서 메서드는 `StudentsController` 를 다음 코드로 합니다.

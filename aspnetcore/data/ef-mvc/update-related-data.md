@@ -11,11 +11,11 @@ ms.assetid: 67bd162b-bfb7-4750-9e7f-705228b5288c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: 85686fe4ebf95f95dc672fbc2d23cddd5bee85e5
-ms.sourcegitcommit: 605dc99d241b6d955432bcd42c0178e6e6a212fd
+ms.openlocfilehash: 655fefc0f9d884300bea670795c39a7a9aa10bb8
+ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/05/2017
 ---
 # <a name="updating-related-data---ef-core-with-aspnet-core-mvc-tutorial-7-of-10"></a>관련된 데이터-ASP.NET Core MVC 자습서 (7 / 10)와 함께 EF 코어 업데이트
 
@@ -87,7 +87,7 @@ HttpGet `Edit` 메서드 편집 중인 과정에 이미 할당 되어 있는 분
 
 [!code-html[Main](intro/samples/cu/Views/Courses/Delete.cshtml?highlight=14-19,36)]
 
-*Views/Course/Details.cshtml*, 수행한에 대 한 동일한 변경 내용을 *Delete.cshtml*합니다.
+*Views/Courses/Details.cshtml*, 수행한에 대 한 동일한 변경 내용을 *Delete.cshtml*합니다.
 
 ### <a name="test-the-course-pages"></a>테스트 과정 페이지
 

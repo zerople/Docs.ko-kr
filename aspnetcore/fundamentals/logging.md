@@ -12,8 +12,8 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/logging
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30e00e2a442225bbe04be0d343f7048efe484477
-ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
+ms.openlocfilehash: 15abe93d881aed3b6950a859dc9445ec50ee9bb5
+ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 09/05/2017
@@ -306,7 +306,7 @@ System.Exception: Item not found exception.
 3|콘솔|Microsoft.AspNetCore.Mvc.Razor.Razor|디버그|
 4|콘솔|Microsoft.AspNetCore.Mvc.Razor|오류|
 5|콘솔|모든 범주|정보|
-6|모든 공급자|모든 범주|경고
+6|모든 공급자|모든 범주|디버그
 7|모든 공급자|시스템|디버그
 9|디버그|Microsoft|추적
 

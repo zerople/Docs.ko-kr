@@ -11,11 +11,11 @@ ms.assetid: 71fec30f-8ea7-4ca8-96e3-d2e26c5be44e
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: d04b740f1ded3fb41ef1c3edd0adad276d8fcef0
-ms.sourcegitcommit: d7e0df365a6112240b5560212759b1e3525850a2
+ms.openlocfilehash: a3badbfe365a99593b38fc3846a9984824438f16
+ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/05/2017
 ---
 # <a name="reading-related-data---ef-core-with-aspnet-core-mvc-tutorial-6-of-10"></a>읽기 관련 데이터-EF 코어 ASP.NET Core MVC 자습서 (6 / 10)
 
@@ -167,7 +167,7 @@ Index 메서드가 관련된 데이터를 즉시 로드의 보기 모델에 저�
 
 *Views/Instructors/Index.cshtml*, 템플릿 코드를 다음 코드로 바꿉니다. 변경 내용은 강조 표시 됩니다.
 
-[!code-html[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=1-64&highlight=1,3-7,18-19,41-54,56)]
+[!code-html[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=1-64&highlight=1,3-7,15-19,24,26-31,41-54,56)]
 
 기존 코드를 다음과 같이 변경을 했습니다.
 

@@ -11,8 +11,8 @@ ms.assetid: 15e79e15-bda5-441d-80c7-8032a2628605
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: 4c402aee195d6614733be71c9c422e33553ad646
-ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
+ms.openlocfilehash: f44a4f842180b4001eb1428316c24fd9cacc39db
+ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 09/05/2017
@@ -176,8 +176,6 @@ _context.Entry(departmentToUpdate).Property("RowVersion").OriginalValue = rowVer
 
 *Views/Departments/Edit.cshtml*를 다음과 같이 변경 합니다.
 
-* 제거는 `<div>` 에 대 한 스 캐 폴드 되었습니다 요소는 `RowVersion` 필드입니다.
-
 * 저장 하는 숨겨진된 필드를 추가 하는 `RowVersion` 속성 값을 바로 다음에 대 한 숨겨진된 필드는 `DepartmentID` 속성입니다.
 
 * 드롭다운 목록에 "관리자 선택" 옵션을 추가 합니다.
@@ -251,7 +249,7 @@ public async Task<IActionResult> Delete(Department department)
 
 * 오류 메시지 간의 추가 `h2` 및 `h3` 머리글입니다.
 
-* FullName LastName 바꿉니다는 **관리자** 필드입니다.
+* FullName FirstMidName 바꿉니다는 **관리자** 필드입니다.
 
 * RowVersion 필드를 제거합니다.
 

@@ -11,11 +11,11 @@ ms.assetid: 6e1cd570-40f1-4b24-8b6e-7d2d27758f18
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/crud
-ms.openlocfilehash: b99a58d77d4f1751753ae576ade4bd6dd981fbbf
-ms.sourcegitcommit: bd05f7ea8f87ad076ef6e8b704698ebcba5ca80c
+ms.openlocfilehash: 855f060a6404dedff310b288ada9738689069ceb
+ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/05/2017
 ---
 # <a name="create-read-update-and-delete---ef-core-with-aspnet-core-mvc-tutorial-2-of-10"></a>만들기, 읽기, 업데이트 및 삭제-EF 코어 ASP.NET Core MVC 자습서 (2 / 10)
 
@@ -40,7 +40,7 @@ Contoso 대학 샘플 웹 응용 프로그램에는 Entity Framework Core 및 Vi
 
 ## <a name="customize-the-details-page"></a>사용자 지정 세부 정보 페이지
 
-학생 인덱스 페이지에 대 한 스 캐 폴드 코드에서 제외 된 `Enrollments` 속성을 속성 컬렉션을 보유 하기 때문에 있습니다. 에 **세부 정보** 페이지 HTML 테이블에 컬렉션의 내용을 표시 합니다.
+학생 인덱스 페이지에 대 한 스 캐 폴드 코드에서 제외 된 `Enrollments` 속성을 속성 컬렉션을 보유 하기 때문에 있습니다. 에 **세부 정보** 페이지에서 HTML 테이블에 컬렉션의 내용을 표시 합니다.
 
 *Controllers/StudentsController.cs*, 세부 정보에 대 한 작업 메서드를 사용 하 여 볼는 `SingleOrDefaultAsync` 메서드는 단일 검색를 `Student` 엔터티. 호출 하는 코드를 추가 `Include`합니다. `ThenInclude`및 `AsNoTracking` 메서드를 다음 강조 표시 된 코드에 나와 있는 것 처럼 합니다.
 
@@ -96,7 +96,7 @@ http://localhost:1230/Instructor/Index?id=1&CourseID=2021
 
 ### <a name="add-enrollments-to-the-details-view"></a>등록 세부 정보 보기에 추가
 
-열기 *Views/Students/Details.cshtml*합니다. 사용 하 여 각 필드는 표시 `DisplayNameFor` 및 `DisplayFor` 도우미, 다음 예제와 같이:
+열기 *Views/Students/Details.cshtml*합니다. 사용 하 여 각 필드는 표시 `DisplayNameFor` 및 `DisplayFor` 다음 예제와 같이 도우미 클래스:
 
 [!code-html[](intro/samples/cu/Views/Students/Details.cshtml?range=13-18&highlight=2,5)]
 
@@ -274,7 +274,7 @@ Try catch 블록에서 HttpPost에 추가할 `Delete` 데이터베이스를 업�
 
 데이터베이스 연결을 보유 하는 리소스를 확보 하려면 컨텍스트 인스턴스가 삭제 해야 최대한 빨리을 마쳤습니다. ASP.NET Core 기본 제공 [종속성 주입](../../fundamentals/dependency-injection.md) 해당 작업을 담당 합니다.
 
-*Startup.cs* 호출 하는 [AddDbContext 확장 메서드](https://github.com/aspnet/EntityFramework/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs) 프로 비전 하는 `DbContext` ASP.NET DI 컨테이너에는 클래스입니다. 메서드를 서비스 수명을 설정 `Scoped` 기본적으로 합니다. `Scoped`컨텍스트 개체 수명 웹 요청 라이프 시간과 일치 하는 방법 및 `Dispose` 메서드가 웹 요청이 끝날 때 자동으로 호출 됩니다.
+*Startup.cs*, 호출 하는 [AddDbContext 확장 메서드](https://github.com/aspnet/EntityFramework/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs) 프로 비전 하는 `DbContext` ASP.NET DI 컨테이너에는 클래스입니다. 메서드를 서비스 수명을 설정 `Scoped` 기본적으로 합니다. `Scoped`컨텍스트 개체 수명 웹 요청 라이프 시간과 일치 하는 방법 및 `Dispose` 메서드가 웹 요청이 끝날 때 자동으로 호출 됩니다.
 
 ## <a name="handling-transactions"></a>트랜잭션 처리
 
