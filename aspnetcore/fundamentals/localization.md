@@ -1,8 +1,8 @@
 ---
-title: "전역화 및 지역화"
+title: "전역화 및 지역화 ASP.NET Core"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core
+description: "ASP.NET Core 콘텐츠를 다른 언어와 문화권 지역화할에 대 한 미들웨어 및 서비스를 제공 방법에 대해 알아봅니다."
+keywords: "ASP.NET Core, 지역화, 문화권, 언어, 리소스 파일, 전역화, 국제화, 로캘"
 ms.author: riande
 manager: wpickett
 ms.date: 01/14/2017
@@ -11,13 +11,13 @@ ms.assetid: 7f275a09-f118-41c9-88d1-8de52d6a5aa1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/localization
-ms.openlocfilehash: 70f11cc9de8e885745e7d08cb98ac68e3cc8ef95
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: c6c9db21a95131a3d7920054e32004791b499c11
+ms.sourcegitcommit: fb518f856f31fe53c09196a13309eacb85b37a22
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/08/2017
 ---
-# <a name="globalization-and-localization"></a>전역화 및 지역화
+# <a name="globalization-and-localization-in-aspnet-core"></a>전역화 및 지역화 ASP.NET Core
 
 여 [Rick Anderson](https://twitter.com/RickAndMSFT), [Damien Bowden](https://twitter.com/damien_bod), [구재석 Calixto](https://twitter.com/bartmax), [Nadeem Afana](https://twitter.com/NadeemAfana), 및 [Hisham Bin Ateya](https://twitter.com/hishambinateya)
 
@@ -190,7 +190,7 @@ Visual Studio 2017 미리 보기 버전 15.3를 사용 하는 경우에 리소�
 
 지역화에 구성 된 `ConfigureServices` 메서드:
 
-[!code-csharp[Main](localization/sample/Startup.cs?range=45-49)]
+[!code-csharp[Main](localization/sample/Program.cs?name=snippet1)]
 
 * `AddLocalization`서비스 컨테이너를 지역화 서비스를 추가합니다. 위의 코드는 또한 "리소스"에 대 한 리소스 경로 설정합니다.
 
@@ -200,9 +200,9 @@ Visual Studio 2017 미리 보기 버전 15.3를 사용 하는 경우에 리소�
 
 ### <a name="localization-middleware"></a>지역화 미들웨어
 
-현재 요청에 설정 된 지역화에 [미들웨어](middleware.md)합니다. 지역화 미들웨어에서 사용 되는 `Configure` 방식의 *Startup.cs* 파일입니다. 확인 요청 문화권을 확인할 수 있는 모든 미들웨어 하기 전에 지역화 미들웨어를 구성 해야 합니다 (예를 들어 `app.UseMvc()`).
+현재 요청에 설정 된 지역화에 [미들웨어](middleware.md)합니다. 지역화 미들웨어에서 사용 되는 `Configure` 방식의 *Program.cs* 파일입니다. 확인 요청 문화권을 확인할 수 있는 모든 미들웨어 하기 전에 지역화 미들웨어를 구성 해야 합니다 (예를 들어 `app.UseMvcWithDefaultRoute()`).
 
-[!code-csharp[Main](localization/sample/Startup.cs?highlight=13-35&range=123-159)]
+[!code-csharp[Main](localization/sample/Program.cs?name=snippet2)]
 
 `UseRequestLocalization`초기화 한 `RequestLocalizationOptions` 개체입니다. 모든 요청 목록에서의 `RequestCultureProvider` 에 `RequestLocalizationOptions` 열거 및 요청 culture를 성공적으로 결정할 수 있는 첫 번째 공급자가 사용 됩니다. 기본 공급자에서 제공 된 `RequestLocalizationOptions` 클래스:
 
@@ -259,25 +259,27 @@ Visual Studio 2017 미리 보기 버전 15.3를 사용 하는 경우에 리소�
 데이터베이스에 해당 언어 및 culture를 저장 하 여 소비자에 게 알리는 한다고 가정 합니다. 사용자에 대 한 이러한 값을 조회 하는 공급자를 작성할 수 있습니다. 다음 코드에는 사용자 지정 공급자를 추가 하는 방법을 보여 줍니다.
 
 ```csharp
+private const string enUSCulture = "en-US";
+
 services.Configure<RequestLocalizationOptions>(options =>
-   {
-       var supportedCultures = new[]
-       {
-           new CultureInfo("en-US"),
-           new CultureInfo("fr")
-       };
+{
+    var supportedCultures = new[]
+    {
+        new CultureInfo(enUSCulture),
+        new CultureInfo("fr")
+    };
 
-       options.DefaultRequestCulture = new RequestCulture(culture: "en-US", uiCulture: "en-US");
-       options.SupportedCultures = supportedCultures;
-       options.SupportedUICultures = supportedCultures;
+    options.DefaultRequestCulture = new RequestCulture(culture: enUSCulture, uiCulture: enUSCulture);
+    options.SupportedCultures = supportedCultures;
+    options.SupportedUICultures = supportedCultures;
 
-       options.RequestCultureProviders.Insert(0, new CustomRequestCultureProvider(async context =>
-       {
-         // My custom request culture logic
-         return new ProviderCultureResult("en");
-       }));
-   });
-   ```
+    options.RequestCultureProviders.Insert(0, new CustomRequestCultureProvider(async context =>
+    {
+        // My custom request culture logic
+        return new ProviderCultureResult("en");
+    }));
+});
+```
 
 사용 하 여 `RequestLocalizationOptions` 지역화 공급자를 추가 하거나 제거 합니다.
 
@@ -289,7 +291,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 *Views/Shared/_SelectLanguagePartial.cshtml* 파일이에 추가 되는 `footer` 모든 보기에 사용할 수 있도록 레이아웃 파일의 섹션:
 
-[!code-HTML[Main](localization/sample/Views/Shared/_Layout.cshtml?range=48-61&highlight=10)]
+[!code-HTML[Main](localization/sample/Views/Shared/_Layout.cshtml?range=43-56&highlight=10)]
 
 `SetLanguage` 메서드 문화권 쿠키를 설정 합니다.
 
