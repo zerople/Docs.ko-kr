@@ -1,52 +1,72 @@
 ---
-title: "응답 캐싱은 미들웨어 | Microsoft 문서"
+title: "ASP.NET Core의 미들웨어 캐싱 응답"
 author: guardrex
-description: "구성 및 ASP.NET 핵심 응용 프로그램에서 응답 캐싱을 미들웨어를 사용 합니다."
+description: "구성 및 ASP.NET Core 응용 프로그램에서 캐싱 미들웨어의 응답의 사용 합니다."
 keywords: "ASP.NET Core 응답 캐싱, 캐싱, ResponseCache, ResponseCaching, 캐시 제어, VaryByQueryKeys, 미들웨어"
 ms.author: riande
 manager: wpickett
-ms.date: 03/13/2017
+ms.date: 08/22/2017
 ms.topic: article
 ms.assetid: f9267eab-2762-42ac-1638-4a25d2c9d67c
 ms.prod: asp.net-core
 uid: performance/caching/middleware
-translationtype: Machine Translation
-ms.sourcegitcommit: ec31052983921540dc13052848c77bb88edf3b19
-ms.openlocfilehash: cbee8c10da657d21a2096b9a4c868b706ef70aeb
-ms.lasthandoff: 03/23/2017
+ms.openlocfilehash: 7790f38dda61eabd3cbbc6088ad455c07289b739
+ms.sourcegitcommit: 70089de5bfd8ecd161261aa95faf07a4e1534cf8
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/23/2017
+---
+# <a name="response-caching-middleware-in-aspnet-core"></a><span data-ttu-id="2bdbd-104">ASP.NET Core의 미들웨어 캐싱 응답</span><span class="sxs-lookup"><span data-stu-id="2bdbd-104">Response Caching Middleware in ASP.NET Core</span></span>
+
+<span data-ttu-id="2bdbd-105">여 [Luke Latham](https://github.com/GuardRex) 및 [John Luo](https://github.com/JunTaoLuo)</span><span class="sxs-lookup"><span data-stu-id="2bdbd-105">By [Luke Latham](https://github.com/GuardRex) and [John Luo](https://github.com/JunTaoLuo)</span></span>
+
+[<span data-ttu-id="2bdbd-106">샘플 코드 보기 또는 다운로드</span><span class="sxs-lookup"><span data-stu-id="2bdbd-106">View or download sample code</span></span>](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/middleware/samples)
+
+<span data-ttu-id="2bdbd-107">이 문서에서 ASP.NET Core 응용 프로그램 응답 캐싱 미들웨어를 구성 하는 방법에 자세히 설명 합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-107">This document provides details on how to configure the Response Caching Middleware in ASP.NET Core apps.</span></span> <span data-ttu-id="2bdbd-108">미들웨어는 응답에 캐시할 수 있는 경우, 저장소 응답 및 캐시에서 응답 하는 데 사용 결정 합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-108">The middleware determines when responses are cacheable, stores responses, and serves responses from cache.</span></span> <span data-ttu-id="2bdbd-109">HTTP 캐시에 대 한 소개 및 `ResponseCache` 특성을 참조 하십시오. [응답 캐시](response.md)합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-109">For an introduction to HTTP caching and the `ResponseCache` attribute, see [Response Caching](response.md).</span></span>
+
+## <a name="package"></a><span data-ttu-id="2bdbd-110">패키지</span><span class="sxs-lookup"><span data-stu-id="2bdbd-110">Package</span></span>
+<span data-ttu-id="2bdbd-111">미들웨어는 프로젝트에 포함 하려면에 대 한 참조 추가 [ `Microsoft.AspNetCore.ResponseCaching` ](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCaching/) 패키지 하거나 사용 하 여는 [ `Microsoft.AspNetCore.All` ](https://www.nuget.org/packages/Microsoft.AspNetCore.All/) 패키지 합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-111">To include the middleware in a project, add a reference to the [`Microsoft.AspNetCore.ResponseCaching`](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCaching/) package or use the [`Microsoft.AspNetCore.All`](https://www.nuget.org/packages/Microsoft.AspNetCore.All/) package.</span></span>
+
+## <a name="configuration"></a><span data-ttu-id="2bdbd-112">구성</span><span class="sxs-lookup"><span data-stu-id="2bdbd-112">Configuration</span></span>
+<span data-ttu-id="2bdbd-113">`ConfigureServices`, 미들웨어 서비스 컬렉션에 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-113">In `ConfigureServices`, add the middleware to the service collection.</span></span>
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="2bdbd-114">ASP.NET 2.x 핵심</span><span class="sxs-lookup"><span data-stu-id="2bdbd-114">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+
+<span data-ttu-id="2bdbd-115">[!code-csharp[Main](middleware/samples/2.x/Program.cs?name=snippet1&highlight=4)]</span><span class="sxs-lookup"><span data-stu-id="2bdbd-115">[!code-csharp[Main](middleware/samples/2.x/Program.cs?name=snippet1&highlight=4)]</span></span>
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="2bdbd-116">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="2bdbd-116">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+
+<span data-ttu-id="2bdbd-117">[!code-csharp[Main](middleware/samples/1.x/Startup.cs?name=snippet1&highlight=3)]</span><span class="sxs-lookup"><span data-stu-id="2bdbd-117">[!code-csharp[Main](middleware/samples/1.x/Startup.cs?name=snippet1&highlight=3)]</span></span>
 
 ---
-# <a name="response-caching-middleware"></a>응답의 캐싱 미들웨어
 
-여 [Luke Latham](https://github.com/GuardRex) 및 [John Luo](https://github.com/JunTaoLuo)
+<span data-ttu-id="2bdbd-118">사용 하 여 미들웨어를 사용 하도록 응용 프로그램 구성에서 `UseResponseCaching` 요청 처리 파이프라인에 미들웨어를 추가 하는 확장 메서드를 합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-118">Configure the app to use the middleware with the `UseResponseCaching` extension method, which adds the middleware to the request processing pipeline.</span></span> <span data-ttu-id="2bdbd-119">샘플 응용 프로그램 추가 [ `Cache-Control` ](https://tools.ietf.org/html/rfc7234#section-5.2) 헤더를 최대 10 초 동안 캐시 가능한 응답을 캐시 하는 응답입니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-119">The sample app adds a [`Cache-Control`](https://tools.ietf.org/html/rfc7234#section-5.2) header to the response that caches cacheable responses for up to 10 seconds.</span></span> <span data-ttu-id="2bdbd-120">샘플에서 보내기는 [ `Vary` ](https://tools.ietf.org/html/rfc7231#section-7.1.4) 를 경우에만 캐시 된 응답을 처리 하는 미들웨어를 구성 하는 헤더는 [ `Accept-Encoding` ](https://tools.ietf.org/html/rfc7231#section-5.3.4) 이후의 요청 헤더의 일치 하는 원래 요청 합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-120">The sample sends a [`Vary`](https://tools.ietf.org/html/rfc7231#section-7.1.4) header to configure the middleware to serve a cached response only if the [`Accept-Encoding`](https://tools.ietf.org/html/rfc7231#section-5.3.4) header of subsequent requests matches that of the original request.</span></span>
 
-[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/middleware/sample)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="2bdbd-121">ASP.NET 2.x 핵심</span><span class="sxs-lookup"><span data-stu-id="2bdbd-121">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
 
-이 문서 ASP.NET 핵심 응용 프로그램에서 응답 캐싱을 미들웨어를 구성 하는 방법에 자세히 설명 합니다. 미들웨어 응답은 캐시 가능한 경우, 저장소 응답 및 캐시에서 사용 되며 응답을 결정 합니다. HTTP 캐시에 대 한 소개와 `ResponseCache` 특성을 참조 하십시오 [응답 캐싱은](response.md)합니다.
+<span data-ttu-id="2bdbd-122">[!code-csharp[Main](middleware/samples/2.x/Program.cs?name=snippet1&highlight=8)]</span><span class="sxs-lookup"><span data-stu-id="2bdbd-122">[!code-csharp[Main](middleware/samples/2.x/Program.cs?name=snippet1&highlight=8)]</span></span>
 
-## <a name="package"></a>패키지
-미들웨어를 프로젝트에 포함 하려면 추가에 대 한 참조는 [ `Microsoft.AspNetCore.ResponseCaching` ](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCaching/) 패키지 합니다. 미들웨어는.NET Framework 4.5.1 또는 1.3 이상을.NET 표준에 따라 다릅니다. 이 기능은 이상 ASP.NET 핵심 1.1.0을 대상으로 하는 응용 프로그램에 사용할 수 있습니다.
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="2bdbd-123">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="2bdbd-123">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
-## <a name="configuration"></a>구성
-`ConfgureServices`, 미들웨어 서비스 컬렉션에 추가 합니다.
+<span data-ttu-id="2bdbd-124">[!code-csharp[Main](middleware/samples/1.x/Startup.cs?name=snippet2&highlight=3)]</span><span class="sxs-lookup"><span data-stu-id="2bdbd-124">[!code-csharp[Main](middleware/samples/1.x/Startup.cs?name=snippet2&highlight=3)]</span></span>
 
-[!code-csharp[주](middleware/sample/Startup.cs?name=snippet1)]
+---
 
-요청을 처리할 때 미들웨어를 사용 하 여 응용 프로그램을 구성 합니다. 추가 하는 샘플 응용 프로그램을 [ `Cache-Control` ](https://tools.ietf.org/html/rfc7234#section-5.2) 헤더를 응답 메시지를 최대 10 초 동안 캐시 가능한 응답을 캐시 합니다. 샘플도 보냅니다는 [ `Vary` ](https://tools.ietf.org/html/rfc7231#section-7.1.4) 경우에만 응답을 제공 하는 캐시를 구성 하는 헤더는 [ `Accept-Encoding` ](https://tools.ietf.org/html/rfc7231#section-5.3.4) 원래 요청에서의 후속 요청 헤더와 일치 합니다.
+<span data-ttu-id="2bdbd-125">응답의 캐싱 미들웨어는만 200 (정상)이 서버 응답을 캐시합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-125">The Response Caching Middleware only caches 200 (OK) server responses.</span></span> <span data-ttu-id="2bdbd-126">포함 하 여 모든 다른 응답 [오류 페이지](xref:fundamentals/error-handling), 미들웨어에서 무시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-126">Any other responses, including [error pages](xref:fundamentals/error-handling), are ignored by the middleware.</span></span>
 
-[!code-csharp[주](middleware/sample/Startup.cs?name=snippet2)]
+> [!WARNING]
+> <span data-ttu-id="2bdbd-127">인증 된 클라이언트에 대 한 콘텐츠를 포함 하는 응답에서 저장 하 고 해당 응답을 처리 하는 미들웨어를 방지 하기 위해 불가능으로 표시 되어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-127">Responses containing content for authenticated clients must be marked as not cacheable to prevent the middleware from storing and serving those responses.</span></span> <span data-ttu-id="2bdbd-128">참조 [캐시에 대 한 조건을](#conditions-for-caching) 응답을 캐시할 수 있으면 미들웨어를 결정 하는 방법에 대 한 내용은 합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-128">See [Conditions for caching](#conditions-for-caching) for details on how the middleware determines if a response is cacheable.</span></span>
 
-응답 캐싱은 미들웨어는만 200 (OK) 서버 응답을 캐시합니다. 모든 다른 응답을 포함 하 여 [오류 페이지](xref:fundamentals/error-handling), 미들웨어에서 무시 됩니다.
+## <a name="options"></a><span data-ttu-id="2bdbd-129">옵션</span><span class="sxs-lookup"><span data-stu-id="2bdbd-129">Options</span></span>
+<span data-ttu-id="2bdbd-130">미들웨어 응답 캐시 제어에 대 한 세 가지 옵션이 표시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-130">The middleware offers three options for controlling response caching.</span></span>
 
-## <a name="options"></a>옵션
-미들웨어 응답 캐시 제어에 대 한 두 가지 옵션이 표시 됩니다.
+| <span data-ttu-id="2bdbd-131">옵션</span><span class="sxs-lookup"><span data-stu-id="2bdbd-131">Option</span></span>                | <span data-ttu-id="2bdbd-132">기본값</span><span class="sxs-lookup"><span data-stu-id="2bdbd-132">Default Value</span></span> |
+| --------------------- | ------------- |
+| <span data-ttu-id="2bdbd-133">UseCaseSensitivePaths</span><span class="sxs-lookup"><span data-stu-id="2bdbd-133">UseCaseSensitivePaths</span></span> | <span data-ttu-id="2bdbd-134">대/소문자 구분 경로에 응답 하면 캐시를 결정 합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-134">Determines if responses are cached on case-sensitive paths.</span></span></p><p><span data-ttu-id="2bdbd-135">기본값은 `false`입니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-135">The default value is `false`.</span></span> |
+| <span data-ttu-id="2bdbd-136">MaximumBodySize</span><span class="sxs-lookup"><span data-stu-id="2bdbd-136">MaximumBodySize</span></span>       | <span data-ttu-id="2bdbd-137">바이트의 응답 본문에 대 한 가장 큰 캐시 가능한 크기입니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-137">The largest cacheable size for the response body in bytes.</span></span></p><span data-ttu-id="2bdbd-138">기본값은 `64 * 1024 * 1024` (64MB).</span><span class="sxs-lookup"><span data-stu-id="2bdbd-138">The default value is `64 * 1024 * 1024` (64 MB).</span></span> |
+| <span data-ttu-id="2bdbd-139">SizeLimit</span><span class="sxs-lookup"><span data-stu-id="2bdbd-139">SizeLimit</span></span>             | <span data-ttu-id="2bdbd-140">바이트에 대 한 응답 캐시 미들웨어에 대 한 크기 제한입니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-140">The size limit for the response cache middleware in bytes.</span></span> <span data-ttu-id="2bdbd-141">기본값은 `100 * 1024 * 1024` (100MB).</span><span class="sxs-lookup"><span data-stu-id="2bdbd-141">The default value is `100 * 1024 * 1024` (100 MB).</span></span> |
 
-옵션 | 기본값
---- | ---
-UseCaseSensitivePaths | <p>대/소문자 구분 경로에 응답이 캐시 되지 것입니다 결정 합니다.</p><p>기본값은 `false`입니다.</p>
-MaximumBodySize | <p>(바이트)는 응답 본문에 가장 큰 캐시 가능한 크기입니다.</p>기본값은 `64 * 1024 * 1024` [64MB (67,108,864 바이트)]입니다.</p>
-
-다음 예제에서는 응답을 캐시에 대 한 응답을 저장 하는 대/소문자 구분 경로 사용 하 여 1, 024 바이트 보다 작거나 미들웨어 구성 `/page1` 및 `/Page1` 별도로 합니다.
+<span data-ttu-id="2bdbd-142">다음 예제에서는 구성 응답을 캐시에 대 한 응답을 저장 하는 대/소문자 구분 경로 사용 하 여 1, 024 바이트 보다 작거나 미들웨어 `/page1` 및 `/Page1` 별도로 합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-142">The following example configures the middleware to cache responses smaller than or equal to 1,024 bytes using case-sensitive paths, storing the responses to `/page1` and `/Page1` separately.</span></span>
 
 ```csharp
 services.AddResponseCaching(options =>
@@ -56,10 +76,10 @@ services.AddResponseCaching(options =>
 });
 ```
 
-## <a name="varybyquerykeys-feature"></a>VaryByQueryKeys 기능
-MVC를 사용 하는 경우는 `ResponseCache` 특성 응답 캐시에 대 한 적절 한 헤더를 설정 하는 데 필요한 매개 변수를 지정 합니다. 유일한 매개 변수는 `ResponseCache` 엄격 하 게 미들웨어를 필요로 하는 특성은 `VaryByQueryKeys`, 실제 HTTP 헤더에 일치 하지 않습니다. 자세한 내용은 참조 [ResponseCache 특성](response.md#responsecache-attribute)합니다.
+## <a name="varybyquerykeys"></a><span data-ttu-id="2bdbd-143">VaryByQueryKeys</span><span class="sxs-lookup"><span data-stu-id="2bdbd-143">VaryByQueryKeys</span></span>
+<span data-ttu-id="2bdbd-144">MVC를 사용 하는 경우는 `ResponseCache` 특성 응답 캐시에 대 한 적절 한 헤더를 설정 하는 데 필요한 매개 변수를 지정 합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-144">When using MVC, the `ResponseCache` attribute specifies the parameters necessary for setting appropriate headers for response caching.</span></span> <span data-ttu-id="2bdbd-145">유일한 매개 변수인은 `ResponseCache` 엄격 하 게 미들웨어를 필요로 하는 특성은 `VaryByQueryKeys`, 하는 실제 HTTP 헤더에 해당 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-145">The only parameter of the `ResponseCache` attribute that strictly requires the middleware is `VaryByQueryKeys`, which doesn't correspond to an actual HTTP header.</span></span> <span data-ttu-id="2bdbd-146">자세한 내용은 참조 [ResponseCache 특성](response.md#responsecache-attribute)합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-146">For more information, see [ResponseCache Attribute](response.md#responsecache-attribute).</span></span>
 
-MVC를 사용 하지 않을 때 응답 캐싱을 다르게 지정할 수 있습니다는 `VaryByQueryKeys` 기능을 사용 하는 `ResponseCachingFeature` 에서 직접는 `IFeatureCollection` 의 `HttpContext`합니다.
+<span data-ttu-id="2bdbd-147">MVC를 사용 하지 않을 때 응답 캐싱을 다르게 지정할 수 있습니다는 `VaryByQueryKeys` 기능입니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-147">When not using MVC, you can vary response caching with the `VaryByQueryKeys` feature.</span></span> <span data-ttu-id="2bdbd-148">사용 하 여 `ResponseCachingFeature` 에서 직접는 `IFeatureCollection` 의 `HttpContext`:</span><span class="sxs-lookup"><span data-stu-id="2bdbd-148">Use the `ResponseCachingFeature` directly from the `IFeatureCollection` of the `HttpContext`:</span></span>
 
 ```csharp
 var responseCachingFeature = context.HttpContext.Features.Get<IResponseCachingFeature>();
@@ -69,50 +89,51 @@ if (responseCachingFeature != null)
 }
 ```
 
-## <a name="http-headers-used-by-response-caching-middleware"></a>응답 캐싱은 미들웨어에 사용 되는 HTTP 헤더
-미들웨어 여 캐시 된 응답은 HTTP 응답 헤더를 통해 구성 됩니다. 관련 헤더는 캐시에 미치는 영향을에 메모와 함께 아래 나와 있습니다.
+## <a name="http-headers-used-by-response-caching-middleware"></a><span data-ttu-id="2bdbd-149">응답의 캐싱 미들웨어에서 사용 되는 HTTP 헤더</span><span class="sxs-lookup"><span data-stu-id="2bdbd-149">HTTP headers used by Response Caching Middleware</span></span>
+<span data-ttu-id="2bdbd-150">미들웨어에서 캐시 응답 HTTP 헤더를 통해 구성 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-150">Response caching by the middleware is configured via HTTP headers.</span></span> <span data-ttu-id="2bdbd-151">캐시에 어떻게 영향을 대 한 메모와 관련 헤더 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-151">The relevant headers are listed below with notes on how they affect caching.</span></span>
 
-Header | 세부 정보
---- | --- |
-권한 부여 | <p>응답 헤더에 있는 경우 캐시 되지 않습니다.</p>
-캐시 제어 | <p>미들웨어는만 고려 하 여 명시적으로 설정 된 응답을 캐시는 `public` 캐시 지시문입니다.</p><p>캐시는 다음 매개 변수를 제어할 수 있습니다.</p><ul><li>최대 처리 기간</li><li>최대 부실</li><li>최소-새 항목</li><li>반드시 뒤 재검증</li><li>캐시 없음</li><li>아니요-저장소</li><li>전용 if-캐시</li><li>private</li><li>public</li><li>기간</li><li>프록시 뒤 재검증</li></ul><p>자세한 내용은 참조 [RFC 7231: 요청 캐시 제어 지시문](https://tools.ietf.org/html/rfc7234#section-5.2.1)합니다.</p>
-Pragma | <p>A `Pragma: no-cache` 요청의 헤더와 동일한 효과 냅니다 `Cache-Control: no-cache`합니다. 이 헤더는 관련 지시문에 의해 재정의 `Cache-Control` 머리글이 있는 경우.</p><p>HTTP/1.0과 함께 이전 버전과 호환성에 대 한 것으로 간주 합니다.</p>
-Set-cookie | <p>응답 헤더에 있는 경우 캐시 되지 않습니다.</p>
-다 | <p>다른 헤더에서 캐시 된 응답을 변경할 수 있습니다. 예를 들어 포함 하 여 인코딩하여 응답을 캐시할 수 있습니다는 `Vary: Accept-Encoding` 응답 헤더를 사용 하 여 요청을 캐시 합니다는 헤더 `Accept-Encoding: gzip` 및 `Accept-Encoding: text/plain` 별도로 합니다. 응답의 헤더 값으로 `*` 는 저장 되지 않습니다.</p>
-만료 | <p>이 헤더에 의해 부실 간주 응답을 저장 하거나 다른 재정의 되지 않는 경우를 검색할 수는 `Cache-Control` 헤더입니다.</p>
-If-none-Match | <p>전체 응답 캐시에서 제공 되는 값이 `*` 및 `ETag` 응답은 제공 된 값이 하나라도 일치 하지 않습니다. 그렇지 않으면 304 (수정 되지 않음) 응답은 처리 됩니다.</p>
-If-수정-이후 | <p>하는 경우는 `If-None-Match` 헤더가 없는, 전체 응답의 캐시 된 응답 날짜에 제공 된 값 보다 최신인 경우 캐시에서 처리 됩니다. 그렇지 않으면 304 (수정 되지 않음) 응답은 처리 됩니다.</p>
-날짜 | <p>캐시에서 서비스를 제공 하는 경우는 `Date` 원래 응답에 제공 되지 않은 경우 미들웨어 여 헤더가 설정 되어 있습니다.</p>
-콘텐츠 길이 | <p>캐시에서 서비스를 제공 하는 경우는 `Content-Length` 원래 응답에 제공 되지 않은 경우 미들웨어 여 헤더가 설정 되어 있습니다.</p>
-보존 기간 | <p>`Age` 원래 응답에 보낸 헤더는 무시 됩니다. 미들웨어는 캐시 된 응답을 처리할 때 새 값을 계산 합니다.</p>
+| <span data-ttu-id="2bdbd-152">Header</span><span class="sxs-lookup"><span data-stu-id="2bdbd-152">Header</span></span> | <span data-ttu-id="2bdbd-153">세부 정보</span><span class="sxs-lookup"><span data-stu-id="2bdbd-153">Details</span></span> |
+| ------ | ------- |
+| <span data-ttu-id="2bdbd-154">권한 부여</span><span class="sxs-lookup"><span data-stu-id="2bdbd-154">Authorization</span></span> | <span data-ttu-id="2bdbd-155">응답 헤더에 있는 경우 캐시 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-155">The response isn't cached if the header exists.</span></span> |
+| <span data-ttu-id="2bdbd-156">캐시 제어</span><span class="sxs-lookup"><span data-stu-id="2bdbd-156">Cache-Control</span></span> | <span data-ttu-id="2bdbd-157">미들웨어로 표시 하는 응답을 캐시 고려는 `public` 캐시 지시문입니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-157">The middleware only considers caching responses marked with the `public` cache directive.</span></span> <span data-ttu-id="2bdbd-158">매개 변수가 캐싱을 제어할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-158">You can control caching with the following parameters:</span></span><ul><li><span data-ttu-id="2bdbd-159">최대 처리 기간</span><span class="sxs-lookup"><span data-stu-id="2bdbd-159">max-age</span></span></li><li><span data-ttu-id="2bdbd-160">최대 부실 &#8224;</span><span class="sxs-lookup"><span data-stu-id="2bdbd-160">max-stale&#8224;</span></span></li><li><span data-ttu-id="2bdbd-161">최소 새로</span><span class="sxs-lookup"><span data-stu-id="2bdbd-161">min-fresh</span></span></li><li><span data-ttu-id="2bdbd-162">반드시 뒤 재검증</span><span class="sxs-lookup"><span data-stu-id="2bdbd-162">must-revalidate</span></span></li><li><span data-ttu-id="2bdbd-163">캐시 없음</span><span class="sxs-lookup"><span data-stu-id="2bdbd-163">no-cache</span></span></li><li><span data-ttu-id="2bdbd-164">저장소 아니요</span><span class="sxs-lookup"><span data-stu-id="2bdbd-164">no-store</span></span></li><li><span data-ttu-id="2bdbd-165">전용-if-캐시</span><span class="sxs-lookup"><span data-stu-id="2bdbd-165">only-if-cached</span></span></li><li><span data-ttu-id="2bdbd-166">private</span><span class="sxs-lookup"><span data-stu-id="2bdbd-166">private</span></span></li><li><span data-ttu-id="2bdbd-167">public</span><span class="sxs-lookup"><span data-stu-id="2bdbd-167">public</span></span></li><li><span data-ttu-id="2bdbd-168">기간</span><span class="sxs-lookup"><span data-stu-id="2bdbd-168">s-maxage</span></span></li><li><span data-ttu-id="2bdbd-169">프록시 뒤 재검증 &#8225;</span><span class="sxs-lookup"><span data-stu-id="2bdbd-169">proxy-revalidate&#8225;</span></span></li></ul><span data-ttu-id="2bdbd-170">&#8224;에 제한이 없음을 지정 하는 경우 `max-stale`, 미들웨어 아무 작업도 수행 합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-170">&#8224;If no limit is specified to `max-stale`, the middleware takes no action.</span></span><br><span data-ttu-id="2bdbd-171">&#8225; `proxy-revalidate` 것과 동일한 결과가 `must-revalidate`합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-171">&#8225;`proxy-revalidate` has the same effect as `must-revalidate`.</span></span><br><br><span data-ttu-id="2bdbd-172">자세한 내용은 참조 [RFC 7231: 캐시 제어 지시문 요청](https://tools.ietf.org/html/rfc7234#section-5.2.1)합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-172">For more information, see [RFC 7231: Request Cache-Control Directives](https://tools.ietf.org/html/rfc7234#section-5.2.1).</span></span> |
+| <span data-ttu-id="2bdbd-173">Pragma</span><span class="sxs-lookup"><span data-stu-id="2bdbd-173">Pragma</span></span> | <span data-ttu-id="2bdbd-174">A `Pragma: no-cache` 요청의 헤더 생성 한 것과 같습니다 `Cache-Control: no-cache`합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-174">A `Pragma: no-cache` header in the request produces the same effect as `Cache-Control: no-cache`.</span></span> <span data-ttu-id="2bdbd-175">이 헤더에 관련 지시문에 의해 재정의 되는 `Cache-Control` 헤더로, 있는 경우.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-175">This header is overridden by the relevant directives in the `Cache-Control` header, if present.</span></span> <span data-ttu-id="2bdbd-176">HTTP/1.0과 함께 이전 버전과 호환성에 대 한 것으로 간주 합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-176">Considered for backward compatibility with HTTP/1.0.</span></span> |
+| <span data-ttu-id="2bdbd-177">Set-cookie</span><span class="sxs-lookup"><span data-stu-id="2bdbd-177">Set-Cookie</span></span> | <span data-ttu-id="2bdbd-178">응답 헤더에 있는 경우 캐시 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-178">The response isn't cached if the header exists.</span></span> |
+| <span data-ttu-id="2bdbd-179">변경</span><span class="sxs-lookup"><span data-stu-id="2bdbd-179">Vary</span></span> | <span data-ttu-id="2bdbd-180">`Vary` 헤더 다른 헤더에 의해 캐시 된 응답을 변경 하기 위해 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-180">The `Vary` header is used to vary the cached response by another header.</span></span> <span data-ttu-id="2bdbd-181">예를 들어, 포함 하 여 인코딩할 응답을 캐시할 수 있습니다는 `Vary: Accept-Encoding` 헤더와 요청에 대 한 응답을 캐시 하는 헤더 `Accept-Encoding: gzip` 및 `Accept-Encoding: text/plain` 별도로 합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-181">For example, you can cache responses by encoding by including the `Vary: Accept-Encoding` header, which caches responses for requests with headers `Accept-Encoding: gzip` and `Accept-Encoding: text/plain` separately.</span></span> <span data-ttu-id="2bdbd-182">포함 된 응답의 헤더 값으로 `*` 저장 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-182">A response with a header value of `*` is never stored.</span></span> |
+| <span data-ttu-id="2bdbd-183">만료</span><span class="sxs-lookup"><span data-stu-id="2bdbd-183">Expires</span></span> | <span data-ttu-id="2bdbd-184">이 헤더에 의해 부실 하다 고 판단 하는 응답 저장 아니거나 다른 재정의 되지 않는 경우 검색 `Cache-Control` 헤더입니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-184">A response deemed stale by this header isn't stored or retrieved unless overridden by other `Cache-Control` headers.</span></span> |
+| <span data-ttu-id="2bdbd-185">None-If-match</span><span class="sxs-lookup"><span data-stu-id="2bdbd-185">If-None-Match</span></span> | <span data-ttu-id="2bdbd-186">값이 없는 경우 캐시에서 제공 되는 전체 응답 `*` 및 `ETag` 응답의은 제공 된 값이 하나라도 일치 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-186">The full response is served from cache if the value isn't `*` and the `ETag` of the response doesn't match any of the values provided.</span></span> <span data-ttu-id="2bdbd-187">그렇지 않으면 304 (수정 되지 않음) 응답 서비스 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-187">Otherwise, a 304 (Not Modified) response is served.</span></span> |
+| <span data-ttu-id="2bdbd-188">If-수정-이후</span><span class="sxs-lookup"><span data-stu-id="2bdbd-188">If-Modified-Since</span></span> | <span data-ttu-id="2bdbd-189">경우는 `If-None-Match` 헤더 존재 하지, 캐시 된 응답 날짜에 제공 된 값 보다 최신인 경우 전체 응답 캐시에서 제공 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-189">If the `If-None-Match` header isn't present, a full response is served from cache if the cached response date is newer than the value provided.</span></span> <span data-ttu-id="2bdbd-190">그렇지 않으면 304 (수정 되지 않음) 응답 서비스 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-190">Otherwise, a 304 (Not Modified) response is served.</span></span> |
+| <span data-ttu-id="2bdbd-191">날짜</span><span class="sxs-lookup"><span data-stu-id="2bdbd-191">Date</span></span> | <span data-ttu-id="2bdbd-192">캐시에서 서비스를 제공할 때는 `Date` 원래 응답에 제공 되지 않은 경우 헤더는 미들웨어에서 설정 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-192">When serving from cache, the `Date` header is set by the middleware if it wasn't provided on the original response.</span></span> |
+| <span data-ttu-id="2bdbd-193">콘텐츠 길이</span><span class="sxs-lookup"><span data-stu-id="2bdbd-193">Content-Length</span></span> | <span data-ttu-id="2bdbd-194">캐시에서 서비스를 제공할 때는 `Content-Length` 원래 응답에 제공 되지 않은 경우 헤더는 미들웨어에서 설정 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-194">When serving from cache, the `Content-Length` header is set by the middleware if it wasn't provided on the original response.</span></span> |
+| <span data-ttu-id="2bdbd-195">보존 기간</span><span class="sxs-lookup"><span data-stu-id="2bdbd-195">Age</span></span> | <span data-ttu-id="2bdbd-196">`Age` 원래 응답으로 전송 하는 헤더는 무시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-196">The `Age` header sent in the original response is ignored.</span></span> <span data-ttu-id="2bdbd-197">캐시 된 응답을 처리 하는 경우 새 값을 계산 하는 미들웨어입니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-197">The middleware computes a new value when serving a cached response.</span></span> |
 
-## <a name="troubleshooting"></a>문제 해결
-캐싱 동작 하는 것은 예상 그다지, 응답은 캐시 가능한 수 있고 들어오는 헤더는 요청 및 응답의 나가는 헤더를 검사 하 여 캐시에서 제공 되 고 있는지를 확인 합니다. 응답이 캐시 됩니다 조건 아래에 나와 있습니다.
+## <a name="troubleshooting"></a><span data-ttu-id="2bdbd-198">문제 해결</span><span class="sxs-lookup"><span data-stu-id="2bdbd-198">Troubleshooting</span></span>
+<span data-ttu-id="2bdbd-199">캐싱 동작 없는 경우 예상 대로, 응답은 캐시할 수 되며 들어오는 헤더는 요청 및 응답의 나가는 헤더를 검사 하 여 캐시에서 제공 되 고 수 있는지 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-199">If caching behavior isn't as you expect, confirm that responses are cacheable and capable of being served from the cache by examining the request's incoming headers and the response's outgoing headers.</span></span> <span data-ttu-id="2bdbd-200">사용 하도록 설정 [로깅](xref:fundamentals/logging) 디버깅할 때 도움이 될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-200">Enabling [logging](xref:fundamentals/logging) can help when debugging.</span></span> <span data-ttu-id="2bdbd-201">캐싱 동작 및 응답을 캐시에서 검색 되는 경우의 미들웨어 로그입니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-201">The middleware logs caching behavior and when a response is retrieved from cache.</span></span>
 
-로깅 사용을 디버깅할 때 유용 합니다. 예를 들어 미들웨어 수 없는 이유는 응답은 캐시 되지 않고 및 캐시에서 검색 된 여부를 기록 합니다. 참조 [ASP.NET 핵심 로그인](xref:fundamentals/logging) 방법은 응용 프로그램에서 로깅을 사용 하도록 설정 합니다.
+<span data-ttu-id="2bdbd-202">캐싱 동작 문제 해결을 테스트할 때 브라우저 바람직하지 않은 방법으로 캐싱에 영향을 주는 요청 헤더를 설정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-202">When testing and troubleshooting caching behavior, a browser may set request headers that affect caching in undesirable ways.</span></span> <span data-ttu-id="2bdbd-203">예를 들어 브라우저 설정할 수 있습니다는 `Cache-Control` 헤더를 `no-cache` 페이지를 새로 고칩니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-203">For example, a browser may set the `Cache-Control` header to `no-cache` when you refresh the page.</span></span> <span data-ttu-id="2bdbd-204">다음 도구 요청 헤더에 명시적으로 설정할 수 및 캐싱 테스트에 대 한 기본 설정 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-204">The following tools can explicitly set request headers, and are preferred for testing caching:</span></span>
 
-테스트 및 캐싱 동작 문제를 해결 하는 경우 브라우저는 바람직하지 않은 방법으로 캐시에 영향을 주는 요청 헤더를 설정할 수 있습니다. 예를 들어 브라우저 설정 수는 `Cache-Control` 헤더를 `no-cache` 페이지를 새로 고칩니다. 와 같은 도구를 사용 하 여 브라우저를 사용 하지 않고 [Fiddler](http://www.telerik.com/fiddler), [Firebug](http://getfirebug.com/), 또는 [Postman](https://www.getpostman.com/), 명시적으로 요청 헤더를 설정할 수 있습니다.
+* [<span data-ttu-id="2bdbd-205">Fiddler</span><span class="sxs-lookup"><span data-stu-id="2bdbd-205">Fiddler</span></span>](http://www.telerik.com/fiddler)
+* [<span data-ttu-id="2bdbd-206">Firebug</span><span class="sxs-lookup"><span data-stu-id="2bdbd-206">Firebug</span></span>](http://getfirebug.com/)
+* [<span data-ttu-id="2bdbd-207">우체부</span><span class="sxs-lookup"><span data-stu-id="2bdbd-207">Postman</span></span>](https://www.getpostman.com/)
 
-### <a name="conditions-for-caching"></a>캐시에 대 한 조건
-* 요청 200 (정상) 응답이 서버에서 발생 해야 합니다.
-* 요청 메서드가 GET 또는 HEAD 이어야 합니다.
-* 같은 정적 파일 미들웨어 터미널 미들웨어 응답 캐싱을 미들웨어 전에 응답을 처리 해야 합니다.
-* 권한 부여 헤더 없어야 합니다.
-* `Cache-Control`헤더 매개 변수는 유효 해야 하 고 응답을 표시 되어야 합니다 `public` 표시 되어 있지 `private`합니다.
-* `Pragma: no-cache` 헤더/값 하지 않아야 하는 경우는 `Cache-Control` 헤더도 나타나지 않습니다.는 `Cache-Control` 헤더 재정의 `Pragma` 머리글이 있는 경우.
-* `Set-Cookie` 헤더 하지 않아야 합니다.
-* `Vary`헤더 매개 변수 유효 해야 하며 해당 `*`합니다.
-* `Content-Length` 헤더 값 (경우 설정)는 응답 본문의 크기와 일치 해야 합니다.
-* `HttpSendFileFeature` 사용 되지 않습니다.
-* 응답에 지정 된 대로 오래 되지 않아야는 `Expires` 헤더 및 `max-age` 및 `s-maxage` 지시문을 캐시 합니다.
-* 응답 버퍼링 성공 하 고 응답의 총 길이가 구성된 된 한계 보다 작습니다.
-* 응답에 따라 캐시 가능 해야 합니다.는 [RFC 7234](https://tools.ietf.org/html/rfc7234) 사양입니다. 예를 들어는 `no-store` 지시문 요청 또는 응답 헤더 필드에 없어야 합니다. 참조 *섹션 3: 캐시에서 응답을 저장* 대 한 자세한 내용은 RFC 문서입니다.
+### <a name="conditions-for-caching"></a><span data-ttu-id="2bdbd-208">캐시에 대 한 조건</span><span class="sxs-lookup"><span data-stu-id="2bdbd-208">Conditions for caching</span></span>
+* <span data-ttu-id="2bdbd-209">서버에서 보낸 200 (정상)이 응답은 요청의 결과로 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-209">The request must result in a 200 (OK) response from the server.</span></span>
+* <span data-ttu-id="2bdbd-210">요청 메서드가 GET 또는 HEAD 이어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-210">The request method must be GET or HEAD.</span></span>
+* <span data-ttu-id="2bdbd-211">정적 파일 미들웨어와 같은 터미널 미들웨어 응답 캐싱 미들웨어 하기 전에 응답을 처리 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-211">Terminal middleware, such as Static File Middleware, must not process the response prior to the Response Caching Middleware.</span></span>
+* <span data-ttu-id="2bdbd-212">`Authorization` 헤더 없어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-212">The `Authorization` header must not be present.</span></span>
+* <span data-ttu-id="2bdbd-213">`Cache-Control`헤더 매개 변수는 유효 해야 하 고 응답을 표시 되어야 합니다 `public` 표시 되어 있지 `private`합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-213">`Cache-Control` header parameters must be valid, and the response must be marked `public` and not marked `private`.</span></span>
+* <span data-ttu-id="2bdbd-214">`Pragma: no-cache` 헤더/값 없어야 하는 경우는 `Cache-Control` 헤더로 존재 하지는 `Cache-Control` 헤더 재정의 `Pragma` 있는 경우 헤더입니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-214">The `Pragma: no-cache` header/value must not be present if the `Cache-Control` header isn't present, as the `Cache-Control` header overrides the `Pragma` header when present.</span></span>
+* <span data-ttu-id="2bdbd-215">`Set-Cookie` 헤더 없어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-215">The `Set-Cookie` header must not be present.</span></span>
+* <span data-ttu-id="2bdbd-216">`Vary`헤더 매개 변수는 유효 하 고 같지 않음 이어야 `*`합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-216">`Vary` header parameters must be valid and not equal to `*`.</span></span>
+* <span data-ttu-id="2bdbd-217">`Content-Length` 헤더 값 (하는 경우 설정)는 응답 본문의 크기와 일치 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-217">The `Content-Length` header value (if set) must match the size of the response body.</span></span>
+* <span data-ttu-id="2bdbd-218">`HttpSendFileFeature` 사용 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-218">The `HttpSendFileFeature` isn't used.</span></span>
+* <span data-ttu-id="2bdbd-219">응답에 지정 된 대로 오래 된 않아야는 `Expires` 헤더 및 `max-age` 및 `s-maxage` 지시문을 캐시 합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-219">The response must not be stale as specified by the `Expires` header and the `max-age` and `s-maxage` cache directives.</span></span>
+* <span data-ttu-id="2bdbd-220">응답 버퍼링 성공 하 고 응답 크기가 구성 된 보다 작으면 또는 기본 `SizeLimit`합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-220">Response buffering is successful, and the size of the response is smaller than the configured or default `SizeLimit`.</span></span>
+* <span data-ttu-id="2bdbd-221">응답에 따라 캐시 가능 해야 합니다.는 [RFC 7234](https://tools.ietf.org/html/rfc7234) 사양입니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-221">The response must be cacheable according to the [RFC 7234](https://tools.ietf.org/html/rfc7234) specifications.</span></span> <span data-ttu-id="2bdbd-222">예를 들어는 `no-store` 지시문 요청 또는 응답 헤더 필드에 없어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-222">For example, the `no-store` directive must not exist in request or response header fields.</span></span> <span data-ttu-id="2bdbd-223">참조 *섹션 3: 응답을 캐시에 저장* 의 [RFC 7234](https://tools.ietf.org/html/rfc7234) 대 한 자세한 내용은 합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-223">See *Section 3: Storing Responses in Caches* of [RFC 7234](https://tools.ietf.org/html/rfc7234) for details.</span></span>
 
->[!NOTE]
-> 교차 사이트 요청 위조 CSRF () 공격을 방지 하기 위해 보안 토큰을 생성 하기 위한 Antiforgery 시스템이 설정의 `Cache-Control` 및 `Pragma` 헤더를 `no-cache` 응답이 캐시 되지 않을 수 있도록 합니다.
+> [!NOTE]
+> <span data-ttu-id="2bdbd-224">교차 사이트 요청 위조 CSRF ()을 방지 하기 위해 보안 토큰을 생성 하기 위한 Antiforgery 시스템 공격 집합은 `Cache-Control` 및 `Pragma` 헤더를 `no-cache` 응답은 캐시 되지 않도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="2bdbd-224">The Antiforgery system for generating secure tokens to prevent Cross-Site Request Forgery (CSRF) attacks sets the `Cache-Control` and `Pragma` headers to `no-cache` so that responses aren't cached.</span></span>
 
-## <a name="additional-resources"></a>추가 리소스
+## <a name="additional-resources"></a><span data-ttu-id="2bdbd-225">추가 리소스</span><span class="sxs-lookup"><span data-stu-id="2bdbd-225">Additional resources</span></span>
 
-* [응용 프로그램 시작](xref:fundamentals/startup)
-* [미들웨어](xref:fundamentals/middleware)
-
+* [<span data-ttu-id="2bdbd-226">응용 프로그램 시작</span><span class="sxs-lookup"><span data-stu-id="2bdbd-226">Application Startup</span></span>](xref:fundamentals/startup)
+* [<span data-ttu-id="2bdbd-227">미들웨어</span><span class="sxs-lookup"><span data-stu-id="2bdbd-227">Middleware</span></span>](xref:fundamentals/middleware)

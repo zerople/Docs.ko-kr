@@ -1,99 +1,109 @@
 ---
-title: "ASP.NET MVC 코어의 컨트롤러와 요청을 처리 | Microsoft 문서"
+title: "ASP.NET Core MVC 컨트롤러와의 요청 처리"
 author: ardalis
 description: 
 keywords: ASP.NET Core
 ms.author: riande
 manager: wpickett
-ms.date: 10/14/2016
+ms.date: 07/03/2017
 ms.topic: article
 ms.assetid: 9da9eb52-8583-4069-af91-155ba3529d7f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/actions
-translationtype: Machine Translation
-ms.sourcegitcommit: 010b730d2716f9f536fef889bc2f767afb648ef4
-ms.openlocfilehash: f90f6b877d924d9ade89527e63cbb98b72c45ea9
-ms.lasthandoff: 03/23/2017
-
+ms.openlocfilehash: b7d6341c0312b3f5f122acfb2ee01210151b33bb
+ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/11/2017
 ---
-# <a name="handling-requests-with-controllers-in-aspnet-mvc-core"></a>ASP.NET MVC 코어의 컨트롤러와 요청 처리
+# <a name="handling-requests-with-controllers-in-aspnet-core-mvc"></a><span data-ttu-id="2ae94-103">ASP.NET Core MVC 컨트롤러와의 요청 처리</span><span class="sxs-lookup"><span data-stu-id="2ae94-103">Handling requests with controllers in ASP.NET Core MVC</span></span>
 
-[Steve Smith](http://ardalis.com)
+<span data-ttu-id="2ae94-104">여 [Steve Smith](http://ardalis.com) 및 [Scott Addie](https://github.com/scottaddie)</span><span class="sxs-lookup"><span data-stu-id="2ae94-104">By [Steve Smith](http://ardalis.com) and [Scott Addie](https://github.com/scottaddie)</span></span>
 
-컨트롤러, 작업 및 작업 결과 개발자가 ASP.NET MVC 코어를 사용 하 여 앱을 작성 하는 방법의 핵심 부분입니다.
+<span data-ttu-id="2ae94-105">컨트롤러, 작업 및 작업 결과 개발자가 ASP.NET Core MVC를 사용 하 여 앱을 구축 하는 방법의 핵심 부분입니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-105">Controllers, actions, and action results are a fundamental part of how developers build apps using ASP.NET Core MVC.</span></span>
 
-## <a name="what-is-a-controller"></a>컨트롤러는 무엇입니까
+## <a name="what-is-a-controller"></a><span data-ttu-id="2ae94-106">컨트롤러는 무엇입니까?</span><span class="sxs-lookup"><span data-stu-id="2ae94-106">What is a Controller?</span></span>
 
-ASP.NET mvc에서는 *컨트롤러* 정의 하 고 일련의 작업을 그룹화 하는 데 사용 됩니다. *작업* (또는 *작업 메서드*)는 들어오는 요청을 처리 하는 컨트롤러에 메서드가 만들어집니다. 컨트롤러 수단을 제공 논리적 그룹화 이와 유사한 작업 함께 전체적으로 적용할 규칙 (예: 라우팅, 캐싱, 권한 부여)의 공통 집합을 허용 합니다. 들어오는 요청을 통해 작업에 매핑됩니다. [라우팅](routing.md)합니다.
+<span data-ttu-id="2ae94-107">컨트롤러를 정의 하 고 일련의 작업을 그룹화에 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-107">A controller is used to define and group a set of actions.</span></span> <span data-ttu-id="2ae94-108">작업 (또는 *동작 메서드가*) 요청을 처리 하는 컨트롤러에 메서드가 만들어집니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-108">An action (or *action method*) is a method on a controller which handles requests.</span></span> <span data-ttu-id="2ae94-109">컨트롤러를 논리적으로 그룹화와 유사한 동작입니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-109">Controllers logically group similar actions together.</span></span> <span data-ttu-id="2ae94-110">이 집계 작업의 라우팅, 캐싱 및 권한 부여를 전체적으로 적용할 수 등의 규칙의 공통 집합을 허용 합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-110">This aggregation of actions allows common sets of rules, such as routing, caching, and authorization, to be applied collectively.</span></span> <span data-ttu-id="2ae94-111">요청을 통해 작업에 매핑된 [라우팅](xref:mvc/controllers/routing)합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-111">Requests are mapped to actions through [routing](xref:mvc/controllers/routing).</span></span>
 
-ASP.NET Core MVC 컨트롤러 "컨트롤러"로 끝나는 또는 "컨트롤러"로 끝나는 클래스에서 상속 되는 모든 인스턴스화할 수 있는 클래스 될 수 있습니다. 컨트롤러 따라야는 [명시적 종속성 원칙](http://deviq.com/explicit-dependencies-principle) 해당 동작을 사용 하 여 생성자를 통해 수행 하는 모든 종속성을 요청 하 고 [종속성 주입](dependency-injection.md)합니다.
+<span data-ttu-id="2ae94-112">규칙에 따라 컨트롤러 클래스:</span><span class="sxs-lookup"><span data-stu-id="2ae94-112">By convention, controller classes:</span></span>
+* <span data-ttu-id="2ae94-113">프로젝트의 루트 수준에 있는 *컨트롤러* 폴더</span><span class="sxs-lookup"><span data-stu-id="2ae94-113">Reside in the project's root-level *Controllers* folder</span></span>
+* <span data-ttu-id="2ae94-114">상속`Microsoft.AspNetCore.Mvc.Controller`</span><span class="sxs-lookup"><span data-stu-id="2ae94-114">Inherit from `Microsoft.AspNetCore.Mvc.Controller`</span></span>
 
-규칙에 따라 컨트롤러 클래스:
+<span data-ttu-id="2ae94-115">컨트롤러는 다음 조건 중 하나 이상 true는 인스턴스화할 수 있는 클래스입니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-115">A controller is an instantiable class in which at least one of the following conditions is true:</span></span>
+* <span data-ttu-id="2ae94-116">클래스 이름은 "Controller"로 그 뒤에</span><span class="sxs-lookup"><span data-stu-id="2ae94-116">The class name is suffixed with "Controller"</span></span>
+* <span data-ttu-id="2ae94-117">이름이 "Controller" 접미사는 클래스에서 클래스 상속</span><span class="sxs-lookup"><span data-stu-id="2ae94-117">The class inherits from a class whose name is suffixed with "Controller"</span></span>
+* <span data-ttu-id="2ae94-118">로 데코레이팅된 클래스는 `[Controller]` 특성</span><span class="sxs-lookup"><span data-stu-id="2ae94-118">The class is decorated with the `[Controller]` attribute</span></span>
 
-* 루트 수준 "컨트롤러" 폴더에 있습니다
+<span data-ttu-id="2ae94-119">컨트롤러 클래스는 연결 된 있어야 `[NonController]` 특성입니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-119">A controller class must not have an associated `[NonController]` attribute.</span></span>
 
-* Microsoft.AspNetCore.Mvc.Controller에서 상속
+<span data-ttu-id="2ae94-120">컨트롤러 따라야는 [명시적 종속성 원칙](http://deviq.com/explicit-dependencies-principle)합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-120">Controllers should follow the [Explicit Dependencies Principle](http://deviq.com/explicit-dependencies-principle).</span></span> <span data-ttu-id="2ae94-121">이 원칙을 구현 하는 방법은 몇 가지가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-121">There are a couple approaches to implementing this principle.</span></span> <span data-ttu-id="2ae94-122">동일한 서비스를 필요로 하는 여러 컨트롤러 작업을 하는 경우를 사용해 [생성자 삽입](xref:mvc/controllers/dependency-injection#constructor-injection) 해당 종속성을 요청할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-122">If multiple controller actions require the same service, consider using [constructor injection](xref:mvc/controllers/dependency-injection#constructor-injection) to request those dependencies.</span></span> <span data-ttu-id="2ae94-123">서비스가 단일 동작 메서드에서 필요한 경우 사용 하십시오 [작업 삽입](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices) 종속성을 요청할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-123">If the service is needed by only a single action method, consider using [Action Injection](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices) to request the dependency.</span></span>
 
-이러한 두 규칙 필요 하지 않습니다.
+<span data-ttu-id="2ae94-124">내에서 **M**odel-**V**뷰-**C**ontroller 패턴은 컨트롤러에 대 한 책임이 초기 요청 처리와 모델의 인스턴스화입니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-124">Within the **M**odel-**V**iew-**C**ontroller pattern, a controller is responsible for the initial processing of the request and instantiation of the model.</span></span> <span data-ttu-id="2ae94-125">일반적으로 비즈니스 의사 결정 모델 내에서 수행 되어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-125">Generally, business decisions should be performed within the model.</span></span>
 
-모델-뷰-컨트롤러 패턴 내에서 컨트롤러는 초기 요청 처리와 모델의 인스턴스화 하는 일을 담당 합니다. 일반적으로 비즈니스 의사 결정 모델 내에서 수행 되어야 합니다.
+<span data-ttu-id="2ae94-126">컨트롤러는 모델의 처리 (있는 경우)의 결과 사용해 하 고 적절 한 보기와 관련 된 보기 데이터 또는 API 호출의 결과 반환 합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-126">The controller takes the result of the model's processing (if any) and returns either the proper view and its associated view data or the result of the API call.</span></span> <span data-ttu-id="2ae94-127">자세한 내용 [ASP.NET Core MVC 개요](xref:mvc/overview) 및 [ASP.NET Core MVC 및 Visual Studio 시작](xref:tutorials/first-mvc-app/start-mvc)합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-127">Learn more at [Overview of ASP.NET Core MVC](xref:mvc/overview) and [Getting started with ASP.NET Core MVC and Visual Studio](xref:tutorials/first-mvc-app/start-mvc).</span></span>
 
-> [!NOTE]
-> 모델 이어야 합니다는 *CLR 개체 POCO (Plain Old)*이 아니라는 `DbContext` 또는 데이터베이스와 관련 된 형식입니다.
+<span data-ttu-id="2ae94-128">컨트롤러는는 *UI 수준* 추상화 합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-128">The controller is a *UI-level* abstraction.</span></span> <span data-ttu-id="2ae94-129">해당 사항이 요청 데이터가 올바른지 확인 하 고 어떤 보기 (또는 API에 대 한 결과)를 반환 해야 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-129">Its responsibilities are to ensure request data is valid and to choose which view (or result for an API) should be returned.</span></span> <span data-ttu-id="2ae94-130">잘 구성 된 앱에서이 포함 되지 않습니다 직접 데이터 액세스 또는 비즈니스 논리.</span><span class="sxs-lookup"><span data-stu-id="2ae94-130">In well-factored apps, it does not directly include data access or business logic.</span></span> <span data-ttu-id="2ae94-131">대신, 컨트롤러 이러한 책임을 처리 하는 서비스에 위임 합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-131">Instead, the controller delegates to services handling these responsibilities.</span></span>
 
-컨트롤러는 모델의 처리 (있는 경우)의 결과 사용해, 관련된 뷰 데이터와 함께 적절 한 뷰를 반환 합니다. 자세한 정보: [ASP.NET 핵심 MVC 개요](../overview.md) 및 [ASP.NET 핵심 MVC 및 Visual Studio 시작](../../tutorials/first-mvc-app/start-mvc.md)합니다.
+## <a name="defining-actions"></a><span data-ttu-id="2ae94-132">동작 정의</span><span class="sxs-lookup"><span data-stu-id="2ae94-132">Defining Actions</span></span>
 
->[!TIP]
-> 컨트롤러는 한 *UI 수준* 추상화 합니다. 책임에는 들어오는 요청 데이터가 올바른지 확인 하 고 어떤 보기 (또는 API에 대 한 결과)를 반환할 선택할 수입니다. 잘 구성 된 응용 프로그램에서 직접 데이터 액세스 또는 비즈니스 논리를 포함 하지 않습니다 하지만 대신 이러한 책임을 처리 하는 서비스에 위임 합니다.
+<span data-ttu-id="2ae94-133">Public 메서드를 컨트롤러에서로 데코레이팅 된 문을 제외한는 `[NonAction]` 특성을 가지 작업입니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-133">Public methods on a controller, except those decorated with the `[NonAction]` attribute, are actions.</span></span> <span data-ttu-id="2ae94-134">동작에 매개 변수는 데이터를 요청에 바인딩되고를 사용 하 여 [모델 바인딩](xref:mvc/models/model-binding)합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-134">Parameters on actions are bound to request data and are validated using [model binding](xref:mvc/models/model-binding).</span></span> <span data-ttu-id="2ae94-135">모델 유효성 검사는 모델 바인딩 있는 모든 작업에 대해 발생 합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-135">Model validation occurs for everything that's model-bound.</span></span> <span data-ttu-id="2ae94-136">`ModelState.IsValid` 속성 값을 바인딩하는 모델 및 유효성 검사의 성공 여부를 나타냅니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-136">The `ModelState.IsValid` property value indicates whether model binding and validation succeeded.</span></span>
 
-## <a name="defining-actions"></a>동작 정의
+<span data-ttu-id="2ae94-137">작업 메서드는 비즈니스 문제에 요청을 매핑하는 것에 대 한 논리를 포함 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-137">Action methods should contain logic for mapping a request to a business concern.</span></span> <span data-ttu-id="2ae94-138">비즈니스 문제나 일반적으로 컨트롤러를 통해 액세스 하는 서비스로 표시 되어야 [종속성 주입](xref:mvc/controllers/dependency-injection)합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-138">Business concerns should typically be represented as services that the controller accesses through [dependency injection](xref:mvc/controllers/dependency-injection).</span></span> <span data-ttu-id="2ae94-139">작업은 비즈니스 작업의 결과 응용 프로그램 상태에 매핑됩니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-139">Actions then map the result of the business action to an application state.</span></span>
 
-컨트롤러 종류 모든 공용 메서드는 작업입니다. 작업에 매개 변수는 데이터를 요청에 바인딩되고를 사용 하 여 [모델 바인딩](../models/model-binding.md)합니다.
+<span data-ttu-id="2ae94-140">작업, 모든 항목을 반환할 수 있지만 자주의 인스턴스를 반환 `IActionResult` (또는 `Task<IActionResult>` 비동기 메서드에 대 한) 응답을 생성 하는 합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-140">Actions can return anything, but frequently return an instance of `IActionResult` (or `Task<IActionResult>` for async methods) that produces a response.</span></span> <span data-ttu-id="2ae94-141">동작 메서드는 선택에 대 한 *응답의 종류*합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-141">The action method is responsible for choosing *what kind of response*.</span></span> <span data-ttu-id="2ae94-142">작업 결과 *는 응답 하지 않는*합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-142">The action result *does the responding*.</span></span>
 
->[!WARNING]
-> 매개 변수를 허용 하는 작업 메서드에 확인 해야는 `ModelState.IsValid` 속성은 true입니다.
+### <a name="controller-helper-methods"></a><span data-ttu-id="2ae94-143">컨트롤러 도우미 메서드</span><span class="sxs-lookup"><span data-stu-id="2ae94-143">Controller Helper Methods</span></span>
 
-작업 메서드는 비즈니스 문제에 들어오는 요청을 매핑하기 위한 논리를 포함 해야 합니다. 일반적으로 비즈니스 문제나 컨트롤러를 통해 액세스 하는 서비스로 표시 되어야 [종속성 주입](dependency-injection.md)합니다. 그런 다음 작업 응용 프로그램 상태를 비즈니스 작업의 결과를 매핑합니다.
-작업 아무 것도 반환할 수 있지만 자주 반환 하는 인스턴스의 `IActionResult` (또는 `Task<IActionResult>` 비동기 메서드의) 응답을 생성 하는 합니다. 선택에 대 한 작업 메서드는 *어떤 유형의 응답*; 작업 결과 *는 응답 하지 않는*합니다.
+<span data-ttu-id="2ae94-144">컨트롤러에서 일반적으로 상속 [컨트롤러](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controller)않더라도이 필요 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-144">Controllers usually inherit from [Controller](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controller), although this is not required.</span></span> <span data-ttu-id="2ae94-145">파생 된 `Controller` 도우미 메서드의 세 가지 범주에 대 한 액세스를 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-145">Deriving from `Controller` provides access to three categories of helper methods:</span></span>
 
-### <a name="controller-helper-methods"></a>컨트롤러 도우미 메서드
+#### <a name="1-methods-resulting-in-an-empty-response-body"></a><span data-ttu-id="2ae94-146">1. 빈 응답 본문에으로 인해 발생 하는 방법</span><span class="sxs-lookup"><span data-stu-id="2ae94-146">1. Methods resulting in an empty response body</span></span>
 
-대부분의 개발자가 해당 컨트롤러에서 기본 상속 표시할 수 필요 하지는 않지만 `Controller` 클래스입니다. 이렇게 많은 속성 및 다양 한 응답을 반환 하는 데 도움이 되도록 다음과 같은 도우미 메서드를 포함 하는 유용한 방법을에 액세스 하 여 컨트롤러를 제공 합니다.
+<span data-ttu-id="2ae94-147">더 `Content-Type` HTTP 응답 헤더는 응답 본문을 설명 하는 콘텐츠 없으므로 포함 되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-147">No `Content-Type` HTTP response header is included, since the response body lacks content to describe.</span></span>
 
-**[보기](../views/index.md)**
+<span data-ttu-id="2ae94-148">이 범주 내의 결과 형식은 두 가지가: 리디렉션 및 HTTP 상태 코드입니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-148">There are two result types within this category: Redirect and HTTP Status Code.</span></span>
 
-HTML을 렌더링 하는 모델을 사용 하는 뷰를 반환 합니다. 예: `return View(customer);`
+* <span data-ttu-id="2ae94-149">**HTTP 상태 코드**</span><span class="sxs-lookup"><span data-stu-id="2ae94-149">**HTTP Status Code**</span></span>
 
-**HTTP 상태 코드**
+    <span data-ttu-id="2ae94-150">이 형식은 HTTP 상태 코드를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-150">This type returns an HTTP status code.</span></span> <span data-ttu-id="2ae94-151">이러한 종류의 몇 가지 도우미 메서드는 `BadRequest`, `NotFound`, 및 `Ok`합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-151">A couple helper methods of this type are `BadRequest`, `NotFound`, and `Ok`.</span></span> <span data-ttu-id="2ae94-152">예를 들어 `return BadRequest();` 400 상태 코드가 실행 될 때을 생성 합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-152">For example, `return BadRequest();` produces a 400 status code when executed.</span></span> <span data-ttu-id="2ae94-153">때와 같은 메서드 `BadRequest`, `NotFound`, 및 `Ok` 는 오버 로드를 더 이상 자격이 HTTP 상태 코드 응답자도 콘텐츠 협상 수행 되 고 있으므로 합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-153">When methods such as `BadRequest`, `NotFound`, and `Ok` are overloaded, they no longer qualify as HTTP Status Code responders, since content negotiation is taking place.</span></span>
 
-HTTP 상태 코드를 반환 합니다. 예: `return BadRequest();`
+* <span data-ttu-id="2ae94-154">**리디렉션**</span><span class="sxs-lookup"><span data-stu-id="2ae94-154">**Redirect**</span></span>
 
-**서식이 지정 된 응답**
+    <span data-ttu-id="2ae94-155">이 이와 같은 작업이 나 대상에 리디렉션이 반환 (사용 하 여 `Redirect`, `LocalRedirect`, `RedirectToAction`, 또는 `RedirectToRoute`).</span><span class="sxs-lookup"><span data-stu-id="2ae94-155">This type returns a redirect to an action or destination (using `Redirect`, `LocalRedirect`, `RedirectToAction`, or `RedirectToRoute`).</span></span> <span data-ttu-id="2ae94-156">예를 들어 `return RedirectToAction("Complete", new {id = 123});` 리디렉션합니다 `Complete`, 익명 개체를 전달 합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-156">For example, `return RedirectToAction("Complete", new {id = 123});` redirects to `Complete`, passing an anonymous object.</span></span>
 
-반환할 `Json` 또는 지정 된 방식으로 개체의 서식을 지정 하려면 유사 합니다. 예: `return Json(customer);`
+    <span data-ttu-id="2ae94-157">리디렉션 결과 형식이 주로 추가 HTTP 상태 코드 형식에서 다른 한 `Location` HTTP 응답 헤더입니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-157">The Redirect result type differs from the HTTP Status Code type primarily in the addition of a `Location` HTTP response header.</span></span>
 
-**콘텐츠 협상 된 응답**
+#### <a name="2-methods-resulting-in-a-non-empty-response-body-with-a-predefined-content-type"></a><span data-ttu-id="2ae94-158">2. 미리 정의 된 콘텐츠 형식과 비어 있지 않은 응답 본문에으로 인해 발생 하는 방법</span><span class="sxs-lookup"><span data-stu-id="2ae94-158">2. Methods resulting in a non-empty response body with a predefined content type</span></span>
 
-작업 개체를 직접 반환 하는 대신 콘텐츠 협상 된 응답을 반환할 수 있습니다 (사용 하 여 `Ok`, `Created`, `CreatedAtRoute` 또는 `CreatedAtAction`). 예를 들어 `return Ok();` 또는`return CreatedAtRoute("routename",values,newobject);`
+<span data-ttu-id="2ae94-159">이 항목의 대부분의 도우미 메서드를 포함 한 `ContentType` 속성을 설정할 수는 `Content-Type` 응답 본문을 설명 하기 위해 응답 헤더입니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-159">Most helper methods in this category include a `ContentType` property, allowing you to set the `Content-Type` response header to describe the response body.</span></span>
 
-**리디렉션**
+<span data-ttu-id="2ae94-160">이 범주 내의 결과 형식은 두 가지가: [보기](xref:mvc/views/overview) 및 [서식이 지정 된 응답](xref:mvc/models/formatting)합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-160">There are two result types within this category: [View](xref:mvc/views/overview) and [Formatted Response](xref:mvc/models/formatting).</span></span>
 
-다른 작업이 나 대상에는 리디렉션을 반환 (사용 하 여 `Redirect`, `LocalRedirect`, `RedirectToAction` 또는 `RedirectToRoute`). 예: `return RedirectToAction("Complete", new {id = 123});`
+* <span data-ttu-id="2ae94-161">**보기**</span><span class="sxs-lookup"><span data-stu-id="2ae94-161">**View**</span></span>
 
-위의 방법 외에도 작업 놓는 개체를 반환할 수 있습니다. 이 경우 개체는 클라이언트의 요청에 따라 포맷 됩니다. 에 대 한 자세한 내용은 [응답 데이터 서식 지정](../models/formatting.md)
+    <span data-ttu-id="2ae94-162">이 형식은 HTML을 렌더링 하는 모델을 사용 하는 뷰를 반환 합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-162">This type returns a view which uses a model to render HTML.</span></span> <span data-ttu-id="2ae94-163">예를 들어 `return View(customer);` 보기에 데이터 바인딩 모델을 전달 합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-163">For example, `return View(customer);` passes a model to the view for data-binding.</span></span>
 
-### <a name="cross-cutting-concerns"></a>문제
+* <span data-ttu-id="2ae94-164">**서식이 지정 된 응답**</span><span class="sxs-lookup"><span data-stu-id="2ae94-164">**Formatted Response**</span></span>
 
-대부분의 앱에서 많은 작업의 워크플로 부분을 공유 합니다. 예를 들어, 대부분 응용 프로그램의 인증 된 사용자만 사용할 수 있습니다 또는 캐싱에서 장점을 활용할 수 있습니다. 하기 전에 일부 논리를 수행 하려면 하거나 사용할 수 있습니다 작업 메서드가 실행 된 후 때는 *필터*합니다. 너무 커지지를 사용 하 여 사용자의 작업을 유지할 수 [필터](filters.md) 이러한 문제를 처리할 수 있습니다. 작업을 수행 하도록 허용 내 중복을 방지할 수이 고 [안 함 반복 직접 (드라이) 원칙](http://deviq.com/don-t-repeat-yourself/)합니다.
+    <span data-ttu-id="2ae94-165">이 형식은 JSON 또는 비슷한 데이터 교환 형식인 개체를 나타내는 지정 된 방식으로 반환 합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-165">This type returns JSON or a similar data exchange format to represent an object in a specific manner.</span></span> <span data-ttu-id="2ae94-166">예를 들어 `return Json(customer);` JSON 형식에 제공된 된 개체를 serialize 합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-166">For example, `return Json(customer);` serializes the provided object into JSON format.</span></span>
+    
+    <span data-ttu-id="2ae94-167">이 형식의 다른 일반적인 방법 `File`, `PhysicalFile`, 및 `VirtualFile`합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-167">Other common methods of this type include `File`, `PhysicalFile`, and `VirtualFile`.</span></span> <span data-ttu-id="2ae94-168">예를 들어 `return PhysicalFile(customerFilePath, "text/xml");` 에서 설명 하는 XML 파일을 반환 합니다.는 `Content-Type` 응답 헤더 값에 "text/xml"입니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-168">For example, `return PhysicalFile(customerFilePath, "text/xml");` returns an XML file described by a `Content-Type` response header value of "text/xml".</span></span>
 
-권한 부여 및 인증의 경우 적용할 수는 `Authorize` 특성 필요로 하는 행위. 컨트롤러에 추가 하는 것이 컨트롤러 내에서 모든 작업에 적용 됩니다. 이 특성은 적절 한 필터 확인을 추가 합니다.이 작업에 대 한 모든 요청에 적용 됩니다. 필터 동작을 보다 세부적으로 제어를 제공 하기 위해 컨트롤러와 작업 수준에서 일부 특성을 적용할 수 있습니다. 자세한 정보: [필터](filters.md)합니다.
+#### <a name="3-methods-resulting-in-a-non-empty-response-body-formatted-in-a-content-type-negotiated-with-the-client"></a><span data-ttu-id="2ae94-169">3. 클라이언트와 협상 콘텐츠 형식으로 서식이 지정 된 비어 있지 않은 응답 본문에으로 인해 발생 하는 방법</span><span class="sxs-lookup"><span data-stu-id="2ae94-169">3. Methods resulting in a non-empty response body formatted in a content type negotiated with the client</span></span>
 
-MVC 응용 프로그램의 문제는 다른 예 포함 될 수 있습니다.
-   * [오류 처리](filters.md#exception-filters)
+<span data-ttu-id="2ae94-170">이 범주는 더 잘 알려져 **콘텐츠 협상**합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-170">This category is better known as **Content Negotiation**.</span></span> <span data-ttu-id="2ae94-171">[콘텐츠 협상](xref:mvc/models/formatting#content-negotiation) 동작 반환 될 때마다 적용 되는 [ObjectResult](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.objectresult) 형식 또는 이외의 이와 [IActionResult](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.iactionresult) 구현 합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-171">[Content negotiation](xref:mvc/models/formatting#content-negotiation) applies whenever an action returns an [ObjectResult](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.objectresult) type or something other than an [IActionResult](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.iactionresult) implementation.</span></span> <span data-ttu-id="2ae94-172">비-반환 하는 동작`IActionResult` 구현 (예를 들어 `object`)도 서식이 지정 된 응답을 반환 합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-172">An action that returns a non-`IActionResult` implementation (for example, `object`) also returns a Formatted Response.</span></span>
 
-   * [응답 캐싱](../../performance/caching/response.md)
+<span data-ttu-id="2ae94-173">이러한 종류의 일부 도우미 메서드를 포함 `BadRequest`, `CreatedAtRoute`, 및 `Ok`합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-173">Some helper methods of this type include `BadRequest`, `CreatedAtRoute`, and `Ok`.</span></span> <span data-ttu-id="2ae94-174">이러한 방법의 예로 `return BadRequest(modelState);`, `return CreatedAtRoute("routename", values, newobject);`, 및 `return Ok(value);`각각.</span><span class="sxs-lookup"><span data-stu-id="2ae94-174">Examples of these methods include `return BadRequest(modelState);`, `return CreatedAtRoute("routename", values, newobject);`, and `return Ok(value);`, respectively.</span></span> <span data-ttu-id="2ae94-175">`BadRequest` 및 `Ok` 값으로 전달 하는 경우에 콘텐츠 협상을 수행 합니다; 값을 전달 하지 않고 대신으로 사용 HTTP 상태 코드의 결과 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-175">Note that `BadRequest` and `Ok` perform content negotiation only when passed a value; without being passed a value, they instead serve as HTTP Status Code result types.</span></span> <span data-ttu-id="2ae94-176">`CreatedAtRoute` 메서드, 반면에 항상 콘텐츠 협상을 수행 이후의 메서드의 오버 로드 된 값을 전달할 수 모두 필요 합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-176">The `CreatedAtRoute` method, on the other hand, always performs content negotiation since its overloads all require that a value be passed.</span></span>
 
-> [!NOTE]
-> 필터를 사용 하 여 MVC 응용 프로그램에서 많은 문제를 처리할 수 있습니다. 모든 ASP.NET 핵심 응용 프로그램에 사용할 수 있는 염두에 또 다른 옵션은 사용자 지정 [미들웨어](../../fundamentals/middleware.md)합니다.
+### <a name="cross-cutting-concerns"></a><span data-ttu-id="2ae94-177">일반적인 문제</span><span class="sxs-lookup"><span data-stu-id="2ae94-177">Cross-Cutting Concerns</span></span>
 
+<span data-ttu-id="2ae94-178">일반적으로 응용 프로그램의 워크플로 부분을 공유합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-178">Applications typically share parts of their workflow.</span></span> <span data-ttu-id="2ae94-179">쇼핑 카트를 액세스할 때 인증을 요구 하는 응용 프로그램 또는 일부 페이지에 데이터를 캐시 하는 응용 프로그램을 예로 들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-179">Examples include an app that requires authentication to access the shopping cart, or an app that caches data on some pages.</span></span> <span data-ttu-id="2ae94-180">를 앞 이나 뒤 동작 메서드의 논리를 수행 하려면 사용 하 여 한 *필터*합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-180">To perform logic before or after an action method, use a *filter*.</span></span> <span data-ttu-id="2ae94-181">사용 하 여 [필터](xref:mvc/controllers/filters) 일반적인 문제에 따라 수 있으므로 중복 줄일 수는 [하지 반복 직접 (드라이) 원칙](http://deviq.com/don-t-repeat-yourself/)합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-181">Using [Filters](xref:mvc/controllers/filters) on cross-cutting concerns can reduce duplication, allowing them to follow the [Don't Repeat Yourself (DRY) principle](http://deviq.com/don-t-repeat-yourself/).</span></span>
+
+<span data-ttu-id="2ae94-182">필터 가장와 같은 특성을 `[Authorize]`, 원하는 수준의 세분성에 따라 컨트롤러 또는 동작 수준에 적용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-182">Most filter attributes, such as `[Authorize]`, can be applied at the controller or action level depending upon the desired level of granularity.</span></span>
+
+<span data-ttu-id="2ae94-183">오류 처리 및 응답 캐시는 종종 일반적인 문제:</span><span class="sxs-lookup"><span data-stu-id="2ae94-183">Error handling and response caching are often cross-cutting concerns:</span></span>
+   * [<span data-ttu-id="2ae94-184">오류 처리</span><span class="sxs-lookup"><span data-stu-id="2ae94-184">Error handling</span></span>](xref:mvc/controllers/filters#exception-filters)
+   * [<span data-ttu-id="2ae94-185">응답 캐시</span><span class="sxs-lookup"><span data-stu-id="2ae94-185">Response Caching</span></span>](xref:performance/caching/response)
+
+<span data-ttu-id="2ae94-186">필터 또는 사용자 지정을 사용 하 여 많은 일반적인 문제를 처리할 수 있습니다 [미들웨어](xref:fundamentals/middleware)합니다.</span><span class="sxs-lookup"><span data-stu-id="2ae94-186">Many cross-cutting concerns can be handled using filters or custom [middleware](xref:fundamentals/middleware).</span></span>

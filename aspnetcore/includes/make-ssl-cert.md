@@ -1,0 +1,8 @@
+<span data-ttu-id="3885b-101">Windows에서 자체 서명 된 SSL 인증서를 생성 하기 위한 PowerShell cmdlet을 사용할 수 있습니다 [New-selfsignedcertificate](https://technet.microsoft.com/library/hh848633)합니다.</span><span class="sxs-lookup"><span data-stu-id="3885b-101">For generating self-signed SSL certificates on Windows, you can use the PowerShell cmdlet [New-SelfSignedCertificate](https://technet.microsoft.com/library/hh848633).</span></span> <span data-ttu-id="3885b-102">제 3 자 수 있는 도구를 쉽게 자체 서명 된 인증서를 생성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3885b-102">There are also third-party tools that make it easier for you to generate self-signed certificates:</span></span>
+
+* [<span data-ttu-id="3885b-103">SelfCert</span><span class="sxs-lookup"><span data-stu-id="3885b-103">SelfCert</span></span>](https://www.pluralsight.com/blog/software-development/selfcert-create-a-self-signed-certificate-interactively-gui-or-programmatically-in-net)
+* [<span data-ttu-id="3885b-104">Makecert UI</span><span class="sxs-lookup"><span data-stu-id="3885b-104">Makecert UI</span></span>](http://makecertui.codeplex.com/)
+
+<span data-ttu-id="3885b-105">MacOS 및 Linux에서 만들 수 있습니다를 사용 하 여 자체 서명 된 인증서를 [OpenSSL](https://www.openssl.org/)합니다.</span><span class="sxs-lookup"><span data-stu-id="3885b-105">On macOS and Linux you can create a self-signed certificate using [OpenSSL](https://www.openssl.org/).</span></span>
+
+<span data-ttu-id="3885b-106">자세한 내용은 참조 [개발을 위한 HTTPS 설정](xref:security/https)합니다.</span><span class="sxs-lookup"><span data-stu-id="3885b-106">For more information, see [Setting up HTTPS for development](xref:security/https).</span></span>

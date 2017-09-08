@@ -1,7 +1,7 @@
 ---
-title: "IIS 모듈을 사용 하 여 ASP.NET 코어 | Microsoft 문서"
+title: "IIS 모듈을 사용 하 여 ASP.NET 코어"
 author: guardrex
-description: "ASP.NET 핵심 응용 프로그램에 대 한 활성 및 비활성 IIS 모듈을 설명 하는 문서를 참조 합니다."
+description: "ASP.NET Core 응용 프로그램에 대 한 활성 및 비활성 IIS 모듈을 설명 하는 문서를 참조 합니다."
 keywords: "ASP.NET Core, iis, 모듈, 역방향 프록시"
 ms.author: riande
 manager: wpickett
@@ -11,80 +11,80 @@ ms.assetid: 492b3a7e-04c5-461b-b96a-38ecee5c64bc
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: hosting/iis-modules
-translationtype: Machine Translation
-ms.sourcegitcommit: 3b496d7b7f91ab50d29f975518818ed3ac939e6e
-ms.openlocfilehash: b3e422bbbe0276b0c9a2cb0ed4945f02978623e4
-ms.lasthandoff: 03/23/2017
-
+ms.openlocfilehash: 4d9d3d863e62373716ecd81b9e1880145a127e9b
+ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/11/2017
 ---
-# <a name="using-iis-modules-with-aspnet-core"></a>ASP.NET Core IIS 모듈 사용
+# <a name="using-iis-modules-with-aspnet-core"></a><span data-ttu-id="bdffd-104">IIS 모듈을 사용 하 여 ASP.NET 코어</span><span class="sxs-lookup"><span data-stu-id="bdffd-104">Using IIS Modules with ASP.NET Core</span></span>
 
-[Luke Latham](https://github.com/GuardRex)
+<span data-ttu-id="bdffd-105">으로 [Luke Latham](https://github.com/GuardRex)</span><span class="sxs-lookup"><span data-stu-id="bdffd-105">By [Luke Latham](https://github.com/GuardRex)</span></span>
 
-ASP.NET 핵심 응용 프로그램은 역방향 프록시 구성에서 IIS에 의해 호스트 됩니다. 네이티브 IIS 모듈 중 일부와 IIS 관리 모듈의 모든 ASP.NET 핵심 응용 프로그램에 대 한 요청을 처리 하는 사용할 수 없는 경우 대부분의 경우에서 ASP.NET 핵심은 IIS의 네이티브 및 관리 되는 모듈의 기능에 대 한 대안을 제공합니다.
+<span data-ttu-id="bdffd-106">ASP.NET Core 응용 프로그램은 역방향 프록시 구성에서 IIS에서 호스트 됩니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-106">ASP.NET Core applications are hosted by IIS in a reverse-proxy configuration.</span></span> <span data-ttu-id="bdffd-107">네이티브 IIS 모듈의 일부 및 모든 관리 되는 IIS 모듈 ASP.NET Core 응용 프로그램에 대 한 요청을 처리 하는 사용할 수 없는 합니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-107">Some of the native IIS modules and all of the IIS managed modules are not available to process requests for ASP.NET Core apps.</span></span> <span data-ttu-id="bdffd-108">대부분의 경우 ASP.NET Core IIS 네이티브 및 관리 되는 모듈의 기능에 대 한 대안을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-108">In many cases, ASP.NET Core offers an alternative to the features of IIS native and managed modules.</span></span>
 
-## <a name="native-modules"></a>네이티브 모듈
-모듈 | .NET core 활성 | ASP.NET Core 옵션
+## <a name="native-modules"></a><span data-ttu-id="bdffd-109">네이티브 모듈</span><span class="sxs-lookup"><span data-stu-id="bdffd-109">Native Modules</span></span>
+<span data-ttu-id="bdffd-110">모듈</span><span class="sxs-lookup"><span data-stu-id="bdffd-110">Module</span></span> | <span data-ttu-id="bdffd-111">.NET core 활성</span><span class="sxs-lookup"><span data-stu-id="bdffd-111">.NET Core Active</span></span> | <span data-ttu-id="bdffd-112">ASP.NET Core 옵션</span><span class="sxs-lookup"><span data-stu-id="bdffd-112">ASP.NET Core Option</span></span>
 --- | :---: | ---
-**익명 인증**<br>`AnonymousAuthenticationModule` | 예 | 
-**기본 인증**<br>`BasicAuthenticationModule` | 예 | 
-**클라이언트 인증 매핑 인증**<br>`CertificateMappingAuthenticationModule` | 예 | 
-**CGI**<br>`CgiModule` | 아니요 | 
-**구성 유효성 검사**<br>`ConfigurationValidationModule` | 예 | 
-**HTTP 오류**<br>`CustomErrorModule` | 아니요 | [상태 코드 페이지 미들웨어](xref:fundamentals/error-handling#configuring-status-code-pages)
-**사용자 지정 로깅**<br>`CustomLoggingModule` | 예 | 
-**기본 문서**<br>`DefaultDocumentModule` | 아니요 | [기본 파일 미들웨어](xref:fundamentals/static-files#serving-a-default-document)
-**다이제스트 인증**<br>`DigestAuthenticationModule` | 예 | 
-**디렉터리 검색**<br>`DirectoryListingModule` | 아니요 | [디렉터리 검색 미들웨어](xref:fundamentals/static-files#enabling-directory-browsing)
-**동적 압축**<br>`DynamicCompressionModule` | 예 | [응답 압축 미들웨어](xref:performance/response-compression)
-**추적**<br>`FailedRequestsTracingModule` | 예 | [ASP.NET Core 로깅](xref:fundamentals/logging#the-tracesource-provider)
-**파일 캐싱**<br>`FileCacheModule` | 아니요 | [응답의 캐싱 미들웨어](xref:performance/caching/middleware)
-**HTTP 캐싱**<br>`HttpCacheModule` | 아니요 | [응답의 캐싱 미들웨어](xref:performance/caching/middleware)
-**HTTP 로깅**<br>`HttpLoggingModule` | 예 | [ASP.NET Core 로깅](xref:fundamentals/logging)<br>구현: [elmah.io](https://github.com/elmahio/Elmah.Io.Extensions.Logging), [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging), [NLog](https://github.com/NLog/NLog.Extensions.Logging), [Serilog](https://github.com/serilog/serilog-framework-logging)
-**HTTP 리디렉션**<br>`HttpRedirectionModule` | 예 | [URL 다시 쓰기 미들웨어](xref:fundamentals/url-rewriting)
-**IIS 클라이언트 인증서 매핑 인증**<br>`IISCertificateMappingAuthenticationModule` | 예 | 
-**IP 및 도메인 제한**<br>`IpRestrictionModule` | 예 | 
-**ISAPI 필터**<br>`IsapiFilterModule` | 예 | [미들웨어](xref:fundamentals/middleware)
-**ISAPI**<br>`IsapiModule` | 예 | [미들웨어](xref:fundamentals/middleware)
-**프로토콜 지원**<br>`ProtocolSupportModule` | 예 | 
-**요청 필터링**<br>`RequestFilteringModule` | 예 | [URL 다시 쓰기 미들웨어`IRule`](xref:fundamentals/url-rewriting#irule-based-rule)
-**요청 모니터**<br>`RequestMonitorModule` | 예 | 
-**URL 다시 쓰기**<br>`RewriteModule` | Yes† | [URL 다시 쓰기 미들웨어](xref:fundamentals/url-rewriting)
-**SSI(SSI(Server Side Includes))**<br>`ServerSideIncludeModule` | 아니요 | 
-**정적 압축**<br>`StaticCompressionModule` | 아니요 | [응답 압축 미들웨어](xref:performance/response-compression)
-**정적 콘텐츠**<br>`StaticFileModule` | 아니요 | [정적 파일 미들웨어](xref:fundamentals/static-files)
-**토큰 캐싱**<br>`TokenCacheModule` | 예 | 
-**URI 캐싱**<br>`UriCacheModule` | 예 | 
-**URL 권한 부여**<br>`UrlAuthorizationModule` | 예 | [ASP.NET Core Identity](xref:security/authentication/identity)
-**Windows 인증**<br>`WindowsAuthenticationModule` | 예 | 
+<span data-ttu-id="bdffd-113">**익명 인증**</span><span class="sxs-lookup"><span data-stu-id="bdffd-113">**Anonymous Authentication**</span></span><br>`AnonymousAuthenticationModule` | <span data-ttu-id="bdffd-114">예</span><span class="sxs-lookup"><span data-stu-id="bdffd-114">Yes</span></span> | 
+<span data-ttu-id="bdffd-115">**기본 인증**</span><span class="sxs-lookup"><span data-stu-id="bdffd-115">**Basic Authentication**</span></span><br>`BasicAuthenticationModule` | <span data-ttu-id="bdffd-116">예</span><span class="sxs-lookup"><span data-stu-id="bdffd-116">Yes</span></span> | 
+<span data-ttu-id="bdffd-117">**클라이언트 인증 매핑 인증**</span><span class="sxs-lookup"><span data-stu-id="bdffd-117">**Client Certification Mapping Authentication**</span></span><br>`CertificateMappingAuthenticationModule` | <span data-ttu-id="bdffd-118">예</span><span class="sxs-lookup"><span data-stu-id="bdffd-118">Yes</span></span> | 
+<span data-ttu-id="bdffd-119">**CGI**</span><span class="sxs-lookup"><span data-stu-id="bdffd-119">**CGI**</span></span><br>`CgiModule` | <span data-ttu-id="bdffd-120">아니요</span><span class="sxs-lookup"><span data-stu-id="bdffd-120">No</span></span> | 
+<span data-ttu-id="bdffd-121">**구성 유효성 검사**</span><span class="sxs-lookup"><span data-stu-id="bdffd-121">**Configuration Validation**</span></span><br>`ConfigurationValidationModule` | <span data-ttu-id="bdffd-122">예</span><span class="sxs-lookup"><span data-stu-id="bdffd-122">Yes</span></span> | 
+<span data-ttu-id="bdffd-123">**HTTP 오류**</span><span class="sxs-lookup"><span data-stu-id="bdffd-123">**HTTP Errors**</span></span><br>`CustomErrorModule` | <span data-ttu-id="bdffd-124">아니요</span><span class="sxs-lookup"><span data-stu-id="bdffd-124">No</span></span> | [<span data-ttu-id="bdffd-125">상태 코드 페이지 미들웨어입니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-125">Status Code Pages Middleware</span></span>](xref:fundamentals/error-handling#configuring-status-code-pages)
+<span data-ttu-id="bdffd-126">**사용자 지정 로깅**</span><span class="sxs-lookup"><span data-stu-id="bdffd-126">**Custom Logging**</span></span><br>`CustomLoggingModule` | <span data-ttu-id="bdffd-127">예</span><span class="sxs-lookup"><span data-stu-id="bdffd-127">Yes</span></span> | 
+<span data-ttu-id="bdffd-128">**기본 문서**</span><span class="sxs-lookup"><span data-stu-id="bdffd-128">**Default Document**</span></span><br>`DefaultDocumentModule` | <span data-ttu-id="bdffd-129">아니요</span><span class="sxs-lookup"><span data-stu-id="bdffd-129">No</span></span> | [<span data-ttu-id="bdffd-130">기본 파일 미들웨어입니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-130">Default Files Middleware</span></span>](xref:fundamentals/static-files#serving-a-default-document)
+<span data-ttu-id="bdffd-131">**다이제스트 인증**</span><span class="sxs-lookup"><span data-stu-id="bdffd-131">**Digest Authentication**</span></span><br>`DigestAuthenticationModule` | <span data-ttu-id="bdffd-132">예</span><span class="sxs-lookup"><span data-stu-id="bdffd-132">Yes</span></span> | 
+<span data-ttu-id="bdffd-133">**디렉터리 검색**</span><span class="sxs-lookup"><span data-stu-id="bdffd-133">**Directory Browsing**</span></span><br>`DirectoryListingModule` | <span data-ttu-id="bdffd-134">아니요</span><span class="sxs-lookup"><span data-stu-id="bdffd-134">No</span></span> | [<span data-ttu-id="bdffd-135">디렉터리 검색 미들웨어</span><span class="sxs-lookup"><span data-stu-id="bdffd-135">Directory Browsing Middleware</span></span>](xref:fundamentals/static-files#enabling-directory-browsing)
+<span data-ttu-id="bdffd-136">**동적 압축**</span><span class="sxs-lookup"><span data-stu-id="bdffd-136">**Dynamic Compression**</span></span><br>`DynamicCompressionModule` | <span data-ttu-id="bdffd-137">예</span><span class="sxs-lookup"><span data-stu-id="bdffd-137">Yes</span></span> | [<span data-ttu-id="bdffd-138">응답 압축 미들웨어입니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-138">Response Compression Middleware</span></span>](xref:performance/response-compression)
+<span data-ttu-id="bdffd-139">**추적**</span><span class="sxs-lookup"><span data-stu-id="bdffd-139">**Tracing**</span></span><br>`FailedRequestsTracingModule` | <span data-ttu-id="bdffd-140">예</span><span class="sxs-lookup"><span data-stu-id="bdffd-140">Yes</span></span> | [<span data-ttu-id="bdffd-141">ASP.NET Core 로깅</span><span class="sxs-lookup"><span data-stu-id="bdffd-141">ASP.NET Core Logging</span></span>](xref:fundamentals/logging#the-tracesource-provider)
+<span data-ttu-id="bdffd-142">**파일 캐싱**</span><span class="sxs-lookup"><span data-stu-id="bdffd-142">**File Caching**</span></span><br>`FileCacheModule` | <span data-ttu-id="bdffd-143">아니요</span><span class="sxs-lookup"><span data-stu-id="bdffd-143">No</span></span> | [<span data-ttu-id="bdffd-144">응답의 캐싱 미들웨어</span><span class="sxs-lookup"><span data-stu-id="bdffd-144">Response Caching Middleware</span></span>](xref:performance/caching/middleware)
+<span data-ttu-id="bdffd-145">**HTTP 캐싱**</span><span class="sxs-lookup"><span data-stu-id="bdffd-145">**HTTP Caching**</span></span><br>`HttpCacheModule` | <span data-ttu-id="bdffd-146">아니요</span><span class="sxs-lookup"><span data-stu-id="bdffd-146">No</span></span> | [<span data-ttu-id="bdffd-147">응답의 캐싱 미들웨어</span><span class="sxs-lookup"><span data-stu-id="bdffd-147">Response Caching Middleware</span></span>](xref:performance/caching/middleware)
+<span data-ttu-id="bdffd-148">**HTTP 로깅**</span><span class="sxs-lookup"><span data-stu-id="bdffd-148">**HTTP Logging**</span></span><br>`HttpLoggingModule` | <span data-ttu-id="bdffd-149">예</span><span class="sxs-lookup"><span data-stu-id="bdffd-149">Yes</span></span> | [<span data-ttu-id="bdffd-150">ASP.NET Core 로깅</span><span class="sxs-lookup"><span data-stu-id="bdffd-150">ASP.NET Core Logging</span></span>](xref:fundamentals/logging)<br><span data-ttu-id="bdffd-151">구현: [elmah.io](https://github.com/elmahio/Elmah.Io.Extensions.Logging), [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging), [NLog](https://github.com/NLog/NLog.Extensions.Logging), [Serilog](https://github.com/serilog/serilog-framework-logging)</span><span class="sxs-lookup"><span data-stu-id="bdffd-151">Implementations: [elmah.io](https://github.com/elmahio/Elmah.Io.Extensions.Logging), [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging), [NLog](https://github.com/NLog/NLog.Extensions.Logging), [Serilog](https://github.com/serilog/serilog-framework-logging)</span></span>
+<span data-ttu-id="bdffd-152">**HTTP 리디렉션**</span><span class="sxs-lookup"><span data-stu-id="bdffd-152">**HTTP Redirection**</span></span><br>`HttpRedirectionModule` | <span data-ttu-id="bdffd-153">예</span><span class="sxs-lookup"><span data-stu-id="bdffd-153">Yes</span></span> | [<span data-ttu-id="bdffd-154">URL 다시 쓰기 미들웨어</span><span class="sxs-lookup"><span data-stu-id="bdffd-154">URL Rewriting Middleware</span></span>](xref:fundamentals/url-rewriting)
+<span data-ttu-id="bdffd-155">**IIS 클라이언트 인증서 매핑 인증**</span><span class="sxs-lookup"><span data-stu-id="bdffd-155">**IIS Client Certificate Mapping Authentication**</span></span><br>`IISCertificateMappingAuthenticationModule` | <span data-ttu-id="bdffd-156">예</span><span class="sxs-lookup"><span data-stu-id="bdffd-156">Yes</span></span> | 
+<span data-ttu-id="bdffd-157">**IP 및 도메인 제한**</span><span class="sxs-lookup"><span data-stu-id="bdffd-157">**IP and Domain Restrictions**</span></span><br>`IpRestrictionModule` | <span data-ttu-id="bdffd-158">예</span><span class="sxs-lookup"><span data-stu-id="bdffd-158">Yes</span></span> | 
+<span data-ttu-id="bdffd-159">**ISAPI 필터**</span><span class="sxs-lookup"><span data-stu-id="bdffd-159">**ISAPI Filters**</span></span><br>`IsapiFilterModule` | <span data-ttu-id="bdffd-160">예</span><span class="sxs-lookup"><span data-stu-id="bdffd-160">Yes</span></span> | [<span data-ttu-id="bdffd-161">미들웨어</span><span class="sxs-lookup"><span data-stu-id="bdffd-161">Middleware</span></span>](xref:fundamentals/middleware)
+<span data-ttu-id="bdffd-162">**ISAPI**</span><span class="sxs-lookup"><span data-stu-id="bdffd-162">**ISAPI**</span></span><br>`IsapiModule` | <span data-ttu-id="bdffd-163">예</span><span class="sxs-lookup"><span data-stu-id="bdffd-163">Yes</span></span> | [<span data-ttu-id="bdffd-164">미들웨어</span><span class="sxs-lookup"><span data-stu-id="bdffd-164">Middleware</span></span>](xref:fundamentals/middleware)
+<span data-ttu-id="bdffd-165">**프로토콜 지원**</span><span class="sxs-lookup"><span data-stu-id="bdffd-165">**Protocol Support**</span></span><br>`ProtocolSupportModule` | <span data-ttu-id="bdffd-166">예</span><span class="sxs-lookup"><span data-stu-id="bdffd-166">Yes</span></span> | 
+<span data-ttu-id="bdffd-167">**요청 필터링**</span><span class="sxs-lookup"><span data-stu-id="bdffd-167">**Request Filtering**</span></span><br>`RequestFilteringModule` | <span data-ttu-id="bdffd-168">예</span><span class="sxs-lookup"><span data-stu-id="bdffd-168">Yes</span></span> | [<span data-ttu-id="bdffd-169">URL 다시 쓰기 미들웨어`IRule`</span><span class="sxs-lookup"><span data-stu-id="bdffd-169">URL Rewriting Middleware `IRule`</span></span>](xref:fundamentals/url-rewriting#irule-based-rule)
+<span data-ttu-id="bdffd-170">**요청 모니터**</span><span class="sxs-lookup"><span data-stu-id="bdffd-170">**Request Monitor**</span></span><br>`RequestMonitorModule` | <span data-ttu-id="bdffd-171">예</span><span class="sxs-lookup"><span data-stu-id="bdffd-171">Yes</span></span> | 
+<span data-ttu-id="bdffd-172">**URL 다시 쓰기**</span><span class="sxs-lookup"><span data-stu-id="bdffd-172">**URL Rewriting**</span></span><br>`RewriteModule` | <span data-ttu-id="bdffd-173">Yes†</span><span class="sxs-lookup"><span data-stu-id="bdffd-173">Yes†</span></span> | [<span data-ttu-id="bdffd-174">URL 다시 쓰기 미들웨어</span><span class="sxs-lookup"><span data-stu-id="bdffd-174">URL Rewriting Middleware</span></span>](xref:fundamentals/url-rewriting)
+<span data-ttu-id="bdffd-175">**SSI(SSI(Server Side Includes))**</span><span class="sxs-lookup"><span data-stu-id="bdffd-175">**Server Side Includes**</span></span><br>`ServerSideIncludeModule` | <span data-ttu-id="bdffd-176">아니요</span><span class="sxs-lookup"><span data-stu-id="bdffd-176">No</span></span> | 
+<span data-ttu-id="bdffd-177">**정적 압축**</span><span class="sxs-lookup"><span data-stu-id="bdffd-177">**Static Compression**</span></span><br>`StaticCompressionModule` | <span data-ttu-id="bdffd-178">아니요</span><span class="sxs-lookup"><span data-stu-id="bdffd-178">No</span></span> | [<span data-ttu-id="bdffd-179">응답 압축 미들웨어입니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-179">Response Compression Middleware</span></span>](xref:performance/response-compression)
+<span data-ttu-id="bdffd-180">**정적 콘텐츠**</span><span class="sxs-lookup"><span data-stu-id="bdffd-180">**Static Content**</span></span><br>`StaticFileModule` | <span data-ttu-id="bdffd-181">아니요</span><span class="sxs-lookup"><span data-stu-id="bdffd-181">No</span></span> | [<span data-ttu-id="bdffd-182">정적 파일 미들웨어</span><span class="sxs-lookup"><span data-stu-id="bdffd-182">Static File Middleware</span></span>](xref:fundamentals/static-files)
+<span data-ttu-id="bdffd-183">**토큰 캐싱**</span><span class="sxs-lookup"><span data-stu-id="bdffd-183">**Token Caching**</span></span><br>`TokenCacheModule` | <span data-ttu-id="bdffd-184">예</span><span class="sxs-lookup"><span data-stu-id="bdffd-184">Yes</span></span> | 
+<span data-ttu-id="bdffd-185">**URI 캐싱**</span><span class="sxs-lookup"><span data-stu-id="bdffd-185">**URI Caching**</span></span><br>`UriCacheModule` | <span data-ttu-id="bdffd-186">예</span><span class="sxs-lookup"><span data-stu-id="bdffd-186">Yes</span></span> | 
+<span data-ttu-id="bdffd-187">**URL 권한 부여**</span><span class="sxs-lookup"><span data-stu-id="bdffd-187">**URL Authorization**</span></span><br>`UrlAuthorizationModule` | <span data-ttu-id="bdffd-188">예</span><span class="sxs-lookup"><span data-stu-id="bdffd-188">Yes</span></span> | [<span data-ttu-id="bdffd-189">ASP.NET Core Identity</span><span class="sxs-lookup"><span data-stu-id="bdffd-189">ASP.NET Core Identity</span></span>](xref:security/authentication/identity)
+<span data-ttu-id="bdffd-190">**Windows 인증**</span><span class="sxs-lookup"><span data-stu-id="bdffd-190">**Windows Authentication**</span></span><br>`WindowsAuthenticationModule` | <span data-ttu-id="bdffd-191">예</span><span class="sxs-lookup"><span data-stu-id="bdffd-191">Yes</span></span> | 
 
-†The URL 다시 쓰기 모듈의 `isFile` 및 `isDirectory` 의 변경으로 인해 ASP.NET 핵심 응용 프로그램에서 작동 하지 않는 [디렉터리 구조](xref:hosting/directory-structure)합니다.
+<span data-ttu-id="bdffd-192">†The URL 재작성 모듈의 `isFile` 및 `isDirectory` 변경 때문에 ASP.NET Core 응용 프로그램에서 작동 하지 않는 [디렉터리 구조](xref:hosting/directory-structure)합니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-192">†The URL Rewrite Module's `isFile` and `isDirectory` do not work with ASP.NET Core applications due to the changes in [directory structure](xref:hosting/directory-structure).</span></span>
 
-## <a name="managed-modules"></a>관리 되는 모듈
-모듈 | .NET core 활성 | ASP.NET Core 옵션
+## <a name="managed-modules"></a><span data-ttu-id="bdffd-193">관리 되는 모듈</span><span class="sxs-lookup"><span data-stu-id="bdffd-193">Managed Modules</span></span>
+<span data-ttu-id="bdffd-194">모듈</span><span class="sxs-lookup"><span data-stu-id="bdffd-194">Module</span></span> | <span data-ttu-id="bdffd-195">.NET core 활성</span><span class="sxs-lookup"><span data-stu-id="bdffd-195">.NET Core Active</span></span> | <span data-ttu-id="bdffd-196">ASP.NET Core 옵션</span><span class="sxs-lookup"><span data-stu-id="bdffd-196">ASP.NET Core Option</span></span>
 --- | :---: | ---
-AnonymousIdentification | 아니요 | 
-DefaultAuthentication | 아니요 | 
-FileAuthorization | 아니요 | 
-FormsAuthentication | 아니요 | [쿠키 인증 미들웨어입니다.](xref:security/authentication/cookie)
-OutputCache | 아니요 | [응답의 캐싱 미들웨어](xref:performance/caching/middleware)
-프로필 | 아니요 | 
-RoleManager | 아니요 | 
-ScriptModule&4;.0 | 아니요 | 
-세션 | 아니요 | [세션 미들웨어](xref:fundamentals/app-state)
-UrlAuthorization | 아니요 | 
-UrlMappingsModule | 아니요 | [URL 다시 쓰기 미들웨어](xref:fundamentals/url-rewriting)
-UrlRoutingModule&4;.0 | 아니요 | [ASP.NET Core Identity](xref:security/authentication/identity)
-WindowsAuthentication | 아니요 | 
+<span data-ttu-id="bdffd-197">AnonymousIdentification</span><span class="sxs-lookup"><span data-stu-id="bdffd-197">AnonymousIdentification</span></span> | <span data-ttu-id="bdffd-198">아니요</span><span class="sxs-lookup"><span data-stu-id="bdffd-198">No</span></span> | 
+<span data-ttu-id="bdffd-199">DefaultAuthentication</span><span class="sxs-lookup"><span data-stu-id="bdffd-199">DefaultAuthentication</span></span> | <span data-ttu-id="bdffd-200">아니요</span><span class="sxs-lookup"><span data-stu-id="bdffd-200">No</span></span> | 
+<span data-ttu-id="bdffd-201">FileAuthorization</span><span class="sxs-lookup"><span data-stu-id="bdffd-201">FileAuthorization</span></span> | <span data-ttu-id="bdffd-202">아니요</span><span class="sxs-lookup"><span data-stu-id="bdffd-202">No</span></span> | 
+<span data-ttu-id="bdffd-203">FormsAuthentication</span><span class="sxs-lookup"><span data-stu-id="bdffd-203">FormsAuthentication</span></span> | <span data-ttu-id="bdffd-204">아니요</span><span class="sxs-lookup"><span data-stu-id="bdffd-204">No</span></span> | [<span data-ttu-id="bdffd-205">쿠키 인증 미들웨어입니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-205">Cookie Authentication Middleware</span></span>](xref:security/authentication/cookie)
+<span data-ttu-id="bdffd-206">OutputCache</span><span class="sxs-lookup"><span data-stu-id="bdffd-206">OutputCache</span></span> | <span data-ttu-id="bdffd-207">아니요</span><span class="sxs-lookup"><span data-stu-id="bdffd-207">No</span></span> | [<span data-ttu-id="bdffd-208">응답의 캐싱 미들웨어</span><span class="sxs-lookup"><span data-stu-id="bdffd-208">Response Caching Middleware</span></span>](xref:performance/caching/middleware)
+<span data-ttu-id="bdffd-209">프로필</span><span class="sxs-lookup"><span data-stu-id="bdffd-209">Profile</span></span> | <span data-ttu-id="bdffd-210">아니요</span><span class="sxs-lookup"><span data-stu-id="bdffd-210">No</span></span> | 
+<span data-ttu-id="bdffd-211">RoleManager</span><span class="sxs-lookup"><span data-stu-id="bdffd-211">RoleManager</span></span> | <span data-ttu-id="bdffd-212">아니요</span><span class="sxs-lookup"><span data-stu-id="bdffd-212">No</span></span> | 
+<span data-ttu-id="bdffd-213">ScriptModule 4.0</span><span class="sxs-lookup"><span data-stu-id="bdffd-213">ScriptModule-4.0</span></span> | <span data-ttu-id="bdffd-214">아니요</span><span class="sxs-lookup"><span data-stu-id="bdffd-214">No</span></span> | 
+<span data-ttu-id="bdffd-215">세션</span><span class="sxs-lookup"><span data-stu-id="bdffd-215">Session</span></span> | <span data-ttu-id="bdffd-216">아니요</span><span class="sxs-lookup"><span data-stu-id="bdffd-216">No</span></span> | [<span data-ttu-id="bdffd-217">세션 미들웨어</span><span class="sxs-lookup"><span data-stu-id="bdffd-217">Session Middleware</span></span>](xref:fundamentals/app-state)
+<span data-ttu-id="bdffd-218">UrlAuthorization</span><span class="sxs-lookup"><span data-stu-id="bdffd-218">UrlAuthorization</span></span> | <span data-ttu-id="bdffd-219">아니요</span><span class="sxs-lookup"><span data-stu-id="bdffd-219">No</span></span> | 
+<span data-ttu-id="bdffd-220">UrlMappingsModule</span><span class="sxs-lookup"><span data-stu-id="bdffd-220">UrlMappingsModule</span></span> | <span data-ttu-id="bdffd-221">아니요</span><span class="sxs-lookup"><span data-stu-id="bdffd-221">No</span></span> | [<span data-ttu-id="bdffd-222">URL 다시 쓰기 미들웨어</span><span class="sxs-lookup"><span data-stu-id="bdffd-222">URL Rewriting Middleware</span></span>](xref:fundamentals/url-rewriting)
+<span data-ttu-id="bdffd-223">UrlRoutingModule 4.0</span><span class="sxs-lookup"><span data-stu-id="bdffd-223">UrlRoutingModule-4.0</span></span> | <span data-ttu-id="bdffd-224">아니요</span><span class="sxs-lookup"><span data-stu-id="bdffd-224">No</span></span> | [<span data-ttu-id="bdffd-225">ASP.NET Core Identity</span><span class="sxs-lookup"><span data-stu-id="bdffd-225">ASP.NET Core  Identity</span></span>](xref:security/authentication/identity)
+<span data-ttu-id="bdffd-226">WindowsAuthentication</span><span class="sxs-lookup"><span data-stu-id="bdffd-226">WindowsAuthentication</span></span> | <span data-ttu-id="bdffd-227">아니요</span><span class="sxs-lookup"><span data-stu-id="bdffd-227">No</span></span> | 
 
-## <a name="iis-manager-application-changes"></a>IIS 관리자 응용 프로그램 변경
-직접 변경 하려는 IIS 관리자를 사용 하 여 설정을 구성 하는 *web.config* 앱의 파일입니다. 응용 프로그램을 배포 하 고 포함 하는 경우 *web.config*, IIS 관리자를 통한 모든 변경 사항을 덮어쓰게 됩니다에서 배포 된 *web.config 파일*합니다. 따라서 서버를 변경 하는 경우 *web.config* 파일, 업데이트 된 복사 *web.config* 파일을 즉시 로컬 프로젝트입니다.
+## <a name="iis-manager-application-changes"></a><span data-ttu-id="bdffd-228">IIS 관리자 응용 프로그램 변경</span><span class="sxs-lookup"><span data-stu-id="bdffd-228">IIS Manager application changes</span></span>
+<span data-ttu-id="bdffd-229">직접 변경 하는 IIS 관리자를 사용 하 여 설정을 구성 하는 *web.config* 앱의 파일입니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-229">When you use IIS Manager to configure settings, you're directly changing the *web.config* file of the app.</span></span> <span data-ttu-id="bdffd-230">앱을 배포 하 고 포함 된 경우 *web.config*, IIS 관리자를 통한 변경 내용을 덮어쓰게 됩니다가 배포 하 여 *web.config 파일*합니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-230">If you deploy your app and include *web.config*, any changes you made with IIS Manger will be overwritten by the deployed *web.config file*.</span></span> <span data-ttu-id="bdffd-231">따라서 서버를 변경 하는 경우 *web.config* 파일, 업데이트 된 복사 *web.config* 파일을 즉시 로컬 프로젝트.</span><span class="sxs-lookup"><span data-stu-id="bdffd-231">Therefore if you make changes to the server's *web.config* file, copy the updated *web.config* file to your local project immediately.</span></span>
 
-## <a name="disabling-iis-modules"></a>IIS 모듈을 사용 하지 않도록 설정
-IIS 모듈은 응용 프로그램에 대해 사용 하지 않도록 설정 하려면 서버 수준에서 구성 된 경우 않으려는에 추가로 프로그램 *web.config* 파일입니다. 모듈 그대로 남겨 두세요 구성 설정 (있는 경우)를 사용 하 여 비활성화 하거나 응용 프로그램에서 모듈을 제거 합니다.
+## <a name="disabling-iis-modules"></a><span data-ttu-id="bdffd-232">IIS 모듈을 사용 하지 않도록 설정</span><span class="sxs-lookup"><span data-stu-id="bdffd-232">Disabling IIS modules</span></span>
+<span data-ttu-id="bdffd-233">응용 프로그램에 대해 사용 하지 않도록 설정 하려면 서버 수준에서 구성 된 IIS 모듈이 있는 경우 그렇게 할 수 있습니다에 대 한 추가 된 프로그램 *web.config* 파일입니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-233">If you have an IIS module configured at the server level that you would like to disable for an application, you can do so with an addition to your *web.config* file.</span></span> <span data-ttu-id="bdffd-234">모듈 위치에 그대로 둡니다 (있는 경우)에 구성 설정을 사용 하 여 비활성화 하거나 응용 프로그램에서 모듈을 제거 합니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-234">Either leave the module in place and deactivate it using a configuration setting (if available) or remove the module from the app.</span></span>
 
-### <a name="module-deactivation"></a>모듈 비활성화
-많은 모듈에는 응용 프로그램에서 제거 하지 않고 해제할 수 있도록 구성 설정을 제공 합니다. 이 모듈을 비활성화 하려면 간단 하 고 가장 빠른 방법입니다. 예를 들어 IIS URL 다시 쓰기 모듈을 사용 하지 않도록 설정, 사용 하려는 경우는 `<httpRedirect>` 아래와 같이 요소입니다. 구성 설정 사용 하 여 모듈을 사용 하지 않도록 설정에 대 한 자세한 내용은 있는 링크는 *자식 요소* 섹션 [IIS `<system.webServer>` ](https://www.iis.net/configreference/system.webserver)합니다.
+### <a name="module-deactivation"></a><span data-ttu-id="bdffd-235">모듈 비활성화</span><span class="sxs-lookup"><span data-stu-id="bdffd-235">Module deactivation</span></span>
+<span data-ttu-id="bdffd-236">많은 모듈을 응용 프로그램에서이 제거 하지 않으려면 수 있는 구성 설정을 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-236">Many modules offer a configuration setting that will allow you to disable them without removing them from the application.</span></span> <span data-ttu-id="bdffd-237">이것이 모듈을 비활성화 하려면 가장 간단 하 고 가장 빠른 방법입니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-237">This is the simplest and quickest way to deactivate a module.</span></span> <span data-ttu-id="bdffd-238">예를 들어 IIS URL 재작성 모듈을 사용 하지 않도록 설정, 사용 하려는 경우는 `<httpRedirect>` 아래와 같이 요소입니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-238">For example if you wish to disable the IIS URL Rewrite Module, use the `<httpRedirect>` element as shown below.</span></span> <span data-ttu-id="bdffd-239">구성 설정 사용 하 여 모듈을 사용 하지 않도록 설정에 대 한 자세한 내용은 있는 링크는 *자식 요소* 섹션 [IIS `<system.webServer>` ](https://www.iis.net/configreference/system.webserver)합니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-239">For more information on disabling modules with configuration settings, follow the links in the *Child Elements* section of [IIS `<system.webServer>`](https://www.iis.net/configreference/system.webserver).</span></span>
 
 ```xml
 <configuration>
@@ -94,16 +94,16 @@ IIS 모듈은 응용 프로그램에 대해 사용 하지 않도록 설정 하�
 </configuration>
 ```
 
-### <a name="module-removal"></a>모듈 제거
-사용자의 설정을 사용 하 여 모듈을 제거 하기로 *web.config*, 모듈의 잠금을 해제 하 고 잠금을 해제 해야는 `<modules>` 섹션 *web.config* 첫 번째입니다. 단계는 다음과 같습니다.
+### <a name="module-removal"></a><span data-ttu-id="bdffd-240">모듈 제거</span><span class="sxs-lookup"><span data-stu-id="bdffd-240">Module removal</span></span>
+<span data-ttu-id="bdffd-241">설정을 사용 하 여 모듈을 제거 하도록 선택할 경우 *web.config*, 모듈의 잠금을 해제 하 고 잠금을 해제 해야는 `<modules>` 섹션 *web.config* 첫 번째입니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-241">If you opt to remove a module with a setting in *web.config*, you must unlock the module and unlock the `<modules>` section of *web.config* first.</span></span> <span data-ttu-id="bdffd-242">단계는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-242">The steps are outlined below:</span></span>
 
-1. 서버 수준에서 모듈의 잠금을 해제 합니다. IIS 관리자에서 IIS 서버를 클릭 **연결** 보충 합니다. 열기는 **모듈** 에 **IIS** 영역입니다. 목록에 있는 모듈을 클릭 합니다. 에 **작업** , 오른쪽에 클릭 **잠금 해제**합니다. 여러 모듈을 제거 하려면 잠금 해제 *web.config* 나중입니다.
+1. <span data-ttu-id="bdffd-243">서버 수준에서 모듈의 잠금을 해제 합니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-243">Unlock the module at the server level.</span></span> <span data-ttu-id="bdffd-244">IIS 관리자에서 IIS 서버의 클릭 **연결** 사이드바 합니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-244">Click on the IIS server in the IIS Manager **Connections** sidebar.</span></span> <span data-ttu-id="bdffd-245">열기는 **모듈** 에 **IIS** 영역입니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-245">Open the **Modules** in the **IIS** area.</span></span> <span data-ttu-id="bdffd-246">목록에 있는 모듈을 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-246">Click on the module in the list.</span></span> <span data-ttu-id="bdffd-247">에 **동작** , 오른쪽에 클릭 **잠금 해제**합니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-247">In the **Actions** sidebar on the right, click **Unlock**.</span></span> <span data-ttu-id="bdffd-248">많은 모듈을 사용 하 여 제거할 계획을 수립할 때 잠금을 해제 *web.config* 나중입니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-248">Unlock as many modules as you plan to remove with *web.config* later.</span></span>
 
-2. 응용 프로그램 없이 배포는 `<modules>` 섹션 *web.config*합니다. 사용 하 여 앱을 배포 하는 경우는 *web.config* 를 포함 하는 `<modules>` 섹션에 있는 잠금 해제 된 섹션 먼저 IIS 관리자에서 구성 관리자 섹션의 잠금을 해제 하려고 할 때 예외가 throw 됩니다. 따라서 없이 응용 프로그램을 배포는 `<modules>` 섹션입니다.
+2. <span data-ttu-id="bdffd-249">응용 프로그램 없이 배포는 `<modules>` 섹션 *web.config*합니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-249">Deploy your application without a `<modules>` section in *web.config*.</span></span> <span data-ttu-id="bdffd-250">사용 하 여 앱을 배포 하는 경우는 *web.config* 포함 하는 `<modules>` 섹션에 있는 섹션 잠금을 해제는 먼저 IIS 관리자에서 Configuration Manager는 섹션의 잠금을 해제 하려고 할 때 예외가 throw 됩니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-250">If you deploy an app with a *web.config* containing the `<modules>` section without having unlocked the section first in the IIS Manager, the Configuration Manager will throw an exception when you try to unlock the section.</span></span> <span data-ttu-id="bdffd-251">따라서 없이 응용 프로그램 배포는 `<modules>` 섹션.</span><span class="sxs-lookup"><span data-stu-id="bdffd-251">Therefore, deploy your application without a `<modules>` section.</span></span>
 
-3. 잠금 해제는 `<modules>` 섹션 *web.config*합니다. 에 **연결** 사이드바를 웹 사이트를 클릭 하 여 **사이트**합니다. 에 **관리** 영역을 열고는 **구성 편집기**합니다. 탐색 컨트롤을 사용 하 여 선택 된 `system.webServer/modules` 섹션입니다. 에 **작업** , 오른쪽에 클릭 하 여 **잠금 해제** 섹션입니다.
+3. <span data-ttu-id="bdffd-252">잠금 해제는 `<modules>` 섹션 *web.config*합니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-252">Unlock the `<modules>` section of *web.config*.</span></span> <span data-ttu-id="bdffd-253">에 **연결** 사이드바에서 웹 사이트를 클릭 **사이트**합니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-253">In the **Connections** sidebar, click the website in **Sites**.</span></span> <span data-ttu-id="bdffd-254">에 **관리** 영역을 열고는 **구성 편집기**합니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-254">In the **Management** area, open the **Configuration Editor**.</span></span> <span data-ttu-id="bdffd-255">탐색 컨트롤을 사용 하 여 선택 된 `system.webServer/modules` 섹션.</span><span class="sxs-lookup"><span data-stu-id="bdffd-255">Use the navigation controls to select the `system.webServer/modules` section.</span></span> <span data-ttu-id="bdffd-256">에 **동작** 를 클릭 하 여, 오른쪽에 **잠금 해제** 섹션입니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-256">In the **Actions** sidebar on the right, click to **Unlock** the section.</span></span>
 
-4. 이 시점에서 추가할 수는 `<modules>` 섹션을 프로그램 *web.config* 로 파일을 한 `<remove>` 요소를 응용 프로그램에서 모듈을 제거 합니다. 여러 개 추가할 수 `<remove>` 여러 모듈을 제거 하는 요소입니다. 잊지를 만들면 *web.config* 변경 내용을 서버에 프로젝트를 로컬에서 즉시 확인 합니다. 이러한 방식으로 모듈을 제거 하면 서버에서 다른 앱을 사용 하 여 모듈의 사용을 적용 되지 않습니다.
+4. <span data-ttu-id="bdffd-257">이 시점에서 추가할 수는 `<modules>` 섹션을 프로그램 *web.config* 파일는 `<remove>` 요소를 응용 프로그램에서 모듈을 제거 합니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-257">At this point, you will be able to add a `<modules>` section to your *web.config* file with a `<remove>` element to remove the module from the application.</span></span> <span data-ttu-id="bdffd-258">여러 개 추가할 수 `<remove>` 요소를 여러 모듈을 제거 합니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-258">You can add multiple `<remove>` elements to remove multiple modules.</span></span> <span data-ttu-id="bdffd-259">만들면를 잊지 마십시오 *web.config* 변경 내용을 서버에 프로젝트를 로컬에서 즉시 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-259">Don't forget that if you make *web.config* changes on the server to make them immediately in the project locally.</span></span> <span data-ttu-id="bdffd-260">이러한 방식으로 모듈을 제거 하면 사용자는 서버에서 다른 앱을 사용 하 여 모듈의 사용을 적용 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-260">Removing a module this way won't affect your use of the module with other apps on the server.</span></span>
 
   ```xml
   <configuration> 
@@ -115,7 +115,7 @@ IIS 모듈은 응용 프로그램에 대해 사용 하지 않도록 설정 하�
   </configuration>
   ```
 
-IIS 설치한 경우 설치 된 기본 모듈에서 다음을 사용할 수 있습니다 `<module>` 기본 모듈을 제거 하는 섹션입니다.
+<span data-ttu-id="bdffd-261">설치 된 기본 모듈로 IIS 설치의 경우 다음을 사용할 수 있습니다 `<module>` 기본 모듈을 제거 하려면 섹션.</span><span class="sxs-lookup"><span data-stu-id="bdffd-261">For an IIS installation with the default modules installed, you can use the following `<module>` section to remove the default modules.</span></span>
 
 ```xml
 <modules>
@@ -131,26 +131,25 @@ IIS 설치한 경우 설치 된 기본 모듈에서 다음을 사용할 수 있�
 </modules>
 ```
 
-사용 하 여 IIS 모듈을 제거할 수도 있습니다 *Appcmd.exe*합니다. 제공 된 `MODULE_NAME` 및 `APPLICATION_NAME` 아래에 표시 된 명령에서:
+<span data-ttu-id="bdffd-262">포함 하는 IIS 모듈을 제거할 수도 있습니다 *Appcmd.exe*합니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-262">You can also remove an IIS module with *Appcmd.exe*.</span></span> <span data-ttu-id="bdffd-263">제공 된 `MODULE_NAME` 및 `APPLICATION_NAME` 아래에 표시 된 명령에서:</span><span class="sxs-lookup"><span data-stu-id="bdffd-263">Provide the `MODULE_NAME` and `APPLICATION_NAME` in the command shown below:</span></span>
 
 ```console
 Appcmd.exe delete module MODULE_NAME /app.name:APPLICATION_NAME
 ```
 
-다음은 제거 하는 방법의 `DynamicCompressionModule` 기본 웹 사이트에서:
+<span data-ttu-id="bdffd-264">다음은 제거 하는 방법의 `DynamicCompressionModule` 기본 웹 사이트에서:</span><span class="sxs-lookup"><span data-stu-id="bdffd-264">Here's how to remove the `DynamicCompressionModule` from the Default Web Site:</span></span>
 
 ```console
 %windir%\system32\inetsrv\appcmd.exe delete module DynamicCompressionModule /app.name:"Default Web Site"
 ```
 
-## <a name="minimal-module-configuration"></a>최소 모듈 구성
-ASP.NET 핵심 응용 프로그램을 실행 하는 데 필요한 유일한 모듈은 익명 인증 모듈 및 ASP.NET 핵심 모듈입니다.
+## <a name="minimal-module-configuration"></a><span data-ttu-id="bdffd-265">최소 모듈 구성</span><span class="sxs-lookup"><span data-stu-id="bdffd-265">Minimal module configuration</span></span>
+<span data-ttu-id="bdffd-266">ASP.NET Core 응용 프로그램을 실행 하는 데 필요한 유일한 모듈은 익명 인증 모듈 및 ASP.NET Core 모듈입니다.</span><span class="sxs-lookup"><span data-stu-id="bdffd-266">The only modules required to run an ASP.NET Core application are the Anonymous Authentication Module and the ASP.NET Core Module.</span></span>
 
 ![표시 된 최소 모듈 구성을 사용 하 여 모듈에 IIS 관리자를 열려면](iis-modules/_static/modules.png)
 
-## <a name="resources"></a>리소스
-* [IIS에 게시](xref:publishing/iis)
-* [IIS 모듈 개요](https://www.iis.net/learn/get-started/introduction-to-iis/iis-modules-overview)
-* [IIS 7.0 역할 및 모듈을 사용자 지정](https://technet.microsoft.com/library/cc627313.aspx)
-* [IIS`<system.webServer>`](https://www.iis.net/configreference/system.webserver)
-
+## <a name="resources"></a><span data-ttu-id="bdffd-268">리소스</span><span class="sxs-lookup"><span data-stu-id="bdffd-268">Resources</span></span>
+* [<span data-ttu-id="bdffd-269">IIS에 게시</span><span class="sxs-lookup"><span data-stu-id="bdffd-269">Publishing to IIS</span></span>](xref:publishing/iis)
+* [<span data-ttu-id="bdffd-270">IIS 모듈 개요</span><span class="sxs-lookup"><span data-stu-id="bdffd-270">IIS Modules Overview</span></span>](https://www.iis.net/learn/get-started/introduction-to-iis/iis-modules-overview)
+* [<span data-ttu-id="bdffd-271">IIS 7.0 역할 및 모듈을 사용자 지정</span><span class="sxs-lookup"><span data-stu-id="bdffd-271">Customizing IIS 7.0 Roles and Modules</span></span>](https://technet.microsoft.com/library/cc627313.aspx)
+* [<span data-ttu-id="bdffd-272">IIS`<system.webServer>`</span><span class="sxs-lookup"><span data-stu-id="bdffd-272">IIS `<system.webServer>`</span></span>](https://www.iis.net/configreference/system.webserver)

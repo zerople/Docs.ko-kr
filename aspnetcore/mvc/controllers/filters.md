@@ -1,7 +1,7 @@
 ---
-title: "필터 | Microsoft 문서"
+title: "필터"
 author: ardalis
-description: "자세한 방법을 *필터* 작업 및 ASP.NET 핵심 MVC에서 사용 하는 방법입니다."
+description: "자세한 내용은 방법 * 필터 작업 및 ASP.NET Core MVC에서 사용 하는 방법입니다."
 keywords: "ASP.NET Core, 필터, mvc 필터, 작업 필터, 권한 부여 필터, 자원 필터, 결과 필터, 예외 필터"
 ms.author: tdykstra
 manager: wpickett
@@ -11,93 +11,92 @@ ms.assetid: 531bda08-aa5b-4471-8f08-96add22c8683
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/filters
-translationtype: Machine Translation
-ms.sourcegitcommit: 010b730d2716f9f536fef889bc2f767afb648ef4
-ms.openlocfilehash: 9672d56d69dbb13ab502d0a722a6d436b5a125e4
-ms.lasthandoff: 03/23/2017
-
+ms.openlocfilehash: bf90698bbac850b1917cd93dbf0a5fc5b6792aa0
+ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/11/2017
 ---
+# <a name="filters"></a><span data-ttu-id="79340-104">필터</span><span class="sxs-lookup"><span data-stu-id="79340-104">Filters</span></span>
 
-# <a name="filters"></a>필터
+<span data-ttu-id="79340-105">여 [Tom Dykstra](https://github.com/tdykstra/) 및 [Steve Smith](http://ardalis.com)</span><span class="sxs-lookup"><span data-stu-id="79340-105">By [Tom Dykstra](https://github.com/tdykstra/) and [Steve Smith](http://ardalis.com)</span></span>
 
-여 [Tom Dykstra](https://github.com/tdykstra/) 및 [Steve Smith](http://ardalis.com)
+<span data-ttu-id="79340-106">*필터* ASP.NET Core MVC에서 앞 이나 뒤 요청 처리 파이프라인의 특정 단계 코드를 실행할 수 있도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-106">*Filters* in ASP.NET Core MVC allow you to run code before or after certain stages in the request processing pipeline.</span></span>
 
-*필터* ASP.NET 핵심 MVC의 요청 처리 파이프라인의 특정 단계 전후에 코드를 실행할 수 있도록 합니다.
+ <span data-ttu-id="79340-107">모든 요청이 HTTPS 및 응답 (캐시 된 응답을 반환 하는 요청 파이프라인 단락 (short-circuiting)) 캐싱 사용 하는 확인 하는 권한 부여 (리소스에 대 한 권한이 없는 사용자에 대 한 액세스를 방지), 같은 기본 제공 필터 핸들 작업입니다.</span><span class="sxs-lookup"><span data-stu-id="79340-107">Built-in filters handle tasks such as authorization (preventing access to resources a user isn't authorized for), ensuring that all requests use HTTPS, and response caching (short-circuiting the request pipeline to return a cached response).</span></span> 
 
- 모든 요청이 HTTPS 및 응답 캐싱 (캐시 된 응답을 반환 하려면 요청 파이프라인 단락 (short-circuiting))를 사용 하는 확인 하는 권한 부여 (사용자에 대 한 권한이 없는 리소스에 대 한 액세스를 방지)와 같은 기본 제공 필터 핸들 작업입니다. 
+<span data-ttu-id="79340-108">응용 프로그램에 대 한 일반적인 문제를 처리 하는 사용자 지정 필터를 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-108">You can create custom filters to handle cross-cutting concerns for your application.</span></span> <span data-ttu-id="79340-109">작업에서 코드 중복 되지 않도록 하려면 언제 든 지 필터는 것이 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-109">Anytime you want to avoid duplicating code across actions, filters are the solution.</span></span> <span data-ttu-id="79340-110">예를 들어 오류 처리 코드에 예외 필터를 통합할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-110">For example, you can consolidate error handling code in a exception filter.</span></span>
 
-응용 프로그램에 대 한 문제를 처리 하는 사용자 지정 필터를 만들 수 있습니다. 코드 작업에서 중복 되지 않도록 하려면 언제 든 지 필터는 솔루션입니다. 예를 들어 예외 필터에서 오류 처리 코드를 통합할 수 있습니다.
+<span data-ttu-id="79340-111">[보기 또는 GitHub에서 샘플을 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/filters/sample)합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-111">[View or download sample from GitHub](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/filters/sample).</span></span>
 
-[보기 또는 GitHub에서 샘플을 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/filters/sample)합니다.
+## <a name="how-do-filters-work"></a><span data-ttu-id="79340-112">필터는 어떻게 작동 하나요?</span><span class="sxs-lookup"><span data-stu-id="79340-112">How do filters work?</span></span>
 
-## <a name="how-do-filters-work"></a>필터는 어떻게 작동 하는가?
+<span data-ttu-id="79340-113">내에서 실행 되는 필터는 *MVC 동작 호출 파이프라인*때로는 라고 하는 *필터 파이프라인*합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-113">Filters run within the *MVC action invocation pipeline*, sometimes referred to as the *filter pipeline*.</span></span>  <span data-ttu-id="79340-114">필터 파이프라인 실행할 작업을 선택 하는 MVC 후 실행 됩니다.</span><span class="sxs-lookup"><span data-stu-id="79340-114">The filter pipeline runs after MVC selects the action to execute.</span></span>
 
-내에서 실행 되는 필터는 *MVC 동작 호출 파이프라인*때로는 라고 하는 *필터 파이프라인*합니다.  필터 파이프라인에는 MVC가 실행할 작업을 선택한 후 실행 합니다.
+![다른 미들웨어, 라우팅 미들웨어, 작업 선택 및 MVC 동작 호출 파이프라인을 통해 요청이 처리 됩니다.](filters/_static/filter-pipeline-1.png)
 
-![요청은 다른 미들웨어, 라우팅 미들웨어, 작업 선택 및 MVC 동작 호출 파이프라인을 통해 처리 됩니다. 작업 선택, 라우팅 미들웨어 및 기타 다양 한 미들웨어를 통해 다시 응답이 클라이언트로 전송 되기 전에 요청 처리를 계속 합니다.](filters/_static/filter-pipeline-1.png)
+### <a name="filter-types"></a><span data-ttu-id="79340-117">필터 형식</span><span class="sxs-lookup"><span data-stu-id="79340-117">Filter types</span></span>
 
-### <a name="filter-types"></a>필터 형식
+<span data-ttu-id="79340-118">각 필터 형식 필터 파이프라인의 다른 단계에서 실행 됩니다.</span><span class="sxs-lookup"><span data-stu-id="79340-118">Each filter type is executed at a different stage in the filter pipeline.</span></span>
 
-각 필터 유형 필터 파이프라인의 다른 단계에서 실행 됩니다.
+* <span data-ttu-id="79340-119">[권한 부여 필터](#authorization-filters) 첫 번째 실행 하 고 현재 요청에 대 한 현재 사용자 권한이 있는지 여부를 결정 하는 데 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="79340-119">[Authorization filters](#authorization-filters) run first and are used to determine whether the current user is authorized for the current request.</span></span> <span data-ttu-id="79340-120">있습니다 수 단락 (short-circuit) 파이프라인 경우 요청이 인증 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-120">They can short-circuit the pipeline if a request is unauthorized.</span></span> 
 
-* [권한 부여 필터](#authorization-filters) 처음으로 실행 하 고 현재 사용자가 현재 요청에 대 한 권한이 있는지 여부를 결정 하는 데 사용 됩니다. 요청은 권한이 없을 경우 파이프라인 효율적으로 진행할 수 있습니다. 
+* <span data-ttu-id="79340-121">[리소스 필터](#resource-filters) 에 권한 부여 요청을 처리 됩니다.</span><span class="sxs-lookup"><span data-stu-id="79340-121">[Resource filters](#resource-filters) are the first to handle a request after authorization.</span></span>  <span data-ttu-id="79340-122">필터 파이프라인 및 파이프라인의 나머지 부분에서 완료 된 후 나머지 앞에 코드를 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-122">They can run code before the rest of the filter pipeline, and after the rest of the pipeline has completed.</span></span> <span data-ttu-id="79340-123">캐싱을 구현 또는 그렇지 않은 경우 성능상의 이유로 필터 파이프라인 단락 (short-circuit)에 유용 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-123">They're useful to implement caching or otherwise short-circuit the filter pipeline for performance reasons.</span></span> <span data-ttu-id="79340-124">모델 바인딩 전에 실행 하기 때문에 바인딩하는 모델에 영향을 줍니다 필요한 모든 항목에 대 한 유용 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-124">Since they run before model binding, they're useful for anything that needs to influence model binding.</span></span>
 
-* [자원 필터](#resource-filters) 권한 부여 후 요청을 처리 하기부터 됩니다.  필터 파이프라인 및 파이프라인의 나머지 완료 된 후 나머지 앞에 코드를 실행할 수 있습니다. 캐싱을 구현 또는 그렇지 않은 경우 성능상의 이유로 필터 파이프라인 단락 (short-circuit)에 유용 합니다. 모델 바인딩 전에 실행 하기 때문에 모델 바인딩에 영향을 주는 필요한 부분을 유용 합니다.
+* <span data-ttu-id="79340-125">[작업 필터](#action-filters) 하기 직전 및 개별 작업 메서드가 호출 된 후에 코드를 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-125">[Action filters](#action-filters) can run code immediately before and after an individual action method is called.</span></span> <span data-ttu-id="79340-126">작업에 전달 된 인수 및 작업에서 반환 된 결과 조작 하기 위한 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-126">They can be used to manipulate the arguments passed into an action and the result returned from the action.</span></span>
 
-* [작업 필터](#action-filters) 하기 직전 및 개별 작업 메서드를 호출한 후에 코드를 실행할 수 있습니다. 동작으로 전달 된 인수 및 작업에서 반환 된 결과 조작에 사용할 수 있습니다.
+* <span data-ttu-id="79340-127">[예외 필터](#exception-filters) 아무 것도 응답 본문에 쓰여지기 전에 발생 하는 처리 되지 않은 예외에 전역 정책을 적용 하는 데 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="79340-127">[Exception filters](#exception-filters) are used to apply global policies to unhandled exceptions that occur before anything has been written to the response body.</span></span>
 
-* [예외 필터](#exception-filters) 아무것도 응답 본문에 쓰여지기 전에 발생 하는 처리 되지 않은 예외에 전역 정책을 적용 하는 데 사용 됩니다.
+* <span data-ttu-id="79340-128">[필터 결과](#result-filters) 직전 및 개별 작업 결과 실행 한 후에 코드를 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-128">[Result filters](#result-filters) can run code immediately before and after the execution of individual action results.</span></span> <span data-ttu-id="79340-129">동작 메서드가 성공적으로 실행 하는 경우에 실행 및 보기 또는 포맷터 실행 둘러싸야 하는 논리는 데 유용 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-129">They run only when the action method has executed successfully and are useful for logic that must surround view or formatter execution.</span></span>
 
-* [필터 결과](#result-filters) 직전 및 개별 작업 결과 실행 한 후에 코드를 실행할 수 있습니다. 작업 메서드가 성공적으로 실행 하는 경우에 실행 하며 뷰 또는 포맷터 실행 묶어야 하는 논리에 유용 합니다.
+<span data-ttu-id="79340-130">다음 다이어그램에서는 이러한 종류의 필터는 필터 파이프라인에서 상호 작용 하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="79340-130">The following diagram shows how these filter types interact in the filter pipeline.</span></span>
 
-다음 다이어그램에서는 이러한 종류의 필터는 필터 파이프라인에서 상호 작용 하는 방법을 보여 줍니다.
+![요청 권한 부여 필터, 리소스 필터, 모델 바인딩, 동작 필터, 액션 실행 및 작업 결과 변환, 예외 필터, 결과 필터 및 결과 실행을 통해 처리 됩니다.](filters/_static/filter-pipeline-2.png)
 
-![요청 권한 부여 필터, 자원 필터, 모델 바인딩, 동작 필터, 작업이 실행 되 면 작업 결과가 변환, 예외 필터, 결과 및 필터 결과 실행을 통해 처리 됩니다. Out 길에 요청은만 결과 필터 및 리소스 필터에서 응답이 클라이언트로 전송 되기 전에 처리 됩니다.](filters/_static/filter-pipeline-2.png)
+## <a name="implementation"></a><span data-ttu-id="79340-133">구현</span><span class="sxs-lookup"><span data-stu-id="79340-133">Implementation</span></span>
 
-## <a name="implementation"></a>구현
+<span data-ttu-id="79340-134">필터에는 다른 인터페이스 정의 통해 동기 및 비동기 구현을 지원 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-134">Filters support both synchronous and asynchronous implementations through different interface definitions.</span></span> <span data-ttu-id="79340-135">수행 해야 하는 작업의 종류에 따라 동기화 또는 비동기 variant를 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-135">Choose either the sync or async variant depending on the kind of task you need to perform.</span></span> 
 
-필터에는 다른 인터페이스 정의 통해 동기 및 비동기 구현을 지원 합니다. 수행 해야 하는 작업의 종류에 따라 동기화 또는 비동기 variant를 선택 합니다. 
+<span data-ttu-id="79340-136">전과 후에 해당 파이프라인 단계 정의 둘 다 동기 필터를 실행할 수 있는 코드*단계*Executing 및*단계*메서드를 실행 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-136">Synchronous filters that can run code both before and after their pipeline stage define On*Stage*Executing and On*Stage*Executed methods.</span></span> <span data-ttu-id="79340-137">예를 들어 `OnActionExecuting` 동작 메서드를 호출 하기 전에 라고 및 `OnActionExecuted` 동작 메서드에서 반환 된 후 호출 됩니다.</span><span class="sxs-lookup"><span data-stu-id="79340-137">For example, `OnActionExecuting` is called before the action method is called, and `OnActionExecuted` is called after the action method returns.</span></span>
 
-전후에 정의 된 해당 파이프라인 단계를 실행할 수 있는 동기 필터 코드 모두*단계*Executing 및*단계*메서드를 실행 합니다. 예를 들어 `OnActionExecuting` 작업 메서드를 호출 하기 전에 호출 됩니다 및 `OnActionExecuted` 작업 메서드가 반환 된 후 호출 됩니다.
+<span data-ttu-id="79340-138">[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/SampleActionFilter.cs?highlight=6,8,13)]</span><span class="sxs-lookup"><span data-stu-id="79340-138">[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/SampleActionFilter.cs?highlight=6,8,13)]</span></span>
 
-[!code-csharp[주](./filters/sample/src/FiltersSample/Filters/SampleActionFilter.cs?highlight=6,8,13)]
+<span data-ttu-id="79340-139">비동기 필터에는 단일 정의*단계*ExecutionAsync 메서드.</span><span class="sxs-lookup"><span data-stu-id="79340-139">Asynchronous filters define a single On*Stage*ExecutionAsync method.</span></span> <span data-ttu-id="79340-140">이 메서드는 *FilterType*필터의 파이프라인 단계를 실행 하는 ExecutionDelegate 대리자입니다.</span><span class="sxs-lookup"><span data-stu-id="79340-140">This method takes a *FilterType*ExecutionDelegate delegate which executes the filter's pipeline stage.</span></span> <span data-ttu-id="79340-141">예를 들어 `ActionExecutionDelegate` 호출 동작 메서드를 실행할 수 있습니다 코드 전과 후 프로시저를 호출 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-141">For example, `ActionExecutionDelegate` calls the action method, and you can execute code before and after you call it.</span></span>
 
-비동기 필터에는 단일 정의*단계*ExecutionAsync 메서드. 이 메서드는 *FilterType*ExecutionDelegate 대리자 필터의 파이프라인 단계를 실행 합니다. 예를 들어 `ActionExecutionDelegate` 호출 작업 메서드를 실행할 수 있습니다 코드 전후 프로시저를 호출 합니다.
+<span data-ttu-id="79340-142">[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/SampleAsyncActionFilter.cs?highlight=6,8-10,13)]</span><span class="sxs-lookup"><span data-stu-id="79340-142">[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/SampleAsyncActionFilter.cs?highlight=6,8-10,13)]</span></span>
 
-[!code-csharp[주](./filters/sample/src/FiltersSample/Filters/SampleAsyncActionFilter.cs?highlight=6,8-10,13)]
-
-단일 클래스에 여러 필터 단계에 대 한 인터페이스를 구현할 수 있습니다. 예를 들어는 [ActionFilterAttribute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.filters.actionfilterattribute) 모두 추상 클래스 구현 `IActionFilter` 및 `IResultFilter`와 비동기가에 해당 합니다.
+<span data-ttu-id="79340-143">단일 클래스에 여러 필터 단계에 대 한 인터페이스를 구현할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-143">You can implement interfaces for multiple filter stages in a single class.</span></span> <span data-ttu-id="79340-144">예를 들어는 [ActionFilterAttribute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.filters.actionfilterattribute) 둘 다 추상 클래스 구현 `IActionFilter` 및 `IResultFilter`, 비동기 상응 뿐만 아니라 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-144">For example, the [ActionFilterAttribute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.filters.actionfilterattribute) abstract class implements both `IActionFilter` and `IResultFilter`, as well as their async equivalents.</span></span>
 
 > [!NOTE]
-> 구현 **어느** 동기 또는 비동기 버전을 둘 다는 필터 인터페이스입니다. 프레임 워크를 필터 비동기 인터페이스를 구현 하 고, 호출 하는 경우 먼저 확인 합니다. 그렇지 않으면 동기 인터페이스의 메서드를 호출 합니다. 하나의 클래스에 두 인터페이스를 구현 하는 경우, 비동기 메서드만 호출 됩니다. 와 같은 추상 클래스를 사용 하는 경우 [ActionFilterAttribute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.filters.actionfilterattribute) 동기 메서드만 또는 각 필터 형식에 대 한 비동기 메서드를 재정의 합니다.
+> <span data-ttu-id="79340-145">구현 **어느** 동기 또는 둘 다 필터 인터페이스의 비동기 버전입니다.</span><span class="sxs-lookup"><span data-stu-id="79340-145">Implement **either** the synchronous or the async version of a filter interface, not both.</span></span> <span data-ttu-id="79340-146">프레임 워크를 필터 비동기 인터페이스를 구현 하 고 있다면를 호출 하는 경우 먼저 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-146">The framework checks first to see if the filter implements the async interface, and if so, it calls that.</span></span> <span data-ttu-id="79340-147">파일이 없으면 동기 인터페이스의 메서드를 호출 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-147">If not, it calls the synchronous interface's method(s).</span></span> <span data-ttu-id="79340-148">하나의 클래스에 두 인터페이스를 구현 하는 경우, 비동기 메서드가 이라고 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-148">If you were to implement both interfaces on one class, only the async method would be called.</span></span> <span data-ttu-id="79340-149">와 같은 추상 클래스를 사용 하는 경우 [ActionFilterAttribute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.filters.actionfilterattribute) 동기 메서드만 또는 각 필터 형식에 대 한 비동기 메서드를 재정의 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-149">When using abstract classes like [ActionFilterAttribute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.filters.actionfilterattribute) you would override only the synchronous methods or the async method for each filter type.</span></span>
 
-### <a name="ifilterfactory"></a>IFilterFactory
+### <a name="ifilterfactory"></a><span data-ttu-id="79340-150">IFilterFactory</span><span class="sxs-lookup"><span data-stu-id="79340-150">IFilterFactory</span></span>
 
-`IFilterFactory`는 `IFilter`를 구현합니다. 따라서는 `IFilterFactory` 으로 인스턴스를 사용할 수는 `IFilter` 필터 파이프라인의 모든 위치에서 인스턴스. 으로 캐스팅 하려고 시도 하는 필터를 호출 하는 프레임 워크를 준비 하는 경우는 `IFilterFactory`합니다. 해당 캐스트에 성공 하면는 `CreateInstance` 메서드는 만들기는 `IFilter` 호출 되는 인스턴스. 정확한 필터 파이프라인 응용 프로그램이 시작 될 때 명시적으로 설정 하지 않아도 되므로 매우 유연한 디자인을 제공 합니다.
+<span data-ttu-id="79340-151">`IFilterFactory`는 `IFilter`를 구현합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-151">`IFilterFactory` implements `IFilter`.</span></span> <span data-ttu-id="79340-152">따라서는 `IFilterFactory` 으로 인스턴스를 사용할 수 있습니다는 `IFilter` 필터 파이프라인의 아무 곳 이나 인스턴스.</span><span class="sxs-lookup"><span data-stu-id="79340-152">Therefore, an `IFilterFactory` instance can be used as an `IFilter` instance anywhere in the filter pipeline.</span></span> <span data-ttu-id="79340-153">으로 캐스팅을 시도 하는 필터를 호출 하는 프레임 워크를 준비 하는 경우는 `IFilterFactory`합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-153">When the framework prepares to invoke the filter, it attempts to cast it to an `IFilterFactory`.</span></span> <span data-ttu-id="79340-154">해당 캐스트에 성공 하면는 `CreateInstance` 메서드는 만들려는 `IFilter` 호출 되는 인스턴스.</span><span class="sxs-lookup"><span data-stu-id="79340-154">If that cast succeeds, the `CreateInstance` method is called to create the `IFilter` instance that will be invoked.</span></span> <span data-ttu-id="79340-155">응용 프로그램이 시작 될 때 명시적으로 설정 하지 않아도 정밀한 필터 파이프라인 이후 유연 하 게 디자인을 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-155">This provides a very flexible design, since the precise filter pipeline does not need to be set explicitly when the application starts.</span></span>
 
-구현할 수 있습니다 `IFilterFactory` 필터를 만드는 다른 방법으로 사용자 고유의 특성 구현 합니다.
+<span data-ttu-id="79340-156">구현할 수 있습니다 `IFilterFactory` 필터를 만드는 다른 방법으로 사용자 고유의 특성 구현:</span><span class="sxs-lookup"><span data-stu-id="79340-156">You can implement `IFilterFactory` on your own attribute implementations as another approach to creating filters:</span></span>
 
-[!code-csharp[주](./filters/sample/src/FiltersSample/Filters/AddHeaderWithFactoryAttribute.cs?name=snippet_IFilterFactory&highlight=1,4,5,6,7)]
+<span data-ttu-id="79340-157">[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/AddHeaderWithFactoryAttribute.cs?name=snippet_IFilterFactory&highlight=1,4,5,6,7)]</span><span class="sxs-lookup"><span data-stu-id="79340-157">[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/AddHeaderWithFactoryAttribute.cs?name=snippet_IFilterFactory&highlight=1,4,5,6,7)]</span></span>
 
-### <a name="built-in-filter-attributes"></a>기본 제공 필터 특성
+### <a name="built-in-filter-attributes"></a><span data-ttu-id="79340-158">기본 제공 필터 특성</span><span class="sxs-lookup"><span data-stu-id="79340-158">Built-in filter attributes</span></span>
 
-프레임 워크 하위 클래스를 할 수 있는 기본 제공 특성 기반 필터를 포함 하 고 사용자 지정 합니다. 예를 들어, 다음과 같은 결과 필터 응답에 대 한 헤더를 추가 합니다.
+<span data-ttu-id="79340-159">프레임 워크 하위 클래스를 할 수 있는 기본 제공 특성 기반 필터를 포함 하 고 사용자 지정 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-159">The framework includes built-in attribute-based filters that you can subclass and customize.</span></span> <span data-ttu-id="79340-160">예를 들어 다음 결과 필터 응답에 대 한 헤더를 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-160">For example, the following Result filter adds a header to the response.</span></span>
 
 <a name=add-header-attribute></a>
 
-[!code-csharp[주](./filters/sample/src/FiltersSample/Filters/AddHeaderAttribute.cs?highlight=5,16)]
+<span data-ttu-id="79340-161">[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/AddHeaderAttribute.cs?highlight=5,16)]</span><span class="sxs-lookup"><span data-stu-id="79340-161">[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/AddHeaderAttribute.cs?highlight=5,16)]</span></span>
 
-위의 예제와 같이 인수를 수락 하는 필터를 허용 하는 특성입니다. 컨트롤러 또는 작업 메서드에이 특성을 추가 하는 이름 및 HTTP 헤더의 값을 지정 합니다.
+<span data-ttu-id="79340-162">위의 예제에서와 같이 인수를 허용 하도록 필터를 허용 하는 특성입니다.</span><span class="sxs-lookup"><span data-stu-id="79340-162">Attributes allow filters to accept arguments, as shown in the example above.</span></span> <span data-ttu-id="79340-163">이 특성을 컨트롤러나 동작 메서드에 추가 하는 이름 및 HTTP 헤더의 값을 지정:</span><span class="sxs-lookup"><span data-stu-id="79340-163">You would add this attribute to a controller or action method and specify the name and value of the HTTP header:</span></span>
 
-[!code-csharp[주](./filters/sample/src/FiltersSample/Controllers/SampleController.cs?name=snippet_AddHeader&highlight=1)]
+<span data-ttu-id="79340-164">[!code-csharp[Main](./filters/sample/src/FiltersSample/Controllers/SampleController.cs?name=snippet_AddHeader&highlight=1)]</span><span class="sxs-lookup"><span data-stu-id="79340-164">[!code-csharp[Main](./filters/sample/src/FiltersSample/Controllers/SampleController.cs?name=snippet_AddHeader&highlight=1)]</span></span>
 
-결과 `Index` 작업 아래에 표시 되어-응답 헤더의 오른쪽 아래에 표시 됩니다.
+<span data-ttu-id="79340-165">결과 `Index` 작업 다음과 같습니다.-응답 헤더의 오른쪽 아래에 표시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="79340-165">The result of the `Index` action is shown below - the response headers are displayed on the bottom right.</span></span>
 
-![개발자 도구의 Microsoft Edge 작성자 Steve Smith를 포함 하 여 응답 헤더를 표시 합니다.@ardalis](filters/_static/add-header.png)
+![개발자 도구의 Microsoft Edge 작성자 Steve Smith를 포함 하 여 응답 헤더를 보여 주는@ardalis](filters/_static/add-header.png)
 
-여러 필터 인터페이스 사용자 지정 구현을 위한 기본 클래스로 사용할 수 있는 해당 특성을 가집니다.
+<span data-ttu-id="79340-167">여러 필터 인터페이스 사용자 지정 구현에 대 한 기본 클래스로 사용할 수 있는 해당 특성을 가집니다.</span><span class="sxs-lookup"><span data-stu-id="79340-167">Several of the filter interfaces have corresponding attributes that can be used as base classes for custom implementations.</span></span>
 
-특성을 필터링 합니다.
+<span data-ttu-id="79340-168">필터 속성:</span><span class="sxs-lookup"><span data-stu-id="79340-168">Filter attributes:</span></span>
 
 * `ActionFilterAttribute`
 * `ExceptionFilterAttribute`
@@ -106,225 +105,224 @@ ms.lasthandoff: 03/23/2017
 * `ServiceFilterAttribute`
 * `TypeFilterAttribute`
 
-`TypeFilterAttribute`및 `ServiceFilterAttribute` 설명 [이 문서의 뒷부분에 나오는](#dependency-injection)합니다.
+<span data-ttu-id="79340-169">`TypeFilterAttribute`및 `ServiceFilterAttribute` 설명 [이 문서의 뒷부분에 나오는](#dependency-injection)합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-169">`TypeFilterAttribute` and `ServiceFilterAttribute` are explained [later in this article](#dependency-injection).</span></span>
 
-## <a name="filter-scopes-and-order-of-execution"></a>필터 범위와 실행 순서
+## <a name="filter-scopes-and-order-of-execution"></a><span data-ttu-id="79340-170">필터 범위와 실행 순서</span><span class="sxs-lookup"><span data-stu-id="79340-170">Filter scopes and order of execution</span></span>
 
-세 가지 중 하나에서 파이프라인에 필터를 추가할 수 있습니다 *범위*합니다. 특성을 사용 하 여 컨트롤러 클래스 또는 특정 작업 메서드에 필터를 추가할 수 있습니다. 하거나 추가 하 여 전역적으로 (에 대 한 모든 컨트롤러와 작업) 필터를 등록할 수는 `MvcOptions.Filters` 컬렉션에는 `ConfigureServices` 에서 메서드는 `Startup` 클래스:
+<span data-ttu-id="79340-171">3 중 하나에서 파이프라인에 필터를 추가할 수 있습니다 *범위*합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-171">A filter can be added to the pipeline at one of three *scopes*.</span></span> <span data-ttu-id="79340-172">특성을 사용 하 여 특정 작업 메서드 또는 컨트롤러 클래스는 필터를 추가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-172">You can add a filter to a particular action method or to a controller class by using an attribute.</span></span> <span data-ttu-id="79340-173">하거나 추가 하 여 전역적으로 (에 대 한 필터 모든 컨트롤러 및 작업)을 등록할 수 있습니다는 `MvcOptions.Filters` 컬렉션에는 `ConfigureServices` 에서 메서드는 `Startup` 클래스:</span><span class="sxs-lookup"><span data-stu-id="79340-173">Or you can register a filter globally (for all controllers and actions) by adding it to the `MvcOptions.Filters` collection in the `ConfigureServices` method in the `Startup` class:</span></span>
 
-[!code-csharp[주](./filters/sample/src/FiltersSample/Startup.cs?name=snippet_ConfigureServices&highlight=5-8)]
+<span data-ttu-id="79340-174">[!code-csharp[Main](./filters/sample/src/FiltersSample/Startup.cs?name=snippet_ConfigureServices&highlight=5-8)]</span><span class="sxs-lookup"><span data-stu-id="79340-174">[!code-csharp[Main](./filters/sample/src/FiltersSample/Startup.cs?name=snippet_ConfigureServices&highlight=5-8)]</span></span>
 
-### <a name="default-order-of-execution"></a>기본 실행 순서
+### <a name="default-order-of-execution"></a><span data-ttu-id="79340-175">기본 실행 순서</span><span class="sxs-lookup"><span data-stu-id="79340-175">Default order of execution</span></span>
 
-파이프라인의 특정 단계에 대 한 여러 개의 필터가 있을 경우 범위는 기본 필터 실행 순서를 결정 합니다.  전역 필터를 차례로 메서드 필터를 포함 하는 클래스 필터를 묶습니다. 이 라고도으로 "러시아어 인형" 중첩 범위에 하나씩 늘어날 때마다 주위에 래핑된 이전 범위와 같은 한 [중첩 인형](https://en.wikipedia.org/wiki/Matryoshka_doll)합니다. 일반적으로 명시적으로 순서를 결정 하지 않고도 원하는 재정의 동작을 얻습니다.
+<span data-ttu-id="79340-176">파이프라인의 특정 단계에 대 한 여러 개의 필터가 있을 경우 범위는 기본 필터 실행 순서를 결정 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-176">When there are multiple filters for a particular stage of the pipeline, scope determines the default order of filter execution.</span></span>  <span data-ttu-id="79340-177">전역 필터를 대괄호 안에 메서드 필터 클래스 필터를 묶습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-177">Global filters surround class filters, which in turn surround method filters.</span></span> <span data-ttu-id="79340-178">이 라고도 "러시아어 돌" 중첩으로 범위가 증가할 때마다 둘러싸는 앞의 범위와 같은 한 [중첩 돌](https://en.wikipedia.org/wiki/Matryoshka_doll)합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-178">This is sometimes referred to as "Russian doll" nesting, as each increase in scope is wrapped around the previous scope, like a [nesting doll](https://en.wikipedia.org/wiki/Matryoshka_doll).</span></span> <span data-ttu-id="79340-179">일반적으로 명시적으로 순서를 확인할 필요 없이 원하는 재정의 동작을 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="79340-179">You generally get the desired overriding behavior without having to explicitly determine ordering.</span></span>
 
-이 중첩 Asa 결과 *후* 의 역순으로 실행 되는 필터의 코드는 *전에* 코드입니다. 시퀀스는 다음과 같습니다.
+<span data-ttu-id="79340-180">이 중첩 Asa 결과 *후* 의 역순으로에서 실행 되는 필터의 코드는 *하기 전에* 코드입니다.</span><span class="sxs-lookup"><span data-stu-id="79340-180">Asa result of this nesting, the *after* code of filters runs in the reverse order of the *before* code.</span></span> <span data-ttu-id="79340-181">시퀀스는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-181">The sequence looks like this:</span></span>
 
-* *전에* 전체적으로 적용 된 필터의 코드
-  * *전에* 컨트롤러에 적용 된 필터의 코드
-    * *전에* 작업 메서드에 적용 된 필터의 코드
-    * *후* 작업 메서드에 적용 된 필터의 코드
-  * *후* 컨트롤러에 적용 된 필터의 코드
-* *후* 전체적으로 적용 된 필터의 코드
+* <span data-ttu-id="79340-182">*전에* 전체적으로 적용 된 필터의 코드</span><span class="sxs-lookup"><span data-stu-id="79340-182">The *before* code of filters applied globally</span></span>
+  * <span data-ttu-id="79340-183">*전에* 컨트롤러에 적용 된 필터의 코드</span><span class="sxs-lookup"><span data-stu-id="79340-183">The *before* code of filters applied to controllers</span></span>
+    * <span data-ttu-id="79340-184">*전에* 작업 메서드에 적용 된 필터의 코드</span><span class="sxs-lookup"><span data-stu-id="79340-184">The *before* code of filters applied to action methods</span></span>
+    * <span data-ttu-id="79340-185">*후* 작업 메서드에 적용 된 필터의 코드</span><span class="sxs-lookup"><span data-stu-id="79340-185">The *after* code of filters applied to action methods</span></span>
+  * <span data-ttu-id="79340-186">*후* 컨트롤러에 적용 된 필터의 코드</span><span class="sxs-lookup"><span data-stu-id="79340-186">The *after* code of filters applied to controllers</span></span>
+* <span data-ttu-id="79340-187">*후* 전체적으로 적용 된 필터의 코드</span><span class="sxs-lookup"><span data-stu-id="79340-187">The *after* code of filters applied globally</span></span>
   
-동기 작업 필터에 대 한 필터 메서드를 호출 하는 순서를 보여 주는 예제는 다음과 같습니다.
+<span data-ttu-id="79340-188">필터 메서드는 동기 작업 필터에 대 한 호출 되는 순서를 보여 주는 예제는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-188">Here's an example that illustrates the order in which filter methods are called for synchronous Action filters.</span></span>
 
-| Sequence | 필터 범위 | Filter 메서드 |
+| <span data-ttu-id="79340-189">Sequence</span><span class="sxs-lookup"><span data-stu-id="79340-189">Sequence</span></span> | <span data-ttu-id="79340-190">필터 범위</span><span class="sxs-lookup"><span data-stu-id="79340-190">Filter scope</span></span> | <span data-ttu-id="79340-191">Filter 메서드</span><span class="sxs-lookup"><span data-stu-id="79340-191">Filter method</span></span> |
 |:--------:|:------------:|:-------------:|
-| 1 | Global | `OnActionExecuting` |
-| 2 | 컨트롤러 | `OnActionExecuting` |
-| 3 | 메서드 | `OnActionExecuting` |
-| 4 | 메서드 | `OnActionExecuted` |
-| 5 | 컨트롤러 | `OnActionExecuted` |
-| 6 | Global | `OnActionExecuted` |
+| <span data-ttu-id="79340-192">1</span><span class="sxs-lookup"><span data-stu-id="79340-192">1</span></span> | <span data-ttu-id="79340-193">Global</span><span class="sxs-lookup"><span data-stu-id="79340-193">Global</span></span> | `OnActionExecuting` |
+| <span data-ttu-id="79340-194">2</span><span class="sxs-lookup"><span data-stu-id="79340-194">2</span></span> | <span data-ttu-id="79340-195">컨트롤러</span><span class="sxs-lookup"><span data-stu-id="79340-195">Controller</span></span> | `OnActionExecuting` |
+| <span data-ttu-id="79340-196">3</span><span class="sxs-lookup"><span data-stu-id="79340-196">3</span></span> | <span data-ttu-id="79340-197">메서드</span><span class="sxs-lookup"><span data-stu-id="79340-197">Method</span></span> | `OnActionExecuting` |
+| <span data-ttu-id="79340-198">4</span><span class="sxs-lookup"><span data-stu-id="79340-198">4</span></span> | <span data-ttu-id="79340-199">메서드</span><span class="sxs-lookup"><span data-stu-id="79340-199">Method</span></span> | `OnActionExecuted` |
+| <span data-ttu-id="79340-200">5</span><span class="sxs-lookup"><span data-stu-id="79340-200">5</span></span> | <span data-ttu-id="79340-201">컨트롤러</span><span class="sxs-lookup"><span data-stu-id="79340-201">Controller</span></span> | `OnActionExecuted` |
+| <span data-ttu-id="79340-202">6</span><span class="sxs-lookup"><span data-stu-id="79340-202">6</span></span> | <span data-ttu-id="79340-203">Global</span><span class="sxs-lookup"><span data-stu-id="79340-203">Global</span></span> | `OnActionExecuted` |
 
-이 시퀀스 메서드 필터 컨트롤러 필터 내에 중첩 된 컨트롤러 필터 전역 필터 내에 중첩 되어 표시 됩니다. 배치 하 라는 다른 방식으로 async 필터 내부 라면의 온*단계*ExecutionAsync 메서드를 더 엄격 하 게 범위를 사용 하 여 필터의 모든 코드를 실행 스택에 합니다.
+<span data-ttu-id="79340-204">이 시퀀스 메서드 필터 컨트롤러 필터 안에 중첩 되 고 컨트롤러 필터 전역 필터 내에 중첩 되어 있는지를 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="79340-204">This sequence shows that the method filter is nested within the controller filter, and the controller filter is nested within the global filter.</span></span> <span data-ttu-id="79340-205">배치 하 라는 다른 방식으로, 비동기 필터 내 인 경우의 온*단계*ExecutionAsync 메서드 긴밀 하 게 범위를 사용 하 여 필터의 모든 코드를 실행 스택에 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-205">To put it another way, if you're inside an async filter's On*Stage*ExecutionAsync method, all of the filters with a tighter scope run while your code is on the stack.</span></span>
 
 > [!NOTE]
-> 상속 하는 모든 컨트롤러는 `Controller` 기본 클래스에 포함 되어 `OnActionExecuting` 및 `OnActionExecuted` 메서드. 이러한 메서드를 실행 하는 지정된 된 동작에 대 한 필터를 래핑할: `OnActionExecuting` 있는 필터 보다 먼저 호출 됩니다 및 `OnActionExecuted` 후 필터를 모두 호출 됩니다.
+> <span data-ttu-id="79340-206">상속 되는 모든 컨트롤러는 `Controller` 기본 클래스에 `OnActionExecuting` 및 `OnActionExecuted` 메서드.</span><span class="sxs-lookup"><span data-stu-id="79340-206">Every controller that inherits from the `Controller` base class includes `OnActionExecuting` and `OnActionExecuted` methods.</span></span> <span data-ttu-id="79340-207">이러한 메서드를 실행 하는 지정된 된 동작에 대 한 필터를 래핑할: `OnActionExecuting` 에서 필터 보다 먼저 호출 됩니다 및 `OnActionExecuted` 모든 필터 후에 호출 됩니다.</span><span class="sxs-lookup"><span data-stu-id="79340-207">These methods wrap the filters that run for a given action:  `OnActionExecuting` is called before any of the filters, and `OnActionExecuted` is called after all of the filters.</span></span>
 
-### <a name="overriding-the-default-order"></a>기본 순서를 재정의합니다.
+### <a name="overriding-the-default-order"></a><span data-ttu-id="79340-208">기본 순서를 재정의합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-208">Overriding the default order</span></span>
 
-구현 하 여 실행의 기본 시퀀스를 재정의할 수 있습니다 `IOrderedFilter`합니다. 이 인터페이스를 노출 한 `Order` 실행의 순서를 결정 하는 범위에 대해 우선 순위를 사용 하는 속성입니다. 낮은 필터 `Order` 값을 갖습니다 해당 *전에* 코드를 더 높은 값으로 필터 보다 먼저 실행 `Order`합니다. 낮은 필터 `Order` 값을 갖습니다 해당 *후* 그 필터를 더 높은 실행 코드 `Order` 값입니다. 설정할 수는 `Order` 생성자 매개 변수를 사용 하 여 속성:
+<span data-ttu-id="79340-209">구현 하 여 실행의 기본 시퀀스를 재정의할 수 있습니다 `IOrderedFilter`합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-209">You can override the default sequence of execution by implementing `IOrderedFilter`.</span></span> <span data-ttu-id="79340-210">이 인터페이스를 노출 한 `Order` 실행 순서를 결정 하는 범위에 대해 우선 순위를 사용 하는 속성입니다.</span><span class="sxs-lookup"><span data-stu-id="79340-210">This interface exposes an `Order` property that takes precedence over scope to determine the order of execution.</span></span> <span data-ttu-id="79340-211">낮은 필터 `Order` 값은 해당 *하기 전에* 그의 더 큰 값 필터 전에 실행 되는 코드 `Order`합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-211">A filter with a lower `Order` value will have its *before* code executed before that of a filter with a higher value of `Order`.</span></span> <span data-ttu-id="79340-212">낮은 필터 `Order` 값은 해당 *후* 코드를 실행 하는 더 높은 사용 하 여 필터 `Order` 값입니다.</span><span class="sxs-lookup"><span data-stu-id="79340-212">A filter with a lower `Order` value will have its *after* code executed after that of a filter with a higher `Order` value.</span></span> <span data-ttu-id="79340-213">설정할 수 있습니다는 `Order` 생성자 매개 변수를 사용 하 여 속성:</span><span class="sxs-lookup"><span data-stu-id="79340-213">You can set the `Order` property by using a constructor parameter:</span></span>
 
 ```csharp
 [MyFilter(Name = "Controller Level Attribute", Order=1)]
 ```
 
-있는 경우 동일한 첫 번째 집합 하지만 위의 예제에 표시 된 3 작업 필터는 `Order` 컨트롤러 및 글로벌 속성 각각 1과 2에 필터링, 실행의 순서를 바꿀 수는 있습니다.
+<span data-ttu-id="79340-214">동일한 첫 번째 집합 제외한 위의 예제에 표시 된 3 작업 필터가 있는 경우는 `Order` 각각 1과 2에 필터는 컨트롤러 및 글로벌 속성, 실행의 순서를 바꿀 수는 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-214">If you have the same 3 Action filters shown in the preceding example but set the `Order` property of the controller and global filters to 1 and 2 respectively, the order of execution would be reversed.</span></span>
 
-| Sequence | 필터 범위 | `Order` 속성 | Filter 메서드 |
+| <span data-ttu-id="79340-215">Sequence</span><span class="sxs-lookup"><span data-stu-id="79340-215">Sequence</span></span> | <span data-ttu-id="79340-216">필터 범위</span><span class="sxs-lookup"><span data-stu-id="79340-216">Filter scope</span></span> | <span data-ttu-id="79340-217">`Order` 속성</span><span class="sxs-lookup"><span data-stu-id="79340-217">`Order` property</span></span> | <span data-ttu-id="79340-218">Filter 메서드</span><span class="sxs-lookup"><span data-stu-id="79340-218">Filter method</span></span> |
 |:--------:|:------------:|:-----------------:|:-------------:|
-| 1 | 메서드 | 0 | `OnActionExecuting` |
-| 2 | 컨트롤러 | 1  | `OnActionExecuting` |
-| 3 | Global | 2  | `OnActionExecuting` |
-| 4 | Global | 2  | `OnActionExecuted` |
-| 5 | 컨트롤러 | 1  | `OnActionExecuted` |
-| 6 | 메서드 | 0  | `OnActionExecuted` |
+| <span data-ttu-id="79340-219">1</span><span class="sxs-lookup"><span data-stu-id="79340-219">1</span></span> | <span data-ttu-id="79340-220">메서드</span><span class="sxs-lookup"><span data-stu-id="79340-220">Method</span></span> | <span data-ttu-id="79340-221">0</span><span class="sxs-lookup"><span data-stu-id="79340-221">0</span></span> | `OnActionExecuting` |
+| <span data-ttu-id="79340-222">2</span><span class="sxs-lookup"><span data-stu-id="79340-222">2</span></span> | <span data-ttu-id="79340-223">컨트롤러</span><span class="sxs-lookup"><span data-stu-id="79340-223">Controller</span></span> | <span data-ttu-id="79340-224">1</span><span class="sxs-lookup"><span data-stu-id="79340-224">1</span></span>  | `OnActionExecuting` |
+| <span data-ttu-id="79340-225">3</span><span class="sxs-lookup"><span data-stu-id="79340-225">3</span></span> | <span data-ttu-id="79340-226">Global</span><span class="sxs-lookup"><span data-stu-id="79340-226">Global</span></span> | <span data-ttu-id="79340-227">2</span><span class="sxs-lookup"><span data-stu-id="79340-227">2</span></span>  | `OnActionExecuting` |
+| <span data-ttu-id="79340-228">4</span><span class="sxs-lookup"><span data-stu-id="79340-228">4</span></span> | <span data-ttu-id="79340-229">Global</span><span class="sxs-lookup"><span data-stu-id="79340-229">Global</span></span> | <span data-ttu-id="79340-230">2</span><span class="sxs-lookup"><span data-stu-id="79340-230">2</span></span>  | `OnActionExecuted` |
+| <span data-ttu-id="79340-231">5</span><span class="sxs-lookup"><span data-stu-id="79340-231">5</span></span> | <span data-ttu-id="79340-232">컨트롤러</span><span class="sxs-lookup"><span data-stu-id="79340-232">Controller</span></span> | <span data-ttu-id="79340-233">1</span><span class="sxs-lookup"><span data-stu-id="79340-233">1</span></span>  | `OnActionExecuted` |
+| <span data-ttu-id="79340-234">6</span><span class="sxs-lookup"><span data-stu-id="79340-234">6</span></span> | <span data-ttu-id="79340-235">메서드</span><span class="sxs-lookup"><span data-stu-id="79340-235">Method</span></span> | <span data-ttu-id="79340-236">0</span><span class="sxs-lookup"><span data-stu-id="79340-236">0</span></span>  | `OnActionExecuted` |
 
-`Order` 속성 필터를 실행할 순서를 결정할 때 범위 이기는 합니다. 필터 순서에 따라 먼저 정렬 됩니다 다음 범위는 결속을 끊을 하는 데 사용 됩니다. 기본 제공 필터를 모두 구현 `IOrderedFilter` 기본 설정 및 `Order` 값을 0으로 설정 하지 않으면 범위 순서를 결정 하므로 `Order` 0이 아닌 값으로.
+<span data-ttu-id="79340-237">`Order` 속성 이기 범위는 필터가 실행 되는 순서를 결정할 때.</span><span class="sxs-lookup"><span data-stu-id="79340-237">The `Order` property trumps scope when determining the order in which filters will run.</span></span> <span data-ttu-id="79340-238">필터 순서에 따라 먼저 정렬 한 후 범위는 결속을 끊을 하는 데 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="79340-238">Filters are sorted first by order, then scope is used to break ties.</span></span> <span data-ttu-id="79340-239">기본 제공 필터를 모두 구현 `IOrderedFilter` 기본 설정 및 `Order` 값을 0으로 설정 하지 않으면 범위 순서를 결정 하므로 `Order` 0이 아닌 값으로.</span><span class="sxs-lookup"><span data-stu-id="79340-239">All of the built-in filters implement `IOrderedFilter` and set the default `Order` value to 0, so scope determines order unless you set `Order` to a non-zero value.</span></span>
 
-## <a name="cancellation-and-short-circuiting"></a>취소 및 짧은 circuiting
+## <a name="cancellation-and-short-circuiting"></a><span data-ttu-id="79340-240">취소 및 짧은 단락 circuit</span><span class="sxs-lookup"><span data-stu-id="79340-240">Cancellation and short circuiting</span></span>
 
-설정 하 여 언제 든 지 필터 파이프라인 효율적으로 진행할 수 있습니다는 `Result` 속성에는 `context` 필터 메서드에 제공 된 매개 변수입니다. 예를 들어, 다음과 같은 리소스 필터 실행 파이프라인의 나머지를 방지합니다.
+<span data-ttu-id="79340-241">설정 하 여 언제 든 지 필터 파이프라인을 단락 수는 `Result` 속성에는 `context` 필터 메서드에 제공 된 매개 변수입니다.</span><span class="sxs-lookup"><span data-stu-id="79340-241">You can short-circuit the filter pipeline at any point by setting the `Result` property on the `context` parameter provided to the filter method.</span></span> <span data-ttu-id="79340-242">예를 들어, 다음과 같은 리소스 필터 파이프라인의 나머지 부분에서 실행 되지 않도록합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-242">For instance, the following Resource filter prevents the rest of the pipeline from executing.</span></span>
 
 <a name=short-circuiting-resource-filter></a>
 
-[!code-csharp[주](./filters/sample/src/FiltersSample/Filters/ShortCircuitingResourceFilterAttribute.cs?highlight=12,13,14,15)]
+<span data-ttu-id="79340-243">[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/ShortCircuitingResourceFilterAttribute.cs?highlight=12,13,14,15)]</span><span class="sxs-lookup"><span data-stu-id="79340-243">[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/ShortCircuitingResourceFilterAttribute.cs?highlight=12,13,14,15)]</span></span>
 
-다음 코드에서 모두는 `ShortCircuitingResourceFilter` 및 `AddHeader` 필터 대상의 `SomeResource` 작업 메서드. 그러나 때문에 `ShortCircuitingResourceFilter` 첫 번째 실행 하 고 파이프라인의 나머지 short-circuits는 `AddHeader` 필터에 대 한 실행 되지는 `SomeResource` 동작 합니다. 이 문제는 동일 필터에 모두 제공 하는 작업 메서드 수준에서 적용 된 경우는 `ShortCircuitingResourceFilter` 첫 번째 실행 합니다.
+<span data-ttu-id="79340-244">다음 코드에서 모두는 `ShortCircuitingResourceFilter` 및 `AddHeader` 대상 필터는 `SomeResource` 동작 메서드.</span><span class="sxs-lookup"><span data-stu-id="79340-244">In the following code, both the `ShortCircuitingResourceFilter` and the `AddHeader` filter target the `SomeResource` action method.</span></span> <span data-ttu-id="79340-245">그러나 때문에 `ShortCircuitingResourceFilter` 먼저 실행 (리소스 필터 이기 때문에 및 `AddHeader` 작업 필터는) 파이프라인의 나머지 short-circuits 및는 `AddHeader` 필터에 대 한 실행 되지 않도록는 `SomeResource` 동작 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-245">However, because the `ShortCircuitingResourceFilter` runs first (because it is a Resource Filter and `AddHeader` is an Action Filter) and short-circuits the rest of the pipeline, the `AddHeader` filter never runs for the `SomeResource` action.</span></span> <span data-ttu-id="79340-246">이 동작은 두 필터는 제공 된 동작 메서드 수준에서 적용 된 경우 동일한 될를 `ShortCircuitingResourceFilter` 첫 번째 실행 (필터 형식을 인해 또는 명시적 활용 `Order` 속성, 예를 들어).</span><span class="sxs-lookup"><span data-stu-id="79340-246">This behavior would be the same if both filters were applied at the action method level, provided the `ShortCircuitingResourceFilter` ran first (because of its filter type, or explicit use of `Order` property, for instance).</span></span>
 
-[!code-csharp[주](./filters/sample/src/FiltersSample/Controllers/SampleController.cs?name=snippet_AddHeader&highlight=1,9)]
+<span data-ttu-id="79340-247">[!code-csharp[Main](./filters/sample/src/FiltersSample/Controllers/SampleController.cs?name=snippet_AddHeader&highlight=1,9)]</span><span class="sxs-lookup"><span data-stu-id="79340-247">[!code-csharp[Main](./filters/sample/src/FiltersSample/Controllers/SampleController.cs?name=snippet_AddHeader&highlight=1,9)]</span></span>
 
-## <a name="dependency-injection"></a>종속성 주입
+## <a name="dependency-injection"></a><span data-ttu-id="79340-248">종속성 주입</span><span class="sxs-lookup"><span data-stu-id="79340-248">Dependency injection</span></span>
 
-유형 또는 인스턴스가 필터를 추가할 수 있습니다. 인스턴스를 추가 하는 경우 해당 인스턴스의 모든 요청에 대해 사용 됩니다. 형식에 추가 하면 됩니다 형식 활성화, 즉 각 요청에 대 한 인스턴스를 만들 수는 고 생성자 종속성 채워집니다 [종속성 주입](../../fundamentals/dependency-injection.md) (DI). 해당 하는 형식으로 필터를 추가 `filters.Add(new TypeFilterAttribute(typeof(MyFilter)))`합니다.
+<span data-ttu-id="79340-249">유형 또는 인스턴스가 필터를 추가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-249">Filters can be added by type or by instance.</span></span> <span data-ttu-id="79340-250">인스턴스를 추가 하는 경우 해당 인스턴스가 모든 요청에 대해 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="79340-250">If you add an instance, that instance will be used for every request.</span></span> <span data-ttu-id="79340-251">종류를 추가 하면 됩니다 형식 활성, 즉 각 요청에 대 한 인스턴스를 만들 수는 되 고 모든 생성자 종속성에 의해 채워지는 [종속성 주입](../../fundamentals/dependency-injection.md) (DI).</span><span class="sxs-lookup"><span data-stu-id="79340-251">If you add a type, it will be type-activated, meaning an instance will be created for each request and any constructor dependencies will be populated by [dependency injection](../../fundamentals/dependency-injection.md) (DI).</span></span> <span data-ttu-id="79340-252">에 해당 하는 형식으로 필터를 추가 `filters.Add(new TypeFilterAttribute(typeof(MyFilter)))`합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-252">Adding a filter by type is equivalent to `filters.Add(new TypeFilterAttribute(typeof(MyFilter)))`.</span></span>
 
-특성으로 구현 되며 컨트롤러 클래스 또는 작업 메서드를 직접 추가 하는 필터에서 제공 하는 생성자 종속성을 가질 수 없습니다 [종속성 주입](../../fundamentals/dependency-injection.md) (DI). 특성에는 적용 되는 위치를 제공 하는 해당 생성자 매개 변수를 사용 해야 합니다. 때문입니다. 특성이 작동 하는 방법의 제한 사항입니다.
+<span data-ttu-id="79340-253">특성으로 구현 되어 컨트롤러 클래스 또는 동작 메서드를 직접 추가 하는 필터에서 제공 하는 생성자 종속성이 하 여야 [종속성 주입](../../fundamentals/dependency-injection.md) (DI).</span><span class="sxs-lookup"><span data-stu-id="79340-253">Filters that are implemented as attributes and added directly to controller classes or action methods cannot have constructor dependencies provided by [dependency injection](../../fundamentals/dependency-injection.md) (DI).</span></span> <span data-ttu-id="79340-254">특성에 적용 되는 위치를 제공 하는 생성자 매개 변수의 있어야 하기 때문입니다.</span><span class="sxs-lookup"><span data-stu-id="79340-254">This is because attributes must have their constructor parameters supplied where they are applied.</span></span> <span data-ttu-id="79340-255">특성이 작동 되는 방법의 제한 사항입니다.</span><span class="sxs-lookup"><span data-stu-id="79340-255">This is a limitation of how attributes work.</span></span>
 
-필터에 DI에서 액세스 해야 하는 종속성이 있으면 방법은 여러 가지 지원 합니다. 다음 중 하나를 사용 하 여 클래스 또는 동작 메서드에 필터를 적용할 수 있습니다.
+<span data-ttu-id="79340-256">필터에 종속성 DI에서 액세스 해야 하는 경우 지원 되는 여러 가지 방법으로 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-256">If your filters have dependencies that you need to access from DI, there are several supported approaches.</span></span> <span data-ttu-id="79340-257">다음 중 하나를 사용 하 여 클래스 또는 동작 메서드에 필터를 적용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-257">You can apply your filter to a class or action method using one of the following:</span></span>
 
 * `ServiceFilterAttribute`
 * `TypeFilterAttribute`
-* `IFilterFactory`특성에 구현
+* <span data-ttu-id="79340-258">`IFilterFactory`특성에 구현</span><span class="sxs-lookup"><span data-stu-id="79340-258">`IFilterFactory` implemented on your attribute</span></span>
 
 > [!NOTE]
-> 한 종속성 DI에서 가져오려는 수로 거입니다. 그러나 만들거나 사용 하지 않도록 필터 로깅 용도로 이후에 [기본 제공 프레임 워크 로깅 기능이](../../fundamentals/logging.md) 필요한 이미 제공 될 수 있습니다. 필터에 로깅을 추가 하려는 경우 비즈니스 도메인 문제나 또는 필터를 보다는 MVC 작업이 나 다른 프레임 워크 이벤트에 대 한 동작에 집중 해야 합니다.
+> <span data-ttu-id="79340-259">DI에서 가져올 하려는 경우 종속성을 하나는 거입니다.</span><span class="sxs-lookup"><span data-stu-id="79340-259">One dependency you might want to get from DI is a logger.</span></span> <span data-ttu-id="79340-260">그러나 만들고 이후 로깅 용도로 필터를 사용 하를 사용 하지는 [기본 제공 프레임 워크 로깅 기능이](../../fundamentals/logging.md) 필요한 이미 제공 될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-260">However, avoid creating and using filters purely for logging purposes, since the [built-in framework logging features](../../fundamentals/logging.md) may already provide what you need.</span></span> <span data-ttu-id="79340-261">필터에 로깅을 추가 하려는 경우 비즈니스 도메인 문제나 또는 필터를 보다는 MVC 동작 또는 다른 프레임 워크 이벤트에 대 한 동작에 집중 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-261">If you're going to add logging to your filters, it should focus on business domain concerns or behavior specific to your filter, rather than MVC actions or other framework events.</span></span>
 
-### <a name="servicefilterattribute"></a>ServiceFilterAttribute
+### <a name="servicefilterattribute"></a><span data-ttu-id="79340-262">ServiceFilterAttribute</span><span class="sxs-lookup"><span data-stu-id="79340-262">ServiceFilterAttribute</span></span>
 
-A `ServiceFilter` DI에서 필터의 인스턴스를 검색 합니다. 컨테이너에 필터를 추가 `ConfigureServices`에서 참조 하는 `ServiceFilter` 특성
+<span data-ttu-id="79340-263">A `ServiceFilter` DI에서 필터의 인스턴스를 검색 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-263">A `ServiceFilter` retrieves an instance of the filter from DI.</span></span> <span data-ttu-id="79340-264">필터에서 컨테이너를 추가 `ConfigureServices`, 참조에 `ServiceFilter` 특성</span><span class="sxs-lookup"><span data-stu-id="79340-264">You add the filter to the container in `ConfigureServices`, and reference it in a `ServiceFilter` attribute</span></span>
 
-[!code-csharp[주](./filters/sample/src/FiltersSample/Startup.cs?name=snippet_ConfigureServices&highlight=11)]
+<span data-ttu-id="79340-265">[!code-csharp[Main](./filters/sample/src/FiltersSample/Startup.cs?name=snippet_ConfigureServices&highlight=11)]</span><span class="sxs-lookup"><span data-stu-id="79340-265">[!code-csharp[Main](./filters/sample/src/FiltersSample/Startup.cs?name=snippet_ConfigureServices&highlight=11)]</span></span>
 
-[!code-csharp[주](../../mvc/controllers/filters/sample/src/FiltersSample/Controllers/HomeController.cs?name=snippet_ServiceFilter&highlight=1)]
+<span data-ttu-id="79340-266">[!code-csharp[Main](../../mvc/controllers/filters/sample/src/FiltersSample/Controllers/HomeController.cs?name=snippet_ServiceFilter&highlight=1)]</span><span class="sxs-lookup"><span data-stu-id="79340-266">[!code-csharp[Main](../../mvc/controllers/filters/sample/src/FiltersSample/Controllers/HomeController.cs?name=snippet_ServiceFilter&highlight=1)]</span></span>
 
-사용 하 여 `ServiceFilter` 예외에서 필터 형식 결과 등록 하지 않고 있습니다.
+<span data-ttu-id="79340-267">사용 하 여 `ServiceFilter` 예외에서 필터 형식 결과 등록 하지 않고:</span><span class="sxs-lookup"><span data-stu-id="79340-267">Using `ServiceFilter` without registering the filter type results in an exception:</span></span>
 
 ```
 System.InvalidOperationException: No service for type
 'FiltersSample.Filters.AddHeaderFilterWithDI' has been registered.
 ```
 
-`ServiceFilterAttribute`구현 `IFilterFactory`, 단일를 만들기 위한 메서드를 노출 하는 `IFilter` 인스턴스. 경우 `ServiceFilterAttribute`, `IFilterFactory` 인터페이스의 `CreateInstance` 서비스 컨테이너 (DI)에서 지정된 된 형식을 로드 하도록 메서드를 구현 합니다.
+<span data-ttu-id="79340-268">`ServiceFilterAttribute`구현 `IFilterFactory`를 만들기 위한 단일 메서드를 노출 하는 프로그램 `IFilter` 인스턴스.</span><span class="sxs-lookup"><span data-stu-id="79340-268">`ServiceFilterAttribute` implements `IFilterFactory`, which exposes a single method for creating an `IFilter` instance.</span></span> <span data-ttu-id="79340-269">경우 `ServiceFilterAttribute`, `IFilterFactory` 인터페이스의 `CreateInstance` 메서드는 지정된 된 형식의 서비스 컨테이너 (DI)에서 로드 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-269">In the case of `ServiceFilterAttribute`, the `IFilterFactory` interface's `CreateInstance` method is implemented to load the specified type from the services container (DI).</span></span>
 
-### <a name="typefilterattribute"></a>TypeFilterAttribute
+### <a name="typefilterattribute"></a><span data-ttu-id="79340-270">TypeFilterAttribute</span><span class="sxs-lookup"><span data-stu-id="79340-270">TypeFilterAttribute</span></span>
 
-`TypeFilterAttribute`매우 비슷합니다 `ServiceFilterAttribute` (도 구현 하 고 `IFilterFactory`), 하지만 DI 컨테이너에서 직접 해당 형식을 확인할 수 없습니다. 사용 하 여 형식을 인스턴스화하여 대신 `Microsoft.Extensions.DependencyInjection.ObjectFactory`합니다.
+<span data-ttu-id="79340-271">`TypeFilterAttribute`매우 비슷하지만 `ServiceFilterAttribute` (하며 구현 `IFilterFactory`), 하지만 DI 컨테이너에서 직접 해당 형식을 확인할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-271">`TypeFilterAttribute` is very similar to `ServiceFilterAttribute` (and also implements `IFilterFactory`), but its type is not resolved directly from the DI container.</span></span> <span data-ttu-id="79340-272">사용 하 여 형식을 인스턴스화합니다 대신 `Microsoft.Extensions.DependencyInjection.ObjectFactory`합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-272">Instead, it instantiates the type by using `Microsoft.Extensions.DependencyInjection.ObjectFactory`.</span></span>
 
-형식 사용 하 여 참조 되는 이러한 차이로 인해는 `TypeFilterAttribute` 먼저 컨테이너를 사용 하 여 등록할 필요가 없습니다 (하지만 계속 해 서 컨테이너에서 해당 종속성). 또한 `TypeFilterAttribute` 생성자 인수를 형식에 대 한 필요에 따라 허용할 수 있습니다. 다음 예제에는 인수를 사용 하 여 형식을 전달 하는 방법을 보여 줍니다 `TypeFilterAttribute`:
+<span data-ttu-id="79340-273">형식 사용 하 여 참조 되는 이러한 차이로 인해는 `TypeFilterAttribute` 먼저 컨테이너를 사용 하 여 등록할 필요가 없습니다 (하지만 컨테이너에 의해 충족 종속성 수는 여전히).</span><span class="sxs-lookup"><span data-stu-id="79340-273">Because of this difference, types that are referenced using the `TypeFilterAttribute` do not need to be registered with the container first (but they will still have their dependencies fulfilled by the container).</span></span> <span data-ttu-id="79340-274">또한 `TypeFilterAttribute` 해당 형식에 대 한 생성자 인수를 필요에 따라 허용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-274">Also, `TypeFilterAttribute` can optionally accept constructor arguments for the type in question.</span></span> <span data-ttu-id="79340-275">다음 예제에는 인수를 사용 하 여 형식을 전달 하는 방법을 보여 줍니다 `TypeFilterAttribute`:</span><span class="sxs-lookup"><span data-stu-id="79340-275">The following example demonstrates how to pass arguments to a type using `TypeFilterAttribute`:</span></span>
 
-[!code-csharp[주](../../mvc/controllers/filters/sample/src/FiltersSample/Controllers/HomeController.cs?name=snippet_TypeFilter&highlight=1,2)]
+<span data-ttu-id="79340-276">[!code-csharp[Main](../../mvc/controllers/filters/sample/src/FiltersSample/Controllers/HomeController.cs?name=snippet_TypeFilter&highlight=1,2)]</span><span class="sxs-lookup"><span data-stu-id="79340-276">[!code-csharp[Main](../../mvc/controllers/filters/sample/src/FiltersSample/Controllers/HomeController.cs?name=snippet_TypeFilter&highlight=1,2)]</span></span>
 
-경우 필터는 인수가 필요 하지 않은 하지만 DI로 채워지도록 해야 하는 생성자 종속성,이 사용할 수 있습니다 명명 된 사용자 지정 특성 클래스 및 메서드 대신에 `[TypeFilter(typeof(FilterType))]`). 다음과 같은 필터가 구현할 수 있는 방법을 보여 줍니다.
+<span data-ttu-id="79340-277">경우는 인수가 필요 하지 않은 필터 하지만 DI에서 메꾸어야 할 생성자 종속성이 있는 사용할 수 있습니다 직접 명명 된 특성 클래스 및 메서드 대신에 `[TypeFilter(typeof(FilterType))]`).</span><span class="sxs-lookup"><span data-stu-id="79340-277">If you have a filter that doesn't require any arguments, but which has constructor dependencies that need to be filled by DI, you can use your own named attribute on classes and methods instead of `[TypeFilter(typeof(FilterType))]`).</span></span> <span data-ttu-id="79340-278">다음 필터는이 구현할 수 있는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="79340-278">The following filter shows how this can be implemented:</span></span>
 
-[!code-csharp[주](./filters/sample/src/FiltersSample/Filters/SampleActionFilterAttribute.cs?name=snippet_TypeFilterAttribute&highlight=1,3,7)]
+<span data-ttu-id="79340-279">[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/SampleActionFilterAttribute.cs?name=snippet_TypeFilterAttribute&highlight=1,3,7)]</span><span class="sxs-lookup"><span data-stu-id="79340-279">[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/SampleActionFilterAttribute.cs?name=snippet_TypeFilterAttribute&highlight=1,3,7)]</span></span>
 
-이 필터를 사용 하 여 메서드나 클래스에 적용할 수는 `[SampleActionFilter]` 구문을 사용 하는 대신 `[TypeFilter]` 또는 `[ServiceFilter]`합니다.
+<span data-ttu-id="79340-280">이 필터를 사용 하 여 메서드 또는 클래스에 적용할 수는 `[SampleActionFilter]` 구문을 사용 하는 대신 `[TypeFilter]` 또는 `[ServiceFilter]`합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-280">This filter can be applied to classes or methods using the `[SampleActionFilter]` syntax, instead of having to use `[TypeFilter]` or `[ServiceFilter]`.</span></span>
 
-## <a name="authorization-filters"></a>권한 부여 필터
+## <a name="authorization-filters"></a><span data-ttu-id="79340-281">권한 부여 필터</span><span class="sxs-lookup"><span data-stu-id="79340-281">Authorization filters</span></span>
 
-*권한 부여 필터* 작업 메서드에 대 한 액세스를 제어 하 고 첫 번째 필터를 필터 파이프라인 내에서 실행 됩니다. 만 있는지는 메서드를 지 원하는 메서드 전후 대부분 필터와 달리 앞입니다. 만 작성 해야 사용자 지정 권한 부여 필터 고유한 권한 부여 프레임 워크를 작성 하는 경우. 권한 부여 정책을 구성 또는 사용자 지정 필터를 작성 하는 대신 사용자 지정 권한 부여 정책 작성을 선호 합니다. 권한 부여 시스템 호출에 대 한 기본 제공 필터를 구현 하면 방금 담당 합니다.
+<span data-ttu-id="79340-282">*권한 부여 필터* 동작 메서드에 대 한 액세스를 제어 하 고 첫 번째 필터를 필터 파이프라인 내에서 실행 됩니다.</span><span class="sxs-lookup"><span data-stu-id="79340-282">*Authorization filters* control access to action methods and are the first filters to be executed within the filter pipeline.</span></span> <span data-ttu-id="79340-283">만 있는 메서드를 지 원하는 메서드 전후 대부분 필터와 달리 하기 전에.</span><span class="sxs-lookup"><span data-stu-id="79340-283">They have only a before method, unlike most filters that support before and after methods.</span></span> <span data-ttu-id="79340-284">만 작성 해야 사용자 지정 권한 부여 필터는 자신의 권한 부여 프레임 워크를 작성 하는 경우.</span><span class="sxs-lookup"><span data-stu-id="79340-284">You should only write a custom authorization filter if you are writing your own authorization framework.</span></span> <span data-ttu-id="79340-285">권한 부여 정책을 구성 하거나 사용자 지정 필터를 작성 하는 대신 사용자 지정 권한 부여 정책 작성을 선호 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-285">Prefer configuring your authorization policies or writing a custom authorization policy over writing a custom filter.</span></span> <span data-ttu-id="79340-286">기본 제공 필터를 구현 하면은 권한 부여 시스템을 호출 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-286">The built-in filter implementation is just responsible for calling the authorization system.</span></span>
 
-예외를 처리 합니다 nothing 때문에 권한 부여 필터 내에서 예외 throw 하지 않아야 참고 (예외 필터 처리할 수 없는 해당). 대신, 챌린지를 실행 하거나 다른 해결 방법의 찾을 합니다.
+<span data-ttu-id="79340-287">예외 처리는 아무것도 때문에 권한 부여 필터 내에서 예외 throw 하지 않아야 참고 (예외 필터 처리할 수 없는 해당).</span><span class="sxs-lookup"><span data-stu-id="79340-287">Note that you should not throw exceptions within authorization filters, since nothing will handle the exception (exception filters won't handle them).</span></span> <span data-ttu-id="79340-288">대신, 챌린지를 발급 하거나 다른 해결 방법의 찾을 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-288">Instead, issue a challenge or find another way.</span></span>
 
-에 대 한 자세한 내용은 [권한 부여](../../security/authorization/index.md)합니다.
+<span data-ttu-id="79340-289">에 대 한 자세한 내용은 [권한 부여](../../security/authorization/index.md)합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-289">Learn more about [Authorization](../../security/authorization/index.md).</span></span>
 
-## <a name="resource-filters"></a>자원 필터
+## <a name="resource-filters"></a><span data-ttu-id="79340-290">자원 필터</span><span class="sxs-lookup"><span data-stu-id="79340-290">Resource filters</span></span>
 
-*자원 필터* 구현 중 하나는 `IResourceFilter` 또는 `IAsyncResourceFilter` 인터페이스 및 해당 실행 필터 파이프라인의 대부분을 래핑합니다. (만 [권한 필터](#authorization-filters) 전에 실행 됩니다.) 리소스 필터는 요청을 수행 하는 작업의 대부분을 단락 (short-circuit) 하는 경우에 특히 유용 합니다. 예를 들어 응답은 캐시에 이미 캐싱 필터 파이프라인의 나머지를 피할 수 있습니다.
+<span data-ttu-id="79340-291">*자원 필터* 구현 중 하나는 `IResourceFilter` 또는 `IAsyncResourceFilter` 인터페이스 및 해당 실행 필터 파이프라인의 대부분을 래핑합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-291">*Resource filters* implement either the `IResourceFilter` or `IAsyncResourceFilter` interface, and their execution wraps most of the filter pipeline.</span></span> <span data-ttu-id="79340-292">(만 [권한 부여 필터](#authorization-filters) 앞 실행 합니다.) 리소스 필터는 대부분의 작업 요청을 수행 하는 작업은 단락 (short-circuit) 하는 경우에 특히 유용 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-292">(Only [Authorization filters](#authorization-filters) run before them.) Resource filters are especially useful if you need to short-circuit most of the work a request is doing.</span></span> <span data-ttu-id="79340-293">예를 들어 캐싱 필터 응답 캐시에 이미 있으면 파이프라인의 나머지 부분을 방지할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-293">For example, a caching filter can avoid the rest of the pipeline if the response is already in the cache.</span></span>
 
-[짧은 circuiting 리소스 필터](#short-circuiting-resource-filter) 리소스 필터의 예로 앞서 살펴본 합니다. 또 다른 예로 [DisableFormValueModelBindingAttribute](https://github.com/aspnet/Entropy/blob/dev/samples/Mvc.FileUpload/Filters/DisableFormValueModelBindingAttribute.cs), 모델 바인딩 양식 데이터에 액세스할 수 없습니다. 대형 파일 업로드를 받고 메모리로 읽어 폼 않을 것을 알고 있는 경우에는 것이 유용 합니다.
+<span data-ttu-id="79340-294">[짧은 단락 circuit 리소스 필터](#short-circuiting-resource-filter) 리소스 필터의 예로 앞에서 살펴본 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-294">The [short circuiting resource filter](#short-circuiting-resource-filter) shown earlier is one example of a resource filter.</span></span> <span data-ttu-id="79340-295">또 다른 예로 [DisableFormValueModelBindingAttribute](https://github.com/aspnet/Entropy/blob/rel/1.1.1/samples/Mvc.FileUpload/Filters/DisableFormValueModelBindingAttribute.cs), 모델 바인딩 양식 데이터에 액세스할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-295">Another example is [DisableFormValueModelBindingAttribute](https://github.com/aspnet/Entropy/blob/rel/1.1.1/samples/Mvc.FileUpload/Filters/DisableFormValueModelBindingAttribute.cs), which prevents model binding from accessing the form data.</span></span> <span data-ttu-id="79340-296">대형 파일 업로드를 받아서 폼 메모리로 읽어 하지 못하게 하려면 수 거 알고 있는 경우에 유용 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-296">It's useful for cases where you know that you're going to receive large file uploads and want to prevent the form from being read into memory.</span></span>
 
-## <a name="action-filters"></a>작업 필터
+## <a name="action-filters"></a><span data-ttu-id="79340-297">작업 필터</span><span class="sxs-lookup"><span data-stu-id="79340-297">Action filters</span></span>
 
-*작업 필터* 구현 중 하나는 `IActionFilter` 또는 `IAsyncActionFilter` 인터페이스 및 해당 실행 주위의 작업 메서드를 실행 합니다.
+<span data-ttu-id="79340-298">*작업 필터* 구현 중 하나는 `IActionFilter` 또는 `IAsyncActionFilter` 인터페이스 및 해당 실행 주위의 작업 메서드의 실행 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-298">*Action filters* implement either the `IActionFilter` or `IAsyncActionFilter` interface, and their execution surrounds the execution of action methods.</span></span>
 
-샘플 작업 필터는 다음과 같습니다.
+<span data-ttu-id="79340-299">샘플 작업 필터는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-299">Here's a sample action filter:</span></span>
 
-[!code-csharp[주](./filters/sample/src/FiltersSample/Filters/SampleActionFilter.cs?name=snippet_ActionFilter)]
+<span data-ttu-id="79340-300">[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/SampleActionFilter.cs?name=snippet_ActionFilter)]</span><span class="sxs-lookup"><span data-stu-id="79340-300">[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/SampleActionFilter.cs?name=snippet_ActionFilter)]</span></span>
 
-[ActionExecutingContext](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.filters.actionexecutingcontext) 다음 속성을 제공 합니다.
+<span data-ttu-id="79340-301">[ActionExecutingContext](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.filters.actionexecutingcontext) 속성을 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-301">The [ActionExecutingContext](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.filters.actionexecutingcontext) provides the following properties:</span></span>
 
-* `ActionArguments`-작업에 대 한 입력을 조작할 수 있습니다.
-* `Controller`-컨트롤러 인스턴스를 조작할 수 있습니다. 
-* `Result`-작업 메서드 및 후속 작업 필터의 실행을 short-circuits이 설정 합니다. 작업 메서드 및 후속 필터의 실행 수 없지만 대신 성공적인 결과 실패로 처리도 예외를 throw 됩니다.
+* <span data-ttu-id="79340-302">`ActionArguments`-작업에 대 한 입력을 조작할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-302">`ActionArguments` - lets you manipulate the inputs to the action.</span></span>
+* <span data-ttu-id="79340-303">`Controller`-컨트롤러 인스턴스를 조작할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-303">`Controller` - lets you manipulate the controller instance.</span></span> 
+* <span data-ttu-id="79340-304">`Result`-작업 메서드 및 후속 작업 필터의 실행 short-circuits이 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-304">`Result` - setting this short-circuits execution of the action method and subsequent action filters.</span></span> <span data-ttu-id="79340-305">예외를 throw 또한 동작 메서드 및 후속 필터의 실행을 방지 하지만 대신 성공적인 결과 실패로 처리 됩니다.</span><span class="sxs-lookup"><span data-stu-id="79340-305">Throwing an exception also prevents execution of the action method and subsequent filters, but is treated as a failure instead of a successful result.</span></span>
 
-[ActionExecutedContext](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.filters.actionexecutedcontext) 제공 `Controller` 및 `Result` 다음 속성도 있습니다.
+<span data-ttu-id="79340-306">[ActionExecutedContext](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.filters.actionexecutedcontext) 제공 `Controller` 및 `Result` 다음과 같은 속성 및:</span><span class="sxs-lookup"><span data-stu-id="79340-306">The [ActionExecutedContext](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.filters.actionexecutedcontext) provides `Controller` and `Result` plus the following properties:</span></span>
 
-* `Canceled`-작업 실행 된 처리가 단축 다른 필터에 의해 경우 true가 됩니다.
-* `Exception`-작업 또는 후속 작업 필터는 예외가 발생 하는 경우 null이 아닌 됩니다. 이 속성을 효과적으로 null로 설정 합니다. '' 예외 처리, 및 `Result` 작업 메서드를 정상적으로 반환 된 경우 처럼 실행 됩니다.
+* <span data-ttu-id="79340-307">`Canceled`-다른 필터에 의해 액션 실행 short-circuited가 true입니다.</span><span class="sxs-lookup"><span data-stu-id="79340-307">`Canceled` - will be true if the action execution was short-circuited by another filter.</span></span>
+* <span data-ttu-id="79340-308">`Exception`-작업 또는 후속 작업 필터에서 예외가 null이 아닌 됩니다.</span><span class="sxs-lookup"><span data-stu-id="79340-308">`Exception` - will be non-null if the action or a subsequent action filter threw an exception.</span></span> <span data-ttu-id="79340-309">이 속성을 효과적으로 null로 설정 'handles' 예외를 및 `Result` 경우 정상적으로 동작 메서드에서 반환 된 것 처럼 실행 됩니다.</span><span class="sxs-lookup"><span data-stu-id="79340-309">Setting this property to null effectively 'handles' an exception, and `Result` will be executed as if it were returned from the action method normally.</span></span>
 
-에 대 한는 `IAsyncActionFilter`에 대 한 호출에서 `ActionExecutionDelegate` 모든 후속 작업 필터를 실행 하는 반환 된 작업 메서드는 `ActionExecutedContext`합니다. 단락 (short-circuit), 할당 `ActionExecutingContext.Result` 일부 결과에 인스턴스를 호출 하지 않으면는 `ActionExecutionDelegate`합니다.
+<span data-ttu-id="79340-310">에 대 한는 `IAsyncActionFilter`에 대 한 호출에서 `ActionExecutionDelegate` 모든 후속 작업 필터를 실행 하는 반환 된 작업 메서드는 `ActionExecutedContext`합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-310">For an `IAsyncActionFilter`, a call to the `ActionExecutionDelegate` executes any subsequent action filters and the action method, returning an `ActionExecutedContext`.</span></span> <span data-ttu-id="79340-311">단락 (short-circuit)를 할당 하려면 `ActionExecutingContext.Result` 일부 결과에 인스턴스를 호출 하지 않으면는 `ActionExecutionDelegate`합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-311">To short-circuit, assign `ActionExecutingContext.Result` to some result instance and do not call the `ActionExecutionDelegate`.</span></span>
 
-프레임 워크는 추상 제공 `ActionFilterAttribute` 하위 클래스를 수 있습니다. 
+<span data-ttu-id="79340-312">프레임 워크는 추상 제공 `ActionFilterAttribute` 하위 클래스를 할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-312">The framework provides an abstract `ActionFilterAttribute` that you can subclass.</span></span> 
 
-## <a name="exception-filters"></a>예외 필터
+<span data-ttu-id="79340-313">자동으로 모델 상태를 확인 하 고 상태에 유효 하지 않을 경우 오류를 반환 하는 작업 필터를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-313">You can use an action filter to automatically validate model state and return any errors if the state is invalid:</span></span>
 
-*예외 필터* 구현 중 하나는 `IExceptionFilter` 또는 `IAsyncExceptionFilter` 인터페이스입니다. 이러한 일반적인 오류 처리 응용 프로그램에 대 한 정책을 구현 하는 데 사용 될 수 있습니다. 
+<span data-ttu-id="79340-314">[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/ValidateModelAttribute.cs)]</span><span class="sxs-lookup"><span data-stu-id="79340-314">[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/ValidateModelAttribute.cs)]</span></span>
 
-다음 샘플 예외 필터 뷰는 사용자 지정 개발자 오류를 사용 하 여 응용 프로그램을 개발 하는 경우 발생 하는 예외에 대 한 세부 정보를 표시 합니다.
+<span data-ttu-id="79340-315">`OnActionExecuted` 보고를 통해 작업의 결과 조작 메서드를 실행 한 후 작업 메서드와 수 있습니다는 `ActionExecutedContext.Result` 속성입니다.</span><span class="sxs-lookup"><span data-stu-id="79340-315">The `OnActionExecuted` method runs after the action method and can see and manipulate the results of the action through the `ActionExecutedContext.Result` property.</span></span> <span data-ttu-id="79340-316">`ActionExecutedContext.Canceled`다른 필터에 의해 액션 실행 short-circuited 된 경우 true로 설정 됩니다.</span><span class="sxs-lookup"><span data-stu-id="79340-316">`ActionExecutedContext.Canceled` will be set to true if the action execution was short-circuited by another filter.</span></span> <span data-ttu-id="79340-317">`ActionExecutedContext.Exception`작업 또는 후속 작업 필터에서 예외가 null이 아닌 값으로 설정 됩니다.</span><span class="sxs-lookup"><span data-stu-id="79340-317">`ActionExecutedContext.Exception` will be set to a non-null value if the action or a subsequent action filter threw an exception.</span></span> <span data-ttu-id="79340-318">설정 `ActionExecutedContext.Exception` 효과적으로 null로 'handles', 예외 및 `ActionExectedContext.Result` 경우 정상적으로 동작 메서드에서 반환 된 것 처럼 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-318">Setting `ActionExecutedContext.Exception` to null effectively 'handles' an exception, and `ActionExectedContext.Result` will then be executed as if it were returned from the action method normally.</span></span>
 
-[!code-csharp[주](./filters/sample/src/FiltersSample/Filters/CustomExceptionFilterAttribute.cs?name=snippet_ExceptionFilter&highlight=1,14)]
+## <a name="exception-filters"></a><span data-ttu-id="79340-319">예외 필터</span><span class="sxs-lookup"><span data-stu-id="79340-319">Exception filters</span></span>
 
-예외 필터 없는 두 개의 이벤트 (이전에 대 한 후)-만 구현 `OnException` (또는 `OnExceptionAsync`). 
+<span data-ttu-id="79340-320">*예외 필터* 구현 중 하나는 `IExceptionFilter` 또는 `IAsyncExceptionFilter` 인터페이스입니다.</span><span class="sxs-lookup"><span data-stu-id="79340-320">*Exception filters* implement either the `IExceptionFilter` or `IAsyncExceptionFilter` interface.</span></span> <span data-ttu-id="79340-321">일반적인 오류 처리 응용 프로그램에 대 한 정책을 구현 하려면 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-321">They can be used to implement common error handling policies for an app.</span></span> 
 
-컨트롤러 만들기에서 발생 하는 처리 되지 않은 예외를 처리 하는 예외 필터 [모델 바인딩](../models/model-binding.md), 작업 필터 또는 작업 메서드에 있습니다. 리소스 필터, 결과 필터 또는 MVC 결과 실행에서 발생 하는 예외를 포착할 수 있게 하지 않습니다.
+<span data-ttu-id="79340-322">다음 샘플 예외 필터는 사용자 지정 개발자 오류 보기를 사용 하 여 응용 프로그램 개발 중인 경우에 발생 하는 예외에 대 한 정보를 표시 하려면:</span><span class="sxs-lookup"><span data-stu-id="79340-322">The following sample exception filter uses a custom developer error view to display details about exceptions that occur when the application is in development:</span></span>
 
-예외를 처리 하려면 설정의 `ExceptionContext.ExceptionHandled` 속성을 true 또는 응답을 작성 합니다. 그러면 예외 전파 되지 않습니다. 참고 예외 필터 "성공"으로 예외를 해제할 수 없습니다. 작업 필터만 할 수 있습니다.
+<span data-ttu-id="79340-323">[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/CustomExceptionFilterAttribute.cs?name=snippet_ExceptionFilter&highlight=1,14)]</span><span class="sxs-lookup"><span data-stu-id="79340-323">[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/CustomExceptionFilterAttribute.cs?name=snippet_ExceptionFilter&highlight=1,14)]</span></span>
+
+<span data-ttu-id="79340-324">예외 필터는 두 개의 이벤트가 (전 및 후)-구현만 `OnException` (또는 `OnExceptionAsync`).</span><span class="sxs-lookup"><span data-stu-id="79340-324">Exception filters do not have two events (for before and after) - they only implement `OnException` (or `OnExceptionAsync`).</span></span> 
+
+<span data-ttu-id="79340-325">컨트롤러 만들기에서 발생 하는 처리 되지 않은 예외를 처리 하는 예외 필터 [모델 바인딩](../models/model-binding.md), 작업 메서드 또는 작업 필터.</span><span class="sxs-lookup"><span data-stu-id="79340-325">Exception filters handle unhandled exceptions that occur in controller creation, [model binding](../models/model-binding.md), action filters, or action methods.</span></span> <span data-ttu-id="79340-326">리소스 필터, 결과 필터 또는 MVC 결과 실행에서 발생 하는 예외를 catch 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-326">They won't catch exceptions that occur in Resource filters, Result filters, or MVC Result execution.</span></span>
+
+<span data-ttu-id="79340-327">예외를 처리 하려면 설정는 `ExceptionContext.ExceptionHandled` 속성을 true 또는 응답을 작성 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-327">To handle an exception, set the `ExceptionContext.ExceptionHandled` property to true or write a response.</span></span> <span data-ttu-id="79340-328">그러면 예외는 전파 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-328">This stops propagation of the exception.</span></span> <span data-ttu-id="79340-329">참고 예외 필터는 "성공"으로 예외를 설정할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-329">Note that an Exception filter can't turn an exception into a "success".</span></span> <span data-ttu-id="79340-330">작업 필터를 작업을 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-330">Only an Action filter can do that.</span></span>
 
 > [!NOTE]
-> ASP.NET 1.1에서 응답 전송 되지 않습니다 설정 하는 경우 `ExceptionHandled` true로 **및** 응답을 작성 합니다. 이 시나리오에서는 ASP.NET 핵심 1.0는 응답에 전송 하 고 ASP.NET 핵심 1.1.2 1.0 동작으로 반환 됩니다. 자세한 내용은 참조 [#5594 발급](https://github.com/aspnet/Mvc/issues/5594) GitHub 리포지토리에 있습니다. 
+> <span data-ttu-id="79340-331">ASP.NET 1.1에서는 응답 보내집니다 설정 하면 `ExceptionHandled` true로 **및** 응답을 작성 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-331">In ASP.NET 1.1, the response is not sent if you set `ExceptionHandled` to true **and** write a response.</span></span> <span data-ttu-id="79340-332">이 시나리오에서 ASP.NET Core 1.0는 응답을 전송 하 고 ASP.NET Core 1.1.2 1.0 동작으로 반환 됩니다.</span><span class="sxs-lookup"><span data-stu-id="79340-332">In that scenario, ASP.NET Core 1.0 does send the response, and ASP.NET Core 1.1.2 will return to the 1.0 behavior.</span></span> <span data-ttu-id="79340-333">자세한 내용은 참조 [#5594 발급](https://github.com/aspnet/Mvc/issues/5594) GitHub 리포지토리에 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-333">For more information, see [issue #5594](https://github.com/aspnet/Mvc/issues/5594) in the GitHub repository.</span></span> 
 
-예외 필터는 MVC 동작 내에서 발생 하는 예외를 트래핑 하는 데 유용 하지만 오류 처리 미들웨어 것 만큼 유연 하지 않습니다. 미들웨어 일반적인 경우에만 해야 하는 필터를 사용 하 여 오류를 처리 및 *다르게* 기반으로 하는 MVC 동작을 선택 했습니다. 예를 들어 앱 API 끝점에 대해 및 보기/HTML에 대 한 작업 메서드를 가질 수 있습니다. 보기 기반 작업 오류 페이지를 HTML로 반환 하는 동안 API 끝점에서 JSON으로 오류 정보를 반환할 수 있습니다.
+<span data-ttu-id="79340-334">예외 필터는 MVC 동작 내에서 발생 하는 예외를 트래핑 하는 데 유용 하지만 유연 하 게 오류 미들웨어를 처리 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-334">Exception filters are good for trapping exceptions that occur within MVC actions, but they're not as flexible as error handling middleware.</span></span> <span data-ttu-id="79340-335">일반적인 경우에 대 한 미들웨어를 선호 하 고만 해야 하는 필터를 사용 하 여 오류 처리 작업을 수행할 *다르게* MVC 작업 선택에 따라 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-335">Prefer middleware for the general case, and use filters only where you need to do error handling *differently* based on which MVC action was chosen.</span></span> <span data-ttu-id="79340-336">예를 들어 앱에는 뷰/HTML 및 API 끝점 모두에 대 한 동작 메서드가 있을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-336">For example, your app might have action methods for both API endpoints and for views/HTML.</span></span> <span data-ttu-id="79340-337">API 끝점 보기 기반 동작 html 오류 페이지가 반환 될 수 하는 동안 JSON으로 오류 정보를 반환할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-337">The API endpoints could return error information as JSON, while the view-based actions could return an error page as HTML.</span></span>
 
-프레임 워크는 추상 제공 `ExceptionFilterAttribute` 하위 클래스를 수 있습니다. 
+<span data-ttu-id="79340-338">프레임 워크는 추상 제공 `ExceptionFilterAttribute` 하위 클래스를 할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-338">The framework provides an abstract `ExceptionFilterAttribute` that you can subclass.</span></span> 
 
-자동으로 상태 모델의 유효성을 검사 하 고 상태가 올바르지 않으면 오류를 반환 하는 작업 필터를 사용할 수 있습니다.
+## <a name="result-filters"></a><span data-ttu-id="79340-339">결과 필터</span><span class="sxs-lookup"><span data-stu-id="79340-339">Result filters</span></span>
 
-[!code-csharp[주](./filters/sample/src/FiltersSample/Filters/ValidateModelAttribute.cs)]
+<span data-ttu-id="79340-340">*필터 결과* 구현 중 하나는 `IResultFilter` 또는 `IAsyncResultFilter` 인터페이스 및 해당 실행 주위의 작업 결과 실행 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-340">*Result filters* implement either the `IResultFilter` or `IAsyncResultFilter` interface, and their execution surrounds the execution of action results.</span></span> 
 
-`OnActionExecuted` 메서드가 실행 후 동작 메서드와 수 보고를 통해 작업의 결과 조작는 `ActionExecutedContext.Result` 속성입니다. `ActionExecutedContext.Canceled`작업 실행 된 처리가 단축 다른 필터에 의해 하는 경우 true로 설정 됩니다. `ActionExecutedContext.Exception`작업 또는 후속 작업 필터는 예외가 발생 하는 경우 null이 아닌 값으로 설정 됩니다. 설정 `ActionExecutedContext.Exception` 효과적으로 null로 '' 예외 처리 및 `ActionExectedContext.Result` 작업 메서드를 정상적으로 반환 된 경우 처럼 실행할 수 있습니다.
+<span data-ttu-id="79340-341">HTTP 헤더를 추가 하는 결과 필터의 예를 들면 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-341">Here's an example of a Result filter that adds an HTTP header.</span></span>
 
-## <a name="result-filters"></a>결과 필터
+<span data-ttu-id="79340-342">[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/LoggingAddHeaderFilter.cs?name=snippet_ResultFilter)]</span><span class="sxs-lookup"><span data-stu-id="79340-342">[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/LoggingAddHeaderFilter.cs?name=snippet_ResultFilter)]</span></span>
 
-*필터 결과* 구현 중 하나는 `IResultFilter` 또는 `IAsyncResultFilter` 인터페이스 및 해당 실행 주위의 작업 결과 실행 합니다. 
+<span data-ttu-id="79340-343">실행 되 고 결과의 종류에는 동작에 따라 다릅니다.</span><span class="sxs-lookup"><span data-stu-id="79340-343">The kind of result being executed depends on the action in question.</span></span> <span data-ttu-id="79340-344">뷰를 반환 하는 MVC 동작의 일부로 처리 하는 모든 razor 포함는 `ViewResult` 실행 되 고 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-344">An MVC action returning a view would include all razor processing as part of the `ViewResult` being executed.</span></span> <span data-ttu-id="79340-345">API 메서드는 실행 결과의 일부로 일부 serialization을 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-345">An API method might perform some serialization as part of the execution of the result.</span></span> <span data-ttu-id="79340-346">에 대 한 자세한 내용은 [작업 결과](actions.md)</span><span class="sxs-lookup"><span data-stu-id="79340-346">Learn more about [action results](actions.md)</span></span>
 
-HTTP 헤더를 추가 하는 결과 필터의 예를 들면 다음과 같습니다.
+<span data-ttu-id="79340-347">결과 필터 동작 또는 작업 필터는 작업 결과 생성 하는 경우에-성공적인 결과 대 한 실행 됩니다.</span><span class="sxs-lookup"><span data-stu-id="79340-347">Result filters are only executed for successful results - when the action or action filters produce an action result.</span></span> <span data-ttu-id="79340-348">예외 필터는 예외를 처리 하는 경우에 결과 필터 실행 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-348">Result filters are not executed when exception filters handle an exception.</span></span>
 
-[!code-csharp[주](./filters/sample/src/FiltersSample/Filters/LoggingAddHeaderFilter.cs?name=snippet_ResultFilter)]
+<span data-ttu-id="79340-349">`OnResultExecuting` 메서드 수 단락 (short-circuit) 작업 결과 및 후속 결과 필터의 실행을 설정 하 여 `ResultExecutingContext.Cancel` true로 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-349">The `OnResultExecuting` method can short-circuit execution of the action result and subsequent result filters by setting `ResultExecutingContext.Cancel` to true.</span></span> <span data-ttu-id="79340-350">일반적으로 빈 응답을 생성 하지 않도록 단락 (short-circuiting) 하는 경우 응답 개체를 작성 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-350">You should generally write to the response object when short-circuiting to avoid generating an empty response.</span></span> <span data-ttu-id="79340-351">예외를 throw 작업 결과 및 후속 필터의 실행도 못합니다 하지만 대신 성공적인 결과 실패로 처리 됩니다.</span><span class="sxs-lookup"><span data-stu-id="79340-351">Throwing an exception will also prevent execution of the action result and subsequent filters, but will be treated as a failure instead of a successful result.</span></span>
 
-실행 되 고 결과의 종류에 동작에 따라 달라 집니다. 뷰를 반환 하는 MVC 동작의 일부로 처리 하는 모든 razor 포함는 `ViewResult` 실행 되 고 있습니다. API 메서드는 결과의 실행의 일부로 일부 serialization을 수행할 수 있습니다. 에 대 한 자세한 내용은 [작업 결과](actions.md)
+<span data-ttu-id="79340-352">경우는 `OnResultExecuted` 메서드 실행, 응답 가능성이 클라이언트에 전송 되어 고 (없는 경우 예외가 throw 되었습니다) 추가로 변경할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-352">When the `OnResultExecuted` method runs, the response has likely been sent to the client and cannot be changed further (unless an exception was thrown).</span></span> <span data-ttu-id="79340-353">`ResultExecutedContext.Canceled`작업 결과가 실행 된 다른 필터에 의해 short-circuited 하는 경우 true로 설정 됩니다.</span><span class="sxs-lookup"><span data-stu-id="79340-353">`ResultExecutedContext.Canceled` will be set to true if the action result execution was short-circuited by another filter.</span></span>
 
-결과 필터 동작 또는 작업 필터는 작업 결과 생성할 때에 성공적인 결과 얻으려면-실행 됩니다. 예외 필터는 예외를 처리 하는 경우에 결과 필터 실행 되지 않습니다.
+<span data-ttu-id="79340-354">`ResultExecutedContext.Exception`작업 결과 또는 후속 결과 필터에서 예외가 null이 아닌 값으로 설정 됩니다.</span><span class="sxs-lookup"><span data-stu-id="79340-354">`ResultExecutedContext.Exception` will be set to a non-null value if the action result or a subsequent result filter threw an exception.</span></span> <span data-ttu-id="79340-355">설정 `Exception` 를 null에서 효과적으로 예외 ' handles' 하 고 하면 예외가 MVC 파이프라인의 뒷부분에 나오는 예외가 다시 throw 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-355">Setting `Exception` to null effectively 'handles' an exception and prevents the exception from being rethrown by MVC later in the pipeline.</span></span> <span data-ttu-id="79340-356">결과 필터에서 예외를 처리 하는 경우 응답에 모든 데이터를 쓸 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-356">When you're handling an exception in a result filter, you might not be able to write any data to the response.</span></span> <span data-ttu-id="79340-357">작업 결과가 실행을 통해 충족할 throw 하는 경우 헤더 이미 플 리 시 된 클라이언트에 오류 코드를 전송 하는 신뢰할 수 있는 메커니즘이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-357">If the action result throws partway through its execution, and the headers have already been flushed to the client, there's no reliable mechanism to send a failure code.</span></span>
 
-`OnResultExecuting` 메서드 효율적으로 진행할 수는 작업 결과 및 후속 결과 필터의 실행을 설정 하 여 `ResultExecutingContext.Cancel` true입니다. 일반적으로 빈 응답을 생성 하지 않도록 단락 (short-circuiting) 하는 경우 응답 개체를 작성 해야 합니다. 예외를 throw 하는 작업 결과 및 후속 필터 실행 되지 것입니다 있지만 대신 성공적인 결과 실패로 처리 됩니다.
+<span data-ttu-id="79340-358">에 대 한 프로그램 `IAsyncResultFilter` 에 대 한 호출 `await next()` 에 `ResultExecutionDelegate` 모든 후속 결과 필터를 실행 하는 작업 결과입니다.</span><span class="sxs-lookup"><span data-stu-id="79340-358">For an `IAsyncResultFilter` a call to `await next()` on the `ResultExecutionDelegate` executes any subsequent result filters and the action result.</span></span> <span data-ttu-id="79340-359">단락 (short-circuit)를 설정 하려면 `ResultExecutingContext.Cancel` 를 호출 하지 마십시오 하 고 true는 `ResultExectionDelegate`합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-359">To short-circuit, set `ResultExecutingContext.Cancel` to true and do not call the `ResultExectionDelegate`.</span></span>
 
-경우는 `OnResultExecuted` 메서드 실행, 응답이 클라이언트에 전송 되어 가능성이 하 고 (아닌 경우 예외가 발생 했습니다) 더 이상 변경할 수 없습니다. `ResultExecutedContext.Canceled`작업 결과 실행 된 처리가 단축 다른 필터에 의해 하는 경우 true로 설정 됩니다.
+<span data-ttu-id="79340-360">프레임 워크는 추상 제공 `ResultFilterAttribute` 하위 클래스를 할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-360">The framework provides an abstract `ResultFilterAttribute` that you can subclass.</span></span> <span data-ttu-id="79340-361">[AddHeaderAttribute](#add-header-attribute) 앞에 표시 된 클래스는 결과 필터 특성의 예시입니다.</span><span class="sxs-lookup"><span data-stu-id="79340-361">The [AddHeaderAttribute](#add-header-attribute) class shown earlier is an example of a result filter attribute.</span></span>
 
-`ResultExecutedContext.Exception`작업 결과 또는 후속 결과 필터 예외가 발생 하는 경우 null이 아닌 값으로 설정 됩니다. 설정 `Exception` 에 null 효과적으로 ''는 예외를 처리 하 고 MVC 파이프라인의 뒷부분에 나오는 예외가 다시 throw 되 고에서 예외를 방지 합니다. 결과 필터에서 예외를 처리 하는 경우 응답에 모든 데이터를 쓸 수 없습니다. 작업 결과 해당 실행을 통해 충족할 throw 하는 경우 헤더 이미 플러시될 때 클라이언트에 오류 코드를 전송 하는 신뢰할 수 있는 메커니즘이 있습니다.
+## <a name="using-middleware-in-the-filter-pipeline"></a><span data-ttu-id="79340-362">필터 파이프라인에 미들웨어를 사용 하 여</span><span class="sxs-lookup"><span data-stu-id="79340-362">Using middleware in the filter pipeline</span></span>
 
-에 대 한는 `IAsyncResultFilter` 에 대 한 호출 `await next()` 에 `ResultExecutionDelegate` 모든 후속 결과 필터를 실행 하는 작업 결과입니다. 단락 (short-circuit)을 설정한 `ResultExecutingContext.Cancel` 에 true 및 호출 하지 않으면는 `ResultExectionDelegate`합니다.
+<span data-ttu-id="79340-363">리소스 필터 처럼 작동 [미들웨어](../../fundamentals/middleware.md) 파이프라인의 뒷부분에 제공 되는 모든 실행을 둘러싸고 한다는 점에서 합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-363">Resource filters work like [middleware](../../fundamentals/middleware.md) in that they surround the execution of everything that comes later in the pipeline.</span></span> <span data-ttu-id="79340-364">하지만 MVC 컨텍스트 및 구문에 액세스할 수 있는 즉 MVC의 일부인 한다는 점에서 필터 미들웨어에서 다릅니다.</span><span class="sxs-lookup"><span data-stu-id="79340-364">But filters differ from middleware in that they are part of MVC, which means that they have access to MVC context and constructs.</span></span>
 
-프레임 워크는 추상 제공 `ReesultFilterAttribute` 하위 클래스를 수 있습니다. [AddHeaderAttribute](#add-header-attribute) 앞에 표시 된 클래스는 결과 필터 특성의 예입니다.
+<span data-ttu-id="79340-365">ASP.NET Core 1.1에서는 필터 파이프라인에 미들웨어를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-365">In ASP.NET Core 1.1, you can use middleware in the filter pipeline.</span></span> <span data-ttu-id="79340-366">MVC 경로 데이터 또는 컨트롤러 또는 작업을 특정 실행 해야 하는 하나에 액세스 해야 하는 미들웨어 구성 요소를 설정한 경우 작업을 수행 하 고 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-366">You might want to do that if you have a middleware component that needs access to MVC route data, or one that should run only for certain controllers or actions.</span></span>
 
-## <a name="using-middleware-in-the-filter-pipeline"></a>미들웨어를 사용 하 여 필터 파이프라인
+<span data-ttu-id="79340-367">미들웨어를 필터로 사용 하려면 형식을 만듭니다는 `Configure` 필터 파이프라인에 삽입 하려고 하는 미들웨어를 지정 하는 메서드.</span><span class="sxs-lookup"><span data-stu-id="79340-367">To use middleware as a filter, create a type with a `Configure` method that specifies the middleware that you want to inject into the filter pipeline.</span></span> <span data-ttu-id="79340-368">요청에 대 한 현재 문화권을 설정 하는 지역화 미들웨어를 사용 하는 예제는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="79340-368">Here's an example that uses the localization middleware to establish the current culture for a request:</span></span>
 
-자원 필터 처럼 작동 [미들웨어](../../fundamentals/middleware.md) 는 파이프라인의 뒷부분에 제공 되는 모든 실행을 묶습니다. 하지만 필터 미들웨어 한다는 점에서 다릅니다 MVC 컨텍스트 및 구문에 액세스할 수 있는 즉 MVC의 일부입니다.
+<span data-ttu-id="79340-369">[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/LocalizationPipeline.cs?name=snippet_MiddlewareFilter&highlight=3,21)]</span><span class="sxs-lookup"><span data-stu-id="79340-369">[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/LocalizationPipeline.cs?name=snippet_MiddlewareFilter&highlight=3,21)]</span></span>
 
-ASP.NET Core 1.1에서는 필터 파이프라인에서 미들웨어를 사용할 수 있습니다. 특정 컨트롤러 또는 작업 실행 되는 하나 또는 MVC 경로 데이터에 액세스 해야 하는 미들웨어 구성 요소를 설정한 경우 하는 작업을 수행 하는 것이 좋습니다.
+<span data-ttu-id="79340-370">사용할 수 있습니다는 `MiddlewareFilterAttribute` 선택한 컨트롤러 또는 동작에 대 한 미들웨어를 실행 하려면 또는 전역:</span><span class="sxs-lookup"><span data-stu-id="79340-370">You can then use the `MiddlewareFilterAttribute` to run the middleware for a selected controller or action or globally:</span></span>
 
-미들웨어를 필터로 사용 하려면 형식 만들기는 `Configure` 필터 파이프라인에 주입 하려는 미들웨어를 지정 하는 메서드. 요청에 대 한 현재 문화권을 설정 하는 지역화 미들웨어를 사용 하는 예제는 다음과 같습니다.
+<span data-ttu-id="79340-371">[!code-csharp[Main](./filters/sample/src/FiltersSample/Controllers/HomeController.cs?name=snippet_MiddlewareFilter&highlight=2)]</span><span class="sxs-lookup"><span data-stu-id="79340-371">[!code-csharp[Main](./filters/sample/src/FiltersSample/Controllers/HomeController.cs?name=snippet_MiddlewareFilter&highlight=2)]</span></span>
 
-[!code-csharp[주](./filters/sample/src/FiltersSample/Filters/LocalizationPipeline.cs?name=snippet_MiddlewareFilter&highlight=3,21)]
+<span data-ttu-id="79340-372">모델 바인딩 전후 나머지 파이프라인 리소스 필터와 필터 파이프라인의 동일한 단계에서 실행 되는 미들웨어 필터입니다.</span><span class="sxs-lookup"><span data-stu-id="79340-372">Middleware filters run at the same stage of the filter pipeline as Resource filters, before model binding and after the rest of the pipeline.</span></span>
 
-사용할 수는 `MiddlewareFilterAttribute` 선택한 컨트롤러나 동작에 대 한 미들웨어를 실행 하려면 또는 전역으로:
+## <a name="next-actions"></a><span data-ttu-id="79340-373">다음 작업</span><span class="sxs-lookup"><span data-stu-id="79340-373">Next actions</span></span>
 
-[!code-csharp[주](./filters/sample/src/FiltersSample/Controllers/HomeController.cs?name=snippet_MiddlewareFilter&highlight=2)]
-
-모델 바인딩 전후 파이프라인의 나머지 리소스 필터는 필터 파이프라인의 단계에서 실행 되는 미들웨어 필터입니다.
-
-## <a name="next-actions"></a>다음 작업
-
-필터를 실험 하려면 [다운로드, 테스트 및 샘플을 수정](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/filters/sample)합니다.
-
+<span data-ttu-id="79340-374">필터를 시험해 [다운로드, 테스트 및 예제를 수정](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/filters/sample)합니다.</span><span class="sxs-lookup"><span data-stu-id="79340-374">To experiment with filters, [download, test and modify the sample](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/filters/sample).</span></span>

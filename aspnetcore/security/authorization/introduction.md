@@ -1,5 +1,5 @@
 ---
-title: "소개 | Microsoft 문서"
+title: "소개"
 author: rick-anderson
 description: 
 keywords: ASP.NET Core
@@ -11,26 +11,24 @@ ms.assetid: a6a556ed-ba59-4107-9358-44cf20e5931b
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/introduction
-ms.translationtype: Machine Translation
-ms.sourcegitcommit: 010b730d2716f9f536fef889bc2f767afb648ef4
-ms.openlocfilehash: 5305b451f9f6d7af83644e6205ff737c0bd10c3a
-ms.contentlocale: ko-kr
-ms.lasthandoff: 03/23/2017
-
+ms.openlocfilehash: 040525505a982fc1be1901effb9186a8fe1cdbdf
+ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/11/2017
 ---
-# <a name="introduction"></a>소개
+# <a name="introduction"></a><span data-ttu-id="d66fc-103">소개</span><span class="sxs-lookup"><span data-stu-id="d66fc-103">Introduction</span></span>
 
 <a name=security-authorization-introduction></a>
 
-권한 부여 동작을 결정 하는 프로세스에는 사용자가 작업을 수행할 수 있습니다. 예를 들어 관리자는 사용자가 문서 라이브러리 만들기, 문서 추가, 문서를 편집 및 삭제를 허용 됩니다. 라이브러리와 함께 일 하는 관리자 이외의 사용자는 문서를 읽을 권한이.
+<span data-ttu-id="d66fc-104">권한 부여 작업을 결정 하는 프로세스를 사용자가 수행할 수 있게 합니다.</span><span class="sxs-lookup"><span data-stu-id="d66fc-104">Authorization refers to the process that determines what a user is able to do.</span></span> <span data-ttu-id="d66fc-105">예를 들어 관리자가 문서 라이브러리 만들기, 문서를 추가, 문서, 편집 및 삭제할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d66fc-105">For example, an administrative user is allowed to create a document library, add documents, edit documents, and delete them.</span></span> <span data-ttu-id="d66fc-106">라이브러리와 함께 일 하는 관리자가 아닌 사용자는 문서를 읽을 권한이.</span><span class="sxs-lookup"><span data-stu-id="d66fc-106">A non-administrative user working with the library is only authorized to read the documents.</span></span>
 
-권한 부여는 직각의 사용자를 익명인 프로세스는 인증에서 독립적입니다. 인증 현재 사용자에 대 한 하나 이상의 id를 만들 수 있습니다.
+<span data-ttu-id="d66fc-107">권한 부여는 직각 인증에서 사용자가 누구를 구축 방향을 얻기 위한 하는 프로세스에서 독립적입니다.</span><span class="sxs-lookup"><span data-stu-id="d66fc-107">Authorization is orthogonal and independent from authentication, which is the process of ascertaining who a user is.</span></span> <span data-ttu-id="d66fc-108">인증 현재 사용자에 대 한 하나 이상의 id를 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d66fc-108">Authentication may create one or more identities for the current user.</span></span>
 
-## <a name="authorization-types"></a>인증 형식
+## <a name="authorization-types"></a><span data-ttu-id="d66fc-109">인증 형식</span><span class="sxs-lookup"><span data-stu-id="d66fc-109">Authorization Types</span></span>
 
-ASP.NET Core 지금 권한 부여 제공 간단한 선언적 [역할](roles.md#security-authorization-role-based) 및 [다양 한 정책 기반](policies.md#security-authorization-policies-based) 권한 부여 요구 사항에 표시 되는 처리기 요구 사항에 대해 사용자 클레임을 평가 하는 모델입니다. 명령적 검사는 간단한 정책 또는 사용자 id와 사용자가 액세스를 시도 하는 리소스의 속성을 평가 하는 정책을 기반으로 사용할 수 있습니다.
+<span data-ttu-id="d66fc-110">ASP.NET Core 권한 부여 제공 선언적 간단한 [역할](roles.md#security-authorization-role-based) 및 [풍부한 정책 기반](policies.md#security-authorization-policies-based) 모델입니다.</span><span class="sxs-lookup"><span data-stu-id="d66fc-110">ASP.NET Core authorization provides a simple declarative [role](roles.md#security-authorization-role-based) and a [rich policy based](policies.md#security-authorization-policies-based) model.</span></span> <span data-ttu-id="d66fc-111">권한 부여 요구 사항에서 나타나며 처리기 요구 사항에 대해 사용자 클레임을 평가 합니다.</span><span class="sxs-lookup"><span data-stu-id="d66fc-111">Authorization is expressed in requirements, and handlers evaluate a user's claims against requirements.</span></span> <span data-ttu-id="d66fc-112">명령적 검사는 단순한 정책 또는 사용자 id 및 사용자 액세스를 시도 하는 리소스의 속성을 평가 하는 정책을 기반으로 될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d66fc-112">Imperative checks can be based on simple policies or policies which evaluate both the user identity and properties of the resource that the user is attempting to access.</span></span>
 
-## <a name="namespaces"></a>네임스페이스
+## <a name="namespaces"></a><span data-ttu-id="d66fc-113">네임스페이스</span><span class="sxs-lookup"><span data-stu-id="d66fc-113">Namespaces</span></span>
 
-권한 부여 구성 요소를 포함 하는 `AuthorizeAttribute` 및 `AllowAnonymousAttribute` 특성에서 발견 되는 `Microsoft.AspNetCore.Authorization` 네임 스페이스입니다.
-
+<span data-ttu-id="d66fc-114">권한 부여 구성 요소를 포함 하는 `AuthorizeAttribute` 및 `AllowAnonymousAttribute` 특성에서 발견 되는 `Microsoft.AspNetCore.Authorization` 네임 스페이스입니다.</span><span class="sxs-lookup"><span data-stu-id="d66fc-114">Authorization components, including the `AuthorizeAttribute` and `AllowAnonymousAttribute` attributes are found in the `Microsoft.AspNetCore.Authorization` namespace.</span></span>

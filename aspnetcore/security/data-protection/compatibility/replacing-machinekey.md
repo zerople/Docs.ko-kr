@@ -1,8 +1,8 @@
 ---
-title: "대체 `<machineKey>` asp.net에서 | Microsoft 문서"
+title: "ASP.NET에서 '< machineKey >'를 대체"
 author: rick-anderson
-description: "대체 `<machineKey>` asp.net"
-keywords: "ASP.NET Core, 보안,`<machineKey>`"
+description: "ASP.NET에서 '< machineKey >'를 대체"
+keywords: "ASP.NET Core, 보안, '< machineKey >'"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,43 +11,43 @@ ms.assetid: 5ac13589-3837-4b4d-8abe-81f843942120
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/compatibility/replacing-machinekey
-translationtype: Machine Translation
-ms.sourcegitcommit: 010b730d2716f9f536fef889bc2f767afb648ef4
-ms.openlocfilehash: 0f502147ca3f8f0fead1dfd448dd843fe9300b88
-ms.lasthandoff: 03/23/2017
-
+ms.openlocfilehash: b7f260bd5d548588a51095537c9c1b1802553c54
+ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/11/2017
 ---
-# <a name="replacing-machinekey-in-aspnet"></a>대체 `<machineKey>` asp.net
+# <a name="replacing-machinekey-in-aspnet"></a><span data-ttu-id="f06dd-104">교체 `<machineKey>` asp.net</span><span class="sxs-lookup"><span data-stu-id="f06dd-104">Replacing `<machineKey>` in ASP.NET</span></span>
 
 <a name=compatibility-replacing-machinekey></a>
 
-구현에서 `<machineKey>` asp.net에서 요소 [대체할 수](http://blogs.msdn.com/b/webdev/archive/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2.aspx)합니다. 따라서 대부분 호출 ASP.NET 암호화 루틴을 새 데이터 보호 시스템을 포함 하 여 대체 데이터 보호 메커니즘을 통해 라우팅할 수 있습니다.
+<span data-ttu-id="f06dd-105">구현에서 `<machineKey>` asp.net에서 요소 [대체할 수](http://blogs.msdn.com/b/webdev/archive/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2.aspx)합니다.</span><span class="sxs-lookup"><span data-stu-id="f06dd-105">The implementation of the `<machineKey>` element in ASP.NET [is replaceable](http://blogs.msdn.com/b/webdev/archive/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2.aspx).</span></span> <span data-ttu-id="f06dd-106">이렇게 하면 새 데이터 보호 시스템을 포함 하 여 대체 데이터 보호 메커니즘을 통해 전송 하려면 ASP.NET 암호화 루틴에 대 한 대부분 호출 합니다.</span><span class="sxs-lookup"><span data-stu-id="f06dd-106">This allows most calls to ASP.NET cryptographic routines to be routed through a replacement data protection mechanism, including the new data protection system.</span></span>
 
-## <a name="package-installation"></a>패키지 설치
+## <a name="package-installation"></a><span data-ttu-id="f06dd-107">패키지 설치</span><span class="sxs-lookup"><span data-stu-id="f06dd-107">Package installation</span></span>
 
 > [!NOTE]
-> 새 데이터 보호 시스템.NET 4.5.1을 대상으로 하는 기존 ASP.NET 응용 프로그램에 설치 된 이상에 가능 합니다. 설치는 응용 프로그램이.NET 4.5를 대상으로 하는 경우 실패 하거나 줄이세요.
+> <span data-ttu-id="f06dd-108">새 데이터 보호 시스템에.NET 4.5.1을 대상으로 하는 기존 ASP.NET 응용 프로그램으로 설치 또는 더 높은 수만 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f06dd-108">The new data protection system can only be installed into an existing ASP.NET application targeting .NET 4.5.1 or higher.</span></span> <span data-ttu-id="f06dd-109">설치 응용 프로그램이.NET 4.5를 대상으로 하는 경우 실패 또는 절감 됩니다.</span><span class="sxs-lookup"><span data-stu-id="f06dd-109">Installation will fail if the application targets .NET 4.5 or lower.</span></span>
 
-기존 ASP.NET 4.5.1+ 프로젝트에 새 데이터 보호 시스템을 설치 하려면 Microsoft.AspNetCore.DataProtection.SystemWeb 패키지를 설치 합니다. 이 사용 하 여 데이터 보호 시스템 인스턴스화는 [기본 구성](../configuration/default-settings.md#data-protection-default-settings) 설정 합니다.
+<span data-ttu-id="f06dd-110">기존 ASP.NET 4.5.1+ 프로젝트에 새 데이터 보호 시스템을 설치 하려면 Microsoft.AspNetCore.DataProtection.SystemWeb 패키지를 설치 합니다.</span><span class="sxs-lookup"><span data-stu-id="f06dd-110">To install the new data protection system into an existing ASP.NET 4.5.1+ project, install the package Microsoft.AspNetCore.DataProtection.SystemWeb.</span></span> <span data-ttu-id="f06dd-111">이 사용 하 여 데이터 보호 시스템 인스턴스화는 [기본 구성](../configuration/default-settings.md#data-protection-default-settings) 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="f06dd-111">This will instantiate the data protection system using the [default configuration](../configuration/default-settings.md#data-protection-default-settings) settings.</span></span>
 
-에 줄을 삽입 패키지를 설치 하면 *Web.config* ASP.NET에 대해 사용 하도록 지시 하 [암호화 작업 대부분](http://blogs.msdn.com/b/webdev/archive/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2.aspx), 폼 인증, 뷰 상태 및 MachineKey.Protect에 대 한 호출을 포함 합니다. 삽입 되는 줄을 다음과 같이 읽습니다.
+<span data-ttu-id="f06dd-112">패키지를 설치 하기에 행 삽입 *Web.config* 에 사용할 asp [암호화 작업 대부분](http://blogs.msdn.com/b/webdev/archive/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2.aspx)폼 인증, 상태 보기 및 호출을 포함 MachineKey.Protect 합니다.</span><span class="sxs-lookup"><span data-stu-id="f06dd-112">When you install the package, it inserts a line into *Web.config* that tells ASP.NET to use it for [most cryptographic operations](http://blogs.msdn.com/b/webdev/archive/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2.aspx), including forms authentication, view state, and calls to MachineKey.Protect.</span></span> <span data-ttu-id="f06dd-113">삽입 되는 행의 내용이 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="f06dd-113">The line that's inserted reads as follows.</span></span>
 
 ```xml
 <machineKey compatibilityMode="Framework45" dataProtectorType="..." />
 ```
 
 >[!TIP]
-> 같은 필드를 검사 하 여 새 데이터 보호 시스템 활성 상태 인지 여부를 알 수 있습니다 `__VIEWSTATE`, 아래 예제와 같이 "CfDJ8"로 시작 해야 하 합니다. "CfDJ8"은 데이터 보호 시스템에 의해 보호 되는 페이로드를 식별 하는 마법 "09 F0 C9 F0" 헤더의 base64 표현입니다.
+> <span data-ttu-id="f06dd-114">과 같은 필드를 검사 하 여 새 데이터 보호 시스템 활성 상태 인지 여부를 알 수 있습니다 `__VIEWSTATE`, 아래 예제와 같이 "CfDJ8"로 시작 해야입니다.</span><span class="sxs-lookup"><span data-stu-id="f06dd-114">You can tell if the new data protection system is active by inspecting fields like `__VIEWSTATE`, which should begin with "CfDJ8" as in the example below.</span></span> <span data-ttu-id="f06dd-115">"CfDJ8"는 데이터 보호 시스템으로 보호 되는 페이로드를 식별 하는 "09 F0 C9 F0" 매직 헤더의 base64 표현입니다.</span><span class="sxs-lookup"><span data-stu-id="f06dd-115">"CfDJ8" is the base64 representation of the magic "09 F0 C9 F0" header that identifies a payload protected by the data protection system.</span></span>
 
 ```html
 <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="CfDJ8AWPr2EQPTBGs3L2GCZOpk..." />
 ```
 
-## <a name="package-configuration"></a>패키지 구성
+## <a name="package-configuration"></a><span data-ttu-id="f06dd-116">패키지 구성</span><span class="sxs-lookup"><span data-stu-id="f06dd-116">Package configuration</span></span>
 
-데이터 보호 시스템에 기본 설정&0; 구성으로 인스턴스화됩니다. 그러나 기본적으로 키를 로컬 파일 시스템에 유지 되는지, 이후 팜에 배포 되는 응용 프로그램에 대해 작동 하지 않습니다이. 이 해결 하려면 서브클래싱하 DataProtectionStartup 형식을 만들어 구성을 제공할 수 고 해당 ConfigureServices 메서드를 재정의 합니다.
+<span data-ttu-id="f06dd-117">데이터 보호 시스템에 기본 0 설치 구성으로 인스턴스화됩니다.</span><span class="sxs-lookup"><span data-stu-id="f06dd-117">The data protection system is instantiated with a default zero-setup configuration.</span></span> <span data-ttu-id="f06dd-118">그러나 기본적으로 키는 유지 않으므로 로컬 파일 시스템에는 팜에 배포 되는 응용 프로그램에 대해 작동 하지 않습니다이 합니다.</span><span class="sxs-lookup"><span data-stu-id="f06dd-118">However, since by default keys are persisted to the local file system, this won't work for applications which are deployed in a farm.</span></span> <span data-ttu-id="f06dd-119">이 해결 하려면 서브클래싱하 DataProtectionStartup 형식을 만들어 구성을 제공할 수 고 해당 ConfigureServices 메서드를 재정의 합니다.</span><span class="sxs-lookup"><span data-stu-id="f06dd-119">To resolve this, you can provide configuration by creating a type which subclasses DataProtectionStartup and overrides its ConfigureServices method.</span></span>
 
-다음은 사용자 지정 데이터 보호 시작 유형 구성 키 유지 되는 위치와 휴지 암호화 하는 방법의 예입니다. 또한 자체 응용 프로그램 이름을 제공 하 여 기본 응용 프로그램 격리 정책을 재정의 합니다.
+<span data-ttu-id="f06dd-120">다음은 사용자 지정 데이터 보호 시작 유형 구성 키 보관용와 휴지 암호화 된 하는 방법의 예입니다.</span><span class="sxs-lookup"><span data-stu-id="f06dd-120">Below is an example of a custom data protection startup type which configured both where keys are persisted and how they're encrypted at rest.</span></span> <span data-ttu-id="f06dd-121">또한 자체 응용 프로그램 이름을 제공 하 여 기본 응용 프로그램 격리 정책을 재정의 합니다.</span><span class="sxs-lookup"><span data-stu-id="f06dd-121">It also overrides the default app isolation policy by providing its own application name.</span></span>
 
 ```csharp
 using System;
@@ -72,9 +72,9 @@ namespace DataProtectionDemo
 ```
 
 >[!TIP]
-> 사용할 수도 있습니다 `<machineKey applicationName="my-app" ... />` 대신 SetApplicationName 명시적으로 호출 합니다. 응용 프로그램 이름을 설정 된 모든 구성 하기를 원할 경우 DataProtectionStartup 파생 형식을 만드는 개발자를 적용 하지 않도록 편의 메커니즘입니다.
+> <span data-ttu-id="f06dd-122">사용할 수도 있습니다 `<machineKey applicationName="my-app" ... />` 대신 SetApplicationName 명시적으로 호출 합니다.</span><span class="sxs-lookup"><span data-stu-id="f06dd-122">You can also use `<machineKey applicationName="my-app" ... />` in place of an explicit call to SetApplicationName.</span></span> <span data-ttu-id="f06dd-123">이것이 응용 프로그램 이름이 설정 된 구성 하고자 할 모든 경우 DataProtectionStartup 파생 형식을 만드는 개발자를 적용 하지 않도록 하는 편리한 메커니즘입니다.</span><span class="sxs-lookup"><span data-stu-id="f06dd-123">This is a convenience mechanism to avoid forcing the developer to create a DataProtectionStartup-derived type if all they wanted to configure was setting the application name.</span></span>
 
-이 사용자 지정 구성을 사용 하도록 하려면 Web.config로 돌아가서를 찾아서는 `<appSettings>` 요소가 패키지를 설치 하는 구성 파일에 추가 합니다. 다음 태그 처럼 표시 됩니다.
+<span data-ttu-id="f06dd-124">이 사용자 지정 구성을 사용 하도록 하려면 Web.config으로 돌아가서를 찾습니다는 `<appSettings>` 요소가 패키지를 설치 하는 구성 파일에 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="f06dd-124">To enable this custom configuration, go back to Web.config and look for the `<appSettings>` element that the package install added to the config file.</span></span> <span data-ttu-id="f06dd-125">태그를 다음과 같이 두는 것이 보입니다.</span><span class="sxs-lookup"><span data-stu-id="f06dd-125">It will look like the following markup:</span></span>
 
 ```xml
 <appSettings>
@@ -87,12 +87,11 @@ namespace DataProtectionDemo
 </appSettings>
 ```
 
-방금 만든 DataProtectionStartup에서 파생 된 형식의 정규화 된 어셈블리 이름 사용 하 여 빈 값을 입력 합니다. 같습니다 응용 프로그램의 이름이 DataProtectionDemo 인 경우는 아래입니다.
+<span data-ttu-id="f06dd-126">방금 만든 DataProtectionStartup 파생 된 형식의 어셈블리 정규화 된 이름 가진 빈 값을 입력 합니다.</span><span class="sxs-lookup"><span data-stu-id="f06dd-126">Fill in the blank value with the assembly-qualified name of the DataProtectionStartup-derived type you just created.</span></span> <span data-ttu-id="f06dd-127">응용 프로그램의 이름이 DataProtectionDemo 인 경우이 다음과 같은 아래 합니다.</span><span class="sxs-lookup"><span data-stu-id="f06dd-127">If the name of the application is DataProtectionDemo, this would look like the below.</span></span>
 
 ```xml
 <add key="aspnet:dataProtectionStartupType"
      value="DataProtectionDemo.MyDataProtectionStartup, DataProtectionDemo" />
 ```
 
-새로 구성 된 데이터 보호 시스템 응용 프로그램 내에서 사용할 준비가 되었습니다.
-
+<span data-ttu-id="f06dd-128">새로 구성 된 데이터 보호 시스템 응용 프로그램 내에서 사용할 준비가 되었습니다.</span><span class="sxs-lookup"><span data-stu-id="f06dd-128">The newly-configured data protection system is now ready for use inside the application.</span></span>
