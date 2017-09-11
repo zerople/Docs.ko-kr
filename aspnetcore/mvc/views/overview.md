@@ -11,11 +11,11 @@ ms.assetid: 668c320d-c050-45e3-8161-2f460dc93b2f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/overview
-ms.openlocfilehash: a93ee8165be52e33c2e7da4d3fee2c8225864db9
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 318d8832dadadd6946c7ffe58f9d89aaf68f54fc
+ms.sourcegitcommit: 4693cb02d845adf2efa00e07ad432c81867bfa12
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/08/2017
 ---
 # <a name="rendering-html-with-views-in-aspnet-core-mvc"></a>ASP.NET Core MVC에서 뷰가 포함 된 HTML 렌더링
 
@@ -39,7 +39,7 @@ ASP.NET Core MVC 뷰는 *.cshtml* 에서 기본적으로 저장 된 파일을 *�
 
 ## <a name="creating-a-view"></a>보기를 만드는 방법
 
-에 컨트롤러에만 적용 되는 뷰가 생성 됩니다는 *뷰 / [ControllerName]* 폴더입니다. 컨트롤러 간에 공유 되는 뷰에 배치 되는 */뷰/공유* 폴더입니다. 연결 된 컨트롤러 작업을 동일 파일 보기 이름을 지정 하 고 추가 된 *.cshtml* 파일 확장명입니다. 에 대 한 보기를 만드는 예는 *에 대 한* 작업에는 *홈* 컨트롤러를 만들면 됩니다는 *About.cshtml* 파일에   */뷰/홈*폴더입니다.
+에 컨트롤러에만 적용 되는 뷰가 생성 됩니다는 *뷰 / [ControllerName]* 폴더입니다. 컨트롤러 간에 공유 되는 뷰에 배치 되는 */뷰/공유* 폴더입니다. 연결 된 컨트롤러 작업을 동일 파일 보기 이름을 지정 하 고 추가 된 *.cshtml* 파일 확장명입니다. 에 대 한 보기를 만드는 예는 *에 대 한* 작업에는 *홈* 컨트롤러를 만들면 됩니다는 *About.cshtml* 파일에  * /뷰/홈*폴더입니다.
 
 샘플 보기 파일 (*About.cshtml*):
 
@@ -69,14 +69,14 @@ ASP.NET Core MVC 뷰는 *.cshtml* 에서 기본적으로 저장 된 파일을 *�
 
 작업 반환 하는 경우는 `View` 메서드를 다음과 같이 `return View();`, 뷰 이름으로 작업 이름이 사용 됩니다. 예를 들어이 값이 "Index" 라는 작업 메서드에서 호출 된 경우 "Index"의 뷰 이름 전달 같을 수 합니다. 뷰 이름을 명시적으로 메서드에 전달 될 수 있습니다 (`return View("SomeView");`). 이러한 경우 모두 보기 검색에서 일치 하는 파일의 보기를 검색합니다.
 
-   1. 뷰 /<ControllerName>/<ViewName>.cshtml
+   1. 뷰 /\<ControllerName > /\<ViewName >.cshtml
 
-   2. 뷰/공유/<ViewName>.cshtml
+   2. 뷰/공유/\<ViewName >.cshtml
 
 >[!TIP]
 > 단순히 반환 규칙 다음과 좋습니다 `View()` 수행 되므로 더 유연 하 고 코드를 리팩터링하면 쉽게 가능한 경우 작업에서 합니다.
 
-뷰 이름 대신 뷰 파일 경로 제공할 수 있습니다. 이 경우에 *.cshtml* 확장 파일 경로의 일부로 지정 해야 합니다. 응용 프로그램 루트에 상대적인 경로 여야 합니다 (필요에 따라 시작할 수 있습니다 및 "/" 또는 "~ /"). 예를 들면 `return View("Views/Home/About.cshtml");` 같은 형식입니다.
+뷰 이름 대신 뷰 파일 경로 제공할 수 있습니다. 응용 프로그램 루트에서 시작 하는 절대 경로 사용 하는 경우 (필요에 따라부터 "/" 또는 "~ /"), *.cshtml* 확장 파일 경로의 일부로 지정 해야 합니다. 예: `return View("Views/Home/About.cshtml");` 또는 컨트롤러 해당 언어별 디렉터리 내에서 상대 경로 사용할 수는 *뷰* 디렉터리를 다른 디렉터리에 뷰를 지정 합니다. 예를 들어: `return View("../Manage/Index");` 내는 *홈* 컨트롤러입니다. 마찬가지로, 현재 컨트롤러 관련 디렉터리를 이동할 수 있습니다: `return View("./About");`합니다. 상대 경로 사용 하지 않는 *.cshtml* 확장 합니다. 위에서 언급 한 대로 컨트롤러, 작업 및 유지 관리 및 명확성에 대 한 뷰 간의 관계를 반영 하도록 뷰에 대 한 파일 구조를 구성 하는 모범 사례를 따릅니다.
 
 > [!NOTE]
 > [부분 뷰](partial.md) 및 [구성 요소 확인](view-components.md) (비슷하지만 동일 하지 않은) 검색 메커니즘을 사용 합니다.

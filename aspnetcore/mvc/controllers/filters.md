@@ -11,11 +11,11 @@ ms.assetid: 531bda08-aa5b-4471-8f08-96add22c8683
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/filters
-ms.openlocfilehash: bf90698bbac850b1917cd93dbf0a5fc5b6792aa0
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 6baeb472770daf1d54b2d9ea894fc710f4f40780
+ms.sourcegitcommit: 4693cb02d845adf2efa00e07ad432c81867bfa12
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/08/2017
 ---
 # <a name="filters"></a>필터
 
@@ -117,7 +117,7 @@ ms.lasthandoff: 08/11/2017
 
 파이프라인의 특정 단계에 대 한 여러 개의 필터가 있을 경우 범위는 기본 필터 실행 순서를 결정 합니다.  전역 필터를 대괄호 안에 메서드 필터 클래스 필터를 묶습니다. 이 라고도 "러시아어 돌" 중첩으로 범위가 증가할 때마다 둘러싸는 앞의 범위와 같은 한 [중첩 돌](https://en.wikipedia.org/wiki/Matryoshka_doll)합니다. 일반적으로 명시적으로 순서를 확인할 필요 없이 원하는 재정의 동작을 가져옵니다.
 
-이 중첩 Asa 결과 *후* 의 역순으로에서 실행 되는 필터의 코드는 *하기 전에* 코드입니다. 시퀀스는 다음과 같습니다.
+이 중첩이의 결과로 *후* 의 역순으로에서 실행 되는 필터의 코드는 *하기 전에* 코드입니다. 시퀀스는 다음과 같습니다.
 
 * *전에* 전체적으로 적용 된 필터의 코드
   * *전에* 컨트롤러에 적용 된 필터의 코드
