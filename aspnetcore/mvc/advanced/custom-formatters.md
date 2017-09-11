@@ -11,11 +11,11 @@ ms.assetid: 1fb6fdc2-e199-4469-9012-b909d1913422
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/custom-formatters
-ms.openlocfilehash: af3b2174c73583832868d2062e6c7ab4689a1229
-ms.sourcegitcommit: 9d3f27a1ee5b7014fb40e4f2ec9b2a9cd744751c
+ms.openlocfilehash: 0285b40cfacb79745d3a6488401677130f55a95b
+ms.sourcegitcommit: 6ece943781d8a56784bb6160f14da85210d3fcea
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/11/2017
 ---
 # <a name="custom-formatters-in-aspnet-core-mvc-web-apis"></a>ASP.NET Core MVC 웹 Api에에서 대 한 사용자 지정 포맷터
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 08/31/2017
 
 ASP.NET Core MVC JSON, XML 또는 일반 텍스트 형식을 사용 하 여 web Api의에서 데이터 교환에 대 한 기본 제공 지원을에 있습니다. 이 문서에서는 사용자 지정 포맷터를 만들어 추가 형식에 대 한 지원을 추가 하는 방법을 보여 줍니다.
 
-[보기 또는 GitHub에서 샘플을 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/advanced/custom-formatters/Sample)합니다.
+[보기 또는 GitHub에서 샘플을 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/advanced/custom-formatters/sample)합니다.
 
 ## <a name="when-to-use-custom-formatters"></a>사용자 지정 포맷터를 사용 하는 경우
 
@@ -100,7 +100,7 @@ ASP.NET Core MVC JSON, XML 또는 일반 텍스트 형식을 사용 하 여 web 
 
 ## <a name="next-steps"></a>다음 단계
 
-참조는 [샘플 응용 프로그램](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/advanced/custom-formatters/Sample)를 구현 하는 간단한 vCard 입력 및 출력 포맷터입니다.  응용 프로그램을 읽고 다음 예제와 같이 vCards 씁니다.
+참조는 [샘플 응용 프로그램](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/advanced/custom-formatters/sample)를 구현 하는 간단한 vCard 입력 및 출력 포맷터입니다.  응용 프로그램을 읽고 다음 예제와 같이 vCards 씁니다.
 
 ```
 BEGIN:VCARD
