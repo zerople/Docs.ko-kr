@@ -11,11 +11,11 @@ ms.assetid: de621887-c5c9-4ac8-9efd-f5cc0457a134
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/response-compression
-ms.openlocfilehash: b79d86358a8f1552118fac508c4cc02cf674f169
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: 5705e9f879af4be3fe338716a4310bf9f0530039
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="response-compression-middleware-for-aspnet-core"></a>ASP.NET Core에 대 한 응답 압축 미들웨어
 
@@ -78,7 +78,7 @@ IIS, Apache 또는 Nginx 여기서 미들웨어의 성능을 아마도 일치 �
 ## <a name="configuration"></a>구성
 다음 코드를 사용 하 여 응답 압축 미들웨어를 사용 하도록 설정 하는 방법을 보여 줍니다는 기본 gzip 압축을 함께 사용 하 고 기본 MIME 형식을 정의 합니다.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](response-compression/samples/2.x/StartupBasic.cs?name=snippet1&highlight=4,8)]
 
@@ -112,7 +112,7 @@ Gzip 압축 공급자 기본적으로 가장 빠른 압축 수준 (`CompressionL
 | `CompressionLevel.Optimal`       | 응답 최적으로 압축 된 압축을 완료 하는 데 시간이 더에 사용 하는 경우에 합니다.                |
 
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](response-compression/samples/2.x/Program.cs?name=snippet1&highlight=3,8-11)]
 
@@ -135,7 +135,7 @@ Gzip 압축 공급자 기본적으로 가장 빠른 압축 수준 (`CompressionL
 
 대체 하거나 응답 압축 미들웨어 옵션으로 MIME 형식을 추가할 수 있습니다. 해당 와일드 카드 MIME 참고와 같은 형식은 `text/*` 지원 되지 않습니다. 샘플 응용 프로그램에 대 한 MIME 형식을 추가 `image/svg+xml` 압축 하 고 ASP.NET Core 배너 이미지를 사용 하 고 (*banner.svg*).
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](response-compression/samples/2.x/Program.cs?name=snippet1&highlight=5)]
 
@@ -150,7 +150,7 @@ Gzip 압축 공급자 기본적으로 가장 빠른 압축 수준 (`CompressionL
 
 클라이언트에서 요청을 제출 샘플 응용 프로그램을 사용 하 여 `Accept-Encoding: mycustomcompression` 헤더입니다. 미들웨어 사용자 지정 압축 구현을 사용 하 고 있는 응답을 반환는 `Content-Encoding: mycustomcompression` 헤더입니다. 클라이언트에서 실행 되도록 사용자 지정 압축 구현에 대 한 순서에서 사용자 지정 인코딩 압축을 풀 수 있어야 합니다.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](response-compression/samples/2.x/Program.cs?name=snippet1&highlight=4)]
 
@@ -169,7 +169,7 @@ Gzip 압축 공급자 기본적으로 가장 빠른 압축 수준 (`CompressionL
 ![Accept-encoding 헤더로 요청의 결과 및 mycustomcompression의 값을 보여 주는 fiddler 창입니다. Vary 및 Content-encoding 헤더 응답에 추가 됩니다.](response-compression/_static/request-custom-compression.png)
 
 ## <a name="compression-with-secure-protocol"></a>보안 프로토콜에 대 한 압축
-보안 연결을 통해 압축 된 응답으로 제어할 수 있습니다는 `EnableForHttps` 옵션을 기본적으로 비활성화 되어 있습니다. 와 같은 보안 문제를 일으킬 수 동적으로 생성 된 페이지와 압축을 사용 하 여 [범죄](https://en.wikipedia.org/wiki/CRIME_(security_exploit)) 및 [위반](https://en.wikipedia.org/wiki/BREACH_(security_exploit)) 공격입니다.
+보안 연결을 통해 압축 된 응답으로 제어할 수 있습니다는 `EnableForHttps` 옵션을 기본적으로 비활성화 되어 있습니다. 와 같은 보안 문제를 일으킬 수 동적으로 생성 된 페이지와 압축을 사용 하 여 [범죄](https://wikipedia.org/wiki/CRIME_(security_exploit)) 및 [위반](https://wikipedia.org/wiki/BREACH_(security_exploit)) 공격입니다.
 
 ## <a name="adding-the-vary-header"></a>Vary 헤더를 추가합니다.
 경우에 따라 응답을 압축 된 `Accept-Encoding` 헤더로, 잠재적으로 여러 개의 압축 된 버전의 응답 및 압축 되지 않은 버전입니다. 여러 버전 존재 하 고 저장 해야 캐시 클라이언트와 프록시 캐시 하도록 지시 하려면는 `Vary` 헤더와 함께 추가 됩니다 한 `Accept-Encoding` 값입니다. ASP.NET Core에서 1.x 추가 `Vary` 헤더를 응답은 수동으로 수행 됩니다. ASP.NET Core에서 2.x 미들웨어 추가 `Vary` 헤더 응답 압축 되어 있을 때 자동으로 합니다.

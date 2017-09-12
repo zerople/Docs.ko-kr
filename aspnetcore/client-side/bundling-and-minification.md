@@ -11,11 +11,11 @@ ms.assetid: d54230f9-8e5f-4861-a29c-1d3a14e0b0d9
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: 810d89798330aeb1c387ec85eb05b1f4efde167a
-ms.sourcegitcommit: 275a5381b6172b4f0b5fcd1d252aff03d3dae166
+ms.openlocfilehash: d8512bdd49b61019f22a49900bdd65086d821a6b
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="bundling-and-minification-in-aspnet-core"></a>묶음 및 축소에서 ASP.NET Core
 
@@ -91,8 +91,8 @@ MVC 프로젝트 템플릿은 제공는 `bundleconfig.json` 구성 파일을 각
 * 축소할-출력에 대 한 축소 옵션을 입력 합니다. **선택적**, *기본값-`minify: { enabled: true }`*
   * 구성 옵션은 출력 파일 형식을 사용할 수 있습니다.
     * [CSS Minifier입니다.](https://github.com/madskristensen/BundlerMinifier/wiki/cssminifier)
-    * [JavaScript Minifier입니다.](https://github.com/madskristensen/BundlerMinifier/wiki/jsminifier)
-    * [HTML Minifier입니다.](https://github.com/madskristensen/BundlerMinifier/wiki/htmlminifier)
+    * [JavaScript Minifier입니다.](https://github.com/madskristensen/BundlerMinifier/wiki)
+    * [HTML Minifier입니다.](https://github.com/madskristensen/BundlerMinifier/wiki)
 * includeInProject-프로젝트 파일 생성 된 파일을 추가 합니다. **선택적**, *기본값-false*
 * -sourcemap을 내보내면 해당 번들된 파일에 대 한 소스 맵을 생성 합니다. **선택적**, *기본값-false*
 
@@ -106,7 +106,7 @@ MVC 프로젝트 템플릿은 제공는 `bundleconfig.json` 구성 파일을 각
 
 ![BuildBundlerMinifier 확장 제안](../client-side/bundling-and-minification/_static/view-extension.png)
 
-다시 시작이 완료 되 면 축소 및 클라이언트 쪽 자산 번들의 프로세스를 실행 하 여 빌드를 구성 해야 합니다. 마우스 오른쪽 단추로 클릭는 `bundleconfig.json` 파일을 선택 *빌드에 사용 번들...* .
+다시 시작이 완료 되 면 축소 및 클라이언트 쪽 자산 번들의 프로세스를 실행 하 여 빌드를 구성 해야 합니다. 마우스 오른쪽 단추로 클릭는 `bundleconfig.json` 파일을 선택 *빌드에 사용 번들... *.
 
 프로젝트를 빌드할 및 `bundleconfig.json` 구성에 따라 출력 파일을 생성 하기 위해 빌드 프로세스에 포함 됩니다.
 
@@ -202,7 +202,7 @@ footer
 > [!NOTE]
 > 변환 옵션 Visual Studio 2015 및 2017 에서만 사용할 수 있습니다.
 
-마우스 오른쪽 단추로 클릭는 `bundleconfig.json` 선택 **Gulp 변환...** . 자동으로 생성 됩니다는 `gulpfile.js` 하 고 필요한 npm 패키지를 설치 합니다.
+마우스 오른쪽 단추로 클릭는 `bundleconfig.json` 선택 **Gulp 변환... **. 자동으로 생성 됩니다는 `gulpfile.js` 하 고 필요한 npm 패키지를 설치 합니다.
 
 ![Gulp를 변환](../client-side/bundling-and-minification/_static/convert-togulp.png)
 
@@ -228,7 +228,7 @@ Visual Studio 2015에서 프로젝트가 빌드될 때 Gulp를 사용 하려면 
 
 ## <a name="additional-resources"></a>추가 리소스
 
-* [Gulp를 사용 하 여](using-gulp.md)
-* [Grunt를 사용 하 여](using-grunt.md)
-* [여러 환경 작업](../fundamentals/environments.md)
+* [Gulp 사용](using-gulp.md)
+* [Grunt 사용](using-grunt.md)
+* [여러 환경 사용](../fundamentals/environments.md)
 * [태그 도우미](../mvc/views/tag-helpers/index.md)

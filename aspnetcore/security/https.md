@@ -11,18 +11,18 @@ ms.assetid: 94f2f1a4-7d46-45e2-a085-a57916e41724
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/https
-ms.openlocfilehash: e06f4194d496b5b11aa867e66563bec317e735ff
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 7c366ffbac71152c2f29901ff12bac2962e83e3e
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="setting-up-https-for-development-in-aspnet-core"></a>ASP.NET Core에서 개발을 위한 HTTPS 설정
 
 > [!NOTE] 
 > 이 항목은 ASP.NET 코어 2.0 Preview 1에 적용 됩니다.
 
-프로덕션 환경에서 HTTPS를 시뮬레이션 하에 개발 하는 동안 HTTPS를 사용 하도록 응용 프로그램을 구성할 수 있습니다. HTTPS를 사용 하도록 설정 해야 할 수 있지만 다양 한 id 공급자와의 통합 (같은 [Azure AD](https://azure.microsoft.com/services/active-directory) 및 [Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c)).
+프로덕션 환경에서 HTTPS를 시뮬레이션 하에 개발 하는 동안 HTTPS를 사용 하도록 응용 프로그램을 구성할 수 있습니다. HTTPS를 사용 하도록 설정 해야 할 수 있지만 다양 한 id 공급자와의 통합 (같은 [Azure AD](https://azure.microsoft.com/services/active-directory) 및 [Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/)).
 
 <a name="iisxpress"></a>
 

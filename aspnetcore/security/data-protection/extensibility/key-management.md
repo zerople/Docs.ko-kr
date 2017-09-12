@@ -2,7 +2,7 @@
 title: "키 관리 확장성"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,11 +11,11 @@ ms.assetid: 3606b251-8324-4485-8d52-582a2cd5cffb
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: fb74905660015b9a83503e1f74b25c66ae9df9e3
-ms.sourcegitcommit: bd05f7ea8f87ad076ef6e8b704698ebcba5ca80c
+ms.openlocfilehash: ed84b6dc257d5fd9e4c1cf6106df3c8bd6e14f64
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="key-management-extensibility"></a>키 관리 확장성
 
@@ -37,7 +37,7 @@ IKey 인터페이스에는 암호화 시스템에 있는 키의 기본 표현입
 
 * 키 식별자 (GUID)
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 IKey 만드는 데 사용할 수 있는 CreateEncryptor 메서드를 노출 하는 또한는 [IAuthenticatedEncryptor](core-crypto.md#data-protection-extensibility-core-crypto-iauthenticatedencryptor) 인스턴스가이 키에 연결 합니다.
 
@@ -67,11 +67,11 @@ IKeyManager 인터페이스 일반 키 저장소, 검색 및 조작 하는 일�
 
 ## <a name="xmlkeymanager"></a>XmlKeyManager
 
-XmlKeyManager 형식은 IKeyManager의 기본 구체적인 구현입니다. 키 위탁 및 대기 키의 암호화를 포함 하 여 몇 가지 유용한 기능을 제공 합니다. 이 시스템에 있는 키 XML 요소로 표시 됩니다 (특히 [XElement](https://msdn.microsoft.com/library/system.xml.linq.xelement(v=vs.110).aspx)).
+XmlKeyManager 형식은 IKeyManager의 기본 구체적인 구현입니다. 키 위탁 및 대기 키의 암호화를 포함 하 여 몇 가지 유용한 기능을 제공 합니다. 이 시스템에 있는 키 XML 요소로 표시 됩니다 (특히 [XElement](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/xelement-class-overview)합니다.
 
 XmlKeyManager 해당 작업을 수행 하는 과정에서 다른 여러 가지 구성 요소에 따라 달라 집니다.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 * AlgorithmConfiguration 새 키로 사용 되는 알고리즘을 지정 합니다.
 
@@ -93,7 +93,7 @@ XmlKeyManager 해당 작업을 수행 하는 과정에서 다른 여러 가지 �
 
 다음은 이러한 구성 요소는 연결 되는 방식을 함께 XmlKeyManager 내 나타내는 개략적인 다이어그램입니다.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
    ![키 만들기](key-management/_static/keycreation2.png)
 
@@ -111,7 +111,7 @@ CreateNewKey 구현의 IAuthenticatedEncryptorConfiguration 구성 요소는 다
 
 ---
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
    ![키 검색](key-management/_static/keyretrieval2.png)
    

@@ -12,15 +12,15 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/error-handling
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5898892c63e978adfabf9939394fef4ea1848d49
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 96a4fed19887a7a9eba08ec70296147f22e41569
+ms.sourcegitcommit: 368aabde4de3728a8e5a8c016a2ec61f9c0854bf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-error-handling-in-aspnet-core"></a>ASP.NET Core의 오류 처리 소개
 
-여 [Steve Smith](http://ardalis.com) 및 [Tom Dykstra](https://github.com/tdykstra/)
+여 [Steve Smith](https://ardalis.com/) 및 [Tom Dykstra](https://github.com/tdykstra/)
 
 이 문서에서는 일반적인 appoaches ASP.NET Core 응용 프로그램의 오류 처리를 다룹니다.
 
@@ -111,13 +111,13 @@ if (statusCodePagesFeature != null)
 
 ## <a name="server-exception-handling"></a>서버 예외 처리
 
-응용 프로그램에서 논리를 처리 하는 예외 뿐 아니라는 [서버](servers/index.md) 응용 프로그램을 호스팅하는 몇 가지 예외 처리를 수행 합니다. 서버에서 헤더를 보낸 전에 된 예외를 catch 하는 경우 본문이 없는 500 내부 서버 오류 응답을 보냅니다. 헤더를 보낸 후에 예외를 catch, 연결을 닫습니다. 응용 프로그램에서 처리 되지 않은 요청을 서버에서 처리 되는 서버의 예외에서 발생 하는 예외를 모두 처리 됩니다 및 처리 합니다. 모든 사용자 지정 오류 페이지나 예외 미들웨어 또는 응용 프로그램에 대해 구성한 필터를 처리 합니다.이 동작은 영향을 주지 않습니다.
+응용 프로그램에서 논리를 처리 하는 예외 뿐 아니라는 [서버](servers/index.md) 응용 프로그램 호스팅 몇 가지 예외 처리를 수행 합니다. 헤더를 보내기 전에 된 예외를 catch 하는 서버를 하는 경우 서버 본문이 없는 500 내부 서버 오류 응답을 보냅니다. 헤더를 보낸 후에 예외를 catch 하는 서버를 서버 연결을 닫습니다. 응용 프로그램으로 처리 되지 요청은 서버에서 처리 됩니다. 서버의 예외 발생 하는 모든 예외를 처리를 처리 합니다. 구성 된 모든 사용자 지정 오류 페이지 또는 예외 처리 미들웨어 또는 필터 안 함이 동작에 영향을이 있습니다.
 
 ## <a name="startup-exception-handling"></a>시작 예외 처리
 
-호스팅 계층에만 응용 프로그램 시작 시 수행 되는 예외를 처리할 수 있습니다. 응용 프로그램 시작 하는 동안 발생 하는 예외 서버 동작에 영향을 줄 수 있습니다. 예를 들어, 예외가 발생 하면 호출 하기 전에 `KestrelServerOptions.UseHttps`, 호스팅 계층 예외를 catch는 서버를 시작 하 고 비 SSL 포트에서 오류 페이지를 표시 합니다. 예외가 발생 하면 해당 줄을 실행 한 후, 오류 페이지 대신 HTTPS를 통해 제공 됩니다.
+호스팅 계층에만 응용 프로그램 시작 시 수행 되는 예외를 처리할 수 있습니다. 할 수 있습니다 [호스트 오류에 대 한 응답으로 시작 하는 동안 작동 하는 방법을 구성할](hosting.md#detailed-errors) 를 사용 하 여 `captureStartupErrors` 및 `detailedErrors` 키입니다.
 
-할 수 있습니다 [시작 하는 동안 호스트 오류에 대 한 응답으로 동작 하는 방법을 구성](hosting.md#configuring-a-host) 를 사용 하 여 `CaptureStartupErrors` 및 `detailedErrors` 키입니다.
+호스트 주소/포트 바인딩 후에 오류가 발생 하는 경우 호스팅 캡처된 시작 오류에 대 한 오류 페이지만 표시할 수 있습니다. 어떤 이유로 든 실패 하면 모든 바인딩에 호스팅 계층 dotnet 프로세스가 충돌할 중요 한 예외를 기록 하 고 없음 오류 페이지가 표시 됩니다.
 
 ## <a name="aspnet-mvc-error-handling"></a>ASP.NET MVC 오류 처리
 

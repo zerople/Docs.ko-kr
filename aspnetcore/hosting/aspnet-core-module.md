@@ -11,11 +11,11 @@ ms.assetid: 5de0c8f7-50ce-4e2c-b3d4-a1bd9fdfcff5
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: hosting/aspnet-core-module
-ms.openlocfilehash: a676b695160b7219bd13f3915e291b722eef47c8
-ms.sourcegitcommit: 8f5277871eff86134ebf68d3737196cfd4a62c2c
+ms.openlocfilehash: 44fc8bd647ad869dd029d8ca4ced782962d71020
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/13/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="aspnet-core-module-configuration-reference"></a>ASP.NET Core 모듈 구성 참조
 
@@ -98,7 +98,7 @@ ASP.NET Core 모듈에 지정 된 프로세스에 대 한 환경 변수를 지�
 
 ## <a name="start-up-error-page"></a>시작 오류 페이지
 
-ASP.NET Core 모듈에 백 엔드 프로세스 또는 백 엔드 프로세스 시작 하지만 구성된 된 포트에서 수신 하도록 실패를 시작 하지 못하는 경우 502.5 HTTP 상태 코드 페이지가 표시 됩니다. 이 페이지를 표시 하지 않는 하 여 기본 IIS 502 상태 코드 페이지로 되돌리려면 사용은 `disableStartUpErrorPage` 특성입니다. 사용자 정의 오류 메시지를 구성 하는 방법에 대 한 자세한 내용은 참조 하십시오. [HTTP 오류 `<httpErrors>` ](https://www.iis.net/configreference/system.webserver/httperrors)합니다.
+ASP.NET Core 모듈에 백 엔드 프로세스 또는 백 엔드 프로세스 시작 하지만 구성된 된 포트에서 수신 하도록 실패를 시작 하지 못하는 경우 502.5 HTTP 상태 코드 페이지가 표시 됩니다. 이 페이지를 표시 하지 않는 하 여 기본 IIS 502 상태 코드 페이지로 되돌리려면 사용은 `disableStartUpErrorPage` 특성입니다. 사용자 정의 오류 메시지를 구성 하는 방법에 대 한 자세한 내용은 참조 하십시오. [HTTP 오류 `<httpErrors>` ](https://docs.microsoft.com/iis/configuration/system.webServer/httpErrors/)합니다.
 
 ![502 상태 페이지](aspnet-core-module/_static/ANCM-502_5.png)
 
@@ -106,7 +106,7 @@ ASP.NET Core 모듈에 백 엔드 프로세스 또는 백 엔드 프로세스 �
 
 ASP.NET Core 모듈 리디렉션합니다 `stdout` 및 `stderr` 설정 하는 경우 디스크에 로그는 `stdoutLogEnabled` 및 `stdoutLogFile` 의 특성은 `aspNetCore` 요소입니다. 에 있는 폴더는 `stdoutLogFile` 경로 로그 파일을 만들 모듈에 대 한 순서에 존재 해야 합니다. 타임 스탬프 및 파일 확장명은 로그 파일을 만들 때 자동으로 추가 됩니다. 프로세스 재활용/를 다시 시작이 발생 하지 않으면 로그 회전 되지 않습니다. 것은 로그 사용할 디스크 공간을 제한 하는 호스팅 서비스 공급자의 책임입니다. 사용 하 여 `stdout` 로그만 일반 응용 프로그램 로깅 목적으로 아닌와 응용 프로그램 시작 문제 해결을 위한 것이 좋습니다.
 
-프로세스 ID (PID), 타임 스탬프를 추가 하 여 로그 파일 이름이 구성 됩니다 (*yyyyMdhms*), 파일 확장명 (*.log*)의 마지막 세그먼트에는 `stdoutLogFile` 경로 (일반적으로 *stdout* ) 밑줄로 구분 합니다. 예를 들어 경우는 `stdoutLogFile` 로 끝나는 경로 *stdout*, 12시 05분: 02에서 8/10/2017에 만든 10652의 PID 사용 하 여 앱에 대 한 로그 파일 이름이 *stdout_10652_20178101252.log*합니다.
+프로세스 ID (PID), 타임 스탬프를 추가 하 여 로그 파일 이름이 구성 됩니다 (*yyyyMdhms*), 파일 확장명 (*.log*)의 마지막 세그먼트에는 `stdoutLogFile` 경로 (일반적으로 *stdout *) 밑줄로 구분 합니다. 예를 들어 경우는 `stdoutLogFile` 로 끝나는 경로 *stdout*, 12시 05분: 02에서 8/10/2017에 만든 10652의 PID 사용 하 여 앱에 대 한 로그 파일 이름이 *stdout_10652_20178101252.log*합니다.
 
 다음은 샘플 `aspNetCore` 구성 요소 `stdout` 로깅. `stdoutLogFile` 예제에 표시 된 경로 Azure 앱 서비스에 적합 합니다. 로컬 경로 또는 네트워크 공유 경로 로컬 로깅 있습니다. AppPool 사용자 id 제공 된 경로에 쓸 수 있는 권한이 있는지 확인 합니다.
 
@@ -120,7 +120,7 @@ ASP.NET Core 모듈 리디렉션합니다 `stdout` 및 `stderr` 설정 하는 �
 
 ## <a name="aspnet-core-module-with-an-iis-shared-configuration"></a>IIS 사용 하 여 ASP.NET Core 모듈 구성 공유
 
-ASP.NET Core 모듈 설치 관리자의 권한으로 실행 되는 **시스템** 계정. 설치 관리자가 액세스 거부 오류가에서 모듈 설정을 구성 하는 동안 적중지 것입니다 로컬 시스템 계정 IIS 공유 구성에 사용 되는 공유 경로 대 한 권한을 수정지 않습니다, 때문에  *applicationHost.config* 공유에 있습니다.
+ASP.NET Core 모듈 설치 관리자의 권한으로 실행 되는 **시스템** 계정. 설치 관리자가 액세스 거부 오류가에서 모듈 설정을 구성 하는 동안 적중지 것입니다 로컬 시스템 계정 IIS 공유 구성에 사용 되는 공유 경로 대 한 권한을 수정지 않습니다, 때문에 * applicationHost.config* 공유에 있습니다.
 
 지원 되지 않는 문제를 해결 하 고 설치 프로그램을 실행 IIS 공유 구성을 사용 하지 않도록 설정, 업데이트 된 내보내기는 *applicationHost.config* 는 공유에 파일을 다시 IIS 공유 구성을 사용 하도록 설정 합니다.
 

@@ -11,17 +11,17 @@ ms.assetid: 5ac13589-3837-4b4d-8abe-81f843942120
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/compatibility/replacing-machinekey
-ms.openlocfilehash: b7f260bd5d548588a51095537c9c1b1802553c54
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 29229b9507ece6aff8278b0ad66169c9e4e7498b
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="replacing-machinekey-in-aspnet"></a>교체 `<machineKey>` asp.net
 
 <a name=compatibility-replacing-machinekey></a>
 
-구현에서 `<machineKey>` asp.net에서 요소 [대체할 수](http://blogs.msdn.com/b/webdev/archive/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2.aspx)합니다. 이렇게 하면 새 데이터 보호 시스템을 포함 하 여 대체 데이터 보호 메커니즘을 통해 전송 하려면 ASP.NET 암호화 루틴에 대 한 대부분 호출 합니다.
+구현에서 `<machineKey>` asp.net에서 요소 [대체할 수](https://blogs.msdn.microsoft.com/webdev/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2/)합니다. 이렇게 하면 새 데이터 보호 시스템을 포함 하 여 대체 데이터 보호 메커니즘을 통해 전송 하려면 ASP.NET 암호화 루틴에 대 한 대부분 호출 합니다.
 
 ## <a name="package-installation"></a>패키지 설치
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 08/11/2017
 
 기존 ASP.NET 4.5.1+ 프로젝트에 새 데이터 보호 시스템을 설치 하려면 Microsoft.AspNetCore.DataProtection.SystemWeb 패키지를 설치 합니다. 이 사용 하 여 데이터 보호 시스템 인스턴스화는 [기본 구성](../configuration/default-settings.md#data-protection-default-settings) 설정 합니다.
 
-패키지를 설치 하기에 행 삽입 *Web.config* 에 사용할 asp [암호화 작업 대부분](http://blogs.msdn.com/b/webdev/archive/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2.aspx)폼 인증, 상태 보기 및 호출을 포함 MachineKey.Protect 합니다. 삽입 되는 행의 내용이 다음과 같습니다.
+패키지를 설치 하기에 행 삽입 *Web.config* 에 사용할 asp [암호화 작업 대부분](https://blogs.msdn.microsoft.com/webdev/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2/)폼 인증, 상태 보기 및 호출을 포함 MachineKey.Protect 합니다. 삽입 되는 행의 내용이 다음과 같습니다.
 
 ```xml
 <machineKey compatibilityMode="Framework45" dataProtectorType="..." />

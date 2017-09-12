@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/index
-ms.openlocfilehash: b2b429ea591809a7a1bc58115c48b8b3ed8e4249
-ms.sourcegitcommit: d7e0df365a6112240b5560212759b1e3525850a2
+ms.openlocfilehash: bf9a5b58d3c0a6a2e90dd4ee9a316de90640c79e
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="aspnet-core-tutorials"></a>ASP.NET Core 자습서
 
@@ -61,7 +61,7 @@ ASP.NET Core 응용 프로그램을 개발하기 위해 다음 단계별 가이�
 * [부트스트랩을 사용하여 아름답고 반응이 빠른 사이트 빌드](../client-side/bootstrap.md)
 
 ## <a name="testing"></a>테스트
-* [Dotnet 테스트를 사용한 .NET Core의 유닛 테스트](https://docs.microsoft.com/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
+* [Dotnet 테스트를 사용한 .NET Core의 단위 테스트](https://docs.microsoft.com/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
 
 ## <a name="publishing-and-deployment"></a>게시 및 배포
 * [Visual Studio를 사용하여 Azure에 ASP.NET Core 웹앱 배포](publish-to-azure-webapp-using-vs.md)
@@ -72,6 +72,6 @@ ASP.NET Core 응용 프로그램을 개발하기 위해 다음 단계별 가이�
 
 <a name="download"></a> 
 ## <a name="how-to-download-a-sample"></a>샘플 다운로드 방법
-1. [ASP.NET 리포지토리 zip 파일을 다운로드합니다](https://github.com/aspnet/docs/archive/master.zip).
+1. [ASP.NET 리포지토리 zip 파일을 다운로드합니다](https://codeload.github.com/aspnet/Docs/zip/master).
 1. *Docs-master.zip* 파일의 압축을 풉니다.
 1. 샘플 링크의 URL을 사용하여 샘플 디렉터리로 이동할 수 있습니다. 

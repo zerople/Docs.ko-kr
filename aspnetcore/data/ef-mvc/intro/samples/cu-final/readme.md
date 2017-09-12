@@ -4,7 +4,7 @@ Contoso 대학 ASP.NET Core MVC 웹 응용 프로그램에서 Entity Framework C
 
 ## <a name="build-it-from-scratch"></a>처음부터 작성
 
-단계를 수행 하 여 응용 프로그램을 빌드할 수 [는 일련의 자습서](https://docs.asp.net/en/latest/data/ef-mvc/intro.html)합니다.
+단계를 수행 하 여 응용 프로그램을 빌드할 수 [는 일련의 자습서](https://docs.microsoft.com/aspnet/core/data/ef-mvc/intro)합니다.
 
 ## <a name="download-it"></a>다운로드
 

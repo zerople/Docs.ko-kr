@@ -11,15 +11,15 @@ ms.assetid: ebc98159-a028-4a94-b06c-43981c79c6be
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 78cc9cd846f9b0963dbba9069c86ca295f7a32e4
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 3d42fd0657bcfb4b0fdab699bbcb572e5736688c
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="file-uploads-in-aspnet-core"></a>ASP.NET Core에서 파일 업로드
 
-으로 [Steve Smith](http://ardalis.com)
+으로 [Steve Smith](https://ardalis.com/)
 
 ASP.NET MVC 작업은 더 작은 파일에 대 한 바인딩 또는 더 큰 파일에 대 한 스트리밍 간단한 모델을 사용 하 여 하나 이상의 파일 업로드를 지원 합니다.
 
@@ -75,7 +75,7 @@ public interface IFormFile
 
 [!code-csharp[Main](file-uploads/sample/FileUploadSample/Controllers/UploadFilesController.cs?name=snippet1)]
 
-사용 하 여 업로드 된 파일의 `IFormFile` 기술을 처리 되기 전에 메모리에 또는 웹 서버에서 디스크를 버퍼링 됩니다. 동작 메서드 내부에서 `IFormFile` 내용이 스트림으로 액세스할 수 있습니다. 로컬 파일 시스템 외에도 파일에 스트리밍할 수 있습니다 [Azure Blob 저장소](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-blobs) 또는 [Entity Framework](https://docs.microsoft.com/ef/core/index)합니다.
+사용 하 여 업로드 된 파일의 `IFormFile` 기술을 처리 되기 전에 메모리에 또는 웹 서버에서 디스크를 버퍼링 됩니다. 동작 메서드 내부에서 `IFormFile` 내용이 스트림으로 액세스할 수 있습니다. 로컬 파일 시스템 외에도 파일에 스트리밍할 수 있습니다 [Azure Blob 저장소](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-blobs/) 또는 [Entity Framework](https://docs.microsoft.com/ef/core/index)합니다.
 
 Entity Framework를 사용 하 여 데이터베이스에 이진 파일 데이터를 저장 하려면 형식의 속성을 정의 `byte[]` 엔터티의:
 
@@ -197,7 +197,7 @@ The request filtering module is configured to deny a request that exceeds the re
 </system.webServer>
 ```
 
-이 설정은 IIS에만 적용 됩니다. 동작은 Kestrel에 호스트 하는 경우 기본적으로 발생 하지 않습니다. 자세한 내용은 참조 [요청 제한 \<requestLimits\>](https://www.iis.net/configreference/system.webserver/security/requestfiltering/requestlimits)합니다.
+이 설정은 IIS에만 적용 됩니다. 동작은 Kestrel에 호스트 하는 경우 기본적으로 발생 하지 않습니다. 자세한 내용은 참조 [요청 제한 \<requestLimits\>](https://docs.microsoft.com/iis/configuration/system.webServer/security/requestFiltering/requestLimits/)합니다.
 
 ### <a name="null-reference-exception-with-iformfile"></a>IFormFile 사용 하 여 null 참조 예외
 

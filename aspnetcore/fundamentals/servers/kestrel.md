@@ -12,15 +12,15 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/kestrel
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 451a548403c8fa0ed2befeb6969a3ee28fe34790
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: baf1a979e4f18cbc7818f78b866e6cb6958efccf
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-kestrel-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 웹 서버 구현이 Kestrel 소개
 
-여 [Tom Dykstra](http://github.com/tdykstra), [Chris Ross](https://github.com/Tratcher), 및 [Stephen Halter](https://twitter.com/halter73)
+여 [Tom Dykstra](https://github.com/tdykstra), [Chris Ross](https://github.com/Tratcher), 및 [Stephen Halter](https://twitter.com/halter73)
 
 Kestrel는 플랫폼 간 [ASP.NET Core 웹 서버로](index.md) 기반 [libuv](https://github.com/libuv/libuv), 비동기 I/O 플랫폼 간 라이브러리입니다. Kestrel은 ASP.NET Core 프로젝트 템플릿에서 기본적으로 포함 되는 웹 서버입니다. 
 
@@ -32,7 +32,7 @@ Kestrel은 다음과 같은 기능을 지원합니다.
 
 Kestrel 모든 플랫폼 및 버전을 지 원하는.NET Core에서 지원 됩니다.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [보기 또는 2.x에 대 한 샘플 코드를 다운로드 합니다.](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/sample2)
 
@@ -44,27 +44,27 @@ Kestrel 모든 플랫폼 및 버전을 지 원하는.NET Core에서 지원 됩�
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>Kestrel 역방향 프록시를 사용 하는 경우
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-단독으로 또는 Kestrel를 사용할 수는 *역방향 프록시 서버*, IIS, Nginx, 또는 Apache 등입니다. 역방향 프록시 서버는 인터넷에서 HTTP 요청을 받고를 몇 가지 예비 처리 후 Kestrel에 전달 합니다.
+Kestrel을 단독으로 사용하거나 IIS, Nginx 또는 Apache 같은 *역방향 프록시 서버*와 함께 사용할 수 있습니다. 역방향 프록시 서버는 인터넷에서 HTTP 요청을 수신하고 몇몇 사전 처리 후에 Kestrel에 전달합니다.
 
-![Kestrel 역방향 프록시 서버 없이 인터넷와 직접 통신](kestrel/_static/kestrel-to-internet2.png)
+![Kestrel은 역방향 프록시 서버 없이 직접 인터넷과 통신합니다.](kestrel/_static/kestrel-to-internet2.png)
 
-![Kestrel 통신 IIS, Nginx, 또는 Apache와 같은 역방향 프록시 서버를 통해 인터넷을 통해 직접 하지](kestrel/_static/kestrel-to-internet.png)
+![Kestrel은 IIS, Nginx 또는 Apache 같은 역방향 프록시 서버를 통해 간접적으로 인터넷과 통신합니다.](kestrel/_static/kestrel-to-internet.png)
 
-구성으로 &mdash; 역방향 프록시 서버 유무 &mdash; Kestrel 내부 네트워크에만 노출 되는 경우에 사용할 수 있습니다.
+Kestrel이 내부 네트워크에만 노출되는 경우 역방향 프록시 서버를 사용하거나 사용하지 않는 구성을 사용할 수도 있습니다.
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-응용 프로그램에서 내부 네트워크의 요청만 Kestrel 단독으로 사용할 수 있습니다.
+응용 프로그램이 내부 네트워크의 요청만 허용할 경우 Kestrel을 단독으로 사용할 수 있습니다.
 
-![Kestrel 내부 네트워크와 직접 통신](kestrel/_static/kestrel-to-internal.png)
+![Kestrel은 내부 네트워크와 직접 통신합니다.](kestrel/_static/kestrel-to-internal.png)
 
-IIS, Nginx, 또는 Apache로 사용 해야 인터넷에 응용 프로그램을 노출 하는 경우는 *역방향 프록시 서버*합니다. 역방향 프록시 서버는 인터넷에서 HTTP 요청을 받고를 몇 가지 예비 처리 후 Kestrel에 전달 합니다.
+응용 프로그램을 인터넷에 노출할 경우 IIS, Nginx 또는 Apache를 *역방향 프록시 서버*로 사용해야 합니다. 역방향 프록시 서버는 인터넷에서 HTTP 요청을 수신하고 몇몇 사전 처리 후에 Kestrel에 전달합니다.
 
-![Kestrel 통신 IIS, Nginx, 또는 Apache와 같은 역방향 프록시 서버를 통해 인터넷을 통해 직접 하지](kestrel/_static/kestrel-to-internet.png)
+![Kestrel은 IIS, Nginx 또는 Apache 같은 역방향 프록시 서버를 통해 간접적으로 인터넷과 통신합니다.](kestrel/_static/kestrel-to-internet.png)
 
-역방향 프록시는 보안상의 이유로 가장자리 배포 (인터넷에서 트래픽에 노출)에 필요 합니다. 1.x 버전 Kestrel의 완벽 한 공격에 대 한 방어 필요는 없습니다. 여기에 포함 되지만 적절 한 제한 시간, 크기 제한 및 동시 연결 제한으로 제한 되지 않습니다.
+역방향 프록시는 보안상의 이유로 가장자리 배포 (인터넷에서 트래픽에 노출)에 필요 합니다. Kestrel 1.x 버전에는 공격에 대한 전체 방어 기능이 포함되어 있지 않습니다. 여기에 포함 되지만 적절 한 제한 시간, 크기 제한 및 동시 연결 제한으로 제한 되지 않습니다.
 
 ---
 
@@ -79,7 +79,7 @@ IIS, Nginx, 또는 Apache로 사용 해야 인터넷에 응용 프로그램을 �
 
 ## <a name="how-to-use-kestrel-in-aspnet-core-apps"></a>Kestrel ASP.NET Core 응용 프로그램에서 사용 하는 방법
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [Microsoft.AspNetCore.Server.Kestrel](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.Kestrel/) 패키지에 포함 되어는 [Microsoft.AspNetCore.All metapackage](xref:fundamentals/metapackage)합니다.
 
@@ -103,7 +103,7 @@ Kestrel 옵션을 구성 해야 할 경우 호출 `UseKestrel` 에 *Program.cs* 
 
 ### <a name="kestrel-options"></a>Kestrel 옵션
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 Kestrel 웹 서버에는 인터넷 연결 배포에 특히 유용한 제약 조건 구성 옵션이 있습니다. 다음은 몇 제한을 설정할 수 있습니다.
 
@@ -174,7 +174,7 @@ Kestrel 옵션에 대 한 정보를 참조 하십시오. [KestrelServerOptions �
 
 ### <a name="endpoint-configuration"></a>끝점 구성
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 기본적으로 ASP.NET Core을 바인딩합니다 `http://localhost:5000`합니다. URL 접두사 및 호출 하 여에서 수신 하도록 Kestrel에 대 한 포트 구성 `Listen` 또는 `ListenUnixSocket` 에 대 한 메서드 `KestrelServerOptions`합니다. (`UseUrls`, `urls` 명령줄 인수 및 ASPNETCORE_URLS 환경 변수 에서도 작동 하지만 제한이 명시 된 [이 문서의 뒷부분에 나오는](#useurls-limitations).)
 
@@ -223,7 +223,7 @@ IIS를 사용 하는 경우 IIS에 대 한 URL 바인딩을 재정의 중 하나
 
 호출 하는 경우 `UseUrls` 하거나 사용 하 여는 `urls` 명령줄 인수나 ASPNETCORE_URLS 환경 변수 URL 접두사는 다음 형식 중 하나일 수 있습니다. 
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 HTTP URL 접두사만 사용할 수 있습니다. Kestrel URL 바인딩을 사용 하 여 구성할 때 SSL을 지원 하지 않습니다 `UseUrls`합니다.
 
@@ -347,7 +347,7 @@ var host = new WebHostBuilder()
 
 자세한 내용은 다음 리소스를 참조하세요.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 * [2.x에 대 한 샘플 응용 프로그램](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/sample2)
 * [Kestrel 소스 코드](https://github.com/aspnet/KestrelHttpServer)

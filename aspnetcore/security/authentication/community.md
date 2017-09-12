@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/community
-ms.openlocfilehash: 162544dbf370e0516df1aea1c5ed049de9a62c97
-ms.sourcegitcommit: 8d39e02aa2c416b880646f807a2baf41d6296bcf
+ms.openlocfilehash: 4900e34a2f8036bb997dd368a921c79410f77a33
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="community-oss-authentication-options"></a>커뮤니티 OSS 인증 옵션
 
@@ -31,4 +31,4 @@ ms.lasthandoff: 08/25/2017
 | [OpenIddict](https://github.com/openiddict/openiddict-core) | ASP.NET Core에 대 한 사용 하기 쉬운 OpenID Connect 서버  |
 | [PwdLess](https://github.com/pwdless/pwdless) | ASP.NET Core에 대 한 간단한 상태 비저장, passwordless 인증  |
 
-여기에 추가 하 여 공급자를 가져오려면 [이 페이지를 편집](https://github.com/aspnet/Docs/edit/master/aspnetcore/security/authentication/community.md)합니다.
+여기에 추가 하 여 공급자를 가져오려면 [이 페이지를 편집](https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Faspnet%2FDocs%2Fedit%2Fmaster%2Faspnetcore%2Fsecurity%2Fauthentication%2Fcommunity.md)합니다.

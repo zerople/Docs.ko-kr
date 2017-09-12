@@ -12,15 +12,15 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/aspnet-core-module
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c4124f71f30b758d82a6bf641328a8d5abf779f2
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: 50c3085c28be4e6ddc4a732aba489ce871ab9ab1
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-aspnet-core-module"></a>ASP.NET Core 모듈 소개
 
-여 [Tom Dykstra](http://github.com/tdykstra), [Rick Strahl](https://github.com/RickStrahl), 및 [Chris Ross](https://github.com/Tratcher) 
+여 [Tom Dykstra](https://github.com/tdykstra), [Rick Strahl](https://github.com/RickStrahl), 및 [Chris Ross](https://github.com/Tratcher) 
 
 ASP.NET Core 모듈 (ANCM)를 사용 하면 ASP.NET Core IIS 뒤에 있는 응용 프로그램을 실행 및 IIS를 사용 하 여 어떤 것이 좋습니다 (보안, 관리 효율성, 및에서 많은 자세한)에 대 한 [Kestrel](kestrel.md) 어떤 것이 좋습니다 (빠른 않도록)에 대 한 시점과 기술에서 한 번에 모두 하면 도움이 됩니다. **ANCM은 Kestrel; 에서만 작동 WebListener와 호환 되지 (ASP.NET Core에서 1.x) 또는 (2.x)에서 HTTP.sys 합니다.** 
 
@@ -62,7 +62,7 @@ ASP.NET Core 모듈 설치 되어 있어야 IIS에서 서버 및 IIS Express에�
 
 ### <a name="install-the-iisintegration-nuget-package"></a>IISIntegration NuGet 패키지 설치
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [Microsoft.AspNetCore.Server.IISIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IISIntegration/) 패키지 ASP.NET Core metapackages에 포함 됩니다 ([Microsoft.AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore/) 및 [Microsoft.AspNetCore.All](xref:fundamentals/metapackage) ). metapackages 중 하나를 사용 하지 않는 경우 설치 `Microsoft.AspNetCore.Server.IISIntegration` 별도로 합니다. `IISIntegration` 패키지는 앱을 설정 하는 ANCM에 의해 브로드캐스팅 되는 환경 변수를 읽을 수 있는 상호 운용성 팩. 환경 변수에서 수신 하도록 포트 등의 구성 정보를 제공 합니다. 
 
@@ -74,7 +74,7 @@ ASP.NET Core 모듈 설치 되어 있어야 IIS에서 서버 및 IIS Express에�
 
 ### <a name="call-useiisintegration"></a>UseIISIntegration 호출
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 `UseIISIntegration` 확장 메서드를 [ `WebHostBuilder` ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilder) IIS 사용 실행 하면 자동으로 호출 됩니다.
 
@@ -92,7 +92,7 @@ ASP.NET Core metapackages 중 하나를 사용 하지 않는 하 고 설치 하�
 
 ### <a name="ancm-port-binding-overrides-other-port-bindings"></a>포트 바인딩 ANCM 다른 포트 바인딩을 재정의합니다
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ANCM 백 엔드 프로세스에 할당 하는 동적 포트를 생성 합니다. `UseIISIntegration` 메서드는이 동적 포트를 선택 하 고 Kestrel에서 수신 하도록 구성 `http://locahost:{dynamicPort}/`합니다. 이 재정의에 대 한 호출 등의 다른 URL 구성을 `UseUrls` 또는 [Kestrel의 수신 API](xref:fundamentals/servers/kestrel?tabs=aspnetcore2x#endpoint-configuration)합니다. 따라서 호출할 필요가 없습니다 `UseUrls` 또는 Kestrel의 `Listen` API ANCM를 사용 하는 경우. 호출 하면 `UseUrls` 또는 `Listen`, Kestrel IIS 없이 앱을 실행할 때 지정 하는 포트에서 수신 합니다.
 

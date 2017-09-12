@@ -2,7 +2,7 @@
 title: "컨트롤러에 대 한 종속성 주입"
 author: ardalis
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,17 +11,17 @@ ms.assetid: bc8b4ba3-e9ba-48fd-b1eb-cd48ff6bc7a1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: 371fb0f721797e4d8f7a26858ae0a709cb5cd39e
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: b83bd4a24ccf7e90e9df06d6a8e229a2d5c6699a
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="dependency-injection-into-controllers"></a>컨트롤러에 대 한 종속성 주입
 
 <a name=dependency-injection-controllers></a>
 
-으로 [Steve Smith](http://ardalis.com)
+으로 [Steve Smith](https://ardalis.com/)
 
 ASP.NET Core MVC 컨트롤러의 생성자를 통해 명시적으로 해당 종속성을 요청 해야 합니다. 경우에 따라 개별 컨트롤러 작업에는 서비스 필요할 수 있습니다 및 컨트롤러 수준에서 요청할 수 있는 적합할 수 있습니다. 이 경우에 작업 메서드의 매개 변수로 서비스를 삽입할 수도 있습니다.
 
@@ -29,7 +29,7 @@ ASP.NET Core MVC 컨트롤러의 생성자를 통해 명시적으로 해당 종�
 
 ## <a name="dependency-injection"></a>종속성 주입
 
-종속성 주입은 뒤에 기술에서 [종속성 반전 원칙](http://deviq.com/dependency-inversion-principle), 응용 프로그램을 느슨하게 결합 된 모듈의 구성 될 수 있도록 합니다. ASP.NET Core에서 기본적으로 지원 [종속성 주입](../../fundamentals/dependency-injection.md), 그러면 응용 프로그램 쉽게 테스트 하 고 유지 관리 합니다.
+종속성 주입은 뒤에 기술에서 [종속성 반전 원칙](http://deviq.com/dependency-inversion-principle/), 응용 프로그램을 느슨하게 결합 된 모듈의 구성 될 수 있도록 합니다. ASP.NET Core에서 기본적으로 지원 [종속성 주입](../../fundamentals/dependency-injection.md), 그러면 응용 프로그램 쉽게 테스트 하 고 유지 관리 합니다.
 
 ## <a name="constructor-injection"></a>생성자 삽입
 
@@ -70,7 +70,7 @@ Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceP
 ![서버 인사말](dependency-injection/_static/server-greeting.png)
 
 >[!TIP]
-> 참조 [테스트 컨트롤러 논리](testing.md) 종속성을 명시적으로 요청 하는 방법에 알아보려면 [http://deviq.com/explicit-dependencies-principle](http://deviq.com/explicit-dependencies-principle) 컨트롤러에 더 쉽게 코드를 테스트 합니다.
+> 참조 [테스트 컨트롤러 논리](testing.md) 종속성을 명시적으로 요청 하는 방법에 알아보려면 [http://deviq.com/explicit-dependencies-principle/](http://deviq.com/explicit-dependencies-principle/) 컨트롤러에 더 쉽게 코드를 테스트 합니다.
 
 ASP.NET Core 기본 종속성 주입 서비스를 요청 하는 클래스에 대 한 단일 생성자만 지원 합니다. 둘 이상의 생성자가 있으면 내용의 된 예외가 나타날 수 있습니다.
 

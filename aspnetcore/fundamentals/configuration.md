@@ -11,17 +11,17 @@ ms.assetid: b3a5984d-e172-42eb-8a48-547e4acb6806
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration
-ms.openlocfilehash: 39e76b14af85de34b8443bf4e04d18d13ad2aa90
-ms.sourcegitcommit: fb518f856f31fe53c09196a13309eacb85b37a22
+ms.openlocfilehash: a14bc7fbcdac9acddfdab4fcd6e40385ca48bcc4
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/12/2017
 ---
 <a name=fundamentals-configuration></a>
 
   # <a name="configuration-in-aspnet-core"></a>ASP.NET Core에 대 한 구성
 
-[Rick Anderson](https://twitter.com/RickAndMSFT), [표시 Michaelis](http://intellitect.com/author/mark-michaelis/), [Steve Smith](http://ardalis.com), 및 [김 Roth](https://github.com/danroth27)
+[Rick Anderson](https://twitter.com/RickAndMSFT), [표시 Michaelis](http://intellitect.com/author/mark-michaelis/), [Steve Smith](https://ardalis.com/), 및 [김 Roth](https://github.com/danroth27)
 
 구성 API 앱 이름-값 쌍의 목록에 따라 구성 하는 방법을 제공 합니다. 여러 원본에서 런타임에 구성 읽기입니다. 여러 수준 계층에 이름-값 쌍을 그룹화 할 수 있습니다. 에 대 한 구성 공급자가 있습니다.
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 09/08/2017
 * [Azure 주요 자격 증명 모음](xref:security/key-vault-configuration)
 * 사용자 지정 공급자가 설치 또는 만들기
 
-각 구성 값 문자열 키에 매핑됩니다. 사용자 지정 설정을 deserialize 하는 데 기본 바인딩인 지원은 [POCO](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object) 개체 (속성이 있는 간단한.NET 클래스).
+각 구성 값 문자열 키에 매핑됩니다. 사용자 지정 설정을 deserialize 하는 데 기본 바인딩인 지원은 [POCO](https://wikipedia.org/wiki/Plain_Old_CLR_Object) 개체 (속성이 있는 간단한.NET 클래스).
 
 [샘플 코드 보기 또는 다운로드](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/sample)
 
@@ -355,7 +355,7 @@ A *web.config* 파일은 IIS 또는 IIS Express에서 응용 프로그램을 호
 
 ### <a name="additional-resources"></a>추가 리소스
 
-* [여러 환경 작업](environments.md)
-* [개발 하는 동안 앱 암호의 안전한 저장소](../security/app-secrets.md)
+* [여러 환경 사용](environments.md)
+* [개발 중 안전한 앱 비밀 저장소](../security/app-secrets.md)
 * [종속성 주입](dependency-injection.md)
-* [Azure 키 자격 증명 모음 구성 공급자](xref:security/key-vault-configuration)
+* [Azure Key Vault 구성 공급자](xref:security/key-vault-configuration)

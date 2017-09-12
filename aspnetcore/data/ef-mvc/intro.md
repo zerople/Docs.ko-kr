@@ -11,11 +11,11 @@ ms.assetid: b67c3d4a-f2bf-4132-a48b-4b0d599d7981
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/intro
-ms.openlocfilehash: b8ef101458e0a6e6284624693689181646ced051
-ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
+ms.openlocfilehash: 949733119b4e3a4b8716f2bcc1f631949d5049bc
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="getting-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio-1-of-10"></a>Visual Studio (1 / 10)을 사용 하 여 Entity Framework Core 및 ASP.NET Core MVC 시작
 
@@ -31,7 +31,7 @@ EF 코어 2.0 EF의 최신 버전은 있지만 아직 되지 않은 EF의 모든
 
 > [!NOTE]
 > * 이 자습서의 ASP.NET Core 1.1 버전에 대 한 참조는 [PDF 형식으로이 자습서의 VS 2017 업데이트 2 버전](https://github.com/aspnet/Docs/blob/master/aspnetcore/data/efmvc/intro/_static/efmvc1.1.pdf)합니다.
-> * 이 자습서의 Visual Studio 2015 버전에 대 한 참조는 [VS 2015 버전의 ASP.NET Core 설명서 PDF 형식의](https://github.com/aspnet/Docs/blob/master/aspnetcore/common/_static/aspnet-core-project-json.pdf)합니다.
+> * 이 자습서의 Visual Studio 2015 버전을 보려면 [VS 2015 version of ASP.NET Core documentation in PDF format](https://github.com/aspnet/Docs/blob/master/aspnetcore/common/_static/aspnet-core-project-json.pdf)(ASP.NET Core의 VS 2015 버전 설명서(PDF 형식))을 참조하세요.
 
 ## <a name="prerequisites"></a>필수 구성 요소
 
@@ -39,7 +39,7 @@ EF 코어 2.0 EF의 최신 버전은 있지만 아직 되지 않은 EF의 모든
 
 ## <a name="troubleshooting"></a>문제 해결
 
-솔루션에 코드를 비교 하 여 일반적으로 찾을 수 문제를 해결할 수 없는 실행 하는 경우는 [완료 된 프로젝트](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)합니다. 일반적인 오류 및 해결 방법을 목록은 참조 하십시오. [계열의 마지막 자습서의 문제 해결 섹션](advanced.md#common-errors)합니다. 에 대 한 StackOverflow.com에 질문을 게시할 수 필요한 있습니다을 찾지 못한 경우 [ASP.NET Core](http://stackoverflow.com/questions/tagged/asp.net-core) 또는 [EF 코어](http://stackoverflow.com/questions/tagged/entity-framework-core)합니다.
+솔루션에 코드를 비교 하 여 일반적으로 찾을 수 문제를 해결할 수 없는 실행 하는 경우는 [완료 된 프로젝트](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)합니다. 일반적인 오류 및 해결 방법을 목록은 참조 하십시오. [계열의 마지막 자습서의 문제 해결 섹션](advanced.md#common-errors)합니다. 에 대 한 StackOverflow.com에 질문을 게시할 수 필요한 있습니다을 찾지 못한 경우 [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) 또는 [EF 코어](https://stackoverflow.com/questions/tagged/entity-framework-core)합니다.
 
 > [!TIP] 
 > 각각 이전 자습서에서 수행 되는 동작과 기반으로 하는 일련의 10 자습서입니다.  각 자습서 완료 후 프로젝트의 복사본을 저장 하는 것이 좋습니다.  문제를 실행 하는 경우에 전체 계열의 시작 부분으로 다시 이동 하지 않고도 이전 자습서에서를 통해 시작할 수 있습니다.
@@ -168,7 +168,7 @@ Entity Framework 라고 하는 경우 외래 키 속성으로 속성을 해석 `
 
 ## <a name="create-the-database-context"></a>데이터베이스 컨텍스트 만들기
 
-지정된 된 데이터 모델에 대 한 Entity Framework 기능을 조정 하는 기본 클래스는 데이터베이스 컨텍스트 클래스입니다. 이 클래스에서 파생 시켜 만들는 `Microsoft.EntityFrameworkCore.DbContext` 클래스입니다. 코드에서 데이터 모델에 포함 된 엔터티 지정 합니다. 특정 Entity Framework 동작을 사용자 지정할 수 있습니다. 이 프로젝트에 클래스 이름은 `SchoolContext`합니다.
+지정된 된 데이터 모델에 대 한 Entity Framework 기능을 조정 하는 기본 클래스는 데이터베이스 컨텍스트 클래스입니다. `Microsoft.EntityFrameworkCore.DbContext` 클래스에서 파생시키는 방식으로 이 클래스를 만듭니다. 코드에서 데이터 모델에 포함 된 엔터티 지정 합니다. 특정 Entity Framework 동작을 사용자 지정할 수 있습니다. 이 프로젝트에 클래스 이름은 `SchoolContext`합니다.
 
 프로젝트 폴더에 라는 폴더를 만듭니다 *데이터*합니다.
 
@@ -176,7 +176,7 @@ Entity Framework 라고 하는 경우 외래 키 속성으로 속성을 해석 `
 
 [!code-csharp[Main](intro/samples/cu/Data/SchoolContext.cs?name=snippet_Intro)]
 
-이 코드에서는 `DbSet` 각 엔터티 집합에 대 한 속성입니다. Entity Framework 용어에서 엔터티 집합을 일반적으로 데이터베이스 테이블에 해당 하 고 엔터티 테이블의 행에 해당 합니다.
+이 코드에서는 `DbSet` 각 엔터티 집합에 대 한 속성입니다. Entity Framework 용어에서 엔터티 집합은 일반적으로 데이터베이스 테이블에 해당하고 엔터티는 테이블의 행에 해당합니다.
 
 생략 했습니다 수는 `DbSet<Enrollment>` 및 `DbSet<Course>` 문과 것은 동일 하 게 작동 합니다. Entity Framework 하기 때문에 암시적으로 해당 포함 됩니다는 `Student` 엔터티 참조는 `Enrollment` 엔터티 및 `Enrollment` 엔터티 참조는 `Course` 엔터티.
 
@@ -330,7 +330,7 @@ SSOX, 클릭 **(localdb) \MSSQLLocalDB > 데이터베이스**, 다음의 연결 
 
 * ID 또는 classnameID 명명 된 엔터티 속성은 기본 키 속성으로 인식 됩니다.
 
-* 라고 하는 경우 외래 키 속성으로는 속성을 해석  *<navigation property name> <primary key property name>*  (예를 들어 `StudentID` 에 대 한는 `Student` 이후 탐색 속성은 `Student` 엔터티의 기본 키가 `ID`). 외래 키 속성은 단순히 또한 이름은 수  *<primary key property name>*  (예를 들어 `EnrollmentID` 이후는 `Enrollment` 엔터티의 기본 키가 `EnrollmentID`).
+* 라고 하는 경우 외래 키 속성으로는 속성을 해석 * <navigation property name> <primary key property name> * (예를 들어 `StudentID` 에 대 한는 `Student` 이후 탐색 속성은 `Student` 엔터티의 기본 키가 `ID`). 외래 키 속성은 단순히 또한 이름은 수 * <primary key property name> * (예를 들어 `EnrollmentID` 이후는 `Enrollment` 엔터티의 기본 키가 `EnrollmentID`).
 
 기본 동작을 재정의할 수 있습니다. 예를 들어이 자습서의 앞부분에서 본 것 처럼 테이블 이름에 지정할 수 명시적으로. 열 이름을 설정할 수 있으며에서 볼 수 있듯이 기본 키 또는 외래 키 속성을 설정 하 고는 [이후의 자습서](complex-data-model.md) 이 시리즈의 합니다.
 

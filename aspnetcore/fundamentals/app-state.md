@@ -12,15 +12,15 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/app-state
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bdc93b2c06b7f0314b5bf49e0e3ea5aa3c1eb3cf
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 8b451bde1e3180d12781d55113638cc1a99182c8
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-session-and-application-state-in-aspnet-core"></a>ASP.NET Core에서 세션 및 응용 프로그램 상태 소개
 
-여 [Rick Anderson](https://twitter.com/RickAndMSFT), [Steve Smith](http://ardalis.com), 및 [Diana LaRose](https://github.com/DianaLaRose)
+여 [Rick Anderson](https://twitter.com/RickAndMSFT), [Steve Smith](https://ardalis.com/), 및 [Diana LaRose](https://github.com/DianaLaRose)
 
 HTTP는 상태 비저장 프로토콜입니다. 웹 서버 독립적인 요청으로 각 HTTP 요청을 처리 하 고 이전 요청에서 사용자 값을 유지 하지 않습니다. 이 문서에서는 응용 프로그램 및 요청 간에 세션 상태를 유지 하기 위해 다양 한 방법 설명 합니다. 
 
@@ -42,7 +42,7 @@ ASP.NET Core 클라이언트 각 요청과 함께 서버에 전송 된 세션 ID
 <a name="temp"></a>
 ### <a name="tempdata"></a>TempData
 
-ASP.NET Core MVC 노출 된 [TempData](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controller#Microsoft_AspNetCore_Mvc_Controller_TempData) 속성에는 [컨트롤러](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controller)합니다. 이 속성은 읽을 때까지 데이터를 저장 합니다. `Keep` 및 `Peek` 삭제 하지 않고 데이터를 검사 메서드를 사용할 수 있습니다. `TempData`단일 요청 보다 많이 필요한 데이터의 경우 리디렉션, 데 특히 유용 합니다. `TempData`세션 상태 위에 빌드됩니다. 
+ASP.NET Core MVC 노출 된 [TempData](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controller#Microsoft_AspNetCore_Mvc_Controller_TempData) 속성에는 [컨트롤러](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controller)합니다. 이 속성은 판독될 때까지 데이터를 저장합니다. `Keep` 및 `Peek` 메서드를 사용하여 삭제 없이 데이터를 검사할 수 있습니다. `TempData`단일 요청 보다 많이 필요한 데이터의 경우 리디렉션, 데 특히 유용 합니다. `TempData`세션 상태 위에 빌드됩니다. 
 
 ## <a name="cookie-based-tempdata-provider"></a>쿠키 기반 TempData 공급자 
 
@@ -58,7 +58,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-쿠키 데이터가 인코딩된는 [Base64UrlTextEncoder](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.authentication.base64urltextencoder)합니다. 쿠키 암호화 되 고 청크를 때문에 단일 쿠키 크기 제한이 적용 되지 않습니다. 쿠키 데이터가 압축 되지 않으며와 같은 보안 문제를 일으킬 수 encryped 데이터 압축 때문에 [범죄](https://en.wikipedia.org/wiki/CRIME_(security_exploit)) 및 [위반](https://en.wikipedia.org/wiki/BREACH_(security_exploit)) 공격입니다. 쿠키 기반 TempData 공급자에 대 한 자세한 내용은 참조 하십시오. [CookieTempDataProvider](https://github.com/aspnet/Mvc/blob/dev/src/Microsoft.AspNetCore.Mvc.ViewFeatures/ViewFeatures/CookieTempDataProvider.cs)합니다.
+쿠키 데이터가 인코딩된는 [Base64UrlTextEncoder](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.authentication.base64urltextencoder)합니다. 쿠키 암호화 되 고 청크를 때문에 단일 쿠키 크기 제한이 적용 되지 않습니다. 쿠키 데이터가 압축 되지 않으며와 같은 보안 문제를 일으킬 수 encryped 데이터 압축 때문에 [범죄](https://wikipedia.org/wiki/CRIME_(security_exploit)) 및 [위반](https://wikipedia.org/wiki/BREACH_(security_exploit)) 공격입니다. 쿠키 기반 TempData 공급자에 대 한 자세한 내용은 참조 하십시오. [CookieTempDataProvider](https://github.com/aspnet/Mvc/blob/dev/src/Microsoft.AspNetCore.Mvc.ViewFeatures/ViewFeatures/CookieTempDataProvider.cs)합니다.
 
 ### <a name="query-strings"></a>쿼리 문자열
 

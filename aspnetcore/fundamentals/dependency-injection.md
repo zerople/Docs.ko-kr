@@ -12,17 +12,17 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/dependency-injection
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d2e191a7395110cde7ab5b2f19b6154c96fb496e
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 4d0302439fbc777c72f00c37a8c852fc0d46300e
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-dependency-injection-in-aspnet-core"></a>ASP.NET Core의 종속성 주입 소개
 
 <a name=fundamentals-dependency-injection></a>
 
-여 [Steve Smith](http://ardalis.com) 및 [Scott Addie](https://scottaddie.com)
+여 [Steve Smith](https://ardalis.com/) 및 [Scott Addie](https://scottaddie.com)
 
 ASP.NET Core는 지원 및 종속성 주입을 활용 하도록를 처음부터 다시 설계 되었습니다. ASP.NET Core 응용 프로그램 시작 클래스의 메서드를 삽입 하 여 기본 제공 프레임 워크 서비스를 활용할 수 있습니다 및 삽입도에 대 한 응용 프로그램 서비스를 구성할 수 있습니다. ASP.NET Core에서 제공 하는 기본 서비스 컨테이너에는 최소 기능 설정 및 다른 컨테이너를 대체 하기 위한 하지 제공 합니다.
 
@@ -39,7 +39,7 @@ ASP.NET Core는 지원 및 종속성 주입을 활용 하도록를 처음부터 
 간단한 기본 제공 컨테이너를 포함 하는 ASP.NET Core (나타내는 `IServiceProvider` 인터페이스) 기본적으로 생성자 삽입을 지원 하 고 ASP.NET을 사용 하면 특정 서비스 DI를 통해 사용할 수 있습니다. ASP입니다. 으로 관리 하는 형식에 NET의 컨테이너는 *서비스*합니다. 이 문서의 나머지 부분 전체에서 *서비스* ASP.NET Core IoC 컨테이너에 의해 관리 되는 유형을 참조 합니다. 기본 제공 컨테이너의 서비스 구성의 `ConfigureServices` 응용 프로그램에서 `Startup` 클래스입니다.
 
 > [!NOTE]
-> Martin Fowler가 광범위 한 문서에 기록 [Inversion의 컨트롤 컨테이너 및 종속성 주입 패턴](http://www.martinfowler.com/articles/injection.html)합니다. Microsoft Patterns and Practices도에 대 한 훌륭한 설명 [종속성 주입](https://msdn.microsoft.com/library/dn178469(v=pandp.30).aspx)합니다.
+> Martin Fowler가 광범위 한 문서에 기록 [Inversion의 컨트롤 컨테이너 및 종속성 주입 패턴](https://www.martinfowler.com/articles/injection.html)합니다. Microsoft Patterns and Practices도에 대 한 훌륭한 설명 [종속성 주입](https://msdn.microsoft.com/library/hh323705.aspx)합니다.
 
 > [!NOTE]
 > 이 문서에서는 모든 ASP.NET 응용 프로그램에 적용 될 때 종속성 주입을 설명 합니다. MVC 컨트롤러 내에서 종속성 주입에 대해서는 [종속성 주입 및 컨트롤러](../mvc/controllers/dependency-injection.md)합니다.
@@ -210,7 +210,7 @@ ASP.NET에서 사용할 수 있는 서비스에서 요청을 `HttpContext` 을 �
 
 ## <a name="designing-your-services-for-dependency-injection"></a>종속성 주입을 위한 서비스를 디자인합니다.
 
-종속성 주입 자신의 공동 작업자를 사용 하 여 서비스를 디자인 해야 합니다. 즉, 상태 저장 정적 메서드 호출을 사용 하지 마십시오 (결과적으로 알려진 코드 냄새 [정적 문에 붙이는](http://deviq.com/static-cling/)) 및 서비스 내에서 종속 클래스의 직접 인스턴스화입니다. 고 구문을 기억 하는 것이 좋습니다. [새 작업은](http://ardalis.com/new-is-glue)를 인스턴스화하는 형식을 아니면 종속성 주입을 통해 요청를 선택할 때, 합니다. 수행 하 여는 [단색 원칙의 개체 지향 디자인](http://deviq.com/solid/), 클래스를 작은 하 고, 잘 구성 된 테스트를 쉽게 거친 간격과 자연스럽 게 됩니다.
+종속성 주입 자신의 공동 작업자를 사용 하 여 서비스를 디자인 해야 합니다. 즉, 상태 저장 정적 메서드 호출을 사용 하지 마십시오 (결과적으로 알려진 코드 냄새 [정적 문에 붙이는](http://deviq.com/static-cling/)) 및 서비스 내에서 종속 클래스의 직접 인스턴스화입니다. 고 구문을 기억 하는 것이 좋습니다. [새 작업은](https://ardalis.com/new-is-glue)를 인스턴스화하는 형식을 아니면 종속성 주입을 통해 요청를 선택할 때, 합니다. 수행 하 여는 [단색 원칙의 개체 지향 디자인](http://deviq.com/solid/), 클래스를 작은 하 고, 잘 구성 된 테스트를 쉽게 거친 간격과 자연스럽 게 됩니다.
 
 경우에 어떻게 클래스 방식으로 삽입 되지 너무 많은 종속성이 있는 경향이 찾을 수 있습니까? 이 일반적으로 클래스를 너무 많이 수행 하 고 SRP-위반 아마도 표시는 [단일 책임 원칙](http://deviq.com/single-responsibility-principle/)합니다. 참조 하는 경우 해당 책임이 있는 몇 가지 새로운 클래스를 이동 하 여 클래스를 리팩터링할 수 있습니다. 프로그램 `Controller` 클래스 해야에 초점을 맞출 UI 우려 사항, 비즈니스 규칙 및 데이터 액세스 구현 세부 정보를 적절 한 클래스에 저장 해야 하므로 [문제를 분리](http://deviq.com/separation-of-concerns/)합니다.
 
@@ -245,7 +245,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="replacing-the-default-services-container"></a>기본 서비스 컨테이너를 대체합니다.
 
-프레임 워크 및 대부분의 소비자 응용 프로그램에서 빌드된의 기본 요구를 수용 하는 기본 제공 서비스 컨테이너를 위한 것입니다. 그러나 개발자 기본 제공 컨테이너의 기본 컨테이너로 바꿀 수 있습니다. `ConfigureServices` 메서드는 일반적으로 반환 `void`, 시그니처에 반환할 변경 되 면 하지만 `IServiceProvider`, 서로 다른 컨테이너를 구성 하거나 반환할 수 있습니다. .NET에 대 한 사용 가능한 많은 IOC 컨테이너 있습니다. 이 예제는 [Autofac](http://autofac.org/) 패키지를 사용 합니다.
+프레임 워크 및 대부분의 소비자 응용 프로그램에서 빌드된의 기본 요구를 수용 하는 기본 제공 서비스 컨테이너를 위한 것입니다. 그러나 개발자 기본 제공 컨테이너의 기본 컨테이너로 바꿀 수 있습니다. `ConfigureServices` 메서드는 일반적으로 반환 `void`, 시그니처에 반환할 변경 되 면 하지만 `IServiceProvider`, 서로 다른 컨테이너를 구성 하거나 반환할 수 있습니다. .NET에 대 한 사용 가능한 많은 IOC 컨테이너 있습니다. 이 예제는 [Autofac](https://autofac.org/) 패키지를 사용 합니다.
 
 먼저, 적절 한 컨테이너 패키지를 설치 합니다.
 
@@ -317,8 +317,8 @@ Singleton 서비스는 스레드로부터 안전 해야 합니다. Singleton 서
 
 * [종속성 주입 (MSDN)으로 ASP.NET Core에 정리 코드를 작성합니다.](https://msdn.microsoft.com/magazine/mt703433.aspx)
 
-* [컨테이너 관리 응용 프로그램 디자인, 궁금할: 여기서 컨테이너 속해야 합니까?](http://blogs.msdn.com/b/nblumhardt/archive/2008/12/27/container-managed-application-design-prelude-where-does-the-container-belong.aspx)
+* [컨테이너 관리 응용 프로그램 디자인, 궁금할: 여기서 컨테이너 속해야 합니까?](https://blogs.msdn.microsoft.com/nblumhardt/2008/12/26/container-managed-application-design-prelude-where-does-the-container-belong/)
 
 * [명시적 종속 관계 원칙](http://deviq.com/explicit-dependencies-principle/)
 
-* [컨트롤 컨테이너 및 종속성 주입 패턴의 반전](http://www.martinfowler.com/articles/injection.html) (Fowler)
+* [컨트롤 컨테이너 및 종속성 주입 패턴의 반전](https://www.martinfowler.com/articles/injection.html) (Fowler)

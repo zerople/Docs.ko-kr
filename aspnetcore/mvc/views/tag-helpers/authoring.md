@@ -12,15 +12,15 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/tag-helpers/authoring
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f16af1184a29b891a9aab0b38ab833836c326c44
-ms.sourcegitcommit: e6a8f171f26fab1b2195a2d7f14e7d258a2e690e
+ms.openlocfilehash: 97013d06273c0993b74cdacfa16cb0d655c73667
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="authoring-tag-helpers-in-aspnet-core-a-walkthrough-with-samples"></a>ASP.NET Core, 샘플을 연습에서에서 태그 도우미를 작성합니다.
 
-으로 [Rick Anderson](https://twitter.com/RickAndMSFT)
+작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 [샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/tag-helpers/authoring/sample)
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 08/23/2017
 
 **참고:**
 
-* 파스칼식 대/소문자 클래스 및 속성 이름 태그 도우미에 대 한 변환 자신의 [kebab 대/소문자를 줄이려면](http://stackoverflow.com/questions/11273282/whats-the-name-for-dash-separated-case/12273101#12273101)합니다. 따라서 사용 하는 `MailTo` 특성을 사용 하 여 `<email mail-to="value"/>` 와 동일 합니다.
+* 파스칼식 대/소문자 클래스 및 속성 이름 태그 도우미에 대 한 변환 자신의 [kebab 대/소문자를 줄이려면](https://stackoverflow.com/questions/11273282/whats-the-name-for-dash-separated-case/12273101)합니다. 따라서 사용 하는 `MailTo` 특성을 사용 하 여 `<email mail-to="value"/>` 와 동일 합니다.
 
 * 마지막 줄이 최소 기능 태그 도우미에 대 한 완료 된 콘텐츠를 설정합니다.
 
@@ -193,7 +193,7 @@ ms.lasthandoff: 08/23/2017
     
     **참고:**
     
-    * 태그 도우미 파스칼식 대/소문자 C# 클래스 이름 및 속성에 대 한 태그 도우미에 대 한 변환에서 설명한 대로 [kebab 대/소문자를 줄이려면](http://c2.com/cgi/wiki?KebabCase)합니다. 따라서 사용 하는 `WebsiteInformationTagHelper` Razor에서 작성 `<website-information />`합니다.
+    * 태그 도우미 파스칼식 대/소문자 C# 클래스 이름 및 속성에 대 한 태그 도우미에 대 한 변환에서 설명한 대로 [kebab 대/소문자를 줄이려면](http://wiki.c2.com/?KebabCase)합니다. 따라서 사용 하는 `WebsiteInformationTagHelper` Razor에서 작성 `<website-information />`합니다.
     
     * 사용 하 여 대상 요소를 명시적으로 식별 되지 됩니다는 `[HtmlTargetElement]` 특성의 기본값을 `website-information` 대상이 됩니다. 다음 특성 (참고 kebab 사례 되지만 클래스 이름과 일치) 적용 한 경우:
     
@@ -209,7 +209,7 @@ ms.lasthandoff: 08/23/2017
     
     * 자체 닫는 요소에는 내용이 없는 합니다. 이 예제에 대 한 Razor 태그를 사용 하 여 자체적으로 닫는 태그 이지만 태그 도우미를 만들는 [섹션](http://www.w3.org/TR/html5/sections.html#the-section-element) 요소 (자체적으로 닫는 되 고 작성 하는 내 콘텐츠는 `section` 요소). 따라서 설정 해야 `TagMode` 를 `StartTagAndEndTag` 출력을 작성 합니다. 또는 주석으로 처리 설정 행 `TagMode` 닫는 태그를 사용 하 여 태그를 작성 합니다. (이 자습서의 뒷부분에 나오는 예제 태그 제공 됩니다.)
     
-    * `$` (달러 기호) 사용 하 여 다음 줄에서 한 [문자열 보간](https://msdn.microsoft.com/library/Dn961160.aspx):
+    * `$` (달러 기호) 사용 하 여 다음 줄에서 한 [문자열 보간](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/interpolated-strings):
     
     ```cshtml
     $@"<ul><li><strong>Version:</strong> {Info.Version}</li>
@@ -272,11 +272,11 @@ ms.lasthandoff: 08/23/2017
 4.  응용 프로그램을 실행 하 고 홈 페이지로 이동 합니다. 조건부의 태그를 `div` 렌더링 되지 것입니다. 쿼리 문자열 추가 `?approved=true` url (예를 들어 `http://localhost:1235/Home/Index?approved=true`). `approved`가 true로 설정 되었고 조건부 태그 표시 됩니다.
 
 >[!NOTE]
->사용 하 여는 [nameof](https://msdn.microsoft.com/library/dn986596.aspx) 연산자를 굵게 표시 된 태그 도우미에서와 마찬가지로 문자열을 지정 하지 않고 대상에 특성을 지정 합니다.
+>사용 하 여는 [nameof](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/nameof) 연산자를 굵게 표시 된 태그 도우미에서와 마찬가지로 문자열을 지정 하지 않고 대상에 특성을 지정 합니다.
 >
 >[!code-csharp[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/zConditionTagHelperCopy.cs?highlight=1,2,5&range=5-18)]
 >
->[nameof](https://msdn.microsoft.com/library/dn986596.aspx) 연산자는 보호 코드 해야 것도 리팩터링할 (하도록 이름을 변경 하려는 `RedCondition`) 합니다.
+>[nameof](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/nameof) 연산자는 보호 코드 해야 것도 리팩터링할 (하도록 이름을 변경 하려는 `RedCondition`) 합니다.
 
 ### <a name="avoiding-tag-helper-conflicts"></a>태그 도우미 충돌 방지
 
@@ -289,7 +289,7 @@ ms.lasthandoff: 08/23/2017
     [!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs?range=7-19)]
 
     >[!NOTE]
-    >`AutoLinkerHttpTagHelper` 대상 클래스 `p` 요소 및 사용 하 여 [Regex](https://msdn.microsoft.com/library/system.text.regularexpressions.regex.aspx) 앵커를 만들려고 합니다.
+    >`AutoLinkerHttpTagHelper` 대상 클래스 `p` 요소 및 사용 하 여 [Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) 앵커를 만들려고 합니다.
 
 2.  끝에 다음 태그를 추가 *Views/Home/Contact.cshtml* 파일:
 

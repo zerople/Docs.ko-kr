@@ -11,15 +11,15 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/tag-helpers/intro
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b1de37d93f5dca2d6b6be24c429b5971692e17e
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 53a31ed8ca6ff24a19a33a56c3a896aa58cbb62a
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-tag-helpers-in-aspnet-core"></a>ASP.NET Core에서 태그 도우미 소개 
 
-으로 [Rick Anderson](https://twitter.com/RickAndMSFT)
+작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ## <a name="what-are-tag-helpers"></a>태그 도우미 이란?
 
@@ -151,7 +151,7 @@ IntelliSense 문 완성을 사용 하면 선택한 값을 사용 하 여 문을 
 
 ![이미지](intro/_static/labelaspfor2.png)
 
-Visual Studio를 입력할 수 있는 *CompleteWord* 바로 가기 (Ctrl + 스페이스바는는 [기본](https://msdn.microsoft.com/library/da5kh0wa.aspx)) 큰따옴표 안에 (""), 현재 위치는 C#, C# 클래스에서 것 처럼 및 합니다. IntelliSense는 페이지 모델에서 모든 메서드 및 속성을 표시합니다. 메서드 및 속성은 사용할 수 있는 속성 형식이 `ModelExpression`합니다. 아래 그림에서는 편집 중인 I는 `Register` 보기 하므로 `RegisterViewModel` ´ ï ´ 합니다.
+Visual Studio를 입력할 수 있는 *CompleteWord* 바로 가기 (Ctrl + 스페이스바는는 [기본](https://docs.microsoft.com/visualstudio/ide/default-keyboard-shortcuts-in-visual-studio) 큰따옴표 안에 (""), 현재 위치는 C#, C# 클래스에서 것 처럼 및 합니다. IntelliSense는 페이지 모델에서 모든 메서드 및 속성을 표시합니다. 메서드 및 속성은 사용할 수 있는 속성 형식이 `ModelExpression`합니다. 아래 그림에서는 편집 중인 I는 `Register` 보기 하므로 `RegisterViewModel` ´ ï ´ 합니다.
 
 ![이미지](intro/_static/intellemail.png)
 
@@ -169,7 +169,7 @@ IntelliSense에는 속성과 페이지에서 모델에 사용할 수 있는 방�
 @Html.Label("FirstName", "First Name:", new {@class="caption"})
 ```
 
-에 (`@`) 기호 이라는 Razor 코드의 시작 됩니다. 다음 두 매개 변수 ("FirstName" 및 "이름:")은 문자열 이므로 [IntelliSense](https://msdn.microsoft.com/library/hcw1s69b.aspx) 도울 수 없습니다. 마지막 인수:
+에 (`@`) 기호 이라는 Razor 코드의 시작 됩니다. 다음 두 매개 변수 ("FirstName" 및 "이름:")은 문자열 이므로 [IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense) 도울 수 없습니다. 마지막 인수:
 
 ```html
 new {@class="caption"}
@@ -245,7 +245,7 @@ Visual Studio 편집기를 사용 하면 작성 **모든** Visual Studio에서�
 
 * 형식 변환기를 사용 하 여 문자열을 개체로 변환 하는 웹 서버 컨트롤. 태그 도우미와에서 작업 하면서 기본적으로 C#, 형식 변환 수행 필요가 없습니다.
 
-* 웹 서버 사용을 제어 [System.ComponentModel](https://msdn.microsoft.com/library/system.componentmodel%28v=vs.110%29.aspx) 구성 요소와 컨트롤의 런타임 및 디자인 타임 동작을 구현 합니다. `System.ComponentModel`기본 클래스와 특성 및 형식 변환기 구현, 소스 데이터에 바인딩, 및 구성 요소 라이선스에 대 한 인터페이스를 포함 합니다. 일반적으로 파생 되는 태그 도우미 즉 `TagHelper`, 및 `TagHelper` 두 개의 메서드를 노출 하는 기본 클래스 `Process` 및 `ProcessAsync`합니다.
+* 웹 서버 사용을 제어 [System.ComponentModel](https://docs.microsoft.com/dotnet/api/system.componentmodel) 구성 요소와 컨트롤의 런타임 및 디자인 타임 동작을 구현 합니다. `System.ComponentModel`기본 클래스와 특성 및 형식 변환기 구현, 소스 데이터에 바인딩, 및 구성 요소 라이선스에 대 한 인터페이스를 포함 합니다. 일반적으로 파생 되는 태그 도우미 즉 `TagHelper`, 및 `TagHelper` 두 개의 메서드를 노출 하는 기본 클래스 `Process` 및 `ProcessAsync`합니다.
 
 ## <a name="customizing-the-tag-helper-element-font"></a>태그 도우미 요소 글꼴을 사용자 지정
 
@@ -255,7 +255,7 @@ Visual Studio 편집기를 사용 하면 작성 **모든** Visual Studio에서�
 
 ## <a name="additional-resources"></a>추가 리소스
 
-* [태그 도우미를 작성합니다.](authoring.md)
+* [태그 도우미 작성](authoring.md)
 * [양식 사용](../working-with-forms.md)
 * [GitHub의 TagHelperSamples](https://github.com/dpaquette/TagHelperSamples) 사용 하기 위한 태그 도우미 샘플이 포함 되어 [부트스트랩](http://getbootstrap.com/)합니다.
 

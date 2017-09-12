@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/index
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 99fbe0e02be27a0fbbb7ff65bc15713aab58c003
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: 5d8ca35b0e2e4b6e9b1ec745a3a7cf7c3983c461
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="aspnet-core-fundamentals-overview"></a>ASP.NET Core 기본 사항 개요
 
@@ -101,7 +101,7 @@ ASP.NET Core에서 [OWIN](http://owin.org) 기반 미들웨어를 사용할 수 
 
 ## <a name="servers"></a>서버
 
-ASP.NET Core 호스팅 모델은 직접 요청을 수신하지 않고, 오히려 HTTP 서버 구현을 사용하여 요청을 응용 프로그램에 전달합니다. 전달된 요청은 인터페이스를 통해 액세스할 수 있는 기능 개체 집합으로 래핑됩니다. 응용 프로그램은 이 집합을 `HttpContext`로 구성합니다. ASP.NET Core에는 [Kestrel](xref:fundamentals/servers/kestrel)이라는 관리되는 플랫폼 간 웹 서버가 포함됩니다. 일반적으로 Kestrel은 [IIS](https://iis.net) 또는 [nginx](http://nginx.org) 같은 프로덕션 웹 서버의 백그라운드에서 실행됩니다.
+ASP.NET Core 호스팅 모델은 직접 요청을 수신하지 않고, 오히려 HTTP 서버 구현을 사용하여 요청을 응용 프로그램에 전달합니다. 전달된 요청은 인터페이스를 통해 액세스할 수 있는 기능 개체 집합으로 래핑됩니다. 응용 프로그램은 이 집합을 `HttpContext`로 구성합니다. ASP.NET Core에는 [Kestrel](xref:fundamentals/servers/kestrel)이라는 관리되는 플랫폼 간 웹 서버가 포함됩니다. 일반적으로 Kestrel은 [IIS](https://www.iis.net/) 또는 [nginx](http://nginx.org) 같은 프로덕션 웹 서버의 백그라운드에서 실행됩니다.
 
 자세한 내용은 [서버](xref:fundamentals/servers/index) 및 [호스팅](xref:fundamentals/hosting)을 참조하세요.
 

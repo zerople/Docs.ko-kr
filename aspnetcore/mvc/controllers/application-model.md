@@ -11,15 +11,15 @@ ms.assetid: 4eb7e52f-5665-41a4-a3e3-e348d07337f2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/application-model
-ms.openlocfilehash: 18046389becd17135ff831e71e700244d48552d3
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 1a5d461809afeef0f485fd3a665250631d855b36
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="working-with-the-application-model"></a>응용 프로그램 모델 작업
 
-으로 [Steve Smith](http://ardalis.com)
+으로 [Steve Smith](https://ardalis.com/)
 
 ASP.NET Core MVC 정의 *응용 프로그램 모델* MVC 응용 프로그램의 구성 요소를 나타내는입니다. 읽을 수 있으며 MVC 요소의 작동 방식을 수정 하려면이 모델을 조작할 수 있습니다. 기본적으로 MVC는 클래스를 컨트롤러로 간주 되며, 이러한 클래스는 메서드는 다음 작업을 매개 변수 및 라우팅 동작 하는 방법을 결정 하는 특정 규칙을 따릅니다. 이 동작을 사용자 지정 규칙을 만들고 전역으로 또는 특성으로 적용 하 여 응용 프로그램의 요구 사항에 맞게 사용자 지정할 수 있습니다.
 
@@ -70,13 +70,13 @@ ASP.NET Core MVC 응용 프로그램 모델의 구조는 다음과 같습니다.
 
 일부 기본 제공 동작에 의해 구현 되는 `DefaultApplicationModelProvider`합니다. 이 공급자는 생성 해야는 [ `ControllerModel` ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.applicationmodels.controllermodel)를 차례로 참조 하는 [ `ActionModel` ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.applicationmodels.actionmodel#Microsoft_AspNetCore_Mvc_ApplicationModels_ActionModel), [ `PropertyModel` ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.applicationmodels.propertymodel), 및 [ `ParameterModel` ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.applicationmodels.parametermodel#Microsoft_AspNetCore_Mvc_ApplicationModels_ParameterModel) 인스턴스. `DefaultApplicationModelProvider` 클래스는 하 고 나중에 변경 될 수 있는 프레임 워크 내부 구현 세부 정보. 
 
-`AuthorizationApplicationModelProvider` 와 연결 된 동작을 적용 합니다는 `AuthorizeFilter` 및 `AllowAnonymousFilter` 특성입니다. [이러한 특성에 대 한 자세한](https://docs.microsoft.com/aspnet/core/security/authorization/simple)합니다.
+`AuthorizationApplicationModelProvider` 와 연결 된 동작을 적용 합니다는 `AuthorizeFilter` 및 `AllowAnonymousFilter` 특성입니다. [이러한 특성에 대 한 자세한](xref:security/authorization/simple)합니다.
 
-`CorsApplicationModelProvider` 와 연결 된 동작을 구현 하는 `IEnableCorsAttribute` 및 `IDisableCorsAttribute`, 및 `DisableCorsAuthorizationFilter`합니다. [CORS에 대 한 자세한](https://docs.microsoft.com/aspnet/core/security/cors)합니다.
+`CorsApplicationModelProvider` 와 연결 된 동작을 구현 하는 `IEnableCorsAttribute` 및 `IDisableCorsAttribute`, 및 `DisableCorsAuthorizationFilter`합니다. [CORS에 대 한 자세한](xref:security/cors)합니다.
 
 ## <a name="conventions"></a>규칙
 
-응용 프로그램 모델 전체 모델 또는 공급자를 재정의 하는 보다는 모델의 동작을 사용자 지정 하는 간단한 방법을 제공 하는 규칙 추상화를 정의 합니다. 이러한 추상화는 앱의 동작을 수정 하는 것이 좋습니다. 규칙에는 사용자 지정에 동적으로 적용 되는 코드를 작성할 수 있는 방법을 제공 합니다. 반면 [필터](https://docs.microsoft.com/aspnet/core/mvc/controllers/filters) 프레임 워크의 동작을 수정 하 게, 사용자 지정 제어할 수 있도록 전체 응용 프로그램 함께 연결 합니다.
+응용 프로그램 모델 전체 모델 또는 공급자를 재정의 하는 보다는 모델의 동작을 사용자 지정 하는 간단한 방법을 제공 하는 규칙 추상화를 정의 합니다. 이러한 추상화는 앱의 동작을 수정 하는 것이 좋습니다. 규칙에는 사용자 지정에 동적으로 적용 되는 코드를 작성할 수 있는 방법을 제공 합니다. 반면 [필터](xref:mvc/controllers/filters) 프레임 워크의 동작을 수정 하 게, 사용자 지정 제어할 수 있도록 전체 응용 프로그램 함께 연결 합니다.
 
 다음과 같은 규칙을 사용할 수 있습니다.
 
@@ -85,7 +85,7 @@ ASP.NET Core MVC 응용 프로그램 모델의 구조는 다음과 같습니다.
 * [`IActionModelConvention`](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.applicationmodels.iactionmodelconvention)
 * [`IParameterModelConvention`](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.applicationmodels.iparametermodelconvention)
 
-MVC 옵션을 추가 하거나 구현 하 여 규칙을 적용할 `Attribute`s 및 컨트롤러, 동작 또는 액션 매개 변수를에 적용 (비슷합니다 [ `Filters` ](https://docs.microsoft.com/aspnet/core/mvc/controllers/filters)). 필터와 달리 각 요청의 일부가 아니라 응용 프로그램을 시작 하는 경우 규칙 실행만 됩니다.
+MVC 옵션을 추가 하거나 구현 하 여 규칙을 적용할 `Attribute`s 및 컨트롤러, 동작 또는 액션 매개 변수를에 적용 (비슷합니다 [ `Filters` ](xref:mvc/controllers/filters)). 필터와 달리 각 요청의 일부가 아니라 응용 프로그램을 시작 하는 경우 규칙 실행만 됩니다.
 
 ### <a name="sample-modifying-the-applicationmodel"></a>샘플:는 ApplicationModel 수정
 
@@ -159,7 +159,7 @@ MVC에 추가 될 때 옵션으로 응용 프로그램 모델 규칙을 적용�
 [!code-csharp[Main](./application-model/sample/src/AppModelSample/Startup.cs?name=ConfigureServices&highlight=6)]
 
 > [!TIP]
-> 규칙을 추가할 수 있습니다 프로그램 [미들웨어](https://docs.microsoft.com/aspnet/core/fundamentals/middleware) 에 액세스 하 여 `MvcOptions` 를 사용 하 여`services.Configure<MvcOptions>(c => c.Conventions.Add(YOURCONVENTION));`
+> 규칙을 추가할 수 있습니다 프로그램 [미들웨어](xref:fundamentals/middleware) 에 액세스 하 여 `MvcOptions` 를 사용 하 여`services.Configure<MvcOptions>(c => c.Conventions.Add(YOURCONVENTION));`
 
 이 샘플에서 컨트롤러의 이름에 "Namespace"에 있는 특성 라우팅을 사용 하지 않는 경로에이 규칙을 적용 합니다. 다음 컨트롤러는이 규칙을 보여 줍니다.
 
@@ -170,7 +170,7 @@ MVC에 추가 될 때 옵션으로 응용 프로그램 모델 규칙을 적용�
 ASP.NET Core MVC는 ASP.NET Web API 2에서 다른 규칙 집합을 사용합니다. 사용자 지정 규칙을 사용 하 여 Web API 응용 프로그램의 해당 값과 일치 되도록 ASP.NET Core MVC 응용 프로그램의 동작을 수정할 수 있습니다. 함께 제공 되며 Microsoft는 [WebApiCompatShim](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.WebApiCompatShim/) 이 용도로 합니다.
 
 > [!NOTE]
-> 에 대 한 자세한 내용은 [ASP.NET Web API에서 마이그레이션](https://docs.microsoft.com/aspnet/core/migration/webapi)).
+> 에 대 한 자세한 내용은 [ASP.NET Web API에서 마이그레이션](xref:migration/webapi)합니다.
 
 웹 API 호환성 Shim을 사용 하려면 프로젝트에 패키지를 추가 하 고 다음 호출 하 여 mvc의 규칙을 추가할 `AddWebApiConventions` 에 `Startup`:
 
@@ -199,7 +199,7 @@ Shim에서 제공 하는 규칙을 특정 특성에 적용 된 적이 있는 응
 
 ### <a name="routes"></a>경로
 
-`UseWebApiRoutesAttribute` 컨트롤 여부는 `WebApiApplicationModelConvention` 컨트롤러 규칙이 적용 됩니다. 이 규칙에 대 한 지원을 추가 하는 데 사용 사용 하도록 설정 하면 [영역](https://docs.microsoft.com/aspnet/core/mvc/controllers/areas) 경로에 있습니다.
+`UseWebApiRoutesAttribute` 컨트롤 여부는 `WebApiApplicationModelConvention` 컨트롤러 규칙이 적용 됩니다. 이 규칙에 대 한 지원을 추가 하는 데 사용 사용 하도록 설정 하면 [영역](xref:mvc/controllers/areas) 경로에 있습니다.
 
 규칙 집합을 외에도 호환성 패키지에는 `System.Web.Http.ApiController` 기본 클래스를 대체 하는 Web API에서 제공 합니다. 이렇게 하면 웹 API와 상속 용으로 작성 하 여 컨트롤러에서 해당 `ApiController` ASP.NET Core MVC에서 실행 되는 동안 디자인에 작동 합니다. 이 기본 컨트롤러 클래스의 모든로 데코레이팅된는 `UseWebApi*` 위에 나열 된 특성입니다. `ApiController` 속성, 메서드 및 웹 API에 있는 것과 호환 되는 결과 형식을 노출 합니다.
 

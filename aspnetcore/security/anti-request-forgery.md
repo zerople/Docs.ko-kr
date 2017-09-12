@@ -9,15 +9,15 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/anti-request-forgery
-ms.openlocfilehash: 466453bff68f3e0da8b90924edb13095c7548db5
-ms.sourcegitcommit: 4f075f2c22c5a4b5345ffa759be4365824110788
+ms.openlocfilehash: 3c0f90dd9894c362c0d7fef5d1f1da076991605c
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/14/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="preventing-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>ASP.NET Core에서 교차 사이트 요청 위조 (XSRF/CSRF) 공격 방지
 
-[Steve Smith](http://ardalis.com/), [Fiyaz Hasan](https://twitter.com/FiyazBinHasan), 및 [Rick Anderson](https://twitter.com/RickAndMSFT)
+[Steve Smith](https://ardalis.com/), [Fiyaz Hasan](https://twitter.com/FiyazBinHasan), 및 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ## <a name="what-attack-does-anti-forgery-prevent"></a>위조 방지 어떤 공격을 방지가?
 
@@ -354,7 +354,7 @@ CSRF 공격 도메인과 해당 도메인에 대 한 모든 요청 연관 된 �
 
 ### <a name="user-tokens"></a>사용자 토큰
 
-토큰 기반 인증 서버에 세션을 저장 하지 않습니다. 대신, 사용자가 로그인 할 때 나오기 (하지 antiforgery 토큰) 토큰입니다. 이 토큰은 토큰의 유효성을 검사 하는 데 필요한 모든 데이터를 보유 합니다. 또한 형식으로 사용자 정보를 포함 [클레임](https://msdn.microsoft.com/library/ff359101.aspx)합니다. 사용자가 인증을 요구 하는 서버 리소스에 액세스 하려고 하는 경우 토큰이 전달자 {토큰}의 양식에서 추가 인증 헤더를 사용 하 여 서버에 전송 됩니다. 이렇게 하면 응용 프로그램 상태 비저장 각 후속 요청에 토큰은 전달 요청에 서버 쪽 유효성 검사에 대 한 이후 있습니다. 이 토큰은 하지 *암호화 된*; 보다는 *인코딩된*합니다. 서버 쪽에서 토큰 내에서 원시 정보에 액세스 하려면 토큰을 디코딩할 수 있습니다. 토큰의 후속 요청을 보내려면 저장할 수 있습니다 하거나 브라우저의 로컬 저장소에 또는 쿠키에 있습니다. 토큰의 로컬 저장소에 저장 되어 있지만 토큰 쿠키에 저장 되는 경우 문제가 발생 하는 경우 XSRF 취약점에 걱정할 필요가 없습니다.
+토큰 기반 인증 서버에 세션을 저장 하지 않습니다. 대신, 사용자가 로그인 할 때 나오기 (하지 antiforgery 토큰) 토큰입니다. 이 토큰은 토큰의 유효성을 검사 하는 데 필요한 모든 데이터를 보유 합니다. 또한 형식으로 사용자 정보를 포함 [클레임](https://docs.microsoft.com/dotnet/framework/security/claims-based-identity-model)합니다. 사용자가 인증을 요구 하는 서버 리소스에 액세스 하려고 하는 경우 토큰이 전달자 {토큰}의 양식에서 추가 인증 헤더를 사용 하 여 서버에 전송 됩니다. 이렇게 하면 응용 프로그램 상태 비저장 각 후속 요청에 토큰은 전달 요청에 서버 쪽 유효성 검사에 대 한 이후 있습니다. 이 토큰은 하지 *암호화 된*; 보다는 *인코딩된*합니다. 서버 쪽에서 토큰 내에서 원시 정보에 액세스 하려면 토큰을 디코딩할 수 있습니다. 토큰의 후속 요청을 보내려면 저장할 수 있습니다 하거나 브라우저의 로컬 저장소에 또는 쿠키에 있습니다. 토큰의 로컬 저장소에 저장 되어 있지만 토큰 쿠키에 저장 되는 경우 문제가 발생 하는 경우 XSRF 취약점에 걱정할 필요가 없습니다.
 
 ### <a name="multiple-applications-are-hosted-in-one-domain"></a>여러 응용 프로그램 도메인에서 호스팅됩니다.
 

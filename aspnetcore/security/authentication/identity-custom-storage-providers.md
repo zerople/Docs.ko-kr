@@ -11,15 +11,15 @@ ms.assetid: b2ace545-ecf6-4664-b31e-b65bd4a6b025
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: 33d02f595ff34a297d3046894edc8a6f5bd42275
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: a8d1d65be07b5a8e8dc3f4526a81ece524b2f7ed
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>ASP.NET Core Id에 대 한 사용자 지정 저장소 공급자
 
-으로 [Steve Smith](http://ardalis.com)
+으로 [Steve Smith](https://ardalis.com/)
 
 ASP.NET Core Id는 사용자 지정 저장소 공급자를 만들고 응용 프로그램에 연결할 수 있도록 하는 확장 가능한 시스템입니다. 이 항목에서는 ASP.NET Core Id에 대 한 사용자 지정 된 저장소 공급자를 만드는 방법을 설명 합니다. 저장소 공급자를 만들기 위한 중요 한 개념을 다루지만 단계별 연습 않습니다.
 
@@ -68,7 +68,7 @@ ASP.NET Core Id 관리자와 저장소를 호출 하는 클래스로 구성 됩�
 
 ### <a name="user-claims"></a>사용자 클레임
 
-문 집합 (또는 [클레임](https://msdn.microsoft.com/library/system.security.claims.claim(v=vs.110).aspx))는 사용자의 id를 나타내는 사용자에 대 한 합니다. 더 나은 식의 역할을 통해 액세스가 가능 보다는 사용자의 id 사용 하도록 설정할 수 있습니다.
+문 집합 (또는 [클레임](https://docs.microsoft.com//dotnet/api/system.security.claims.claim) 사용자의 id를 나타내는 사용자에 대 한 합니다. 더 나은 식의 역할을 통해 액세스가 가능 보다는 사용자의 id 사용 하도록 설정할 수 있습니다.
 
 ### <a name="user-logins"></a>사용자 로그인
 
@@ -143,7 +143,7 @@ ASP.NET Core Id 관리자와 저장소를 호출 하는 클래스로 구성 됩�
 - T w
 - O r e
 
-선택적 인터페이스에서 상속 하므로 `IUserStore`합니다. 저장 부분적으로 구현 된 샘플 사용자를 볼 수 있습니다 [여기](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample/CustomIdentityProviderSample/CustomProvider/CustomUserStore.cs)합니다.
+선택적 인터페이스에서 상속 하므로 `IUserStore`합니다. 저장 부분적으로 구현 된 샘플 사용자를 볼 수 있습니다 [여기](https://github.com/aspnet/Docs/blob/master/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/CustomUserStore.cs)합니다.
 
 내에서 `UserStore` 작업을 수행 하기 위해 만든 데이터 액세스 클래스를 사용할 클래스입니다. 이러한 종속성 주입을 사용 하 여 전달 됩니다. 예를 들어 Dapper 구현으로 SQL Server에에서는 `UserStore` 클래스에는 `CreateAsync` 의 인스턴스를 사용 하는 메서드 `DapperUsersTable` 새 레코드를 삽입:
 
@@ -152,27 +152,27 @@ ASP.NET Core Id 관리자와 저장소를 호출 하는 클래스로 구성 됩�
 ### <a name="interfaces-to-implement-when-customizing-user-store"></a>사용자 저장소에 사용자 지정 하는 경우 구현 하는 인터페이스
 
 - **IUserStore**  
- [IUserStore&lt;s e r&gt; ](https://msdn.microsoft.com/library/dn613278(v=vs.108).aspx) 인터페이스는 인터페이스는 사용자 저장소에 구현 해야 합니다. 만들기, 업데이트, 삭제 및 사용자를 검색 하기 위한 메서드를 정의 합니다.
+ [IUserStore&lt;s e r&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iuserstore-1) 인터페이스는 인터페이스는 사용자 저장소에 구현 해야 합니다. 만들기, 업데이트, 삭제 및 사용자를 검색 하기 위한 메서드를 정의 합니다.
 - **IUserClaimStore**  
- [IUserClaimStore&lt;s e r&gt; ](https://msdn.microsoft.com/library/dn613265(v=vs.108).aspx) 인터페이스 사용자 클레임을 사용 하도록 설정 하기 위해 구현할 메서드를 정의 합니다. 추가, 제거 및 사용자 클레임을 검색 하기 위한 메서드를 포함 합니다.
+ [IUserClaimStore&lt;s e r&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iuserclaimstore-1) 인터페이스 사용자 클레임을 사용 하도록 설정 하기 위해 구현할 메서드를 정의 합니다. 추가, 제거 및 사용자 클레임을 검색 하기 위한 메서드를 포함 합니다.
 - **IUserLoginStore**  
- [IUserLoginStore&lt;s e r&gt; ](https://msdn.microsoft.com/library/dn613272(v=vs.108).aspx) 외부 인증 공급자를 사용 하도록 설정 하기 위해 구현할 메서드를 정의 합니다. 추가, 제거 및 사용자 로그인 및 로그인 정보에 따라 사용자를 검색 하기 위한 메서드를 검색 하기 위한 메서드를 포함 합니다.
+ [IUserLoginStore&lt;s e r&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iuserloginstore-1) 외부 인증 공급자를 사용 하도록 설정 하기 위해 구현할 메서드를 정의 합니다. 추가, 제거 및 사용자 로그인 및 로그인 정보에 따라 사용자를 검색 하기 위한 메서드를 검색 하기 위한 메서드를 포함 합니다.
 - **IUserRoleStore**  
- [IUserRoleStore&lt;s e r&gt; ](https://msdn.microsoft.com/library/dn613276(v=vs.108).aspx) 인터페이스 역할에 사용자에 매핑하기 위해 구현할 메서드를 정의 합니다. 추가, 제거 및 사용자의 역할 및 사용자를 역할에 할당 된 경우를 확인 하는 메서드를 검색 하는 메서드를 포함 합니다.
+ [IUserRoleStore&lt;s e r&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iuserrolestore-1) 인터페이스 역할에 사용자에 매핑하기 위해 구현할 메서드를 정의 합니다. 추가, 제거 및 사용자의 역할 및 사용자를 역할에 할당 된 경우를 확인 하는 메서드를 검색 하는 메서드를 포함 합니다.
 - **S w**  
- [s w&lt;s e r&gt; ](https://msdn.microsoft.com/library/dn613273(v=vs.108).aspx) 인터페이스 해시 된 암호를 유지 하기 위해 구현할 메서드를 정의 합니다. 가져오기 및 해시 된 암호와 사용자가 암호를 설정 하는지 여부를 나타내는 방법을 설정 하는 메서드를 포함 합니다.
+ [s w&lt;s e r&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iuserpasswordstore-1) 인터페이스 해시 된 암호를 유지 하기 위해 구현할 메서드를 정의 합니다. 가져오기 및 해시 된 암호와 사용자가 암호를 설정 하는지 여부를 나타내는 방법을 설정 하는 메서드를 포함 합니다.
 - **IUserSecurityStampStore**  
- [IUserSecurityStampStore&lt;s e r&gt; ](https://msdn.microsoft.com/library/dn613277(v=vs.108).aspx) 인터페이스를 사용자의 계정 정보가 변경 되었는지 여부를 나타내는 보안 스탬프를 사용 하기 위해 구현할 메서드를 정의 합니다. 사용자의 암호 변경 또는 추가 하거나 로그인을 제거 하는 경우이 스탬프 업데이트 됩니다. 가져오기 및 설정의 보안 스탬프에 대 한 메서드를 포함 합니다.
+ [IUserSecurityStampStore&lt;s e r&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iusersecuritystampstore-1) 인터페이스를 사용자의 계정 정보가 변경 되었는지 여부를 나타내는 보안 스탬프를 사용 하기 위해 구현할 메서드를 정의 합니다. 사용자의 암호 변경 또는 추가 하거나 로그인을 제거 하는 경우이 스탬프 업데이트 됩니다. 가져오기 및 설정의 보안 스탬프에 대 한 메서드를 포함 합니다.
 - **T w**  
- [t w&lt;s e r&gt; ](https://msdn.microsoft.com/library/dn613279(v=vs.108).aspx) 인터페이스 2 단계 인증을 지원 하기 위해 구현할 메서드를 정의 합니다. 가져오기 및 사용자에 대해 2 단계 인증이 사용 되는지 여부를 설정 하는 메서드를 포함 합니다.
+ [t w&lt;s e r&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iusertwofactorstore-1) 인터페이스 2 단계 인증을 지원 하기 위해 구현할 메서드를 정의 합니다. 가져오기 및 사용자에 대해 2 단계 인증이 사용 되는지 여부를 설정 하는 메서드를 포함 합니다.
 - **E r p h**  
- [p h&lt;s e r&gt; ](https://msdn.microsoft.com/library/dn613275(v=vs.108).aspx) 인터페이스 사용자 전화 번호를 저장 하기 위해 구현할 메서드를 정의 합니다. 가져오기 및 전화 번호와 전화 번호가 확인 되었는지 여부를 설정 하는 메서드를 포함 합니다.
+ [p h&lt;s e r&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iuserphonenumberstore-1) 인터페이스 사용자 전화 번호를 저장 하기 위해 구현할 메서드를 정의 합니다. 가져오기 및 전화 번호와 전화 번호가 확인 되었는지 여부를 설정 하는 메서드를 포함 합니다.
 - **O r e**  
- [o r e&lt;s e r&gt; ](https://msdn.microsoft.com/library/dn613143(v=vs.108).aspx) 인터페이스 사용자 전자 메일 주소를 저장 하기 위해 구현할 메서드를 정의 합니다. 가져오기 및 전자 메일 주소 및 전자 메일이 확인 여부를 설정 하는 메서드를 포함 합니다.
+ [o r e&lt;s e r&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iuseremailstore-1) 인터페이스 사용자 전자 메일 주소를 저장 하기 위해 구현할 메서드를 정의 합니다. 가져오기 및 전자 메일 주소 및 전자 메일이 확인 여부를 설정 하는 메서드를 포함 합니다.
 - **O r e**  
- [o r e&lt;s e r&gt; ](https://msdn.microsoft.com/library/dn613271(v=vs.108).aspx) 인터페이스 계정 잠금에 대 한 정보를 저장 하기 위해 구현할 메서드를 정의 합니다. 실패 한 액세스 시도 횟수와 잠금 추적을 위한 메서드를 포함 합니다.
+ [o r e&lt;s e r&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iuserlockoutstore-1) 인터페이스 계정 잠금에 대 한 정보를 저장 하기 위해 구현할 메서드를 정의 합니다. 실패 한 액세스 시도 횟수와 잠금 추적을 위한 메서드를 포함 합니다.
 - **I q**  
- [i q&lt;s e r&gt; ](https://msdn.microsoft.com/library/dn613267(v=vs.108).aspx) 인터페이스 멤버 구현 쿼리 가능한 사용자 저장소를 제공 하도록 정의 합니다.
+ [i q&lt;s e r&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iqueryableuserstore-1) 인터페이스 멤버 구현 쿼리 가능한 사용자 저장소를 제공 하도록 정의 합니다.
 
 앱에서 필요한는 인터페이스를 구현 합니다. 예:
 
@@ -190,7 +190,7 @@ public class UserStore : IUserStore<IdentityUser>,
 
 ### <a name="identityuserclaim-identityuserlogin-and-identityuserrole"></a>IdentityUserClaim, IdentityUserLogin, 및 IdentityUserRole
 
-``Microsoft.AspNet.Identity.EntityFramework`` 네임 스페이스에 구현 된 [IdentityUserClaim](https://msdn.microsoft.com/library/dn613250(v=vs.108).aspx), [IdentityUserLogin](https://msdn.microsoft.com/library/dn613251(v=vs.108).aspx), 및 [IdentityUserRole](https://msdn.microsoft.com/library/dn613252(v=vs.108).aspx) 클래스입니다. 이러한 기능을 사용 하는 경우에 이러한 클래스의 사용자가 자체 버전을 만들고 응용 프로그램에 대 한 속성을 정의 하는 것이 좋습니다. 그러나 때로는 것이 효율적 기본 작업 (예: 추가 또는 제거 하는 사용자의 클레임)를 수행할 때 이러한 엔터티를 메모리에 로드 하지 않도록 합니다. 대신, 백 엔드 저장소 클래스는 데이터 원본에 직접 이러한 작업을 실행할 수 있습니다. 예를 들어는 ``UserStore.GetClaimsAsync`` 메서드를 호출할 수는 ``userClaimTable.FindByUserId(user.Id)`` 에 대 한 쿼리를 실행 하는 메서드를 직접 테이블 클레임의 목록을 반환 합니다.
+``Microsoft.AspNet.Identity.EntityFramework`` 네임 스페이스에 구현 된 [IdentityUserClaim](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserclaim-1), [IdentityUserLogin](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnet.identity.corecompat.identityuserlogin), 및 [IdentityUserRole](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserrole-1) 클래스입니다. 이러한 기능을 사용 하는 경우에 이러한 클래스의 사용자가 자체 버전을 만들고 응용 프로그램에 대 한 속성을 정의 하는 것이 좋습니다. 그러나 때로는 것이 효율적 기본 작업 (예: 추가 또는 제거 하는 사용자의 클레임)를 수행할 때 이러한 엔터티를 메모리에 로드 하지 않도록 합니다. 대신, 백 엔드 저장소 클래스는 데이터 원본에 직접 이러한 작업을 실행할 수 있습니다. 예를 들어는 ``UserStore.GetClaimsAsync`` 메서드를 호출할 수는 ``userClaimTable.FindByUserId(user.Id)`` 에 대 한 쿼리를 실행 하는 메서드를 직접 테이블 클레임의 목록을 반환 합니다.
 
 ## <a name="customize-the-role-class"></a>Role 클래스를 사용자 지정
 
@@ -205,7 +205,7 @@ public class UserStore : IUserStore<IdentityUser>,
 만들 수는 ``RoleStore`` 역할에 대 한 모든 데이터 작업에 대 한 메서드를 제공 하는 클래스입니다. 이 클래스는 해당 하는 [RoleStore<TRole> ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.entityframeworkcore.rolestore-1) 클래스입니다. 에 `RoleStore` 구현 클래스는 ``IRoleStore<TRole>`` 하 고 선택적으로 ``IQueryableRoleStore<TRole>`` 인터페이스입니다.
 
 - **IRoleStore&lt;TRole&gt;**  
- [IRoleStore](https://msdn.microsoft.com/library/dn468195.aspx) 인터페이스 역할 저장소 클래스에서 구현 하는 메서드를 정의 합니다. 만들기, 업데이트, 삭제 및 역할을 검색 하는 메서드를 포함 합니다.
+ [IRoleStore](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.irolestore-1) 인터페이스 역할 저장소 클래스에서 구현 하는 메서드를 정의 합니다. 만들기, 업데이트, 삭제 및 역할을 검색 하는 메서드를 포함 합니다.
 - **RoleStore&lt;TRole&gt;**  
  사용자 지정 하려면 `RoleStore`를 구현 하는 클래스를 만들는 `IRoleStore` 인터페이스입니다. 
 

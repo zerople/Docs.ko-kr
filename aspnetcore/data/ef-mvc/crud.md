@@ -11,11 +11,11 @@ ms.assetid: 6e1cd570-40f1-4b24-8b6e-7d2d27758f18
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 855f060a6404dedff310b288ada9738689069ceb
-ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
+ms.openlocfilehash: 87aa7e63b1a08e457c5fdcbc052bfa039b8d2175
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="create-read-update-and-delete---ef-core-with-aspnet-core-mvc-tutorial-2-of-10"></a>만들기, 읽기, 업데이트 및 삭제-EF 코어 ASP.NET Core MVC 자습서 (2 / 10)
 
@@ -122,7 +122,7 @@ http://localhost:1230/Instructor/Index?id=1&CourseID=2021
 
 제거 하면 `ID` 에서 `Bind` 특성 ID가 있는 행이 삽입 될 때 SQL 서버가 자동으로 설정 하는 기본 키 값입니다. 사용자의 입력 ID 값을 설정 하지 않습니다.
 
-이외의 `Bind` 특성 try catch 블록은 스 캐 폴드 코드에 대 한 유일한 변경 합니다. 예외에서 파생 되는 경우 `DbUpdateException` 는 변경 내용을 저장 하는 동안 발견 되었습니다, 일반 오류 메시지가 표시 됩니다. `DbUpdateException`예외 경우에 따라 인해 외부 프로그래밍 오류가 아니라 응용 프로그램에 있는 하므로 사용자는 다시 시도 하는 데 권장 됩니다. 이 샘플에서 구현 되지 않지만 프로덕션 품질 응용 프로그램은 예외를 기록 합니다. 자세한 내용은 참조는 **통찰력에 대 한 로그** 섹션 [모니터링 및 원격 분석 (실제 클라우드로 응용 프로그램 빌딩 Azure)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry)합니다.
+이외의 `Bind` 특성 try catch 블록은 스 캐 폴드 코드에 대 한 유일한 변경 합니다. 예외에서 파생 되는 경우 `DbUpdateException` 는 변경 내용을 저장 하는 동안 발견 되었습니다, 일반 오류 메시지가 표시 됩니다. `DbUpdateException`예외 경우에 따라 인해 외부 프로그래밍 오류가 아니라 응용 프로그램에 있는 하므로 사용자는 다시 시도 하는 데 권장 됩니다. 이 샘플에서 구현 되지 않지만 프로덕션 품질 응용 프로그램은 예외를 기록 합니다. 자세한 내용은 참조는 **통찰력에 대 한 로그** 섹션 [모니터링 및 원격 분석 (실제 클라우드로 응용 프로그램 빌딩 Azure)](https://docs.microsoft.com/aspnet/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry)합니다.
 
 `ValidateAntiForgeryToken` 특성 교차 사이트 요청 위조 (CSRF) 공격을 방지할 수 있습니다. 토큰이 자동으로 주입 하 여 보기에는 [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper) 사용자가 폼이 전송 될 때 포함 됩니다. 토큰에 따라 유효성이 검사 된 `ValidateAntiForgeryToken` 특성입니다. CSRF에 대 한 자세한 내용은 참조 [바이러스 요청 위조](../../security/anti-request-forgery.md)합니다.
 
@@ -274,7 +274,7 @@ Try catch 블록에서 HttpPost에 추가할 `Delete` 데이터베이스를 업�
 
 데이터베이스 연결을 보유 하는 리소스를 확보 하려면 컨텍스트 인스턴스가 삭제 해야 최대한 빨리을 마쳤습니다. ASP.NET Core 기본 제공 [종속성 주입](../../fundamentals/dependency-injection.md) 해당 작업을 담당 합니다.
 
-*Startup.cs*, 호출 하는 [AddDbContext 확장 메서드](https://github.com/aspnet/EntityFramework/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs) 프로 비전 하는 `DbContext` ASP.NET DI 컨테이너에는 클래스입니다. 메서드를 서비스 수명을 설정 `Scoped` 기본적으로 합니다. `Scoped`컨텍스트 개체 수명 웹 요청 라이프 시간과 일치 하는 방법 및 `Dispose` 메서드가 웹 요청이 끝날 때 자동으로 호출 됩니다.
+*Startup.cs*, 호출 하는 [AddDbContext 확장 메서드](https://github.com/aspnet/EntityFrameworkCore/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs) 프로 비전 하는 `DbContext` ASP.NET DI 컨테이너에는 클래스입니다. 메서드를 서비스 수명을 설정 `Scoped` 기본적으로 합니다. `Scoped`컨텍스트 개체 수명 웹 요청 라이프 시간과 일치 하는 방법 및 `Dispose` 메서드가 웹 요청이 끝날 때 자동으로 호출 됩니다.
 
 ## <a name="handling-transactions"></a>트랜잭션 처리
 

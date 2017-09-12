@@ -11,11 +11,11 @@ ms.assetid: 1fb6fdc2-e199-4469-9012-b909d1913422
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/custom-formatters
-ms.openlocfilehash: 0285b40cfacb79745d3a6488401677130f55a95b
-ms.sourcegitcommit: 6ece943781d8a56784bb6160f14da85210d3fcea
+ms.openlocfilehash: 792e007232c751d3db9dc5e50adbedfb2bb1a7ae
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="custom-formatters-in-aspnet-core-mvc-web-apis"></a>ASP.NET Core MVC 웹 Api에에서 대 한 사용자 지정 포맷터
 
@@ -29,7 +29,7 @@ ASP.NET Core MVC JSON, XML 또는 일반 텍스트 형식을 사용 하 여 web 
 
 하려는 경우에 사용자 지정 포맷터를 사용 하 여는 [콘텐츠 협상](xref:mvc/models/formatting) 기본 제공 포맷터 (JSON, XML 및 일반 텍스트)에서 지원 되지 않는 콘텐츠 형식을 지원 하기 위해 프로세스입니다.
 
-예를 들어, 웹 API에 대 한 클라이언트 중 일부를 처리할 수 있으면는 [Protobuf](https://github.com/google/protobuf) 형식으로 하려는 경우도 더 효율적 이므로 클라이언트 Protobuf를 사용 합니다.  Web API 연락처 이름 및 주소를 보내도록 할 수 있습니다 또는 [vCard](https://en.wikipedia.org/wiki/VCard) 형식, 연락 데이터를 교환 하는 데 자주 사용 되는 형식입니다. 이 문서와 함께 제공 되는 샘플 응용 프로그램 간단한 vCard 포맷터를 구현 합니다.
+예를 들어, 웹 API에 대 한 클라이언트 중 일부를 처리할 수 있으면는 [Protobuf](https://github.com/google/protobuf) 형식으로 하려는 경우도 더 효율적 이므로 클라이언트 Protobuf를 사용 합니다.  Web API 연락처 이름 및 주소를 보내도록 할 수 있습니다 또는 [vCard](https://wikipedia.org/wiki/VCard) 형식, 연락 데이터를 교환 하는 데 자주 사용 되는 형식입니다. 이 문서와 함께 제공 되는 샘플 응용 프로그램 간단한 vCard 포맷터를 구현 합니다.
 
 ## <a name="overview-of-how-to-use-a-custom-formatter"></a>사용자 지정 포맷터를 사용 하는 방법의 개요
 

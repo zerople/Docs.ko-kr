@@ -2,7 +2,7 @@
 title: "Microsoft 계정 외부 로그인 설정"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 08/24/2017
@@ -11,11 +11,11 @@ ms.assetid: 66DB4B94-C78C-4005-BA03-3D982B87C268
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: 70cbeea15199498c592307dccc125e60206dadbf
-ms.sourcegitcommit: b02db6da115e55140da91b67355aaf56aae1703f
+ms.openlocfilehash: 1602a7fa801f77c259e3e3a37d60e02606cf5bac
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="configuring-microsoft-account-authentication"></a>Microsoft 계정 인증 구성
 
@@ -78,7 +78,7 @@ Microsoft와 같은 중요 한 설정이 연결 `Application ID` 및 `Password` 
 
    `dotnet add package Microsoft.AspNetCore.Authentication.MicrosoftAccount`
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 Microsoft 계정 서비스에 추가 `ConfigureServices` 메서드에서 *Startup.cs* 파일:
 

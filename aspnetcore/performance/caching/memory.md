@@ -12,15 +12,15 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/caching/memory
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f872cd0c355f7961ae8628c28c62d3b51c8db2c5
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 1e2d43d837ba76c6ef8b5136f3751edb44d6606a
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-in-memory-caching-in-aspnet-core"></a>ASP.NET Core의 메모리 내 캐싱 소개
 
-여 [Rick Anderson](https://twitter.com/RickAndMSFT), [John Luo](https://github.com/JunTaoLuo), 및 [Steve Smith](http://ardalis.com)
+여 [Rick Anderson](https://twitter.com/RickAndMSFT), [John Luo](https://github.com/JunTaoLuo), 및 [Steve Smith](https://ardalis.com/)
 
 [샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/memory/sample)
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 08/11/2017
 
 캐싱 크게 향상 시킬 수 성능 및 확장성 응용 프로그램의 콘텐츠를 생성 하는 데 필요한 작업을 줄여 합니다. 캐싱 동작 자주 변경 되는 데이터에 가장 적합 합니다. 많은 반환 될 수 있는 데이터의 복사본을 만들어 캐시 원본에서 보다 더 빠릅니다. 작성 하 고 캐시 된 데이터에 의존 하지를 응용 프로그램을 테스트 해야 합니다.
 
-ASP.NET Core 몇 가지 다른 캐시를 지원합니다. 가장 간단한 캐시 기반는 [IMemoryCache](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.imemorycache)을 웹 서버의 메모리에 저장 된 캐시를 나타냅니다. 여러 서버의 서버 팜에서 실행 되는 응용 프로그램 메모리에 캐시를 사용 하는 경우 세션 스티커 인지 확인 해야 합니다. 고정 세션 모든 클라이언트에서 후속 요청이 동일한 서버로 이동 있는지 확인 합니다. 예를 들어 Azure 웹 앱 사용 [응용 프로그램 요청 라우팅](http://www.iis.net/learn/extensions/planning-for-arr) (ARR) 동일한 서버에 모든 후속 요청을 라우팅할 수 있습니다.
+ASP.NET Core 몇 가지 다른 캐시를 지원합니다. 가장 간단한 캐시 기반는 [IMemoryCache](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.imemorycache)을 웹 서버의 메모리에 저장 된 캐시를 나타냅니다. 여러 서버의 서버 팜에서 실행 되는 응용 프로그램 메모리에 캐시를 사용 하는 경우 세션 스티커 인지 확인 해야 합니다. 고정 세션 모든 클라이언트에서 후속 요청이 동일한 서버로 이동 있는지 확인 합니다. 예를 들어 Azure 웹 앱 사용 [응용 프로그램 요청 라우팅](https://www.iis.net/learn/extensions/planning-for-arr) (ARR) 동일한 서버에 모든 후속 요청을 라우팅할 수 있습니다.
 
 웹 팜에서 아닌 고정 세션 필요는 [분산 캐시](distributed.md) 캐시 일관성 문제가 발생 하지 않도록 합니다. 일부 응용 프로그램에 대 한 분산된 캐시 메모리에 캐시 보다 더 높은 규모 확장을 지원할 수 있습니다. 분산된 캐시를 사용 하 여 외부 프로세스에 캐시 메모리 오프 로드 합니다. 
 
@@ -100,5 +100,5 @@ ASP.NET Core 몇 가지 다른 캐시를 지원합니다. 가장 간단한 캐�
 
 ### <a name="other-resources"></a>기타 리소스
 
-* [분산된 캐시 사용](distributed.md)
+* [분산 캐시 사용](distributed.md)
 * [응답의 캐싱 미들웨어](middleware.md)

@@ -11,15 +11,15 @@ ms.assetid: 40d534f2-89b3-4b09-9c2c-3494bf9991c9
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: testing/integration-testing
-ms.openlocfilehash: d30af6edc31fbce2ebb77c57be3fd78231c54b50
-ms.sourcegitcommit: 418e6aa4ab79474ecc4d0a6af573a3759b113fe4
+ms.openlocfilehash: 02018299c9bd1d194c2c70c14f518786e803d572
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="integration-testing-in-aspnet-core"></a>ASP.NET Core에서 통합 테스트
 
-으로 [Steve Smith](http://ardalis.com)
+으로 [Steve Smith](https://ardalis.com/)
 
 통합 테스트 함께 어셈블되어 때 응용 프로그램의 구성 요소가 제대로 작동 하는지 확인 합니다. ASP.NET Core 지원 통합 단위 테스트 프레임 워크 및 네트워크 오버 헤드 없이 요청을 처리 하는 데 사용할 수 있는 기본 제공 테스트 웹 호스트를 사용 하 여 테스트 합니다.
 
@@ -130,10 +130,10 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 이 리팩터링 다음 통합 테스트 모두 전달 하는 이후 계속 웹 응용 프로그램이 이전 처럼 작동 하는지 시킨다 고 확신 것입니다.
 
 > [!NOTE]
-> 리팩터링를 완료 하 고 테스트가 통과 한 후 소스 제어에 대 한 변경 내용을 적용 하는 것이 좋습니다. 테스트 기반 개발을 공유 하는 경우 [커밋 빨간색-녹색-리팩터링 주기를 추가 하는 것이 좋습니다.](http://ardalis.com/rgrc-is-the-new-red-green-refactor-for-test-first-development)합니다.
+> 리팩터링를 완료 하 고 테스트가 통과 한 후 소스 제어에 대 한 변경 내용을 적용 하는 것이 좋습니다. 테스트 기반 개발을 공유 하는 경우 [커밋 빨간색-녹색-리팩터링 주기를 추가 하는 것이 좋습니다.](https://ardalis.com/rgrc-is-the-new-red-green-refactor-for-test-first-development)합니다.
 
 ## <a name="resources"></a>리소스
 
-* [단위 테스트](https://docs.microsoft.com/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
+* [유닛 테스트](https://docs.microsoft.com/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
 * [미들웨어](xref:fundamentals/middleware)
-* [테스트 컨트롤러](xref:mvc/controllers/testing)
+* [컨트롤러 테스트](xref:mvc/controllers/testing)

@@ -11,11 +11,11 @@ ms.assetid: 92a2986a-d005-4ff6-9559-6657fd466bb7
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: d1c6ece833672af3ef2003510ef96c4ff0d63fbf
-ms.sourcegitcommit: 418e6aa4ab79474ecc4d0a6af573a3759b113fe4
+ms.openlocfilehash: 210f8e8b91c2487e5c4b73fdeb6ff0d5aa35c0c5
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="advanced-topics---ef-core-with-aspnet-core-mvc-tutorial-10-of-10"></a>고급 항목-EF 코어 ASP.NET Core MVC 자습서 (10 / 10)
 
@@ -83,7 +83,7 @@ Contoso 대학 관리자가 모든 과정에 대 한 크레딧의 수를 변경 
 
 **솔루션 탐색기**를 마우스 오른쪽 단추로 클릭는 *뷰/Courses* 폴더를 마우스 클릭 한 다음 **추가 > 새 항목**합니다.
 
-에 **새 항목 추가** 대화 상자에서 클릭 **ASP.NET** 아래 **설치 됨** 왼쪽된 창에서 클릭 **MVC 뷰 페이지**, 새뷰이름을지정하고 *UpdateCourseCredits.cshtml*합니다.
+에 **새 항목 추가** 대화 상자에서 클릭 **ASP.NET** 아래 **설치 됨** 왼쪽된 창에서 클릭 **MVC 뷰 페이지**, 새뷰이름을지정하고* UpdateCourseCredits.cshtml*합니다.
 
 *Views/Courses/UpdateCourseCredits.cshtml*, 템플릿 코드를 다음 코드로 바꿉니다.
 
@@ -171,7 +171,7 @@ _context.ChangeTracker.AutoDetectChangesEnabled = false;
 
 ## <a name="entity-framework-core-source-code-and-development-plans"></a>Entity Framework Core 소스 코드 및 개발 계획
 
-Entity Framework Core에 대 한 소스 코드에서 제공 됩니다. [https://github.com/aspnet/EntityFramework](https://github.com/aspnet/EntityFramework)합니다. 소스 코드 외에도 있습니다 수 야간 빌드 가져오기, 추적 실행, 기능 사양, 디자인 회의 노트 [이후 개발에 대 한 로드맵](https://github.com/aspnet/EntityFramework/wiki/Roadmap), 등입니다. 버그를 보고할 수 있습니다 및 EF 소스 코드에 고유한 향상 된 기능에 영향을 줄 수 있습니다.
+Entity Framework Core에 대 한 소스 코드에서 제공 됩니다. [https://github.com/aspnet/EntityFrameworkCore](https://github.com/aspnet/EntityFrameworkCore)합니다. 소스 코드 외에도 있습니다 수 야간 빌드 가져오기, 추적 실행, 기능 사양, 디자인 회의 노트 [이후 개발에 대 한 로드맵](https://github.com/aspnet/EntityFrameworkCore/wiki/Roadmap), 등입니다. 버그를 보고할 수 있습니다 및 EF 소스 코드에 고유한 향상 된 기능에 영향을 줄 수 있습니다.
 
 소스 코드를 연 하지만 Entity Framework 코어는 Microsoft 제품으로 완전히 지원 됩니다. Microsoft Entity Framework 팀 기여 허용 되는 제어를 유지 하 고 각 릴리스의 품질을 보장할 수 있는 모든 코드 변경 내용을 테스트 합니다.
 
@@ -228,7 +228,7 @@ IIS express 사이트를 중지 합니다. 로 이동는 Windows 시스템 트�
 
 가장 간단한 방법은 데이터베이스의 이름을 바꾸려면 *appsettings.json*합니다. 다음에 실행할 때 `database update`, 새 데이터베이스가 생성 됩니다.
 
-SSOX에 데이터베이스를 삭제 하려면 데이터베이스를 마우스 오른쪽 단추로 클릭 합니다 **삭제**, 한 다음는 **데이터베이스 삭제** 대화 상자 선택 **기존 연결 닫기** 클릭 **정상**합니다.
+SSOX에 데이터베이스를 삭제 하려면 데이터베이스를 마우스 오른쪽 단추로 클릭 합니다 **삭제**, 한 다음는 **데이터베이스 삭제** 대화 상자 선택 **기존 연결 닫기** 클릭** 정상**합니다.
 
 실행 CLI를 사용 하 여 데이터베이스를 삭제 하는 `database drop` CLI 명령을:
 

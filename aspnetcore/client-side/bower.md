@@ -12,17 +12,17 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/bower
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 409f7afba8dd7d03b7b9aa27d93ec9167252b965
-ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
+ms.openlocfilehash: f5d208072f55d78de6ec8c238ebbe723cc0ec598
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>ASP.NET Core에서 Bower 사용 하 여 클라이언트 패키지를 관리 합니다.
 
-여 [Rick Anderson](https://twitter.com/RickAndMSFT), [Noel 밥](http://blog.falafel.com/author/noel-rice/), 및 [Scott Addie](https://scottaddie.com) 
+여 [Rick Anderson](https://twitter.com/RickAndMSFT), [Noel 밥](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/), 및 [Scott Addie](https://scottaddie.com) 
 
-[Bower](https://bower.io/) "패키지에 대 한 관리자는 웹." 자신을 호출 .NET 환경 내에서 NuGet의 불가능 정적 콘텐츠 파일을 전달 하 여 남아 있는 공간을 채웁니다. ASP.NET Core 프로젝트에 대 한 이러한 정적 파일은과 같은 클라이언트 쪽 라이브러리에 따르는 [jQuery](http://jquery.com/) 및 [부트스트랩](http://getbootstrap.com/)합니다. .NET 라이브러리에 대 한 계속 사용할 [NuGet](https://nuget.org/) 패키지 관리자.
+[Bower](https://bower.io/) "패키지에 대 한 관리자는 웹." 자신을 호출 .NET 환경 내에서 NuGet의 불가능 정적 콘텐츠 파일을 전달 하 여 남아 있는 공간을 채웁니다. ASP.NET Core 프로젝트에 대 한 이러한 정적 파일은과 같은 클라이언트 쪽 라이브러리에 따르는 [jQuery](http://jquery.com/) 및 [부트스트랩](http://getbootstrap.com/)합니다. .NET 라이브러리에 대 한 계속 사용할 [NuGet](https://www.nuget.org/) 패키지 관리자.
 
 클라이언트 쪽 설정에서 ASP.NET Core 프로젝트 템플릿을 사용 하 여 만든 새 프로젝트 빌드 프로세스입니다. [jQuery](http://jquery.com/) 및 [부트스트랩](http://getbootstrap.com/) 설치 되 면 Bower 지원 됩니다.
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 09/05/2017
 
 * 솔루션 탐색기에서 프로젝트를 마우스 오른쪽 단추로 클릭 하 고 선택 **Bower 패키지 관리** (또는 주 메뉴에서 **프로젝트** > **Bower 패키지 관리**).
 
-* 에 **Bower: \<프로젝트 이름\>**  창 "찾아보기" 탭을 클릭 한 다음를 입력 하 여 패키지 목록 필터링 `font-awesome` 검색 상자에:
+* 에 **Bower: \<프로젝트 이름\> ** 창 "찾아보기" 탭을 클릭 한 다음를 입력 하 여 패키지 목록 필터링 `font-awesome` 검색 상자에:
 
  ![bower 패키지 관리](bower/_static/manage-bower-packages.png)
 

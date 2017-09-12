@@ -11,15 +11,15 @@ ms.assetid: 3155cc9e-d0c9-424b-886c-35c0ec6f9f4e
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/mvc
-ms.openlocfilehash: ccdceed927d90a1f3201be9d9f92ebb4f2f66e66
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 2bd689626e867e0ea82fbebdf92447a6029aa35b
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="migrating-from-aspnet-mvc-to-aspnet-core-mvc"></a>ASP.NET MVC에서 ASP.NET Core MVC로 마이그레이션
 
-여 [Rick Anderson](https://twitter.com/RickAndMSFT), [김 Roth](https://github.com/danroth27), [Steve Smith](http://ardalis.com), 및 [Scott Addie](https://scottaddie.com)
+여 [Rick Anderson](https://twitter.com/RickAndMSFT), [김 Roth](https://github.com/danroth27), [Steve Smith](https://ardalis.com/), 및 [Scott Addie](https://scottaddie.com)
 
 이 문서에서는 마이그레이션하는 ASP.NET MVC 프로젝트를 시작 하는 방법을 보여 줍니다. [ASP.NET Core MVC](../mvc/overview.md)합니다. 프로세스에서 강조 표시 다양 한 ASP.NET MVC에서 변경 된 사항입니다. ASP.NET MVC에서 마이그레이션 프로세스는 여러 단계 이며이 문서에서는 초기 설정, 기본 컨트롤러와 뷰, 정적 콘텐츠 및 클라이언트 쪽 종속성에 설명 합니다. 추가 문서 구성 마이그레이션 및 identity 코드 많은 ASP.NET MVC 프로젝트에 다룹니다.
 
@@ -138,9 +138,9 @@ Note 스타일 지정 및 메뉴 항목의 부족 합니다. 다음 섹션에서
 
 ASP.NET MVC 이전 프로젝트에서 사용 [부트스트랩](http://getbootstrap.com/) 부트스트랩에 파일의 스타일 지정 및 저장소는 *콘텐츠* 및 *스크립트* 폴더입니다. 부트스트랩 레이아웃 파일에서 참조 하는 이전 ASP.NET MVC 프로젝트를 생성 하는 템플릿을 (*Views/Shared/_Layout.cshtml*). 복사할 수는 *bootstrap.js* 및 *bootstrap.css* ASP.NET MVC에서 파일에 프로젝트는 *wwwroot* 폴더에 새 프로젝트는이 방법을 사용 하지는 ASP.NET Core의 클라이언트 쪽 종속성을 관리 하기 위한 향상 된 메커니즘입니다.
 
-새 프로젝트를 사용 하 여 부트스트랩 (및 다른 클라이언트 라이브러리)에 대 한 지원을 추가 [Bower](http://bower.io/):
+새 프로젝트를 사용 하 여 부트스트랩 (및 다른 클라이언트 라이브러리)에 대 한 지원을 추가 [Bower](https://bower.io/):
 
-* 추가 [Bower](http://bower.io/) 라는 구성 파일 *bower.json* 프로젝트 루트에 (에서 프로젝트를 마우스 오른쪽 단추로 클릭 한 다음 **추가 > 새 항목 > Bower 구성 파일**). 추가 [부트스트랩](http://getbootstrap.com/) 및 [jQuery](https://jquery.com/) 파일 (아래의 강조 표시 된 줄 참조).
+* 추가 [Bower](https://bower.io/) 라는 구성 파일 *bower.json* 프로젝트 루트에 (에서 프로젝트를 마우스 오른쪽 단추로 클릭 한 다음 **추가 > 새 항목 > Bower 구성 파일**). 추가 [부트스트랩](http://getbootstrap.com/) 및 [jQuery](https://jquery.com/) 파일 (아래의 강조 표시 된 줄 참조).
 
   [!code-json[Main](mvc/sample/bower.json?highlight=5-6)]
 

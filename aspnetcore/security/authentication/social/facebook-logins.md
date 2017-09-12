@@ -2,7 +2,7 @@
 title: "ASP.NET Core에서 Facebook 외부 로그인 설정"
 author: rick-anderson
 description: "ASP.NET Core에서 Facebook 외부 로그인 설정"
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 8/1/2017
@@ -11,11 +11,11 @@ ms.assetid: 8c65179b-688c-4af1-8f5e-1862920cda95
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: 9554d66712f93df6d2c50503b60162757986e707
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: da019ad3fd6cefa23b8331c98cc36e50ac9c1105
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="configuring-facebook-authentication"></a>Facebook 인증 구성
 
@@ -23,11 +23,11 @@ ms.lasthandoff: 08/25/2017
 
 여 [Valeriy Novytskyy](https://github.com/01binary) 및 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-이 자습서에서 만든 샘플 ASP.NET 코어 2.0 프로젝트를 사용 하 여 들이 Facebook 계정으로 로그인 할 사용자를 활성화 하는 방법을 보여 줍니다.는 [이전 페이지](index.md)합니다. Facebook 응용 프로그램 ID에 따라 만들어서 시작는 [공식 단계](https://developers.facebook.com/docs/apps/register)합니다.
+이 자습서에서 만든 샘플 ASP.NET 코어 2.0 프로젝트를 사용 하 여 들이 Facebook 계정으로 로그인 할 사용자를 활성화 하는 방법을 보여 줍니다.는 [이전 페이지](index.md)합니다. Facebook 응용 프로그램 ID에 따라 만들어서 시작는 [공식 단계](https://www.facebook.com/unsupportedbrowser)합니다.
 
 ## <a name="create-the-app-in-facebook"></a>Facebook에서 앱을 만들
 
-*  로 이동 된 [개발자를 위한 Facebook](https://developers.facebook.com/apps) 페이지 하 고 로그인 합니다. Facebook 계정 없는 경우 사용 하 여는 **Facebook에 등록** 새로 만들려면 로그인 페이지에 링크 합니다.
+*  로 이동 된 [개발자를 위한 Facebook](https://www.facebook.com/unsupportedbrowser) 페이지 하 고 로그인 합니다. Facebook 계정 없는 경우 사용 하 여는 **Facebook에 등록** 새로 만들려면 로그인 페이지에 링크 합니다.
 
 * 탭의 **앱 만들기** 는 새 응용 프로그램 ID를 만들려면 오른쪽 위 모퉁이의 단추
 
@@ -74,7 +74,7 @@ Facebook와 같은 중요 한 설정이 연결 `App ID` 및 `App Secret` 사용 
 
    `dotnet add package Microsoft.AspNetCore.Authentication.Facebook`
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 Facebook 서비스에 추가 된 `ConfigureServices` 에서 메서드는 *Startup.cs* 파일:
 

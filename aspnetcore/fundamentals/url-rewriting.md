@@ -11,11 +11,11 @@ ms.assetid: e6130638-c410-4161-9921-b658ce988bd1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 735c53ab8a01d995c4945a95705ee9adb2fcdf02
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: 05a92c4eee6b26e49831c11e1251aedba87ed717
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>URL의 ASP.NET Core 미들웨어를 다시 작성
 
@@ -62,7 +62,7 @@ URL 다시 쓰기 미들웨어를 사용 하 여 사용할 수 없는 경우는 
 ## <a name="extension-and-options"></a>확장 및 옵션
 URL 재작성을 설정 하 고 규칙의 인스턴스를 만들어 리디렉션하는 `RewriteOptions` 각 규칙에 대 한 확장 메서드를 사용 하 여 클래스입니다. 여러 규칙 싶다는 의사를 처리 하는 순서를 연결 합니다. `RewriteOptions` 으로 요청 파이프라인에 추가 되는 URL 다시 쓰기 미들웨어로 전달 되 `app.UseRewriter(options);`합니다.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](url-rewriting/samples/2.x/Program.cs?name=snippet1)]
 
@@ -75,7 +75,7 @@ URL 재작성을 설정 하 고 규칙의 인스턴스를 만들어 리디렉션
 ### <a name="url-redirect"></a>URL 리디렉션
 사용 하 여 `AddRedirect` 요청을 리디렉션할 수 있습니다. 첫 번째 매개 변수는 받는 URL의 경로에 일치 하는 regex의 포함 되어 있습니다. 두 번째 매개 변수 대체 문자열입니다. 세 번째 매개 변수가 있는 경우 상태 코드를 지정 합니다. 상태 코드를 지정 하지 않으면 기본값으로 302 (있음)을 나타내는 리소스는 일시적으로 이동 또는 대체 합니다.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](url-rewriting/samples/2.x/Program.cs?name=snippet1&highlight=5)]
 
@@ -122,7 +122,7 @@ app.UseRewriter(options);
 ### <a name="url-rewrite"></a>URL 다시 쓰기
 사용 하 여 `AddRewrite` Url을 다시 작성 하기 위한 규칙을 만듭니다. 첫 번째 매개 변수는 들어오는 URL 경로에 일치 하는 regex의 포함 되어 있습니다. 두 번째 매개 변수 대체 문자열입니다. 세 번째 매개 변수 `skipRemainingRules: {true|false}`, 현재 규칙이 적용 되는 경우에 추가 재작성 규칙 건너뛸 것인지 여부는 미들웨어를 나타냅니다.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](url-rewriting/samples/2.x/Program.cs?name=snippet1&highlight=6)]
 
@@ -166,7 +166,7 @@ app.UseRewriter(options);
 ### <a name="apache-modrewrite"></a>Apache mod_rewrite
 사용 하 여 Apache mod_rewrite 규칙 적용 `AddApacheModRewrite`합니다. 규칙 파일 앱 배포 되 고 있는지 확인 합니다. 자세한 내용과 mod_rewrite 규칙의 예에 대 한 참조 [Apache mod_rewrite](https://httpd.apache.org/docs/2.4/rewrite/)합니다.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 A `StreamReader` 에서 규칙을 읽는 데 사용 되는 *ApacheModRewrite.txt* 규칙 파일입니다.
 
@@ -221,9 +221,9 @@ A `StreamReader` 에서 규칙을 읽는 데 사용 되는 *ApacheModRewrite.txt
 * TIME_YEAR
 
 ### <a name="iis-url-rewrite-module-rules"></a>IIS URL 재작성 모듈 규칙
-IIS URL 재작성 모듈에 적용 되는 규칙을 사용 하려면 사용 `AddIISUrlRewrite`합니다. 규칙 파일 앱 배포 되 고 있는지 확인 합니다. 사용할 미들웨어 지시 하지 않는 프로그램 *web.config* 파일을 Windows Server IIS에서 실행 합니다. Iis에서 이러한 규칙 외부에 저장 해야 하면 *web.config* IIS 재작성 모듈와 충돌 하지 않도록 합니다. 자세한 내용과 예는 IIS URL 재작성 모듈 규칙에 대 한 참조 [를 사용 하 여 Url 재작성 모듈 2.0](https://www.iis.net/learn/extensions/url-rewrite-module/using-url-rewrite-module-20) 및 [URL 재작성 모듈 구성 참조](https://www.iis.net/learn/extensions/url-rewrite-module/url-rewrite-module-configuration-reference)합니다.
+IIS URL 재작성 모듈에 적용 되는 규칙을 사용 하려면 사용 `AddIISUrlRewrite`합니다. 규칙 파일 앱 배포 되 고 있는지 확인 합니다. 사용할 미들웨어 지시 하지 않는 프로그램 *web.config* 파일을 Windows Server IIS에서 실행 합니다. Iis에서 이러한 규칙 외부에 저장 해야 하면 *web.config* IIS 재작성 모듈와 충돌 하지 않도록 합니다. 자세한 내용과 예는 IIS URL 재작성 모듈 규칙에 대 한 참조 [를 사용 하 여 Url 재작성 모듈 2.0](https://docs.microsoft.com/iis/extensions/url-rewrite-module/using-url-rewrite-module-20) 및 [URL 재작성 모듈 구성 참조](https://docs.microsoft.com/iis/extensions/url-rewrite-module/url-rewrite-module-configuration-reference)합니다.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 A `StreamReader` 에서 규칙을 읽는 데 사용 되는 *IISUrlRewrite.xml* 규칙 파일입니다.
 
@@ -249,7 +249,7 @@ A `StreamReader` 에서 규칙을 읽는 데 사용 되는 *IISUrlRewrite.xml* �
 
 #### <a name="unsupported-features"></a>지원 되지 않는 기능
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 출시 미들웨어 2.x ASP.NET 코어는 다음과 같은 IIS URL 재작성 모듈 기능을 지원 하지 않습니다.
 * 아웃 바운드 규칙
@@ -305,7 +305,7 @@ A `StreamReader` 에서 규칙을 읽는 데 사용 되는 *IISUrlRewrite.xml* �
 | `RuleResult.EndResponse`             | 규칙 적용을 중지 하 고 응답 보내기                       |
 | `RuleResult.SkipRemainingRules`      | 규칙 적용을 중지 하 고 미들웨어 컨텍스트 보내기 |
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](url-rewriting/samples/2.x/Program.cs?name=snippet1&highlight=9)]
 
@@ -317,7 +317,7 @@ A `StreamReader` 에서 규칙을 읽는 데 사용 되는 *IISUrlRewrite.xml* �
 
 샘플 응용 프로그램으로 끝나는 경로 대 한 요청을 리디렉션하는 방법을 보여 줍니다. *.xml*합니다. 에 대 한 요청을 수행 하는 경우 `/file.xml`로 리디렉션되도록 `/xmlfiles/file.xml`합니다. 상태 코드 301 (영구적 이동)로 설정 됩니다. 리디렉션에 대 한 명시적으로 설정 해야 응답;의 상태 코드 그렇지 않은 경우 200 (OK) 상태 코드가 반환 되 고 클라이언트에 리디렉션도 발생 하지 않습니다.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](url-rewriting/samples/2.x/RewriteRules.cs?name=snippet1)]
 
@@ -334,7 +334,7 @@ A `StreamReader` 에서 규칙을 읽는 데 사용 되는 *IISUrlRewrite.xml* �
 ### <a name="irule-based-rule"></a>IRule 기반 규칙
 사용 하 여 `Add(IRule)` 에서 파생 된 클래스에서 사용자 고유의 규칙 논리를 구현 하려면 `IRule`합니다. 사용 하는 `IRule` 규칙 메서드 기반 방식을 사용 하 여 보다 큰 유연성을 제공 합니다. 파생 된 클래스에 대 한 매개 변수에서 전달 될 수 있는 생성자를 포함 될 수 있습니다는 `ApplyRule` 메서드.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](url-rewriting/samples/2.x/Program.cs?name=snippet1&highlight=10-11)]
 
@@ -346,7 +346,7 @@ A `StreamReader` 에서 규칙을 읽는 데 사용 되는 *IISUrlRewrite.xml* �
 
 샘플 응용 프로그램에 대 한 매개 변수 값의 `extension` 및 `newPath` 여러 조건을 모두 충족 하도록 선택 합니다. `extension` 값을 포함 해야 하며 값 이어야 합니다 *.png*, *.jpg*, 또는 *.gif*합니다. 경우는 `newPath` 유효 하지는 `ArgumentException` throw 됩니다. 에 대 한 요청을 수행 하는 경우 *image.png*로 리디렉션되도록 `/png-images/image.png`합니다. 에 대 한 요청을 수행 하는 경우 *image.jpg*로 리디렉션되도록 `/jpg-images/image.jpg`합니다. 상태 코드가 301 (영구적 이동)을으로 설정 되어 및 `context.Result` 처리 규칙을 중지 하 고 응답을 보내기로 설정 됩니다.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](url-rewriting/samples/2.x/RewriteRules.cs?name=snippet2)]
 
@@ -381,8 +381,8 @@ A `StreamReader` 에서 규칙을 읽는 데 사용 되는 *IISUrlRewrite.xml* �
 * [.NET에서의 정규식](/dotnet/articles/standard/base-types/regular-expressions)
 * [정규식 언어 - 빠른 참조](/dotnet/articles/standard/base-types/quick-ref)
 * [Apache mod_rewrite](https://httpd.apache.org/docs/2.4/rewrite/)
-* [(IIS) 용 Url 재작성 모듈 2.0을 사용 하 여](https://www.iis.net/learn/extensions/url-rewrite-module/using-url-rewrite-module-20)
-* [URL 재작성 모듈 구성 참조](https://www.iis.net/learn/extensions/url-rewrite-module/url-rewrite-module-configuration-reference)
+* [(IIS) 용 Url 재작성 모듈 2.0을 사용 하 여](https://docs.microsoft.com/iis/extensions/url-rewrite-module/using-url-rewrite-module-20)
+* [URL 재작성 모듈 구성 참조](https://docs.microsoft.com/iis/extensions/url-rewrite-module/url-rewrite-module-configuration-reference)
 * [IIS URL 재작성 모듈 포럼](https://forums.iis.net/1152.aspx)
 * [간단한 URL 구조를 유지 합니다.](https://support.google.com/webmasters/answer/76329?hl=en)
 * [팁과 트릭 10 URL 다시 쓰기](http://ruslany.net/2009/04/10-url-rewriting-tips-and-tricks/)

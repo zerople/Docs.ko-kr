@@ -10,17 +10,17 @@ ms.topic: article
 ms.assetid: 0292bdae-b3ed-4637-bd67-19b9bb8b65cb
 ms.prod: asp.net-core
 uid: security/key-vault-configuration
-ms.openlocfilehash: b9b03dab6446aed7ee875916cd2e64acbb226e8f
-ms.sourcegitcommit: 70089de5bfd8ecd161261aa95faf07a4e1534cf8
+ms.openlocfilehash: 72b6098b2a71957da338ef36beff4808201773f4
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="azure-key-vault-configuration-provider"></a>Azure 키 자격 증명 모음 구성 공급자
 
 여 [Luke Latham](https://github.com/GuardRex) 및 [Andrew Stanton 간호사](https://github.com/anurse)
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 보기 또는 2.x에 대 한 샘플 코드를 다운로드 합니다.
 
@@ -161,4 +161,4 @@ Configuration.Reload();
 * [Microsoft Azure: 키 자격 증명 모음](https://azure.microsoft.com/services/key-vault/)
 * [Microsoft Azure: 키 자격 증명 모음 설명서](https://docs.microsoft.com/azure/key-vault/)
 * [Azure 키 자격 증명 모음에 대 한 키 생성 및 HSM 보호 된 전송 하는 방법](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)
-* [KeyVaultClient 클래스](https://msdn.microsoft.com/library/microsoft.azure.keyvault.keyvaultclient.aspx)
+* [KeyVaultClient 클래스](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault.keyvaultclient)

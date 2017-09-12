@@ -11,15 +11,15 @@ ms.assetid: 0a7286e4-6428-424e-b5c4-5c98815cf61c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/weblistener
-ms.openlocfilehash: bcd225875cfe2a544581c331231c704094780ea3
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: 93e8b99e7fbac88aabd347c077d923214ba7aebe
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="weblistener-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 웹 서버 구현이 WebListener
 
-여 [Tom Dykstra](http://github.com/tdykstra) 및 [Chris Ross](https://github.com/Tratcher)
+여 [Tom Dykstra](https://github.com/tdykstra) 및 [Chris Ross](https://github.com/Tratcher)
 
 > [!NOTE]
 > 이 항목은 ASP.NET Core에만 적용 됩니다. 1.x 합니다. ASP.NET Core 2.0 WebListener 이름은 [HTTP.sys](httpsys.md)합니다.
@@ -48,13 +48,13 @@ WebListener는 다음과 같은 기능을 지원합니다.
 
 WebListener는 IIS를 사용 하지 않고 인터넷에 직접 서버를 노출 해야 하는 배포에 유용 합니다.
 
-![Weblistener는 인터넷와 직접 통신](weblistener/_static/weblistener-to-internet.png)
+![WebListener는 인터넷과 직접 통신합니다.](weblistener/_static/weblistener-to-internet.png)
 
 Http.Sys를 기반으로 하기 때문에 WebListener 공격 으로부터 보호에 대 한 역방향 프록시 서버를 필요 하지 않습니다. Http.Sys는 많은 유형의 공격 으로부터 보호 하 고 견고성, 보안 및의 모든 기능을 갖춘 웹 서버 확장성을 제공 하는 완성도 높은 기술입니다. 자체 IIS는 HTTP 수신기 Http.Sys 기반으로 실행 됩니다. 
 
 WebListener는 Kestrel를 사용 하 여 가져올 수 없습니다 제공 하는 기능 중 하나 필요할 때 내부 배포에 대 한 적합 한 선택 이기도 합니다.
 
-![Weblistener 내부 네트워크와 직접 통신](weblistener/_static/weblistener-to-internal.png)
+![WebListener는 내부 네트워크와 직접 통신합니다.](weblistener/_static/weblistener-to-internal.png)
 
 ## <a name="how-to-use-weblistener"></a>WebListener를 사용 하는 방법
 
@@ -62,7 +62,7 @@ WebListener는 Kestrel를 사용 하 여 가져올 수 없습니다 제공 하�
 
 ### <a name="configure-windows-server"></a>Windows Server를 구성 합니다.
 
-* 버전의 응용 프로그램에 필요한와 같은.NET 설치 [.NET Core](https://go.microsoft.com/fwlink/?LinkID=827524) 또는.NET Framework 4.5.1입니다.
+* 버전의 응용 프로그램에 필요한와 같은.NET 설치 [.NET Core](https://download.microsoft.com/download/0/A/3/0A372822-205D-4A86-BFA7-084D2CBE9EDF/DotNetCore.1.0.1-SDK.1.0.0.Preview2-003133-x64.exe) 또는.NET Framework 4.5.1입니다.
 
 * URL 접두사에 WebListener, 바인딩 및 SSL 인증서를 설정 하려면 미리 등록
 
@@ -80,7 +80,7 @@ WebListener는 Kestrel를 사용 하 여 가져올 수 없습니다 제공 하�
 
 * NuGet 패키지 설치 [Microsoft.AspNetCore.Server.WebListener](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.WebListener/)합니다. 도 설치 [Microsoft.Net.Http.Server](https://www.nuget.org/packages/Microsoft.Net.Http.Server/) 종속성으로 있습니다.
 
-* 호출 된 [ `UseWebListener` ](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilderKestrelExtensions/index.html#Microsoft.AspNetCore.Hosting.WebHostBuilderWebListenerExtensions.UseWebListener.md) 확장 메서드를 [WebHostBuilder](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilder/index.html#Microsoft.AspNetCore.Hosting.WebHostBuilder.md) 에 프로그램 `Main` 모든 WebListener를 지정 하는 메서드를 [옵션](https://github.com/aspnet/HttpSysServer/blob/rel/1.1.2/src/Microsoft.AspNetCore.Server.WebListener/WebListenerOptions.cs) 및 [ 설정](https://github.com/aspnet/HttpSysServer/blob/rel/1.1.2/src/Microsoft.Net.Http.Server/WebListenerSettings.cs) 다음 예제와 같이 필요한:
+* 호출 된 [ `UseWebListener` ](https://docs.microsoft.com/aspnet/core/api) 확장 메서드를 [WebHostBuilder](https://docs.microsoft.com/aspnet/core/api) 에 프로그램 `Main` 모든 WebListener를 지정 하는 메서드를 [옵션](https://github.com/aspnet/HttpSysServer/blob/rel/1.1.2/src/Microsoft.AspNetCore.Server.WebListener/WebListenerOptions.cs) 및 [ 설정](https://github.com/aspnet/HttpSysServer/blob/rel/1.1.2/src/Microsoft.Net.Http.Server/WebListenerSettings.cs) 다음 예제와 같이 필요한:
 
   [!code-csharp[](weblistener/sample/Program.cs?name=snippet_Main&highlight=13-17)]
 
@@ -152,14 +152,14 @@ netsh http add sslcert ipport=0.0.0.0:443 certhash=MyCertHash_Here appid={000000
 
 다음은 공식 참조 설명서가입니다.
 
-* [Netsh 명령에 대 한 하이퍼텍스트 전송 프로토콜 (HTTP)](http://technet.microsoft.com/library/cc725882.aspx)
+* [Netsh 명령에 대 한 하이퍼텍스트 전송 프로토콜 (HTTP)](https://technet.microsoft.com/library/cc725882.aspx)
 * [UrlPrefix 문자열](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)
 
 다음 리소스는 여러 시나리오에 대 한 자세한 지침을 제공 합니다. 참조 하는 문서 `HttpListener` 에 동일 하 게 적용 `WebListener`, 둘 다 Http.Sys 기반으로 합니다.
 
-* [방법: SSL 인증서로 포트 구성](http://msdn.microsoft.com/library/ms733791.aspx)
+* [방법: SSL 인증서로 포트 구성](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-configure-a-port-with-an-ssl-certificate)
 * [HTTPS 통신-HttpListener 기반 호스팅 및 클라이언트 인증](http://sunshaking.blogspot.com/2012/11/https-communication-httplistener-based.html) 이 제 3 자 블로그 비교적 오래 된 하지만 유용한 정보를 아직 있습니다.
-* [방법: 연습을 사용 하 여 HttpListener 또는 Http 서버 비관리 코드 (c + +)는 SSL 단순 서버로](http://blogs.msdn.com/b/jpsanders/archive/2009/09/29/walkthrough-using-httplistener-as-an-ssl-simple-server.aspx) 너무 유용한 정보를 담은 한 오래 된 블로그입니다.
+* [방법: 연습을 사용 하 여 HttpListener 또는 Http 서버 비관리 코드 (c + +)는 SSL 단순 서버로](https://blogs.msdn.microsoft.com/jpsanders/2009/09/29/how-to-walkthrough-using-httplistener-or-http-server-unmanaged-code-c-as-an-ssl-simple-server/) 너무 유용한 정보를 담은 한 오래 된 블로그입니다.
 * [SSL과 함께.NET Core WebListener를 설정 하려면 어떻게 해야 합니까?](https://blogs.msdn.microsoft.com/timomta/2016/11/04/how-do-i-set-up-a-net-core-weblistener-with-ssl/)
 
 다음은 netsh.exe 명령줄 보다 쉽게 사용할 수 있는 몇 가지 타사 도구입니다. 제공 되거나 Microsoft에서 보증 되지 이러한 합니다. 도구는 netsh.exe 자체에 대 한 관리자 권한이 필요 하므로 관리자 권한으로 기본적으로 실행 합니다.
@@ -167,7 +167,7 @@ netsh http add sslcert ipport=0.0.0.0:443 certhash=MyCertHash_Here appid={000000
 * [http.sys 관리자](http://httpsysmanager.codeplex.com/) 목록에 대 한 UI를 제공 하 고 예약, 접두사 및 인증서 신뢰 목록이 SSL 인증서 및 옵션을 구성 합니다. 
 * [HttpConfig](http://www.stevestechspot.com/ABetterHttpcfg.aspx) 나열 하거나 SSL 인증서와 URL 접두사를 구성할 수 있습니다. UI 관리자 http.sys 보다 성능이 우수 하 고 몇 가지 추가 구성 옵션을 노출 하지만 그렇지 않으면 유사한 기능을 제공 합니다. 것 새 인증서 신뢰 목록 (CTL)를 만들 수는 없지만 기존을 할당할 수 있습니다.
 
-자체 서명 된 SSL 인증서를 생성 하기 위한 Microsoft 제공 명령줄 도구: [MakeCert.exe](https://msdn.microsoft.com/library/windows/desktop/aa386968) 및 PowerShell cmdlet [New-selfsignedcertificate](https://technet.microsoft.com/library/hh848633)합니다. 타사 UI 도구를 자체 서명 된 SSL 인증서를 생성 하기 위해 쉽게 해 주는 있습니다.
+자체 서명 된 SSL 인증서를 생성 하기 위한 Microsoft 제공 명령줄 도구: [MakeCert.exe](https://msdn.microsoft.com/library/windows/desktop/aa386968) 및 PowerShell cmdlet [New-selfsignedcertificate](https://technet.microsoft.com/itpro/powershell/windows/pki/new-selfsignedcertificate)합니다. 타사 UI 도구를 자체 서명 된 SSL 인증서를 생성 하기 위해 쉽게 해 주는 있습니다.
 
 * [SelfCert](https://www.pluralsight.com/blog/software-development/selfcert-create-a-self-signed-certificate-interactively-gui-or-programmatically-in-net)
 * [Makecert UI](http://makecertui.codeplex.com/)

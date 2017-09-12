@@ -2,7 +2,7 @@
 title: "ASP.NET Core의 라우팅"
 author: ardalis
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: bbbcf9e4-3c4c-4f50-b91e-175fe9cae4e2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/routing
-ms.openlocfilehash: 98756e2c5b336aabcf5155d929160b616baaf2ee
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 431b837dc93abdf305b77615409883fd54b99455
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core의 라우팅
 
-여 [사람인 Ryan Nowak](https://github.com/rynowak), [Steve Smith](http://ardalis.com), 및 [Rick Anderson](https://twitter.com/RickAndMSFT)
+여 [사람인 Ryan Nowak](https://github.com/rynowak), [Steve Smith](https://ardalis.com/), 및 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 라우팅 기능은 경로 처리기에 들어오는 요청을 매핑하는 일을 담당 합니다. 경로 ASP.NET 응용 프로그램에 정의 되 고 응용 프로그램 시작 될 때 구성 합니다. 경로 요청에 포함 된 URL에서 필요에 따라 값을 추출할 수 있습니다 및 이러한 값 요청 처리를 위해 사용할 수 있습니다. ASP.NET 응용 프로그램에서 경로 정보를 사용 하 여 라우팅 기능은 또한 경로 처리기에 매핑되는 Url을 생성할 수 있습니다. 따라서 라우팅 URL 또는 경로 처리기 정보에 따라 지정 된 경로 처리기에 해당 하는 URL에 따라 경로 처리기를 찾을 수 있습니다.
 
@@ -325,9 +325,9 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
 
 ## <a name="regular-expressions"></a>정규식 
 
-ASP.NET Core 프레임 워크 추가 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant` 정규식 생성자에 있습니다. 참조 [RegexOptions 열거형](https://msdn.microsoft.com/library/system.text.regularexpressions.regexoptions(v=vs.110).aspx) 이러한 멤버에 대 한 합니다.
+ASP.NET Core 프레임 워크 추가 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant` 정규식 생성자에 있습니다. 참조 [RegexOptions 열거형](https://docs.microsoft.com/dotnet/api/system.text.regularexpressions.regexoptions) 이러한 멤버에 대 한 합니다.
 
-정규식 구분 기호 및 라우팅 및 C# 언어에서 사용 하는 것과 유사한 토큰을 사용 합니다. 정규식 토큰 이스케이프 되어야 합니다. 예를 들어, 정규식을 사용 하 `^\d{3}-\d{2}-\d{4}$` 필요 합니다, 라우팅에는 `\` 로 입력 된 문자 `\\` 이스케이프 하는 C# 소스 파일에는 `\` 이스케이프 문자는 문자열 (사용 하지 않는 [축 자 문자열 리터럴](https://msdn.microsoft.com/library/aa691090(v=vs.71).aspx)). `{` , `}` , ' [' 및 ']' 문자를 이중으로 라우팅 매개 변수 구분 기호 문자를 이스케이프 하 여 이스케이프 처리 해야 합니다.  다음 표에서 정규식 및 이스케이프 된 버전을 보여 줍니다.
+정규식 구분 기호 및 라우팅 및 C# 언어에서 사용 하는 것과 유사한 토큰을 사용 합니다. 정규식 토큰 이스케이프 되어야 합니다. 예를 들어, 정규식을 사용 하 `^\d{3}-\d{2}-\d{4}$` 필요 합니다, 라우팅에는 `\` 로 입력 된 문자 `\\` 이스케이프 하는 C# 소스 파일에는 `\` 이스케이프 문자는 문자열 (사용 하지 않는 [축 자 문자열 리터럴](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/string)합니다. `{` , `}` , ' [' 및 ']' 문자를 이중으로 라우팅 매개 변수 구분 기호 문자를 이스케이프 하 여 이스케이프 처리 해야 합니다.  다음 표에서 정규식 및 이스케이프 된 버전을 보여 줍니다.
 
 | 식               | 참고 |
 | ----------------- | ------------ | 
@@ -347,7 +347,7 @@ ASP.NET Core 프레임 워크 추가 `RegexOptions.IgnoreCase | RegexOptions.Com
 | `^[a-z]{2}$` |  hello | no | 참조 `^` 및 `$` 위에 |
 | `^[a-z]{2}$` |  123abc456 | no | 참조 `^` 및 `$` 위에 |
 
-참조 [.NET Framework 정규식](https://msdn.microsoft.com/library/hs600312(v=vs.110).aspx) 정규식 구문에 대 한 자세한 내용은 합니다.
+참조 [.NET Framework 정규식](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) 정규식 구문에 대 한 자세한 내용은 합니다.
 
 가능한 값에 대 한 알려진 집합 매개 변수를 제한 하려면 정규식을 사용 합니다. 예를 들어 `{action:regex(^(list|get|create)$)}` 에 일치는 `action` 값을 라우팅할 `list`, `get`, 또는 `create`합니다. 제약 조건 사전 문자열에 전달 되 면 "^ (목록 | get | 만들기) $"는 것과 같습니다. 또한 알려진된 제한 중 하나에 일치 하지 않는 제약 조건 사전 (템플릿 내에서 인라인 하지)에 전달 되는 제약을 정규식으로 처리 됩니다.
 

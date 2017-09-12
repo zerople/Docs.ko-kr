@@ -2,7 +2,7 @@
 title: "미사용 데이터 암호화 키"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,11 +11,11 @@ ms.assetid: f2bbbf4e-0945-43ce-be59-8bf19e448798
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/key-encryption-at-rest
-ms.openlocfilehash: cef7644d29168e9560d1175885ea85a525fec435
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 16a9385630d88c4c9f33954f83fce2bbce5be719
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="key-encryption-at-rest"></a>미사용 데이터 암호화 키
 
@@ -74,7 +74,7 @@ Windows 8 부터는 운영 체제 DPAPI NG (CNG DPAPI 라고도 함)를 지원 �
 
    그러나 클라우드 컴퓨팅 종종 해야 해당 콘텐츠를 암호화 된 컴퓨터에 다른 암호를 해독할 수 있습니다. 따라서 Windows 8 부터는 Microsoft 확장 된 클라우드 시나리오를 포함 하는 비교적 간단 하므로 API를 사용 하는 것입니다. DPAPI-NG 라는이 새로운 API를 사용 하는 서로 다른 컴퓨터에 적절 한 인증 및 권한 부여 후 해제 하는 데 사용할 수 있는 보안 주체 집합에이 보호 하 여 비밀 (키, 암호, 키 자료) 및 메시지를 안전 하 게 공유할 수 있습니다.
 
-   [https://msdn.microsoft.com/library/windows/desktop/hh706794 (v=vs.85).aspx](https://msdn.microsoft.com/library/windows/desktop/hh706794(v=vs.85).aspx)
+   [CNG DPAPI에 대 한](https://msdn.microsoft.com/library/windows/desktop/hh706794(v=vs.85).aspx)
 
 주 서버는 보호 설명자 규칙으로 인코딩됩니다. 고려는 아래 예제에서는 암호화 키 자료를 도메인에 가입 된 사용자만 지정 된 SID 가진 키 자료를 해독할 수 있습니다.
 
@@ -97,7 +97,7 @@ sc.AddDataProtection()
 
 ## <a name="certificate-based-encryption-with-windows-dpapi-ng"></a>인증서 기반 암호화와 Windows DPAPI-NG
 
-Windows 8.1 실행 하는 경우 / Windows Server 2012 R2 이상 버전에서는 사용할 수 있습니다 Windows DPAPI NG 인증서 기반 암호화를 수행 하는 응용 프로그램에서 실행 중인 경우에 [.NET Core](https://microsoft.com/net/core)합니다. 를 이용 하려면이 규칙 설명자 문자열을 사용 하 여 "인증서 HashId:thumbprint =" 지문을 사용 하는 인증서의 16 진수로 인코딩된 SHA1 지문을 위치입니다. 예를 보려면 아래를 참조 하십시오.
+Windows 8.1 실행 하는 경우 / Windows Server 2012 R2 이상 버전에서는 사용할 수 있습니다 Windows DPAPI NG 인증서 기반 암호화를 수행 하는 응용 프로그램에서 실행 중인 경우에 [.NET Core](https://www.microsoft.com/net/core)합니다. 를 이용 하려면이 규칙 설명자 문자열을 사용 하 여 "인증서 HashId:thumbprint =" 지문을 사용 하는 인증서의 16 진수로 인코딩된 SHA1 지문을 위치입니다. 예를 보려면 아래를 참조 하십시오.
 
 ```csharp
 sc.AddDataProtection()

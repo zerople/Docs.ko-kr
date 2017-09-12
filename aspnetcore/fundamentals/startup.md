@@ -10,15 +10,15 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/startup
-ms.openlocfilehash: 16969386c55ae2fd2ab574c1799a765e74f59278
-ms.sourcegitcommit: 4147d2d29ea50e7e9b87879c572ac2a9fb51798c
+ms.openlocfilehash: 69af91de6d2c48af58bc10a32d8857af18a41b6a
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="application-startup-in-aspnet-core"></a>ASP.NET Core 응용 프로그램 시작
 
-여 [Steve Smith](http://ardalis.com) 및 [Tom Dykstra](https://github.com/tdykstra/)
+여 [Steve Smith](https://ardalis.com/) 및 [Tom Dykstra](https://github.com/tdykstra/)
 
 `Startup` 클래스 서비스 및 응용 프로그램의 요청 파이프라인을 구성 합니다. 
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 08/15/2017
 
 ASP.NET Core 응용 프로그램에서는 한 `Startup` 클래스입니다. 일반적으로는 `Startup` 클래스 이름이 "시작"입니다. 에 시작 클래스 이름을 지정 하는 `Main` 프로그램의 [WebHostBuilderExtensions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilderextensions) [ `UseStartup<TStartup>` ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilderextensions#Microsoft_AspNetCore_Hosting_WebHostBuilderExtensions_UseStartup__1_Microsoft_AspNetCore_Hosting_IWebHostBuilder_) 메서드. 참조 [호스팅](xref:fundamentals/hosting) 에 대 한 자세한 내용은 `WebHostBuilder`, 하기 전에 실행 되는 `Startup`합니다.
 
-별도 정의한 `Startup` 다양 한 환경 및 적절 한 런타임 시 선택 하나에 대 한 클래스입니다. 지정 하는 경우 `startupAssembly` 에 [WebHost 구성](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/hosting?tabs=aspnetcore2x#configuring-a-host) 호스팅 옵션을 해당 시작 어셈블리를 로드 하 고 검색할 또는 `Startup` 또는 `Startup[Environment]` 유형입니다. 현재 환경 우선 순위가 지정 해당 이름 접미사 일치, 하면 앱에서 실행 되는 클래스는 *개발* 환경 모두 포함 하 고는 `Startup` 및 `StartupDevelopment` 클래스는 `StartupDevelopment` 클래스 됩니다. 사용. 참조 [FindStartupType](https://github.com/aspnet/Hosting/blob/rel/1.1.0/src/Microsoft.AspNetCore.Hosting/Internal/StartupLoader.cs) 에 `StartupLoader` 및 [여러 환경 작업](environments.md#startup-conventions)합니다.
+별도 정의한 `Startup` 다양 한 환경 및 적절 한 런타임 시 선택 하나에 대 한 클래스입니다. 지정 하는 경우 `startupAssembly` 에 [WebHost 구성](https://docs.microsoft.com/aspnet/core/fundamentals/hosting?tabs=aspnetcore2x#configuring-a-host) 호스팅 옵션을 해당 시작 어셈블리를 로드 하 고 검색할 또는 `Startup` 또는 `Startup[Environment]` 유형입니다. 현재 환경 우선 순위가 지정 해당 이름 접미사 일치, 하면 앱에서 실행 되는 클래스는 *개발* 환경 모두 포함 하 고는 `Startup` 및 `StartupDevelopment` 클래스는 `StartupDevelopment` 클래스 됩니다. 사용. 참조 [FindStartupType](https://github.com/aspnet/Hosting/blob/rel/1.1.0/src/Microsoft.AspNetCore.Hosting/Internal/StartupLoader.cs) 에 `StartupLoader` 및 [여러 환경 작업](environments.md#startup-conventions)합니다.
 
 또는 정의할 수 있습니다는 고정 `Startup` 호출 하 여 환경에 관계 없이 사용 되는 클래스 `UseStartup<TStartup>`합니다. 이는 권장되는 방법입니다.
 
@@ -38,9 +38,9 @@ ASP.NET Core 응용 프로그램에서는 한 `Startup` 클래스입니다. 일�
 
 ## <a name="the-configureservices-method"></a>ConfigureServices 메서드
 
-[ConfigureServices](https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.aspnetcore.hosting.startupbase#Microsoft_AspNetCore_Hosting_StartupBase_ConfigureServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_) 방법은 선택 사항 이지만 사용 하는 경우 전에 호출 됩니다는 `Configure` 웹 호스트에 의해 메서드. 웹 호스트 되기 전에 일부 서비스를 구성할 수 있습니다 ``Startup`` 메서드가 호출 되어 (참조 [호스팅](xref:fundamentals/hosting)). 규칙에 따라 [구성 옵션](xref:fundamentals/configuration) 이 메서드에서 설정 됩니다.
+[ConfigureServices](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.startupbase#Microsoft_AspNetCore_Hosting_StartupBase_ConfigureServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_) 방법은 선택 사항 이지만 사용 하는 경우 전에 호출 됩니다는 `Configure` 웹 호스트에 의해 메서드. 웹 호스트 되기 전에 일부 서비스를 구성할 수 있습니다 ``Startup`` 메서드가 호출 되어 (참조 [호스팅](xref:fundamentals/hosting)). 규칙에 따라 [구성 옵션](xref:fundamentals/configuration) 이 메서드에서 설정 됩니다.
 
-상당한 설치 해야 하는 기능에 대 한 없는 `Add[Service]` 에 확장 메서드 [IServiceCollection](https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.extensions.dependencyinjection.iservicecollection)합니다. 이 예제에서는 기본 웹 사이트 서식 파일에서 서비스 Entity Framework, Id 및 MVC를 사용 하도록 앱을 구성 합니다.
+상당한 설치 해야 하는 기능에 대 한 없는 `Add[Service]` 에 확장 메서드 [IServiceCollection](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.dependencyinjection.iservicecollection)합니다. 이 예제에서는 기본 웹 사이트 서식 파일에서 서비스 Entity Framework, Id 및 MVC를 사용 하도록 앱을 구성 합니다.
 
 [!code-csharp[Main](../common/samples/WebApplication1/Startup.cs?highlight=4,7,11&start=40&end=55)]
 
@@ -74,7 +74,7 @@ ASP.NET Core 응용 프로그램에서는 한 `Startup` 클래스입니다. 일�
 
 ## <a name="additional-resources"></a>추가 리소스
 
-* [여러 환경 작업](xref:fundamentals/environments)
+* [여러 환경 사용](xref:fundamentals/environments)
 * [미들웨어](xref:fundamentals/middleware)
 * [로깅](xref:fundamentals/logging)
 * [구성](xref:fundamentals/configuration)

@@ -2,7 +2,7 @@
 title: "ASP.NET Core MVC 개요"
 author: ardalis
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: 89af38d1-52e0-4db7-b791-dbce909b0714
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/overview
-ms.openlocfilehash: 3e95ccd8aeda54a050cd656ea0c831fd928f53a2
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 67394b066c18a149a97b957d6478ba8301ea8147
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>ASP.NET Core MVC 개요
 
-으로 [Steve Smith](http://ardalis.com)
+으로 [Steve Smith](https://ardalis.com/)
 
 ASP.NET Core MVC는 웹 앱을 빌드하기 위한 풍부한 프레임 워크 및 Api 모델-뷰-컨트롤러를 사용 하 여 패턴을 디자인 합니다.
 
@@ -153,7 +153,7 @@ public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = 
 }
 ```
 
-프레임 워크 클라이언트 및 서버에서 요청 데이터 유효성 검사를 처리 합니다. 모델 유형에 대해 지정 된 유효성 검사 논리 비간섭 주석으로 렌더링 된 보기에 추가 되 고 사용 하 여 브라우저에 적용 됩니다 [jQuery 유효성 검사](http://jqueryvalidation.org/)합니다.
+프레임 워크 클라이언트 및 서버에서 요청 데이터 유효성 검사를 처리 합니다. 모델 유형에 대해 지정 된 유효성 검사 논리 비간섭 주석으로 렌더링 된 보기에 추가 되 고 사용 하 여 브라우저에 적용 됩니다 [jQuery 유효성 검사](https://jqueryvalidation.org/)합니다.
 
 ### <a name="dependency-injection"></a>종속성 주입
 

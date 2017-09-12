@@ -2,7 +2,7 @@
 title: "ASP.NET Core에서 기능을 요청"
 author: ardalis
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: d1fbd23c-2ff9-4216-b908-0201ff3afb7c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/request-features
-ms.openlocfilehash: e8d04ef7df34fe1421b2c52f137511fc6baae674
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: a10aefe3819fb03019575c36274dd164faf7086c
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="request-features-in-aspnet-core"></a>ASP.NET Core에서 기능을 요청
 
-으로 [Steve Smith](http://ardalis.com)
+으로 [Steve Smith](https://ardalis.com/)
 
 웹 HTTP 요청 및 응답에 관련 된 세부 인터페이스에 정의 된 서버 구현입니다. 이러한 인터페이스를 생성 및 호스팅 응용 프로그램의 파이프라인을 수정할 서버 구현 및 미들웨어에서 사용 됩니다.
 
@@ -78,4 +78,4 @@ HTTP 기능 인터페이스의 수를 정의 하는 ASP.NET Core `Microsoft.AspN
 
 * [미들웨어](middleware.md)
 
-* [For.NET (OWIN) 열린 웹 인터페이스](owin.md)
+* [OWIN(Open Web Interface for .NET)](owin.md)

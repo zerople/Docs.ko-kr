@@ -10,21 +10,21 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/accconfirm
-ms.openlocfilehash: aaed75c78a99e59954add959a76a2fd68ea5f3fc
-ms.sourcegitcommit: f2fb0b45284e4f8c4a9c422bec790aede7c1f0ac
+ms.openlocfilehash: 2f99a5d3db84c3fd3f7ebcb8bccd9a4b8bc8e2b8
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>계정 확인 및 ASP.NET 코어에서 암호 복구
 
-으로 [Rick Anderson](https://twitter.com/RickAndMSFT)
+작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 이 자습서에서는 전자 메일 확인 및 암호 재설정으로 ASP.NET Core 응용 프로그램을 구축 하는 방법을 보여 줍니다.
 
 ## <a name="create-a-new-aspnet-core-project"></a>새 ASP.NET Core 프로젝트 만들기
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 이 단계는 Windows에서 Visual Studio에 적용 됩니다. CLI 지침은 다음 섹션을 참조 하십시오.
 
@@ -62,7 +62,7 @@ dotnet new mvc --auth Individual
 
 ## <a name="test-new-user-registration"></a>새 사용자 등록을 테스트 합니다.
 
-응용 프로그램을 실행, 선택는 **등록** 링크를 선택한 사용자를 등록 합니다. Entity Framework Core 마이그레이션을 실행 하는 지침을 따릅니다. 전자 메일에만 유효성 검사와는 시점에서 [[EmailAddress]](http://msdn.microsoft.com/library/system.componentmodel.dataannotations.emailaddressattribute(v=vs.110).aspx) 특성입니다. 등록을 제출 하면 앱에 로그인 되어 있습니다. 자습서의 뒷부분에 나오는 변경 합니다이 있으므로 새 사용자가 전자 메일의 유효성을 검사 될 때까지 로그인 할 수 없습니다.
+응용 프로그램을 실행, 선택는 **등록** 링크를 선택한 사용자를 등록 합니다. Entity Framework Core 마이그레이션을 실행 하는 지침을 따릅니다. 전자 메일에만 유효성 검사와는 시점에서 [[EmailAddress]](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute) 특성입니다. 등록을 제출 하면 앱에 로그인 되어 있습니다. 자습서의 뒷부분에 나오는 변경 합니다이 있으므로 새 사용자가 전자 메일의 유효성을 검사 될 때까지 로그인 할 수 없습니다.
 
 ## <a name="view-the-identity-database"></a>Id 데이터베이스 보기
 
@@ -96,7 +96,7 @@ dotnet new mvc --auth Individual
 
 업데이트 `ConfigureServices` 확인 된 전자 메일을 요구 하도록 합니다.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](accconfirm/sample/WebPW/Startup.cs?name=snippet1&highlight=6-9)]
 
@@ -145,7 +145,7 @@ info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 
 추가 `AuthMessageSenderOptions` 끝날 때 서비스 컨테이너에는 `ConfigureServices` 에서 메서드는 *Startup.cs* 파일:
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](accconfirm/sample/WebPW/Startup.cs?name=snippet1&highlight=18)]
 
@@ -166,7 +166,7 @@ info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 
 #### <a name="configure-sendgrid"></a>SendGrid를 구성 합니다.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 * 에 코드를 추가 *Services/EmailSender.cs* SendGrid를 구성 하는 다음과 비슷합니다.
 
@@ -184,7 +184,7 @@ info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 
 서식 파일에는 계정 확인 및 암호 복구를 위한 코드가 있습니다. 찾을 `[HttpPost] Register` 에서 메서드는 *AccountController.cs* 파일입니다.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 새로 등록 된 사용자가 있는 다음 줄을 주석 처리에 자동으로 로그온에서 함:
 
@@ -239,7 +239,7 @@ Form 요소에 주석 처리 제거 *Views/Account/ForgotPassword.cshtml*합니�
 
 ![탐색 모음](accconfirm/_static/x.png)
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 관리 페이지에 표시 됩니다는 **프로필** 탭이 선택 되어 있습니다. **전자 메일** 확인 전자 메일을 나타내는 확인란을 보여 줍니다. 
 

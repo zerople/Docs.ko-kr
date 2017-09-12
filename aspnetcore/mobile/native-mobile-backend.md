@@ -2,7 +2,7 @@
 title: "네이티브 모바일 응용 프로그램에 대 한 백 엔드 서비스 만들기"
 author: ardalis
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: 3b6a32f2-5af9-4ede-9b7f-17ab300526d0
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mobile/native-mobile-backend
-ms.openlocfilehash: f2b74d6739112909ee05e036e904d5e30868fdbe
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 7b2b35b1519badbc8b8fbddab97a0c6336926185
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="creating-backend-services-for-native-mobile-applications"></a>네이티브 모바일 응용 프로그램에 대 한 백 엔드 서비스 만들기
 
-으로 [Steve Smith](http://ardalis.com)
+으로 [Steve Smith](https://ardalis.com/)
 
 모바일 앱 ASP.NET Core 백 엔드 서비스와 쉽게 통신할 수 있습니다.
 

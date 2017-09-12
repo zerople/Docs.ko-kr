@@ -2,7 +2,7 @@
 title: "ASP.NET Core에 Windows 인증을 구성 합니다."
 author: ardalis
 description: "ASP.NET Core에 Windows 인증을 구성 하는 방법"
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 7/5/2017
@@ -11,11 +11,11 @@ ms.assetid: cf119f21-1a2b-49a2-b052-548ccb66ee83
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/windowsauth
-ms.openlocfilehash: 008a647295334e957c33c6db7f80687645b3b928
-ms.sourcegitcommit: 69b3255f8b6f5db9e7d21f391420602d7ba9f4db
+ms.openlocfilehash: aa401f956d74680efd3964203af3e8866b129887
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>ASP.NET Core에 Windows 인증을 구성 합니다.
 
@@ -27,7 +27,7 @@ IIS 또는 WebListener로 호스트 되는 ASP.NET Core 응용 프로그램에 �
 
 ASP.NET Core 응용 프로그램의 사용자를 인증 하는 운영 체제는 Windows 인증 사용 합니다. 서버에 다른 Windows 계정 또는 Active Directory 도메인 id를 사용 하 여 사용자를 식별 하는 회사 네트워크에서 실행 될 때 Windows 인증을 사용할 수 있습니다. Windows 인증은 사용자, 클라이언트 응용 프로그램 및 웹 서버는 동일한 Windows 도메인에 속해 있는 인트라넷 환경에 적합 한 인증 가장 안전한 형식입니다.
 
-[Windows 인증에 대 한 자세한 정보 및 IIS에 대 한 설치](https://www.iis.net/configreference/system.webserver/security/authentication/windowsauthentication)합니다.
+[Windows 인증에 대 한 자세한 정보 및 IIS에 대 한 설치](https://docs.microsoft.com/iis/configuration/system.webServer/security/authentication/windowsAuthentication/)합니다.
 
 ## <a name="enabling-windows-authentication-in-an-aspnet-core-application"></a>ASP.NET Core 응용 프로그램에서 Windows 인증을 사용 하도록 설정
 
@@ -91,7 +91,7 @@ Visual Studio 또는.NET Core CLI를 사용 하 여 *게시* 대상 폴더에 �
 
 ![Visual Studio 게시 대화 상자](windowsauth/_static/vs-publish-app.png)
 
-에 대 한 자세한 내용은 [를 IIS에 게시](https://docs.microsoft.com/aspnet/core/publishing/iis)합니다.
+에 대 한 자세한 내용은 [를 IIS에 게시](xref:publishing/iis)합니다.
 
 Windows 인증 작동 확인 응용 프로그램을 실행 합니다.
 

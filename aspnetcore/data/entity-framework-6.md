@@ -11,11 +11,11 @@ ms.assetid: 016cc836-4c43-45a4-b9a7-9efaf53350df
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/entity-framework-6
-ms.openlocfilehash: e186568e27c067e29985b8a286e26b87c3186ac4
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: fdc24ed9b6b2d412b09871302b5478da4d81ec28
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="getting-started-with-aspnet-core-and-entity-framework-6"></a>ASP.NET Core 및 Entity Framework 6 시작
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 08/11/2017
 
 ## <a name="overview"></a>개요
 
-Entity Framework 6을 사용 하려면 Entity Framework 6에서는.NET Core를 지원 하지 않으므로.NET Framework에 대해 컴파일할 수 프로젝트에 있습니다. 로 업그레이드 해야 플랫폼 기능이 필요 하면 [Entity Framework Core](https://docs.efproject.net)합니다.
+Entity Framework 6을 사용 하려면 Entity Framework 6에서는.NET Core를 지원 하지 않으므로.NET Framework에 대해 컴파일할 수 프로젝트에 있습니다. 로 업그레이드 해야 플랫폼 기능이 필요 하면 [Entity Framework Core](https://docs.microsoft.com/ef/)합니다.
 
 ASP.NET Core 응용 프로그램에서 Entity Framework 6을 사용 하는 권장된 방법은 EF6 컨텍스트를 넣을 수 이며 클래스 라이브러리에 모델 클래스를 프로젝트 대상으로 하는 전체 프레임 워크. ASP.NET Core 프로젝트에서 클래스 라이브러리에 대 한 참조를 추가 합니다. 샘플을 참조 하십시오 [EF6 및 ASP.NET Core 프로젝트가 있는 Visual Studio 솔루션](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/entity-framework-6/sample/)합니다.
 

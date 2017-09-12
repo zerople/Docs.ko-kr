@@ -11,11 +11,11 @@ ms.assetid: 7f275a09-f118-41c9-88d1-8de52d6a5aa1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/localization
-ms.openlocfilehash: c6c9db21a95131a3d7920054e32004791b499c11
-ms.sourcegitcommit: fb518f856f31fe53c09196a13309eacb85b37a22
+ms.openlocfilehash: 2a760343566d2c2be591983e20830b5207a2199b
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>전역화 및 지역화 ASP.NET Core
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 09/08/2017
 
 ASP.NET Core를 사용 하 여 다국어 웹 사이트 만들기 하도록 사이트를 더 광범위 한에 도달 하면 수 있습니다. ASP.NET Core 다른 언어와 문화권에 지역화를 위한 서비스 및 미들웨어를 제공 합니다.
 
-국제화 포함 [전역화](https://msdn.microsoft.com/library/aa292081(v=vs.71).aspx) 및 [지역화](https://msdn.microsoft.com/library/aa292137(v=vs.71).aspx)합니다. 세계화는 서로 다른 culture를 지 원하는 응용 프로그램을 설계 하는 과정입니다. 세계화에는 입력, 표시 및 정의 된 집합이 특정 지역과 관련 된 언어 스크립트의 출력에 대 한 지원을 추가 합니다.
+국제화 포함 [전역화](https://docs.microsoft.com/dotnet/api/system.globalization) 및 [지역화](https://docs.microsoft.com/dotnet/standard/globalization-localization/localization)합니다. 세계화는 서로 다른 culture를 지 원하는 응용 프로그램을 설계 하는 과정입니다. 세계화에는 입력, 표시 및 정의 된 집합이 특정 지역과 관련 된 언어 스크립트의 출력에 대 한 지원을 추가 합니다.
 
 지역화는 이미 특정 문화권/로캘로 지역화 가능성에 대 한 처리 전역화 된 응용 프로그램을 위해 조정 하는 과정입니다.  자세한 내용은 참조 **전역화 및 지역화 용어** 이 문서의 끝 부분입니다.
 
@@ -37,7 +37,7 @@ ASP.NET Core를 사용 하 여 다국어 웹 사이트 만들기 하도록 사�
 
 ## <a name="make-the-apps-content-localizable"></a>응용 프로그램의 콘텐츠를 지역화할 수 있도록
 
-ASP.NET Core에 도입 된 `IStringLocalizer` 및 `IStringLocalizer<T>` 지역화 된 응용 프로그램을 개발할 때 생산성을 향상 하도록 설계 되었습니다. `IStringLocalizer`사용 하 여는 [ResourceManager](https://msdn.microsoft.com/library/system.resources.resourcemanager(v=vs.110).aspx) 및 [ResourceReader](https://msdn.microsoft.com/library/system.resources.resourcereader(v=vs.110).aspx) 런타임 시 문화권별 리소스를 제공 합니다. 간단한 인터페이스에는 인덱서 및 `IEnumerable` 지역화 된 문자열을 반환 합니다. `IStringLocalizer`리소스 파일에는 기본 언어 문자열을 저장 하도록 요구 하지 않습니다. 지역화를 위한 대상으로 하는 응용 프로그램을 개발할 수 있으며 초기 개발에에서 리소스 파일을 만들 필요가 없습니다. 아래 코드 지역화에 대 한 "에 대 한 Title" 문자열을 래핑하는 방법을 보여 줍니다.
+ASP.NET Core에 도입 된 `IStringLocalizer` 및 `IStringLocalizer<T>` 지역화 된 응용 프로그램을 개발할 때 생산성을 향상 하도록 설계 되었습니다. `IStringLocalizer`사용 하 여는 [ResourceManager](https://docs.microsoft.com/dotnet/api/system.resources.resourcemanager) 및 [ResourceReader](https://docs.microsoft.com/dotnet/api/system.resources.resourcereader) 런타임 시 문화권별 리소스를 제공 합니다. 간단한 인터페이스에는 인덱서 및 `IEnumerable` 지역화 된 문자열을 반환 합니다. `IStringLocalizer`리소스 파일에는 기본 언어 문자열을 저장 하도록 요구 하지 않습니다. 지역화를 위한 대상으로 하는 응용 프로그램을 개발할 수 있으며 초기 개발에에서 리소스 파일을 만들 필요가 없습니다. 아래 코드 지역화에 대 한 "에 대 한 Title" 문자열을 래핑하는 방법을 보여 줍니다.
 
 [!code-csharp[Main](localization/sample/Controllers/AboutController.cs)]
 
@@ -65,7 +65,7 @@ ASP.NET Core에 도입 된 `IStringLocalizer` 및 `IStringLocalizer<T>` 지역�
 
 ## <a name="view-localization"></a>보기 지역화
 
-`IViewLocalizer` 서비스 제공에 대 한 지역화 된 문자열을 [보기](http://docs.asp.net/projects/mvc/en/latest/views/index.html)합니다. `ViewLocalizer` 클래스는이 인터페이스를 구현 하 고 보기 파일 경로에서 리소스는 위치를 찾습니다. 다음 코드의 기본 구현을 사용 하는 방법을 보여 줍니다 `IViewLocalizer`:
+`IViewLocalizer` 서비스 제공에 대 한 지역화 된 문자열을 [보기](https://docs.microsoft.com/aspnet/core)합니다. `ViewLocalizer` 클래스는이 인터페이스를 구현 하 고 보기 파일 경로에서 리소스는 위치를 찾습니다. 다음 코드의 기본 구현을 사용 하는 방법을 보여 줍니다 `IViewLocalizer`:
 
 [!code-HTML[Main](localization/sample/Views/Home/About.cshtml)]
 
@@ -124,7 +124,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="supportedcultures-and-supporteduicultures"></a>SupportedCultures 및 SupportedUICultures
 
-ASP.NET Core를 사용 하면 두 문화권 값을 지정할 수 있습니다 `SupportedCultures` 및 `SupportedUICultures`합니다. [CultureInfo](https://msdn.microsoft.com/library/system.globalization.cultureinfo(v=vs.110).aspx) 개체에 대 한 `SupportedCultures` 날짜, 시간, 숫자 및 통화 형식 같은 culture에 종속 된 함수의 결과 결정 합니다. `SupportedCultures`또한 텍스트, 대/소문자 규칙 및 문자열 비교의 정렬 순서를 결정합니다. 참조 [CultureInfo.CurrentCulture](https://msdn.microsoft.com/library/system.globalization.cultureinfo.currentculture%28v=vs.110%29.aspx) 에 대 한 자세한 정보는 서버가 문화권을 가져오는 방식입니다. `SupportedUICultures` 이것은 문자열 해석 결정 (에서 *.resx* 파일)을 조회 하 여는 [ResourceManager](https://msdn.microsoft.com/library/system.resources.resourcemanager(v=vs.110).aspx)합니다. `ResourceManager` 의해 결정 되는 culture 관련 문자열을 단순히 조회 `CurrentUICulture`합니다. .NET의 모든 스레드는 `CurrentCulture` 및 `CurrentUICulture` 개체입니다. ASP.NET Core 문화권 종속 기능을 렌더링 하는 경우 이러한 값을 검사 합니다. 예를 들어, 현재 스레드 문화권 "EN-US" (영어, United States)로 설정 되어 있으면 `DateTime.Now.ToLongDateString()` 이지만 if "목요일, 2016 년 2 월 18,", 표시 `CurrentCulture` 설정 된 "ES-ES" 스페인어 (스페인)에 출력 됩니다 "jueves, 18 febrero de-de 2016" 입니다.
+ASP.NET Core를 사용 하면 두 문화권 값을 지정할 수 있습니다 `SupportedCultures` 및 `SupportedUICultures`합니다. [CultureInfo](https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo) 개체에 대 한 `SupportedCultures` 날짜, 시간, 숫자 및 통화 형식 같은 culture에 종속 된 함수의 결과 결정 합니다. `SupportedCultures`또한 텍스트, 대/소문자 규칙 및 문자열 비교의 정렬 순서를 결정합니다. 참조 [CultureInfo.CurrentCulture](https://docs.microsoft.com/dotnet/api/system.stringcomparer.currentculture#System_StringComparer_CurrentCulture) 에 대 한 자세한 정보는 서버가 문화권을 가져오는 방식입니다. `SupportedUICultures` 이것은 문자열 해석 결정 (에서 *.resx* 파일)을 조회 하 여는 [ResourceManager](https://docs.microsoft.com/dotnet/api/system.resources.resourcemanager)합니다. `ResourceManager` 의해 결정 되는 culture 관련 문자열을 단순히 조회 `CurrentUICulture`합니다. .NET의 모든 스레드는 `CurrentCulture` 및 `CurrentUICulture` 개체입니다. ASP.NET Core 문화권 종속 기능을 렌더링 하는 경우 이러한 값을 검사 합니다. 예를 들어, 현재 스레드 문화권 "EN-US" (영어, United States)로 설정 되어 있으면 `DateTime.Now.ToLongDateString()` 이지만 if "목요일, 2016 년 2 월 18,", 표시 `CurrentCulture` 설정 된 "ES-ES" 스페인어 (스페인)에 출력 됩니다 "jueves, 18 febrero de-de 2016" 입니다.
 
 ## <a name="working-with-resource-files"></a>리소스 파일 작업
 
@@ -182,7 +182,7 @@ Visual Studio 2017 미리 보기 버전 15.3를 사용 하는 경우에 리소�
 
 ### <a name="adding-other-cultures"></a>다른 문화권에 맞게 추가
 
-각 언어 및 culture 조합 (기본 언어)와 다른 고유한 리소스 파일이 필요합니다. ISO 언어 코드를 파일 이름에 있는 새 리소스 파일을 만들어 서로 다른 문화권 및 로캘에 대 한 리소스 파일을 만듭니다 (예를 들어 **en-우리**, **fr ca**, 및  **en gb**). 파일 이름 사이 이러한 ISO 코드 위치 및 *.resx* 에서 같이 파일 이름 확장명을 *Welcome.es MX.resx* (스페인어/멕시코). 중립 문화권에 따라 언어를 지정 하려면 국가 코드를 제거 (`MX` 앞의 예제에서). 스페인어 중립 문화권 리소스 파일 이름이 *Welcome.es.resx*합니다.
+각 언어 및 culture 조합 (기본 언어)와 다른 고유한 리소스 파일이 필요합니다. ISO 언어 코드를 파일 이름에 있는 새 리소스 파일을 만들어 서로 다른 문화권 및 로캘에 대 한 리소스 파일을 만듭니다 (예를 들어 **en-우리**, **fr ca**, 및 ** en gb**). 파일 이름 사이 이러한 ISO 코드 위치 및 *.resx* 에서 같이 파일 이름 확장명을 *Welcome.es MX.resx* (스페인어/멕시코). 중립 문화권에 따라 언어를 지정 하려면 국가 코드를 제거 (`MX` 앞의 예제에서). 스페인어 중립 문화권 리소스 파일 이름이 *Welcome.es.resx*합니다.
 
 ## <a name="implement-a-strategy-to-select-the-languageculture-for-each-request"></a>각 요청에 대 한 언어/문화권을 선택 하는 전략을 구현 합니다.  
 
@@ -214,7 +214,7 @@ Visual Studio 2017 미리 보기 버전 15.3를 사용 하는 경우에 리소�
 
 ### <a name="querystringrequestcultureprovider"></a>QueryStringRequestCultureProvider
 
-일부 응용 프로그램 쿼리 문자열을 사용 하 여 설정 하는 [culture 및 UL culture](https://msdn.microsoft.com/library/system.globalization.cultureinfo.aspx#Current)합니다. 쿠키 또는 Accept-language 헤더 접근 방식을 사용 하는 응용 프로그램의 경우 URL에 쿼리 문자열을 추가 코드를 디버깅 및 테스트에 유용 합니다. 기본적으로는 `QueryStringRequestCultureProvider` 에서 첫 번째 지역화 공급자로 등록는 `RequestCultureProvider` 목록입니다. 쿼리 문자열 매개 변수를 전달 `culture` 및 `ui-culture`합니다. 다음 예제에서는 특정 문화권 (언어 및 지역) 스페인어/멕시코 설정합니다.
+일부 응용 프로그램 쿼리 문자열을 사용 하 여 설정 하는 [culture 및 UL culture](https://msdn.microsoft.com/library/system.globalization.cultureinfo.aspx)합니다. 쿠키 또는 Accept-language 헤더 접근 방식을 사용 하는 응용 프로그램의 경우 URL에 쿼리 문자열을 추가 코드를 디버깅 및 테스트에 유용 합니다. 기본적으로는 `QueryStringRequestCultureProvider` 에서 첫 번째 지역화 공급자로 등록는 `RequestCultureProvider` 목록입니다. 쿼리 문자열 매개 변수를 전달 `culture` 및 `ui-culture`합니다. 다음 예제에서는 특정 문화권 (언어 및 지역) 스페인어/멕시코 설정합니다.
 
    `http://localhost:5000/?culture=es-MX&ui-culture=es-MX`
 
@@ -303,7 +303,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 응용 프로그램을 지역화 하는 프로세스는 또한 일반적으로 최신 소프트웨어 개발에 사용 되는 관련 문자 집합에 대 한 기본적인 이해 및 관련 된 문제에 대 한 이해가 필요 합니다. 숫자 (코드)로 텍스트를 저장 하는 모든 컴퓨터, 있지만 다른 시스템 다른 번호를 사용 하 여 동일한 텍스트를 저장 합니다. 지역화 과정 번역 된 특정 문화권/로캘에 대 한 응용 프로그램 사용자 인터페이스 (UI)를 참조 합니다.
 
-[지역화 가능성](https://msdn.microsoft.com/library/aa292135(v=vs.71).aspx) 는 세계화 된 응용 프로그램 지역화 하는 데 사용할 준비가 되어 있는지 확인 하기 위한 중간 프로세스입니다.
+[지역화 가능성](https://docs.microsoft.com/dotnet/standard/globalization-localization/localizability-review) 는 세계화 된 응용 프로그램 지역화 하는 데 사용할 준비가 되어 있는지 확인 하기 위한 중간 프로세스입니다.
 
 [RFC 4646](https://www.ietf.org/rfc/rfc4646.txt) 문화권 이름에 대 한 서식을 "<languagecode2>-< country/regioncode2 >", 여기서 <languagecode2> 언어 코드 이며 < country/regioncode2 > 하위 문화권 코드입니다. 예를 들어 `es-CL` 스페인어 (칠레)에 대 한 `en-US` 영어 (미국) 및 `en-AU` 영어 (오스트레일리아)에 대 한 합니다. [RFC 4646](https://www.ietf.org/rfc/rfc4646.txt) 는 언어와 관련 된 두 문자의 소문자 문화권 코드는 ISO 639 및는 ISO 3166 국가 또는 지역와 관련 된 두 문자의 대문자 하위 문화권 코드의 조합입니다.  참조 [언어 문화권 이름](https://msdn.microsoft.com/library/ee825488(v=cs.20).aspx)합니다.
 
@@ -322,5 +322,5 @@ services.Configure<RequestLocalizationOptions>(options =>
 ## <a name="additional-resources"></a>추가 리소스
 
 * [Localization.StarterWeb 프로젝트](https://github.com/aspnet/entropy) 문서에 사용 합니다.
-* [Visual Studio의 리소스 파일](https://msdn.microsoft.com/library/xbx3z216(v=vs.110).aspx#VSResFiles)
-* [.Resx 파일의 리소스](https://msdn.microsoft.com/library/xbx3z216(v=vs.110).aspx#ResourcesFiles)
+* [Visual Studio의 리소스 파일](https://docs.microsoft.com/cpp/windows/resource-files-visual-studio)
+* [.Resx 파일의 리소스](https://docs.microsoft.com/dotnet/framework/resources/working-with-resx-files-programmatically)

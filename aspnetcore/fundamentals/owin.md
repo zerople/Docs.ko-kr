@@ -12,15 +12,15 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/owin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 28bd52edbdb3159642ce523dd63fde9d6001678c
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 796d075d4d0c6b888be4fc2225fc482acdbad498
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-open-web-interface-for-net-owin"></a>.NET (OWIN)에 대 한 웹 인터페이스를 열려면 소개
 
-여 [Steve Smith](http://ardalis.com) 및 [Rick Anderson](https://twitter.com/RickAndMSFT)
+여 [Steve Smith](https://ardalis.com/) 및 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ASP.NET Core.NET (OWIN)에 대 한 Open Web Interface를 지원합니다. OWIN 웹 응용 프로그램을 웹 서버에서 분리 될 수 있습니다. 요청과 관련된 응답을 처리 하는 파이프라인에 사용할 미들웨어에 대 한 표준 방법을 정의 합니다. ASP.NET Core 응용 프로그램 및 미들웨어 OWIN 기반 응용 프로그램, 서버 및 미들웨어와 상호 운용이 가능 합니다.
 

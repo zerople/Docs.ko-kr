@@ -12,15 +12,15 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/formatting
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 08135aa40153ab7f24aba15e0bf97aa01ef8fa96
-ms.sourcegitcommit: 275a5381b6172b4f0b5fcd1d252aff03d3dae166
+ms.openlocfilehash: a7fd1ecb61c7b1559f8bd304c30f7201864bd448
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-formatting-response-data-in-aspnet-core-mvc"></a>ASP.NET Core MVC의 서식 지정 응답 데이터 소개
 
-으로 [Steve Smith](http://ardalis.com)
+으로 [Steve Smith](https://ardalis.com/)
 
 ASP.NET Core MVC에서 응답 데이터를 고정된 형식을 사용 하 여 서식을 지정 하기 위한 또는 클라이언트 사양에 대 한 응답에서 기본적으로 지원 합니다.
 

@@ -11,15 +11,15 @@ ms.assetid: 9da9eb52-8583-4069-af91-155ba3529d7f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/actions
-ms.openlocfilehash: b7d6341c0312b3f5f122acfb2ee01210151b33bb
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 5dc6c7dc70027bb79875f389d535119a2543b873
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="handling-requests-with-controllers-in-aspnet-core-mvc"></a>ASP.NET Core MVC 컨트롤러와의 요청 처리
 
-여 [Steve Smith](http://ardalis.com) 및 [Scott Addie](https://github.com/scottaddie)
+여 [Steve Smith](https://ardalis.com/) 및 [Scott Addie](https://github.com/scottaddie)
 
 컨트롤러, 작업 및 작업 결과 개발자가 ASP.NET Core MVC를 사용 하 여 앱을 구축 하는 방법의 핵심 부분입니다.
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 08/11/2017
 
 컨트롤러 클래스는 연결 된 있어야 `[NonController]` 특성입니다.
 
-컨트롤러 따라야는 [명시적 종속성 원칙](http://deviq.com/explicit-dependencies-principle)합니다. 이 원칙을 구현 하는 방법은 몇 가지가 있습니다. 동일한 서비스를 필요로 하는 여러 컨트롤러 작업을 하는 경우를 사용해 [생성자 삽입](xref:mvc/controllers/dependency-injection#constructor-injection) 해당 종속성을 요청할 수 있습니다. 서비스가 단일 동작 메서드에서 필요한 경우 사용 하십시오 [작업 삽입](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices) 종속성을 요청할 수 있습니다.
+컨트롤러 따라야는 [명시적 종속성 원칙](http://deviq.com/explicit-dependencies-principle/)합니다. 이 원칙을 구현 하는 방법은 몇 가지가 있습니다. 동일한 서비스를 필요로 하는 여러 컨트롤러 작업을 하는 경우를 사용해 [생성자 삽입](xref:mvc/controllers/dependency-injection#constructor-injection) 해당 종속성을 요청할 수 있습니다. 서비스가 단일 동작 메서드에서 필요한 경우 사용 하십시오 [작업 삽입](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices) 종속성을 요청할 수 있습니다.
 
 내에서 **M**odel-**V**뷰-**C**ontroller 패턴은 컨트롤러에 대 한 책임이 초기 요청 처리와 모델의 인스턴스화입니다. 일반적으로 비즈니스 의사 결정 모델 내에서 수행 되어야 합니다.
 
@@ -104,6 +104,6 @@ Public 메서드를 컨트롤러에서로 데코레이팅 된 문을 제외한�
 
 오류 처리 및 응답 캐시는 종종 일반적인 문제:
    * [오류 처리](xref:mvc/controllers/filters#exception-filters)
-   * [응답 캐시](xref:performance/caching/response)
+   * [응답 캐싱](xref:performance/caching/response)
 
 필터 또는 사용자 지정을 사용 하 여 많은 일반적인 문제를 처리할 수 있습니다 [미들웨어](xref:fundamentals/middleware)합니다.

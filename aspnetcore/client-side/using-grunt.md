@@ -2,7 +2,7 @@
 title: "ASP.NET Core에서 Grunt를 사용 하 여"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: 471112e9-2c33-454b-96fc-32916102ce73
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/using-grunt
-ms.openlocfilehash: df20c3a31fce81ab039ef2f63bf38ed9943c7c6c
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 8ae50514ce24c7f9e3bb1e347d5d860e1de43c5f
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="using-grunt-in-aspnet-core"></a>ASP.NET Core에서 Grunt를 사용 하 여 
 
-으로 [Noel 밥](http://blog.falafel.com/author/noel-rice/)
+으로 [Noel 밥](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/)
 
 Grunt은 스크립트 축소, TypeScript 컴파일, 코드 품질 "중요" 도구, CSS 사전 프로세서 및 클라이언트 개발을 지원 하기 위해 수행 하는 모든 반복적인 작업에 대 한 작업을 자동화 하는 JavaScript task runner입니다. ASP.NET 프로젝트 템플릿에서 기본적으로 Gulp를 사용 하는 경우 Visual Studio에서 grunt 완전히 지원 됩니다 (참조 [Gulp를 사용 하 여](using-gulp.md)).
 
@@ -211,7 +211,7 @@ Grunt 이라는 매니페스트를 사용 하 여 구성 된 *Gruntfile.js* 정�
 
 10.  추가 `uglify` 아래 코드를 사용 하 여 작업 합니다.
 
-    축소 작업은 *combined.js* 파일의 임시 디렉터리에서 찾은 wwwroot/lib 표준 명명 규칙에 결과 파일을 만듭니다  *\<파일 이름\>. min.js*.
+    축소 작업은 *combined.js* 파일의 임시 디렉터리에서 찾은 wwwroot/lib 표준 명명 규칙에 결과 파일을 만듭니다 * \<파일 이름\>. min.js*.
     
     ```javascript
     uglify: {
@@ -280,7 +280,7 @@ grunt.loadNpmTasks('grunt-contrib-watch');
 
 ## <a name="binding-to-visual-studio-events"></a>Visual Studio 이벤트에 바인딩
 
-Visual Studio에서 작업할 때마다 작업을 수동으로 시작 하려는 경우가 아니면 작업을 바인딩할 수 있습니다 **하기 전에 빌드**, **빌드 후**, **Clean**, 및  **프로젝트 열기** 이벤트입니다.
+Visual Studio에서 작업할 때마다 작업을 수동으로 시작 하려는 경우가 아니면 작업을 바인딩할 수 있습니다 **하기 전에 빌드**, **빌드 후**, **Clean**, 및 ** 프로젝트 열기** 이벤트입니다.
 
 바인딩 하겠습니다 `watch` Visual Studio가 열릴 때마다 실행 되도록 합니다. 작업 러너 탐색기에서 조사식 작업을 마우스 오른쪽 단추로 클릭 하 고 선택 **바인딩 > 프로젝트 열기** 상황에 맞는 메뉴입니다.
 
@@ -294,4 +294,4 @@ Grunt 대부분 클라이언트 빌드 작업을 자동화 하는 데 사용할 
 
 ## <a name="additional-resources"></a>추가 리소스
 
-   * [Gulp를 사용 하 여](using-gulp.md)
+   * [Gulp 사용](using-gulp.md)

@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/working-with-forms
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd69e008a81abc4f6785d93b89823c03e1a7df83
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: c3f7792d7458013f837a48ca2caa459f35658f02
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-using-tag-helpers-in-forms-in-aspnet-core"></a>태그 도우미를 사용 하 여 폼에 ASP.NET Core 소개
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 08/11/2017
 
 * HTML을 생성 [ \<양식 >](https://www.w3.org/TR/html401/interact/forms.html) `action` MVC 컨트롤러 동작 또는 명명 된 경로 대 한 특성 값
 
-* 에서는 오류가 발생 하는 숨겨진 [요청 확인 토큰](http://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) 교차 사이트 요청 위조를 방지 하기 위해 (함께 사용할 경우의 `[ValidateAntiForgeryToken]` HTTP Post 작업 메서드에 특성)
+* 에서는 오류가 발생 하는 숨겨진 [요청 확인 토큰](https://docs.microsoft.com/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) 교차 사이트 요청 위조를 방지 하기 위해 (함께 사용할 경우의 `[ValidateAntiForgeryToken]` HTTP Post 작업 메서드에 특성)
 
 * 제공 된 `asp-route-<Parameter Name>` 특성, 여기서 `<Parameter Name>` 경로 값에 추가 됩니다. `routeValues` 매개 변수를 `Html.BeginForm` 및 `Html.BeginRouteForm` 유사한 기능을 제공 합니다.
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 08/11/2017
     </form>
    ```
 
-MVC 런타임에서 생성 된 `action` Form 태그 도우미 특성에서 특성 값 `asp-controller` 및 `asp-action`합니다. Form 태그 도우미도 숨겨진 생성 [요청 확인 토큰](http://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) 교차 사이트 요청 위조를 방지 하기 위해 (함께 사용할 경우의 `[ValidateAntiForgeryToken]` HTTP Post 작업 메서드에 특성). 순수 HTML 폼 교차 사이트 요청 위조 로부터 보호 하는 것은 어려운, Form 태그 도우미를이 서비스를 제공 합니다.
+MVC 런타임에서 생성 된 `action` Form 태그 도우미 특성에서 특성 값 `asp-controller` 및 `asp-action`합니다. Form 태그 도우미도 숨겨진 생성 [요청 확인 토큰](https://docs.microsoft.com/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) 교차 사이트 요청 위조를 방지 하기 위해 (함께 사용할 경우의 `[ValidateAntiForgeryToken]` HTTP Post 작업 메서드에 특성). 순수 HTML 폼 교차 사이트 요청 위조 로부터 보호 하는 것은 어려운, Form 태그 도우미를이 서비스를 제공 합니다.
 
 ### <a name="using-a-named-route"></a>명명된 된 경로 사용 하 여
 
@@ -61,7 +61,7 @@ MVC 런타임에서 생성 된 `action` Form 태그 도우미 특성에서 특�
 
 [!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterRoute.cshtml)]
 
-보기 중 많은 *뷰/계정* 폴더 (새 웹 앱을 만들 때 생성 *개별 사용자 계정*) 포함 된 [asp-경로-returnurl](http://docs.asp.net/en/latest/mvc/views/working-with-forms.html#the-form-tag-helper) 특성:
+보기 중 많은 *뷰/계정* 폴더 (새 웹 앱을 만들 때 생성 *개별 사용자 계정*) 포함 된 [asp-경로-returnurl](https://docs.microsoft.com/aspnet/core/mvc/views/working-with-forms) 특성:
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {"hl_lines": [2]}} -->
 
@@ -88,11 +88,11 @@ MVC 런타임에서 생성 된 `action` Form 태그 도우미 특성에서 특�
 
 * 생성 된 `id` 및 `name` HTML 특성에 지정 된 식 이름에 대 한는 `asp-for` 특성입니다. `asp-for="Property1.Property2"`는 `m => m.Property1.Property2`와 같습니다. 식의 이름에 사용 되는 것은 `asp-for` 특성 값입니다. 참조는 [식 이름은](#expression-names) 추가 정보에 대 한 섹션.
 
-* HTML 설정 `type` 특성 값에는 모델 유형에 따라 및 [데이터 주석을](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx) 모델 속성에 적용 된 특성
+* HTML 설정 `type` 특성 값에는 모델 유형에 따라 및 [데이터 주석을](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter) 모델 속성에 적용 된 특성
 
 * HTML을 덮어쓰지 것입니다 `type` 특성 값이 지정 된 경우
 
-* 생성 [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) 에서 유효성 검사 특성 [데이터 주석을](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx) 모델 속성에 적용 되는 특성
+* 생성 [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) 에서 유효성 검사 특성 [데이터 주석을](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter) 모델 속성에 적용 되는 특성
 
 * 에 HTML 도우미 기능이와 겹칠 `Html.TextBoxFor` 및 `Html.EditorFor`합니다. 참조는 **입력 태그 도우미에 대 한 HTML 도우미 대안** 자세한 내용은 섹션.
 
@@ -121,7 +121,7 @@ Type expected
 |Single, Double|형식 = "number"|
 
 
-다음 표에서 몇 가지 일반적인 [데이터 주석](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx) 입력된 태그 도우미 (모든 유효성 검사 특성 설명 되어 있음)는 특정 입력된 형식에 매핑되는 특성:
+다음 표에서 몇 가지 일반적인 [데이터 주석](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter) 입력된 태그 도우미 (모든 유효성 검사 특성 설명 되어 있음)는 특정 입력된 형식에 매핑되는 특성:
 
 
 |특성|입력된 형식|
@@ -260,7 +260,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 `Textarea Tag Helper` 태그 도우미 입력 태그 도우미를 것과 비슷합니다.
 
-* 생성 된 `id` 및 `name` 특성 및에 대 한 모델에서 데이터 유효성 검사 특성은 [ \<textarea >](http://www.w3.org/wiki/HTML/Elements/textarea) 요소입니다.
+* 생성 된 `id` 및 `name` 특성 및에 대 한 모델에서 데이터 유효성 검사 특성은 [ \<textarea >](https://www.w3.org/wiki/HTML/Elements/textarea) 요소입니다.
 
 * 강력한 형식 지정을 제공합니다.
 
@@ -324,7 +324,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 ### <a name="the-validation-message-tag-helper"></a>유효성 검사 메시지 태그 도우미
 
-* 추가 [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) `data-valmsg-for="property"` 특성을 [에 걸쳐](https://developer.mozilla.org/docs/Web/HTML/Element/span) 지정된 모델 속성의 입력된 필드에 유효성 검사 오류 메시지를 연결 하는 요소입니다.   클라이언트 쪽 유효성 검사 오류가 발생할 때 [jQuery](https://jquery.com/) 의 오류 메시지를 표시는 `<span>` 요소입니다.
+* 추가 [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) `data-valmsg-for="property"` 특성을 [에 걸쳐](https://developer.mozilla.org/docs/Web/HTML/Element/span) 지정된 모델 속성의 입력된 필드에 유효성 검사 오류 메시지를 연결 하는 요소입니다. 클라이언트 쪽 유효성 검사 오류가 발생할 때 [jQuery](https://jquery.com/) 의 오류 메시지를 표시는 `<span>` 요소입니다.
 
 * 유효성 검사는 또한 서버에서 사용합니다. 클라이언트는 사용 하지 않도록 설정 하는 JavaScript 있을 수 있습니다 및 서버 쪽에서 일부 유효성 검사에만 수행할 수 있습니다.
 
@@ -594,12 +594,12 @@ HTML [ \<optgroup >](https://www.w3.org/wiki/HTML/Elements/optgroup) 뷰 모델 
 
 * [HTML 폼 요소](https://www.w3.org/TR/html401/interact/forms.html)
 
-* [확인 토큰을 요청 합니다.](http://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)
+* [확인 토큰을 요청 합니다.](https://docs.microsoft.com/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)
 
 * [모델 바인딩](../models/model-binding.md)
 
 * [모델 유효성 검사](../models/validation.md)
 
-* [데이터 주석](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx)
+* [데이터 주석](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter)
 
 * [코드 조각이이 문서에 대 한](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/forms/sample)합니다.

@@ -2,7 +2,7 @@
 title: "해당 레지스트리 키가 해지 한 보호 해제 페이로드"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,17 +11,17 @@ ms.assetid: 6c4e6591-45d2-4d25-855e-062ad352d648
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/consumer-apis/dangerous-unprotect
-ms.openlocfilehash: 44f21f380b994f46a8bb7368bca0cfc6e438ec4d
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 5d176515792045545add66ba5aedb0358d8bdc70
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="unprotecting-payloads-whose-keys-have-been-revoked"></a>해당 레지스트리 키가 해지 한 보호 해제 페이로드
 
 <a name=data-protection-consumer-apis-dangerous-unprotect></a>
 
-ASP.NET Core 데이터 보호 Api는 주로 없습니다 기밀 페이로드의 무한 지 속성. 와 같은 다른 기술은 [Windows CNG DPAPI](https://msdn.microsoft.com/library/windows/desktop/hh706794%28v=vs.85%29.aspx) 및 [Azure 권한 관리](https://technet.microsoft.com/library/jj585024.aspx) 무한 저장소 시나리오에 보다 적합 한까지 강력한 키 관리 기능을 갖습니다. 즉, 개발자는 ASP.NET Core 데이터 보호 Api를 사용 하 여 기밀 데이터의 장기 보호에 대 한 일은 없습니다. 되므로 키가 사용 가능 하 고 유효한 상태로 IDataProtector.Unprotect 기존 페이로드를 항상 복구할 수 키 링에서 키가 제거 되지 않습니다.
+ASP.NET Core 데이터 보호 Api는 주로 없습니다 기밀 페이로드의 무한 지 속성. 와 같은 다른 기술은 [Windows CNG DPAPI](https://msdn.microsoft.com/library/windows/desktop/hh706794%28v=vs.85%29.aspx) 및 [Azure 권한 관리](https://docs.microsoft.com/rights-management/) 무한 저장소 시나리오에 보다 적합 한까지 강력한 키 관리 기능을 갖습니다. 즉, 개발자는 ASP.NET Core 데이터 보호 Api를 사용 하 여 기밀 데이터의 장기 보호에 대 한 일은 없습니다. 되므로 키가 사용 가능 하 고 유효한 상태로 IDataProtector.Unprotect 기존 페이로드를 항상 복구할 수 키 링에서 키가 제거 되지 않습니다.
 
 그러나 개발자 IDataProtector.Unprotect이 경우는 예외를 throw 합니다으로 해지 된 키로 보호 되는 데이터 보호를 해제 하려고 할 때 문제가 발생 합니다. 이러한 종류의 페이로드 쉽게 다시 만들 수는 시스템에 의해와 사이트 방문자가 다시 로그인 하려면 최악의 해야 할 수 있습니다 (예: 인증 토큰의 경우) 단기 / 임시 페이로드 실험용 수 있습니다. 하지만 지속형 페이로드 throw Unprotect 필요 손실 될 수 있습니다 사용할 수 없는 데이터.
 

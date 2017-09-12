@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/razor-pages/index
-ms.openlocfilehash: 9301b99aed8fcb3bef91abf0fb269c4052cdb7e2
-ms.sourcegitcommit: 87900dffec8ad84a0f74357b23343e215f354dcb
+ms.openlocfilehash: 543399d99af127f943f7e9119fb5d84c8c5bc499
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/01/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>ASP.NET Core의 Razor 페이지 소개
 
@@ -28,7 +28,7 @@ Razor 페이지는 더 쉽고 더 생산적으로 코딩 페이지에 초점을 
 
 ## <a name="aspnet-core-20-prerequisites"></a>ASP.NET Core 2.0 필요 구성 요소
 
-[.NET Core](https://dot.net/core) 2.0.0 이상을 설치합니다.
+[.NET Core](https://www.microsoft.com/net/core) 2.0.0 이상을 설치합니다.
 
 Visual Studio를 사용할 경우 다음 워크로드가 포함된 [Visual Studio](https://www.visualstudio.com/vs/) 15.3 이상을 설치합니다.
 
@@ -222,7 +222,7 @@ Razor 페이지의 뷰 검색에는 *Pages* 폴더가 포함됩니다. MVC 컨�
 
 [!code-cshtml[main](index/sample/RazorPagesContacts2/Pages/_ViewImports.cshtml)]
 
-`@namespace`는 자습서의 뒷부분에서 설명합니다. `@addTagHelper` 지시문은 [기본 제공 태그 도우미](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/)를 *Pages* 폴더의 모든 페이지에 도입합니다.
+`@namespace`는 자습서의 뒷부분에서 설명합니다. `@addTagHelper` 지시문은 [기본 제공 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/Index)를 *Pages* 폴더의 모든 페이지에 도입합니다.
 
 <a name="namespace"></a>
 

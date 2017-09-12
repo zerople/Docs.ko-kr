@@ -10,11 +10,11 @@ ms.assetid: abeb2f8e-dfbf-4398-a04c-338a613a65bc
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: security/authorization/secure-data
-ms.openlocfilehash: 7ce59816d106cce9fabd8393ee764454bd0f7f27
-ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
+ms.openlocfilehash: db05ffb585022c3d9512d32da28c54788f97129c
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>권한 부여에 의해 보호 되는 사용자 데이터와 ASP.NET Core 응용 프로그램 만들기
 
@@ -103,7 +103,7 @@ dotnet ef database update
 
 ### <a name="require-ssl-and-authenticated-users"></a>SSL 및 인증 된 사용자가 필요 합니다.
 
-에 `ConfigureServices` 의 메서드는 *Startup.cs* 파일에서 추가 된 [RequireHttpsAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/RequireHttpsAttribute/index.html.md#Microsoft.AspNetCore.Mvc.RequireHttpsAttribute.md) 권한 부여 필터:
+에 `ConfigureServices` 의 메서드는 *Startup.cs* 파일에서 추가 된 [RequireHttpsAttribute](https://docs.microsoft.com/aspnet/core/api) 권한 부여 필터:
 
 [!code-csharp[Main](secure-data/samples/final/Startup.cs?name=snippet_SSL&highlight=1)]
 
@@ -161,7 +161,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 ## <a name="register-the-authorization-handlers"></a>인증 처리기를 등록 합니다.
 
-Entity Framework Core를 사용 하 여 서비스를 위해 등록 되어야 [종속성 주입](xref:fundamentals/dependency-injection) 를 사용 하 여 [AddScoped](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/DependencyInjection/ServiceCollectionServiceExtensions/index.html.md#Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped.md)합니다. `ContactIsOwnerAuthorizationHandler` ASP.NET Core를 사용 하 여 [Identity](xref:security/authentication/identity), Entity Framework Core 기반입니다. 사용할 수 있도록 서비스 컬렉션에는 처리기를 등록 된 `ContactsController` 통해 [종속성 주입](xref:fundamentals/dependency-injection)합니다. 다음 코드의 끝에 추가 `ConfigureServices`:
+Entity Framework Core를 사용 하 여 서비스를 위해 등록 되어야 [종속성 주입](xref:fundamentals/dependency-injection) 를 사용 하 여 [AddScoped](https://docs.microsoft.com/aspnet/core/api)합니다. `ContactIsOwnerAuthorizationHandler` ASP.NET Core를 사용 하 여 [Identity](xref:security/authentication/identity), Entity Framework Core 기반입니다. 사용할 수 있도록 서비스 컬렉션에는 처리기를 등록 된 `ContactsController` 통해 [종속성 주입](xref:fundamentals/dependency-injection)합니다. 다음 코드의 끝에 추가 `ConfigureServices`:
 
 [!code-csharp[Main](secure-data/samples/final/Startup.cs?name=AuthorizationHandlers)]
 
@@ -264,7 +264,7 @@ Visual Studio 코드를 사용 하 여 테스트 인증서를 SSL에 대 한 포
 
 시작 응용 프로그램을 만드는 다음이 지침을 따릅니다.
 
-* 만들기는 **ASP.NET Core 웹 응용 프로그램** 를 사용 하 여 [Visual Studio 2017](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) "ContactManager" 라는
+* 만들기는 **ASP.NET Core 웹 응용 프로그램** 를 사용 하 여 [Visual Studio 2017](https://www.visualstudio.com/) "ContactManager" 라는
 
   * 응용 프로그램을 만들 **개별 사용자 계정**합니다.
   * 네임 스페이스는 샘플에는 네임 스페이스를 사용 하 여 일치 하므로 "ContactManager" 이름을 지정 합니다.

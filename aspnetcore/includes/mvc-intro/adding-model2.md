@@ -10,7 +10,7 @@
   dotnet ef database update
   ```
   
-  [.NET core](http://go.microsoft.com/fwlink/?LinkID=517853) .NET의 플랫폼 간 구현입니다. 이러한 명령이 무엇 다음과 같습니다.
+  [.NET core](https://docs.microsoft.com/dotnet/core/tools/index) .NET의 플랫폼 간 구현입니다. 이러한 명령이 무엇 다음과 같습니다.
 
   * `dotnet restore`:에 지정 된 NuGet 패키지를 다운로드 합니다.는 *.csproj* 파일입니다.
   * `dotnet ef migrations add Initial`Entity Framework.NET Core CLI 마이그레이션 명령을 실행 하 고 초기 마이그레이션을 만듭니다. "추가" 후 마이그레이션에 할당 된 이름입니다. 여기에 이름을 지정 마이그레이션을 "초기" 초기 데이터베이스 마이그레이션 있기 때문에 있습니다. 이 작업을 만듭니다는 *데이터/마이그레이션/\<날짜 및 시간 > _Initial.cs* 추가 마이그레이션 명령이 들어 있는 파일의 *영화* 데이터베이스에는 테이블입니다.

@@ -2,7 +2,7 @@
 title: "역할 기반 권한 부여"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,17 +11,17 @@ ms.assetid: 5e014da1-8bc0-409b-951a-88b92c661fdf
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/roles
-ms.openlocfilehash: d8dfcbb16ee7977d197b019c4e5e1b30fff17755
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 1dc76f316b70d486febe386cc47cd1f843d8d8e3
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="role-based-authorization"></a>역할 기반 권한 부여
 
 <a name=security-authorization-role-based></a>
 
-Id를 만들 때 하나 이상의 역할에 속할 수, Scott 사용자 역할에만 속할 수 하는 동안 Tracy 관리자 및 사용자 역할에 속할 수는 예입니다. 이러한 역할이 만들고 관리 하는 방법의 권한 부여 프로세스는 백업 저장소에 따라 달라 집니다. 역할을 통해 개발자에 게 노출 되는 [IsInRole](https://msdn.microsoft.com/library/system.security.claims.claimsprincipal.isinrole(v=vs.110).aspx) 속성에는 [ClaimsPrincipal](https://msdn.microsoft.com/library/system.security.claims.claimsprincipal(v=vs.110).aspx) 클래스입니다.
+Id를 만들 때 하나 이상의 역할에 속할 수, Scott 사용자 역할에만 속할 수 하는 동안 Tracy 관리자 및 사용자 역할에 속할 수는 예입니다. 이러한 역할이 만들고 관리 하는 방법의 권한 부여 프로세스는 백업 저장소에 따라 달라 집니다. 역할을 통해 개발자에 게 노출 되는 [IsInRole](https://docs.microsoft.com/dotnet/api/system.security.principal.genericprincipal.isinrole) 속성에는 [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal) 클래스입니다.
 
 ## <a name="adding-role-checks"></a>추가 역할 검사
 

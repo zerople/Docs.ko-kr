@@ -12,16 +12,16 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/angular
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 50d2e76c472e67c26238abee4f7b0ed64cd043ab
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 2c7929976f0c9f8284ab397b1a87d576bcdd15b0
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="using-angularjs-for-single-page-applications-spas-with-aspnet-core"></a>AngularJS를 사용 하 여 ASP.NET Core 있는 단일 페이지 응용 프로그램 (SPAs)
 
 
-여 [Venkata Koppaka](http://blog.falafel.com/author/venkata-koppaka/) 및 [Scott Addie](https://scottaddie.com)
+여 [Venkata Koppaka](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/) 및 [Scott Addie](https://scottaddie.com)
 
 이 문서에서는 AngularJS를 사용 하 여 SPA 스타일 ASP.NET 응용 프로그램을 빌드하는 방법에 설명 합니다.
 
@@ -29,9 +29,9 @@ ms.lasthandoff: 08/11/2017
 
 ## <a name="what-is-angularjs"></a>AngularJS 란?
 
-[AngularJS](http://angularjs.org/) 는 일반적으로 단일 페이지 응용 프로그램 (SPAs) 작업에 사용 되는 Google에서 최신 JavaScript 프레임 워크입니다. AngularJS는 MIT 라이선스에 따라을 기반으로 개방형이 고 AngularJS의 개발 진행 상황을 줄 수 [해당 GitHub 리포지토리에](https://github.com/angular/angular.js)합니다. 라이브러리는 HTML 각도 모양의 대괄호를 사용 하기 때문에 각 라고 합니다.
+[AngularJS](https://angularjs.org/) 는 일반적으로 단일 페이지 응용 프로그램 (SPAs) 작업에 사용 되는 Google에서 최신 JavaScript 프레임 워크입니다. AngularJS는 MIT 라이선스에 따라을 기반으로 개방형이 고 AngularJS의 개발 진행 상황을 줄 수 [해당 GitHub 리포지토리에](https://github.com/angular/angular.js)합니다. 라이브러리는 HTML 각도 모양의 대괄호를 사용 하기 때문에 각 라고 합니다.
 
-AngularJS jQuery, 같은 DOM 조작 라이브러리가 아닙니다. 하지만 jQuery jQLite 호출의 일부를 사용 합니다. AngularJS은 주로 HTML 태그에 추가할 수 있는 선언적 HTML 특성 기반으로 합니다. AngularJS를 사용 하 여 브라우저에서 볼 수 있습니다는 [코드 학교 웹 사이트](https://www.codeschool.com/courses/shaping-up-with-angular-js) 또는 [W3Schools 웹 사이트](https://www.w3schools.com/angular/)합니다.
+AngularJS jQuery, 같은 DOM 조작 라이브러리가 아닙니다. 하지만 jQuery jQLite 호출의 일부를 사용 합니다. AngularJS은 주로 HTML 태그에 추가할 수 있는 선언적 HTML 특성 기반으로 합니다. AngularJS를 사용 하 여 브라우저에서 볼 수 있습니다는 [코드 학교 웹 사이트](https://www.codeschool.com/courses/shaping-up-with-angularjs) 또는 [W3Schools 웹 사이트](https://www.w3schools.com/angular/)합니다.
 
 이 문서에서는 AngularJS 각 머리글은 대 한 몇 가지 메모와 합니다.
 
@@ -63,7 +63,7 @@ AngularJS 응용 프로그램에 추가 하는 방법은 여러 가지가 있습
 
 ## <a name="key-components"></a>주요 구성 요소
 
-AngularJS와 같은 다양 한 주요 구성 요소에 포함 *지시문*, *템플릿*, *반복기*, *모듈*,  *컨트롤러*, *구성 요소*, *구성 요소 라우터* 등입니다. 이러한 구성 요소가 함께 작동 하 여 웹 페이지에 동작을 추가 하는 방법을 살펴보겠습니다.
+AngularJS와 같은 다양 한 주요 구성 요소에 포함 *지시문*, *템플릿*, *반복기*, *모듈*, * 컨트롤러*, *구성 요소*, *구성 요소 라우터* 등입니다. 이러한 구성 요소가 함께 작동 하 여 웹 페이지에 동작을 추가 하는 방법을 살펴보겠습니다.
 
 ### <a name="directives"></a>지시문
 
@@ -393,4 +393,4 @@ HTML dom에서 입력된 요소에 이벤트 처리 기능을 추가 하는 Angu
 
 * [Angular Docs](https://docs.angularjs.org)
 
-* [Angular 2 정보](http://angular.io)
+* [Angular 2 정보](https://angular.io/)

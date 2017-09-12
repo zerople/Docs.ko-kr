@@ -2,7 +2,7 @@
 title: "레이아웃"
 author: ardalis
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: 29f12d1f-9734-48bd-bf1a-cee53a8ab700
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/layout
-ms.openlocfilehash: 9a7f140722548b51bbce33d44389ff5646aa6047
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 25aa5fc730d9076fdcf9d29cb5d9dfa75a246a1a
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="layout"></a>레이아웃
 
-으로 [Steve Smith](http://ardalis.com)
+으로 [Steve Smith](https://ardalis.com/)
 
 뷰는 자주 visual 및 프로그래밍 요소를 공유합니다. 이 문서에서는 일반적인 레이아웃을 사용 하 여 지시문을 공유 하 고 ASP.NET 응용 프로그램에서 뷰 렌더링 하기 전에 일반적인 코드를 실행 하는 방법에 알아봅니다.
 

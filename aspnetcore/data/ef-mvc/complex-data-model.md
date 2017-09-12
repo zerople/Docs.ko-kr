@@ -11,11 +11,11 @@ ms.assetid: 0dd63913-a041-48b6-96a4-3aeaedbdf5d0
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: 7d216bc07d0a8d739f0cecbc5b571b6144c13e61
-ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
+ms.openlocfilehash: a9e255040c300bc5ce55a356e17e6912dbaeaf88
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="creating-a-complex-data-model---ef-core-with-aspnet-core-mvc-tutorial-5-of-10"></a>복잡 한 데이터 모델-EF 코어 ASP.NET Core MVC 자습서 (5/10) 만들기
 
@@ -93,7 +93,7 @@ dotnet ef migrations add MaxLengthOnNames
 dotnet ef database update
 ```
 
-`migrations add` 명령 데이터 손실이 발생할 수 있습니다는 변경을 통해 두 개의 열에 대 한 짧은 최대 길이 때문에 경고 합니다.  마이그레이션 라는 파일을 만듭니다  *\<타임 스탬프 > _MaxLengthOnNames.cs*합니다. 이 파일의 코드에 포함 된 `Up` 현재 데이터 모델과 일치 하도록 데이터베이스를 업데이트 하는 메서드. `database update` 명령이 해당 코드를 실행 합니다.
+`migrations add` 명령 데이터 손실이 발생할 수 있습니다는 변경을 통해 두 개의 열에 대 한 짧은 최대 길이 때문에 경고 합니다.  마이그레이션 라는 파일을 만듭니다 * \<타임 스탬프 > _MaxLengthOnNames.cs*합니다. 이 파일의 코드에 포함 된 `Up` 현재 데이터 모델과 일치 하도록 데이터베이스를 업데이트 하는 메서드. `database update` 명령이 해당 코드를 실행 합니다.
 
 마이그레이션 파일 이름에 접두사로 타임 스탬프를 마이그레이션 요청 Entity Framework에서 사용 됩니다. 마이그레이션을 여러 건 update-database 명령을 실행 하기 전에 만들고 생성 된 순서에 적용 됩니다는 마이그레이션의 모든 합니다.
 
@@ -374,7 +374,7 @@ Enrollment 테이블 등급 정보를 포함 하지 않은 경우 CourseID 및 S
 
 외래 키가 null을 허용 하며 고유 하 게 테이블의 각 행을 식별, 별도 기본 키에 대 한 필요가 없습니다. *InstructorID* 및 *CourseID* 속성은 복합 기본 키로 작동 해야 합니다. 사용 하 여는 EF에 복합 기본 키를 식별 하는 유일한 방법은 *fluent API* (것으로 수행할 수 없는 특성을 사용 하 여). 다음 섹션에 복합 기본 키를 구성 하는 방법을 볼 수 있습니다.
 
-복합 키는 한 과정 및 하나의 강사에 대 한 여러 행에 대 한 여러 행 있을 수 있지만, 동일한 강사 및 과정에 대 한 여러 행 사용할 수 없습니다 것을 확인 합니다. `Enrollment` 조인 엔터티는 이러한 종류의 중복이 가능 하므로 고유한 기본 키를 정의 합니다. 이러한 중복을 방지 하려면 외래 키 필드에 고유 인덱스를 추가 하거나 구성할 수 있습니다 `Enrollment` 비슷합니다 복합 기본 키가 있는 `CourseAssignment`합니다. 자세한 내용은 참조 [인덱스](https://docs.efproject.net/en/latest/modeling/indexes.html)합니다.
+복합 키는 한 과정 및 하나의 강사에 대 한 여러 행에 대 한 여러 행 있을 수 있지만, 동일한 강사 및 과정에 대 한 여러 행 사용할 수 없습니다 것을 확인 합니다. `Enrollment` 조인 엔터티는 이러한 종류의 중복이 가능 하므로 고유한 기본 키를 정의 합니다. 이러한 중복을 방지 하려면 외래 키 필드에 고유 인덱스를 추가 하거나 구성할 수 있습니다 `Enrollment` 비슷합니다 복합 기본 키가 있는 `CourseAssignment`합니다. 자세한 내용은 참조 [인덱스](https://docs.microsoft.com/ef/core/modeling/indexes)합니다.
 
 ## <a name="update-the-database-context"></a>데이터베이스 컨텍스트를 업데이트 합니다.
 

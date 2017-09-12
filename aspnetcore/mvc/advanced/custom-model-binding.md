@@ -11,15 +11,15 @@ ms.assetid: ebd98159-a028-4a94-b06c-43981c79c6be
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: 8dae9cf1597ae2bddf2943af4a7ab9d50620825b
-ms.sourcegitcommit: 26166785ad181a8519cb008800d71d96499b0499
+ms.openlocfilehash: 2b95073bc0972908d0c0b2158a036e4374c7df4d
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/01/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="custom-model-binding"></a>사용자 지정 모델 바인딩
 
-으로 [Steve Smith](http://ardalis.com)
+으로 [Steve Smith](https://ardalis.com/)
 
 모델 바인딩 컨트롤러 작업을 모델 (전달 되는 형식에서 메서드 인수로), 대신 HTTP 요청에 비해 직접 작업할 수 있습니다. 모델 바인더에서 들어오는 요청 데이터 및 응용 프로그램 모델 간의 매핑을 처리 됩니다. 개발자 (경우에 일반적으로 사용자 고유의 공급자를 작성할 필요가 없습니다) 사용자 지정 모델 바인더를 구현 하 여 기본 제공 모델 바인딩 기능을 확장할 수 있습니다.
 
@@ -137,4 +137,4 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 사용자 지정 모델 바인더:
 - 상태 코드를 설정 하거나 결과 반환할 수 없습니다 (예를 들어 404 찾을 수 없음). 모델 바인딩 실패 하면는 [작업 필터](xref:mvc/controllers/filters) 또는 작업 메서드 자체 내에서 논리 오류를 처리 해야 합니다.
 - 반복 되는 코드와 작업 방법 중에서 일반적인 문제를 제거 하는 데 가장 유용 합니다.
-- 일반적으로 쓰일 수 없습니다 문자열 사용자 지정 형식으로 변환 하는 [ `TypeConverter` ](https://msdn.microsoft.com/library/ayybcxe5.aspx) 는 일반적으로 더 나은 옵션입니다.
+- 일반적으로 쓰일 수 없습니다 문자열 사용자 지정 형식으로 변환 하는 [ `TypeConverter` ](https://docs.microsoft.com//dotnet/api/system.componentmodel.typeconverter) 는 일반적으로 더 나은 옵션입니다.

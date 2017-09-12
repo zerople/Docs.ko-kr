@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/spa-services
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 300e90912a03980d1dcde2edaf34677d80cab136
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 0dbe5e3567bb4feea7e56cff3dcf75be5df88310
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="using-javascriptservices-for-creating-single-page-applications-with-aspnet-core"></a>ASP.NET Core 사용 단일 페이지 응용 프로그램을 만들기 위한 JavaScriptServices를 사용 하 여
 
@@ -33,9 +33,9 @@ ms.lasthandoff: 08/11/2017
 JavaScriptServices은 ASP.NET Core에 대 한 클라이언트 쪽 기술과의 컬렉션입니다. 목표는 ASP.NET Core SPAs를 구축 하기 위한 개발자의 기본 서버 쪽 플랫폼으로 위치를 지정 합니다.
 
 JavaScriptServices 세 가지 고유한 NuGet 패키지 이루어져 있습니다.
-* [Microsoft.AspNetCore.NodeServices](http://www.nuget.org/packages/Microsoft.AspNetCore.NodeServices/) (NodeServices)
-* [Microsoft.AspNetCore.SpaServices](http://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices/) (SpaServices)
-* [Microsoft.AspNetCore.SpaTemplates](http://www.nuget.org/packages/Microsoft.AspNetCore.SpaTemplates/) (SpaTemplates)
+* [Microsoft.AspNetCore.NodeServices](https://www.nuget.org/packages/Microsoft.AspNetCore.NodeServices/) (NodeServices)
+* [Microsoft.AspNetCore.SpaServices](https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices/) (SpaServices)
+* [Microsoft.AspNetCore.SpaTemplates](https://www.nuget.org/packages/Microsoft.AspNetCore.SpaTemplates/) (SpaTemplates)
 
 이러한 패키지는 유용한 경우 있습니다.
 * 서버에서 JavaScript를 실행 합니다.
@@ -75,7 +75,7 @@ SpaServices를 사용 하려면 다음을 설치 합니다.
 * [.NET core SDK](https://www.microsoft.com/net/download/core) 1.0 (이상)
     * Windows를 사용 하는 경우 설치 Visual Studio 2017을 선택 하 여 **.NET Core 플랫폼 간 개발** 작업 합니다.
 
-* [Microsoft.AspNetCore.SpaServices](http://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices/) NuGet 패키지
+* [Microsoft.AspNetCore.SpaServices](https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices/) NuGet 패키지
 
 <a name="server-prerendering"></a>
 
@@ -87,7 +87,7 @@ ASP.NET Core [태그 도우미](xref:mvc/views/tag-helpers/intro) 제공한 SpaS
 
 ### <a name="prerequisites"></a>필수 구성 요소
 
-다음을 설치 합니다.
+다음을 설치합니다.
 * [aspnet 사전 렌더링이](https://www.npmjs.com/package/aspnet-prerendering) npm 패키지:
 
     ```console
@@ -144,7 +144,7 @@ ASP.NET Core [태그 도우미](xref:mvc/views/tag-helpers/intro) 제공한 SpaS
 
 ### <a name="prerequisites"></a>필수 구성 요소
 
-다음을 설치 합니다.
+다음을 설치합니다.
 * [aspnet 시스템용](https://www.npmjs.com/package/aspnet-webpack) npm 패키지:
 
     ```console
@@ -171,7 +171,7 @@ ASP.NET Core [태그 도우미](xref:mvc/views/tag-helpers/intro) 제공한 SpaS
 
 ### <a name="prerequisites"></a>필수 구성 요소
 
-다음을 설치 합니다.
+다음을 설치합니다.
 * [시스템용 핫 미들웨어](https://www.npmjs.com/package/webpack-hot-middleware) npm 패키지:
 
     ```console
@@ -208,7 +208,7 @@ app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {
 
 ### <a name="prerequisites"></a>필수 구성 요소
 
-다음을 설치 합니다.
+다음을 설치합니다.
 * 클라이언트 쪽 라우팅 npm 패키지입니다. 예를 들어 각 사용:
 
     ```console
@@ -264,7 +264,7 @@ dotnet new angular
     * 소스 맵이 제외 됩니다.
     * 묶음 및 축소를 통해 클라이언트 코드를 최적화합니다.
 
-ASP.NET Core 라는 환경 변수를 사용 하 여 `ASPNETCORE_ENVIRONMENT` 구성 모드를 저장할 수 있습니다. 참조  **[환경 설정](xref:fundamentals/environments#setting-the-environment)**  자세한 정보에 대 한 합니다.
+ASP.NET Core 라는 환경 변수를 사용 하 여 `ASPNETCORE_ENVIRONMENT` 구성 모드를 저장할 수 있습니다. 참조 ** [환경 설정](xref:fundamentals/environments#setting-the-environment) ** 자세한 정보에 대 한 합니다.
 
 ### <a name="running-with-net-core-cli"></a>.NET core CLI 실행
 
@@ -308,7 +308,7 @@ npm test
 
 <a name="app-publishing"></a>
 
-## <a name="publishing-the-application"></a>응용 프로그램을 게시
+## <a name="publishing-the-application"></a>응용 프로그램 게시
 
 생성 된 클라이언트 쪽 자산 및 게시 된 ASP.NET Core 아티팩트를 준비 하려면 배포 패키지에 결합은 복잡할 수 있습니다. 다행히도 SpaServices 라는 사용자 지정 MSBuild 대상을 사용 하 여 해당 전체 게시 프로세스를 조정 `RunWebpack`:
 

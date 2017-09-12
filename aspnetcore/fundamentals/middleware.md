@@ -11,17 +11,17 @@ ms.assetid: db9a86ab-46c2-40e0-baed-86e38c16af1f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/middleware
-ms.openlocfilehash: 84c357ebbf28dffc4382f6c648921210e72ac854
-ms.sourcegitcommit: 26166785ad181a8519cb008800d71d96499b0499
+ms.openlocfilehash: 80e27c94b3c60a181c45f8e006126a7e7dd3d425
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/01/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="aspnet-core-middleware-fundamentals"></a>ASP.NET Core 미들웨어 기본 사항
 
 <a name=fundamentals-middleware></a>
 
-여 [Rick Anderson](https://twitter.com/RickAndMSFT) 및 [Steve Smith](http://ardalis.com)
+여 [Rick Anderson](https://twitter.com/RickAndMSFT) 및 [Steve Smith](https://ardalis.com/)
 
 [샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/middleware/sample)
 
@@ -168,12 +168,12 @@ ASP.NET Core 다음 미들웨어 구성 요소와 함께 제공 합니다.
 | ----- | ------- |
 | [인증](xref:security/authentication/identity) | 인증 지원을 제공합니다. |
 | [CORS](xref:security/cors) | 크로스-원본 자원 공유를 구성합니다. |
-| [응답 캐시](xref:performance/caching/middleware) | 응답을 캐시에 대 한 지원을 제공 합니다. |
+| [응답 캐싱](xref:performance/caching/middleware) | 응답을 캐시에 대 한 지원을 제공 합니다. |
 | [응답 압축](xref:performance/response-compression) | 응답을 압축 하는 것에 대 한 지원을 제공 합니다. |
 | [라우팅](xref:fundamentals/routing) | 정의 하 고 요청 경로 제한 합니다. |
 | [세션](xref:fundamentals/app-state) | 사용자 세션을 관리 하기 위한 지원을 제공 합니다. |
 | [정적 파일](xref:fundamentals/static-files) | 정적 파일 및 디렉터리 검색을 처리 하기 위한 지원을 제공 합니다. |
-| [URL 다시 쓰기 미들웨어](xref:fundamentals/url-rewriting) | Url 다시 쓰기 및 요청 리디렉션에 대 한 지원을 제공 합니다. |
+| [URL 재작성 미들웨어](xref:fundamentals/url-rewriting) | Url 다시 쓰기 및 요청 리디렉션에 대 한 지원을 제공 합니다. |
 
 <a name=middleware-writing-middleware></a>
 
@@ -228,6 +228,6 @@ public class MyMiddleware
 ## <a name="resources"></a>리소스
 
 * [이 문서에 사용 되는 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/middleware/sample)
-* [미들웨어 마이그레이션 HTTP 모듈](../migration/http-modules.md)
+* [HTTP 모듈을 미들웨어로 마이그레이션](../migration/http-modules.md)
 * [응용 프로그램 시작](startup.md)
-* [기능을 요청](request-features.md)
+* [기능 요청](request-features.md)

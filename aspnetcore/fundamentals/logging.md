@@ -12,19 +12,19 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/logging
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15abe93d881aed3b6950a859dc9445ec50ee9bb5
-ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
+ms.openlocfilehash: b9a4ae6e7d9b2fa998b91e643e63657239d4866b
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-logging-in-aspnet-core"></a>ASP.NET Core 로그인 소개
 
-여 [Steve Smith](http://ardalis.com) 및 [Tom Dykstra](https://github.com/tdykstra)
+여 [Steve Smith](https://ardalis.com/) 및 [Tom Dykstra](https://github.com/tdykstra)
 
 ASP.NET Core 다양 한 로깅 공급자와 작동 하는 로깅 API를 지원 합니다. 하나 이상의 대상에 로그를 보낼 기본 제공 공급자 수 있으며, 타사 로깅 프레임 워크에 연결할 수 있습니다. 이 문서에는 코드에는 기본 제공 로깅 API 및 공급자를 사용 하는 방법을 보여 줍니다.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/sample2)
 
@@ -50,7 +50,7 @@ ASP.NET Core에서는 비동기로 거 메서드 로깅 async 사용의 비용 �
 
 ## <a name="how-to-add-providers"></a>공급자를 추가 하는 방법
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 로깅 공급자를 사용 하 여 만든 메시지를 가져와 `ILogger` 개체 및 표시 하거나 저장 합니다. 예를 들어 콘솔에서 메시지를 표시 하는 콘솔 공급자 및 Azure 앱 서비스 공급자를 사용 하는 Azure blob 저장소에 저장할 수 있습니다.
 
@@ -244,7 +244,7 @@ _logger.LogInformation("Parameter values: {p2}, {p1}", p1, p2);
 Parameter values: parm1, parm2
 ```
 
-로깅 공급자가 구현 하는 수 있도록이 방법으로 서식을 로깅 프레임 워크는 메시지 [구조적된 로깅 라고도 하는 의미 체계 로깅](http://programmers.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)합니다. 인수 자체 뿐 아니라 서식이 지정 된 메시지 문자열, 로깅 시스템으로 전달 되기 때문에 로깅 공급자 메시지 문자열 외에도 필드로 매개 변수 값을 저장할 수 있습니다. 예를 들어 옮기는 경우 Azure 테이블 저장소에 로그를 출력 하 고로 거 메서드 호출은 다음과 같습니다.
+로깅 공급자가 구현 하는 수 있도록이 방법으로 서식을 로깅 프레임 워크는 메시지 [구조적된 로깅 라고도 하는 의미 체계 로깅](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)합니다. 인수 자체 뿐 아니라 서식이 지정 된 메시지 문자열, 로깅 시스템으로 전달 되기 때문에 로깅 공급자 메시지 문자열 외에도 필드로 매개 변수 값을 저장할 수 있습니다. 예를 들어 옮기는 경우 Azure 테이블 저장소에 로그를 출력 하 고로 거 메서드 호출은 다음과 같습니다.
 
 ```csharp
 _logger.LogInformation("Getting item {ID} at {RequestTime}", id, DateTime.Now);
@@ -269,7 +269,7 @@ System.Exception: Item not found exception.
 
 ## <a name="log-filtering"></a>로그 필터링
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 특정 공급자 및 범주 또는 모든 공급자 또는 모든 범주에 대 한 최소 로그 수준을 지정할 수 있습니다.  최소 수준 미만인 모든 로그 있으므로 표시 가져오거나 저장 하지 않는 것 해당 공급자에 전달 되지 않습니다. 
 
@@ -381,7 +381,7 @@ System.Exception: Item not found exception.
 
 다음 코드를 통해 콘솔 공급자에 대 한 범위:
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 *Program.cs*:
 
@@ -422,7 +422,7 @@ ASP.NET Core 다음 공급자를 제공 합니다.
 
 [Microsoft.Extensions.Logging.Console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console) 공급자 패키지 로그 출력을 콘솔에 보냅니다. 
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 logging.AddConsole()
@@ -448,7 +448,7 @@ loggerFactory.AddConsole(Configuration.GetSection("Logging"));
 
 [!code-json[](logging/sample//appsettings.json)]
 
-에 설명 된 대로 디버그 수준에서 기록 하도록 응용 프로그램을 허용 하는 동안 제한 프레임 워크 로그 경고를 표시 설정을 [로그 필터링](#log-filtering) 섹션. 자세한 내용은 참조 [구성](configuration.md)합니다.
+에 설명 된 대로 디버그 수준에서 기록 하도록 응용 프로그램을 허용 하는 동안 제한 프레임 워크 로그 경고를 표시 설정을 [로그 필터링](#log-filtering) 섹션. 자세한 내용은 [구성](configuration.md)을 참조하세요.
 
 ---
 
@@ -459,7 +459,7 @@ loggerFactory.AddConsole(Configuration.GetSection("Logging"));
 
 Linux에서이 공급자는 로그를 기록 */var/log/message*합니다.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 logging.AddDebug()
@@ -480,7 +480,7 @@ loggerFactory.AddDebug()
 
 ASP.NET Core 1.1.0을 대상으로 하는 앱에 대 한 또는 그 이상으로 [Microsoft.Extensions.Logging.EventSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventSource) 공급자 패키지 이벤트 추적을 구현할 수 있습니다. Windows에서 사용 하 여 [ETW](https://msdn.microsoft.com/library/windows/desktop/bb968803)합니다. 공급자는 플랫폼 간 않으며 하는 이벤트가 수집 하 고 표시 도구가 아직 Linux 또는 macOS입니다. 
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 logging.AddEventSourceLogger()
@@ -514,7 +514,7 @@ Nano Server에서 이벤트 캡처 몇 가지 추가 설정이 필요 합니다.
   New-EtwTraceSession -Name "MyAppTrace" -LocalFilePath C:\trace.etl
   ```
 
-* ETW 공급자에 대 한 추가 [CLR](https://msdn.microsoft.com/library/ff357718), ASP.NET Core 및 필요에 따라 다른 사용자입니다. GUID는 ASP.NET Core 공급자 `3ac73b97-af73-50e9-0822-5da4367920d0`합니다. 
+* ETW 공급자에 대 한 추가 [CLR](https://docs.microsoft.com/dotnet/framework/performance/clr-etw-providers), ASP.NET Core 및 필요에 따라 다른 사용자입니다. GUID는 ASP.NET Core 공급자 `3ac73b97-af73-50e9-0822-5da4367920d0`합니다. 
 
   ```powershell
   Add-EtwTraceProvider -Guid "{e13c0d23-ccbc-4e12-931b-d9cc2eee27e4}" -SessionName MyAppTrace
@@ -536,7 +536,7 @@ Nano Server에서 이벤트 캡처 몇 가지 추가 설정이 필요 합니다.
 
 [Microsoft.Extensions.Logging.EventLog](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog) 공급자 패키지는 Windows 이벤트 로그에 로그 출력을 보냅니다.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 logging.AddEventLog()
@@ -555,9 +555,9 @@ loggerFactory.AddEventLog()
 <a id="tracesource"></a>
 ### <a name="the-tracesource-provider"></a>TraceSource 공급자
 
-[Microsoft.Extensions.Logging.TraceSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.TraceSource) 공급자 패키지가 사용 하는 [System.Diagnostics.TraceSource](https://msdn.microsoft.com/library/system.diagnostics.tracesource.aspx) 라이브러리 및 공급자입니다.
+[Microsoft.Extensions.Logging.TraceSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.TraceSource) 공급자 패키지가 사용 하는 [System.Diagnostics.TraceSource](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracesource) 라이브러리 및 공급자입니다.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 logging.AddTraceSource(sourceSwitchName);
@@ -573,7 +573,7 @@ loggerFactory.AddTraceSource(sourceSwitchName);
 
 [오버 로드 AddTraceSource](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.tracesourcefactoryextensions) let 소스 스위치와 추적 수신기에 전달 합니다.
 
-이 공급자를 사용 하려면는 응용 프로그램에서.NET Framework (아닌에서.NET Core)를 실행 합니다. 다양 한 메시지를 라우팅하는 공급자를 사용 하면 [수신기](https://msdn.microsoft.com/library/4y5y10s7)와 같은 [TextWriterTraceListener](https://msdn.microsoft.com/library/system.diagnostics.textwritertracelistener) 샘플 응용 프로그램에 사용 합니다.
+이 공급자를 사용 하려면는 응용 프로그램에서.NET Framework (아닌에서.NET Core)를 실행 합니다. 다양 한 메시지를 라우팅하는 공급자를 사용 하면 [수신기](https://docs.microsoft.com/dotnet/framework/debug-trace-profile/trace-listeners)와 같은 [TextWriterTraceListener](https://docs.microsoft.com/dotnet/api/system.diagnostics.textwritertracelistenerr) 샘플 응용 프로그램에 사용 합니다.
 
 다음 예제에서는 구성는 `TraceSource` 기록 하는 공급자 `Warning` 및 콘솔 창에 더 높은 메시지입니다.
 
@@ -584,7 +584,7 @@ loggerFactory.AddTraceSource(sourceSwitchName);
 
 [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) 공급자 패키지 로그에는 Azure 앱 서비스 앱의 파일 시스템 및 텍스트 파일에 기록 [blob 저장소](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/#what-is-blob-storage) 는 Azure 저장소 계정에 있습니다. 공급자는 ASP.NET Core 1.1.0을 대상으로 하는 앱에 대해서만 사용할 수 있는 이후인 있습니다. 
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 > [!NOTE]
 > ASP.NET Core 2.0 미리 보기에는입니다.  Azure 앱 서비스에 배포 될 때 최신 미리 보기 릴리스를 사용 하 여 만든 앱 실행 되지 않을 수 있습니다. Azure 앱 서비스 2.0을 실행은 ASP.NET 코어 2.0 출시 되 면 앱 및 Azure 앱 서비스 공급자는 여기에 설명 된 대로 작동 합니다.
@@ -621,9 +621,9 @@ ASP.NET Core를 사용 하는 몇 가지 타사 로깅 프레임 워크는 다�
 
 * [NLog](https://github.com/NLog/NLog.Extensions.Logging) -NLog 라이브러리에 대 한 공급자
 
-* [Serilog](https://github.com/serilog/serilog-framework-logging) -Serilog 라이브러리에 대 한 공급자
+* [Serilog](https://github.com/serilog/serilog-extensions-logging) -Serilog 라이브러리에 대 한 공급자
 
-일부 타사 프레임 워크에서는 작업을 수행할 수 [구조적된 로깅 라고도 하는 의미 체계 로깅](http://programmers.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)합니다.
+일부 타사 프레임 워크에서는 작업을 수행할 수 [구조적된 로깅 라고도 하는 의미 체계 로깅](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)합니다.
 
 타사 프레임 워크를 사용 하는 것은 기본 제공 공급자 중 하나를 사용 하 여 비슷합니다: 프로젝트에 NuGet 패키지를 추가 하 고에 확장 메서드를 호출 `ILoggerFactory`합니다. 자세한 내용은 각 프레임 워크의 설명서를 참조 합니다.
 

@@ -11,17 +11,17 @@ ms.assetid: d9a65066-d7cb-47df-b046-64629c4d2c6f
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: hosting/windows-service
-ms.openlocfilehash: 1b3cdc18ded89ebdf7b7afa9f43af9669748eff4
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 33a4eca48a04f9b29c60a446f4191d39d21e7e7d
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="host-an-aspnet-core-app-in-a-windows-service"></a>Windows 서비스에서 ASP.NET Core 응용 프로그램 호스트
 
 으로 [Tom Dykstra](https://github.com/tdykstra)
 
-IIS를 사용 하지 않는 경우 Windows에서 ASP.NET Core 응용 프로그램을 호스트 하는 권장된 방법은 실행 하는 것는 [Windows 서비스](https://msdn.microsoft.com/library/d56de412)합니다. 이런 방식으로 시작할 수 있습니다 자동으로 다시 부팅 하 고 충돌 후 다른 사용자가 로그인 할 때까지 기다리지 않고 합니다.
+IIS를 사용 하지 않는 경우 Windows에서 ASP.NET Core 응용 프로그램을 호스트 하는 권장된 방법은 실행 하는 것는 [Windows 서비스](https://docs.microsoft.com/dotnet/framework/windows-services/introduction-to-windows-service-applications)합니다. 이런 방식으로 시작할 수 있습니다 자동으로 다시 부팅 하 고 충돌 후 다른 사용자가 로그인 할 때까지 기다리지 않고 합니다.
 
 [보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/hosting/windows-service/sample) 참조는 [다음 단계](#next-steps) 실행 하는 방법에 대 한 지침은 섹션.
 
@@ -33,7 +33,7 @@ IIS를 사용 하지 않는 경우 Windows에서 ASP.NET Core 응용 프로그�
 
   Visual Studio에서 프로젝트를 만들 때 사용 된 **ASP.NET Core 응용 프로그램 (.NET Framework)** 서식 파일입니다.
 
-* 응용 프로그램 요청 (뿐 아니라 내부 네트워크)에서 인터넷을 통해을 발생 사용 해야 합니다는 [WebListener](xref:fundamentals/servers/weblistener) 웹 서버 대신 [Kestrel](xref:fundamentals/servers/kestrel)합니다.  Kestrel은 가장자리 배포에 대 한 IIS 함께 사용 해야 합니다.  자세한 내용은 참조 [Kestrel 역방향 프록시를 사용 하는 경우](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy)합니다.
+* 응용 프로그램 요청 (뿐 아니라 내부 네트워크)에서 인터넷을 통해을 발생 사용 해야 합니다는 [WebListener](xref:fundamentals/servers/weblistener) 웹 서버 대신 [Kestrel](xref:fundamentals/servers/kestrel)합니다.  Kestrel은 가장자리 배포에 대 한 IIS 함께 사용 해야 합니다.  자세한 내용은 [Kestrel를 역방향 프록시와 함께 사용할 경우](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy)를 참조하세요.
 
 ## <a name="getting-started"></a>시작
 
@@ -121,5 +121,5 @@ IIS를 사용 하지 않는 경우 Windows에서 ASP.NET Core 응용 프로그�
 
 이미 게시 된 원본의 도움을 받아가이 문서의 작성 되었습니다. 시작와 그 중 가장 유용한 이러한 다음과 같았습니다.
 
-* [ASP.NET Core Windows 서비스 호스팅](http://stackoverflow.com/questions/37346383/hosting-asp-net-core-as-windows-service/37464074#37464074)
-* [Windows 서비스에서 ASP.NET Core 프로그램을 호스트 하는 방법](http://dotnetthoughts.net/how-to-host-your-aspnet-core-in-a-windows-service/)
+* [ASP.NET Core Windows 서비스 호스팅](https://stackoverflow.com/questions/37346383/hosting-asp-net-core-as-windows-service/37464074)
+* [Windows 서비스에서 ASP.NET Core 프로그램을 호스트 하는 방법](https://dotnetthoughts.net/how-to-host-your-aspnet-core-in-a-windows-service/)

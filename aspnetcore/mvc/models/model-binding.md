@@ -2,7 +2,7 @@
 title: "모델 바인딩"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: b355a48e-a15c-4d58-b69c-899763613a97
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/model-binding
-ms.openlocfilehash: 930ea062ffb914cbd4f1500308b813167c1f601b
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 597d4058a410e0b5991b1d5a74c9fc7bfe8171b8
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="model-binding"></a>모델 바인딩
 
-으로 [Rachel Appel](http://github.com/rachelappel)
+으로 [Rachel Appel](https://github.com/rachelappel)
 
 ## <a name="introduction-to-model-binding"></a>모델 바인딩 소개
 
@@ -103,7 +103,7 @@ MVC에는 다른 소스에 해당 기본 모델 바인딩 동작을 직접 사�
 > 있을 수 최대로 데코레이팅 동작 마다 하나의 매개 변수 `[FromBody]`합니다. ASP.NET Core MVC 런타임에 포맷터에 요청 스트림의 읽을의 책임을 위임 합니다. 요청 스트림을 매개 변수에 대해 읽기, 되 면 일반적으로 수 없으면 다른 바인딩에 대 한 다시 요청 스트림의 읽을 `[FromBody]` 매개 변수입니다.
 
 > [!NOTE]
-> `JsonInputFormatter` 기반을 기본 포맷터가 [Json.NET](http://www.newtonsoft.com/json)합니다.
+> `JsonInputFormatter` 기반을 기본 포맷터가 [Json.NET](https://www.newtonsoft.com/json)합니다.
 
 ASP.NET 선택에 따라 입력된 포맷터는 [Content-type](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html) 헤더 및 매개 변수의 형식 있으면 다음을 지정 하지 않으면 적용 되는 특성입니다. XML을 사용 하 시겠습니까 아니면 다른 형식 구성 해야에서 하는 경우는 *Startup.cs* 파일인 없지만 년 5 월 첫 번째가에 대 한 참조를 얻으려고 `Microsoft.AspNetCore.Mvc.Formatters.Xml` NuGet을 사용 하 여 합니다. 시작 코드는 코드는 다음과 같아야 합니다.
 

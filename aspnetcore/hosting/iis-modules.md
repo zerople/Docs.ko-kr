@@ -11,11 +11,11 @@ ms.assetid: 492b3a7e-04c5-461b-b96a-38ecee5c64bc
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: hosting/iis-modules
-ms.openlocfilehash: 4d9d3d863e62373716ecd81b9e1880145a127e9b
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 353cd4c18cb2708f2dece5ba2b5271f452379d52
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="using-iis-modules-with-aspnet-core"></a>IIS 모듈을 사용 하 여 ASP.NET 코어
 
@@ -36,12 +36,12 @@ ASP.NET Core 응용 프로그램은 역방향 프록시 구성에서 IIS에서 �
 **기본 문서**<br>`DefaultDocumentModule` | 아니요 | [기본 파일 미들웨어입니다.](xref:fundamentals/static-files#serving-a-default-document)
 **다이제스트 인증**<br>`DigestAuthenticationModule` | 예 | 
 **디렉터리 검색**<br>`DirectoryListingModule` | 아니요 | [디렉터리 검색 미들웨어](xref:fundamentals/static-files#enabling-directory-browsing)
-**동적 압축**<br>`DynamicCompressionModule` | 예 | [응답 압축 미들웨어입니다.](xref:performance/response-compression)
+**동적 압축**<br>`DynamicCompressionModule` | 예 | [응답 압축 미들웨어](xref:performance/response-compression)
 **추적**<br>`FailedRequestsTracingModule` | 예 | [ASP.NET Core 로깅](xref:fundamentals/logging#the-tracesource-provider)
-**파일 캐싱**<br>`FileCacheModule` | 아니요 | [응답의 캐싱 미들웨어](xref:performance/caching/middleware)
-**HTTP 캐싱**<br>`HttpCacheModule` | 아니요 | [응답의 캐싱 미들웨어](xref:performance/caching/middleware)
-**HTTP 로깅**<br>`HttpLoggingModule` | 예 | [ASP.NET Core 로깅](xref:fundamentals/logging)<br>구현: [elmah.io](https://github.com/elmahio/Elmah.Io.Extensions.Logging), [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging), [NLog](https://github.com/NLog/NLog.Extensions.Logging), [Serilog](https://github.com/serilog/serilog-framework-logging)
-**HTTP 리디렉션**<br>`HttpRedirectionModule` | 예 | [URL 다시 쓰기 미들웨어](xref:fundamentals/url-rewriting)
+**파일 캐싱**<br>`FileCacheModule` | 아니요 | [응답 캐싱 미들웨어](xref:performance/caching/middleware)
+**HTTP 캐싱**<br>`HttpCacheModule` | 아니요 | [응답 캐싱 미들웨어](xref:performance/caching/middleware)
+**HTTP 로깅**<br>`HttpLoggingModule` | 예 | [ASP.NET Core 로깅](xref:fundamentals/logging)<br>구현: [elmah.io](https://github.com/elmahio/Elmah.Io.Extensions.Logging), [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging), [NLog](https://github.com/NLog/NLog.Extensions.Logging), [Serilog](https://github.com/serilog/serilog-extensions-logging)
+**HTTP 리디렉션**<br>`HttpRedirectionModule` | 예 | [URL 재작성 미들웨어](xref:fundamentals/url-rewriting)
 **IIS 클라이언트 인증서 매핑 인증**<br>`IISCertificateMappingAuthenticationModule` | 예 | 
 **IP 및 도메인 제한**<br>`IpRestrictionModule` | 예 | 
 **ISAPI 필터**<br>`IsapiFilterModule` | 예 | [미들웨어](xref:fundamentals/middleware)
@@ -49,9 +49,9 @@ ASP.NET Core 응용 프로그램은 역방향 프록시 구성에서 IIS에서 �
 **프로토콜 지원**<br>`ProtocolSupportModule` | 예 | 
 **요청 필터링**<br>`RequestFilteringModule` | 예 | [URL 다시 쓰기 미들웨어`IRule`](xref:fundamentals/url-rewriting#irule-based-rule)
 **요청 모니터**<br>`RequestMonitorModule` | 예 | 
-**URL 다시 쓰기**<br>`RewriteModule` | Yes† | [URL 다시 쓰기 미들웨어](xref:fundamentals/url-rewriting)
+**URL 다시 쓰기**<br>`RewriteModule` | Yes† | [URL 재작성 미들웨어](xref:fundamentals/url-rewriting)
 **SSI(SSI(Server Side Includes))**<br>`ServerSideIncludeModule` | 아니요 | 
-**정적 압축**<br>`StaticCompressionModule` | 아니요 | [응답 압축 미들웨어입니다.](xref:performance/response-compression)
+**정적 압축**<br>`StaticCompressionModule` | 아니요 | [응답 압축 미들웨어](xref:performance/response-compression)
 **정적 콘텐츠**<br>`StaticFileModule` | 아니요 | [정적 파일 미들웨어](xref:fundamentals/static-files)
 **토큰 캐싱**<br>`TokenCacheModule` | 예 | 
 **URI 캐싱**<br>`UriCacheModule` | 예 | 
@@ -67,13 +67,13 @@ AnonymousIdentification | 아니요 |
 DefaultAuthentication | 아니요 | 
 FileAuthorization | 아니요 | 
 FormsAuthentication | 아니요 | [쿠키 인증 미들웨어입니다.](xref:security/authentication/cookie)
-OutputCache | 아니요 | [응답의 캐싱 미들웨어](xref:performance/caching/middleware)
+OutputCache | 아니요 | [응답 캐싱 미들웨어](xref:performance/caching/middleware)
 프로필 | 아니요 | 
 RoleManager | 아니요 | 
 ScriptModule 4.0 | 아니요 | 
 세션 | 아니요 | [세션 미들웨어](xref:fundamentals/app-state)
 UrlAuthorization | 아니요 | 
-UrlMappingsModule | 아니요 | [URL 다시 쓰기 미들웨어](xref:fundamentals/url-rewriting)
+UrlMappingsModule | 아니요 | [URL 재작성 미들웨어](xref:fundamentals/url-rewriting)
 UrlRoutingModule 4.0 | 아니요 | [ASP.NET Core Identity](xref:security/authentication/identity)
 WindowsAuthentication | 아니요 | 
 
@@ -84,7 +84,7 @@ WindowsAuthentication | 아니요 |
 응용 프로그램에 대해 사용 하지 않도록 설정 하려면 서버 수준에서 구성 된 IIS 모듈이 있는 경우 그렇게 할 수 있습니다에 대 한 추가 된 프로그램 *web.config* 파일입니다. 모듈 위치에 그대로 둡니다 (있는 경우)에 구성 설정을 사용 하 여 비활성화 하거나 응용 프로그램에서 모듈을 제거 합니다.
 
 ### <a name="module-deactivation"></a>모듈 비활성화
-많은 모듈을 응용 프로그램에서이 제거 하지 않으려면 수 있는 구성 설정을 제공 합니다. 이것이 모듈을 비활성화 하려면 가장 간단 하 고 가장 빠른 방법입니다. 예를 들어 IIS URL 재작성 모듈을 사용 하지 않도록 설정, 사용 하려는 경우는 `<httpRedirect>` 아래와 같이 요소입니다. 구성 설정 사용 하 여 모듈을 사용 하지 않도록 설정에 대 한 자세한 내용은 있는 링크는 *자식 요소* 섹션 [IIS `<system.webServer>` ](https://www.iis.net/configreference/system.webserver)합니다.
+많은 모듈을 응용 프로그램에서이 제거 하지 않으려면 수 있는 구성 설정을 제공 합니다. 이것이 모듈을 비활성화 하려면 가장 간단 하 고 가장 빠른 방법입니다. 예를 들어 IIS URL 재작성 모듈을 사용 하지 않도록 설정, 사용 하려는 경우는 `<httpRedirect>` 아래와 같이 요소입니다. 구성 설정 사용 하 여 모듈을 사용 하지 않도록 설정에 대 한 자세한 내용은 있는 링크는 *자식 요소* 섹션 [IIS `<system.webServer>` ](https://docs.microsoft.com/iis/configuration/system.webServer/)합니다.
 
 ```xml
 <configuration>
@@ -150,6 +150,6 @@ ASP.NET Core 응용 프로그램을 실행 하는 데 필요한 유일한 모듈
 
 ## <a name="resources"></a>리소스
 * [IIS에 게시](xref:publishing/iis)
-* [IIS 모듈 개요](https://www.iis.net/learn/get-started/introduction-to-iis/iis-modules-overview)
+* [IIS 모듈 개요](https://docs.microsoft.com/iis/get-started/introduction-to-iis/iis-modules-overview)
 * [IIS 7.0 역할 및 모듈을 사용자 지정](https://technet.microsoft.com/library/cc627313.aspx)
-* [IIS`<system.webServer>`](https://www.iis.net/configreference/system.webserver)
+* [IIS`<system.webServer>`](https://docs.microsoft.com/iis/configuration/system.webServer/)

@@ -2,7 +2,7 @@
 title: "뷰 개요"
 author: ardalis
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: 668c320d-c050-45e3-8161-2f460dc93b2f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/overview
-ms.openlocfilehash: 7abfa7ef855eb95e1a27ba6a699dd923c9e4d7c0
-ms.sourcegitcommit: 6ece943781d8a56784bb6160f14da85210d3fcea
+ms.openlocfilehash: 3b33c13f2385d3b07ba9b6f0bc0fd560abc3735c
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="rendering-html-with-views-in-aspnet-core-mvc"></a>ASP.NET Core MVC에서 뷰가 포함 된 HTML 렌더링
 
-으로 [Steve Smith](http://ardalis.com)
+으로 [Steve Smith](https://ardalis.com/)
 
 ASP.NET Core MVC 컨트롤러 사용 하 여 서식이 지정 된 결과 반환할 수 *뷰*합니다.
 

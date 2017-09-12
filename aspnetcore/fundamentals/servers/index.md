@@ -11,17 +11,17 @@ ms.assetid: dba74f39-58cd-4dee-a061-6d15f7346959
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/index
-ms.openlocfilehash: 1e6d0836f0da751fe433273b9a6896fcf259b69d
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: 17124f1ef181a4f1572d9375ae8cd27ce8845016
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>ASP.NET Core의 웹 서버 구현
 
-작성자: [Tom Dykstra](http://github.com/tdykstra), [Steve Smith](http://ardalis.com), [Stephen Halter](https://twitter.com/halter73) 및 [Chris Ross](https://github.com/Tratcher)
+작성자: [Tom Dykstra](https://github.com/tdykstra), [Steve Smith](https://ardalis.com/), [Stephen Halter](https://twitter.com/halter73) 및 [Chris Ross](https://github.com/Tratcher)
 
-ASP.NET Core 응용 프로그램은 In-process HTTP 서버 구현을 통해 실행됩니다. 서버 구현은 HTTP 요청을 수신하고 `HttpContext`를 구성하는 [요청 기능](https://docs.asp.net/en/latest/fundamentals/request-features.html) 집합으로 응용 프로그램에 표시합니다.
+ASP.NET Core 응용 프로그램은 In-process HTTP 서버 구현을 통해 실행됩니다. 서버 구현은 HTTP 요청을 수신하고 `HttpContext`를 구성하는 [요청 기능](https://docs.microsoft.com/aspnet/core/fundamentals/request-features) 집합으로 응용 프로그램에 표시합니다.
 
 ASP.NET Core는 다음 두 가지 서버 구현을 제공합니다.
 
@@ -115,13 +115,13 @@ Kestrel이 지원하지 않는 WebListener가 필요한 경우 내부 네트워�
 
 ## <a name="notes-about-aspnet-core-server-infrastructure"></a>ASP.NET Core 서버 인프라에 대한 참고
 
-`Startup` 클래스 `Configure` 메서드에서 사용 가능한 [`IApplicationBuilder`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/IApplicationBuilder/index.html#Microsoft.AspNetCore.Builder.IApplicationBuilder.md)는 [`IFeatureCollection`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/Features/IFeatureCollection/index.html#Microsoft.AspNetCore.Http.Features.IFeatureCollection.md) 형식의 `ServerFeatures` 속성을 노출합니다. Kestrel 및 WebListener는 둘 다 단일 기능인 [`IServerAddressesFeature`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/Server/Features/IServerAddressesFeature/index.html#Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature.md)만 노출하지만, 다른 서버 구현이 추가 기능을 노출할 수 있습니다.
+`Startup` 클래스 `Configure` 메서드에서 사용 가능한 [`IApplicationBuilder`](https://docs.microsoft.com/aspnet/core/api)는 [`IFeatureCollection`](https://docs.microsoft.com/aspnet/core/api) 형식의 `ServerFeatures` 속성을 노출합니다. Kestrel 및 WebListener는 둘 다 단일 기능인 [`IServerAddressesFeature`](https://docs.microsoft.com/aspnet/core/api)만 노출하지만, 다른 서버 구현이 추가 기능을 노출할 수 있습니다.
 
 `IServerAddressesFeature`를 사용하여 런타임에 서버 구현이 바인딩된 포트를 확인할 수 있습니다.
 
 ## <a name="custom-servers"></a>사용자 지정 서버
 
-기본 제공 서버가 필요에 맞지 않으면 사용자 지정 서버 구현을 만들 수 있습니다. [OWIN(Open Web Interface for .NET) 가이드](../owin.md)에서는 [Nowin](https://github.com/Bobris/Nowin) 기반 [IServer](https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.aspnetcore.hosting.server.iserver) 구현을 작성하는 방법을 보여 줍니다. 응용 프로그램에 필요한 기능 인터페이스만 자유롭게 구현할 수 있습니다. 단, 최소한 [IHttpRequestFeature](https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.aspnetcore.http.features.ihttprequestfeature) 및 [IHttpResponseFeature](https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.aspnetcore.http.features.ihttpresponsefeature)를 지원해야 합니다.
+기본 제공 서버가 필요에 맞지 않으면 사용자 지정 서버 구현을 만들 수 있습니다. [OWIN(Open Web Interface for .NET) 가이드](../owin.md)에서는 [Nowin](https://github.com/Bobris/Nowin) 기반 [IServer](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.server.iserver) 구현을 작성하는 방법을 보여 줍니다. 응용 프로그램에 필요한 기능 인터페이스만 자유롭게 구현할 수 있습니다. 단, 최소한 [IHttpRequestFeature](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.http.features.ihttprequestfeature) 및 [IHttpResponseFeature](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.http.features.ihttpresponsefeature)를 지원해야 합니다.
 
 ## <a name="next-steps"></a>다음 단계
 

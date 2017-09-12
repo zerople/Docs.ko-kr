@@ -2,7 +2,7 @@
 title: "분산된 캐시 사용"
 author: ardalis
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017
@@ -11,15 +11,15 @@ ms.assetid: 870f082d-6d43-453d-b311-45f3aeb4d2c5
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/caching/distributed
-ms.openlocfilehash: 09a1a30de38b9eb40d4fa6a684a7d43ac3e0413c
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: abf680fef9de175082c1e4f4cebc2b9648f18a28
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="working-with-a-distributed-cache"></a>분산된 캐시 사용
 
-으로 [Steve Smith](http://ardalis.com)
+으로 [Steve Smith](https://ardalis.com/)
 
 분산 된 캐시 클라우드 또는 서버 팜 환경에서 호스팅되는 경우에 특히 성능 및 ASP.NET Core 응용 프로그램의 확장성을 개선할 수 있습니다. 이 문서에서는 ASP.NET Core 기본 제공 분산된 캐시 추상화 및 구현 작업 하는 방법을 설명 합니다.
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 08/11/2017
 
 ## <a name="using-a-redis-distributed-cache"></a>Redis를 사용 하 여 분산 캐시
 
-[Redis](http://redis.io) 는 분산된 캐시로 흔히 사용 되는 오픈 소스 메모리 내 데이터 저장소입니다. 로컬에서 사용할 수 있습니다 및 구성할 수 있습니다는 [Azure Redis Cache](https://azure.microsoft.com/services/cache/) ASP.NET Core Azure 호스팅 응용 프로그램에 대 한 합니다. ASP.NET Core 응용 프로그램을 사용 하 여 캐시 구현 구성는 `RedisDistributedCache` 인스턴스.
+[Redis](https://redis.io/) 는 분산된 캐시로 흔히 사용 되는 오픈 소스 메모리 내 데이터 저장소입니다. 로컬에서 사용할 수 있습니다 및 구성할 수 있습니다는 [Azure Redis Cache](https://azure.microsoft.com/services/cache/) ASP.NET Core Azure 호스팅 응용 프로그램에 대 한 합니다. ASP.NET Core 응용 프로그램을 사용 하 여 캐시 구현 구성는 `RedisDistributedCache` 인스턴스.
 
 Redis 구현을 구성 `ConfigureServices` 의 인스턴스를 요청 하 여 앱 코드에서 액세스 하 고 `IDistributedCache` (위의 코드 참조).
 
@@ -97,7 +97,7 @@ Redis 구현을 구성 `ConfigureServices` 의 인스턴스를 요청 하 여 �
 [!code-csharp[Main](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=8,9,10,11,12,13&range=27-40)]
 
 > [!NOTE]
-> Redis를 로컬 컴퓨터에 설치 하려면 chocolatey 패키지 설치 [http://chocolatey.org/packages/redis-64/](http://chocolatey.org/packages/redis-64/) 실행 `redis-server` 명령 프롬프트에서 합니다.
+> Redis를 로컬 컴퓨터에 설치 하려면 chocolatey 패키지 설치 [https://chocolatey.org/packages/redis-64/](https://chocolatey.org/packages/redis-64/) 실행 `redis-server` 명령 프롬프트에서 합니다.
 
 ## <a name="using-a-sql-server-distributed-cache"></a>SQL Server를 사용 하 여 분산 캐시
 

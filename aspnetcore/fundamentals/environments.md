@@ -11,15 +11,15 @@ ms.assetid: b5bba985-be12-4464-9a01-df3599b2a6f1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/environments
-ms.openlocfilehash: 5e41920c9745f903d33fa25922727e920c1efc26
-ms.sourcegitcommit: 8f5277871eff86134ebf68d3737196cfd4a62c2c
+ms.openlocfilehash: 8f8612fd9c92370d9b0a86572dca654a6a034916
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/13/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="working-with-multiple-environments"></a>여러 환경 작업
 
-으로 [Steve Smith](http://ardalis.com)
+으로 [Steve Smith](https://ardalis.com/)
 
 ASP.NET Core 개발, 스테이징 및 프로덕션 등의 여러 환경에 걸쳐 앱 동작을 제어 하기 위한 지원을 제공 합니다. 환경 변수는 해당 환경에 구성 된 응용 프로그램 런타임 환경을 나타내는 데 사용 됩니다.
 
@@ -27,7 +27,7 @@ ASP.NET Core 개발, 스테이징 및 프로덕션 등의 여러 환경에 걸�
 
 ## <a name="development-staging-production"></a>개발, 스테이징 프로덕션
 
-ASP.NET Core 특정 참조 [환경 변수](https://github.com/aspnet/Home/wiki/Environment-Variables), `ASPNETCORE_ENVIRONMENT` 를 응용 프로그램에서 현재 실행 중인 환경에 설명 합니다. 이 변수를 설정 값을 원하는 하지만 규칙에 따라 3 개의 값 사용: `Development`, `Staging`, 및 `Production`합니다. 이러한 샘플에서 사용 되는 값 및 ASP.NET Core와 함께 제공 되는 서식 파일을 찾을 수 있습니다.
+ASP.NET Core 특정 참조 [환경 변수](https://github.com/aspnet/Home/wiki), `ASPNETCORE_ENVIRONMENT` 를 응용 프로그램에서 현재 실행 중인 환경에 설명 합니다. 이 변수를 설정 값을 원하는 하지만 규칙에 따라 3 개의 값 사용: `Development`, `Staging`, 및 `Production`합니다. 이러한 샘플에서 사용 되는 값 및 ASP.NET Core와 함께 제공 되는 서식 파일을 찾을 수 있습니다.
 
 현재 환경 설정은 응용 프로그램 내에서 프로그래밍 방식으로 검색할 수 있습니다. 환경을 사용할 수는 또한 [태그 도우미](../mvc/views/tag-helpers/index.md) 의 특정 섹션에 포함 하도록 프로그램 [보기](../mvc/views/index.md) 현재 응용 프로그램 환경에 따라 합니다.
 

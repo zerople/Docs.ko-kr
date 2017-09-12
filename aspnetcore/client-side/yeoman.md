@@ -11,11 +11,11 @@ ms.assetid: fda0c2a8-1743-4505-be1a-7f8ceeef8647
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/yeoman
-ms.openlocfilehash: 3a7cd83becc570d2f73014b356977fedb16f29bb
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 61561b55774faf375090c92b574a64f1a12f9647
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-building-projects-with-yeoman-in-aspnet-core"></a>프로젝트에서 ASP.NET Core Yeoman와 빌드 소개
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 08/11/2017
 
 ### <a name="prerequisites"></a>필수 구성 요소
 
-Node.js 및 npm Yeoman 필요 않습니다. 다운로드 [Node.js](https://nodejs.org/en/)합니다. 설치 관리자 포함 [Node.js](https://nodejs.org/en/) 및 [npm](https://www.npmjs.com/)합니다. Bower 역시 부트스트랩와 같은 UI 프레임 워크를 설치 하는 데 필요 합니다.
+Node.js 및 npm Yeoman 필요 않습니다. 다운로드 [Node.js](https://nodejs.org/)합니다. 설치 관리자 포함 [Node.js](https://nodejs.org/) 및 [npm](https://www.npmjs.com/)합니다. Bower 역시 부트스트랩와 같은 UI 프레임 워크를 설치 하는 데 필요 합니다.
 
 Yeoman 및 Bower를 설치 하려면 다음 명령을 실행 합니다.
 
@@ -135,7 +135,7 @@ dotnet run
 
 ## <a name="adding-to-your-project-with-sub-generators"></a>Sub 생성기에 프로젝트에 추가합니다.
 
-Yeoman를 사용 하 여 [생성기 하위](https://www.github.com/omnisharp/generator-aspnet#sub-generators)를 추가할 수 있습니다는 `nuget.config` 또는 `web.config` 프로젝트가 만들어진 후 합니다. 예를 들어 파일 만들지 디렉터리에서 다음 명령을 실행 합니다.
+Yeoman를 사용 하 여 [생성기 하위](https://github.com/omnisharp/generator-aspnet)를 추가할 수 있습니다는 `nuget.config` 또는 `web.config` 프로젝트가 만들어진 후 합니다. 예를 들어 파일 만들지 디렉터리에서 다음 명령을 실행 합니다.
 
 ```console
 yo aspnet:nugetconfig

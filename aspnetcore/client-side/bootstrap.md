@@ -2,7 +2,7 @@
 title: "부트스트랩을 사용한 beautiful 및 응답성이 뛰어난 사이트 구축"
 author: ardalis
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,17 +11,17 @@ ms.assetid: bd27832c-2877-4b7b-9337-e009361d845f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/bootstrap
-ms.openlocfilehash: ff734c884a60d51a1703f6444cf6d2d49e9bffb0
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: fc00bcce24d586865bf6a1d3f2f7e782a2f1c703
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="building-beautiful-responsive-sites-with-bootstrap"></a>부트스트랩을 사용한 beautiful 및 응답성이 뛰어난 사이트 구축
 
 <a name=bootstrap-index></a>
 
-으로 [Steve Smith](http://ardalis.com)
+으로 [Steve Smith](https://ardalis.com/)
 
 부트스트랩 현재 응답성이 뛰어난 웹 응용 프로그램을 개발 하기 위한 가장 인기 있는 웹 프레임 워크입니다. 프런트 엔드 디자인 및 개발 또는 전문가 초보자에 관계 없이 다양 한 기능 및 웹 사이트와 사용자의 경험을 향상 시킬 수 있는 혜택을 제공 합니다. 부트스트랩은 CSS 및 JavaScript 파일의 집합으로 배포 되 고 태블릿에 데스크톱을 효율적으로 휴대폰에서 웹 사이트 또는 응용 프로그램 눈금을 도움이 되도록 설계 되었습니다.
 

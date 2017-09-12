@@ -11,17 +11,17 @@ ms.assetid: 94c988f9-95fd-425d-b37e-7f846598c6d4
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/less-sass-fa
-ms.openlocfilehash: 4282e992ea80420181f9d7a2e3d6a55d6614c4de
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 128612eb2f7c6c8fdd0cc01f10b8e522df46dcf6
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-styling-applications-with-less-sass-and-font-awesome-in-aspnet-core"></a>더 적은 노력으로 응용 프로그램 스타일 지정, Sass, 및 ASP.NET 코어에서 글꼴 놀라운 소개
 
-으로 [Steve Smith](http://ardalis.com)
+으로 [Steve Smith](https://ardalis.com/)
 
-전반적인 환경 및 스타일 지정에 관한는 웹 응용 프로그램의 사용자는 점점 더 높은 기대 합니다. 최신 웹 응용 프로그램에는 자주 풍부한 도구 및 프레임 워크 정의 하 고의 모양과 느낌을 일관 된 방식에서 관리에 대 한 활용 합니다. 같은 프레임 워크 [부트스트랩](http://getbootstrap.com/) 스타일 및 웹 사이트에 대 한 레이아웃 옵션의 공통 집합을 정의 하기 위한 이동할 수 있습니다. 그러나 대부분의 특수 사이트 혜택을 받을 사이트의 인터페이스를 더 적합 하 게 해 주는 이미지가 아닌 아이콘에 쉽게 액세스할 수 있을 뿐만 아니라 효과적으로 정의 하 고 스타일 및 연계 스타일 시트 (CSS) 파일을 유지 하기 위해서는. 정답입니다 언어와 도구를 지 원하는 [적은](http://lesscss.org/) 및 [Sass](http://sass-lang.com/), 라이브러리와 같은 및 [글꼴 놀라운](http://fortawesome.github.io/Font-Awesome/),와 야 합니다.
+전반적인 환경 및 스타일 지정에 관한는 웹 응용 프로그램의 사용자는 점점 더 높은 기대 합니다. 최신 웹 응용 프로그램에는 자주 풍부한 도구 및 프레임 워크 정의 하 고의 모양과 느낌을 일관 된 방식에서 관리에 대 한 활용 합니다. 같은 프레임 워크 [부트스트랩](http://getbootstrap.com/) 스타일 및 웹 사이트에 대 한 레이아웃 옵션의 공통 집합을 정의 하기 위한 이동할 수 있습니다. 그러나 대부분의 특수 사이트 혜택을 받을 사이트의 인터페이스를 더 적합 하 게 해 주는 이미지가 아닌 아이콘에 쉽게 액세스할 수 있을 뿐만 아니라 효과적으로 정의 하 고 스타일 및 연계 스타일 시트 (CSS) 파일을 유지 하기 위해서는. 정답입니다 언어와 도구를 지 원하는 [적은](http://lesscss.org/) 및 [Sass](http://sass-lang.com/), 라이브러리와 같은 및 [글꼴 놀라운](http://fontawesome.io/),와 야 합니다.
 
 ## <a name="css-preprocessor-languages"></a>CSS 전처리기 언어
 

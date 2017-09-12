@@ -11,15 +11,15 @@ ms.assetid: 531bda08-aa5b-4471-8f08-96add22c8683
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/filters
-ms.openlocfilehash: 6baeb472770daf1d54b2d9ea894fc710f4f40780
-ms.sourcegitcommit: 4693cb02d845adf2efa00e07ad432c81867bfa12
+ms.openlocfilehash: b96a70a2446cab7b1af9bd689469584868980595
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="filters"></a>필터
 
-여 [Tom Dykstra](https://github.com/tdykstra/) 및 [Steve Smith](http://ardalis.com)
+여 [Tom Dykstra](https://github.com/tdykstra/) 및 [Steve Smith](https://ardalis.com/)
 
 *필터* ASP.NET Core MVC에서 앞 이나 뒤 요청 처리 파이프라인의 특정 단계 코드를 실행할 수 있도록 합니다.
 
@@ -115,7 +115,7 @@ ms.lasthandoff: 09/08/2017
 
 ### <a name="default-order-of-execution"></a>기본 실행 순서
 
-파이프라인의 특정 단계에 대 한 여러 개의 필터가 있을 경우 범위는 기본 필터 실행 순서를 결정 합니다.  전역 필터를 대괄호 안에 메서드 필터 클래스 필터를 묶습니다. 이 라고도 "러시아어 돌" 중첩으로 범위가 증가할 때마다 둘러싸는 앞의 범위와 같은 한 [중첩 돌](https://en.wikipedia.org/wiki/Matryoshka_doll)합니다. 일반적으로 명시적으로 순서를 확인할 필요 없이 원하는 재정의 동작을 가져옵니다.
+파이프라인의 특정 단계에 대 한 여러 개의 필터가 있을 경우 범위는 기본 필터 실행 순서를 결정 합니다.  전역 필터를 대괄호 안에 메서드 필터 클래스 필터를 묶습니다. 이 라고도 "러시아어 돌" 중첩으로 범위가 증가할 때마다 둘러싸는 앞의 범위와 같은 한 [중첩 돌](https://wikipedia.org/wiki/Matryoshka_doll)합니다. 일반적으로 명시적으로 순서를 확인할 필요 없이 원하는 재정의 동작을 가져옵니다.
 
 이 중첩이의 결과로 *후* 의 역순으로에서 실행 되는 필터의 코드는 *하기 전에* 코드입니다. 시퀀스는 다음과 같습니다.
 
