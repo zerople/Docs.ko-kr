@@ -11,11 +11,11 @@ ms.assetid: 66DB4B94-C78C-4005-BA03-3D982B87C268
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: cc2d119ae2f7cf06ed0ea4b8a91fd8fa15804468
-ms.sourcegitcommit: fb518f856f31fe53c09196a13309eacb85b37a22
+ms.openlocfilehash: 70cbeea15199498c592307dccc125e60206dadbf
+ms.sourcegitcommit: b02db6da115e55140da91b67355aaf56aae1703f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/11/2017
 ---
 # <a name="configuring-microsoft-account-authentication"></a>Microsoft 계정 인증 구성
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 09/08/2017
 
 ![대화 상자에 로그인](index/_static/MicrosoftDevLogin.png)
 
-Microsoft 계정이 없는 경우 탭  **[만드세요!](https://signup.live.com/signup?wa=wsignin1.0&rpsnv=13&ct=1478151035&rver=6.7.6643.0&wp=SAPI_LONG&wreply=https%3a%2f%2fapps.dev.microsoft.com%2fLoginPostBack&id=293053&aadredir=1&contextid=D70D4F21246BAB50&bk=1478151036&uiflavor=web&uaid=f0c3de863a914c358b8dc01b1ff49e85&mkt=EN-US&lc=1033&lic=1)** 로그인 한 후 리디렉션됩니다 **내 응용 프로그램이** 페이지:
+Microsoft 계정이 없는 경우 탭 ** [만드세요!](https://signup.live.com/signup?wa=wsignin1.0&rpsnv=13&ct=1478151035&rver=6.7.6643.0&wp=SAPI_LONG&wreply=https%3a%2f%2fapps.dev.microsoft.com%2fLoginPostBack&id=293053&aadredir=1&contextid=D70D4F21246BAB50&bk=1478151036&uiflavor=web&uaid=f0c3de863a914c358b8dc01b1ff49e85&mkt=EN-US&lc=1033&lic=1)** 로그인 한 후 리디렉션됩니다 **내 응용 프로그램이** 페이지:
 
 ![Microsoft 개발자 포털에서 Microsoft Edge 열기](index/_static/MicrosoftDev.png)
 
@@ -41,7 +41,7 @@ Microsoft 계정이 없는 경우 탭  **[만드세요!](https://signup.live.com
 
 * 이 자습서에서는 선택을 취소는 **단계별 설치** 확인란 합니다.
 
-* 탭 **만들기** 를 계속 하려면는 **등록** 페이지:
+* 탭 **만들기** 를 계속 하려면는 **등록** 페이지. 제공는 **이름** 의 값을 확인 하 고는 **응용 프로그램 Id**,으로 사용할 수 있는 `ClientId` 자습서의 뒷부분에 나오는:
 
 ![등록 페이지](index/_static/MicrosoftDevAppReg.png)
 
