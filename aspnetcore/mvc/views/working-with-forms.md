@@ -12,39 +12,39 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/working-with-forms
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd69e008a81abc4f6785d93b89823c03e1a7df83
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: c3f7792d7458013f837a48ca2caa459f35658f02
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
-# <a name="introduction-to-using-tag-helpers-in-forms-in-aspnet-core"></a><span data-ttu-id="bd6a2-104">태그 도우미를 사용 하 여 폼에 ASP.NET Core 소개</span><span class="sxs-lookup"><span data-stu-id="bd6a2-104">Introduction to using tag helpers in forms in ASP.NET Core</span></span>
+# <a name="introduction-to-using-tag-helpers-in-forms-in-aspnet-core"></a><span data-ttu-id="3d50b-104">태그 도우미를 사용 하 여 폼에 ASP.NET Core 소개</span><span class="sxs-lookup"><span data-stu-id="3d50b-104">Introduction to using tag helpers in forms in ASP.NET Core</span></span>
 
-<span data-ttu-id="bd6a2-105">여 [Rick Anderson](https://twitter.com/RickAndMSFT), [Dave Paquette](https://twitter.com/Dave_Paquette), 및 [Jerrie Pelser](https://github.com/jerriep)</span><span class="sxs-lookup"><span data-stu-id="bd6a2-105">By [Rick Anderson](https://twitter.com/RickAndMSFT), [Dave Paquette](https://twitter.com/Dave_Paquette), and [Jerrie Pelser](https://github.com/jerriep)</span></span>
+<span data-ttu-id="3d50b-105">여 [Rick Anderson](https://twitter.com/RickAndMSFT), [Dave Paquette](https://twitter.com/Dave_Paquette), 및 [Jerrie Pelser](https://github.com/jerriep)</span><span class="sxs-lookup"><span data-stu-id="3d50b-105">By [Rick Anderson](https://twitter.com/RickAndMSFT), [Dave Paquette](https://twitter.com/Dave_Paquette), and [Jerrie Pelser](https://github.com/jerriep)</span></span>
 
-<span data-ttu-id="bd6a2-106">이 문서에 폼 및 폼에 일반적으로 사용 되는 HTML 요소 작업을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-106">This document demonstrates working with Forms and the HTML elements commonly used on a Form.</span></span> <span data-ttu-id="bd6a2-107">HTML [양식](https://www.w3.org/TR/html401/interact/forms.html) 요소는 서버에 데이터를 다시 게시 하는 기본 메커니즘 웹 앱 사용을 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-107">The HTML [Form](https://www.w3.org/TR/html401/interact/forms.html) element provides the primary mechanism web apps use to post back data to the server.</span></span> <span data-ttu-id="bd6a2-108">이 문서의 대부분 설명 [태그 도우미](tag-helpers/intro.md) 있고 어떻게 수 생산적으로 강력한 HTML 폼을 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-108">Most of this document describes [Tag Helpers](tag-helpers/intro.md) and how they can help you productively create robust HTML forms.</span></span> <span data-ttu-id="bd6a2-109">참조 [태그 도우미 소개](tag-helpers/intro.md) 이 문서를 읽기 전에 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-109">We recommend you read [Introduction to Tag Helpers](tag-helpers/intro.md) before you read this document.</span></span>
+<span data-ttu-id="3d50b-106">이 문서에 폼 및 폼에 일반적으로 사용 되는 HTML 요소 작업을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-106">This document demonstrates working with Forms and the HTML elements commonly used on a Form.</span></span> <span data-ttu-id="3d50b-107">HTML [양식](https://www.w3.org/TR/html401/interact/forms.html) 요소는 서버에 데이터를 다시 게시 하는 기본 메커니즘 웹 앱 사용을 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-107">The HTML [Form](https://www.w3.org/TR/html401/interact/forms.html) element provides the primary mechanism web apps use to post back data to the server.</span></span> <span data-ttu-id="3d50b-108">이 문서의 대부분 설명 [태그 도우미](tag-helpers/intro.md) 있고 어떻게 수 생산적으로 강력한 HTML 폼을 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-108">Most of this document describes [Tag Helpers](tag-helpers/intro.md) and how they can help you productively create robust HTML forms.</span></span> <span data-ttu-id="3d50b-109">참조 [태그 도우미 소개](tag-helpers/intro.md) 이 문서를 읽기 전에 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-109">We recommend you read [Introduction to Tag Helpers](tag-helpers/intro.md) before you read this document.</span></span>
 
-<span data-ttu-id="bd6a2-110">대부분의 경우에서 HTML 도우미 특정 태그 도우미에는 다른 방법은 제공 하지만 태그 도우미는 HTML 도우미를 대체 하지 않고 각 HTML 도우미에 대 한 태그 도우미 없기 인식 하는 것이 중요 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-110">In many cases, HTML Helpers provide an alternative approach to a specific Tag Helper, but it's important to recognize that Tag Helpers do not replace HTML Helpers and there is not a Tag Helper for each HTML Helper.</span></span> <span data-ttu-id="bd6a2-111">존재 하는 HTML 도우미 대신 경우 다룹니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-111">When an HTML Helper alternative exists, it is mentioned.</span></span>
+<span data-ttu-id="3d50b-110">대부분의 경우에서 HTML 도우미 특정 태그 도우미에는 다른 방법은 제공 하지만 태그 도우미는 HTML 도우미를 대체 하지 않고 각 HTML 도우미에 대 한 태그 도우미 없기 인식 하는 것이 중요 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-110">In many cases, HTML Helpers provide an alternative approach to a specific Tag Helper, but it's important to recognize that Tag Helpers do not replace HTML Helpers and there is not a Tag Helper for each HTML Helper.</span></span> <span data-ttu-id="3d50b-111">존재 하는 HTML 도우미 대신 경우 다룹니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-111">When an HTML Helper alternative exists, it is mentioned.</span></span>
 
 <a name=my-asp-route-param-ref-label></a>
 
-## <a name="the-form-tag-helper"></a><span data-ttu-id="bd6a2-112">Form 태그 도우미</span><span class="sxs-lookup"><span data-stu-id="bd6a2-112">The Form Tag Helper</span></span>
+## <a name="the-form-tag-helper"></a><span data-ttu-id="3d50b-112">Form 태그 도우미</span><span class="sxs-lookup"><span data-stu-id="3d50b-112">The Form Tag Helper</span></span>
 
-<span data-ttu-id="bd6a2-113">[양식](https://www.w3.org/TR/html401/interact/forms.html) 도우미 태그:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-113">The [Form](https://www.w3.org/TR/html401/interact/forms.html) Tag Helper:</span></span>
+<span data-ttu-id="3d50b-113">[양식](https://www.w3.org/TR/html401/interact/forms.html) 도우미 태그:</span><span class="sxs-lookup"><span data-stu-id="3d50b-113">The [Form](https://www.w3.org/TR/html401/interact/forms.html) Tag Helper:</span></span>
 
-* <span data-ttu-id="bd6a2-114">HTML을 생성 [ \<양식 >](https://www.w3.org/TR/html401/interact/forms.html) `action` MVC 컨트롤러 동작 또는 명명 된 경로 대 한 특성 값</span><span class="sxs-lookup"><span data-stu-id="bd6a2-114">Generates the HTML [\<FORM>](https://www.w3.org/TR/html401/interact/forms.html) `action` attribute value for a MVC controller action or named route</span></span>
+* <span data-ttu-id="3d50b-114">HTML을 생성 [ \<양식 >](https://www.w3.org/TR/html401/interact/forms.html) `action` MVC 컨트롤러 동작 또는 명명 된 경로 대 한 특성 값</span><span class="sxs-lookup"><span data-stu-id="3d50b-114">Generates the HTML [\<FORM>](https://www.w3.org/TR/html401/interact/forms.html) `action` attribute value for a MVC controller action or named route</span></span>
 
-* <span data-ttu-id="bd6a2-115">에서는 오류가 발생 하는 숨겨진 [요청 확인 토큰](http://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) 교차 사이트 요청 위조를 방지 하기 위해 (함께 사용할 경우의 `[ValidateAntiForgeryToken]` HTTP Post 작업 메서드에 특성)</span><span class="sxs-lookup"><span data-stu-id="bd6a2-115">Generates a hidden [Request Verification Token](http://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) to prevent cross-site request forgery (when used with the `[ValidateAntiForgeryToken]` attribute in the HTTP Post action method)</span></span>
+* <span data-ttu-id="3d50b-115">에서는 오류가 발생 하는 숨겨진 [요청 확인 토큰](https://docs.microsoft.com/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) 교차 사이트 요청 위조를 방지 하기 위해 (함께 사용할 경우의 `[ValidateAntiForgeryToken]` HTTP Post 작업 메서드에 특성)</span><span class="sxs-lookup"><span data-stu-id="3d50b-115">Generates a hidden [Request Verification Token](https://docs.microsoft.com/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) to prevent cross-site request forgery (when used with the `[ValidateAntiForgeryToken]` attribute in the HTTP Post action method)</span></span>
 
-* <span data-ttu-id="bd6a2-116">제공 된 `asp-route-<Parameter Name>` 특성, 여기서 `<Parameter Name>` 경로 값에 추가 됩니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-116">Provides the `asp-route-<Parameter Name>` attribute, where `<Parameter Name>` is added to the route values.</span></span> <span data-ttu-id="bd6a2-117">`routeValues` 매개 변수를 `Html.BeginForm` 및 `Html.BeginRouteForm` 유사한 기능을 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-117">The  `routeValues` parameters to `Html.BeginForm` and `Html.BeginRouteForm` provide similar functionality.</span></span>
+* <span data-ttu-id="3d50b-116">제공 된 `asp-route-<Parameter Name>` 특성, 여기서 `<Parameter Name>` 경로 값에 추가 됩니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-116">Provides the `asp-route-<Parameter Name>` attribute, where `<Parameter Name>` is added to the route values.</span></span> <span data-ttu-id="3d50b-117">`routeValues` 매개 변수를 `Html.BeginForm` 및 `Html.BeginRouteForm` 유사한 기능을 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-117">The  `routeValues` parameters to `Html.BeginForm` and `Html.BeginRouteForm` provide similar functionality.</span></span>
 
-* <span data-ttu-id="bd6a2-118">에 HTML 도우미 대신 `Html.BeginForm` 및`Html.BeginRouteForm`</span><span class="sxs-lookup"><span data-stu-id="bd6a2-118">Has an HTML Helper alternative `Html.BeginForm` and `Html.BeginRouteForm`</span></span>
+* <span data-ttu-id="3d50b-118">에 HTML 도우미 대신 `Html.BeginForm` 및`Html.BeginRouteForm`</span><span class="sxs-lookup"><span data-stu-id="3d50b-118">Has an HTML Helper alternative `Html.BeginForm` and `Html.BeginRouteForm`</span></span>
 
-<span data-ttu-id="bd6a2-119">예제:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-119">Sample:</span></span>
+<span data-ttu-id="3d50b-119">예제:</span><span class="sxs-lookup"><span data-stu-id="3d50b-119">Sample:</span></span>
 
-<span data-ttu-id="bd6a2-120">[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/RegisterFormOnly.cshtml)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-120">[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/RegisterFormOnly.cshtml)]</span></span>
+<span data-ttu-id="3d50b-120">[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/RegisterFormOnly.cshtml)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-120">[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/RegisterFormOnly.cshtml)]</span></span>
 
-<span data-ttu-id="bd6a2-121">위의 Form 태그 도우미에서는 다음 HTML을 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-121">The Form Tag Helper above generates the following HTML:</span></span>
+<span data-ttu-id="3d50b-121">위의 Form 태그 도우미에서는 다음 HTML을 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-121">The Form Tag Helper above generates the following HTML:</span></span>
 
 ```HTML
 <form method="post" action="/Demo/Register">
@@ -53,15 +53,15 @@ ms.lasthandoff: 08/11/2017
     </form>
    ```
 
-<span data-ttu-id="bd6a2-122">MVC 런타임에서 생성 된 `action` Form 태그 도우미 특성에서 특성 값 `asp-controller` 및 `asp-action`합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-122">The MVC runtime generates the `action` attribute value from the Form Tag Helper attributes `asp-controller` and `asp-action`.</span></span> <span data-ttu-id="bd6a2-123">Form 태그 도우미도 숨겨진 생성 [요청 확인 토큰](http://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) 교차 사이트 요청 위조를 방지 하기 위해 (함께 사용할 경우의 `[ValidateAntiForgeryToken]` HTTP Post 작업 메서드에 특성).</span><span class="sxs-lookup"><span data-stu-id="bd6a2-123">The Form Tag Helper also generates a hidden [Request Verification Token](http://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) to prevent cross-site request forgery (when used with the `[ValidateAntiForgeryToken]` attribute in the HTTP Post action method).</span></span> <span data-ttu-id="bd6a2-124">순수 HTML 폼 교차 사이트 요청 위조 로부터 보호 하는 것은 어려운, Form 태그 도우미를이 서비스를 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-124">Protecting a pure HTML Form from cross-site request forgery is difficult, the Form Tag Helper provides this service for you.</span></span>
+<span data-ttu-id="3d50b-122">MVC 런타임에서 생성 된 `action` Form 태그 도우미 특성에서 특성 값 `asp-controller` 및 `asp-action`합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-122">The MVC runtime generates the `action` attribute value from the Form Tag Helper attributes `asp-controller` and `asp-action`.</span></span> <span data-ttu-id="3d50b-123">Form 태그 도우미도 숨겨진 생성 [요청 확인 토큰](https://docs.microsoft.com/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) 교차 사이트 요청 위조를 방지 하기 위해 (함께 사용할 경우의 `[ValidateAntiForgeryToken]` HTTP Post 작업 메서드에 특성).</span><span class="sxs-lookup"><span data-stu-id="3d50b-123">The Form Tag Helper also generates a hidden [Request Verification Token](https://docs.microsoft.com/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) to prevent cross-site request forgery (when used with the `[ValidateAntiForgeryToken]` attribute in the HTTP Post action method).</span></span> <span data-ttu-id="3d50b-124">순수 HTML 폼 교차 사이트 요청 위조 로부터 보호 하는 것은 어려운, Form 태그 도우미를이 서비스를 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-124">Protecting a pure HTML Form from cross-site request forgery is difficult, the Form Tag Helper provides this service for you.</span></span>
 
-### <a name="using-a-named-route"></a><span data-ttu-id="bd6a2-125">명명된 된 경로 사용 하 여</span><span class="sxs-lookup"><span data-stu-id="bd6a2-125">Using a named route</span></span>
+### <a name="using-a-named-route"></a><span data-ttu-id="3d50b-125">명명된 된 경로 사용 하 여</span><span class="sxs-lookup"><span data-stu-id="3d50b-125">Using a named route</span></span>
 
-<span data-ttu-id="bd6a2-126">`asp-route` 태그 도우미 특성에 대 한 HTML 태그를 생성할 수도 `action` 특성입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-126">The `asp-route` Tag Helper attribute can also generate markup for the HTML `action` attribute.</span></span> <span data-ttu-id="bd6a2-127">사용 하 여 앱은 [경로](../../fundamentals/routing.md) 라는 `register` 등록 페이지에 다음 태그를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-127">An app with a [route](../../fundamentals/routing.md)  named `register` could use the following markup for the registration page:</span></span>
+<span data-ttu-id="3d50b-126">`asp-route` 태그 도우미 특성에 대 한 HTML 태그를 생성할 수도 `action` 특성입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-126">The `asp-route` Tag Helper attribute can also generate markup for the HTML `action` attribute.</span></span> <span data-ttu-id="3d50b-127">사용 하 여 앱은 [경로](../../fundamentals/routing.md) 라는 `register` 등록 페이지에 다음 태그를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-127">An app with a [route](../../fundamentals/routing.md)  named `register` could use the following markup for the registration page:</span></span>
 
-<span data-ttu-id="bd6a2-128">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterRoute.cshtml)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-128">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterRoute.cshtml)]</span></span>
+<span data-ttu-id="3d50b-128">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterRoute.cshtml)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-128">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterRoute.cshtml)]</span></span>
 
-<span data-ttu-id="bd6a2-129">보기 중 많은 *뷰/계정* 폴더 (새 웹 앱을 만들 때 생성 *개별 사용자 계정*) 포함 된 [asp-경로-returnurl](http://docs.asp.net/en/latest/mvc/views/working-with-forms.html#the-form-tag-helper) 특성:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-129">Many of the views in the *Views/Account* folder (generated when you create a new web app with *Individual User Accounts*) contain the [asp-route-returnurl](http://docs.asp.net/en/latest/mvc/views/working-with-forms.html#the-form-tag-helper) attribute:</span></span>
+<span data-ttu-id="3d50b-129">보기 중 많은 *뷰/계정* 폴더 (새 웹 앱을 만들 때 생성 *개별 사용자 계정*) 포함 된 [asp-경로-returnurl](https://docs.microsoft.com/aspnet/core/mvc/views/working-with-forms) 특성:</span><span class="sxs-lookup"><span data-stu-id="3d50b-129">Many of the views in the *Views/Account* folder (generated when you create a new web app with *Individual User Accounts*) contain the [asp-route-returnurl](https://docs.microsoft.com/aspnet/core/mvc/views/working-with-forms) attribute:</span></span>
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {"hl_lines": [2]}} -->
 
@@ -72,31 +72,31 @@ ms.lasthandoff: 08/11/2017
    ```
 
 >[!NOTE]
-><span data-ttu-id="bd6a2-130">기본 제공된 템플릿과 함께 `returnUrl` 만 자동으로 채워집니다 권한 있는 리소스에 액세스 하려고 하지만 되지 인증 하거나 때 권한을 부여 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-130">With the built in templates, `returnUrl` is only populated automatically when you try to access an authorized resource but are not authenticated or authorized.</span></span> <span data-ttu-id="bd6a2-131">무단된 액세스를 시도 하면 보안 미들웨어 리디렉션됩니다 사용 하 여 로그인 페이지에는 `returnUrl` 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-131">When you attempt an unauthorized access, the security middleware redirects you to the login page with the `returnUrl` set.</span></span>
+><span data-ttu-id="3d50b-130">기본 제공된 템플릿과 함께 `returnUrl` 만 자동으로 채워집니다 권한 있는 리소스에 액세스 하려고 하지만 되지 인증 하거나 때 권한을 부여 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-130">With the built in templates, `returnUrl` is only populated automatically when you try to access an authorized resource but are not authenticated or authorized.</span></span> <span data-ttu-id="3d50b-131">무단된 액세스를 시도 하면 보안 미들웨어 리디렉션됩니다 사용 하 여 로그인 페이지에는 `returnUrl` 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-131">When you attempt an unauthorized access, the security middleware redirects you to the login page with the `returnUrl` set.</span></span>
 
-## <a name="the-input-tag-helper"></a><span data-ttu-id="bd6a2-132">입력된 태그 도우미</span><span class="sxs-lookup"><span data-stu-id="bd6a2-132">The Input Tag Helper</span></span>
+## <a name="the-input-tag-helper"></a><span data-ttu-id="3d50b-132">입력된 태그 도우미</span><span class="sxs-lookup"><span data-stu-id="3d50b-132">The Input Tag Helper</span></span>
 
-<span data-ttu-id="bd6a2-133">입력 태그 도우미 바인딩하는 HTML [ \<입력 >](https://www.w3.org/wiki/HTML/Elements/input) 요소 razor 뷰의 모델 식입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-133">The Input Tag Helper binds an HTML [\<input>](https://www.w3.org/wiki/HTML/Elements/input) element to a model expression in your razor view.</span></span>
+<span data-ttu-id="3d50b-133">입력 태그 도우미 바인딩하는 HTML [ \<입력 >](https://www.w3.org/wiki/HTML/Elements/input) 요소 razor 뷰의 모델 식입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-133">The Input Tag Helper binds an HTML [\<input>](https://www.w3.org/wiki/HTML/Elements/input) element to a model expression in your razor view.</span></span>
 
-<span data-ttu-id="bd6a2-134">구문:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-134">Syntax:</span></span>
+<span data-ttu-id="3d50b-134">구문:</span><span class="sxs-lookup"><span data-stu-id="3d50b-134">Syntax:</span></span>
 
 ```HTML
 <input asp-for="<Expression Name>" />
    ```
 
-<span data-ttu-id="bd6a2-135">입력된 태그 도우미:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-135">The Input Tag Helper:</span></span>
+<span data-ttu-id="3d50b-135">입력된 태그 도우미:</span><span class="sxs-lookup"><span data-stu-id="3d50b-135">The Input Tag Helper:</span></span>
 
-* <span data-ttu-id="bd6a2-136">생성 된 `id` 및 `name` HTML 특성에 지정 된 식 이름에 대 한는 `asp-for` 특성입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-136">Generates the `id` and `name` HTML attributes for the expression name specified in the `asp-for` attribute.</span></span> <span data-ttu-id="bd6a2-137">`asp-for="Property1.Property2"`는 `m => m.Property1.Property2`와 같습니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-137">`asp-for="Property1.Property2"` is equivalent to `m => m.Property1.Property2`.</span></span> <span data-ttu-id="bd6a2-138">식의 이름에 사용 되는 것은 `asp-for` 특성 값입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-138">The name of the expression is what is used for the `asp-for` attribute value.</span></span> <span data-ttu-id="bd6a2-139">참조는 [식 이름은](#expression-names) 추가 정보에 대 한 섹션.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-139">See the [Expression names](#expression-names) section for additional information.</span></span>
+* <span data-ttu-id="3d50b-136">생성 된 `id` 및 `name` HTML 특성에 지정 된 식 이름에 대 한는 `asp-for` 특성입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-136">Generates the `id` and `name` HTML attributes for the expression name specified in the `asp-for` attribute.</span></span> <span data-ttu-id="3d50b-137">`asp-for="Property1.Property2"`는 `m => m.Property1.Property2`와 같습니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-137">`asp-for="Property1.Property2"` is equivalent to `m => m.Property1.Property2`.</span></span> <span data-ttu-id="3d50b-138">식의 이름에 사용 되는 것은 `asp-for` 특성 값입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-138">The name of the expression is what is used for the `asp-for` attribute value.</span></span> <span data-ttu-id="3d50b-139">참조는 [식 이름은](#expression-names) 추가 정보에 대 한 섹션.</span><span class="sxs-lookup"><span data-stu-id="3d50b-139">See the [Expression names](#expression-names) section for additional information.</span></span>
 
-* <span data-ttu-id="bd6a2-140">HTML 설정 `type` 특성 값에는 모델 유형에 따라 및 [데이터 주석을](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx) 모델 속성에 적용 된 특성</span><span class="sxs-lookup"><span data-stu-id="bd6a2-140">Sets the HTML `type` attribute value based on the model type and  [data annotation](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx) attributes applied to the model property</span></span>
+* <span data-ttu-id="3d50b-140">HTML 설정 `type` 특성 값에는 모델 유형에 따라 및 [데이터 주석을](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter) 모델 속성에 적용 된 특성</span><span class="sxs-lookup"><span data-stu-id="3d50b-140">Sets the HTML `type` attribute value based on the model type and  [data annotation](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter) attributes applied to the model property</span></span>
 
-* <span data-ttu-id="bd6a2-141">HTML을 덮어쓰지 것입니다 `type` 특성 값이 지정 된 경우</span><span class="sxs-lookup"><span data-stu-id="bd6a2-141">Will not overwrite the HTML `type` attribute value when one is specified</span></span>
+* <span data-ttu-id="3d50b-141">HTML을 덮어쓰지 것입니다 `type` 특성 값이 지정 된 경우</span><span class="sxs-lookup"><span data-stu-id="3d50b-141">Will not overwrite the HTML `type` attribute value when one is specified</span></span>
 
-* <span data-ttu-id="bd6a2-142">생성 [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) 에서 유효성 검사 특성 [데이터 주석을](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx) 모델 속성에 적용 되는 특성</span><span class="sxs-lookup"><span data-stu-id="bd6a2-142">Generates [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5)  validation attributes from [data annotation](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx) attributes applied to model properties</span></span>
+* <span data-ttu-id="3d50b-142">생성 [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) 에서 유효성 검사 특성 [데이터 주석을](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter) 모델 속성에 적용 되는 특성</span><span class="sxs-lookup"><span data-stu-id="3d50b-142">Generates [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5)  validation attributes from [data annotation](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter) attributes applied to model properties</span></span>
 
-* <span data-ttu-id="bd6a2-143">에 HTML 도우미 기능이와 겹칠 `Html.TextBoxFor` 및 `Html.EditorFor`합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-143">Has an HTML Helper feature overlap with `Html.TextBoxFor` and `Html.EditorFor`.</span></span> <span data-ttu-id="bd6a2-144">참조는 **입력 태그 도우미에 대 한 HTML 도우미 대안** 자세한 내용은 섹션.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-144">See the **HTML Helper alternatives to Input Tag Helper** section for details.</span></span>
+* <span data-ttu-id="3d50b-143">에 HTML 도우미 기능이와 겹칠 `Html.TextBoxFor` 및 `Html.EditorFor`합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-143">Has an HTML Helper feature overlap with `Html.TextBoxFor` and `Html.EditorFor`.</span></span> <span data-ttu-id="3d50b-144">참조는 **입력 태그 도우미에 대 한 HTML 도우미 대안** 자세한 내용은 섹션.</span><span class="sxs-lookup"><span data-stu-id="3d50b-144">See the **HTML Helper alternatives to Input Tag Helper** section for details.</span></span>
 
-* <span data-ttu-id="bd6a2-145">강력한 형식 지정을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-145">Provides strong typing.</span></span> <span data-ttu-id="bd6a2-146">속성 변경의 이름과 태그 도우미를 업데이트 하지에 오류를 다음과 같이 얻게 됩니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-146">If the name of the property changes and you don't update the Tag Helper you'll get an error similar to the following:</span></span>
+* <span data-ttu-id="3d50b-145">강력한 형식 지정을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-145">Provides strong typing.</span></span> <span data-ttu-id="3d50b-146">속성 변경의 이름과 태그 도우미를 업데이트 하지에 오류를 다음과 같이 얻게 됩니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-146">If the name of the property changes and you don't update the Tag Helper you'll get an error similar to the following:</span></span>
 
 ```HTML
 An error occurred during the compilation of a resource required to process
@@ -109,39 +109,39 @@ Type expected
  could be found (are you missing a using directive or an assembly reference?)
 ```
 
-<span data-ttu-id="bd6a2-147">`Input` 설정 하는 HTML 태그 도우미 `type` 특성의.NET 유형을 기반으로 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-147">The `Input` Tag Helper sets the HTML `type` attribute based on the .NET type.</span></span> <span data-ttu-id="bd6a2-148">다음 표에서 몇 가지 일반적인.NET 형식과 생성 되는 HTML 형식 (일부.NET 유형 설명 되어 있음)를 나열 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-148">The following table lists some common .NET types and generated HTML type (not every .NET type is listed).</span></span>
+<span data-ttu-id="3d50b-147">`Input` 설정 하는 HTML 태그 도우미 `type` 특성의.NET 유형을 기반으로 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-147">The `Input` Tag Helper sets the HTML `type` attribute based on the .NET type.</span></span> <span data-ttu-id="3d50b-148">다음 표에서 몇 가지 일반적인.NET 형식과 생성 되는 HTML 형식 (일부.NET 유형 설명 되어 있음)를 나열 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-148">The following table lists some common .NET types and generated HTML type (not every .NET type is listed).</span></span>
 
-|<span data-ttu-id="bd6a2-149">.NET 형식</span><span class="sxs-lookup"><span data-stu-id="bd6a2-149">.NET type</span></span>|<span data-ttu-id="bd6a2-150">입력된 형식</span><span class="sxs-lookup"><span data-stu-id="bd6a2-150">Input Type</span></span>|
+|<span data-ttu-id="3d50b-149">.NET 형식</span><span class="sxs-lookup"><span data-stu-id="3d50b-149">.NET type</span></span>|<span data-ttu-id="3d50b-150">입력된 형식</span><span class="sxs-lookup"><span data-stu-id="3d50b-150">Input Type</span></span>|
 |---|---|
-|<span data-ttu-id="bd6a2-151">Bool</span><span class="sxs-lookup"><span data-stu-id="bd6a2-151">Bool</span></span>|<span data-ttu-id="bd6a2-152">형식이 "checkbox" =</span><span class="sxs-lookup"><span data-stu-id="bd6a2-152">type=”checkbox”</span></span>|
-|<span data-ttu-id="bd6a2-153">문자열</span><span class="sxs-lookup"><span data-stu-id="bd6a2-153">String</span></span>|<span data-ttu-id="bd6a2-154">형식 = "text"</span><span class="sxs-lookup"><span data-stu-id="bd6a2-154">type=”text”</span></span>|
-|<span data-ttu-id="bd6a2-155">DateTime</span><span class="sxs-lookup"><span data-stu-id="bd6a2-155">DateTime</span></span>|<span data-ttu-id="bd6a2-156">형식 = "datetime"</span><span class="sxs-lookup"><span data-stu-id="bd6a2-156">type=”datetime”</span></span>|
-|<span data-ttu-id="bd6a2-157">Byte</span><span class="sxs-lookup"><span data-stu-id="bd6a2-157">Byte</span></span>|<span data-ttu-id="bd6a2-158">형식 = "number"</span><span class="sxs-lookup"><span data-stu-id="bd6a2-158">type=”number”</span></span>|
-|<span data-ttu-id="bd6a2-159">Int</span><span class="sxs-lookup"><span data-stu-id="bd6a2-159">Int</span></span>|<span data-ttu-id="bd6a2-160">형식 = "number"</span><span class="sxs-lookup"><span data-stu-id="bd6a2-160">type=”number”</span></span>|
-|<span data-ttu-id="bd6a2-161">Single, Double</span><span class="sxs-lookup"><span data-stu-id="bd6a2-161">Single, Double</span></span>|<span data-ttu-id="bd6a2-162">형식 = "number"</span><span class="sxs-lookup"><span data-stu-id="bd6a2-162">type=”number”</span></span>|
+|<span data-ttu-id="3d50b-151">Bool</span><span class="sxs-lookup"><span data-stu-id="3d50b-151">Bool</span></span>|<span data-ttu-id="3d50b-152">형식이 "checkbox" =</span><span class="sxs-lookup"><span data-stu-id="3d50b-152">type=”checkbox”</span></span>|
+|<span data-ttu-id="3d50b-153">문자열</span><span class="sxs-lookup"><span data-stu-id="3d50b-153">String</span></span>|<span data-ttu-id="3d50b-154">형식 = "text"</span><span class="sxs-lookup"><span data-stu-id="3d50b-154">type=”text”</span></span>|
+|<span data-ttu-id="3d50b-155">DateTime</span><span class="sxs-lookup"><span data-stu-id="3d50b-155">DateTime</span></span>|<span data-ttu-id="3d50b-156">형식 = "datetime"</span><span class="sxs-lookup"><span data-stu-id="3d50b-156">type=”datetime”</span></span>|
+|<span data-ttu-id="3d50b-157">Byte</span><span class="sxs-lookup"><span data-stu-id="3d50b-157">Byte</span></span>|<span data-ttu-id="3d50b-158">형식 = "number"</span><span class="sxs-lookup"><span data-stu-id="3d50b-158">type=”number”</span></span>|
+|<span data-ttu-id="3d50b-159">Int</span><span class="sxs-lookup"><span data-stu-id="3d50b-159">Int</span></span>|<span data-ttu-id="3d50b-160">형식 = "number"</span><span class="sxs-lookup"><span data-stu-id="3d50b-160">type=”number”</span></span>|
+|<span data-ttu-id="3d50b-161">Single, Double</span><span class="sxs-lookup"><span data-stu-id="3d50b-161">Single, Double</span></span>|<span data-ttu-id="3d50b-162">형식 = "number"</span><span class="sxs-lookup"><span data-stu-id="3d50b-162">type=”number”</span></span>|
 
 
-<span data-ttu-id="bd6a2-163">다음 표에서 몇 가지 일반적인 [데이터 주석](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx) 입력된 태그 도우미 (모든 유효성 검사 특성 설명 되어 있음)는 특정 입력된 형식에 매핑되는 특성:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-163">The following table shows some common [data annotations](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx) attributes that the input tag helper will map to specific input types (not every validation attribute is listed):</span></span>
+<span data-ttu-id="3d50b-163">다음 표에서 몇 가지 일반적인 [데이터 주석](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter) 입력된 태그 도우미 (모든 유효성 검사 특성 설명 되어 있음)는 특정 입력된 형식에 매핑되는 특성:</span><span class="sxs-lookup"><span data-stu-id="3d50b-163">The following table shows some common [data annotations](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter) attributes that the input tag helper will map to specific input types (not every validation attribute is listed):</span></span>
 
 
-|<span data-ttu-id="bd6a2-164">특성</span><span class="sxs-lookup"><span data-stu-id="bd6a2-164">Attribute</span></span>|<span data-ttu-id="bd6a2-165">입력된 형식</span><span class="sxs-lookup"><span data-stu-id="bd6a2-165">Input Type</span></span>|
+|<span data-ttu-id="3d50b-164">특성</span><span class="sxs-lookup"><span data-stu-id="3d50b-164">Attribute</span></span>|<span data-ttu-id="3d50b-165">입력된 형식</span><span class="sxs-lookup"><span data-stu-id="3d50b-165">Input Type</span></span>|
 |---|---|
-|<span data-ttu-id="bd6a2-166">[EmailAddress]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-166">[EmailAddress]</span></span>|<span data-ttu-id="bd6a2-167">형식 = "email"</span><span class="sxs-lookup"><span data-stu-id="bd6a2-167">type=”email”</span></span>|
-|<span data-ttu-id="bd6a2-168">[Url]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-168">[Url]</span></span>|<span data-ttu-id="bd6a2-169">형식 = "url"</span><span class="sxs-lookup"><span data-stu-id="bd6a2-169">type=”url”</span></span>|
-|<span data-ttu-id="bd6a2-170">[HiddenInput]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-170">[HiddenInput]</span></span>|<span data-ttu-id="bd6a2-171">형식 = "hidden"</span><span class="sxs-lookup"><span data-stu-id="bd6a2-171">type=”hidden”</span></span>|
-|<span data-ttu-id="bd6a2-172">[Phone]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-172">[Phone]</span></span>|<span data-ttu-id="bd6a2-173">형식 = "전화"</span><span class="sxs-lookup"><span data-stu-id="bd6a2-173">type=”tel”</span></span>|
-|<span data-ttu-id="bd6a2-174">[DataType(DataType.Password)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-174">[DataType(DataType.Password)]</span></span>| <span data-ttu-id="bd6a2-175">형식 = "password"</span><span class="sxs-lookup"><span data-stu-id="bd6a2-175">type=”password”</span></span>|
-|<span data-ttu-id="bd6a2-176">[DataType(DataType.Date)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-176">[DataType(DataType.Date)]</span></span>| <span data-ttu-id="bd6a2-177">형식 = "date"</span><span class="sxs-lookup"><span data-stu-id="bd6a2-177">type=”date”</span></span>|
-|<span data-ttu-id="bd6a2-178">[DataType(DataType.Time)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-178">[DataType(DataType.Time)]</span></span>| <span data-ttu-id="bd6a2-179">형식 = "시간"</span><span class="sxs-lookup"><span data-stu-id="bd6a2-179">type=”time”</span></span>|
+|<span data-ttu-id="3d50b-166">[EmailAddress]</span><span class="sxs-lookup"><span data-stu-id="3d50b-166">[EmailAddress]</span></span>|<span data-ttu-id="3d50b-167">형식 = "email"</span><span class="sxs-lookup"><span data-stu-id="3d50b-167">type=”email”</span></span>|
+|<span data-ttu-id="3d50b-168">[Url]</span><span class="sxs-lookup"><span data-stu-id="3d50b-168">[Url]</span></span>|<span data-ttu-id="3d50b-169">형식 = "url"</span><span class="sxs-lookup"><span data-stu-id="3d50b-169">type=”url”</span></span>|
+|<span data-ttu-id="3d50b-170">[HiddenInput]</span><span class="sxs-lookup"><span data-stu-id="3d50b-170">[HiddenInput]</span></span>|<span data-ttu-id="3d50b-171">형식 = "hidden"</span><span class="sxs-lookup"><span data-stu-id="3d50b-171">type=”hidden”</span></span>|
+|<span data-ttu-id="3d50b-172">[Phone]</span><span class="sxs-lookup"><span data-stu-id="3d50b-172">[Phone]</span></span>|<span data-ttu-id="3d50b-173">형식 = "전화"</span><span class="sxs-lookup"><span data-stu-id="3d50b-173">type=”tel”</span></span>|
+|<span data-ttu-id="3d50b-174">[DataType(DataType.Password)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-174">[DataType(DataType.Password)]</span></span>| <span data-ttu-id="3d50b-175">형식 = "password"</span><span class="sxs-lookup"><span data-stu-id="3d50b-175">type=”password”</span></span>|
+|<span data-ttu-id="3d50b-176">[DataType(DataType.Date)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-176">[DataType(DataType.Date)]</span></span>| <span data-ttu-id="3d50b-177">형식 = "date"</span><span class="sxs-lookup"><span data-stu-id="3d50b-177">type=”date”</span></span>|
+|<span data-ttu-id="3d50b-178">[DataType(DataType.Time)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-178">[DataType(DataType.Time)]</span></span>| <span data-ttu-id="3d50b-179">형식 = "시간"</span><span class="sxs-lookup"><span data-stu-id="3d50b-179">type=”time”</span></span>|
 
 
-<span data-ttu-id="bd6a2-180">예제:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-180">Sample:</span></span>
+<span data-ttu-id="3d50b-180">예제:</span><span class="sxs-lookup"><span data-stu-id="3d50b-180">Sample:</span></span>
 
-<span data-ttu-id="bd6a2-181">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-181">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]</span></span>
+<span data-ttu-id="3d50b-181">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-181">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]</span></span>
 
-<span data-ttu-id="bd6a2-182">[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/RegisterInput.cshtml)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-182">[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/RegisterInput.cshtml)]</span></span>
+<span data-ttu-id="3d50b-182">[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/RegisterInput.cshtml)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-182">[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/RegisterInput.cshtml)]</span></span>
 
-<span data-ttu-id="bd6a2-183">위의 코드에서는 다음 HTML을 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-183">The code above generates the following HTML:</span></span>
+<span data-ttu-id="3d50b-183">위의 코드에서는 다음 HTML을 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-183">The code above generates the following HTML:</span></span>
 
 ```HTML
   <form method="post" action="/Demo/RegisterInput">
@@ -159,24 +159,24 @@ Type expected
    </form>
    ```
 
-<span data-ttu-id="bd6a2-184">에 적용할 데이터 주석은 `Email` 및 `Password` 속성은 모델에서 메타 데이터를 생성 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-184">The data annotations applied to the `Email` and `Password` properties generate metadata on the model.</span></span> <span data-ttu-id="bd6a2-185">모델 메타 데이터를 사용 하 고 생성 하는 입력 태그 도우미 [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) `data-val-*` 특성 (참조 [모델 유효성 검사](../models/validation.md)).</span><span class="sxs-lookup"><span data-stu-id="bd6a2-185">The Input Tag Helper consumes the model metadata and produces [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) `data-val-*` attributes (see [Model Validation](../models/validation.md)).</span></span> <span data-ttu-id="bd6a2-186">이러한 특성에는 입력된 필드를 연결할 유효성 검사기에 설명 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-186">These attributes describe the validators to attach to the input fields.</span></span> <span data-ttu-id="bd6a2-187">이렇게 하면 비 가시적인 HTML5 및 [jQuery](https://jquery.com/) 유효성 검사 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-187">This provides unobtrusive HTML5 and [jQuery](https://jquery.com/) validation.</span></span> <span data-ttu-id="bd6a2-188">비 가시적인 특성 형식에는 `data-val-rule="Error Message"`, 여기서 규칙은 유효성 검사 규칙의 이름 (예: `data-val-required`, `data-val-email`, `data-val-maxlength`등.) 오류 메시지가 특성에서 제공 하는 경우에 대 한 값으로 표시 됩니다는 `data-val-rule` 특성입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-188">The unobtrusive attributes have the format `data-val-rule="Error Message"`, where rule is the name of the validation rule (such as `data-val-required`, `data-val-email`, `data-val-maxlength`, etc.) If an error message is provided in the attribute, it is displayed as the value for the `data-val-rule` attribute.</span></span> <span data-ttu-id="bd6a2-189">폼의 특성은 또한 `data-val-ruleName-argumentName="argumentValue"` 예를 들어,는 규칙에 대 한 추가 세부 정보를 제공 하는 `data-val-maxlength-max="1024"` 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-189">There are also attributes of the form `data-val-ruleName-argumentName="argumentValue"` that provide additional details about the rule, for example, `data-val-maxlength-max="1024"` .</span></span>
+<span data-ttu-id="3d50b-184">에 적용할 데이터 주석은 `Email` 및 `Password` 속성은 모델에서 메타 데이터를 생성 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-184">The data annotations applied to the `Email` and `Password` properties generate metadata on the model.</span></span> <span data-ttu-id="3d50b-185">모델 메타 데이터를 사용 하 고 생성 하는 입력 태그 도우미 [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) `data-val-*` 특성 (참조 [모델 유효성 검사](../models/validation.md)).</span><span class="sxs-lookup"><span data-stu-id="3d50b-185">The Input Tag Helper consumes the model metadata and produces [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) `data-val-*` attributes (see [Model Validation](../models/validation.md)).</span></span> <span data-ttu-id="3d50b-186">이러한 특성에는 입력된 필드를 연결할 유효성 검사기에 설명 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-186">These attributes describe the validators to attach to the input fields.</span></span> <span data-ttu-id="3d50b-187">이렇게 하면 비 가시적인 HTML5 및 [jQuery](https://jquery.com/) 유효성 검사 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-187">This provides unobtrusive HTML5 and [jQuery](https://jquery.com/) validation.</span></span> <span data-ttu-id="3d50b-188">비 가시적인 특성 형식에는 `data-val-rule="Error Message"`, 여기서 규칙은 유효성 검사 규칙의 이름 (예: `data-val-required`, `data-val-email`, `data-val-maxlength`등.) 오류 메시지가 특성에서 제공 하는 경우에 대 한 값으로 표시 됩니다는 `data-val-rule` 특성입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-188">The unobtrusive attributes have the format `data-val-rule="Error Message"`, where rule is the name of the validation rule (such as `data-val-required`, `data-val-email`, `data-val-maxlength`, etc.) If an error message is provided in the attribute, it is displayed as the value for the `data-val-rule` attribute.</span></span> <span data-ttu-id="3d50b-189">폼의 특성은 또한 `data-val-ruleName-argumentName="argumentValue"` 예를 들어,는 규칙에 대 한 추가 세부 정보를 제공 하는 `data-val-maxlength-max="1024"` 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-189">There are also attributes of the form `data-val-ruleName-argumentName="argumentValue"` that provide additional details about the rule, for example, `data-val-maxlength-max="1024"` .</span></span>
 
-### <a name="html-helper-alternatives-to-input-tag-helper"></a><span data-ttu-id="bd6a2-190">입력 태그 도우미에 대 한 HTML 도우미 대안</span><span class="sxs-lookup"><span data-stu-id="bd6a2-190">HTML Helper alternatives to Input Tag Helper</span></span>
+### <a name="html-helper-alternatives-to-input-tag-helper"></a><span data-ttu-id="3d50b-190">입력 태그 도우미에 대 한 HTML 도우미 대안</span><span class="sxs-lookup"><span data-stu-id="3d50b-190">HTML Helper alternatives to Input Tag Helper</span></span>
 
-<span data-ttu-id="bd6a2-191">`Html.TextBox``Html.TextBoxFor`, `Html.Editor` 및 `Html.EditorFor` 겹치는 입력 태그 도우미와 기능입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-191">`Html.TextBox`, `Html.TextBoxFor`, `Html.Editor` and `Html.EditorFor` have overlapping features with the Input Tag Helper.</span></span> <span data-ttu-id="bd6a2-192">입력 태그 도우미에서 자동으로 설정 된 `type` ; 특성 `Html.TextBox` 및 `Html.TextBoxFor` 되지 것입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-192">The Input Tag Helper will automatically set the `type` attribute; `Html.TextBox` and `Html.TextBoxFor` will not.</span></span> <span data-ttu-id="bd6a2-193">`Html.Editor`및 `Html.EditorFor` 컬렉션, 복잡 한 개체 및 템플릿; 처리 된 입력 태그 도우미는 그렇지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-193">`Html.Editor` and `Html.EditorFor` handle collections, complex objects and templates; the Input Tag Helper does not.</span></span> <span data-ttu-id="bd6a2-194">입력 태그 도우미 `Html.EditorFor` 및 `Html.TextBoxFor` 은 강력한 형식 (람다 식 사용). `Html.TextBox` 및 `Html.Editor` 없습니다 (식 이름 사용).</span><span class="sxs-lookup"><span data-stu-id="bd6a2-194">The Input Tag Helper, `Html.EditorFor`  and  `Html.TextBoxFor` are strongly typed (they use lambda expressions); `Html.TextBox` and `Html.Editor` are not (they use expression names).</span></span>
+<span data-ttu-id="3d50b-191">`Html.TextBox``Html.TextBoxFor`, `Html.Editor` 및 `Html.EditorFor` 겹치는 입력 태그 도우미와 기능입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-191">`Html.TextBox`, `Html.TextBoxFor`, `Html.Editor` and `Html.EditorFor` have overlapping features with the Input Tag Helper.</span></span> <span data-ttu-id="3d50b-192">입력 태그 도우미에서 자동으로 설정 된 `type` ; 특성 `Html.TextBox` 및 `Html.TextBoxFor` 되지 것입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-192">The Input Tag Helper will automatically set the `type` attribute; `Html.TextBox` and `Html.TextBoxFor` will not.</span></span> <span data-ttu-id="3d50b-193">`Html.Editor`및 `Html.EditorFor` 컬렉션, 복잡 한 개체 및 템플릿; 처리 된 입력 태그 도우미는 그렇지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-193">`Html.Editor` and `Html.EditorFor` handle collections, complex objects and templates; the Input Tag Helper does not.</span></span> <span data-ttu-id="3d50b-194">입력 태그 도우미 `Html.EditorFor` 및 `Html.TextBoxFor` 은 강력한 형식 (람다 식 사용). `Html.TextBox` 및 `Html.Editor` 없습니다 (식 이름 사용).</span><span class="sxs-lookup"><span data-stu-id="3d50b-194">The Input Tag Helper, `Html.EditorFor`  and  `Html.TextBoxFor` are strongly typed (they use lambda expressions); `Html.TextBox` and `Html.Editor` are not (they use expression names).</span></span>
 
-### <a name="htmlattributes"></a><span data-ttu-id="bd6a2-195">HtmlAttributes</span><span class="sxs-lookup"><span data-stu-id="bd6a2-195">HtmlAttributes</span></span>
+### <a name="htmlattributes"></a><span data-ttu-id="3d50b-195">HtmlAttributes</span><span class="sxs-lookup"><span data-stu-id="3d50b-195">HtmlAttributes</span></span>
 
-<span data-ttu-id="bd6a2-196">`@Html.Editor()`및 `@Html.EditorFor()` 특수 `ViewDataDictionary` 라는 항목 `htmlAttributes` 자신의 기본 서식 파일을 실행 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-196">`@Html.Editor()` and `@Html.EditorFor()` use a special `ViewDataDictionary` entry named `htmlAttributes` when executing their default templates.</span></span> <span data-ttu-id="bd6a2-197">이 문제는 사용 하 여 확장 필요에 따라 `additionalViewData` 매개 변수입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-197">This behavior is optionally augmented using `additionalViewData` parameters.</span></span> <span data-ttu-id="bd6a2-198">"HtmlAttributes" 키는 대 소문자를 구분 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-198">The key "htmlAttributes" is case-insensitive.</span></span> <span data-ttu-id="bd6a2-199">키 "htmlAttributes" 유사 하 게 처리 되는 `htmlAttributes` 같은 도우미 입력에 전달 된 개체 `@Html.TextBox()`합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-199">The key "htmlAttributes" is handled similarly to the `htmlAttributes` object passed to input helpers like `@Html.TextBox()`.</span></span>
+<span data-ttu-id="3d50b-196">`@Html.Editor()`및 `@Html.EditorFor()` 특수 `ViewDataDictionary` 라는 항목 `htmlAttributes` 자신의 기본 서식 파일을 실행 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-196">`@Html.Editor()` and `@Html.EditorFor()` use a special `ViewDataDictionary` entry named `htmlAttributes` when executing their default templates.</span></span> <span data-ttu-id="3d50b-197">이 문제는 사용 하 여 확장 필요에 따라 `additionalViewData` 매개 변수입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-197">This behavior is optionally augmented using `additionalViewData` parameters.</span></span> <span data-ttu-id="3d50b-198">"HtmlAttributes" 키는 대 소문자를 구분 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-198">The key "htmlAttributes" is case-insensitive.</span></span> <span data-ttu-id="3d50b-199">키 "htmlAttributes" 유사 하 게 처리 되는 `htmlAttributes` 같은 도우미 입력에 전달 된 개체 `@Html.TextBox()`합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-199">The key "htmlAttributes" is handled similarly to the `htmlAttributes` object passed to input helpers like `@Html.TextBox()`.</span></span>
 
 ```HTML
 @Html.EditorFor(model => model.YourProperty, 
   new { htmlAttributes = new { @class="myCssClass", style="Width:100px" } })
 ```
 
-### <a name="expression-names"></a><span data-ttu-id="bd6a2-200">식 이름</span><span class="sxs-lookup"><span data-stu-id="bd6a2-200">Expression names</span></span>
+### <a name="expression-names"></a><span data-ttu-id="3d50b-200">식 이름</span><span class="sxs-lookup"><span data-stu-id="3d50b-200">Expression names</span></span>
 
-<span data-ttu-id="bd6a2-201">`asp-for` 특성 값은 한 `ModelExpression` 및 람다 식의 오른쪽입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-201">The `asp-for` attribute value is a `ModelExpression` and the right hand side of a lambda expression.</span></span> <span data-ttu-id="bd6a2-202">따라서 `asp-for="Property1"` 됩니다 `m => m.Property1` 생성된 된 코드 의미 하기 때문에에서 접두사로 사용 하 여 필요가 없습니다 `Model`합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-202">Therefore, `asp-for="Property1"` becomes `m => m.Property1` in the generated code which is why you don't need to prefix with `Model`.</span></span> <span data-ttu-id="bd6a2-203">사용할 수는 "@" 문자는 인라인 식을 시작 하 고 앞으로 이동 하는 `m.`:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-203">You can use the "@" character to start an inline expression and move before the `m.`:</span></span>
+<span data-ttu-id="3d50b-201">`asp-for` 특성 값은 한 `ModelExpression` 및 람다 식의 오른쪽입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-201">The `asp-for` attribute value is a `ModelExpression` and the right hand side of a lambda expression.</span></span> <span data-ttu-id="3d50b-202">따라서 `asp-for="Property1"` 됩니다 `m => m.Property1` 생성된 된 코드 의미 하기 때문에에서 접두사로 사용 하 여 필요가 없습니다 `Model`합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-202">Therefore, `asp-for="Property1"` becomes `m => m.Property1` in the generated code which is why you don't need to prefix with `Model`.</span></span> <span data-ttu-id="3d50b-203">사용할 수는 "@" 문자는 인라인 식을 시작 하 고 앞으로 이동 하는 `m.`:</span><span class="sxs-lookup"><span data-stu-id="3d50b-203">You can use the "@" character to start an inline expression and move before the `m.`:</span></span>
 
 ```HTML
 @{
@@ -185,39 +185,39 @@ Type expected
    <input asp-for="@joe" />
 ```
 
-<span data-ttu-id="bd6a2-204">다음을 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-204">Generates the following:</span></span>
+<span data-ttu-id="3d50b-204">다음을 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-204">Generates the following:</span></span>
 
 ```HTML
 <input type="text" id="joe" name="joe" value="Joe" />
 ```
 
-<span data-ttu-id="bd6a2-205">컬렉션 속성을 가진 `asp-for="CollectionProperty[23].Member"` 동일한 이름으로 생성 `asp-for="CollectionProperty[i].Member"` 때 `i` 값 `23`합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-205">With collection properties, `asp-for="CollectionProperty[23].Member"` generates the same name as `asp-for="CollectionProperty[i].Member"` when `i` has the value `23`.</span></span>
+<span data-ttu-id="3d50b-205">컬렉션 속성을 가진 `asp-for="CollectionProperty[23].Member"` 동일한 이름으로 생성 `asp-for="CollectionProperty[i].Member"` 때 `i` 값 `23`합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-205">With collection properties, `asp-for="CollectionProperty[23].Member"` generates the same name as `asp-for="CollectionProperty[i].Member"` when `i` has the value `23`.</span></span>
 
-### <a name="navigating-child-properties"></a><span data-ttu-id="bd6a2-206">자식 속성을 탐색</span><span class="sxs-lookup"><span data-stu-id="bd6a2-206">Navigating child properties</span></span>
+### <a name="navigating-child-properties"></a><span data-ttu-id="3d50b-206">자식 속성을 탐색</span><span class="sxs-lookup"><span data-stu-id="3d50b-206">Navigating child properties</span></span>
 
-<span data-ttu-id="bd6a2-207">뷰 모델의 속성 경로 사용 하 여 자식 속성을 탐색할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-207">You can also navigate to child properties using the property path of the view model.</span></span> <span data-ttu-id="bd6a2-208">자식을 포함 하는 보다 복잡 한 모델 클래스를 고려 `Address` 속성입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-208">Consider a more complex model class that contains a child `Address` property.</span></span>
+<span data-ttu-id="3d50b-207">뷰 모델의 속성 경로 사용 하 여 자식 속성을 탐색할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-207">You can also navigate to child properties using the property path of the view model.</span></span> <span data-ttu-id="3d50b-208">자식을 포함 하는 보다 복잡 한 모델 클래스를 고려 `Address` 속성입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-208">Consider a more complex model class that contains a child `Address` property.</span></span>
 
-<span data-ttu-id="bd6a2-209">[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/AddressViewModel.cs?highlight=1,2,3,4&range=5-8)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-209">[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/AddressViewModel.cs?highlight=1,2,3,4&range=5-8)]</span></span>
+<span data-ttu-id="3d50b-209">[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/AddressViewModel.cs?highlight=1,2,3,4&range=5-8)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-209">[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/AddressViewModel.cs?highlight=1,2,3,4&range=5-8)]</span></span>
 
-<span data-ttu-id="bd6a2-210">[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/RegisterAddressViewModel.cs?highlight=8&range=5-13)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-210">[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/RegisterAddressViewModel.cs?highlight=8&range=5-13)]</span></span>
+<span data-ttu-id="3d50b-210">[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/RegisterAddressViewModel.cs?highlight=8&range=5-13)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-210">[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/RegisterAddressViewModel.cs?highlight=8&range=5-13)]</span></span>
 
-<span data-ttu-id="bd6a2-211">보기에서에 바인딩한 `Address.AddressLine1`:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-211">In the view, we bind to `Address.AddressLine1`:</span></span>
+<span data-ttu-id="3d50b-211">보기에서에 바인딩한 `Address.AddressLine1`:</span><span class="sxs-lookup"><span data-stu-id="3d50b-211">In the view, we bind to `Address.AddressLine1`:</span></span>
 
-<span data-ttu-id="bd6a2-212">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterAddress.cshtml?highlight=6)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-212">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterAddress.cshtml?highlight=6)]</span></span>
+<span data-ttu-id="3d50b-212">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterAddress.cshtml?highlight=6)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-212">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterAddress.cshtml?highlight=6)]</span></span>
 
-<span data-ttu-id="bd6a2-213">다음 HTML이 생성 `Address.AddressLine1`:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-213">The following HTML is generated for `Address.AddressLine1`:</span></span>
+<span data-ttu-id="3d50b-213">다음 HTML이 생성 `Address.AddressLine1`:</span><span class="sxs-lookup"><span data-stu-id="3d50b-213">The following HTML is generated for `Address.AddressLine1`:</span></span>
 
 ```HTML
 <input type="text" id="Address_AddressLine1" name="Address.AddressLine1" value="" />
    ```
 
-### <a name="expression-names-and-collections"></a><span data-ttu-id="bd6a2-214">식 이름 및 컬렉션</span><span class="sxs-lookup"><span data-stu-id="bd6a2-214">Expression names and Collections</span></span>
+### <a name="expression-names-and-collections"></a><span data-ttu-id="3d50b-214">식 이름 및 컬렉션</span><span class="sxs-lookup"><span data-stu-id="3d50b-214">Expression names and Collections</span></span>
 
-<span data-ttu-id="bd6a2-215">샘플의 배열을 포함 하는 모델 `Colors`:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-215">Sample, a model containing an array of `Colors`:</span></span>
+<span data-ttu-id="3d50b-215">샘플의 배열을 포함 하는 모델 `Colors`:</span><span class="sxs-lookup"><span data-stu-id="3d50b-215">Sample, a model containing an array of `Colors`:</span></span>
 
-<span data-ttu-id="bd6a2-216">[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/Person.cs?highlight=3&range=5-10)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-216">[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/Person.cs?highlight=3&range=5-10)]</span></span>
+<span data-ttu-id="3d50b-216">[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/Person.cs?highlight=3&range=5-10)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-216">[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/Person.cs?highlight=3&range=5-10)]</span></span>
 
-<span data-ttu-id="bd6a2-217">작업 방법:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-217">The action method:</span></span>
+<span data-ttu-id="3d50b-217">작업 방법:</span><span class="sxs-lookup"><span data-stu-id="3d50b-217">The action method:</span></span>
 
 ```csharp
 public IActionResult Edit(int id, int colorIndex)
@@ -227,52 +227,52 @@ public IActionResult Edit(int id, int colorIndex)
    }
    ```
 
-<span data-ttu-id="bd6a2-218">다음 Razor 특정 액세스 하는 방법을 보여 줍니다. `Color` 요소:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-218">The following Razor shows how you access a specific `Color` element:</span></span>
+<span data-ttu-id="3d50b-218">다음 Razor 특정 액세스 하는 방법을 보여 줍니다. `Color` 요소:</span><span class="sxs-lookup"><span data-stu-id="3d50b-218">The following Razor shows how you access a specific `Color` element:</span></span>
 
-<span data-ttu-id="bd6a2-219">[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/EditColor.cshtml)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-219">[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/EditColor.cshtml)]</span></span>
+<span data-ttu-id="3d50b-219">[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/EditColor.cshtml)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-219">[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/EditColor.cshtml)]</span></span>
 
-<span data-ttu-id="bd6a2-220">*Views/Shared/EditorTemplates/String.cshtml* 템플릿:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-220">The *Views/Shared/EditorTemplates/String.cshtml* template:</span></span>
+<span data-ttu-id="3d50b-220">*Views/Shared/EditorTemplates/String.cshtml* 템플릿:</span><span class="sxs-lookup"><span data-stu-id="3d50b-220">The *Views/Shared/EditorTemplates/String.cshtml* template:</span></span>
 
-<span data-ttu-id="bd6a2-221">[!code-HTML[Main](working-with-forms/sample/final/Views/Shared/EditorTemplates/String.cshtml)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-221">[!code-HTML[Main](working-with-forms/sample/final/Views/Shared/EditorTemplates/String.cshtml)]</span></span>
+<span data-ttu-id="3d50b-221">[!code-HTML[Main](working-with-forms/sample/final/Views/Shared/EditorTemplates/String.cshtml)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-221">[!code-HTML[Main](working-with-forms/sample/final/Views/Shared/EditorTemplates/String.cshtml)]</span></span>
 
-<span data-ttu-id="bd6a2-222">사용 하 여 샘플 `List<T>`:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-222">Sample using `List<T>`:</span></span>
+<span data-ttu-id="3d50b-222">사용 하 여 샘플 `List<T>`:</span><span class="sxs-lookup"><span data-stu-id="3d50b-222">Sample using `List<T>`:</span></span>
 
-<span data-ttu-id="bd6a2-223">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/ToDoItem.cs?range=3-8)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-223">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/ToDoItem.cs?range=3-8)]</span></span>
+<span data-ttu-id="3d50b-223">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/ToDoItem.cs?range=3-8)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-223">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/ToDoItem.cs?range=3-8)]</span></span>
 
-<span data-ttu-id="bd6a2-224">다음 Razor 컬렉션을 반복 하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-224">The following Razor shows how to iterate over a collection:</span></span>
+<span data-ttu-id="3d50b-224">다음 Razor 컬렉션을 반복 하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-224">The following Razor shows how to iterate over a collection:</span></span>
 
-<span data-ttu-id="bd6a2-225">[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/Edit.cshtml)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-225">[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/Edit.cshtml)]</span></span>
+<span data-ttu-id="3d50b-225">[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/Edit.cshtml)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-225">[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/Edit.cshtml)]</span></span>
 
-<span data-ttu-id="bd6a2-226">*Views/Shared/EditorTemplates/ToDoItem.cshtml* 템플릿:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-226">The *Views/Shared/EditorTemplates/ToDoItem.cshtml* template:</span></span>
+<span data-ttu-id="3d50b-226">*Views/Shared/EditorTemplates/ToDoItem.cshtml* 템플릿:</span><span class="sxs-lookup"><span data-stu-id="3d50b-226">The *Views/Shared/EditorTemplates/ToDoItem.cshtml* template:</span></span>
 
-<span data-ttu-id="bd6a2-227">[!code-HTML[Main](working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-227">[!code-HTML[Main](working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml)]</span></span>
+<span data-ttu-id="3d50b-227">[!code-HTML[Main](working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-227">[!code-HTML[Main](working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml)]</span></span>
 
 
 >[!NOTE]
-><span data-ttu-id="bd6a2-228">항상 사용 `for` (및 *하지* `foreach`) 목록에 대 한 반복 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-228">Always use `for` (and *not* `foreach`) to iterate over a list.</span></span> <span data-ttu-id="bd6a2-229">평가 인덱서는 LINQ의 식은 비용이 많이 들 수를 최소화 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-229">Evaluating an indexer in a LINQ expression can be expensive and should be minimized.</span></span>
+><span data-ttu-id="3d50b-228">항상 사용 `for` (및 *하지* `foreach`) 목록에 대 한 반복 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-228">Always use `for` (and *not* `foreach`) to iterate over a list.</span></span> <span data-ttu-id="3d50b-229">평가 인덱서는 LINQ의 식은 비용이 많이 들 수를 최소화 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-229">Evaluating an indexer in a LINQ expression can be expensive and should be minimized.</span></span>
 
 &nbsp;
 
 >[!NOTE]
-><span data-ttu-id="bd6a2-230">위의 주석 처리 된 예제 코드는 람다 식을 바꿀 방법을 보여 줍니다.는 `@` 연산자에 액세스할 각 `ToDoItem` 목록에 있습니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-230">The commented sample code above shows how you would replace the lambda expression with the `@` operator to access each `ToDoItem` in the list.</span></span>
+><span data-ttu-id="3d50b-230">위의 주석 처리 된 예제 코드는 람다 식을 바꿀 방법을 보여 줍니다.는 `@` 연산자에 액세스할 각 `ToDoItem` 목록에 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-230">The commented sample code above shows how you would replace the lambda expression with the `@` operator to access each `ToDoItem` in the list.</span></span>
 
-## <a name="the-textarea-tag-helper"></a><span data-ttu-id="bd6a2-231">Textarea 태그 도우미</span><span class="sxs-lookup"><span data-stu-id="bd6a2-231">The Textarea Tag Helper</span></span>
+## <a name="the-textarea-tag-helper"></a><span data-ttu-id="3d50b-231">Textarea 태그 도우미</span><span class="sxs-lookup"><span data-stu-id="3d50b-231">The Textarea Tag Helper</span></span>
 
-<span data-ttu-id="bd6a2-232">`Textarea Tag Helper` 태그 도우미 입력 태그 도우미를 것과 비슷합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-232">The `Textarea Tag Helper` tag helper is  similar to the Input Tag Helper.</span></span>
+<span data-ttu-id="3d50b-232">`Textarea Tag Helper` 태그 도우미 입력 태그 도우미를 것과 비슷합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-232">The `Textarea Tag Helper` tag helper is  similar to the Input Tag Helper.</span></span>
 
-* <span data-ttu-id="bd6a2-233">생성 된 `id` 및 `name` 특성 및에 대 한 모델에서 데이터 유효성 검사 특성은 [ \<textarea >](http://www.w3.org/wiki/HTML/Elements/textarea) 요소입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-233">Generates the `id` and `name` attributes, and the data validation attributes from the model for a [\<textarea>](http://www.w3.org/wiki/HTML/Elements/textarea) element.</span></span>
+* <span data-ttu-id="3d50b-233">생성 된 `id` 및 `name` 특성 및에 대 한 모델에서 데이터 유효성 검사 특성은 [ \<textarea >](https://www.w3.org/wiki/HTML/Elements/textarea) 요소입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-233">Generates the `id` and `name` attributes, and the data validation attributes from the model for a [\<textarea>](https://www.w3.org/wiki/HTML/Elements/textarea) element.</span></span>
 
-* <span data-ttu-id="bd6a2-234">강력한 형식 지정을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-234">Provides strong typing.</span></span>
+* <span data-ttu-id="3d50b-234">강력한 형식 지정을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-234">Provides strong typing.</span></span>
 
-* <span data-ttu-id="bd6a2-235">HTML 도우미 대체:`Html.TextAreaFor`</span><span class="sxs-lookup"><span data-stu-id="bd6a2-235">HTML Helper alternative: `Html.TextAreaFor`</span></span>
+* <span data-ttu-id="3d50b-235">HTML 도우미 대체:`Html.TextAreaFor`</span><span class="sxs-lookup"><span data-stu-id="3d50b-235">HTML Helper alternative: `Html.TextAreaFor`</span></span>
 
-<span data-ttu-id="bd6a2-236">예제:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-236">Sample:</span></span>
+<span data-ttu-id="3d50b-236">예제:</span><span class="sxs-lookup"><span data-stu-id="3d50b-236">Sample:</span></span>
 
-<span data-ttu-id="bd6a2-237">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/DescriptionViewModel.cs)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-237">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/DescriptionViewModel.cs)]</span></span>
+<span data-ttu-id="3d50b-237">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/DescriptionViewModel.cs)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-237">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/DescriptionViewModel.cs)]</span></span>
 
-<span data-ttu-id="bd6a2-238">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterTextArea.cshtml?highlight=4)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-238">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterTextArea.cshtml?highlight=4)]</span></span>
+<span data-ttu-id="3d50b-238">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterTextArea.cshtml?highlight=4)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-238">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterTextArea.cshtml?highlight=4)]</span></span>
 
-<span data-ttu-id="bd6a2-239">다음 HTML 생성 됩니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-239">The following HTML is generated:</span></span>
+<span data-ttu-id="3d50b-239">다음 HTML 생성 됩니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-239">The following HTML is generated:</span></span>
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [2, 3, 4, 5, 6, 7, 8]}} -->
 
@@ -290,53 +290,53 @@ public IActionResult Edit(int id, int colorIndex)
 </form>
 ```
 
-## <a name="the-label-tag-helper"></a><span data-ttu-id="bd6a2-240">레이블 태그 도우미</span><span class="sxs-lookup"><span data-stu-id="bd6a2-240">The Label Tag Helper</span></span>
+## <a name="the-label-tag-helper"></a><span data-ttu-id="3d50b-240">레이블 태그 도우미</span><span class="sxs-lookup"><span data-stu-id="3d50b-240">The Label Tag Helper</span></span>
 
-* <span data-ttu-id="bd6a2-241">레이블 캡션 생성 및 `for` 특성에 [ <label> ](https://www.w3.org/wiki/HTML/Elements/label) 식 이름에 대 한 요소</span><span class="sxs-lookup"><span data-stu-id="bd6a2-241">Generates the label caption and `for` attribute on a [<label>](https://www.w3.org/wiki/HTML/Elements/label) element for an expression name</span></span>
+* <span data-ttu-id="3d50b-241">레이블 캡션 생성 및 `for` 특성에 [ <label> ](https://www.w3.org/wiki/HTML/Elements/label) 식 이름에 대 한 요소</span><span class="sxs-lookup"><span data-stu-id="3d50b-241">Generates the label caption and `for` attribute on a [<label>](https://www.w3.org/wiki/HTML/Elements/label) element for an expression name</span></span>
 
-* <span data-ttu-id="bd6a2-242">HTML 도우미 대체: `Html.LabelFor`합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-242">HTML Helper alternative: `Html.LabelFor`.</span></span>
+* <span data-ttu-id="3d50b-242">HTML 도우미 대체: `Html.LabelFor`합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-242">HTML Helper alternative: `Html.LabelFor`.</span></span>
 
-<span data-ttu-id="bd6a2-243">`Label Tag Helper` 순수 HTML label 요소를 통해 다음과 같은 이점을 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-243">The `Label Tag Helper`  provides the following benefits over a pure HTML label element:</span></span>
+<span data-ttu-id="3d50b-243">`Label Tag Helper` 순수 HTML label 요소를 통해 다음과 같은 이점을 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-243">The `Label Tag Helper`  provides the following benefits over a pure HTML label element:</span></span>
 
-* <span data-ttu-id="bd6a2-244">설명 레이블을 값을 자동으로 가져오기는 `Display` 특성입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-244">You automatically get the descriptive label value from the `Display` attribute.</span></span> <span data-ttu-id="bd6a2-245">의도 한 표시 이름을 조합해 서 고 시간에 따라 변경 될 수 있습니다 `Display` 특성 및 레이블 태그 도우미 적용 됩니다는 `Display` 모든 곳에서 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-245">The intended display name might change over time, and the combination of `Display` attribute and Label Tag Helper will apply the `Display` everywhere it's used.</span></span>
+* <span data-ttu-id="3d50b-244">설명 레이블을 값을 자동으로 가져오기는 `Display` 특성입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-244">You automatically get the descriptive label value from the `Display` attribute.</span></span> <span data-ttu-id="3d50b-245">의도 한 표시 이름을 조합해 서 고 시간에 따라 변경 될 수 있습니다 `Display` 특성 및 레이블 태그 도우미 적용 됩니다는 `Display` 모든 곳에서 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-245">The intended display name might change over time, and the combination of `Display` attribute and Label Tag Helper will apply the `Display` everywhere it's used.</span></span>
 
-* <span data-ttu-id="bd6a2-246">소스 코드에서 덜 태그</span><span class="sxs-lookup"><span data-stu-id="bd6a2-246">Less markup in source code</span></span>
+* <span data-ttu-id="3d50b-246">소스 코드에서 덜 태그</span><span class="sxs-lookup"><span data-stu-id="3d50b-246">Less markup in source code</span></span>
 
-* <span data-ttu-id="bd6a2-247">강력한 모델 속성을 입력 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-247">Strong typing with the model property.</span></span>
+* <span data-ttu-id="3d50b-247">강력한 모델 속성을 입력 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-247">Strong typing with the model property.</span></span>
 
-<span data-ttu-id="bd6a2-248">예제:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-248">Sample:</span></span>
+<span data-ttu-id="3d50b-248">예제:</span><span class="sxs-lookup"><span data-stu-id="3d50b-248">Sample:</span></span>
 
-<span data-ttu-id="bd6a2-249">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/SimpleViewModel.cs)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-249">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/SimpleViewModel.cs)]</span></span>
+<span data-ttu-id="3d50b-249">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/SimpleViewModel.cs)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-249">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/SimpleViewModel.cs)]</span></span>
 
-<span data-ttu-id="bd6a2-250">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterLabel.cshtml?highlight=4)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-250">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterLabel.cshtml?highlight=4)]</span></span>
+<span data-ttu-id="3d50b-250">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterLabel.cshtml?highlight=4)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-250">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterLabel.cshtml?highlight=4)]</span></span>
 
-<span data-ttu-id="bd6a2-251">다음 HTML에 대해 생성 되는 `<label>` 요소:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-251">The following HTML is generated for the `<label>` element:</span></span>
+<span data-ttu-id="3d50b-251">다음 HTML에 대해 생성 되는 `<label>` 요소:</span><span class="sxs-lookup"><span data-stu-id="3d50b-251">The following HTML is generated for the `<label>` element:</span></span>
 
 ```HTML
 <label for="Email">Email Address</label>
    ```
 
-<span data-ttu-id="bd6a2-252">생성 된 레이블 태그 도우미의 `for` 와 연결 된 id는 "Email"의 특성 값의 `<input>` 요소입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-252">The Label Tag Helper generated the `for` attribute value of "Email", which is the ID associated with the `<input>` element.</span></span> <span data-ttu-id="bd6a2-253">태그 도우미 생성 일관 된 `id` 및 `for` 요소 제대로 연결 될 수 있도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-253">The Tag Helpers generate consistent `id` and `for` elements so they can be correctly associated.</span></span> <span data-ttu-id="bd6a2-254">이 샘플의 캡션을에서 제공 되는 `Display` 특성입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-254">The caption in this sample comes from the `Display` attribute.</span></span> <span data-ttu-id="bd6a2-255">모델에 포함 하지 않은 경우는 `Display` 특성 캡션 식의 속성 이름 것입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-255">If the model didn't contain a `Display` attribute, the caption would be the property name of the expression.</span></span>
+<span data-ttu-id="3d50b-252">생성 된 레이블 태그 도우미의 `for` 와 연결 된 id는 "Email"의 특성 값의 `<input>` 요소입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-252">The Label Tag Helper generated the `for` attribute value of "Email", which is the ID associated with the `<input>` element.</span></span> <span data-ttu-id="3d50b-253">태그 도우미 생성 일관 된 `id` 및 `for` 요소 제대로 연결 될 수 있도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-253">The Tag Helpers generate consistent `id` and `for` elements so they can be correctly associated.</span></span> <span data-ttu-id="3d50b-254">이 샘플의 캡션을에서 제공 되는 `Display` 특성입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-254">The caption in this sample comes from the `Display` attribute.</span></span> <span data-ttu-id="3d50b-255">모델에 포함 하지 않은 경우는 `Display` 특성 캡션 식의 속성 이름 것입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-255">If the model didn't contain a `Display` attribute, the caption would be the property name of the expression.</span></span>
 
-## <a name="the-validation-tag-helpers"></a><span data-ttu-id="bd6a2-256">유효성 검사 태그 도우미</span><span class="sxs-lookup"><span data-stu-id="bd6a2-256">The Validation Tag Helpers</span></span>
+## <a name="the-validation-tag-helpers"></a><span data-ttu-id="3d50b-256">유효성 검사 태그 도우미</span><span class="sxs-lookup"><span data-stu-id="3d50b-256">The Validation Tag Helpers</span></span>
 
-<span data-ttu-id="bd6a2-257">유효성 검사 태그 도우미 두 가지가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-257">There are two Validation Tag Helpers.</span></span> <span data-ttu-id="bd6a2-258">`Validation Message Tag Helper` (표시할 단일 속성에 대 한 유효성 검사 메시지를 모델에), 및 `Validation Summary Tag Helper` (유효성 검사 오류의 요약 표시 입니다).</span><span class="sxs-lookup"><span data-stu-id="bd6a2-258">The `Validation Message Tag Helper` (which displays a validation message for a single property on your model), and the `Validation Summary Tag Helper` (which displays a summary of validation errors).</span></span> <span data-ttu-id="bd6a2-259">`Input Tag Helper` HTML5 모델 클래스에 주석 특성 데이터에 따라 요소 입력에 클라이언트 쪽 유효성 검사 특성을 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-259">The `Input Tag Helper` adds HTML5 client side validation attributes to input elements based on data annotation attributes on your model classes.</span></span> <span data-ttu-id="bd6a2-260">서버에서 유효성 검사도 수행 됩니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-260">Validation is also performed on the server.</span></span> <span data-ttu-id="bd6a2-261">유효성 검사 태그 도우미 유효성 검사 오류가 발생 하는 경우 이러한 오류 메시지를 표시 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-261">The Validation Tag Helper displays these error messages when a validation error occurs.</span></span>
+<span data-ttu-id="3d50b-257">유효성 검사 태그 도우미 두 가지가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-257">There are two Validation Tag Helpers.</span></span> <span data-ttu-id="3d50b-258">`Validation Message Tag Helper` (표시할 단일 속성에 대 한 유효성 검사 메시지를 모델에), 및 `Validation Summary Tag Helper` (유효성 검사 오류의 요약 표시 입니다).</span><span class="sxs-lookup"><span data-stu-id="3d50b-258">The `Validation Message Tag Helper` (which displays a validation message for a single property on your model), and the `Validation Summary Tag Helper` (which displays a summary of validation errors).</span></span> <span data-ttu-id="3d50b-259">`Input Tag Helper` HTML5 모델 클래스에 주석 특성 데이터에 따라 요소 입력에 클라이언트 쪽 유효성 검사 특성을 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-259">The `Input Tag Helper` adds HTML5 client side validation attributes to input elements based on data annotation attributes on your model classes.</span></span> <span data-ttu-id="3d50b-260">서버에서 유효성 검사도 수행 됩니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-260">Validation is also performed on the server.</span></span> <span data-ttu-id="3d50b-261">유효성 검사 태그 도우미 유효성 검사 오류가 발생 하는 경우 이러한 오류 메시지를 표시 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-261">The Validation Tag Helper displays these error messages when a validation error occurs.</span></span>
 
-### <a name="the-validation-message-tag-helper"></a><span data-ttu-id="bd6a2-262">유효성 검사 메시지 태그 도우미</span><span class="sxs-lookup"><span data-stu-id="bd6a2-262">The Validation Message Tag Helper</span></span>
+### <a name="the-validation-message-tag-helper"></a><span data-ttu-id="3d50b-262">유효성 검사 메시지 태그 도우미</span><span class="sxs-lookup"><span data-stu-id="3d50b-262">The Validation Message Tag Helper</span></span>
 
-* <span data-ttu-id="bd6a2-263">추가 [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) `data-valmsg-for="property"` 특성을 [에 걸쳐](https://developer.mozilla.org/docs/Web/HTML/Element/span) 지정된 모델 속성의 입력된 필드에 유효성 검사 오류 메시지를 연결 하는 요소입니다.  </span><span class="sxs-lookup"><span data-stu-id="bd6a2-263">Adds the [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5)  `data-valmsg-for="property"` attribute to the [span](https://developer.mozilla.org/docs/Web/HTML/Element/span) element, which attaches the validation error messages on the input field of the specified model property.</span></span> <span data-ttu-id="bd6a2-264">클라이언트 쪽 유효성 검사 오류가 발생할 때 [jQuery](https://jquery.com/) 의 오류 메시지를 표시는 `<span>` 요소입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-264">When a client side validation error occurs, [jQuery](https://jquery.com/) displays the error message in the `<span>` element.</span></span>
+* <span data-ttu-id="3d50b-263">추가 [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) `data-valmsg-for="property"` 특성을 [에 걸쳐](https://developer.mozilla.org/docs/Web/HTML/Element/span) 지정된 모델 속성의 입력된 필드에 유효성 검사 오류 메시지를 연결 하는 요소입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-263">Adds the [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5)  `data-valmsg-for="property"` attribute to the [span](https://developer.mozilla.org/docs/Web/HTML/Element/span) element, which attaches the validation error messages on the input field of the specified model property.</span></span> <span data-ttu-id="3d50b-264">클라이언트 쪽 유효성 검사 오류가 발생할 때 [jQuery](https://jquery.com/) 의 오류 메시지를 표시는 `<span>` 요소입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-264">When a client side validation error occurs, [jQuery](https://jquery.com/) displays the error message in the `<span>` element.</span></span>
 
-* <span data-ttu-id="bd6a2-265">유효성 검사는 또한 서버에서 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-265">Validation also takes place on the server.</span></span> <span data-ttu-id="bd6a2-266">클라이언트는 사용 하지 않도록 설정 하는 JavaScript 있을 수 있습니다 및 서버 쪽에서 일부 유효성 검사에만 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-266">Clients may have JavaScript disabled and some validation can only be done on the server side.</span></span>
+* <span data-ttu-id="3d50b-265">유효성 검사는 또한 서버에서 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-265">Validation also takes place on the server.</span></span> <span data-ttu-id="3d50b-266">클라이언트는 사용 하지 않도록 설정 하는 JavaScript 있을 수 있습니다 및 서버 쪽에서 일부 유효성 검사에만 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-266">Clients may have JavaScript disabled and some validation can only be done on the server side.</span></span>
 
-* <span data-ttu-id="bd6a2-267">HTML 도우미 대체:`Html.ValidationMessageFor`</span><span class="sxs-lookup"><span data-stu-id="bd6a2-267">HTML Helper alternative: `Html.ValidationMessageFor`</span></span>
+* <span data-ttu-id="3d50b-267">HTML 도우미 대체:`Html.ValidationMessageFor`</span><span class="sxs-lookup"><span data-stu-id="3d50b-267">HTML Helper alternative: `Html.ValidationMessageFor`</span></span>
 
-<span data-ttu-id="bd6a2-268">`Validation Message Tag Helper` 와 함께 사용 되는 `asp-validation-for` 특성에는 HTML [걸쳐](https://developer.mozilla.org/docs/Web/HTML/Element/span) 요소입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-268">The `Validation Message Tag Helper`  is used with the `asp-validation-for` attribute on a HTML [span](https://developer.mozilla.org/docs/Web/HTML/Element/span) element.</span></span>
+<span data-ttu-id="3d50b-268">`Validation Message Tag Helper` 와 함께 사용 되는 `asp-validation-for` 특성에는 HTML [걸쳐](https://developer.mozilla.org/docs/Web/HTML/Element/span) 요소입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-268">The `Validation Message Tag Helper`  is used with the `asp-validation-for` attribute on a HTML [span](https://developer.mozilla.org/docs/Web/HTML/Element/span) element.</span></span>
 
 ```HTML
 <span asp-validation-for="Email"></span>
    ```
 
-<span data-ttu-id="bd6a2-269">유효성 검사 메시지 태그 도우미 다음 HTML을 생성 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-269">The Validation Message Tag Helper will generate the following HTML:</span></span>
+<span data-ttu-id="3d50b-269">유효성 검사 메시지 태그 도우미 다음 HTML을 생성 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-269">The Validation Message Tag Helper will generate the following HTML:</span></span>
 
 ```HTML
 <span class="field-validation-valid"
@@ -344,12 +344,12 @@ public IActionResult Edit(int id, int colorIndex)
   data-valmsg-replace="true"></span>
 ```
 
-<span data-ttu-id="bd6a2-270">일반적으로 사용 된 `Validation Message Tag Helper` 후는 `Input` 동일한 속성에 대 한 태그 도우미입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-270">You generally use the `Validation Message Tag Helper`  after an `Input` Tag Helper for the same property.</span></span> <span data-ttu-id="bd6a2-271">이렇게 하면 근처 오류가 발생 하는 입력 유효성 검사 오류 메시지가 표시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-271">Doing so displays any validation error messages near the input that caused the error.</span></span>
+<span data-ttu-id="3d50b-270">일반적으로 사용 된 `Validation Message Tag Helper` 후는 `Input` 동일한 속성에 대 한 태그 도우미입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-270">You generally use the `Validation Message Tag Helper`  after an `Input` Tag Helper for the same property.</span></span> <span data-ttu-id="3d50b-271">이렇게 하면 근처 오류가 발생 하는 입력 유효성 검사 오류 메시지가 표시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-271">Doing so displays any validation error messages near the input that caused the error.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="bd6a2-272">올바른 javascript 보기 및 [jQuery](https://jquery.com/) 스크립트 클라이언트 쪽 유효성 검사에 대 한 위치에서 참조 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-272">You must have a view with the correct JavaScript and [jQuery](https://jquery.com/) script references in place for client side validation.</span></span> <span data-ttu-id="bd6a2-273">참조 [모델 유효성 검사](../models/validation.md) 자세한 정보에 대 한 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-273">See [Model Validation](../models/validation.md) for more information.</span></span>
+> <span data-ttu-id="3d50b-272">올바른 javascript 보기 및 [jQuery](https://jquery.com/) 스크립트 클라이언트 쪽 유효성 검사에 대 한 위치에서 참조 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-272">You must have a view with the correct JavaScript and [jQuery](https://jquery.com/) script references in place for client side validation.</span></span> <span data-ttu-id="3d50b-273">참조 [모델 유효성 검사](../models/validation.md) 자세한 정보에 대 한 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-273">See [Model Validation](../models/validation.md) for more information.</span></span>
 
-<span data-ttu-id="bd6a2-274">서버 쪽 유효성 검사 오류가 발생 하는 (예를 들어 사용자 지정 서버 쪽 유효성 검사 또는 경우 클라이언트 쪽 유효성 검사가 해제 된) MVC 배치 해당 오류 메시지의 본문으로는 `<span>` 요소입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-274">When a server side validation error occurs (for example when you have custom server side validation or client-side validation is disabled), MVC places that error message as the body of the `<span>` element.</span></span>
+<span data-ttu-id="3d50b-274">서버 쪽 유효성 검사 오류가 발생 하는 (예를 들어 사용자 지정 서버 쪽 유효성 검사 또는 경우 클라이언트 쪽 유효성 검사가 해제 된) MVC 배치 해당 오류 메시지의 본문으로는 `<span>` 요소입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-274">When a server side validation error occurs (for example when you have custom server side validation or client-side validation is disabled), MVC places that error message as the body of the `<span>` element.</span></span>
 
 ```HTML
 <span class="field-validation-error" data-valmsg-for="Email"
@@ -358,29 +358,29 @@ public IActionResult Edit(int id, int colorIndex)
 </span>
 ```
 
-### <a name="the-validation-summary-tag-helper"></a><span data-ttu-id="bd6a2-275">유효성 검사 요약 태그 도우미</span><span class="sxs-lookup"><span data-stu-id="bd6a2-275">The Validation Summary Tag Helper</span></span>
+### <a name="the-validation-summary-tag-helper"></a><span data-ttu-id="3d50b-275">유효성 검사 요약 태그 도우미</span><span class="sxs-lookup"><span data-stu-id="3d50b-275">The Validation Summary Tag Helper</span></span>
 
-* <span data-ttu-id="bd6a2-276">대상 `<div>` 사용 하 여 요소는 `asp-validation-summary` 특성</span><span class="sxs-lookup"><span data-stu-id="bd6a2-276">Targets `<div>` elements with the `asp-validation-summary` attribute</span></span>
+* <span data-ttu-id="3d50b-276">대상 `<div>` 사용 하 여 요소는 `asp-validation-summary` 특성</span><span class="sxs-lookup"><span data-stu-id="3d50b-276">Targets `<div>` elements with the `asp-validation-summary` attribute</span></span>
 
-* <span data-ttu-id="bd6a2-277">HTML 도우미 대체:`@Html.ValidationSummary`</span><span class="sxs-lookup"><span data-stu-id="bd6a2-277">HTML Helper alternative: `@Html.ValidationSummary`</span></span>
+* <span data-ttu-id="3d50b-277">HTML 도우미 대체:`@Html.ValidationSummary`</span><span class="sxs-lookup"><span data-stu-id="3d50b-277">HTML Helper alternative: `@Html.ValidationSummary`</span></span>
 
-<span data-ttu-id="bd6a2-278">`Validation Summary Tag Helper` 유효성 검사 메시지의 요약 정보를 표시 하는 데 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-278">The `Validation Summary Tag Helper`  is used to display a summary of validation messages.</span></span> <span data-ttu-id="bd6a2-279">`asp-validation-summary` 특성 값은 다음 중 하나일 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-279">The `asp-validation-summary` attribute value can be any of the following:</span></span>
+<span data-ttu-id="3d50b-278">`Validation Summary Tag Helper` 유효성 검사 메시지의 요약 정보를 표시 하는 데 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-278">The `Validation Summary Tag Helper`  is used to display a summary of validation messages.</span></span> <span data-ttu-id="3d50b-279">`asp-validation-summary` 특성 값은 다음 중 하나일 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-279">The `asp-validation-summary` attribute value can be any of the following:</span></span>
 
-|<span data-ttu-id="bd6a2-280">asp 유효성 검사 요약</span><span class="sxs-lookup"><span data-stu-id="bd6a2-280">asp-validation-summary</span></span>|<span data-ttu-id="bd6a2-281">표시 되는 유효성 검사 메시지</span><span class="sxs-lookup"><span data-stu-id="bd6a2-281">Validation messages displayed</span></span>|
+|<span data-ttu-id="3d50b-280">asp 유효성 검사 요약</span><span class="sxs-lookup"><span data-stu-id="3d50b-280">asp-validation-summary</span></span>|<span data-ttu-id="3d50b-281">표시 되는 유효성 검사 메시지</span><span class="sxs-lookup"><span data-stu-id="3d50b-281">Validation messages displayed</span></span>|
 |--- |--- |
-|<span data-ttu-id="bd6a2-282">ValidationSummary.All</span><span class="sxs-lookup"><span data-stu-id="bd6a2-282">ValidationSummary.All</span></span>|<span data-ttu-id="bd6a2-283">속성 및 모델 수준</span><span class="sxs-lookup"><span data-stu-id="bd6a2-283">Property and model level</span></span>|
-|<span data-ttu-id="bd6a2-284">ValidationSummary.ModelOnly</span><span class="sxs-lookup"><span data-stu-id="bd6a2-284">ValidationSummary.ModelOnly</span></span>|<span data-ttu-id="bd6a2-285">모델</span><span class="sxs-lookup"><span data-stu-id="bd6a2-285">Model</span></span>|
-|<span data-ttu-id="bd6a2-286">ValidationSummary.None</span><span class="sxs-lookup"><span data-stu-id="bd6a2-286">ValidationSummary.None</span></span>|<span data-ttu-id="bd6a2-287">없음</span><span class="sxs-lookup"><span data-stu-id="bd6a2-287">None</span></span>|
+|<span data-ttu-id="3d50b-282">ValidationSummary.All</span><span class="sxs-lookup"><span data-stu-id="3d50b-282">ValidationSummary.All</span></span>|<span data-ttu-id="3d50b-283">속성 및 모델 수준</span><span class="sxs-lookup"><span data-stu-id="3d50b-283">Property and model level</span></span>|
+|<span data-ttu-id="3d50b-284">ValidationSummary.ModelOnly</span><span class="sxs-lookup"><span data-stu-id="3d50b-284">ValidationSummary.ModelOnly</span></span>|<span data-ttu-id="3d50b-285">모델</span><span class="sxs-lookup"><span data-stu-id="3d50b-285">Model</span></span>|
+|<span data-ttu-id="3d50b-286">ValidationSummary.None</span><span class="sxs-lookup"><span data-stu-id="3d50b-286">ValidationSummary.None</span></span>|<span data-ttu-id="3d50b-287">없음</span><span class="sxs-lookup"><span data-stu-id="3d50b-287">None</span></span>|
 
-### <a name="sample"></a><span data-ttu-id="bd6a2-288">샘플</span><span class="sxs-lookup"><span data-stu-id="bd6a2-288">Sample</span></span>
+### <a name="sample"></a><span data-ttu-id="3d50b-288">샘플</span><span class="sxs-lookup"><span data-stu-id="3d50b-288">Sample</span></span>
 
-<span data-ttu-id="bd6a2-289">다음 예제에서는 데이터 모델으로 데코레이팅된 `DataAnnotation` 특성에 유효성 검사 오류 메시지를 생성 하는 메시지는 `<input>` 요소입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-289">In the following example, the data model is decorated with `DataAnnotation` attributes, which generates validation error messages on the `<input>` element.</span></span>  <span data-ttu-id="bd6a2-290">유효성 검사 오류가 발생 하면 오류 메시지가 유효성 검사 태그 도우미에 표시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-290">When a validation error occurs, the Validation Tag Helper displays the error message:</span></span>
+<span data-ttu-id="3d50b-289">다음 예제에서는 데이터 모델으로 데코레이팅된 `DataAnnotation` 특성에 유효성 검사 오류 메시지를 생성 하는 메시지는 `<input>` 요소입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-289">In the following example, the data model is decorated with `DataAnnotation` attributes, which generates validation error messages on the `<input>` element.</span></span>  <span data-ttu-id="3d50b-290">유효성 검사 오류가 발생 하면 오류 메시지가 유효성 검사 태그 도우미에 표시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-290">When a validation error occurs, the Validation Tag Helper displays the error message:</span></span>
 
-<span data-ttu-id="bd6a2-291">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-291">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]</span></span>
+<span data-ttu-id="3d50b-291">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-291">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]</span></span>
 
-<span data-ttu-id="bd6a2-292">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterValidation.cshtml?highlight=4,6,8&range=1-10)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-292">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterValidation.cshtml?highlight=4,6,8&range=1-10)]</span></span>
+<span data-ttu-id="3d50b-292">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterValidation.cshtml?highlight=4,6,8&range=1-10)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-292">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterValidation.cshtml?highlight=4,6,8&range=1-10)]</span></span>
 
-<span data-ttu-id="bd6a2-293">생성 된 HTML (모델은 유효) 하는 경우:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-293">The generated HTML (when the model is valid):</span></span>
+<span data-ttu-id="3d50b-293">생성 된 HTML (모델은 유효) 하는 경우:</span><span class="sxs-lookup"><span data-stu-id="3d50b-293">The generated HTML (when the model is valid):</span></span>
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [2, 3, 8, 9, 12, 13]}} -->
 
@@ -403,33 +403,33 @@ public IActionResult Edit(int id, int colorIndex)
 </form>
 ```
 
-## <a name="the-select-tag-helper"></a><span data-ttu-id="bd6a2-294">Select 태그 도우미</span><span class="sxs-lookup"><span data-stu-id="bd6a2-294">The Select Tag Helper</span></span>
+## <a name="the-select-tag-helper"></a><span data-ttu-id="3d50b-294">Select 태그 도우미</span><span class="sxs-lookup"><span data-stu-id="3d50b-294">The Select Tag Helper</span></span>
 
-* <span data-ttu-id="bd6a2-295">생성 [선택](https://www.w3.org/wiki/HTML/Elements/select) 및 관련 된 [옵션](https://www.w3.org/wiki/HTML/Elements/option) 모델의 속성에 대 한 요소입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-295">Generates [select](https://www.w3.org/wiki/HTML/Elements/select) and associated [option](https://www.w3.org/wiki/HTML/Elements/option) elements for properties of your model.</span></span>
+* <span data-ttu-id="3d50b-295">생성 [선택](https://www.w3.org/wiki/HTML/Elements/select) 및 관련 된 [옵션](https://www.w3.org/wiki/HTML/Elements/option) 모델의 속성에 대 한 요소입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-295">Generates [select](https://www.w3.org/wiki/HTML/Elements/select) and associated [option](https://www.w3.org/wiki/HTML/Elements/option) elements for properties of your model.</span></span>
 
-* <span data-ttu-id="bd6a2-296">에 HTML 도우미 대신 `Html.DropDownListFor` 및`Html.ListBoxFor`</span><span class="sxs-lookup"><span data-stu-id="bd6a2-296">Has an HTML Helper alternative `Html.DropDownListFor` and `Html.ListBoxFor`</span></span>
+* <span data-ttu-id="3d50b-296">에 HTML 도우미 대신 `Html.DropDownListFor` 및`Html.ListBoxFor`</span><span class="sxs-lookup"><span data-stu-id="3d50b-296">Has an HTML Helper alternative `Html.DropDownListFor` and `Html.ListBoxFor`</span></span>
 
-<span data-ttu-id="bd6a2-297">`Select Tag Helper` `asp-for` 에 대 한 모델 속성 이름에서 [선택](https://www.w3.org/wiki/HTML/Elements/select) 요소 및 `asp-items` 지정는 [옵션](https://www.w3.org/wiki/HTML/Elements/option) 요소입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-297">The `Select Tag Helper` `asp-for` specifies the model property  name for the [select](https://www.w3.org/wiki/HTML/Elements/select) element  and `asp-items` specifies the [option](https://www.w3.org/wiki/HTML/Elements/option) elements.</span></span>  <span data-ttu-id="bd6a2-298">예:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-298">For example:</span></span>
+<span data-ttu-id="3d50b-297">`Select Tag Helper` `asp-for` 에 대 한 모델 속성 이름에서 [선택](https://www.w3.org/wiki/HTML/Elements/select) 요소 및 `asp-items` 지정는 [옵션](https://www.w3.org/wiki/HTML/Elements/option) 요소입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-297">The `Select Tag Helper` `asp-for` specifies the model property  name for the [select](https://www.w3.org/wiki/HTML/Elements/select) element  and `asp-items` specifies the [option](https://www.w3.org/wiki/HTML/Elements/option) elements.</span></span>  <span data-ttu-id="3d50b-298">예:</span><span class="sxs-lookup"><span data-stu-id="3d50b-298">For example:</span></span>
 
-<span data-ttu-id="bd6a2-299">[!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-299">[!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]</span></span>
+<span data-ttu-id="3d50b-299">[!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-299">[!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]</span></span>
 
-<span data-ttu-id="bd6a2-300">예제:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-300">Sample:</span></span>
+<span data-ttu-id="3d50b-300">예제:</span><span class="sxs-lookup"><span data-stu-id="3d50b-300">Sample:</span></span>
 
-<span data-ttu-id="bd6a2-301">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryViewModel.cs)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-301">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryViewModel.cs)]</span></span>
+<span data-ttu-id="3d50b-301">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryViewModel.cs)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-301">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryViewModel.cs)]</span></span>
 
-<span data-ttu-id="bd6a2-302">`Index` 메서드를 초기화 하는 `CountryViewModel`, 선택한 국가별 설정 및에 전달 된 `Index` 보기.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-302">The `Index` method initializes the `CountryViewModel`, sets the selected country and passes it to the `Index` view.</span></span>
+<span data-ttu-id="3d50b-302">`Index` 메서드를 초기화 하는 `CountryViewModel`, 선택한 국가별 설정 및에 전달 된 `Index` 보기.</span><span class="sxs-lookup"><span data-stu-id="3d50b-302">The `Index` method initializes the `CountryViewModel`, sets the selected country and passes it to the `Index` view.</span></span>
 
-<span data-ttu-id="bd6a2-303">[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs?range=114-119)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-303">[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs?range=114-119)]</span></span>
+<span data-ttu-id="3d50b-303">[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs?range=114-119)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-303">[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs?range=114-119)]</span></span>
 
-<span data-ttu-id="bd6a2-304">HTTP POST `Index` 메서드 선택 항목을 표시 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-304">The HTTP POST `Index` method displays the selection:</span></span>
+<span data-ttu-id="3d50b-304">HTTP POST `Index` 메서드 선택 항목을 표시 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-304">The HTTP POST `Index` method displays the selection:</span></span>
 
-<span data-ttu-id="bd6a2-305">[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs?range=15-27)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-305">[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs?range=15-27)]</span></span>
+<span data-ttu-id="3d50b-305">[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs?range=15-27)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-305">[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs?range=15-27)]</span></span>
 
-<span data-ttu-id="bd6a2-306">`Index` 보기:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-306">The `Index` view:</span></span>
+<span data-ttu-id="3d50b-306">`Index` 보기:</span><span class="sxs-lookup"><span data-stu-id="3d50b-306">The `Index` view:</span></span>
 
-<span data-ttu-id="bd6a2-307">[!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?highlight=4)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-307">[!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?highlight=4)]</span></span>
+<span data-ttu-id="3d50b-307">[!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?highlight=4)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-307">[!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?highlight=4)]</span></span>
 
-<span data-ttu-id="bd6a2-308">("CA" 선택)로 다음 HTML을 생성 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-308">Which generates the following HTML (with "CA" selected):</span></span>
+<span data-ttu-id="3d50b-308">("CA" 선택)로 다음 HTML을 생성 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-308">Which generates the following HTML (with "CA" selected):</span></span>
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [2, 3, 4, 5, 6]}} -->
 
@@ -446,31 +446,31 @@ public IActionResult Edit(int id, int colorIndex)
    ```
 
 > [!NOTE]
-> <span data-ttu-id="bd6a2-309">사용 하지 않는 것이 좋습니다 `ViewBag` 또는 `ViewData` 선택 태그 도우미와 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-309">We do not recommend using `ViewBag` or `ViewData` with the Select Tag Helper.</span></span> <span data-ttu-id="bd6a2-310">뷰 모델은 MVC 메타 데이터를 제공할에 더 강력 하 고 문제를 줄일 일반적으로 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-310">A view model is more robust at providing MVC metadata and generally less problematic.</span></span>
+> <span data-ttu-id="3d50b-309">사용 하지 않는 것이 좋습니다 `ViewBag` 또는 `ViewData` 선택 태그 도우미와 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-309">We do not recommend using `ViewBag` or `ViewData` with the Select Tag Helper.</span></span> <span data-ttu-id="3d50b-310">뷰 모델은 MVC 메타 데이터를 제공할에 더 강력 하 고 문제를 줄일 일반적으로 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-310">A view model is more robust at providing MVC metadata and generally less problematic.</span></span>
 
-<span data-ttu-id="bd6a2-311">`asp-for` 특성 값은 특별 한 경우 있으며 필요 하지 않습니다는 `Model` 접두사, 다른 태그 도우미 특성 안 함 (예: `asp-items`)</span><span class="sxs-lookup"><span data-stu-id="bd6a2-311">The `asp-for` attribute value is a special case and doesn't require a `Model` prefix, the other Tag Helper attributes do (such as `asp-items`)</span></span>
+<span data-ttu-id="3d50b-311">`asp-for` 특성 값은 특별 한 경우 있으며 필요 하지 않습니다는 `Model` 접두사, 다른 태그 도우미 특성 안 함 (예: `asp-items`)</span><span class="sxs-lookup"><span data-stu-id="3d50b-311">The `asp-for` attribute value is a special case and doesn't require a `Model` prefix, the other Tag Helper attributes do (such as `asp-items`)</span></span>
 
-<span data-ttu-id="bd6a2-312">[!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-312">[!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]</span></span>
+<span data-ttu-id="3d50b-312">[!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-312">[!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]</span></span>
 
-### <a name="enum-binding"></a><span data-ttu-id="bd6a2-313">Enum 바인딩</span><span class="sxs-lookup"><span data-stu-id="bd6a2-313">Enum binding</span></span>
+### <a name="enum-binding"></a><span data-ttu-id="3d50b-313">Enum 바인딩</span><span class="sxs-lookup"><span data-stu-id="3d50b-313">Enum binding</span></span>
 
-<span data-ttu-id="bd6a2-314">사용 하기 어려운 방식은 `<select>` 와 `enum` 속성을 생성 하 고는 `SelectListItem` 에서 요소를는 `enum` 값.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-314">It's often convenient to use `<select>` with an `enum` property and generate the `SelectListItem` elements from the `enum` values.</span></span>
+<span data-ttu-id="3d50b-314">사용 하기 어려운 방식은 `<select>` 와 `enum` 속성을 생성 하 고는 `SelectListItem` 에서 요소를는 `enum` 값.</span><span class="sxs-lookup"><span data-stu-id="3d50b-314">It's often convenient to use `<select>` with an `enum` property and generate the `SelectListItem` elements from the `enum` values.</span></span>
 
-<span data-ttu-id="bd6a2-315">예제:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-315">Sample:</span></span>
+<span data-ttu-id="3d50b-315">예제:</span><span class="sxs-lookup"><span data-stu-id="3d50b-315">Sample:</span></span>
 
-<span data-ttu-id="bd6a2-316">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryEnumViewModel.cs?range=3-7)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-316">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryEnumViewModel.cs?range=3-7)]</span></span>
+<span data-ttu-id="3d50b-316">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryEnumViewModel.cs?range=3-7)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-316">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryEnumViewModel.cs?range=3-7)]</span></span>
 
-<span data-ttu-id="bd6a2-317">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryEnum.cs)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-317">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryEnum.cs)]</span></span>
+<span data-ttu-id="3d50b-317">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryEnum.cs)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-317">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryEnum.cs)]</span></span>
 
-<span data-ttu-id="bd6a2-318">`GetEnumSelectList` 메서드를 생성 한 `SelectList` 열거형에 대 한 개체입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-318">The `GetEnumSelectList` method generates a `SelectList` object for an enum.</span></span>
+<span data-ttu-id="3d50b-318">`GetEnumSelectList` 메서드를 생성 한 `SelectList` 열거형에 대 한 개체입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-318">The `GetEnumSelectList` method generates a `SelectList` object for an enum.</span></span>
 
-<span data-ttu-id="bd6a2-319">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEnum.cshtml?highlight=5)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-319">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEnum.cshtml?highlight=5)]</span></span>
+<span data-ttu-id="3d50b-319">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEnum.cshtml?highlight=5)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-319">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEnum.cshtml?highlight=5)]</span></span>
 
-<span data-ttu-id="bd6a2-320">으로 목록에 열거자를 데코레이팅 할 수 있습니다는 `Display` 보다 풍부한 UI 가져올 특성:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-320">You can decorate your enumerator list with the `Display` attribute to get a richer UI:</span></span>
+<span data-ttu-id="3d50b-320">으로 목록에 열거자를 데코레이팅 할 수 있습니다는 `Display` 보다 풍부한 UI 가져올 특성:</span><span class="sxs-lookup"><span data-stu-id="3d50b-320">You can decorate your enumerator list with the `Display` attribute to get a richer UI:</span></span>
 
-<span data-ttu-id="bd6a2-321">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryEnum.cs?highlight=5,7)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-321">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryEnum.cs?highlight=5,7)]</span></span>
+<span data-ttu-id="3d50b-321">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryEnum.cs?highlight=5,7)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-321">[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryEnum.cs?highlight=5,7)]</span></span>
 
-<span data-ttu-id="bd6a2-322">다음 HTML 생성 됩니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-322">The following HTML is generated:</span></span>
+<span data-ttu-id="3d50b-322">다음 HTML 생성 됩니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-322">The following HTML is generated:</span></span>
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [4, 5]}} -->
 
@@ -490,19 +490,19 @@ public IActionResult Edit(int id, int colorIndex)
     </form>
    ```
 
-### <a name="option-group"></a><span data-ttu-id="bd6a2-323">옵션 그룹</span><span class="sxs-lookup"><span data-stu-id="bd6a2-323">Option Group</span></span>
+### <a name="option-group"></a><span data-ttu-id="3d50b-323">옵션 그룹</span><span class="sxs-lookup"><span data-stu-id="3d50b-323">Option Group</span></span>
 
-<span data-ttu-id="bd6a2-324">HTML [ \<optgroup >](https://www.w3.org/wiki/HTML/Elements/optgroup) 뷰 모델 하나 이상 포함 하는 경우 요소가 생성 `SelectListGroup` 개체입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-324">The HTML  [\<optgroup>](https://www.w3.org/wiki/HTML/Elements/optgroup) element is generated when the view model contains one or more `SelectListGroup` objects.</span></span>
+<span data-ttu-id="3d50b-324">HTML [ \<optgroup >](https://www.w3.org/wiki/HTML/Elements/optgroup) 뷰 모델 하나 이상 포함 하는 경우 요소가 생성 `SelectListGroup` 개체입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-324">The HTML  [\<optgroup>](https://www.w3.org/wiki/HTML/Elements/optgroup) element is generated when the view model contains one or more `SelectListGroup` objects.</span></span>
 
-<span data-ttu-id="bd6a2-325">`CountryViewModelGroup` 그룹은 `SelectListItem` "North America" 및 "Europe" 그룹으로 요소:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-325">The `CountryViewModelGroup` groups the `SelectListItem` elements into the "North America" and "Europe" groups:</span></span>
+<span data-ttu-id="3d50b-325">`CountryViewModelGroup` 그룹은 `SelectListItem` "North America" 및 "Europe" 그룹으로 요소:</span><span class="sxs-lookup"><span data-stu-id="3d50b-325">The `CountryViewModelGroup` groups the `SelectListItem` elements into the "North America" and "Europe" groups:</span></span>
 
-<span data-ttu-id="bd6a2-326">[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelGroup.cs?highlight=5,6,14,20,26,32,38,44&range=6-56)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-326">[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelGroup.cs?highlight=5,6,14,20,26,32,38,44&range=6-56)]</span></span>
+<span data-ttu-id="3d50b-326">[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelGroup.cs?highlight=5,6,14,20,26,32,38,44&range=6-56)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-326">[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelGroup.cs?highlight=5,6,14,20,26,32,38,44&range=6-56)]</span></span>
 
-<span data-ttu-id="bd6a2-327">두 개의 그룹은 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-327">The two groups are shown below:</span></span>
+<span data-ttu-id="3d50b-327">두 개의 그룹은 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-327">The two groups are shown below:</span></span>
 
 ![옵션 그룹 예제](working-with-forms/_static/grp.png)
 
-<span data-ttu-id="bd6a2-329">생성 된 HTML:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-329">The generated HTML:</span></span>
+<span data-ttu-id="3d50b-329">생성 된 HTML:</span><span class="sxs-lookup"><span data-stu-id="3d50b-329">The generated HTML:</span></span>
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}} -->
 
@@ -525,17 +525,17 @@ public IActionResult Edit(int id, int colorIndex)
  </form>
 ```
 
-### <a name="multiple-select"></a><span data-ttu-id="bd6a2-330">다중 선택</span><span class="sxs-lookup"><span data-stu-id="bd6a2-330">Multiple select</span></span>
+### <a name="multiple-select"></a><span data-ttu-id="3d50b-330">다중 선택</span><span class="sxs-lookup"><span data-stu-id="3d50b-330">Multiple select</span></span>
 
-<span data-ttu-id="bd6a2-331">태그 선택 도우미 자동으로 생성 됩니다는 [여러 = "여러"](http://w3c.github.io/html-reference/select.html) 특성 속성에 지정 된 경우는 `asp-for` 특성은 한 `IEnumerable`합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-331">The Select Tag Helper  will automatically generate the [multiple = "multiple"](http://w3c.github.io/html-reference/select.html)  attribute if the property specified in the `asp-for` attribute is an `IEnumerable`.</span></span> <span data-ttu-id="bd6a2-332">예를 들어 다음 모델을 가정합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-332">For example, given the following model:</span></span>
+<span data-ttu-id="3d50b-331">태그 선택 도우미 자동으로 생성 됩니다는 [여러 = "여러"](http://w3c.github.io/html-reference/select.html) 특성 속성에 지정 된 경우는 `asp-for` 특성은 한 `IEnumerable`합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-331">The Select Tag Helper  will automatically generate the [multiple = "multiple"](http://w3c.github.io/html-reference/select.html)  attribute if the property specified in the `asp-for` attribute is an `IEnumerable`.</span></span> <span data-ttu-id="3d50b-332">예를 들어 다음 모델을 가정합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-332">For example, given the following model:</span></span>
 
-<span data-ttu-id="bd6a2-333">[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelIEnumerable.cs?highlight=6)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-333">[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelIEnumerable.cs?highlight=6)]</span></span>
+<span data-ttu-id="3d50b-333">[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelIEnumerable.cs?highlight=6)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-333">[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelIEnumerable.cs?highlight=6)]</span></span>
 
-<span data-ttu-id="bd6a2-334">다음 보기:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-334">With the following view:</span></span>
+<span data-ttu-id="3d50b-334">다음 보기:</span><span class="sxs-lookup"><span data-stu-id="3d50b-334">With the following view:</span></span>
 
-<span data-ttu-id="bd6a2-335">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexMultiSelect.cshtml?highlight=4)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-335">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexMultiSelect.cshtml?highlight=4)]</span></span>
+<span data-ttu-id="3d50b-335">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexMultiSelect.cshtml?highlight=4)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-335">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexMultiSelect.cshtml?highlight=4)]</span></span>
 
-<span data-ttu-id="bd6a2-336">다음 HTML을 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-336">Generates the following HTML:</span></span>
+<span data-ttu-id="3d50b-336">다음 HTML을 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-336">Generates the following HTML:</span></span>
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [3]}} -->
 
@@ -555,23 +555,23 @@ public IActionResult Edit(int id, int colorIndex)
 </form>
 ```
 
-### <a name="no-selection"></a><span data-ttu-id="bd6a2-337">선택 영역이 없는</span><span class="sxs-lookup"><span data-stu-id="bd6a2-337">No selection</span></span>
+### <a name="no-selection"></a><span data-ttu-id="3d50b-337">선택 영역이 없는</span><span class="sxs-lookup"><span data-stu-id="3d50b-337">No selection</span></span>
 
-<span data-ttu-id="bd6a2-338">여러 페이지에 "지정 안 됨된" 옵션을 사용 하 여 생각 되 면 HTML 반복을 제거 하는 템플릿을 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-338">If you find yourself using the "not specified" option in multiple pages, you can create a template to eliminate repeating the HTML:</span></span>
+<span data-ttu-id="3d50b-338">여러 페이지에 "지정 안 됨된" 옵션을 사용 하 여 생각 되 면 HTML 반복을 제거 하는 템플릿을 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-338">If you find yourself using the "not specified" option in multiple pages, you can create a template to eliminate repeating the HTML:</span></span>
 
-<span data-ttu-id="bd6a2-339">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEmptyTemplate.cshtml?highlight=5)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-339">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEmptyTemplate.cshtml?highlight=5)]</span></span>
+<span data-ttu-id="3d50b-339">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEmptyTemplate.cshtml?highlight=5)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-339">[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEmptyTemplate.cshtml?highlight=5)]</span></span>
 
-<span data-ttu-id="bd6a2-340">*Views/Shared/EditorTemplates/CountryViewModel.cshtml* 템플릿:</span><span class="sxs-lookup"><span data-stu-id="bd6a2-340">The *Views/Shared/EditorTemplates/CountryViewModel.cshtml* template:</span></span>
+<span data-ttu-id="3d50b-340">*Views/Shared/EditorTemplates/CountryViewModel.cshtml* 템플릿:</span><span class="sxs-lookup"><span data-stu-id="3d50b-340">The *Views/Shared/EditorTemplates/CountryViewModel.cshtml* template:</span></span>
 
-<span data-ttu-id="bd6a2-341">[!code-HTML[Main](working-with-forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-341">[!code-HTML[Main](working-with-forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml)]</span></span>
+<span data-ttu-id="3d50b-341">[!code-HTML[Main](working-with-forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-341">[!code-HTML[Main](working-with-forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml)]</span></span>
 
-<span data-ttu-id="bd6a2-342">추가 HTML [ \<옵션 >](https://www.w3.org/wiki/HTML/Elements/option) 요소에 국한 되지 않음는 *선택 영역이 없는* 대/소문자입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-342">Adding HTML [\<option>](https://www.w3.org/wiki/HTML/Elements/option) elements is not limited to the *No selection* case.</span></span> <span data-ttu-id="bd6a2-343">예를 들어 다음과 같은 보기 및 작업 메서드는 위의 코드와 유사한 HTML을 생성 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-343">For example, the following view and action method will generate HTML similar to the code above:</span></span>
+<span data-ttu-id="3d50b-342">추가 HTML [ \<옵션 >](https://www.w3.org/wiki/HTML/Elements/option) 요소에 국한 되지 않음는 *선택 영역이 없는* 대/소문자입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-342">Adding HTML [\<option>](https://www.w3.org/wiki/HTML/Elements/option) elements is not limited to the *No selection* case.</span></span> <span data-ttu-id="3d50b-343">예를 들어 다음과 같은 보기 및 작업 메서드는 위의 코드와 유사한 HTML을 생성 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-343">For example, the following view and action method will generate HTML similar to the code above:</span></span>
 
-<span data-ttu-id="bd6a2-344">[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs?range=114-119)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-344">[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs?range=114-119)]</span></span>
+<span data-ttu-id="3d50b-344">[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs?range=114-119)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-344">[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs?range=114-119)]</span></span>
 
-<span data-ttu-id="bd6a2-345">[!code-HTML[Main](working-with-forms/sample/final/Views/Home/IndexOption.cshtml)]</span><span class="sxs-lookup"><span data-stu-id="bd6a2-345">[!code-HTML[Main](working-with-forms/sample/final/Views/Home/IndexOption.cshtml)]</span></span>
+<span data-ttu-id="3d50b-345">[!code-HTML[Main](working-with-forms/sample/final/Views/Home/IndexOption.cshtml)]</span><span class="sxs-lookup"><span data-stu-id="3d50b-345">[!code-HTML[Main](working-with-forms/sample/final/Views/Home/IndexOption.cshtml)]</span></span>
 
-<span data-ttu-id="bd6a2-346">올바른 `<option>` 요소가 선택 됩니다 (포함 된 `selected="selected"` 특성) 현재에 따라 `Country` 값입니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-346">The correct `<option>` element will be selected ( contain the `selected="selected"` attribute) depending on the current `Country` value.</span></span>
+<span data-ttu-id="3d50b-346">올바른 `<option>` 요소가 선택 됩니다 (포함 된 `selected="selected"` 특성) 현재에 따라 `Country` 값입니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-346">The correct `<option>` element will be selected ( contain the `selected="selected"` attribute) depending on the current `Country` value.</span></span>
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [5]}} -->
 
@@ -588,18 +588,18 @@ public IActionResult Edit(int id, int colorIndex)
  </form>
  ```
 
-## <a name="additional-resources"></a><span data-ttu-id="bd6a2-347">추가 리소스</span><span class="sxs-lookup"><span data-stu-id="bd6a2-347">Additional Resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="3d50b-347">추가 리소스</span><span class="sxs-lookup"><span data-stu-id="3d50b-347">Additional Resources</span></span>
 
-* [<span data-ttu-id="bd6a2-348">태그 도우미</span><span class="sxs-lookup"><span data-stu-id="bd6a2-348">Tag Helpers</span></span>](tag-helpers/intro.md)
+* [<span data-ttu-id="3d50b-348">태그 도우미</span><span class="sxs-lookup"><span data-stu-id="3d50b-348">Tag Helpers</span></span>](tag-helpers/intro.md)
 
-* [<span data-ttu-id="bd6a2-349">HTML 폼 요소</span><span class="sxs-lookup"><span data-stu-id="bd6a2-349">HTML Form element</span></span>](https://www.w3.org/TR/html401/interact/forms.html)
+* [<span data-ttu-id="3d50b-349">HTML 폼 요소</span><span class="sxs-lookup"><span data-stu-id="3d50b-349">HTML Form element</span></span>](https://www.w3.org/TR/html401/interact/forms.html)
 
-* [<span data-ttu-id="bd6a2-350">확인 토큰을 요청 합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-350">Request Verification Token</span></span>](http://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)
+* [<span data-ttu-id="3d50b-350">확인 토큰을 요청 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-350">Request Verification Token</span></span>](https://docs.microsoft.com/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)
 
-* [<span data-ttu-id="bd6a2-351">모델 바인딩</span><span class="sxs-lookup"><span data-stu-id="bd6a2-351">Model Binding</span></span>](../models/model-binding.md)
+* [<span data-ttu-id="3d50b-351">모델 바인딩</span><span class="sxs-lookup"><span data-stu-id="3d50b-351">Model Binding</span></span>](../models/model-binding.md)
 
-* [<span data-ttu-id="bd6a2-352">모델 유효성 검사</span><span class="sxs-lookup"><span data-stu-id="bd6a2-352">Model Validation</span></span>](../models/validation.md)
+* [<span data-ttu-id="3d50b-352">모델 유효성 검사</span><span class="sxs-lookup"><span data-stu-id="3d50b-352">Model Validation</span></span>](../models/validation.md)
 
-* [<span data-ttu-id="bd6a2-353">데이터 주석</span><span class="sxs-lookup"><span data-stu-id="bd6a2-353">data annotations</span></span>](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx)
+* [<span data-ttu-id="3d50b-353">데이터 주석</span><span class="sxs-lookup"><span data-stu-id="3d50b-353">data annotations</span></span>](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter)
 
-* <span data-ttu-id="bd6a2-354">[코드 조각이이 문서에 대 한](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/forms/sample)합니다.</span><span class="sxs-lookup"><span data-stu-id="bd6a2-354">[Code snippets for this document](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/forms/sample).</span></span>
+* <span data-ttu-id="3d50b-354">[코드 조각이이 문서에 대 한](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/forms/sample)합니다.</span><span class="sxs-lookup"><span data-stu-id="3d50b-354">[Code snippets for this document](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/forms/sample).</span></span>
