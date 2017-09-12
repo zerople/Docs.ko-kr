@@ -1,275 +1,106 @@
 ---
-title: "ASP.NET Core MVC 및 Visual Studio는 웹 API를 빌드 | Microsoft 문서"
+title: "ASP.NET Core 및 Windows용 Visual Studio를 사용하여 Web API 만들기"
 author: rick-anderson
-description: "ASP.NET 핵심 MVC 및 Visual Studio는 웹 API를 구축 합니다."
-keywords: "ASP.NET Core, WebAPI, 웹 API REST"
+description: "ASP.NET Core MVC 및 Windows용 Visual Studio를 사용하여 Web API 빌드"
+keywords: "ASP.NET Core, WebAPI, Web API, REST, HTTP, 서비스, HTTP 서비스"
 ms.author: riande
 manager: wpickett
-ms.date: 03/14/2017
-ms.topic: article
-ms.assetid: 830b4af5-ed14-423e-9f59-764a6f13a8f6
+ms.date: 8/15/2017
+ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-web-api
-translationtype: Machine Translation
-ms.sourcegitcommit: 1894789727a7c3ae66f25040d1a70c4f1e64c3da
-ms.openlocfilehash: a8cfabd84113ccd4d9b367f5394102983c031d04
-ms.lasthandoff: 03/23/2017
-
+ms.openlocfilehash: c57c73c6f9c60874ef88749b838ed1cc1d353ead
+ms.sourcegitcommit: 7fef13045e98d716c589a2982613dad261694a65
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/31/2017
 ---
-# <a name="building-your-first-web-api-with-aspnet-core-mvc-and-visual-studio"></a>ASP.NET Core MVC 및 Visual Studio를 사용 하 여 첫 번째 웹 API를 빌드
+#<a name="create-a-web-api-with-aspnet-core-and-visual-studio-for-windows"></a><span data-ttu-id="cf69d-104">ASP.NET Core 및 Windows용 Visual Studio를 사용하여 Web API 만들기</span><span class="sxs-lookup"><span data-stu-id="cf69d-104">Create a web API with ASP.NET Core and Visual Studio for Windows</span></span>
 
-여 [Mike Wasson](https://github.com/mikewasson) 및 [Rick Anderson](https://twitter.com/RickAndMSFT)
+<span data-ttu-id="cf69d-105">작성자: [Rick Anderson](https://twitter.com/RickAndMSFT) 및 [Mike Wasson](https://github.com/mikewasson)</span><span class="sxs-lookup"><span data-stu-id="cf69d-105">By [Rick Anderson](https://twitter.com/RickAndMSFT) and [Mike Wasson](https://github.com/mikewasson)</span></span>
 
-HTTP를 단순히 웹 페이지를 제공 합니다. 서비스 및 데이터를 노출 하는 Api를 구축 하기 위한 강력한 플랫폼 이기도 합니다. HTTP는 간단 하 고 유연 하며 어디에서 나는입니다. 상상할 수 있는 거의 모든 플랫폼에는 HTTP 라이브러리 HTTP 서비스에는 다양 한 브라우저, 모바일 장치 및 기존 데스크톱 앱을 비롯 한 클라이언트에 연결할 수 있습니다.
+<span data-ttu-id="cf69d-106">이 자습서에서는 “할 일” 항목 모음을 관리하기 위한 Web API를 빌드합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-106">In this tutorial, you’ll build a web API for managing a list of "to-do" items.</span></span> <span data-ttu-id="cf69d-107">UI는 빌드하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-107">You won’t build a UI.</span></span>
 
-이 자습서에서는 할 일 항목의 목록을 관리 하기 위한 간단한 웹 API를 만들어 봅니다. 이 자습서에서는 모든 UI를 빌드할 수 없습니다.
+<span data-ttu-id="cf69d-108">이 자습서는 세 가지 버전이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-108">There are 3 versions of this tutorial:</span></span>
 
-ASP.NET Core에서 웹 Api를 구축 하는 MVC 기본적으로 지원 합니다. 
+* <span data-ttu-id="cf69d-109">Windows: Windows용 Visual Studio를 사용한 Web API(이 자습서)</span><span class="sxs-lookup"><span data-stu-id="cf69d-109">Windows: Web API with Visual Studio for Windows (This tutorial)</span></span>
+* <span data-ttu-id="cf69d-110">macOS: [Mac용 Visual Studio를 사용한 Web API](xref:tutorials/first-web-api-mac)</span><span class="sxs-lookup"><span data-stu-id="cf69d-110">macOS: [Web API with Visual Studio for Mac](xref:tutorials/first-web-api-mac)</span></span>
+* <span data-ttu-id="cf69d-111">macOS, Linux, Windows: [Visual Studio Code를 사용한 Web API](xref:tutorials/web-api-vsc)</span><span class="sxs-lookup"><span data-stu-id="cf69d-111">macOS, Linux, Windows: [Web API with Visual Studio Code](xref:tutorials/web-api-vsc)</span></span>
 
-참고: ASP.NET 코어로 기존 웹 API 앱에 이식 하는 경우 참조 [ASP.NET Web API에서 마이그레이션](xref:migration/webapi)
+<!-- WARNING: The code AND images in this doc are used by uid: tutorials/web-api-vsc, tutorials/first-web-api-mac and tutorials/first-web-api. If you change any code/images in this tutorial, update uid: tutorials/web-api-vsc -->
 
-## <a name="overview"></a>개요
+[!INCLUDE[intro to web API](../includes/webApi/intro.md)]
 
-만들어야 하는 API는 다음과 같습니다.  
+## <a name="prerequisites"></a><span data-ttu-id="cf69d-112">필수 구성 요소</span><span class="sxs-lookup"><span data-stu-id="cf69d-112">Prerequisites</span></span>
 
+[!INCLUDE[install 2.0](../includes/install2.0.md)]
 
-|API | 설명    | 요청 본문    | 응답 본문   |
-|--- | ---- | ---- | ---- |
-|/Api/todo 가져오기  | 모든 할 일 항목 가져오기 | 없음 | 할 일 항목의 배열|
-|가져오기 /api/todo / {id}  | ID로 항목 가져오기 | 없음 | 할 일 항목|
-|게시/api/todo | 새 항목을 추가합니다. | 할 일 항목  | 할 일 항목 |
-|PUT /api/todo / {id} | 기존 항목을 업데이트 합니다.&nbsp;  | 할 일 항목 |
-|/Api/todo / {id} 삭제&nbsp;  &nbsp; | 항목 삭제&nbsp;  &nbsp;  | 없음 없는 요청 본문-  | 없음|
-     
-<br>     
-    
-다음 다이어그램에서는 응용 프로그램의 기본 디자인을 보여 줍니다.
+<span data-ttu-id="cf69d-113">ASP.NET Core 1.1 버전에 대해서는 [이 PDF](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/_static/_webAPI.pdf)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="cf69d-113">See [this PDF](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/_static/_webAPI.pdf) for the ASP.NET Core 1.1 version.</span></span>
 
-![클라이언트 요청을 제출 및 오른쪽에 그려진 상자 응용 프로그램에서 응답을 받고 왼쪽 상자에 표시 됩니다. 응용 프로그램 상자 내에서&3; 개의 상자에는 컨트롤러, 모델 및 데이터 액세스 계층 나타냅니다. 응용 프로그램의 컨트롤러에 요청 하는 및 컨트롤러와 데이터 액세스 계층 간의 읽기/쓰기 작업이 수행 됩니다. 모델은 직렬화 되며 응답에서 클라이언트로 반환 됩니다.](first-web-api/_static/architecture.png)
+## <a name="create-the-project"></a><span data-ttu-id="cf69d-114">프로젝트를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-114">Create the project</span></span>
 
-* 클라이언트는 어떤 웹 API (브라우저, 모바일 앱 등)를 사용 합니다. 이 자습서에서는 클라이언트를 작성 하지 했습니다. 사용 하 여 [Postman](https://www.getpostman.com/) 앱을 테스트 합니다.
+<span data-ttu-id="cf69d-115">Visual Studio에서 **파일** 메뉴 > **새로 만들기** > **프로젝트**를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-115">From Visual Studio, select **File** menu, > **New** > **Project**.</span></span>
 
-* A *모델* 는 응용 프로그램에서 데이터를 나타내는 개체입니다. 이 경우 모델만 할 일 항목입니다. 모델은 간단한 C# 클래스 (Poco)으로 표시 됩니다.
-
-* A *컨트롤러* HTTP를 처리 하는 개체를 요청 하 고 HTTP 응답을 만듭니다. 이 응용 프로그램에 단일 컨트롤러를 갖습니다.
-
-* 이 자습서를 단순하게 유지 하기 위해 응용 프로그램에는 영구 데이터베이스를 사용 하지 않습니다. 대신, 메모리 내 데이터베이스에 할 일 항목을 저장합니다. 
-
-### <a name="create-the-project"></a>프로젝트를 만듭니다.
-
-Visual Studio에서 선택 **파일** 메뉴 > **새로** > **프로젝트**합니다.
-
-선택 된 **ASP.NET 핵심 웹 응용 프로그램 (.NET Core)** 프로젝트 템플릿. 프로젝트 이름을 `TodoApi` 선택한 **확인**합니다.
+<span data-ttu-id="cf69d-116">**ASP.NET Core 웹 응용 프로그램(.NET Core)** 프로젝트 템플릿을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-116">Select the **ASP.NET Core Web Application (.NET Core)** project template.</span></span> <span data-ttu-id="cf69d-117">프로젝트 이름을 `TodoApi`로 지정하고 **확인**을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-117">Name the project `TodoApi` and select **OK**.</span></span>
 
 ![새 프로젝트 대화 상자](first-web-api/_static/new-project.png)
 
-에 **새 ASP.NET 핵심 웹 응용 프로그램 (.NET Core)-TodoApi** 대화 상자에서는 **웹 API** 템플릿. 선택 **확인**합니다. 마십시오 **하지** 선택 **Docker 지원 활성화**합니다.
+<span data-ttu-id="cf69d-119">**새 ASP.NET Core 웹 응용 프로그램 - TodoApi** 대화 상자에서 **Web API** 템플릿을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-119">In the **New ASP.NET Core Web Application - TodoApi** dialog, select the **Web API** template.</span></span> <span data-ttu-id="cf69d-120">**확인**을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-120">Select **OK**.</span></span> <span data-ttu-id="cf69d-121">**Docker 지원 사용**을 선택하지 **마세요**.</span><span class="sxs-lookup"><span data-stu-id="cf69d-121">Do **not** select **Enable Docker Support**.</span></span>
 
-![ASP.NET 핵심 서식 파일에서 선택한 웹 API 프로젝트 템플릿 사용 하 여 새 ASP.NET 웹 응용 프로그램 대화 상자](first-web-api/_static/web-api-project.png)
+![ASP.NET Core 템플릿에서 Web API 프로젝트 템플릿이 선택된 새 ASP.NET 웹 응용 프로그램 대화 상자](first-web-api/_static/web-api-project.png)
 
-### <a name="add-support-for-entity-framework-core"></a>Entity Framework 코어에 대 한 지원 추가
+### <a name="launch-the-app"></a><span data-ttu-id="cf69d-123">앱 시작</span><span class="sxs-lookup"><span data-stu-id="cf69d-123">Launch the app</span></span>
 
-설치는 [Entity Framework 코어 InMemory](https://docs.microsoft.com/en-us/ef/core/providers/in-memory/) 데이터베이스 공급자입니다. 이 데이터베이스 공급자에는 Entity Framework Core 메모리 내 데이터베이스와 함께 사용 될 수 있습니다.
-
-편집 된 *TodoApi.csproj* 파일입니다. 솔루션 탐색기에서 프로젝트를 마우스 오른쪽 단추로 클릭 합니다. 선택 **TodoApi.csproj 편집**합니다. 에 `ItemGroup` 요소를 강조 표시 된 추가 `PackageReference`:
-
-[!code-xml[주](first-web-api/sample/TodoApi/TodoApi.csproj?highlight=1&range=14-15)]
-
-### <a name="add-a-model-class"></a>모델 클래스 추가
-
-모델은 응용 프로그램에서 데이터를 나타내는 개체입니다. 이 경우 모델만 할 일 항목입니다.
-
-"Models" 라는 폴더를 추가 합니다. 솔루션 탐색기에서 프로젝트를 마우스 오른쪽 단추로 클릭 합니다. Select **Add** > **New Folder**. 폴더 이름을 *모델*합니다.
-
-참고: 넣으면 모델 클래스 아무 곳 이나 프로젝트를 하지만 *모델* 폴더는 일반적으로 사용 합니다.
-
-추가 `TodoItem` 클래스입니다. 마우스 오른쪽 단추로 클릭는 *모델* 폴더와 선택 **추가** > **클래스**합니다. 클래스의 이름을 `TodoItem` 선택한 **추가**합니다.
-
-사용 하 여 생성 된 코드를 바꿉니다.
-
-[!code-csharp[주](first-web-api/sample/TodoApi/Models/TodoItem.cs)]
-
-* `[Key]` 데이터 주석 속성을 나타내는 `Key`, 고유 식별자입니다.
-* `[DatabaseGenerated`키 (응용 프로그램 아님) 생성 하는 데이터베이스를 지정 합니다.
-* `DatabaseGeneratedOption.Identity`행이 삽입 될 때 데이터베이스에서 정수 키를 생성할지를 지정 합니다. 
-
-### <a name="create-the-database-context"></a>데이터베이스 컨텍스트 만들기
-
-*데이터베이스 컨텍스트* 는 지정된 된 데이터 모델에 대 한 Entity Framework 기능을 조정 하는 주 클래스입니다. 이 클래스에서 파생 시켜 만들는 `Microsoft.EntityFrameworkCore.DbContext` 클래스입니다.
-
-추가 `TodoContext` 클래스입니다. 마우스 오른쪽 단추로 클릭는 *모델* 폴더와 선택 **추가** > **클래스**합니다. 클래스의 이름을 `TodoContext` 선택한 **추가**합니다.
-
-[!code-csharp[주](first-web-api/sample/TodoApi/Models/TodoContext.cs)]
-
-## <a name="add-a-repository-class"></a>리포지토리 클래스를 추가 합니다.
-
-A *저장소* 는 데이터 계층을 캡슐화 하는 개체입니다. *리포지토리* 를 검색 하 고 데이터를 엔터티 모델에 매핑 논리를 포함 합니다. 리포지토리 코드를 만들기는 *모델* 폴더입니다.
-
-명명 된 저장소 인터페이스 정의 `ITodoRepository`합니다. 클래스 템플릿을 사용 하 여 (**새 항목 추가**  > **클래스**).
-
-[!code-csharp[주](first-web-api/sample/TodoApi/Models/ITodoRepository.cs)]
-
-이 인터페이스는 기본 CRUD 작업을 정의합니다.
-
-추가 `TodoRepository` 클래스를 구현 하는 `ITodoRepository`:
-
-[!code-csharp[주](first-web-api/sample/TodoApi/Models/TodoRepository.cs)]
-
-컴파일러 오류 확인을 위해 앱을 빌드하십시오.
-
-## <a name="register-the-repository"></a>저장소를 등록 합니다.
-
-저장소 인터페이스를 정의 하 여 리포지토리 클래스를 사용 하는 MVC 컨트롤러에서 분리할 수 있습니다. 인스턴스화하는 대신 한 `TodoRepository` 것을 주입 하는 컨트롤러 내는 `ITodoRepository` 에 대 한 ASP.NET 코어의 기본 제공 지원을 사용 하 여 [종속성 주입](xref:fundamentals/dependency-injection)합니다.
-
-이 방법을 사용 하면 보다 쉽게 단위에 컨트롤러를 테스트 합니다. 단위 테스트는 mock 또는 스텁 버전의 주입 해야 `ITodoRepository`합니다. 이런 방식으로 테스트 컨트롤러 논리와 데이터 액세스 계층에 구체적으로 대상이 됩니다.
-
-저장소 컨트롤러에 넣기, 하려면 DI 컨테이너를 사용 하 여 등록 해야 합니다. 열기는 *Startup.cs* 파일입니다. 
-
-에 `ConfigureServices` 메서드를 강조 표시 된 코드를 추가 합니다.
-
-[!code-csharp[주](first-web-api/sample/TodoApi/Startup.cs?name=snippet_AddSingleton&highlight=11)]
-
-## <a name="add-a-controller"></a>컨트롤러 추가
-
-솔루션 탐색기에서 마우스 오른쪽 단추로 클릭는 *컨트롤러* 폴더입니다. Select **Add** > **New Item**. 에 **새 항목 추가** 대화 상자에서는 **웹 API 컨트롤러 클래스** 템플릿. 클래스의 이름을 `TodoController`합니다.
-
-![새 항목 추가 대화 상자와 컨트롤러의 검색 상자 및 웹 API 컨트롤러를 선택](first-web-api/_static/new-project.png)
-
-
-생성된 된 코드를 다음으로 바꿉니다 (및 닫는 중괄호를 추가 합니다.):
-
-[!code-csharp[주](first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_todo1)]
-
-이 빈 컨트롤러 클래스를 정의 합니다. 다음 섹션에서 API를 구현 하는 메서드를 추가 합니다.
-
-## <a name="getting-to-do-items"></a>할 일 항목 가져오기
-
-할 일 항목을 가져오려면 다음 메서드를 추가 `TodoController` 클래스입니다.
-
-[!code-csharp[주](first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_GetAll)]
-
-이러한 메서드는 두 가지 GET 메서드가 구현 합니다.
-
-* `GET /api/todo`
-
-* `GET /api/todo/{id}`
-
-다음에 대 한 예제에서는 HTTP 응답은는 `GetAll` 메서드:
+<span data-ttu-id="cf69d-124">Visual Studio에서 CTRL+F5를 눌러 앱을 시작합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-124">In Visual Studio, press CTRL+F5 to launch the app.</span></span> <span data-ttu-id="cf69d-125">Visual Studio가 브라우저를 시작하고 `http://localhost:port/api/values`로 이동합니다. 여기서 *port*는 임의로 선택된 포트 번호입니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-125">Visual Studio launches a browser and navigates to `http://localhost:port/api/values`, where *port* is a randomly-chosen port number.</span></span> <span data-ttu-id="cf69d-126">Chrome, Edge 및 Firefox에는 다음 내용이 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-126">Chrome, Edge, and Firefox display the following:</span></span>
 
 ```
-HTTP/1.1 200 OK
-   Content-Type: application/json; charset=utf-8
-   Server: Microsoft-IIS/10.0
-   Date: Thu, 18 Jun 2015 20:51:10 GMT
-   Content-Length: 82
+["value1","value2"]
+``` 
 
-   [{"Key":"4f67d7c5-a2a9-4aae-b030-16003dd829ae","Name":"Item1","IsComplete":false}]
-   ```
+### <a name="add-a-model-class"></a><span data-ttu-id="cf69d-127">모델 클래스 추가</span><span class="sxs-lookup"><span data-stu-id="cf69d-127">Add a model class</span></span>
 
-이 자습서 뒷부분에서 설명할 것를 보는 방법을 사용 하 여 HTTP 응답 [Postman](https://www.getpostman.com/)합니다.
+<span data-ttu-id="cf69d-128">모델은 응용 프로그램에서 데이터를 나타내는 개체입니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-128">A model is an object that represents the data in your application.</span></span> <span data-ttu-id="cf69d-129">이 경우 유일한 모델은 할 일 항목입니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-129">In this case, the only model is a to-do item.</span></span>
 
-### <a name="routing-and-url-paths"></a>라우팅 및 URL 경로
+<span data-ttu-id="cf69d-130">“Models” 폴더를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-130">Add a folder named "Models".</span></span> <span data-ttu-id="cf69d-131">솔루션 탐색기에서 프로젝트를 마우스 오른쪽 단추로 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-131">In Solution Explorer, right-click the project.</span></span> <span data-ttu-id="cf69d-132">**추가** > **새 폴더**를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-132">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="cf69d-133">폴더 이름을 *Models*로 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-133">Name the folder *Models*.</span></span>
 
-`[HttpGet]` 특성은 HTTP GET 메서드를 지정 합니다. 각 방법에 대 한 URL 경로 다음과 같이 구성 됩니다.
+<span data-ttu-id="cf69d-134">참고: 모델 클래스는 프로젝트의 아무 곳에나 이동할 수 있지만 일반적으로 *Models* 폴더를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-134">Note: The model classes go anywhere in your project, but the *Models* folder is used by convention.</span></span>
 
-* 템플릿 문자열을 컨트롤러의 route 특성 사용`[Route("api/[controller]")]`
-* "[Controller]를"을 컨트롤러 클래스 이름 "컨트롤러" 접미사는 컨트롤러의 이름을 바꿉니다. 이 샘플에 대 한 컨트롤러 클래스 이름은 **Todo**은 "todo" 컨트롤러와 루트 이름입니다. ASP.NET Core [라우팅](xref:mvc/controllers/routing) 는 대 소문자를 구분 하지 않습니다.
-* 하는 경우는 `[HttpGet]` 특성에 문자열, 경로에 추가 하는 서식 파일입니다. 이 샘플에는 템플릿 문자열을 사용 하지 않습니다.
+<span data-ttu-id="cf69d-135">`TodoItem` 클래스를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-135">Add a `TodoItem` class.</span></span> <span data-ttu-id="cf69d-136">*Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스**를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-136">Right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="cf69d-137">클래스 이름을 `TodoItem`으로 지정하고 **추가**를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-137">Name the class `TodoItem` and select **Add**.</span></span>
 
-에 `GetById` 메서드:
+<span data-ttu-id="cf69d-138">생성된 코드를 다음으로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-138">Replace the generated code with the following:</span></span>
 
-```csharp
-[HttpGet("{id}", Name = "GetTodo")]
-public IActionResult GetById(string id)
-```
+<span data-ttu-id="cf69d-139">[!code-csharp[Main](first-web-api/sample/TodoApi/Models/TodoItem.cs)]</span><span class="sxs-lookup"><span data-stu-id="cf69d-139">[!code-csharp[Main](first-web-api/sample/TodoApi/Models/TodoItem.cs)]</span></span>
 
-`"{id}"`ID에 대 한 자리 표시자 변수가 `todo` 항목입니다. 때 `GetById` 은 "{id}"의 값의 url을 메서드의 할당 호출 `id` 매개 변수입니다.
+<span data-ttu-id="cf69d-140">`TodoItem`이 만들어질 때 데이터베이스가 `Id`를 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-140">The database generates the `Id` when a `TodoItem` is created.</span></span>
 
-`Name = "GetTodo"`명명된 된 경로 만들고 HTTP 응답에이 경로를 연결할 수 있습니다. 필자 나중에 설명 것에 대 한 예입니다. 참조 [컨트롤러 작업에 대 한 라우팅을](xref:mvc/controllers/routing) 자세한 정보.
+### <a name="create-the-database-context"></a><span data-ttu-id="cf69d-141">데이터베이스 컨텍스트 만들기</span><span class="sxs-lookup"><span data-stu-id="cf69d-141">Create the database context</span></span>
 
-### <a name="return-values"></a>반환 값
+<span data-ttu-id="cf69d-142">*데이터베이스 컨텍스트*는 특정 데이터 모델에 맞게 Entity Framework 기능을 조정하는 주 클래스입니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-142">The *database context* is the main class that coordinates Entity Framework functionality for a given data model.</span></span> <span data-ttu-id="cf69d-143">`Microsoft.EntityFrameworkCore.DbContext` 클래스에서 파생시키는 방식으로 이 클래스를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-143">This class is created by deriving from the `Microsoft.EntityFrameworkCore.DbContext` class.</span></span>
 
-`GetAll` 메서드가 반환 되는 `IEnumerable`합니다. MVC는 자동으로 개체를 serialize [JSON](http://www.json.org/) 하 고 응답 메시지의 본문에 JSON을 기록 합니다. 응답 코드는이 메서드는 200에 대 한 처리 되지 않은 예외가 되었다고 가정 합니다. (예외가 발생할 때마다 5xx 오류로 변환 됩니다.)
+<span data-ttu-id="cf69d-144">`TodoContext` 클래스를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-144">Add a `TodoContext` class.</span></span> <span data-ttu-id="cf69d-145">*Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스**를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-145">Right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="cf69d-146">클래스 이름을 `TodoContext`로 지정하고 **추가**를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-146">Name the class `TodoContext` and select **Add**.</span></span>
 
-반면에 `GetById` 메서드는 보다 일반적인 `IActionResult` 광범위 한 반환 형식 나타내는 형식입니다. `GetById`서로 다른 두 반환 형식에 있습니다.
+<span data-ttu-id="cf69d-147">생성된 코드를 다음으로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-147">Replace the generated code with the following:</span></span>
 
-* 요청된 된 ID 일치 하는 항목이 없는 경우 404 오류가 반환 됩니다.  반환 하 여 이렇게 `NotFound`합니다.
+<span data-ttu-id="cf69d-148">[!code-csharp[Main](first-web-api/sample/TodoApi/Models/TodoContext.cs)]</span><span class="sxs-lookup"><span data-stu-id="cf69d-148">[!code-csharp[Main](first-web-api/sample/TodoApi/Models/TodoContext.cs)]</span></span>
 
-* 메서드가는 JSON 응답 본문을 포함 하는 200이 반환 됩니다. 반환 하 여 이렇게는`ObjectResult`
+[!INCLUDE[Register the database context](../includes/webApi/register_dbContext.md)]
 
+### <a name="add-a-controller"></a><span data-ttu-id="cf69d-149">컨트롤러 추가</span><span class="sxs-lookup"><span data-stu-id="cf69d-149">Add a controller</span></span>
+
+<span data-ttu-id="cf69d-150">솔루션 탐색기에서 *Controllers* 폴더를 마우스 오른쪽 단추로 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-150">In Solution Explorer, right-click the *Controllers* folder.</span></span> <span data-ttu-id="cf69d-151">**추가** > **새 항목**을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-151">Select **Add** > **New Item**.</span></span> <span data-ttu-id="cf69d-152">**새 항목 추가** 대화 상자에서 **Web API 컨트롤러 클래스** 템플릿을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-152">In the **Add New Item** dialog, select the **Web  API Controller Class** template.</span></span> <span data-ttu-id="cf69d-153">클래스 이름을 `TodoController`로 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-153">Name the class `TodoController`.</span></span>
+
+![검색 상자의 컨트롤러 및 Web API 컨트롤러가 선택된 새 항목 추가 대화 상자](first-web-api/_static/new_controller.png)
+
+<span data-ttu-id="cf69d-155">생성된 코드를 다음으로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-155">Replace the generated code with the following:</span></span>
+
+[!INCLUDE[code and get todo items](../includes/webApi/getTodoItems.md)]
   
-### <a name="launch-the-app"></a>응용 프로그램을 실행
+### <a name="launch-the-app"></a><span data-ttu-id="cf69d-156">앱 시작</span><span class="sxs-lookup"><span data-stu-id="cf69d-156">Launch the app</span></span>
 
-Visual Studio에서 응용 프로그램을 실행 하려면 CTRL + f&5;를 누릅니다. Visual Studio로 이동 하며 브라우저 시작 `http://localhost:port/api/values`여기서 *포트* 임의로 선택한 포트 번호입니다. Chrome, 모서리 또는 Firefox를 사용 하는 경우 데이터가 표시 됩니다. IE가 열기는 또는 저장 IE를 사용 하는 경우는 *values.json* 파일입니다. 탐색 하는 `Todo` 방금 만든 컨트롤러 `http://localhost:port/api/todo`합니다.
+<span data-ttu-id="cf69d-157">Visual Studio에서 CTRL+F5를 눌러 앱을 시작합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-157">In Visual Studio, press CTRL+F5 to launch the app.</span></span> <span data-ttu-id="cf69d-158">Visual Studio가 브라우저를 시작하고 `http://localhost:port/api/values`로 이동합니다. 여기서 *port*는 임의로 선택된 포트 번호입니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-158">Visual Studio launches a browser and navigates to `http://localhost:port/api/values`, where *port* is a randomly chosen port number.</span></span> <span data-ttu-id="cf69d-159">Chrome, Edge 또는 Firefox를 사용할 경우 데이터가 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-159">If you're using Chrome, Edge or Firefox, the data will be displayed.</span></span> <span data-ttu-id="cf69d-160">IE를 사용할 경우 IE에서 *values.json* 파일을 열거나 저장할지 묻는 메시지를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-160">If you're using IE, IE will prompt to you open or save the *values.json* file.</span></span> <span data-ttu-id="cf69d-161">방금 만든 `Todo` 컨트롤러(`http://localhost:port/api/todo`)로 이동합니다.</span><span class="sxs-lookup"><span data-stu-id="cf69d-161">Navigate to the `Todo` controller we just created `http://localhost:port/api/todo`.</span></span>
 
-## <a name="implement-the-other-crud-operations"></a>다른 CRUD 작업을 구현 합니다.
+[!INCLUDE[last part of web API](../includes/webApi/end.md)]
 
-추가한 `Create`, `Update`, 및 `Delete` 컨트롤러 메서드. 이러한 변형이 테마에만 코드를 보여 고 주요 차이점을 강조 표시 합니다. 추가 또는 코드를 변경한 후 프로젝트를 빌드하십시오.
-
-### <a name="create"></a>만들기
-
-[!code-csharp[주](first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
-
-이으로 표시 하는 HTTP POST 메서드는 [ `[HttpPost]` ](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/HttpPostAttribute/index.html) 특성입니다. [ `[FromBody]` ](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/FromBodyAttribute/index.html) 특성은 MVC HTTP 요청의 본문에서 할 일 항목의 값을 가져올 수 있습니다.
-
-`CreatedAtRoute` 메서드를 서버에 새 리소스를 만드는 HTTP POST 메서드에 대 한 표준 응답은 201 응답을 반환 합니다. `CreatedAtRoute`또한 위치 헤더를 응답에 추가합니다. Location 헤더는 새로 만든된 할 일 항목의 URI를 지정 합니다. 참조 [10.2.2 201 생성 됨](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)합니다.
-
-### <a name="use-postman-to-send-a-create-request"></a>Postman을 사용 하 여 만들기 요청을 보내려면
-
-![Postman 콘솔](first-web-api/_static/pmc.png)
-
-* HTTP 메서드 설정`POST`
-* 선택 된 **본문** 라디오 단추
-* 선택 된 **원시** 라디오 단추
-* 형식을 JSON으로 설정
-* 키-값 편집기에서 할 일 항목을 같은 입력 
-```JSON
-{
-    "name":"walk dog",
-    "isComplete":true
-}```
-
-* Select **Send**
-
-Select the Headers tab in the lower pane and copy the **Location** header:
-
-![Headers tab of the Postman console](first-web-api/_static/pmget.png)
-
-You can use the Location header URI to access the resource you just created. Recall the `GetById` method created the `"GetTodo"` named route:
-
-```csharp
-[HttpGet("{id}", Name = "GetTodo")]
-public IActionResult GetById(string id)
-```
-
-### <a name="update"></a>업데이트
-
-[!code-csharp[주](first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Update)]
-
-`Update`유사한 `Create`, 하지만 HTTP PUT을 사용 합니다. 응답은 [204 (콘텐츠 없음)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)합니다. HTTP 사양에 따라는 PUT 요청을 보내도록 델타 뿐 아니라 전체 업데이트 된 엔터티를 클라이언트에 필요 합니다. 부분 업데이트를 지원 하려면 HTTP PATCH를 사용 합니다.
-
-![204 (콘텐츠 없음) 응답을 보여 주는 postman 콘솔](first-web-api/_static/pmcput.png)
-
-### <a name="delete"></a>삭제
-
-[!code-csharp[주](first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Delete)]
-
-응답은 [204 (콘텐츠 없음)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)합니다.
-
-![204 (콘텐츠 없음) 응답을 보여 주는 postman 콘솔](first-web-api/_static/pmd.png)
-
-## <a name="next-steps"></a>다음 단계
-
-* 에 네이티브 모바일 응용 프로그램용 백 엔드 만들기에 대 한 자세한 참조 [네이티브 모바일 응용 프로그램에 대 한 백 엔드 서비스를 만드는](xref:mobile/native-mobile-backend)합니다.
-
-* [컨트롤러 작업에 대 한 라우팅을](xref:mvc/controllers/routing)
-
-* API를 배포 하는 방법에 대 한 정보를 참조 하십시오. [게시 및 배포](../publishing/index.md)합니다.
-
-* [샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/sample)
-
-* [Postman](https://www.getpostman.com/)
-
-* [Fiddler](http://www.fiddler2.com/fiddler2/)
+[!INCLUDE[next steps](../includes/webApi/next.md)]
 

@@ -1,64 +1,77 @@
 ---
-title: "ASP.NET Core 자습서 | Microsoft 문서"
+title: "ASP.NET Core 자습서"
 author: tdykstra
-description: "목록 ASP.NET 핵심 응용 프로그램을 개발 하는 방법을 학습 하기 위한 단계별 가이드입니다."
-keywords: ASP.NET Core
+description: "ASP.NET Core 응용 프로그램을 개발하는 방법을 배우기 위한 단계별 가이드 목록입니다."
+keywords: ASP.NET Core,
 ms.author: tdykstra
 manager: wpickett
-ms.date: 10/14/2016
-ms.topic: article
-ms.assetid: a5313c5c-fdee-4ec6-9920-d94de5746e9b
+ms.date: 7/14/2017
+ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
-translationtype: Machine Translation
-ms.sourcegitcommit: 207359af7720216a9b20ce27dd95647da42efd80
-ms.openlocfilehash: c6c8e400a62894223dac861ea71056ebf91e8626
-ms.lasthandoff: 03/23/2017
-
+uid: tutorials/index
+ms.openlocfilehash: b2b429ea591809a7a1bc58115c48b8b3ed8e4249
+ms.sourcegitcommit: d7e0df365a6112240b5560212759b1e3525850a2
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/31/2017
 ---
-# <a name="aspnet-core-tutorials"></a>ASP.NET Core 자습서
+# <a name="aspnet-core-tutorials"></a><span data-ttu-id="67ac3-104">ASP.NET Core 자습서</span><span class="sxs-lookup"><span data-stu-id="67ac3-104">ASP.NET Core tutorials</span></span>
 
-다음 ASP.NET 핵심 응용 프로그램을 개발 하기 위한 단계별 가이드를 사용할 수 있습니다.
+<span data-ttu-id="67ac3-105">ASP.NET Core 응용 프로그램을 개발하기 위해 다음 단계별 가이드를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="67ac3-105">The following step-by-step guides for developing ASP.NET Core applications are available:</span></span>
 
-## <a name="building-web-applications"></a>웹 응용 프로그램 구축
-* [Mac 또는 Visual Studio 코드를 사용 하 여 Linux에서 첫 ASP.NET 핵심 응용 프로그램](your-first-mac-aspnet.md)
-* [Visual Studio와 함께 첫 ASP.NET 핵심 MVC 응용 프로그램 구축](first-mvc-app/index.md)
-* [ASP.NET Core 및 Visual Studio를 사용 하 여 Entity Framework 핵심 시작](../data/ef-mvc/index.md)
-* [Yeoman 사용한 프로젝트 빌드](../client-side/yeoman.md)
-* [태그 도우미를 작성합니다.](../mvc/views/tag-helpers/authoring.md)
-* [단순 보기 구성 요소 만들기](../mvc/views/view-components.md#walkthrough-creating-a-simple-view-component)
-* [Dotnet 감시를 사용 하 여 ASP.NET 핵심 응용 프로그램 개발](dotnet-watch.md)
+## <a name="building-web-applications"></a><span data-ttu-id="67ac3-106">웹 응용 프로그램 빌드</span><span class="sxs-lookup"><span data-stu-id="67ac3-106">Building web applications</span></span>
 
-## <a name="building-web-apis"></a>건물 웹 Api
-* [ASP.NET Core MVC 및 Visual Studio로 첫 번째 웹 API를 구축합니다.](first-web-api.md)
-* [ASP.NET 웹 API 도움말 페이지를 사용 하 여 Swagger](web-api-help-pages-using-swagger.md)
-* [백 엔드를 네이티브 모바일 응용 프로그램에 대 한 웹 서비스 만들기](../mobile/native-mobile-backend.md)
+<span data-ttu-id="67ac3-107">[Razor 페이지](xref:mvc/razor-pages/index)는 ASP.NET Core 2.0을 사용하여 웹 UI를 만드는 좋은 방법입니다.</span><span class="sxs-lookup"><span data-stu-id="67ac3-107">[Razor Pages](xref:mvc/razor-pages/index) is the recommended approach to create a Web UI with ASP.NET Core 2.0.</span></span>
 
-## <a name="working-with-data"></a>데이터 작업
-* [ASP.NET Core 및 Visual Studio를 사용 하 여 Entity Framework 핵심 시작](../data/ef-mvc/index.md)
-* [ASP.NET Core EF 코어-새 데이터베이스](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db)
-* [ASP.NET Core EF 코어-기존 데이터베이스](https://docs.microsoft.com/ef/core/get-started/aspnetcore/existing-db)
+* [<span data-ttu-id="67ac3-108">ASP.NET Core의 Razor 페이지 소개</span><span class="sxs-lookup"><span data-stu-id="67ac3-108">Introduction to Razor Pages in ASP.NET Core</span></span>](xref:mvc/razor-pages/index)
+* [<span data-ttu-id="67ac3-109">Windows에서 ASP.NET Core를 사용하여 Razor 페이지 웹앱 만들기</span><span class="sxs-lookup"><span data-stu-id="67ac3-109">Create a Razor Pages web app with ASP.NET Core on Windows</span></span>](xref:tutorials/razor-pages/index)
+* [<span data-ttu-id="67ac3-110">Mac에서 ASP.NET Core를 사용하여 Razor 페이지 웹앱 만들기</span><span class="sxs-lookup"><span data-stu-id="67ac3-110">Create a Razor Pages web app with ASP.NET Core on Mac</span></span>](xref:tutorials/razor-pages-mac/index)  
+* [<span data-ttu-id="67ac3-111">VS Code와 함께 ASP.NET Core를 사용하여 Razor 페이지 웹앱 만들기</span><span class="sxs-lookup"><span data-stu-id="67ac3-111">Create a Razor Pages web app with ASP.NET Core with VS Code</span></span>](xref:tutorials/razor-pages-vsc/index) 
+* [<span data-ttu-id="67ac3-112">Windows에서 Visual Studio를 사용하여 ASP.NET Core MVC 웹앱 만들기</span><span class="sxs-lookup"><span data-stu-id="67ac3-112">Create an ASP.NET Core MVC web app with Visual Studio on Windows</span></span>](first-mvc-app/index.md)
+* [<span data-ttu-id="67ac3-113">Mac에서 Visual Studio를 사용하여 ASP.NET Core MVC 웹앱 만들기</span><span class="sxs-lookup"><span data-stu-id="67ac3-113">Create an ASP.NET Core MVC web app with Visual Studio on Mac</span></span>](first-mvc-app-mac/index.md)
+* [<span data-ttu-id="67ac3-114">Mac 또는 Linux에서 Visual Studio Code를 사용하여 ASP.NET Core MVC 웹앱 만들기</span><span class="sxs-lookup"><span data-stu-id="67ac3-114">Create an ASP.NET Core MVC web app with Visual Studio Code on Mac or Linux </span></span>](first-mvc-app-xplat/index.md)
+* [<span data-ttu-id="67ac3-115">Visual Studio를 사용하여 ASP.NET Core 및 Entity Framework Core 시작</span><span class="sxs-lookup"><span data-stu-id="67ac3-115">Getting started with ASP.NET Core and Entity Framework Core using Visual Studio</span></span>](../data/ef-mvc/index.md)
+* [<span data-ttu-id="67ac3-116">Yeoman을 사용하여 프로젝트 빌드</span><span class="sxs-lookup"><span data-stu-id="67ac3-116">Building projects with Yeoman</span></span>](../client-side/yeoman.md)
+* [<span data-ttu-id="67ac3-117">태그 도우미 작성</span><span class="sxs-lookup"><span data-stu-id="67ac3-117">Authoring Tag Helpers</span></span>](../mvc/views/tag-helpers/authoring.md)
+* [<span data-ttu-id="67ac3-118">간단한 뷰 구성 요소 만들기</span><span class="sxs-lookup"><span data-stu-id="67ac3-118">Creating a simple view component</span></span>](../mvc/views/view-components.md#walkthrough-creating-a-simple-view-component)
+* [<span data-ttu-id="67ac3-119">dotnet watch를 사용하여 ASP.NET Core 응용 프로그램 개발</span><span class="sxs-lookup"><span data-stu-id="67ac3-119">Developing ASP.NET Core applications using dotnet watch</span></span>](dotnet-watch.md)
 
-## <a name="authentication-and-authorization"></a>인증 및 권한 부여
-* [Facebook, Google 및 다른 외부 공급자를 사용 하 여 인증을 사용 하도록 설정](../security/authentication/social/index.md)
-* [계정 확인 및 암호 복구](../security/authentication/accconfirm.md)
-* [SMS와&2; 단계 인증](../security/authentication/2fa.md)
+## <a name="building-web-apis"></a><span data-ttu-id="67ac3-120">Web API 빌드</span><span class="sxs-lookup"><span data-stu-id="67ac3-120">Building web APIs</span></span>
+* [<span data-ttu-id="67ac3-121">ASP.NET Core 및 Mac용 Visual Studio를 사용하여 Web API 만들기</span><span class="sxs-lookup"><span data-stu-id="67ac3-121">Create a Web API with ASP.NET Core and Visual Studio for Mac</span></span>](xref:tutorials/first-web-api-mac)
+* [<span data-ttu-id="67ac3-122">ASP.NET Core 및 Windows용 Visual Studio를 사용하여 Web API 만들기</span><span class="sxs-lookup"><span data-stu-id="67ac3-122">Create a Web API with ASP.NET Core and Visual Studio for Windows</span></span>](first-web-api.md)
+* [<span data-ttu-id="67ac3-123">ASP.NET Core 및 Visual Studio Code를 사용하여 Web API 만들기</span><span class="sxs-lookup"><span data-stu-id="67ac3-123">Create a Web API with ASP.NET Core and Visual Studio Code</span></span>](web-api-vsc.md)
+* [<span data-ttu-id="67ac3-124">Swagger를 사용한 ASP.NET Web API 도움말 페이지</span><span class="sxs-lookup"><span data-stu-id="67ac3-124">ASP.NET Web API Help Pages using Swagger</span></span>](web-api-help-pages-using-swagger.md)
+* [<span data-ttu-id="67ac3-125">네이티브 모바일 응용 프로그램에 대한 백 엔드 웹 서비스 만들기</span><span class="sxs-lookup"><span data-stu-id="67ac3-125">Creating backend web services for native mobile applications</span></span>](../mobile/native-mobile-backend.md)
 
-## <a name="client-side-development"></a>클라이언트 쪽 개발
-* [Gulp 사용](../client-side/using-gulp.md)
-* [Grunt를 사용 하 여](../client-side/using-grunt.md)
-* [Bower와 함께 클라이언트 쪽 패키지 관리](../client-side/bower.md)
-* [Bootstrap 사용 하 여 아름 다운, 응답성이 뛰어난 사이트 구축](../client-side/bootstrap.md)
+## <a name="working-with-data"></a><span data-ttu-id="67ac3-126">데이터 작업</span><span class="sxs-lookup"><span data-stu-id="67ac3-126">Working with data</span></span>
+* [<span data-ttu-id="67ac3-127">Visual Studio를 사용하여 ASP.NET Core 및 Entity Framework Core 시작</span><span class="sxs-lookup"><span data-stu-id="67ac3-127">Getting started with ASP.NET Core and Entity Framework Core using Visual Studio</span></span>](../data/ef-mvc/index.md)
+* <span data-ttu-id="67ac3-128">[ASP.NET Core with EF Core - new database](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db)(ASP.NET Core 및 EF Core - 새로운 데이터베이스)</span><span class="sxs-lookup"><span data-stu-id="67ac3-128">[ASP.NET Core with EF Core - new database](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db)</span></span>
+* <span data-ttu-id="67ac3-129">[ASP.NET Core with EF Core - existing database](https://docs.microsoft.com/ef/core/get-started/aspnetcore/existing-db)(ASP.NET Core 및 EF Core - 기존 데이터베이스)</span><span class="sxs-lookup"><span data-stu-id="67ac3-129">[ASP.NET Core with EF Core - existing database](https://docs.microsoft.com/ef/core/get-started/aspnetcore/existing-db)</span></span>
 
-## <a name="testing"></a>테스트
-* [Dotnet 테스트를 사용 하 여.NET Core에서 단위 테스트](https://docs.microsoft.com/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
+## <a name="authentication-and-authorization"></a><span data-ttu-id="67ac3-130">인증 및 권한 부여</span><span class="sxs-lookup"><span data-stu-id="67ac3-130">Authentication and authorization</span></span>
+* [<span data-ttu-id="67ac3-131">Facebook, Google 및 기타 외부 공급자를 통해 인증 사용</span><span class="sxs-lookup"><span data-stu-id="67ac3-131">Enabling authentication using Facebook, Google and other external providers</span></span>](../security/authentication/social/index.md)
+* [<span data-ttu-id="67ac3-132">계정 확인 및 암호 복구</span><span class="sxs-lookup"><span data-stu-id="67ac3-132">Account Confirmation and Password Recovery</span></span>](../security/authentication/accconfirm.md)
+* [<span data-ttu-id="67ac3-133">SMS를 사용한 2단계 인증</span><span class="sxs-lookup"><span data-stu-id="67ac3-133">Two-factor authentication with SMS</span></span>](../security/authentication/2fa.md)
 
-## <a name="publishing-and-deployment"></a>게시 및 배포
-* [Visual Studio를 사용 하 여 Azure에 ASP.NET 핵심 웹 응용 프로그램 배포](publish-to-azure-webapp-using-vs.md)
-* [연속 배포를 사용 하 여 Azure 웹 앱에 게시](../publishing/azure-continuous-deployment.md)
-* [ASP.NET 컨테이너 원격 Docker 호스트에 배포](https://docs.microsoft.com/azure/vs-azure-tools-docker-hosting-web-apps-in-docker)
-* [VSTS를 사용 하 여 연속 배포를 사용 하 여 Azure 웹 앱을 빌드하고 게시 하려면](../publishing/vsts-continuous-deployment.md)
-* [ASP.NET Core Nano 서버에](nano-server.md)
-* [ASP.NET Core 및 Azure 서비스 패브릭](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-add-a-web-frontend)
+## <a name="client-side-development"></a><span data-ttu-id="67ac3-134">클라이언트 쪽 개발</span><span class="sxs-lookup"><span data-stu-id="67ac3-134">Client-side development</span></span>
+* [<span data-ttu-id="67ac3-135">Gulp 사용</span><span class="sxs-lookup"><span data-stu-id="67ac3-135">Using Gulp</span></span>](../client-side/using-gulp.md)
+* [<span data-ttu-id="67ac3-136">Grunt 사용</span><span class="sxs-lookup"><span data-stu-id="67ac3-136">Using Grunt</span></span>](../client-side/using-grunt.md)
+* [<span data-ttu-id="67ac3-137">Bower를 사용하여 클라이언트 쪽 패키지 관리</span><span class="sxs-lookup"><span data-stu-id="67ac3-137">Manage client-side packages with Bower</span></span>](../client-side/bower.md)
+* [<span data-ttu-id="67ac3-138">부트스트랩을 사용하여 아름답고 반응이 빠른 사이트 빌드</span><span class="sxs-lookup"><span data-stu-id="67ac3-138">Building beautiful, responsive sites with Bootstrap</span></span>](../client-side/bootstrap.md)
 
+## <a name="testing"></a><span data-ttu-id="67ac3-139">테스트</span><span class="sxs-lookup"><span data-stu-id="67ac3-139">Testing</span></span>
+* [<span data-ttu-id="67ac3-140">Dotnet 테스트를 사용한 .NET Core의 유닛 테스트</span><span class="sxs-lookup"><span data-stu-id="67ac3-140">Unit Testing in .NET Core using dotnet test</span></span>](https://docs.microsoft.com/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
 
+## <a name="publishing-and-deployment"></a><span data-ttu-id="67ac3-141">게시 및 배포</span><span class="sxs-lookup"><span data-stu-id="67ac3-141">Publishing and deployment</span></span>
+* [<span data-ttu-id="67ac3-142">Visual Studio를 사용하여 Azure에 ASP.NET Core 웹앱 배포</span><span class="sxs-lookup"><span data-stu-id="67ac3-142">Deploy an ASP.NET Core web app to Azure using Visual Studio</span></span>](publish-to-azure-webapp-using-vs.md)
+* [<span data-ttu-id="67ac3-143">연속 배포를 사용하여 Azure 웹앱에 게시</span><span class="sxs-lookup"><span data-stu-id="67ac3-143">Publishing to an Azure Web App with Continuous Deployment</span></span>](../publishing/azure-continuous-deployment.md)
+* [<span data-ttu-id="67ac3-144">원격 Docker 호스트에 ASP.NET 컨테이너 배포</span><span class="sxs-lookup"><span data-stu-id="67ac3-144">Deploy an ASP.NET container to a remote Docker host</span></span>](https://docs.microsoft.com/azure/vs-azure-tools-docker-hosting-web-apps-in-docker)
+* [<span data-ttu-id="67ac3-145">Nano Server의 ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="67ac3-145">ASP.NET Core on Nano Server</span></span>](nano-server.md)
+* [<span data-ttu-id="67ac3-146">ASP.NET Core 및 Azure Service Fabric</span><span class="sxs-lookup"><span data-stu-id="67ac3-146">ASP.NET Core and Azure Service Fabric</span></span>](https://docs.microsoft.com/azure/service-fabric/service-fabric-add-a-web-frontend)
+
+<a name="download"></a> 
+## <a name="how-to-download-a-sample"></a><span data-ttu-id="67ac3-147">샘플 다운로드 방법</span><span class="sxs-lookup"><span data-stu-id="67ac3-147">How to download a sample</span></span>
+1. <span data-ttu-id="67ac3-148">[ASP.NET 리포지토리 zip 파일을 다운로드합니다](https://github.com/aspnet/docs/archive/master.zip).</span><span class="sxs-lookup"><span data-stu-id="67ac3-148">[Download the ASP.NET repository zip file](https://github.com/aspnet/docs/archive/master.zip).</span></span>
+1. <span data-ttu-id="67ac3-149">*Docs-master.zip* 파일의 압축을 풉니다.</span><span class="sxs-lookup"><span data-stu-id="67ac3-149">Unzip the *Docs-master.zip* file.</span></span>
+1. <span data-ttu-id="67ac3-150">샘플 링크의 URL을 사용하여 샘플 디렉터리로 이동할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="67ac3-150">Use the URL in the sample link to help you navigate to the sample directory.</span></span> 

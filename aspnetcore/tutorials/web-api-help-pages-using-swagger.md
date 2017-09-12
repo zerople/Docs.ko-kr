@@ -1,112 +1,107 @@
 ---
-title: "ASP.NET 웹 API 도움말 페이지 Swagger를 사용 하 여 | Microsoft 문서"
+title: "Swagger를 사용한 ASP.NET Core Web API 도움말 페이지"
 author: spboyer
-description: "Swagger 웹 API 응용 프로그램에 추가 하는 연습"
-keywords: ASP.NET Core, Swagger
+description: "이 자습서에서는 Swagger를 추가하여 Web API 응용 프로그램에 대한 설명서 및 도움말 페이지를 생성하는 연습을 제공합니다."
+keywords: "ASP.NET Core, Swagger, Swashbuckle, 도움말 페이지, Web API"
 ms.author: spboyer
 manager: wpickett
-ms.date: 10/14/2016
+ms.date: 09/01/2017
 ms.topic: article
 ms.assetid: 54bb961d-29d9-4dee-8e2c-a93fc33c16f2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/web-api-help-pages-using-swagger
-translationtype: Machine Translation
-ms.sourcegitcommit: 0c6c54fb67cf77b172f033c3c8aec801fddef81d
-ms.openlocfilehash: 801a574b04bb0ebec299b170ee4f7fbd90090332
-ms.lasthandoff: 03/23/2017
-
+ms.openlocfilehash: fd2f415947c049d1239ce4e6bf0b1cf0264e7836
+ms.sourcegitcommit: 41e3e007512c175a42910bc69678f3f0403cab04
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 09/01/2017
 ---
-# <a name="aspnet-web-api-help-pages-using-swagger"></a>ASP.NET 웹 API 도움말 페이지를 사용 하 여 Swagger
+# <a name="aspnet-web-api-help-pages-using-swagger"></a><span data-ttu-id="dea09-104">Swagger를 사용한 ASP.NET Web API 도움말 페이지</span><span class="sxs-lookup"><span data-stu-id="dea09-104">ASP.NET Web API Help Pages using Swagger</span></span>
 
 <a name=web-api-help-pages-using-swagger></a>
 
-[Shayne 보이 어](https://twitter.com/spboyer)
+<span data-ttu-id="dea09-105">작성자: [Shayne Boyer](https://twitter.com/spboyer) 및 [Scott Addie](https://twitter.com/Scott_Addie)</span><span class="sxs-lookup"><span data-stu-id="dea09-105">By [Shayne Boyer](https://twitter.com/spboyer) and [Scott Addie](https://twitter.com/Scott_Addie)</span></span>
 
-API의 다양 한 메서드를 이해 소비 응용 프로그램을 빌드할 때 개발자 어려울 수 있습니다.
+<span data-ttu-id="dea09-106">소비 응용 프로그램을 빌드할 경우 개발자가 API의 다양한 메서드를 이해하기 어려울 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-106">Understanding the various methods of an API can be a challenge for a developer when building a consuming application.</span></span>
 
-좋은 설명서 및 도움말 페이지를 사용 하 여 웹 API의 일부로 생성 [Swagger](http://swagger.io) .NET Core 구현을 [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) 몇 가지 NuGet 패키지를 추가 하 고 수정 하는 것 만큼 쉽습니다는 *Startup.cs*합니다.
+<span data-ttu-id="dea09-107">[Swagger](http://swagger.io)와 .NET Core 구현 [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore)를 함께 사용하여 Web API에 대한 유용한 설명서와 도움말 페이지를 생성하는 것은 두서너 개의 NuGet 패키지를 추가하고 *Startup.cs*를 수정하는 것만큼 쉽습니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-107">Generating good documentation and help pages for your Web API, using [Swagger](http://swagger.io) with the .NET Core implementation [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore), is as easy as adding a couple of NuGet packages and modifying the *Startup.cs*.</span></span>
 
-* [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) ASP.NET 핵심 MVC를 사용 하 여 작성 된 웹 Api에 대 한 Swagger 문서를 생성 하기 위한 오픈 소스 프로젝트입니다.
+* <span data-ttu-id="dea09-108">[Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore)는 ASP.NET Core Web API에 대한 Swagger 문서를 생성하기 위한 오픈 소스 프로젝트입니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-108">[Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) is an open source project for generating Swagger documents for ASP.NET Core Web APIs.</span></span>
 
-* [Swagger](http://swagger.io) 대화형 설명서, 클라이언트 SDK 생성 및 검색 기능을 지원할 수 있도록 하는 RESTful API의 컴퓨터를 읽을 수 있는 표현입니다.
+* <span data-ttu-id="dea09-109">[Swagger](http://swagger.io)는 대화형 설명서, 클라이언트 SDK 생성 및 검색 기능에 대한 지원을 가능하게 하는 RESTful API의 컴퓨터에서 읽을 수 있는 표현입니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-109">[Swagger](http://swagger.io) is a machine-readable representation of a RESTful API that enables support for interactive documentation, client SDK generation, and discoverability.</span></span>
 
-이 자습서 샘플 기반 [건물 Your 첫 번째 웹 API ASP.NET 핵심 MVC 및 Visual Studio와](first-web-api.md)합니다. 샘플을 다운로드 진행 하려는 경우 [https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/sample](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/sample)합니다.
+<span data-ttu-id="dea09-110">이 자습서는 [ASP.NET Core MVC 및 Visual Studio를 사용하여 첫 번째 Web API 빌드](xref:tutorials/first-web-api)에 대한 샘플을 기반으로 빌드됩니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-110">This tutorial builds on the sample on [Building Your First Web API with ASP.NET Core MVC and Visual Studio](xref:tutorials/first-web-api).</span></span> <span data-ttu-id="dea09-111">함께 수행해 보려면 [https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/sample](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/sample)에서 샘플을 다운로드합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-111">If you'd like to follow along, download the sample at [https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/sample](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/sample).</span></span>
 
-## <a name="getting-started"></a>시작
+## <a name="getting-started"></a><span data-ttu-id="dea09-112">시작</span><span class="sxs-lookup"><span data-stu-id="dea09-112">Getting Started</span></span>
 
-Swashbuckle에 세 가지 주요 구성 요소가
+<span data-ttu-id="dea09-113">Swashbuckle에 대한 세 가지 주 구성 요소는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-113">There are three main components to Swashbuckle:</span></span>
 
-* *Swashbuckle.AspNetCore.Swagger* : Swagger 개체 모델 및 JSON 끝점으로 SwaggerDocument 개체를 노출 하는 미들웨어입니다.
+* <span data-ttu-id="dea09-114">`Swashbuckle.AspNetCore.Swagger`: `SwaggerDocument` 개체를 JSON 끝점으로 노출하기 위한 Swagger 개체 모델 및 미들웨어.</span><span class="sxs-lookup"><span data-stu-id="dea09-114">`Swashbuckle.AspNetCore.Swagger`: a Swagger object model and middleware to expose `SwaggerDocument` objects as JSON endpoints.</span></span>
 
-* *Swashbuckle.AspNetCore.SwaggerGen* : 경로, 컨트롤러 및 모델에서 직접 SwaggerDocument 개체를 작성 하는 Swagger 생성기입니다. 일반적으로 자동으로 Swagger JSON을 노출 하는 Swagger 끝점 미들웨어 조합 합니다.
+* <span data-ttu-id="dea09-115">`Swashbuckle.AspNetCore.SwaggerGen`: 경로, 컨트롤러 및 모델에서 직접 `SwaggerDocument` 개체를 빌드하는 Swagger 생성기.</span><span class="sxs-lookup"><span data-stu-id="dea09-115">`Swashbuckle.AspNetCore.SwaggerGen`: a Swagger generator that builds `SwaggerDocument` objects directly from your routes, controllers, and models.</span></span> <span data-ttu-id="dea09-116">일반적으로 Swagger 끝점 미들웨어와 결합되어 자동으로 Swagger JSON을 노출합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-116">It's typically combined with the Swagger endpoint middleware to automatically expose Swagger JSON.</span></span>
 
-* *Swashbuckle.AspNetCore.SwaggerUI* : 공용 메서드에 대해 테스트 도구 기능에는 포함 된 버전의 Swagger UI 도구를 빌드하는 웹 API 기능을 설명 하는 풍부한 기능의 사용자 지정이 가능한 환경 Swagger JSON을 해석 하 고 포함 하는 기본 제공 합니다.
+* <span data-ttu-id="dea09-117">`Swashbuckle.AspNetCore.SwaggerUI`: Web API 기능을 설명할 수 있는 다양한 사용자 지정 가능한 환경을 빌드하기 위해 Swagger JSON을 해석하는 Swagger UI 도구의 포함된 버전.</span><span class="sxs-lookup"><span data-stu-id="dea09-117">`Swashbuckle.AspNetCore.SwaggerUI`: an embedded version of the Swagger UI tool which interprets Swagger JSON to build a rich, customizable experience for describing the Web API functionality.</span></span> <span data-ttu-id="dea09-118">여기에는 공용 메서드에 대한 기본 제공 테스트 도구가 포함됩니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-118">It includes built-in test harnesses for the public methods.</span></span>
 
-## <a name="nuget-packages"></a>NuGet 패키지
+## <a name="nuget-packages"></a><span data-ttu-id="dea09-119">NuGet 패키지</span><span class="sxs-lookup"><span data-stu-id="dea09-119">NuGet Packages</span></span>
 
-다음 방법 중 하나를 사용 하 여 Swashbuckle을 추가할 수 있습니다.
+<span data-ttu-id="dea09-120">다음 방법으로 Swashbuckle을 추가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-120">Swashbuckle can be added with the following approaches:</span></span>
 
-* 패키지 관리자 콘솔:
+# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="dea09-121">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="dea09-121">Visual Studio</span></span>](#tab/visual-studio)
 
-```bash
-Install-Package Swashbuckle.AspNetCore -Pre
-   ```
+* <span data-ttu-id="dea09-122">**패키지 관리자 콘솔** 창에서:</span><span class="sxs-lookup"><span data-stu-id="dea09-122">From the **Package Manager Console** window:</span></span>
 
-* Visual Studio에서 합니다.
+    ```powershell
+    Install-Package Swashbuckle.AspNetCore
+    ```
 
-     * 솔루션 탐색기에서 프로젝트를 마우스 오른쪽 단추로 클릭 > NuGet 패키지 관리
-     * 검색 상자에 Swashbuckle.AspNetCore를 입력 합니다.
-     * "시험판 포함"를 확인 합니다.
-     * Nuget.org 패키지 원본을 설정합니다
-     * Swashbuckle.AspNetCore 패키지를 누른 다음 설치를 누릅니다
+* <span data-ttu-id="dea09-123">**NuGet 패키지 관리** 대화 상자에서:</span><span class="sxs-lookup"><span data-stu-id="dea09-123">From the **Manage NuGet Packages** dialog:</span></span>
 
-## <a name="add-and-configure-swagger-to-the-middleware"></a>추가 하 고 Swagger 미들웨어를 구성 합니다.
+     * <span data-ttu-id="dea09-124">**솔루션 탐색기**에서 프로젝트를 마우스 오른쪽 단추로 클릭 > **NuGet 패키지 관리** 선택</span><span class="sxs-lookup"><span data-stu-id="dea09-124">Right-click your project in **Solution Explorer** > **Manage NuGet Packages**</span></span>
+     * <span data-ttu-id="dea09-125">**패키지 소스**를 “nuget.org”로 설정</span><span class="sxs-lookup"><span data-stu-id="dea09-125">Set the **Package source** to "nuget.org"</span></span>
+     * <span data-ttu-id="dea09-126">검색 상자에 “Swashbuckle.AspNetCore” 입력</span><span class="sxs-lookup"><span data-stu-id="dea09-126">Enter "Swashbuckle.AspNetCore" in the search box</span></span>
+     * <span data-ttu-id="dea09-127">**찾아보기** 탭에서 “Swashbuckle.AspNetCore” 패키지를 선택하고 **설치** 클릭</span><span class="sxs-lookup"><span data-stu-id="dea09-127">Select the "Swashbuckle.AspNetCore" package from the **Browse** tab and click **Install**</span></span>
 
-SwaggerGen 컬렉션에 추가 서비스 구성 방법에서 및 ConfigureServices 메서드에서 생성 된 서비스 JSON 문서와는 SwaggerUI 미들웨어를 사용 하도록 설정 합니다.
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[<span data-ttu-id="dea09-128">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="dea09-128">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [12, 21, 24]}} -->
+* <span data-ttu-id="dea09-129">**Solution Pad**에서 *Packages* 폴더를 마우스 오른쪽 단추로 클릭 > **패키지 추가...** 선택</span><span class="sxs-lookup"><span data-stu-id="dea09-129">Right-click the *Packages* folder in **Solution Pad** > **Add Packages...**</span></span>
+* <span data-ttu-id="dea09-130">**패키지 추가** 창의 **소스** 드롭다운을 “nuget.org”로 설정</span><span class="sxs-lookup"><span data-stu-id="dea09-130">Set the **Add Packages** window's **Source** drop-down to "nuget.org"</span></span>
+* <span data-ttu-id="dea09-131">검색 상자에 Swashbuckle.AspNetCore 입력</span><span class="sxs-lookup"><span data-stu-id="dea09-131">Enter Swashbuckle.AspNetCore in the search box</span></span>
+* <span data-ttu-id="dea09-132">결과 창에서 Swashbuckle.AspNetCore 패키지를 선택하고 **패키지 추가** 클릭</span><span class="sxs-lookup"><span data-stu-id="dea09-132">Select the Swashbuckle.AspNetCore package from the results pane and click **Add Package**</span></span>
 
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    // Add framework services.
-    services.AddMvc();
+# <a name="visual-studio-codetabvisual-studio-code"></a>[<span data-ttu-id="dea09-133">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="dea09-133">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-    services.AddLogging();
+<span data-ttu-id="dea09-134">**통합 터미널**에서 다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-134">Run the following command from the **Integrated Terminal**:</span></span>
 
-    // Add our repository type
-    services.AddSingleton<ITodoRepository, TodoRepository>();
-
-    // Register the Swagger generator, defining one or more Swagger documents
-    services.AddSwaggerGen(c =>
-    {
-        c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
-    });
-}
-
-// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-{
-    app.UseMvcWithDefaultRoute();
-
-    // Enable middleware to serve generated Swagger as a JSON endpoint.
-    app.UseSwagger();
-
-    // Enable middleware to serve swagger-ui (HTML, JS, CSS etc.), specifying the Swagger JSON endpoint.
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-    });
-}
+```console
+dotnet add TodoApi.csproj package Swashbuckle.AspNetCore
 ```
 
-Visual Studio에서 눌러 ^ f&5;를 눌러 응용 프로그램을 실행 하 고 이동 `http://localhost:<random_port>/swagger/v1/swagger.json` 끝점을 설명 하는 생성 된 문서를 볼 수 있습니다.
+# <a name="net-core-clitabnetcore-cli"></a>[<span data-ttu-id="dea09-135">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="dea09-135">.NET Core CLI</span></span>](#tab/netcore-cli)
 
-> [!NOTE]
-> Microsoft Edge, Google Chrome 및 Firefox JSON 문서를 고유 하 게 표시합니다.  읽기 쉽도록 문서의 서식을 지정 하는 Chrome에 대 한 확장은. *아래 예제에서는 간단 하 게 줄어듭니다.*
+<span data-ttu-id="dea09-136">다음 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-136">Run the following command:</span></span>
 
-```javascript
+```console
+dotnet add TodoApi.csproj package Swashbuckle.AspNetCore
+```
+
+---
+
+## <a name="add-and-configure-swagger-to-the-middleware"></a><span data-ttu-id="dea09-137">미들웨어에 Swagger 추가 및 구성</span><span class="sxs-lookup"><span data-stu-id="dea09-137">Add and configure Swagger to the middleware</span></span>
+
+<span data-ttu-id="dea09-138">*Startup.cs*의 `ConfigureServices` 메서드에서 서비스 컬렉션에 Swagger 생성기를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-138">Add the Swagger generator to the services collection in the `ConfigureServices` method of *Startup.cs*:</span></span>
+
+<span data-ttu-id="dea09-139">[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/Startup2.cs?name=snippet_ConfigureServices&highlight=7-10)]</span><span class="sxs-lookup"><span data-stu-id="dea09-139">[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/Startup2.cs?name=snippet_ConfigureServices&highlight=7-10)]</span></span>
+
+<span data-ttu-id="dea09-140">*Startup.cs*의 `Configure` 메서드에서 생성된 JSON 문서 및 SwaggerUI를 지원하기 위해 미들웨어를 사용하도록 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-140">In the `Configure` method of *Startup.cs*, enable the middleware for serving the generated JSON document and the SwaggerUI:</span></span>
+
+<span data-ttu-id="dea09-141">[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/Startup2.cs?name=snippet_Configure&highlight=4,7-10)]</span><span class="sxs-lookup"><span data-stu-id="dea09-141">[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/Startup2.cs?name=snippet_Configure&highlight=4,7-10)]</span></span>
+
+<span data-ttu-id="dea09-142">앱을 시작하고 `http://localhost:<random_port>/swagger/v1/swagger.json`으로 이동합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-142">Launch the app, and navigate to `http://localhost:<random_port>/swagger/v1/swagger.json`.</span></span> <span data-ttu-id="dea09-143">끝점을 설명하는 생성된 문서가 나타납니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-143">The generated document describing the endpoints appears.</span></span>
+
+<span data-ttu-id="dea09-144">**참고:** Microsoft Edge, Google Chrome 및 Firefox에는 JSON 문서가 기본적으로 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-144">**Note:** Microsoft Edge, Google Chrome, and Firefox display JSON documents natively.</span></span> <span data-ttu-id="dea09-145">더 읽기 쉽도록 문서 서식을 지정하는 Chrome용 확장이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-145">There are extensions for Chrome that format the document for easier reading.</span></span> <span data-ttu-id="dea09-146">*간략하게 표현하기 위해 다음 예제는 간소화되어 있습니다.*</span><span class="sxs-lookup"><span data-stu-id="dea09-146">*The following example is reduced for brevity.*</span></span>
+
+```json
 {
    "swagger": "2.0",
    "info": {
@@ -116,240 +111,244 @@ Visual Studio에서 눌러 ^ f&5;를 눌러 응용 프로그램을 실행 하 �
    "basePath": "/",
    "paths": {
        "/api/Todo": {
-       "get": {
-           "tags": [
-           "Todo"
-           ],
-           "operationId": "ApiTodoGet",
-           "consumes": [],
-           "produces": [
-           "text/plain",
-           "application/json",
-           "text/json"
-           ],
-           "responses": {
-           "200": {
-               "description": "OK",
-               "schema": {
-               "type": "array",
-               "items": {
-                   "$ref": "#/definitions/TodoItem"
-               }
-               }
-           }
+           "get": {
+               "tags": [
+                   "Todo"
+               ],
+               "operationId": "ApiTodoGet",
+               "consumes": [],
+               "produces": [
+                   "text/plain",
+                   "application/json",
+                   "text/json"
+               ],
+               "responses": {
+                   "200": {
+                       "description": "Success",
+                       "schema": {
+                           "type": "array",
+                           "items": {
+                               "$ref": "#/definitions/TodoItem"
+                           }
+                       }
+                   }
+                }
            },
-           "deprecated": false
-       },
-       "post": {
-           ...
-       }
+           "post": {
+               ...
+           }
        },
        "/api/Todo/{id}": {
-       "get": {
-           ...
-       },
-       "put": {
-           ...
-       },
-       "delete": {
-           ...
+           "get": {
+               ...
+           },
+           "put": {
+               ...
+           },
+           "delete": {
+               ...
    },
    "definitions": {
        "TodoItem": {
-       "type": "object",
-       "properties": {
-           "key": {
-           "type": "string"
-           },
-           "name": {
-           "type": "string"
-           },
-           "isComplete": {
-           "type": "boolean"
-           }
-       }
+           "type": "object",
+            "properties": {
+                "id": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "isComplete": {
+                    "default": false,
+                    "type": "boolean"
+                }
+            }
        }
    },
    "securityDefinitions": {}
-   }
-   ```
-
-이 문서는 Swagger ui로 이동 하 여 볼 수 있는 데`http://localhost:<random_port>/swagger`
-
-![Swagger UI](web-api-help-pages-using-swagger/_static/swagger-ui.png)
-
-UI에서 각각의 ToDo 컨트롤러에서 메서드를 테스트할 수 있습니다. 섹션을 확장 하 고, 모든 필요한 매개 변수를 추가, "사용해 보세요!"을 탭 하는 메서드를 누릅니다.
-
-![예제 GET Swagger 테스트](web-api-help-pages-using-swagger/_static/get-try-it-out.png)
-
-## <a name="customization--extensibility"></a>사용자 지정 < / 확장성
-
-Swagger는 API를 나타내는 데는 간단한 방법을 아니라 언어 디자인 또는 디자인을 일치 하도록 대화형 UI를 사용자 지정할 수 있을 뿐만 아니라 개체 모델을 문서화 하는 것에 대 한 옵션입니다.
-
-### <a name="api-info-and-description"></a>API 정보 및 설명
-
-구성 합니다. 작업에 전달 되는 `AddSwaggerGen` 작성자, 라이선스, 설명 등의 정보를 추가 하려면 메서드를 사용할 수 있습니다.
-
-```csharp
-services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new Info
-    {
-        Version = "v1",
-        Title = "ToDo API",
-        Description = "A simple example ASP.NET Core Web API",
-        TermsOfService = "None",
-        Contact = new Contact { Name = "Shayne Boyer", Email = "", Url = "http://twitter.com/spboyer"},
-        License = new License { Name = "Use under LICX", Url = "http://url.com" }
-    });
-});
-```
-
-다음 이미지는 추가 버전 정보를 표시 하는 Swagger UI를 표시 합니다.
-
-![버전 정보로 UI swagger: 설명을 만들고 추가 링크를 참조 하십시오.](web-api-help-pages-using-swagger/_static/custom-info.png)
-
-### <a name="xml-comments"></a>XML 주석
-
-XML 주석의 활성화 하려면 Visual Studio에서 프로젝트를 마우스 오른쪽 단추로 클릭 하 고 선택 **속성** 확인 한 다음는 **XML 문서 파일** 아래 상자는 **출력 설정** 섹션입니다.
-
-![빌드 프로젝트 속성 탭](web-api-help-pages-using-swagger/_static/swagger-xml-comments.png)
-
-생성된 된 XML 파일을 사용 하 여 Swagger를 구성 합니다.
-
-> [!NOTE]
-> Linux 또는 Windows 이외의 운영 체제 파일 이름 및 경로 가능 대 소문자를 구분 합니다. 따라서 `ToDoApi.XML` 예를 들어 Windows 있지만 하지 CentOS에서 찾을 수 있습니다.
-
-[!code-csharp[주](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Startup.cs?name=snippet_Configure&highlight=29,33)]
-
-위 코드에서 ApplicationBasePath 하는 XML 설명에 전체 경로 설정 하는 데 필요한 응용 프로그램의 기본 경로 가져옵니다. `TodoApi.xml`이 예제에서는 응용 프로그램의 이름에 따라 파일은 생성된 된 XML 주석의 이름에만 작동 합니다.
-
-삼중 슬래시 주석이 메서드에 추가 섹션의 헤더에 대 한 설명을 추가 하 여 Swagger UI를 향상 시킵니다.
-
-[!code-csharp[주](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?name=Delete_Method&highlight=2)]
-
-![DELETE 메서드에 대 한 '특정 할 일 항목을 삭제 합니다.' XML 주석을 표시 하는 UI swagger](web-api-help-pages-using-swagger/_static/triple-slash-comments.png)
-
-UI로 생성된 된 JSON 파일을 구동 하 고 이러한 주석은 뿐만 아니라 해당 파일에도 note 합니다.
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript", "highlight_args": {"hl_lines": [5]}} -->
-
-```javascript
-"delete": {
-  "tags": [
-    "Todo"
-  ],
-  "summary": "Deletes a specific TodoItem",
-  "operationId": "ApiTodoByIdDelete",
-  "consumes": [],
-  "produces": [],
-  "parameters": [
-    {
-      "name": "id",
-      "in": "path",
-      "description": "",
-      "required": true,
-      "type": "string"
-    }
-  ],
-  "responses": {
-    "204": {
-      "description": "No Content"
-    }
-  },
-  "deprecated": false
 }
 ```
 
-다음은 더 강력한 예제, 추가 `<remarks />` 콘텐츠 텍스트 또는 그 밖의 설명서는 메서드의 대 한 JSON 또는 XML 개체를 추가할 수 있는 합니다.
+<span data-ttu-id="dea09-147">이 문서에서는 `http://localhost:<random_port>/swagger`로 이동하여 볼 수 있는 Swagger UI를 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-147">This document drives the Swagger UI, which can be viewed by navigating to `http://localhost:<random_port>/swagger`:</span></span>
 
-[!code-csharp[주](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?name=Create_Method&highlight=4-14)]
+![Swagger UI](web-api-help-pages-using-swagger/_static/swagger-ui.png)
 
-이러한 추가 주석이 있는 UI의 향상 된 기능을 확인 합니다.
+<span data-ttu-id="dea09-149">`TodoController`의 각 공용 작업 메서드를 UI에서 테스트할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-149">Each public action method in `TodoController` can be tested from the UI.</span></span> <span data-ttu-id="dea09-150">메서드 이름을 클릭하여 섹션을 확장합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-150">Click a method name to expand the section.</span></span> <span data-ttu-id="dea09-151">필요한 매개 변수를 추가하고 “직접 시험해 보세요.”를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-151">Add any necessary parameters, and click "Try it out!".</span></span>
 
-![UI를 표시 하는 추가 주석이 있는 swagger](web-api-help-pages-using-swagger/_static/xml-comments-extended.png)
+![예제 Swagger GET 테스트](web-api-help-pages-using-swagger/_static/get-try-it-out.png)
 
-### <a name="dataannotations"></a>DataAnnotations
+## <a name="customization--extensibility"></a><span data-ttu-id="dea09-153">사용자 지정 및 확장성</span><span class="sxs-lookup"><span data-stu-id="dea09-153">Customization & Extensibility</span></span>
 
-API 컨트롤러를 데코레이팅 할 수 있습니다 `System.ComponentModel.DataAnnotations` 하 게 도출할 Swagger UI 구성 요소입니다.
+<span data-ttu-id="dea09-154">Swagger는 개체 모델을 설명하고 테마와 일치하도록 UI를 사용자 지정하는 옵션을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-154">Swagger provides options for documenting the object model and customizing the UI to match your theme.</span></span>
 
-추가 `[Required]` 에 대 한 주석을 `Name` 의 속성은 `TodoItem` 클래스 UI ModelSchema 정보를 변경 합니다. `[Produces("application/json")]``RegularExpression` 유효성 검사기 등 생성된 된 페이지에서 제공 하는 정보가 자세히 추가 합니다.  코드에 있는 더 많은 메타 데이터는 더 많은 desciptive UI 또는 API 도움말 페이지를 생성 합니다.  
+### <a name="api-info-and-description"></a><span data-ttu-id="dea09-155">API 정보 및 설명</span><span class="sxs-lookup"><span data-stu-id="dea09-155">API Info and Description</span></span>
 
-[!code-csharp[주](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Models/TodoItem.cs?highlight=10)]
+<span data-ttu-id="dea09-156">`AddSwaggerGen` 메서드에 전달되는 구성 작업은 작성자, 라이선스 및 설명과 같은 정보를 추가하는 데 사용될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-156">The configuration action passed to the `AddSwaggerGen` method can be used to add information such as the author, license, and description:</span></span>
 
+<span data-ttu-id="dea09-157">[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/Startup.cs?range=20-30,36)]</span><span class="sxs-lookup"><span data-stu-id="dea09-157">[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/Startup.cs?range=20-30,36)]</span></span>
 
-### <a name="describing-response-types"></a>응답 형식을 설명 하는
+<span data-ttu-id="dea09-158">다음 이미지에서는 버전 정보를 표시하는 Swagger UI를 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-158">The following image depicts the Swagger UI displaying the version information:</span></span>
 
-소비 하는 개발자는 아마도 가장 많이 사용 합니다; 반환 되는 특히 응답 형식 (표준 하지) 경우 오류 코드입니다. 이러한 XML 주석 및 DataAnnotations에서 처리 됩니다.
+![버전 정보가 포함된 Swagger UI: 설명, 작성자 및 추가 링크 확인](web-api-help-pages-using-swagger/_static/custom-info.png)
 
-수행 된 `Create()` 메서드 예를 들어 현재 반환만 기본적으로 "201 생성 됨" 응답 합니다. 되는 항목이 실제로 만들어집니다, 또는 물론 "204 콘텐츠 없음" 게시물 본문에 전달 되는 데이터가 없는 경우.  그러나 알 수 없는 설명서 나 다른 응답 없기 때문입니다. 다음 코드 부분을 추가 하 여 해결할 수 있습니다.
+### <a name="xml-comments"></a><span data-ttu-id="dea09-160">XML 주석</span><span class="sxs-lookup"><span data-stu-id="dea09-160">XML Comments</span></span>
 
-[!code-csharp[주](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?name=Create_Method&highlight=17,18,20,21)]
+<span data-ttu-id="dea09-161">XML 주석은 다음 방법으로 사용하도록 설정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-161">XML comments can be enabled with the following approaches:</span></span>
 
-![Swagger UI를 보여주는 POST 응답 클래스 설명을 '새로 만든된 Todo 항목을 반환 합니다.' 및 '400-항목이 null 이면' 상태 코드 및 응답 메시지에서 이유](web-api-help-pages-using-swagger/_static/data-annotations-response-types.png)
+# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="dea09-162">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="dea09-162">Visual Studio</span></span>](#tab/visual-studio)
 
-### <a name="customizing-the-ui"></a>UI를 사용자 지정
+* <span data-ttu-id="dea09-163">**솔루션 탐색기**에서 프로젝트를 마우스 오른쪽 단추로 클릭하고 **속성** 선택</span><span class="sxs-lookup"><span data-stu-id="dea09-163">Right-click the project in **Solution Explorer** and select **Properties**</span></span>
+* <span data-ttu-id="dea09-164">**빌드** 탭의 **출력** 섹션에서 **XML 문서 파일** 상자 선택:</span><span class="sxs-lookup"><span data-stu-id="dea09-164">Check the **XML documentation file** box under the **Output** section of the **Build** tab:</span></span>
 
-API에 대 한 설명서 페이지를 작성할 때 원하는 브랜드 나 모양과 느낌을 나타내기 위해 재고 UI는 매우 기능적으로 표현할 수 있는.
+![프로젝트 속성의 빌드 탭](web-api-help-pages-using-swagger/_static/swagger-xml-comments.png)
 
-Swashbuckle 구성 요소와 해당 태스크를 수행은 간단 하지만 일반적으로 웹 API 프로젝트에 포함 되지 않습니다 정적 파일을 제공 하는 리소스를 추가 하 고 해당 파일을 호스팅할 폴더 구조를 구축 해야 합니다.
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[<span data-ttu-id="dea09-166">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="dea09-166">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-추가 된 `"Microsoft.AspNetCore.StaticFiles": "1.0.0-*"` 프로젝트에 NuGet 패키지입니다.
+* <span data-ttu-id="dea09-167">**프로젝트 옵션** 대화 상자 열기 > **빌드** > **컴파일러** 선택</span><span class="sxs-lookup"><span data-stu-id="dea09-167">Open the **Project Options** dialog > **Build** > **Compiler**</span></span>
+* <span data-ttu-id="dea09-168">**일반 옵션** 섹션에서 **XML 문서 생성** 상자 선택:</span><span class="sxs-lookup"><span data-stu-id="dea09-168">Check the **Generate xml documentation** box under the **General Options** section:</span></span>
 
-정적 파일 미들웨어를 사용 하도록 설정 합니다.
+![프로젝트 옵션의 일반 옵션 섹션](web-api-help-pages-using-swagger/_static/swagger-xml-comments-mac.png)
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [4]}} -->
+# <a name="visual-studio-codetabvisual-studio-code"></a>[<span data-ttu-id="dea09-170">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="dea09-170">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-```csharp
-// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-   public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-   {
-       // Enable static files middleware.
-       app.UseStaticFiles();
+<span data-ttu-id="dea09-171">*.csproj* 파일에 다음 코드 조각을 수동으로 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-171">Manually add the following snippet to the *.csproj* file:</span></span>
 
-       app.UseMvcWithDefaultRoute();
+<span data-ttu-id="dea09-172">[!code-xml[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/TodoApi.csproj?range=7-9)]</span><span class="sxs-lookup"><span data-stu-id="dea09-172">[!code-xml[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/TodoApi.csproj?range=7-9)]</span></span>
 
-        // Enable middleware to serve generated Swagger as a JSON endpoint.
-        app.UseSwagger();
+---
 
-        // Enable middleware to serve swagger-ui (HTML, JS, CSS etc.), specifying the Swagger JSON endpoint.
-        app.UseSwaggerUI(c =>
+<span data-ttu-id="dea09-173">생성된 XML 파일을 사용하도록 Swagger를 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-173">Configure Swagger to use the generated XML file.</span></span> <span data-ttu-id="dea09-174">Linux 또는 Windows가 아닌 운영 체제의 경우 파일 이름 및 경로는 대/소문자를 구분할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-174">For Linux or non-Windows operating systems, file names and paths can be case sensitive.</span></span> <span data-ttu-id="dea09-175">예를 들어 *ToDoApi.XML* 파일은 Windows에는 있지만 CentOS에는 없습니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-175">For example, a *ToDoApi.XML* file would be found on Windows but not CentOS.</span></span>
+
+<span data-ttu-id="dea09-176">[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/Startup.cs?name=snippet_ConfigureServices&highlight=20-22)]</span><span class="sxs-lookup"><span data-stu-id="dea09-176">[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/Startup.cs?name=snippet_ConfigureServices&highlight=20-22)]</span></span>
+
+<span data-ttu-id="dea09-177">이전 코드에서 `ApplicationBasePath`는 앱의 기본 경로를 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-177">In the preceding code, `ApplicationBasePath` gets the base path of the app.</span></span> <span data-ttu-id="dea09-178">기본 경로는 XML 주석 파일을 찾는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-178">The base path is used to locate the XML comments file.</span></span> <span data-ttu-id="dea09-179">*TodoApi.xml*은 이 예제에서만 작동합니다. 생성된 XML 주석 파일의 이름이 응용 프로그램 이름을 기준으로 하기 때문입니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-179">*TodoApi.xml* only works for this example, since the name of the generated XML comments file is based on the application name.</span></span>
+
+<span data-ttu-id="dea09-180">메서드에 3중 슬래시 주석을 추가하면 섹션 헤더에 설명이 추가되어 Swagger UI가 개선됩니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-180">Adding the triple-slash comments to the method enhances the Swagger UI by adding the description to the section header:</span></span>
+
+<span data-ttu-id="dea09-181">[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Delete&highlight=2)]</span><span class="sxs-lookup"><span data-stu-id="dea09-181">[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Delete&highlight=2)]</span></span>
+
+![DELETE 메서드에 대한 XML 주석 ‘특정 TodoItem을 삭제합니다.’를 보여 주는](web-api-help-pages-using-swagger/_static/triple-slash-comments.png)
+
+<span data-ttu-id="dea09-184">UI는 생성된 JSON 파일을 통해 실행되므로 다음 주석을 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-184">The UI is driven by the generated JSON file, which also contains these comments:</span></span>
+
+```json
+"delete": {
+    "tags": [
+        "Todo"
+    ],
+    "summary": "Deletes a specific TodoItem.",
+    "operationId": "ApiTodoByIdDelete",
+    "consumes": [],
+    "produces": [],
+    "parameters": [
         {
-            c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-        });
-   }
-   ```
-
-핵심 획득 *index.html* Swagger UI 페이지에서 사용 되는 파일의 `Github repository <https://github.com/domaindrivendev/Swashbuckle.AspNetCore/blob/1.0.0-rc1/test/WebSites/CustomIndexHtml/wwwroot/swagger/index.html>`_에 넣을 `wwwroot/swagger` 폴더 및 새를 만들 수도 `custom.css` 같은 폴더에 파일.
-
-![Swagger UI를 사용자 지정 css 및 응용 프로그램의 wwwroot 폴더 내에서 html 파일을 보여 주는 솔루션 탐색기](web-api-help-pages-using-swagger/_static/custom-files-folder-view.png)
-
-참조 *custom.css* 에 *index.html* 파일입니다.
-
-```html
-<link href='custom.css' media='screen' rel='stylesheet' type='text/css' />
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        }
+    ],
+    "responses": {
+        "200": {
+            "description": "Success"
+        }
+    }
+}
 ```
 
-다음 CSS 페이지에 사용자 지정 헤더 타이틀의 간단한 예제를 제공합니다.
+<span data-ttu-id="dea09-185">[<remarks>](https://docs.microsoft.com/dotnet/csharp/programming-guide/xmldoc/remarks) 태그를 `Create` 작업 메서드 문서에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-185">Add a [<remarks>](https://docs.microsoft.com/dotnet/csharp/programming-guide/xmldoc/remarks) tag to the `Create` action method documentation.</span></span> <span data-ttu-id="dea09-186">이 태그는 `<summary>` 태그에 지정된 정보를 보충하고 더 강력한 Swagger UI를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-186">It supplements information specified in the `<summary>` tag and provides a more robust Swagger UI.</span></span> <span data-ttu-id="dea09-187">`<remarks>` 태그 콘텐츠는 텍스트, JSON 또는 XML로 구성될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-187">The `<remarks>` tag content can consist of text, JSON, or XML.</span></span>
 
-*custom.css 파일*
+<span data-ttu-id="dea09-188">[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Create&highlight=4-14)]</span><span class="sxs-lookup"><span data-stu-id="dea09-188">[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Create&highlight=4-14)]</span></span>
 
-[!code-css[주](web-api-help-pages-using-swagger/sample/src/TodoApi/wwwroot/swagger/custom.css)]
+<span data-ttu-id="dea09-189">이러한 추가 주석이 포함된 향상된 UI 기능을 확인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-189">Notice the UI enhancements with these additional comments.</span></span>
 
-*index.html 본문*
+![추가 주석이 표시된 Swagger UI](web-api-help-pages-using-swagger/_static/xml-comments-extended.png)
 
-```html
-<body class="swagger-section">
-   <div id="header">
-    <h1>ToDo API Documentation</h1>
-   </div>
+### <a name="data-annotations"></a><span data-ttu-id="dea09-191">데이터 주석</span><span class="sxs-lookup"><span data-stu-id="dea09-191">Data Annotations</span></span>
 
-   <div id="message-bar" class="swagger-ui-wrap" data-sw-translate>&nbsp;</div>
-   <div id="swagger-ui-container" class="swagger-ui-wrap"></div>
-</body>
+<span data-ttu-id="dea09-192">`System.ComponentModel.DataAnnotations`에 있는 특성으로 API 컨트롤러를 데코레이트하면 Swagger UI 구성 요소를 실행하는 데 도움이 됩니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-192">Decorate the API controller with attributes, found in `System.ComponentModel.DataAnnotations`, to help drive the Swagger UI components.</span></span>
+
+<span data-ttu-id="dea09-193">`[Required]` 특성을 `TodoItem` 클래스의 `Name` 속성에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-193">Add the `[Required]` attribute to the `Name` property of the `TodoItem` class:</span></span>
+
+<span data-ttu-id="dea09-194">[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/Models/TodoItem.cs?highlight=10)]</span><span class="sxs-lookup"><span data-stu-id="dea09-194">[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/Models/TodoItem.cs?highlight=10)]</span></span>
+
+<span data-ttu-id="dea09-195">이 특성이 있으면 UI 동작이 변경되고 기본 JSON 스키마가 변경됩니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-195">The presence of this attribute changes the UI behavior and alters the underlying JSON schema:</span></span>
+
+```json
+"definitions": {
+    "TodoItem": {
+        "required": [
+            "name"
+        ],
+        "type": "object",
+        "properties": {
+            "id": {
+                "format": "int64",
+                "type": "integer"
+            },
+            "name": {
+                "type": "string"
+            },
+            "isComplete": {
+                "default": false,
+                "type": "boolean"
+            }
+        }
+    }
+},
 ```
 
-![UI 사용자 지정 헤더 이름의 swagger](web-api-help-pages-using-swagger/_static/custom-header.png)
+<span data-ttu-id="dea09-196">API 컨트롤러에 `[Produces("application/json")]` 특성을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-196">Add the `[Produces("application/json")]` attribute to the API controller.</span></span> <span data-ttu-id="dea09-197">이 특성은 컨트롤러 동작이 *application/json* 콘텐츠 형식의 반환을 지원하도록 선언하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-197">Its purpose is to declare that the controller's actions support a return a content type of *application/json*:</span></span>
 
-훨씬 더 많은 페이지를 사용 하 여 수행할 수 있으며, 전체 기능에 UI 리소스에 대 한 참조는 [Swagger UI Github 리포지토리](https://github.com/swagger-api/swagger-ui)합니다.
+<span data-ttu-id="dea09-198">[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/Controllers/TodoController.cs?name=snippet_TodoController&highlight=3)]</span><span class="sxs-lookup"><span data-stu-id="dea09-198">[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/Controllers/TodoController.cs?name=snippet_TodoController&highlight=3)]</span></span>
 
+<span data-ttu-id="dea09-199">컨트롤러 GET 작업의 경우 **응답 콘텐츠 형식** 드롭다운에서 이 콘텐츠 형식이 기본값으로 선택됩니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-199">The **Response Content Type** drop-down selects this content type as the default for the controller's GET actions:</span></span>
+
+![기본 응답 콘텐츠 형식이 포함된 Swagger UI](web-api-help-pages-using-swagger/_static/json-response-content-type.png)
+
+<span data-ttu-id="dea09-201">Web API에서 데이터 주석 사용이 증가하면 UI 및 API 도움말 페이지에는 더 자세한 설명과 유용한 정보가 제공됩니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-201">As the usage of data annotations in the Web API increases, the UI and API help pages become more descriptive and useful.</span></span>
+
+### <a name="describing-response-types"></a><span data-ttu-id="dea09-202">응답 형식 설명</span><span class="sxs-lookup"><span data-stu-id="dea09-202">Describing Response Types</span></span>
+
+<span data-ttu-id="dea09-203">소비 개발자는 반환된 항목 특히, 응답 형식 및 오류 코드(표준이 아닌 경우)를 가장 중요하게 생각합니다.&mdash;</span><span class="sxs-lookup"><span data-stu-id="dea09-203">Consuming developers are most concerned with what is returned &mdash; specifically response types and error codes (if not standard).</span></span> <span data-ttu-id="dea09-204">이러한 항목은 XML 주석 및 데이터 주석에서 처리됩니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-204">These are handled in the XML comments and data annotations.</span></span>
+
+<span data-ttu-id="dea09-205">`Create` 작업은 성공 시 `201 Created`를 반환하고, 게시된 요청 본문이 null일 경우 `400 Bad Request`를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-205">The `Create` action returns `201 Created` on success or `400 Bad Request` when the posted request body is null.</span></span> <span data-ttu-id="dea09-206">Swagger UI에 적절한 문서가 없으면 소비자는 이러한 예상 결과에 대한 정보를 알 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-206">Without proper documentation in the Swagger UI, the consumer lacks knowledge of these expected outcomes.</span></span> <span data-ttu-id="dea09-207">다음 예제에서 강조 표시된 줄을 추가하면 이 문제가 해결됩니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-207">That problem is fixed by adding the highlighted lines in the following example:</span></span>
+
+<span data-ttu-id="dea09-208">[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Create&highlight=17,18,20,21)]</span><span class="sxs-lookup"><span data-stu-id="dea09-208">[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Create&highlight=17,18,20,21)]</span></span>
+
+<span data-ttu-id="dea09-209">이제 Swagger UI에서는 예상 HTTP 응답 코드를 분명히 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-209">The Swagger UI now clearly documents the expected HTTP response codes:</span></span>
+
+![POST 응답 클래스 설명 ‘새로 만들어진 Todo 항목 반환’ 및 ‘400 - 응답 메시지에서 항목의 상태 코드 및 이유가 null인 경우’를 보여 주는 Swagger UI](web-api-help-pages-using-swagger/_static/data-annotations-response-types.png)
+
+### <a name="customizing-the-ui"></a><span data-ttu-id="dea09-211">UI 사용자 지정</span><span class="sxs-lookup"><span data-stu-id="dea09-211">Customizing the UI</span></span>
+
+<span data-ttu-id="dea09-212">스톡 UI는 기능적인 동시에 표현 가능하지만 API에 대한 문서 페이지를 빌드할 경우 스톡 UI로 브랜드나 테마를 표현하고자 합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-212">The stock UI is both functional and presentable; however, when building documentation pages for your API, you want it to represent your brand or theme.</span></span> <span data-ttu-id="dea09-213">Swashbuckle 구성 요소를 사용하여 해당 작업을 수행하려면 리소스를 추가하여 정적 파일을 지원하고 폴더 구조를 빌드하여 해당 파일을 호스트합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-213">Accomplishing that task with the Swashbuckle components requires adding the resources to serve static files and then building the folder structure to host those files.</span></span>
+
+<span data-ttu-id="dea09-214">.NET Framework를 대상으로 지정할 경우 `Microsoft.AspNetCore.StaticFiles` NuGet 패키지를 프로젝트에 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-214">If targeting .NET Framework, add the `Microsoft.AspNetCore.StaticFiles` NuGet package to the project:</span></span>
+
+```xml
+<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.0" />
+```
+
+<span data-ttu-id="dea09-215">정적 파일 미들웨어를 사용하도록 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-215">Enable the static files middleware:</span></span>
+
+<span data-ttu-id="dea09-216">[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/Startup.cs?name=snippet_Configure&highlight=3)]</span><span class="sxs-lookup"><span data-stu-id="dea09-216">[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/Startup.cs?name=snippet_Configure&highlight=3)]</span></span>
+
+<span data-ttu-id="dea09-217">[Swagger UI GitHub 리포지토리](https://github.com/swagger-api/swagger-ui/tree/2.x/dist)에서 *dist* 폴더의 콘텐츠를 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-217">Acquire the contents of the *dist* folder from the [Swagger UI GitHub repository](https://github.com/swagger-api/swagger-ui/tree/2.x/dist).</span></span> <span data-ttu-id="dea09-218">이 폴더에는 Swagger UI 페이지에 필요한 자산이 포함됩니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-218">This folder contains the necessary assets for the Swagger UI page.</span></span> <span data-ttu-id="dea09-219">해당 폴더의 콘텐츠를 *wwwroot/swagger/ui* 폴더로 복사합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-219">Copy the contents of that folder into the *wwwroot/swagger/ui* folder.</span></span>
+
+<span data-ttu-id="dea09-220">다음 CSS가 포함된 *wwwroot/swagger/ui/css/custom.css* 파일을 만들어 페이지 헤더를 사용자 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-220">Create a *wwwroot/swagger/ui/css/custom.css* file with the following CSS to customize the page header:</span></span>
+
+<span data-ttu-id="dea09-221">[!code-css[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/wwwroot/swagger/ui/css/custom.css)]</span><span class="sxs-lookup"><span data-stu-id="dea09-221">[!code-css[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/wwwroot/swagger/ui/css/custom.css)]</span></span>
+
+<span data-ttu-id="dea09-222">*index.html* 파일에서 *custom.css*를 참조합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-222">Reference *custom.css* in the *index.html* file:</span></span>
+
+<span data-ttu-id="dea09-223">[!code-html[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/wwwroot/swagger/ui/index.html?range=14)]</span><span class="sxs-lookup"><span data-stu-id="dea09-223">[!code-html[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/wwwroot/swagger/ui/index.html?range=14)]</span></span>
+
+<span data-ttu-id="dea09-224">`http://localhost:<random_port>/swagger/ui/index.html`의 *index.html* 페이지로 이동합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-224">Browse to the *index.html* page at `http://localhost:<random_port>/swagger/ui/index.html`.</span></span> <span data-ttu-id="dea09-225">헤더의 텍스트 상자에 `http://localhost:<random_port>/swagger/v1/swagger.json`을 입력하고 **탐색** 단추를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-225">Enter `http://localhost:<random_port>/swagger/v1/swagger.json` in the header's textbox, and click the **Explore** button.</span></span> <span data-ttu-id="dea09-226">결과 페이지가 다음과 같이 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-226">The resulting page looks as follows:</span></span>
+
+![사용자 지정 헤더 제목이 포함된 Swagger UI](web-api-help-pages-using-swagger/_static/custom-header.png)
+
+<span data-ttu-id="dea09-228">페이지를 사용하여 훨씬 더 많은 작업을 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="dea09-228">There is much more you can do with the page.</span></span> <span data-ttu-id="dea09-229">[Swagger UI GitHub 리포지토리](https://github.com/swagger-api/swagger-ui)에서 UI 리소스에 대한 전체 기능을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="dea09-229">See the full capabilities for the UI resources at the [Swagger UI GitHub repository](https://github.com/swagger-api/swagger-ui).</span></span>
