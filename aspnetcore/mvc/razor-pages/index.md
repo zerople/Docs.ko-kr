@@ -1,20 +1,20 @@
 ---
 title: "ASP.NET Core의 Razor 페이지 소개"
 author: Rick-Anderson
-description: "ASP.NET Core의 Razor 페이지 개요"
+description: "이 문서는 ASP.NET Core의 Razor 페이지를 사용하여 페이지에 초점을 맞춘 시나리오의 손쉬운 개발에 관한 개요를 제공합니다."
 keywords: "ASP.NET Core, Razor 페이지"
 ms.author: riande
 manager: wpickett
-ms.date: 08/15/2017
+ms.date: 09/12/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/razor-pages/index
-ms.openlocfilehash: 543399d99af127f943f7e9119fb5d84c8c5bc499
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: e9678279db85ec03616e693b9772c6ee71c4fef8
+ms.sourcegitcommit: d2f705f7a8ef2c1a940f590e4de188621fd48d2a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/13/2017
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>ASP.NET Core의 Razor 페이지 소개
 
@@ -30,7 +30,7 @@ Razor 페이지는 더 쉽고 더 생산적으로 코딩 페이지에 초점을 
 
 [.NET Core](https://www.microsoft.com/net/core) 2.0.0 이상을 설치합니다.
 
-Visual Studio를 사용할 경우 다음 워크로드가 포함된 [Visual Studio](https://www.visualstudio.com/vs/) 15.3 이상을 설치합니다.
+Visual Studio를 사용할 경우 다음 워크로드가 포함된 [Visual Studio](https://www.visualstudio.com/vs/) 2017 버전 15.3 이상을 설치합니다.
 
 * **ASP.NET 및 웹 개발**
 * **.NET Core 플랫폼 간 개발**
@@ -63,25 +63,23 @@ Mac용 Visual Studio에서 생성된 *.csproj* 파일을 엽니다.
 
 Razor 페이지는 *Startup.cs*에서 사용하도록 설정됩니다.
 
-[!code-cs[main](index/sample/RazorPagesIntro/Startup.cs?name=Startup)]
+[!code-cs[main](index/sample/RazorPagesIntro/Startup.cs?name=snippet_Startup)]
 
 기본 페이지를 고려해 봅니다. <a name="OnGet"></a>
 
 [!code-cshtml[main](index/sample/RazorPagesIntro/Pages/Index.cshtml)]
 
-이전 코드는 Razor 뷰 파일과 매우 비슷합니다. 차이점은 `@page` 지시문입니다. `@page`는 파일을 MVC 작업으로 만듭니다. 즉, 컨트롤러를 거치지 않고 요청을 직접 처리합니다. `@page`는 페이지의 첫 번째 Razor 지시문이어야 합니다. `@page`는 다른 Razor 생성자의 동작에 영향을 미칩니다. [@functions](xref:mvc/views/razor#functions) 지시문은 함수 수준 콘텐츠를 사용하도록 설정합니다.
+이전 코드는 Razor 뷰 파일과 매우 비슷합니다. 차이점은 `@page` 지시문입니다. `@page`는 파일을 MVC 작업으로 만듭니다. 즉, 컨트롤러를 거치지 않고 요청을 직접 처리합니다. `@page`는 페이지의 첫 번째 Razor 지시문이어야 합니다. `@page`는 다른 Razor 생성자의 동작에 영향을 미칩니다.
 
-별도의 파일에 `PageModel`이 포함된 비슷한 페이지가 다음 두 개 파일에 표시됩니다. *Pages/Index2.cshtml* 파일:
+`PageModel` 클래스를 사용하는 비슷한 페이지는 다음 두 파일에 표시됩니다. *Pages/Index2.cshtml* 파일:
 
 [!code-cshtml[main](index/sample/RazorPagesIntro/Pages/Index2.cshtml)]
 
-*Pages/Index2.cshtml.cs* ‘코드 숨김’ 파일:
+*Pages/Index2.cshtml.cs* "코드 숨김" 파일:
 
 [!code-cs[main](index/sample/RazorPagesIntro/Pages/Index2.cshtml.cs)]
 
 일반적으로 `PageModel` 클래스 파일의 이름은 Razor 페이지 파일과 동일하고 *.cs*가 추가됩니다. 예를 들어 이전 Razor 페이지는 *Pages/Index2.cshtml*입니다. `PageModel` 클래스가 포함된 파일의 이름은 *Pages/Index2.cshtml.cs*입니다.
-
-간단한 페이지의 경우 `PageModel` 클래스를 Razor 태그와 결합할 수 있습니다. 더 복잡한 코드의 경우 페이지 모델 코드를 별도로 유지하는 것이 모범 사례입니다.
 
 페이지에 대한 URL 경로 연결은 파일 시스템의 페이지 위치에 따라 결정됩니다. 다음 표에서는 Razor 페이지 경로 및 일치하는 URL을 보여 줍니다.
 
@@ -90,7 +88,7 @@ Razor 페이지는 *Startup.cs*에서 사용하도록 설정됩니다.
 | */Pages/Index.cshtml* | `/` 또는 `/Index` |
 | */Pages/Contact.cshtml* | `/Contact` |
 | */Pages/Store/Contact.cshtml* | `/Store/Contact` |
-| */Pages/Store/Index.cshtml* | `/Store` 또는 `/Store/Index`  |
+| */Pages/Store/Index.cshtml* | `/Store` 또는 `/Store/Index` |
 
 메모:
 
@@ -115,9 +113,9 @@ Razor 페이지 기능은 웹 브라우저에서 사용되는 일반 패턴을 �
 
 뷰에 대한 *Pages/Create.cshtml.cs* 코드 숨김 파일:
 
-[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=ALL)]
+[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_ALL)]
 
-일반적으로 `PageModel` 클래스를 `<PageName>Model`이라고 하고 이 클래스는 페이지와 동일한 네임스페이스에 있습니다. `@functions`를 사용하여 처리기를 정의하는 페이지 및 `PageModel` 클래스를 사용하는 페이지에서 변환하려면 약간 변경해야 합니다.
+일반적으로 `PageModel` 클래스를 `<PageName>Model`이라고 하고 이 클래스는 페이지와 동일한 네임스페이스에 있습니다.
 
 `PageModel` 코드 숨김 파일을 사용할 경우 유닛 테스트가 지원되지만, 명시적 생성자 및 클래스를 작성해야 합니다. `PageModel` 코드 숨김 파일이 없는 페이지는 런타임 컴파일을 지원하고 이 지원은 개발에 유용할 수 있습니다.  <!-- review: advantage because you can make changes and refresh the browser without explicitly compiling the app -->
 
@@ -130,7 +128,7 @@ Razor 페이지 기능은 웹 브라우저에서 사용되는 일반 패턴을 �
 
 이전 `OnPostAsync` 메서드:
 
-[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=OnPostAsync)]
+[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_OnPostAsync)]
 
 `OnPostAsync`의 기본 흐름:
 
@@ -145,18 +143,9 @@ Razor 페이지 기능은 웹 브라우저에서 사용되는 일반 패턴을 �
 
 `Customer` 속성은 `[BindProperty]` 특성을 사용하여 모델 바인딩으로 옵트인(opt in)합니다.
 
-[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=PageModel&highlight=10-11)]
+[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_PageModel&highlight=10-11)]
 
 Razor 페이지는 기본적으로 GET이 아닌 동사에만 속성을 바인딩합니다. 속성에 바인딩하면 작성해야 하는 코드 양이 감소할 수 있습니다. 바인딩은 동일한 속성을 사용하여 폼 필드(`<input asp-for="Customer.Name" />`)를 렌더링하고 입력을 허용하는 방식으로 코드를 줄입니다.
-
-다음 코드에서는 만들기 페이지의 결합된 버전을 보여 줍니다.
-
-[!code-cshtml[main](index/sample/RazorPagesContacts/Pages/CreateCombined.cshtml)]
-
-`@model`을 사용하는 대신 페이지의 새로운 기능을 활용하고 있습니다. 기본적으로 생성된 `Page` 파생 클래스는 모델*입니다*. *뷰 모델*을 Razor 뷰와 함께 사용하는 것이 모범 사례입니다. 페이지에서는 뷰 모델을 *자동으로* 가져옵니다.
-
-주요 변경 내용은 생성자 주입을 주입된(`@inject`) 속성으로 바뀌고 있다는 것입니다. 이 페이지는 [생성자 종속성 주입](xref:mvc/controllers/dependency-injection#constructor-injection)에 대해 [@inject](xref:mvc/views/razor#inject)를 사용합니다. `@inject` 문은 `OnPostAsync`에서 사용되는 `Db` 속성을 생성 및 초기화합니다. 주입된(`@inject`) 속성은 처리기 메서드가 실행되기 전에 설정됩니다.
-
 
 홈페이지(*Index.cshtml*):
 
@@ -168,7 +157,7 @@ Razor 페이지는 기본적으로 GET이 아닌 동사에만 속성을 바인�
 
 *Index.cshtml* 파일에는 각 연락처의 편집 링크를 만들기 위해 다음 태그가 포함됩니다.
 
-```html
+```cshtml
 <a asp-page="./Edit" asp-route-id="@contact.Id">edit</a>
 ```
 
@@ -212,7 +201,7 @@ Razor 페이지는 기본적으로 GET이 아닌 동사에만 속성을 바인�
 
 [!code-cshtml[main](index/sample/RazorPagesContacts2/Pages/_ViewStart.cshtml)]
 
-참고: 레이아웃은 *Pages* 폴더에 있습니다. 페이지는 현재 페이지와 동일한 폴더에서 시작하여 다른 뷰(레이아웃, 템플릿, 부분)를 계층 구조로 검색합니다. *Pages* 폴더의 레이아웃은 *Pages* 폴더 아래의 Razor 페이지에서 사용될 수 있습니다.
+**참고:** 레이아웃은 *Pages* 폴더에 있습니다. 페이지는 현재 페이지와 동일한 폴더에서 시작하여 다른 뷰(레이아웃, 템플릿, 부분)를 계층 구조로 검색합니다. *Pages* 폴더의 레이아웃은 *Pages* 폴더 아래의 Razor 페이지에서 사용될 수 있습니다.
 
 레이아웃 파일은 *Views/Shared* 폴더에 두지 **않는** 것이 좋습니다. *Views/Shared*는 MVC 뷰 패턴입니다. Razor 페이지는 경로 규칙이 아니라 폴더 계층 구조를 사용해야 합니다.
 
@@ -236,7 +225,7 @@ Razor 페이지의 뷰 검색에는 *Pages* 폴더가 포함됩니다. MVC 컨�
 
 예를 들어 코드 숨김 파일 *Pages/Customers/Edit.cshtml.cs*는 네임스페이스를 명시적으로 설정합니다.
 
-[!code-cs[main](index/sample/RazorPagesContacts2/Pages/Customers/Edit.cshtml.cs?name=namespace)]
+[!code-cs[main](index/sample/RazorPagesContacts2/Pages/Customers/Edit.cshtml.cs?name=snippet_namespace)]
 
 *Pages/_ViewImports.cshtml* 파일은 다음 네임스페이스를 설정합니다.
 
@@ -244,15 +233,13 @@ Razor 페이지의 뷰 검색에는 *Pages* 폴더가 포함됩니다. MVC 컨�
 
 *Pages/Customers/Edit.cshtml* Razor 페이지에 대한 생성된 네임스페이스는 코드 숨김 파일과 동일합니다. `@namespace` 지시문은 코드 숨김 파일에 대한 `@using` 지시문을 추가할 필요 없이 프로젝트 및 페이지 생성 코드에 추가된 C# 클래스가 *제대로 작동*하도록 고안되었습니다.
 
-참고: `@namespace`는 기존 Razor 뷰에서도 작동합니다.
+**참고:** `@namespace`는 기존 Razor 뷰에서도 작동합니다.
 
 원래 *Pages/Create.cshtml* 뷰 파일:
 
 [!code-cshtml[main](index/sample/RazorPagesContacts/Pages/Create.cshtml?highlight=2)]
 
-업데이트된 페이지:
-
-*Pages/Create.cshtml* 뷰 파일:
+업데이트된 *Pages/Create.cshtml* 뷰 파일:
 
 [!code-cshtml[main](index/sample/RazorPagesContacts2/Pages/Customers/Create.cshtml?highlight=2)]
 
@@ -264,7 +251,7 @@ Razor 페이지의 뷰 검색에는 *Pages* 폴더가 포함됩니다. MVC 컨�
 
 이전에 표시된 `Create` 페이지에서는 `RedirectToPage`를 사용합니다.
 
-[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=OnPostAsync&highlight=10)]
+[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_OnPostAsync&highlight=10)]
 
 앱에는 다음 파일/폴더 구조가 있습니다.
 
@@ -305,7 +292,8 @@ ASP.NET Core는 [TempData](https://docs.microsoft.com/aspnet/core/api/microsoft.
 `[TempData]` 특성은 ASP.NET Core 2.0의 새로운 기능이고 컨트롤러 및 페이지에서 지원됩니다.
 
 다음 코드는 `TempData`를 사용하여 `Message` 값을 설정합니다.
-[!code-cs[main](index/sample/RazorPagesContacts2/Pages/Customers/CreateDot.cshtml.cs?highlight=10-11,27-28&name=snippetTemp)]
+
+[!code-cs[main](index/sample/RazorPagesContacts2/Pages/Customers/CreateDot.cshtml.cs?highlight=10-11,25&name=snippet_Temp)]
 
 *Pages/Customers/Index.cshtml* 파일의 다음 태그는 `TempData`를 사용하여 `Message` 값을 표시합니다.
 
@@ -349,7 +337,6 @@ URL에서 쿼리 문자열 `?handler=JoinList`를 사용하지 않으려면 경�
 
 [!code-cshtml[main](index/sample/RazorPagesContacts2/Pages/Customers/CreateRoute.cshtml?highlight=1)]
 
-
 이전 경로는 쿼리 문자열 대신 URL 경로에 처리기 이름을 넣습니다. `handler` 뒤의 `?`는 경로 매개 변수가 선택 사항임을 의미합니다.
 
 `@page`를 사용하여 페이지 경로에 다른 세그먼트 및 매개 변수를 추가할 수 있습니다. 무엇이든 페이지의 기본 경로에 **추가**됩니다. 절대 또는 가상 경로를 사용하여 페이지 경로를 변경하는 기능(예: `"~/Some/Other/Path"`)은 지원되지 않습니다.
@@ -358,7 +345,7 @@ URL에서 쿼리 문자열 `?handler=JoinList`를 사용하지 않으려면 경�
 
 고급 옵션을 구성하려면 MVC 빌더에서 확장 메서드 `AddRazorPagesOptions`를 사용합니다.
 
-[!code-cs[main](index/sample/RazorPagesContacts/StartupAdvanced.cs?name=snippet1)]
+[!code-cs[main](index/sample/RazorPagesContacts/StartupAdvanced.cs?name=snippet_1)]
 
 현재 `RazorPagesOptions`를 사용하여 페이지의 루트 디렉터리를 설정하거나 페이지에 대한 응용 프로그램 모델 규칙을 추가할 수 있습니다. 나중에 이 방법으로 더 큰 확장성을 사용할 수 있기를 기대합니다.
 
