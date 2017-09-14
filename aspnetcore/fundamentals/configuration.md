@@ -11,15 +11,15 @@ ms.assetid: b3a5984d-e172-42eb-8a48-547e4acb6806
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration
-ms.openlocfilehash: a14bc7fbcdac9acddfdab4fcd6e40385ca48bcc4
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 041bb04a3a3699a166a03338865da154403d8c07
+ms.sourcegitcommit: f535ce61c6a5e615bc6399b5d763c734396231f4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/13/2017
 ---
 <a name=fundamentals-configuration></a>
 
-  # <a name="configuration-in-aspnet-core"></a>ASP.NET Core에 대 한 구성
+# <a name="configuration-in-aspnet-core"></a>ASP.NET Core에 대 한 구성
 
 [Rick Anderson](https://twitter.com/RickAndMSFT), [표시 Michaelis](http://intellitect.com/author/mark-michaelis/), [Steve Smith](https://ardalis.com/), 및 [김 Roth](https://github.com/danroth27)
 
@@ -66,7 +66,7 @@ Console.Write($"{Configuration["wizards:0:Name"]}, ");
 예를 들어, 개발, 테스트 및 프로덕션 환경에 대 한 서로 다른 구성 설정을 일반적이. `CreateDefaultBuilder` ASP.NET Core 2.x 응용 프로그램의 확장 메서드 (또는 사용 하 여 `AddJsonFile` 및 `AddEnvironmentVariables` ASP.NET Core 1.x 응용 프로그램에서 직접) JSON 파일 및 시스템 구성 소스 읽기에 대 한 구성 공급자를 추가 합니다.
 
 * *appsettings.json*
-* * appsettings 합니다. \<EnvironmentName >.json
+* *appsettings 합니다. \<EnvironmentName >.json*
 * 환경 변수
 
 참조 [AddJsonFile](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.configuration.jsonconfigurationextensions) 에 대 한 설명은 매개 변수입니다. `reloadOnChange`ASP.NET Core 1.1에서 이상 에서만 지원 됩니다. 

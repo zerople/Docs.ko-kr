@@ -10,11 +10,11 @@ ms.topic: article
 ms.assetid: f9267eab-2762-42ac-1638-4a25d2c9d67c
 ms.prod: asp.net-core
 uid: performance/caching/middleware
-ms.openlocfilehash: 7790f38dda61eabd3cbbc6088ad455c07289b739
-ms.sourcegitcommit: 70089de5bfd8ecd161261aa95faf07a4e1534cf8
+ms.openlocfilehash: 4013619f738b3b8b58e45d9dfd205e7b75e056b4
+ms.sourcegitcommit: 029dd7fbc0793e84b9ed91f2b45624bbc187fb32
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/14/2017
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>ASP.NET Core의 미들웨어 캐싱 응답
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 08/23/2017
 ## <a name="configuration"></a>구성
 `ConfigureServices`, 미들웨어 서비스 컬렉션에 추가 합니다.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](middleware/samples/2.x/Program.cs?name=snippet1&highlight=4)]
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 08/23/2017
 
 사용 하 여 미들웨어를 사용 하도록 응용 프로그램 구성에서 `UseResponseCaching` 요청 처리 파이프라인에 미들웨어를 추가 하는 확장 메서드를 합니다. 샘플 응용 프로그램 추가 [ `Cache-Control` ](https://tools.ietf.org/html/rfc7234#section-5.2) 헤더를 최대 10 초 동안 캐시 가능한 응답을 캐시 하는 응답입니다. 샘플에서 보내기는 [ `Vary` ](https://tools.ietf.org/html/rfc7231#section-7.1.4) 를 경우에만 캐시 된 응답을 처리 하는 미들웨어를 구성 하는 헤더는 [ `Accept-Encoding` ](https://tools.ietf.org/html/rfc7231#section-5.3.4) 이후의 요청 헤더의 일치 하는 원래 요청 합니다.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](middleware/samples/2.x/Program.cs?name=snippet1&highlight=8)]
 
@@ -113,7 +113,7 @@ if (responseCachingFeature != null)
 
 * [Fiddler](http://www.telerik.com/fiddler)
 * [Firebug](http://getfirebug.com/)
-* [우체부](https://www.getpostman.com/)
+* [Postman](https://www.getpostman.com/)
 
 ### <a name="conditions-for-caching"></a>캐시에 대 한 조건
 * 서버에서 보낸 200 (정상)이 응답은 요청의 결과로 해야 합니다.
@@ -125,7 +125,7 @@ if (responseCachingFeature != null)
 * `Set-Cookie` 헤더 없어야 합니다.
 * `Vary`헤더 매개 변수는 유효 하 고 같지 않음 이어야 `*`합니다.
 * `Content-Length` 헤더 값 (하는 경우 설정)는 응답 본문의 크기와 일치 해야 합니다.
-* `HttpSendFileFeature` 사용 되지 않습니다.
+* [IHttpSendFileFeature](/aspnet/core/api/microsoft.aspnetcore.http.features.ihttpsendfilefeature) 사용 되지 않습니다.
 * 응답에 지정 된 대로 오래 된 않아야는 `Expires` 헤더 및 `max-age` 및 `s-maxage` 지시문을 캐시 합니다.
 * 응답 버퍼링 성공 하 고 응답 크기가 구성 된 보다 작으면 또는 기본 `SizeLimit`합니다.
 * 응답에 따라 캐시 가능 해야 합니다.는 [RFC 7234](https://tools.ietf.org/html/rfc7234) 사양입니다. 예를 들어는 `no-store` 지시문 요청 또는 응답 헤더 필드에 없어야 합니다. 참조 *섹션 3: 응답을 캐시에 저장* 의 [RFC 7234](https://tools.ietf.org/html/rfc7234) 대 한 자세한 내용은 합니다.
