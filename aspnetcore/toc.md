@@ -163,8 +163,7 @@
 ## [브라우저 링크 사용](xref:client-side/using-browserlink)
 
 # [모바일](xref:mobile/index)
-
-# [네이티브 모바일 응용 프로그램에 대한 백 엔드 서비스 만들기](xref:mobile/native-mobile-backend)
+## [네이티브 모바일 응용 프로그램에 대한 백 엔드 서비스 만들기](xref:mobile/native-mobile-backend)
 
 # [호스팅 및 배포](xref:publishing/index)
 ## [IIS를 사용하여 Windows에서 호스트](xref:publishing/iis)
