@@ -10,11 +10,11 @@ ms.assetid: e6c1ff3c-5673-43bf-9c2d-077f6ada1f29
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: bc2896d0eeda7e84cef06ee3f235e637bfe04318
-ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
+ms.openlocfilehash: 9de39ce59633036c0dd850a7552bd3f4806c5431
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="sorting-filtering-paging-and-grouping---ef-core-with-aspnet-core-mvc-tutorial-3-of-10"></a>정렬, 필터링, 페이징 및 그룹화-EF 코어 ASP.NET Core MVC 자습서 (3 / 10)
 
@@ -94,7 +94,7 @@ Contoso 대학 샘플 웹 응용 프로그램에는 Entity Framework Core 및 Vi
 
 [!code-html[](intro/samples/cu/Views/Students/Index3.cshtml?range=9-23&highlight=5-13)]
 
-이 코드에서는 사용는 `<form>` [태그 도우미](https://docs.asp.net/en/latest/mvc/views/tag-helpers/intro.html) 검색 텍스트 상자 및 단추를 추가 합니다. 기본적으로는 `<form>` 태그 도우미 즉, 매개 변수가 URL 아니라 HTTP 메시지 본문에 쿼리 문자열로 전달 하는 POST로 양식 데이터를 전송 합니다. HTTP GET을 지정 하면 양식 데이터 변수로 전달 됩니다 URL에 쿼리 문자열, URL에 책갈피를 있습니다. 작업 업데이트 되지 않습니다 때 전달 되는 사용 해야 하는 W3C 지침 좋습니다.
+이 코드에서는 사용는 `<form>` [태그 도우미](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/intro) 검색 텍스트 상자 및 단추를 추가 합니다. 기본적으로는 `<form>` 태그 도우미 즉, 매개 변수가 URL 아니라 HTTP 메시지 본문에 쿼리 문자열로 전달 하는 POST로 양식 데이터를 전송 합니다. HTTP GET을 지정 하면 양식 데이터 변수로 전달 됩니다 URL에 쿼리 문자열, URL에 책갈피를 있습니다. 작업 업데이트 되지 않습니다 때 전달 되는 사용 해야 하는 W3C 지침 좋습니다.
 
 페이지를 실행 하 고 검색 문자열을 입력 한 다음 필터링이 작동 하는지 확인 하는 검색을 클릭 합니다.
 

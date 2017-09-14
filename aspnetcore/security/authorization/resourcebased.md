@@ -2,7 +2,7 @@
 title: "리소스 기반 권한 부여"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,17 +11,17 @@ ms.assetid: 0902ba17-5304-4a12-a2d4-e0904569e988
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/resourcebased
-ms.openlocfilehash: 2f799588ba4aca4664e1679e4c34657e7ca121fb
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 7f7df52bf51a81558818836450997281a21b5839
+ms.sourcegitcommit: f303a457644ed034a49aa89edecb4e79d9028cb1
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="resource-based-authorization"></a>리소스 기반 권한 부여
 
 <a name=security-authorization-resource-based></a>
 
-권한 부여 자주 액세스 되는 리소스에 따라 달라 집니다. 예를 들어 문서 author 속성이 있을 수 있습니다. 리소스 권한 부여 평가 수행 하기 전에 문서 저장소에서 로드할 수 있도록 업데이트 문서 작성자만 허용 합니다. 이 같이 특성 평가 데이터 바인딩 전에 및 액션 내 리소스를 로드 하는 사용자 고유의 코드를 실행 하기 전에 권한 부여 특성으로 수행할 수 없습니다. 선언적 권한 부여 특성 메서드를 대신 명령적 권한 부여 개발자가 자신의 코드 내에 권한 부여 함수를 호출 하는 경우 사용 해야 했습니다.
+권한 부여 자주 액세스 되는 리소스에 따라 달라 집니다. 예를 들어, 문서 작성자 속성이 있을 수 있습니다. 리소스 권한 부여 평가 수행 하기 전에 문서 저장소에서 로드할 수 있도록 업데이트 문서 작성자만 허용 합니다. 이 같이 특성 평가 데이터 바인딩 전에 및 액션 내 리소스를 로드 하는 사용자 고유의 코드를 실행 하기 전에 권한 부여 특성으로 수행할 수 없습니다. 선언적 권한 부여 특성 메서드를 대신 명령적 권한 부여 개발자가 자신의 코드 내에 권한 부여 함수를 호출 하는 경우 사용 해야 했습니다.
 
 ## <a name="authorizing-within-your-code"></a>코드 내에서 권한 부여
 
@@ -52,7 +52,7 @@ Task<bool> AuthorizeAsync(ClaimsPrincipal user,
 
 <a name=security-authorization-resource-based-imperative></a>
 
-서비스 부하 작업 내에서 리소스를 호출 하려면 다음 호출에서 `AuthorizeAsync` 필요한 오버 로드 합니다. 예
+서비스를 호출 하려면 작업 내에서 리소스를 로드 한 다음 호출는 `AuthorizeAsync` 필요한 오버 로드 합니다. 예:
 
 ```csharp
 public async Task<IActionResult> Edit(Guid documentId)
@@ -77,12 +77,12 @@ public async Task<IActionResult> Edit(Guid documentId)
 
 ## <a name="writing-a-resource-based-handler"></a>리소스 기반 처리기 작성
 
-작성 리소스 기반 권한 부여에 대 한 처리기를 많이 다릅니다 하는 것은 [일반 요구 사항 처리기 작성](policies.md#security-authorization-policies-based-authorization-handler)합니다. 에서는 요구 사항을 만들고 그런 다음 앞으로 요구 사항 및 리소스 종류를 지정 하는 요구 사항에 대 한 처리기를 구현 합니다. 예를 들어 문서 리소스를 수락할 수 처리기를 보여 줍니다.
+작성 리소스 기반 권한 부여에 대 한 처리기를 많이 다릅니다 하는 것은 [일반 요구 사항 처리기 작성](policies.md#security-authorization-policies-based-authorization-handler)합니다. 에서는 요구 사항을 만들고 그런 다음 앞으로 요구 사항 및 리소스 종류를 지정 하는 요구 사항에 대 한 처리기를 구현 합니다. 예를 들어 문서 리소스를 수락할 수 처리기 다음과 같이 표시 됩니다.
 
 ```csharp
 public class DocumentAuthorizationHandler : AuthorizationHandler<MyRequirement, Document>
 {
-    public override Task HandleRequirementAsync(AuthorizationHandlerContext context,
+    protected override Task HandleRequirementAsync(AuthorizationHandlerContext context,
                                                 MyRequirement requirement,
                                                 Document resource)
     {
@@ -93,7 +93,7 @@ public class DocumentAuthorizationHandler : AuthorizationHandler<MyRequirement, 
 }
 ```
 
-에 처리기를 등록 해야 하는 데 반드시는 `ConfigureServices` 메서드도 있습니다.
+에 처리기를 등록 해야 하는 데 반드시는 `ConfigureServices` 메서드:
 
 ```csharp
 services.AddSingleton<IAuthorizationHandler, DocumentAuthorizationHandler>();
@@ -101,7 +101,7 @@ services.AddSingleton<IAuthorizationHandler, DocumentAuthorizationHandler>();
 
 ### <a name="operational-requirements"></a>운영 요구 사항
 
-읽기, 쓰기, update 및 delete 등의 작업에 따라 하는 결정을 내려야 하는 경우 사용할 수 있습니다는 `OperationAuthorizationRequirement` 클래스에 `Microsoft.AspNetCore.Authorization.Infrastructure` 네임 스페이스입니다. 이 미리 작성 된 요구 사항 클래스를 사용 하면 각 작업에 대 한 개별 클래스를 만드는 대신 매개 변수가 있는 작업 이름이 단일 처리기를 작성할 수 있습니다. 사용 하려면 일부 작업 이름은 제공 합니다.
+읽기, 쓰기, update 및 delete 등의 작업에 따라 하는 결정을 내려야 하는 경우 사용할 수 있습니다는 `OperationAuthorizationRequirement` 클래스에 `Microsoft.AspNetCore.Authorization.Infrastructure` 네임 스페이스입니다. 이 미리 작성 된 요구 사항 클래스를 사용 하면 각 작업에 대 한 개별 클래스를 만드는 대신 매개 변수가 있는 작업 이름이 단일 처리기를 작성할 수 있습니다. 이 기능을 사용 하려면 일부 작업 이름을 제공 합니다.
 
 ```csharp
 public static class Operations
@@ -117,7 +117,7 @@ public static class Operations
 }
 ```
 
-처리기에 다음 구현할 수 있습니다 다음과 같은 가상의 사용 하 여 `Document` ; 리소스로 클래스
+처리기에 다음 구현할 수 있습니다 다음과 같은 가상의 사용 하 여 `Document` 리소스로 클래스:
 
 ```csharp
 public class DocumentAuthorizationHandler :
@@ -137,7 +137,7 @@ public class DocumentAuthorizationHandler :
 
 처리기는 확인할 수 있습니다 `OperationAuthorizationRequirement`합니다. 처리기 내에서 코드를 해당 평가 만들 때 제공 된 요구 사항 계정으로의 Name 속성을 취해야 합니다.
 
-호출할 때 작업을 지정 해야 하는 작업 리소스 처리기를 호출 하려면 `AuthorizeAsync` 사용자 작업에서 합니다. 예
+호출할 때 작업을 지정 해야 하는 작업 리소스 처리기를 호출 하려면 `AuthorizeAsync` 사용자 작업에서 합니다. 예:
 
 ```csharp
 if (await _authorizationService.AuthorizeAsync(User, document, Operations.Read))

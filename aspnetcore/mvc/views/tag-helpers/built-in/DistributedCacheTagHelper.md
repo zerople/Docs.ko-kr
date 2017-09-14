@@ -11,11 +11,11 @@ ms.assetid: c045d485-d1dc-4cea-a675-46be83b7a022
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/DistributedCacheTagHelper
-ms.openlocfilehash: b6e0beca0833b1dbe0843e8f8848b976726cc7b0
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 2b260624fb2d85ab1a2625511397bcb4a85b6e77
+ms.sourcegitcommit: d022d4b96795ee473fa3847a1d8a8c7430423a86
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/13/2017
 ---
 # <a name="distributed-cache-tag-helper"></a>분산된 캐시 태그 도우미
 
@@ -52,14 +52,14 @@ ms.lasthandoff: 08/11/2017
 ```cshtml
 <distributed-cache name="my-distributed-cache-unique-key-101">
     Time Inside Cache Tag Helper: @DateTime.Now
-</Cache>
+</distributed-cache>
 ```
 
 ## <a name="distributed-cache-tag-helper-idistributedcache-implementations"></a>분산 캐시 태그 도우미 IDistributedCache 구현
 
 두 개의 구현이 없는 `IDistributedCache` ASP.NET Core에서 기본적으로 제공 합니다.  에 따라 하나 **Sql Server** 기반 다른 **Redis**합니다. 명명 된 "작업 분산된 캐시" 아래에 참조 된 리소스의이 구현은 세부 정보를 찾을 수 있습니다. 두 구현 모두의 인스턴스를 설정할 포함 `IDistributedCache` 에서 ASP.NET Core **startup.cs**합니다.
 
-있습니다 특성이 없습니다. 태그와 연결의 특정 구현을 사용 하 여 `IDistributedCache`합니다.
+특정 구현을 사용과 특별히 관련 된 태그 특성이 없으면 `IDistributedCache`합니다.
 
 
 

@@ -2,7 +2,7 @@
 title: "크로스-원본 요청 (CORS)를 사용 하도록 설정"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 05/17/2017
@@ -11,11 +11,11 @@ ms.assetid: f9d95e88-4d7e-4d0c-a8e1-47de1128d505
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/cors
-ms.openlocfilehash: 44936c6db8a003a61091ec9a7fd3be5786d89b5b
-ms.sourcegitcommit: 8cafdd1dd409d5070d227100ba0e094c779ac47b
+ms.openlocfilehash: e441ce1c50139a5b33865eec8e8d99764258730d
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="enabling-cross-origin-requests-cors"></a>크로스-원본 요청 (CORS)를 사용 하도록 설정
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 08/28/2017
 
 브라우저 보안 다른 도메인에 대 한 AJAX 요청에서 웹 페이지를 방지 합니다. 이 제한은 라고는 *동일 원본 정책*, 악성 사이트를 다른 사이트에서 중요 한 데이터를 읽을 수 없도록 합니다. 하지만, 경우에 따라 다른 사이트 web API 대 크로스-원본 요청을 만들 수 있도록 필요할 수 있습니다.
 
-[교차 원본 자원 공유](http://www.w3.org/TR/cors/) (CORS)는 동일 원본 정책을 완화 하도록 서버를 허용 하는 W3C 표준입니다. CORS를 사용 하는 서버는 다른 사용자를 거부 하는 동안 일부 크로스-원본 요청을 명시적으로 허용할 수 있습니다. 과 같은 CORS를 안전 하 고 이전 기술을 보다 좀 더 융통적 [JSONP](http://en.wikipedia.org/wiki/JSONP)합니다. 이 항목에서는 ASP.NET Core 응용 프로그램에서 CORS를 사용 하도록 설정 하는 방법을 보여 줍니다.
+[교차 원본 자원 공유](http://www.w3.org/TR/cors/) (CORS)는 동일 원본 정책을 완화 하도록 서버를 허용 하는 W3C 표준입니다. CORS를 사용 하는 서버는 다른 사용자를 거부 하는 동안 일부 크로스-원본 요청을 명시적으로 허용할 수 있습니다. 과 같은 CORS를 안전 하 고 이전 기술을 보다 좀 더 융통적 [JSONP](https://wikipedia.org/wiki/JSONP)합니다. 이 항목에서는 ASP.NET Core 응용 프로그램에서 CORS를 사용 하도록 설정 하는 방법을 보여 줍니다.
 
 ## <a name="what-is-same-origin"></a>"같은 출처" 이란?
 
