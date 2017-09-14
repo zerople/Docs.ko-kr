@@ -11,11 +11,11 @@ ms.assetid: 54bb961d-29d9-4dee-8e2c-a93fc33c16f2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/web-api-help-pages-using-swagger
-ms.openlocfilehash: fd2f415947c049d1239ce4e6bf0b1cf0264e7836
-ms.sourcegitcommit: 41e3e007512c175a42910bc69678f3f0403cab04
+ms.openlocfilehash: 92136a6e5db68b4d7e5245e38960e4a1f01bfb73
+ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/01/2017
+ms.lasthandoff: 09/05/2017
 ---
 # <a name="aspnet-web-api-help-pages-using-swagger"></a>Swagger를 사용한 ASP.NET Web API 도움말 페이지
 
@@ -92,6 +92,12 @@ dotnet add TodoApi.csproj package Swashbuckle.AspNetCore
 *Startup.cs*의 `ConfigureServices` 메서드에서 서비스 컬렉션에 Swagger 생성기를 추가합니다.
 
 [!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/Startup2.cs?name=snippet_ConfigureServices&highlight=7-10)]
+
+다음 using 문을 `Info` 클래스에 추가합니다.
+
+```csharp
+using Swashbuckle.AspNetCore.Swagger;
+```
 
 *Startup.cs*의 `Configure` 메서드에서 생성된 JSON 문서 및 SwaggerUI를 지원하기 위해 미들웨어를 사용하도록 설정합니다.
 
