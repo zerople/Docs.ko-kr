@@ -1,8 +1,8 @@
 ---
-title: "ASP.NET 코어의 권한 부여 | Microsoft 문서"
+title: "ASP.NET Core의 권한 부여"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,29 +11,28 @@ ms.assetid: 1abd456b-2199-4ba3-9698-3241e0bd4afc
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/index
-translationtype: Machine Translation
-ms.sourcegitcommit: 010b730d2716f9f536fef889bc2f767afb648ef4
-ms.openlocfilehash: f85665e38e27ed25d0c829fa6cec26b5392c072a
-ms.lasthandoff: 03/23/2017
-
+ms.openlocfilehash: c632a3a6009545fcd93ea36131aad1b761e58998
+ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/11/2017
 ---
-# <a name="authorization-in-aspnet-core--simple-role-claims-based-and-custom"></a>ASP.NET 코어의 권한 부여: 단순, 역할, 클레임 기반 및 사용자 지정
+# <a name="authorization-in-aspnet-core--simple-role-claims-based-and-custom"></a><span data-ttu-id="1ffa5-103">ASP.NET Core에서 권한 부여: 단순, 역할, 클레임 기반 및 사용자 지정</span><span class="sxs-lookup"><span data-stu-id="1ffa5-103">Authorization in ASP.NET Core : Simple, role, claims-based and custom</span></span>
 
-* [소개](introduction.md)
+* [<span data-ttu-id="1ffa5-104">소개</span><span class="sxs-lookup"><span data-stu-id="1ffa5-104">Introduction</span></span>](introduction.md)
 
-* [간단한 권한 부여](simple.md)
+* [<span data-ttu-id="1ffa5-105">단순 권한 부여</span><span class="sxs-lookup"><span data-stu-id="1ffa5-105">Simple Authorization</span></span>](simple.md)
 
-* [역할 기반 권한 부여](roles.md)
+* [<span data-ttu-id="1ffa5-106">역할 기반 권한 부여</span><span class="sxs-lookup"><span data-stu-id="1ffa5-106">Role based Authorization</span></span>](roles.md)
 
-* [클레임 기반 권한 부여](claims.md)
+* [<span data-ttu-id="1ffa5-107">클레임 기반 권한 부여</span><span class="sxs-lookup"><span data-stu-id="1ffa5-107">Claims-Based Authorization</span></span>](claims.md)
 
-* [사용자 지정 정책 기반 권한 부여](policies.md)
+* [<span data-ttu-id="1ffa5-108">사용자 지정 정책 기반 권한 부여</span><span class="sxs-lookup"><span data-stu-id="1ffa5-108">Custom Policy-Based Authorization</span></span>](policies.md)
 
-* [요구 사항 처리기에서 종속성 주입](dependencyinjection.md)
+* [<span data-ttu-id="1ffa5-109">요구 사항 처리기의 종속성 주입</span><span class="sxs-lookup"><span data-stu-id="1ffa5-109">Dependency Injection in requirement handlers</span></span>](dependencyinjection.md)
 
-* [리소스 기반 권한 부여](resourcebased.md)
+* [<span data-ttu-id="1ffa5-110">리소스 기반 권한 부여</span><span class="sxs-lookup"><span data-stu-id="1ffa5-110">Resource Based Authorization</span></span>](resourcebased.md)
 
-* [보기 기반 권한 부여](views.md)
+* [<span data-ttu-id="1ffa5-111">뷰 기반 권한 부여</span><span class="sxs-lookup"><span data-stu-id="1ffa5-111">View Based Authorization</span></span>](views.md)
 
-* [스키마에 의해 identity를 제한합니다.](limitingidentitybyscheme.md)
-
+* [<span data-ttu-id="1ffa5-112">구성표로 ID 제한</span><span class="sxs-lookup"><span data-stu-id="1ffa5-112">Limiting identity by scheme</span></span>](limitingidentitybyscheme.md)

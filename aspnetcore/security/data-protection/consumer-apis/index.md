@@ -1,8 +1,8 @@
 ---
-title: "소비자 Api | Microsoft 문서"
+title: "소비자 API"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,23 +11,22 @@ ms.assetid: dff0cde2-6612-4b32-bafc-c00bf6d370f2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/consumer-apis/index
-translationtype: Machine Translation
-ms.sourcegitcommit: 010b730d2716f9f536fef889bc2f767afb648ef4
-ms.openlocfilehash: 1ed165818b02dbcbddb51a3a2eeb21c811d6c82d
-ms.lasthandoff: 03/23/2017
-
+ms.openlocfilehash: f689acf9af51276631749ac2a5ca2ec21f1cfcb5
+ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/11/2017
 ---
-# <a name="consumer-apis"></a>소비자 Api
+# <a name="consumer-apis"></a><span data-ttu-id="728d4-103">소비자 API</span><span class="sxs-lookup"><span data-stu-id="728d4-103">Consumer APIs</span></span>
 
-* [소비자 Api 개요](overview.md)
+* [<span data-ttu-id="728d4-104">소비자 API 개요</span><span class="sxs-lookup"><span data-stu-id="728d4-104">Consumer APIs Overview</span></span>](overview.md)
 
-* [목적은 문자열](purpose-strings.md)
+* [<span data-ttu-id="728d4-105">용도 문자열</span><span class="sxs-lookup"><span data-stu-id="728d4-105">Purpose Strings</span></span>](purpose-strings.md)
 
-* [목적은 계층 구조 및 다중 테 넌 트](purpose-strings-multitenancy.md)
+* [<span data-ttu-id="728d4-106">용도 계층 구조 및 다중 테넌트</span><span class="sxs-lookup"><span data-stu-id="728d4-106">Purpose hierarchy and multi-tenancy</span></span>](purpose-strings-multitenancy.md)
 
-* [암호 해시](password-hashing.md)
+* [<span data-ttu-id="728d4-107">암호 해시</span><span class="sxs-lookup"><span data-stu-id="728d4-107">Password Hashing</span></span>](password-hashing.md)
 
-* [보호 된 페이로드의 수명을 제한](limited-lifetime-payloads.md)
+* [<span data-ttu-id="728d4-108">보호된 페이로드의 수명 제한</span><span class="sxs-lookup"><span data-stu-id="728d4-108">Limiting the lifetime of protected payloads</span></span>](limited-lifetime-payloads.md)
 
-* [보호 해제 페이로드 키를 갖는 해지 되었습니다.](dangerous-unprotect.md)
-
+* [<span data-ttu-id="728d4-109">호출된 키가 속한 페이로드 보호 해제</span><span class="sxs-lookup"><span data-stu-id="728d4-109">Unprotecting payloads whose keys have been revoked</span></span>](dangerous-unprotect.md)

@@ -1,8 +1,8 @@
 ---
-title: "보안 | Microsoft 문서"
+title: "보안"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -10,74 +10,77 @@ ms.topic: article
 ms.assetid: a8fb7eb7-e0e5-4394-84f3-1f1dbe012345
 ms.technology: aspnet
 ms.prod: asp.net-core
-translationtype: Machine Translation
-ms.sourcegitcommit: 010b730d2716f9f536fef889bc2f767afb648ef4
-ms.openlocfilehash: 7e6dc2a5e8382f26c09375037c767265582bee70
-ms.lasthandoff: 03/23/2017
-
+uid: security/index
+ms.openlocfilehash: aa22d072a6ef0ff105d67c2bfc5c335511d6c0cd
+ms.sourcegitcommit: aa6951e0c2e62209bf7c25e3b3138f04eb92898d
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="security"></a>보안
+# <a name="security"></a><span data-ttu-id="477fb-103">보안</span><span class="sxs-lookup"><span data-stu-id="477fb-103">Security</span></span>
 
-*   [인증](authentication/index.md)
-    *   [Id 소개](authentication/identity.md)
-    *   [Facebook, Google 및 다른 외부 공급자를 사용 하 여 인증을 사용 하도록 설정](authentication/social/index.md)
-    *   [계정 확인 및 암호 복구](authentication/accconfirm.md)
-    *   [SMS와&2; 단계 인증](authentication/2fa.md)
-    *   [🔧OAuth 2.0을 사용 하 여 제 3 자 클라이언트 지원](authentication/oauth2.md)
-    *   [ASP.NET Core Identity 없이 쿠키 미들웨어를 사용 하 여](authentication/cookie.md)
-    *   [Azure Active Directory](authentication/azure-active-directory/index.md)
-        *   [ASP.NET Core 웹 응용 프로그램에 Azure AD 통합](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore)
-        *   [Azure AD를 사용 하 여 WPF 응용 프로그램에서 ASP.NET 핵심 웹 API를 호출 합니다.](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore)
-        *   [Azure AD를 사용 하 여 ASP.NET 핵심 웹 응용 프로그램에서 웹 API를 호출 합니다.](https://azure.microsoft.com/en-us/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/)
-        *   [Azure AD B2C를 사용 하 여 ASP.NET 핵심 웹 앱](https://azure.microsoft.com/en-us/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore-b2c/)
-    *   [ASP.NET Core IdentityServer4 사용 하 여 앱 보안 유지](https://identityserver4.readthedocs.io)
-*   [권한 부여](authorization/index.md)
-    *   [소개](authorization/introduction.md)
-    *   [간단한 권한 부여](authorization/simple.md)
-    *   [역할 기반 권한 부여](authorization/roles.md)
-    *   [클레임 기반 권한 부여](authorization/claims.md)
-    *   [사용자 지정 정책 기반 권한 부여](authorization/policies.md)
-    *   [요구 사항 처리기에서 종속성 주입](authorization/dependencyinjection.md)
-    *   [리소스 기반 권한 부여](authorization/resourcebased.md)
-    *   [보기 기반 권한 부여](authorization/views.md)
-    *   [스키마에 의해 identity를 제한합니다.](authorization/limitingidentitybyscheme.md)
-*   [데이터 보호](data-protection/index.md)
-    *   [데이터 보호 소개](data-protection/introduction.md)
-    *   [데이터 보호 Api를 시작 하기](data-protection/using-data-protection.md)
-    *   [소비자 Api](data-protection/consumer-apis/index.md)
-        *   [소비자 Api 개요](data-protection/consumer-apis/overview.md)
-        *   [목적은 문자열](data-protection/consumer-apis/purpose-strings.md)
-        *   [목적은 계층 구조 및 다중 테 넌 트](data-protection/consumer-apis/purpose-strings-multitenancy.md)
-        *   [암호 해시](data-protection/consumer-apis/password-hashing.md)
-        *   [보호 된 페이로드의 수명을 제한](data-protection/consumer-apis/limited-lifetime-payloads.md)
-        *   [보호 해제 페이로드 키를 갖는 해지 되었습니다.](data-protection/consumer-apis/dangerous-unprotect.md)
-    *   [구성](data-protection/configuration/index.md)
-        *   [데이터 보호를 구성합니다.](data-protection/configuration/overview.md)
-        *   [기본 설정](data-protection/configuration/default-settings.md)
-        *   [컴퓨터 단위 정책](data-protection/configuration/machine-wide-policy.md)
-        *   [비 DI 인식 시나리오](data-protection/configuration/non-di-scenarios.md)
-    *   [확장성 Api](data-protection/extensibility/index.md)
-        *   [핵심 암호화 확장성](data-protection/extensibility/core-crypto.md)
-        *   [키 관리 확장성](data-protection/extensibility/key-management.md)
-        *   [기타 Api](data-protection/extensibility/misc-apis.md)
-    *   [구현](data-protection/implementation/index.md)
-        *   [암호화 정보를 인증합니다.](data-protection/implementation/authenticated-encryption-details.md)
-        *   [하위 키 파생 및 인증 된 암호화](data-protection/implementation/subkeyderivation.md)
-        *   [컨텍스트 헤더](data-protection/implementation/context-headers.md)
-        *   [키 관리](data-protection/implementation/key-management.md)
-        *   [키 저장소 공급자](data-protection/implementation/key-storage-providers.md)
-        *   [상태일 때 키 암호화](data-protection/implementation/key-encryption-at-rest.md)
-        *   [키 불변성과 설정 변경](data-protection/implementation/key-immutability.md)
-        *   [키 저장소 형식](data-protection/implementation/key-storage-format.md)
-        *   [임시 데이터 보호 기능 공급자](data-protection/implementation/key-storage-ephemeral.md)
-    *   [호환성](data-protection/compatibility/index.md)
-        *   [응용 프로그램 간에 쿠키를 공유합니다.](data-protection/compatibility/cookie-sharing.md)
-        *   [대체 <machineKey> asp.net](data-protection/compatibility/replacing-machinekey.md)
-*   [개발 하는 동안 앱 암호의 안전한 저장소](app-secrets.md)
-*   [Azure 키 자격 증명 모음 구성 공급자](key-vault-configuration.md)
-*   [🔧SSL을 적용합니다.](enforcing-ssl.md)
-*   [🔧백신 요청 위조 방지](anti-request-forgery.md)
-*   [🔧열린 리디렉션 공격을 방지](open-redirect.md)
-*   [사이트 간 스크립팅 방지](cross-site-scripting.md)
-*   [크로스-원본 요청 (CORS)를 사용 하도록 설정](cors.md)
-
+*   [<span data-ttu-id="477fb-104">인증</span><span class="sxs-lookup"><span data-stu-id="477fb-104">Authentication</span></span>](authentication/index.md)
+    *   [<span data-ttu-id="477fb-105">ID 소개</span><span class="sxs-lookup"><span data-stu-id="477fb-105">Introduction to Identity</span></span>](authentication/identity.md)
+    *   [<span data-ttu-id="477fb-106">Facebook, Google 및 기타 외부 공급자를 통해 인증 사용</span><span class="sxs-lookup"><span data-stu-id="477fb-106">Enabling authentication using Facebook, Google and other external providers</span></span>](authentication/social/index.md)
+    * [<span data-ttu-id="477fb-107">Windows 인증 구성</span><span class="sxs-lookup"><span data-stu-id="477fb-107">Configure Windows Authentication</span></span>](authentication/windowsauth.md)
+    *   [<span data-ttu-id="477fb-108">계정 확인 및 암호 복구</span><span class="sxs-lookup"><span data-stu-id="477fb-108">Account Confirmation and Password Recovery</span></span>](authentication/accconfirm.md)
+    *   [<span data-ttu-id="477fb-109">SMS를 사용한 2단계 인증</span><span class="sxs-lookup"><span data-stu-id="477fb-109">Two-factor authentication with SMS</span></span>](authentication/2fa.md) 
+    *   [<span data-ttu-id="477fb-110">ASP.NET Core ID 없이 쿠키 인증 사용</span><span class="sxs-lookup"><span data-stu-id="477fb-110">Using Cookie Authentication without ASP.NET Core Identity</span></span>](authentication/cookie.md)
+    *   [<span data-ttu-id="477fb-111">Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="477fb-111">Azure Active Directory</span></span>](authentication/azure-active-directory/index.md)
+        *   [<span data-ttu-id="477fb-112">ASP.NET Core 웹앱에 Azure AD 통합</span><span class="sxs-lookup"><span data-stu-id="477fb-112">Integrating Azure AD Into an ASP.NET Core Web App</span></span>](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore)
+        *   [<span data-ttu-id="477fb-113">Azure AD를 사용하여 WPF 응용 프로그램에서 ASP.NET Core Web API 호출</span><span class="sxs-lookup"><span data-stu-id="477fb-113">Calling a ASP.NET Core Web API From a WPF Application Using Azure AD</span></span>](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore)
+        *   [<span data-ttu-id="477fb-114">Azure AD를 사용하여 ASP.NET Core 웹 응용 프로그램에서 Web API 호출</span><span class="sxs-lookup"><span data-stu-id="477fb-114">Calling a Web API in an ASP.NET Core Web Application Using Azure AD</span></span>](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/)
+        *   [<span data-ttu-id="477fb-115">Azure AD B2C를 사용하여 ASP.NET Core 웹앱</span><span class="sxs-lookup"><span data-stu-id="477fb-115">An ASP.NET Core web app with Azure AD B2C</span></span>](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore-b2c/)
+    *   [<span data-ttu-id="477fb-116">IdentityServer4를 사용하여 ASP.NET Core 앱 보호</span><span class="sxs-lookup"><span data-stu-id="477fb-116">Securing ASP.NET Core apps with IdentityServer4</span></span>](https://identityserver4.readthedocs.io)
+*   [<span data-ttu-id="477fb-117">권한 부여</span><span class="sxs-lookup"><span data-stu-id="477fb-117">Authorization</span></span>](authorization/index.md)
+    *   [<span data-ttu-id="477fb-118">소개</span><span class="sxs-lookup"><span data-stu-id="477fb-118">Introduction</span></span>](authorization/introduction.md)
+    *   [<span data-ttu-id="477fb-119">권한 부여로 보호된 사용자 데이터를 사용하여 앱 만들기</span><span class="sxs-lookup"><span data-stu-id="477fb-119">Create an app with user data protected by authorization</span></span>](xref:security/authorization/secure-data)
+    *   [<span data-ttu-id="477fb-120">단순 권한 부여</span><span class="sxs-lookup"><span data-stu-id="477fb-120">Simple Authorization</span></span>](authorization/simple.md)
+    *   [<span data-ttu-id="477fb-121">역할 기반 권한 부여</span><span class="sxs-lookup"><span data-stu-id="477fb-121">Role based Authorization</span></span>](authorization/roles.md)
+    *   [<span data-ttu-id="477fb-122">클레임 기반 권한 부여</span><span class="sxs-lookup"><span data-stu-id="477fb-122">Claims-Based Authorization</span></span>](authorization/claims.md)
+    *   [<span data-ttu-id="477fb-123">사용자 지정 정책 기반 권한 부여</span><span class="sxs-lookup"><span data-stu-id="477fb-123">Custom Policy-Based Authorization</span></span>](authorization/policies.md)
+    *   [<span data-ttu-id="477fb-124">요구 사항 처리기의 종속성 주입</span><span class="sxs-lookup"><span data-stu-id="477fb-124">Dependency Injection in requirement handlers</span></span>](authorization/dependencyinjection.md)
+    *   [<span data-ttu-id="477fb-125">리소스 기반 권한 부여</span><span class="sxs-lookup"><span data-stu-id="477fb-125">Resource Based Authorization</span></span>](authorization/resourcebased.md)
+    *   [<span data-ttu-id="477fb-126">보기 기반 권한 부여</span><span class="sxs-lookup"><span data-stu-id="477fb-126">View Based Authorization</span></span>](authorization/views.md)
+    *   [<span data-ttu-id="477fb-127">구성표로 ID 제한</span><span class="sxs-lookup"><span data-stu-id="477fb-127">Limiting identity by scheme</span></span>](authorization/limitingidentitybyscheme.md)
+*   [<span data-ttu-id="477fb-128">데이터 보호</span><span class="sxs-lookup"><span data-stu-id="477fb-128">Data Protection</span></span>](data-protection/index.md)
+    *   [<span data-ttu-id="477fb-129">데이터 보호 소개</span><span class="sxs-lookup"><span data-stu-id="477fb-129">Introduction to Data Protection</span></span>](data-protection/introduction.md)
+    *   [<span data-ttu-id="477fb-130">데이터 보호 API 시작</span><span class="sxs-lookup"><span data-stu-id="477fb-130">Getting Started with the Data Protection APIs</span></span>](data-protection/using-data-protection.md)
+    *   [<span data-ttu-id="477fb-131">소비자 API</span><span class="sxs-lookup"><span data-stu-id="477fb-131">Consumer APIs</span></span>](data-protection/consumer-apis/index.md)
+        *   [<span data-ttu-id="477fb-132">소비자 API 개요</span><span class="sxs-lookup"><span data-stu-id="477fb-132">Consumer APIs Overview</span></span>](data-protection/consumer-apis/overview.md)
+        *   [<span data-ttu-id="477fb-133">용도 문자열</span><span class="sxs-lookup"><span data-stu-id="477fb-133">Purpose Strings</span></span>](data-protection/consumer-apis/purpose-strings.md)
+        *   [<span data-ttu-id="477fb-134">용도 계층 구조 및 다중 테넌트</span><span class="sxs-lookup"><span data-stu-id="477fb-134">Purpose hierarchy and multi-tenancy</span></span>](data-protection/consumer-apis/purpose-strings-multitenancy.md)
+        *   [<span data-ttu-id="477fb-135">암호 해시</span><span class="sxs-lookup"><span data-stu-id="477fb-135">Password Hashing</span></span>](data-protection/consumer-apis/password-hashing.md)
+        *   [<span data-ttu-id="477fb-136">보호된 페이로드의 수명 제한</span><span class="sxs-lookup"><span data-stu-id="477fb-136">Limiting the lifetime of protected payloads</span></span>](data-protection/consumer-apis/limited-lifetime-payloads.md)
+        *   [<span data-ttu-id="477fb-137">호출된 키가 속한 페이로드 보호 해제</span><span class="sxs-lookup"><span data-stu-id="477fb-137">Unprotecting payloads whose keys have been revoked</span></span>](data-protection/consumer-apis/dangerous-unprotect.md)
+    *   [<span data-ttu-id="477fb-138">구성</span><span class="sxs-lookup"><span data-stu-id="477fb-138">Configuration</span></span>](data-protection/configuration/index.md)
+        *   [<span data-ttu-id="477fb-139">데이터 보호 구성</span><span class="sxs-lookup"><span data-stu-id="477fb-139">Configuring Data Protection</span></span>](data-protection/configuration/overview.md)
+        *   [<span data-ttu-id="477fb-140">기본 설정</span><span class="sxs-lookup"><span data-stu-id="477fb-140">Default Settings</span></span>](data-protection/configuration/default-settings.md)
+        *   [<span data-ttu-id="477fb-141">컴퓨터 수준 정책</span><span class="sxs-lookup"><span data-stu-id="477fb-141">Machine Wide Policy</span></span>](data-protection/configuration/machine-wide-policy.md)
+        *   [<span data-ttu-id="477fb-142">비 DI 인식 시나리오</span><span class="sxs-lookup"><span data-stu-id="477fb-142">Non DI Aware Scenarios</span></span>](data-protection/configuration/non-di-scenarios.md)
+    *   [<span data-ttu-id="477fb-143">확장성 API</span><span class="sxs-lookup"><span data-stu-id="477fb-143">Extensibility APIs</span></span>](data-protection/extensibility/index.md)
+        *   [<span data-ttu-id="477fb-144">Core 암호화 확장성</span><span class="sxs-lookup"><span data-stu-id="477fb-144">Core cryptography extensibility</span></span>](data-protection/extensibility/core-crypto.md)
+        *   [<span data-ttu-id="477fb-145">키 관리 확장성</span><span class="sxs-lookup"><span data-stu-id="477fb-145">Key management extensibility</span></span>](data-protection/extensibility/key-management.md)
+        *   [<span data-ttu-id="477fb-146">기타 API</span><span class="sxs-lookup"><span data-stu-id="477fb-146">Miscellaneous APIs</span></span>](data-protection/extensibility/misc-apis.md)
+    *   [<span data-ttu-id="477fb-147">구현</span><span class="sxs-lookup"><span data-stu-id="477fb-147">Implementation</span></span>](data-protection/implementation/index.md)
+        *   [<span data-ttu-id="477fb-148">인증된 암호화 세부 정보.</span><span class="sxs-lookup"><span data-stu-id="477fb-148">Authenticated encryption details.</span></span>](data-protection/implementation/authenticated-encryption-details.md)
+        *   [<span data-ttu-id="477fb-149">하위 키 파생 및 인증된 암호화</span><span class="sxs-lookup"><span data-stu-id="477fb-149">Subkey Derivation and Authenticated Encryption</span></span>](data-protection/implementation/subkeyderivation.md)
+        *   [<span data-ttu-id="477fb-150">컨텍스트 헤더</span><span class="sxs-lookup"><span data-stu-id="477fb-150">Context headers</span></span>](data-protection/implementation/context-headers.md)
+        *   [<span data-ttu-id="477fb-151">키 관리</span><span class="sxs-lookup"><span data-stu-id="477fb-151">Key Management</span></span>](data-protection/implementation/key-management.md)
+        *   [<span data-ttu-id="477fb-152">키 저장소 공급자</span><span class="sxs-lookup"><span data-stu-id="477fb-152">Key Storage Providers</span></span>](data-protection/implementation/key-storage-providers.md)
+        *   [<span data-ttu-id="477fb-153">미사용 키 암호화</span><span class="sxs-lookup"><span data-stu-id="477fb-153">Key Encryption At Rest</span></span>](data-protection/implementation/key-encryption-at-rest.md)
+        *   [<span data-ttu-id="477fb-154">키 불변성 및 설정 변경</span><span class="sxs-lookup"><span data-stu-id="477fb-154">Key Immutability and Changing Settings</span></span>](data-protection/implementation/key-immutability.md)
+        *   [<span data-ttu-id="477fb-155">키 저장소 형식</span><span class="sxs-lookup"><span data-stu-id="477fb-155">Key Storage Format</span></span>](data-protection/implementation/key-storage-format.md)
+        *   [<span data-ttu-id="477fb-156">삭제되는 데이터 보호 공급자</span><span class="sxs-lookup"><span data-stu-id="477fb-156">Ephemeral data protection providers</span></span>](data-protection/implementation/key-storage-ephemeral.md)
+    *   [<span data-ttu-id="477fb-157">호환성</span><span class="sxs-lookup"><span data-stu-id="477fb-157">Compatibility</span></span>](data-protection/compatibility/index.md)
+        *   [<span data-ttu-id="477fb-158">응용프로그램 쿠키 공유</span><span class="sxs-lookup"><span data-stu-id="477fb-158">Sharing cookies between applications</span></span>](data-protection/compatibility/cookie-sharing.md)
+        *   [<span data-ttu-id="477fb-159">ASP.NET에서 <machineKey> 바꾸기</span><span class="sxs-lookup"><span data-stu-id="477fb-159">Replacing <machineKey> in ASP.NET</span></span>](data-protection/compatibility/replacing-machinekey.md)
+*   [<span data-ttu-id="477fb-160">권한 부여로 보호된 사용자 데이터를 사용하여 앱 만들기</span><span class="sxs-lookup"><span data-stu-id="477fb-160">Create an app with user data protected by authorization</span></span>](xref:security/authorization/secure-data)
+*   [<span data-ttu-id="477fb-161">개발 중 안전한 앱 비밀 저장소</span><span class="sxs-lookup"><span data-stu-id="477fb-161">Safe storage of app secrets during development</span></span>](app-secrets.md)
+*   [<span data-ttu-id="477fb-162">Azure Key Vault 구성 공급자</span><span class="sxs-lookup"><span data-stu-id="477fb-162">Azure Key Vault configuration provider</span></span>](key-vault-configuration.md)
+*   [<span data-ttu-id="477fb-163">SSL 적용</span><span class="sxs-lookup"><span data-stu-id="477fb-163">Enforcing SSL</span></span>](enforcing-ssl.md)
+*   [<span data-ttu-id="477fb-164">개발용 HTTPS 설정</span><span class="sxs-lookup"><span data-stu-id="477fb-164">Setting up HTTPS for development</span></span>](https.md)
+*   [<span data-ttu-id="477fb-165">요청 위조 방지</span><span class="sxs-lookup"><span data-stu-id="477fb-165">Anti-Request Forgery</span></span>](anti-request-forgery.md)
+*   [<span data-ttu-id="477fb-166">오픈 리디렉션(Open Redirect) 공격 방지</span><span class="sxs-lookup"><span data-stu-id="477fb-166">Preventing Open Redirect Attacks</span></span>](preventing-open-redirects.md)
+*   [<span data-ttu-id="477fb-167">교차 사이트 스크립팅 방지</span><span class="sxs-lookup"><span data-stu-id="477fb-167">Preventing Cross-Site Scripting</span></span>](cross-site-scripting.md)
+*   [<span data-ttu-id="477fb-168">원본 간 요청(CORS) 사용</span><span class="sxs-lookup"><span data-stu-id="477fb-168">Enabling Cross-Origin Requests (CORS)</span></span>](cors.md)

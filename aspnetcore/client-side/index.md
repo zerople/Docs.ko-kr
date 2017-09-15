@@ -1,8 +1,8 @@
 ---
-title: "ASP.NET Core에서 클라이언트 쪽 개발 | Microsoft 문서"
+title: "ASP.NET Core의 클라이언트 쪽 개발"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -10,24 +10,24 @@ ms.topic: article
 ms.assetid: a8fb7eb7-e0e5-4394-84f3-1f1dbe0ba2e4
 ms.technology: aspnet
 ms.prod: asp.net-core
-translationtype: Machine Translation
-ms.sourcegitcommit: d2b516e454571992156ca0154bd5db73b3fe5892
-ms.openlocfilehash: 65384d6762aa006560ad98ff85e74fb539847f56
-ms.lasthandoff: 03/23/2017
-
+uid: client-side/index
+ms.openlocfilehash: 04e09113724014c6952d36f58fc031e1eb372f47
+ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/11/2017
 ---
-# <a name="client-side-development-in-aspnet-core"></a>ASP.NET Core에서 클라이언트 쪽 개발
+# <a name="client-side-development-in-aspnet-core"></a><span data-ttu-id="dc272-103">ASP.NET Core의 클라이언트 쪽 개발</span><span class="sxs-lookup"><span data-stu-id="dc272-103">Client-Side development in ASP.NET Core</span></span>
 
-- [Gulp 사용](using-gulp.md)
-- [Grunt를 사용 하 여](using-grunt.md)
-- [Bower와 함께 클라이언트 쪽 패키지 관리](bower.md)
-- [Bootstrap 사용 하 여 아름 다운, 응답성이 뛰어난 사이트 구축](bootstrap.md)
-- [Knockout.js MVVM 프레임 워크](knockout.md)
-- [AngularJS를 사용 하 여 단일 페이지 응용 프로그램 (기능이 며, Spa)](angular.md)
-- [더 적은 노력으로 응용 프로그램, Sass, 및 놀라운 글꼴의 스타일 지정](less-sass-fa.md)
-- [묶음 및 축소](bundling-and-minification.md)
-- [🔧콘텐츠 배달 네트워크 (CDN) 사용](cdn.md)
-- [TypeScript](https://www.typescriptlang.org/docs/handbook/asp-net-core.html)
-- [Yeoman 사용한 프로젝트 빌드](yeoman.md)
-- [브라우저 링크를 사용 하 여](using-browserlink.md)
-
+- [<span data-ttu-id="dc272-104">Gulp 사용</span><span class="sxs-lookup"><span data-stu-id="dc272-104">Using Gulp</span></span>](using-gulp.md)
+- [<span data-ttu-id="dc272-105">Grunt 사용</span><span class="sxs-lookup"><span data-stu-id="dc272-105">Using Grunt</span></span>](using-grunt.md)
+- [<span data-ttu-id="dc272-106">Bower를 사용하여 클라이언트 쪽 패키지 관리</span><span class="sxs-lookup"><span data-stu-id="dc272-106">Manage client-side packages with Bower</span></span>](bower.md)
+- [<span data-ttu-id="dc272-107">부트스트랩을 사용하여 아름답고 반응이 빠른 사이트 빌드</span><span class="sxs-lookup"><span data-stu-id="dc272-107">Building beautiful, responsive sites with Bootstrap</span></span>](bootstrap.md)
+- [<span data-ttu-id="dc272-108">Knockout.js MVVM Framework</span><span class="sxs-lookup"><span data-stu-id="dc272-108">Knockout.js MVVM Framework</span></span>](knockout.md)
+- [<span data-ttu-id="dc272-109">단일 페이지 앱에 AngularJS 사용(SPA)</span><span class="sxs-lookup"><span data-stu-id="dc272-109">Using AngularJS for Single Page Apps (SPAs)</span></span>](angular.md)
+- [<span data-ttu-id="dc272-110">단일 페이지 앱에 JavaScriptServices 사용(SPA)</span><span class="sxs-lookup"><span data-stu-id="dc272-110">Using JavaScriptServices for Single Page Apps (SPAs)</span></span>](spa-services.md)
+- [<span data-ttu-id="dc272-111">Less, Sass 및 Font Awesome을 사용하여 응용 프로그램 스타일 지정</span><span class="sxs-lookup"><span data-stu-id="dc272-111">Styling applications with Less, Sass, and Font Awesome</span></span>](less-sass-fa.md)
+- [<span data-ttu-id="dc272-112">묶음 및 축소</span><span class="sxs-lookup"><span data-stu-id="dc272-112">Bundling and minification</span></span>](bundling-and-minification.md)
+- [<span data-ttu-id="dc272-113">TypeScript</span><span class="sxs-lookup"><span data-stu-id="dc272-113">TypeScript</span></span>](https://www.typescriptlang.org/docs/handbook/asp-net-core.html)
+- [<span data-ttu-id="dc272-114">Yeoman을 사용하여 프로젝트 빌드</span><span class="sxs-lookup"><span data-stu-id="dc272-114">Building Projects with Yeoman</span></span>](yeoman.md)
+- [<span data-ttu-id="dc272-115">브라우저 링크 사용</span><span class="sxs-lookup"><span data-stu-id="dc272-115">Using Browser Link</span></span>](using-browserlink.md)

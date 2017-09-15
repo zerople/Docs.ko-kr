@@ -1,53 +1,53 @@
 ---
-title: "ASP.NET Core 시작 | Microsoft 문서"
+title: "ASP.NET Core 2.0 시작"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core
+description: "ASP.NET Core를 사용하여 간단한 Hello World 앱을 만들고 실행하는 빠른 자습서입니다."
+keywords: "ASP.NET Core, 자습서, 시작"
 ms.author: riande
 manager: wpickett
-ms.date: 10/14/2016
-ms.topic: article
+ms.date: 08/07/2017
+ms.topic: get-started-article
 ms.assetid: 73543e9d-d9d5-47d6-9664-17a9beea6cd3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: getting-started
-translationtype: Machine Translation
-ms.sourcegitcommit: 6c8955d9a80bf614f4d5b4284a2f09792ea1152e
-ms.openlocfilehash: 5b4760da70b79684852de92f2e7a677a3c586868
-ms.lasthandoff: 03/23/2017
-
+ms.openlocfilehash: 3399df3958093da9117b013736b1cb370fd6beb2
+ms.sourcegitcommit: 297ee5d2f3b3b24eb8a2c4a25195c9e2973cb91b
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/14/2017
 ---
-# <a name="getting-started-with-aspnet-core"></a>ASP.NET Core 시작 하기
+# <a name="getting-started-with-aspnet-core"></a><span data-ttu-id="2789d-104">ASP.NET Core 시작</span><span class="sxs-lookup"><span data-stu-id="2789d-104">Getting Started with ASP.NET Core</span></span>
 
-1.  설치 [.NET Core](https://microsoft.com/net/core)
+> [!NOTE]
+> <span data-ttu-id="2789d-105">이러한 지침은 최신 버전의 ASP.NET Core에 대한 것입니다.</span><span class="sxs-lookup"><span data-stu-id="2789d-105">These instructions are for the latest version of ASP.NET Core.</span></span> <span data-ttu-id="2789d-106">이전 버전을 시작하려고 하나요?</span><span class="sxs-lookup"><span data-stu-id="2789d-106">Looking to get started with an earlier version?</span></span> <span data-ttu-id="2789d-107">[이 자습서의 1.1 버전](xref:getting-started-1.1)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="2789d-107">See [the 1.1 version of this tutorial](xref:getting-started-1.1).</span></span>
 
-2.  새.NET Core 프로젝트를 만듭니다.
+1. <span data-ttu-id="2789d-108">[.NET Core](https://microsoft.com/net/core/)를 설치합니다.</span><span class="sxs-lookup"><span data-stu-id="2789d-108">Install [.NET Core](https://microsoft.com/net/core/).</span></span>
 
-    ```console
-    mkdir aspnetcoreapp
-    cd aspnetcoreapp
-    dotnet new web
-    ```
+2. <span data-ttu-id="2789d-109">새 .NET Core 프로젝트를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="2789d-109">Create a new .NET Core project.</span></span>
 
-3.  패키지를 복원 합니다.
+   <span data-ttu-id="2789d-110">macOS 및 Linux에서 터미널 창을 엽니다.</span><span class="sxs-lookup"><span data-stu-id="2789d-110">On macOS and Linux, open a terminal window.</span></span> <span data-ttu-id="2789d-111">Windows에서 명령 프롬프트를 엽니다.</span><span class="sxs-lookup"><span data-stu-id="2789d-111">On Windows, open a command prompt.</span></span>
 
-    ```console
-    dotnet restore
-    ```
+   ```terminal
+   mkdir aspnetcoreapp
+   cd aspnetcoreapp
+   dotnet new web
+   ```
+    
+4. <span data-ttu-id="2789d-112">앱을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="2789d-112">Run the app.</span></span>
 
-4.  앱을 실행 (의 `dotnet run` 명령 만료 되었을 때 응용 프로그램을 빌드할 수):
+   <span data-ttu-id="2789d-113">`dotnet run` 명령은 필요한 경우 앱을 먼저 빌드합니다.</span><span class="sxs-lookup"><span data-stu-id="2789d-113">The `dotnet run` command builds the app first if needed.</span></span>
 
-    ```console
-    dotnet run
-    ```
+   ```terminal
+   dotnet run
+   ```
 
-5.  로 이동`http://localhost:5000`
+5. <span data-ttu-id="2789d-114">`http://localhost:5000`으로 이동</span><span class="sxs-lookup"><span data-stu-id="2789d-114">Browse to `http://localhost:5000`</span></span>
 
-## <a name="next-steps"></a>다음 단계
+### <a name="next-steps"></a><span data-ttu-id="2789d-115">다음 단계</span><span class="sxs-lookup"><span data-stu-id="2789d-115">Next steps</span></span>
 
-더 많은 시작 자습서를 참조 하십시오. [ASP.NET 핵심 자습서](tutorials/index.md)
+<span data-ttu-id="2789d-116">시작 자습서는 [ASP.NET Core 자습서](tutorials/index.md)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="2789d-116">For getting-started tutorials, see [ASP.NET Core Tutorials](tutorials/index.md)</span></span>
 
-ASP.NET 핵심 개념과 아키텍처에 대 한 소개를 참조 하십시오. [ASP.NET 핵심 소개](index.md) 및 [ASP.NET 핵심 기본](fundamentals/index.md)합니다.
+<span data-ttu-id="2789d-117">ASP.NET Core 개념 및 아키텍처에 대한 소개는 [ASP.NET Core 소개](index.md) 및 [ASP.NET Core 기본 사항](fundamentals/index.md)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="2789d-117">For an introduction to ASP.NET Core concepts and architecture, see [ASP.NET Core Introduction](index.md) and [ASP.NET Core Fundamentals](fundamentals/index.md).</span></span>
 
-ASP.NET 핵심 응용 프로그램에.NET Core 또는.NET Framework 런타임을 사용할 수 있습니다. 자세한 내용은 참조 [.NET Core와.NET Framework 간의 선택](https://docs.microsoft.com/dotnet/articles/standard/choosing-core-framework-server)합니다.
-
+<span data-ttu-id="2789d-118">ASP.NET Core 앱은 .NET Core 또는 .NET Framework 기본 클래스 라이브러리 및 런타임을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2789d-118">An ASP.NET Core app can use the .NET Core or .NET Framework Base Class Library and runtime.</span></span> <span data-ttu-id="2789d-119">자세한 내용은 [.NET Core와 .NET Framework 중에 선택](https://docs.microsoft.com/dotnet/articles/standard/choosing-core-framework-server)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="2789d-119">For more information, see [Choosing between .NET Core and .NET Framework](https://docs.microsoft.com/dotnet/articles/standard/choosing-core-framework-server).</span></span>

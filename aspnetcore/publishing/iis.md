@@ -1,8 +1,8 @@
 ---
-title: "IIS에 게시 합니다. | Microsoft 문서"
+title: "IIS가 있는 Windows에서 ASP.NET Core 호스팅"
 author: guardrex
-description: "Windows Server 인터넷 정보 서비스 (IIS) 구성 및 ASP.NET 핵심 응용 프로그램의 배포 합니다."
-keywords: "ASP.NET Core, 인터넷 정보 서비스, iis, windows server 번들, asp.net 핵심 모듈, 웹 호스팅 배포"
+description: "Windows Server IIS(인터넷 정보 서비스)를 구성하고 ASP.NET Core 응용 프로그램을 배포합니다."
+keywords: "ASP.NET Core, 인터넷 정보 서비스, IIS, Windows Server, 호스팅 번들, ASP.NET Core 모듈, 웹 배포"
 ms.author: riande
 manager: wpickett
 ms.date: 03/13/2017
@@ -11,71 +11,68 @@ ms.assetid: a4449ad3-5bad-410c-afa7-dc32d832b552
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/iis
-translationtype: Machine Translation
-ms.sourcegitcommit: 1894789727a7c3ae66f25040d1a70c4f1e64c3da
-ms.openlocfilehash: 0f861d87200f95c80c224460e6411736953fe2b5
-ms.lasthandoff: 03/23/2017
-
+ms.openlocfilehash: 351f3519643bc88fc3dd1c4fbac1c144c6837523
+ms.sourcegitcommit: 0a70706a3814d2684f3ff96095d1e8291d559cc7
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/22/2017
 ---
-# <a name="publishing-to-iis"></a>IIS에 게시
+# <a name="set-up-a-hosting-environment-for-aspnet-core-on-windows-with-iis-and-deploy-to-it"></a><span data-ttu-id="57b0d-104">IIS가 있는 Windows에서 ASP.NET Core에 대한 호스팅 환경 설정 및 이 환경에 배포</span><span class="sxs-lookup"><span data-stu-id="57b0d-104">Set up a hosting environment for ASP.NET Core on Windows with IIS, and deploy to it</span></span>
 
-여 [Luke Latham](https://github.com/GuardRex) 및 [Rick Anderson](https://twitter.com/RickAndMSFT)
+<span data-ttu-id="57b0d-105">이 문서의 작성자: [Luke Latham](https://github.com/GuardRex) 및 [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="57b0d-105">By [Luke Latham](https://github.com/GuardRex) and [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-## <a name="supported-operating-systems"></a>지원되는 운영 체제
+## <a name="supported-operating-systems"></a><span data-ttu-id="57b0d-106">지원되는 운영 체제</span><span class="sxs-lookup"><span data-stu-id="57b0d-106">Supported operating systems</span></span>
 
-다음 운영 체제가 지원 됩니다.
+<span data-ttu-id="57b0d-107">지원되는 운영 체제는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-107">The following operating systems are supported:</span></span>
 
-* Windows 7 이상
+* <span data-ttu-id="57b0d-108">Windows 7 이상</span><span class="sxs-lookup"><span data-stu-id="57b0d-108">Windows 7 and newer</span></span>
 
-* Windows Server 2008 R2 및 newer†
+* <span data-ttu-id="57b0d-109">Windows Server 2008 R2 이상&#8224;</span><span class="sxs-lookup"><span data-stu-id="57b0d-109">Windows Server 2008 R2 and newer&#8224;</span></span>
 
-†Conceptually,이 문서에 설명 된 IIS 구성 Nano 서버 IIS에서 ASP.NET 핵심 응용 프로그램 호스팅에 적용 되지만 참조 [Nano 서버에 IIS와 ASP.NET 핵심](xref:tutorials/nano-server) 구체적인 지침은 합니다.
+<span data-ttu-id="57b0d-110">&#8224;개념적으로 이 문서에서 설명하는 IIS 구성은 Nano Server IIS에서 ASP.NET Core 응용 프로그램을 호스팅하는 데에도 적용되지만 구체적인 지침은 [Nano 서버에서 실행되는 IIS가 있는 ASP.NET Core](xref:tutorials/nano-server)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="57b0d-110">&#8224;Conceptually, the IIS configuration described in this document also applies to hosting ASP.NET Core applications on Nano Server IIS, but refer to [ASP.NET Core with IIS on Nano Server](xref:tutorials/nano-server) for specific instructions.</span></span>
 
-[WebListener 서버](xref:fundamentals/servers/weblistener) iis 역방향 프록시 구성에서 작동 하지 것입니다. 사용 해야는 [Kestrel 서버](xref:fundamentals/servers/kestrel)합니다.
+<span data-ttu-id="57b0d-111">[WebListener 서버](xref:fundamentals/servers/weblistener)는 IIS의 역방향 프록시 구성에서 작동하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-111">[WebListener server](xref:fundamentals/servers/weblistener) will not work in a reverse-proxy configuration with IIS.</span></span> <span data-ttu-id="57b0d-112">이에 따라 [Kestrel 서버](xref:fundamentals/servers/kestrel)를 사용해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-112">You must use the [Kestrel server](xref:fundamentals/servers/kestrel).</span></span>
 
-## <a name="iis-configuration"></a>IIS 구성
+## <a name="iis-configuration"></a><span data-ttu-id="57b0d-113">IIS 구성</span><span class="sxs-lookup"><span data-stu-id="57b0d-113">IIS configuration</span></span>
 
-사용 하도록 설정 된 **웹 서버 (IIS)** 역할 역할 서비스를 설정 합니다.
+<span data-ttu-id="57b0d-114">**웹 서버(IIS)** 역할을 사용하도록 설정하고 역할 서비스를 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-114">Enable the **Web Server (IIS)** role and establish role services.</span></span>
 
-### <a name="windows-desktop-operating-systems"></a>Windows 데스크톱 운영 체제
+### <a name="windows-desktop-operating-systems"></a><span data-ttu-id="57b0d-115">Windows 데스크톱 운영 체제</span><span class="sxs-lookup"><span data-stu-id="57b0d-115">Windows desktop operating systems</span></span>
 
-이동 **제어판 > 프로그램 > 프로그램 및 기능 > Windows 기능 설정 또는 해제** (왼쪽 화면). 에 대 한 그룹을 열고 **인터넷 정보 서비스** 및 **웹 관리 도구**합니다. 에 대 한 확인란 **IIS 관리 콘솔**합니다. 에 대 한 확인란 **World Wide Web 서비스**합니다. 에 대 한 기본 기능을 그대로 **World Wide Web 서비스** 하거나 필요에 따라 IIS 기능을 사용자 지정 합니다.
+<span data-ttu-id="57b0d-116">**제어판> 프로그램> 프로그램 및 기능> Windows 기능 Windows 기능 사용/사용 안 함**(화면 왼쪽)로 차례로 이동합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-116">Navigate to **Control Panel > Programs > Programs and Features > Turn Windows features on or off** (left side of the screen).</span></span> <span data-ttu-id="57b0d-117">**인터넷 정보 서비스** 및 **웹 관리 도구** 그룹을 엽니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-117">Open the group for **Internet Information Services** and **Web Management Tools**.</span></span> <span data-ttu-id="57b0d-118">**IIS 관리 콘솔** 확인란을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-118">Check the box for **IIS Management Console**.</span></span> <span data-ttu-id="57b0d-119">**World Wide Web 서비스** 확인란을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-119">Check the box for **World Wide Web Services**.</span></span> <span data-ttu-id="57b0d-120">**World Wide Web 서비스**의 기본 기능을 허용하거나 필요에 따라 IIS 기능을 사용자 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-120">Accept the default features for **World Wide Web Services** or customize the IIS features to suit your needs.</span></span>
 
-![IIS 관리 콘솔 및 World Wide Web 서비스는 Windows 기능에서 선택 됩니다.](iis/_static/windows-features-win10.png)
+![Windows 기능에서 선택된 IIS 관리 콘솔 및 World Wide Web 서비스](iis/_static/windows-features-win10.png)
 
-### <a name="windows-server-operating-systems"></a>Windows Server 운영 체제
+### <a name="windows-server-operating-systems"></a><span data-ttu-id="57b0d-122">Windows Server 운영 체제</span><span class="sxs-lookup"><span data-stu-id="57b0d-122">Windows Server operating systems</span></span>
 
-서버 운영 체제에 대 한 사용은 **역할 및 기능 추가** 통해 마법사는 **관리** 메뉴 또는에 있는 링크 **서버 관리자**합니다. 에 **서버 역할** 단계에서 확인란을 **웹 서버 (IIS)**합니다.
+<span data-ttu-id="57b0d-123">서버 운영 체제의 경우 **관리** 메뉴 또는 **서버 관리자**의 링크를 통해 **역할 및 기능 추가** 마법사를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-123">For server operating systems, use the **Add Roles and Features** wizard via the **Manage** menu or the link in **Server Manager**.</span></span> <span data-ttu-id="57b0d-124">**서버 역할** 단계에서 **웹 서버(IIS)** 확인란을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-124">On the **Server Roles** step, check the box for **Web Server (IIS)**.</span></span>
 
-![웹 서버 IIS 역할을 서버 선택 역할 단계에서 선택 합니다.](iis/_static/server-roles-ws2016.png)
+![서버 역할 선택 단계에서 선택된 웹 서버 IIS 역할](iis/_static/server-roles-ws2016.png)
 
-에 **역할 서비스** 단계에서 원하는 또는 기본 역할 서비스 제공에 동의 IIS 역할 서비스를 선택 합니다.
+<span data-ttu-id="57b0d-126">**역할 서비스** 단계에서 원하는 IIS 역할 서비스를 선택하거나 제공된 기본 역할 서비스를 받아들입니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-126">On the **Role services** step, select the IIS role services you desire or accept the default role services provided.</span></span>
 
-![역할 선택 서비스 단계에서 기본 역할 서비스 선택 됩니다.](iis/_static/role-services-ws2016.png)
+![역할 서비스 선택 단계에서 선택된 기본 역할 서비스](iis/_static/role-services-ws2016.png)
 
-진행의 **확인** 웹 서버 역할 및 서비스를 설치 하는 단계입니다. 웹 서버 (IIS) 역할을 설치한 후 서버/IIS 다시 시작 필요 하지 않습니다.
+<span data-ttu-id="57b0d-128">**확인** 단계를 진행하여 웹 서버 역할 및 서비스를 설치합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-128">Proceed through the **Confirmation** step to install the web server role and services.</span></span> <span data-ttu-id="57b0d-129">웹 서버(IIS) 역할을 설치한 후에 서버/IIS를 다시 시작할 필요가 없습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-129">A server/IIS restart is not required after installing the Web Server (IIS) role.</span></span>
 
-## <a name="install-the-net-core-windows-server-hosting-bundle"></a>.NET Core Windows 서버 호스팅 번들을 설치
+## <a name="install-the-net-core-windows-server-hosting-bundle"></a><span data-ttu-id="57b0d-130">.NET Core Windows Server 호스팅 번들 설치</span><span class="sxs-lookup"><span data-stu-id="57b0d-130">Install the .NET Core Windows Server Hosting bundle</span></span>
 
-1. 설치는 [.NET 핵심 Windows Server 호스팅](https://go.microsoft.com/fwlink/?linkid=837808) 호스팅 시스템에 번들. 번들은.NET Core 런타임,.NET 핵심 라이브러리를 설치 및 [ASP.NET 핵심 모듈](xref:fundamentals/servers/aspnet-core-module)합니다. 모듈은 IIS와 Kestrel 서버 간의 역방향 프록시를 만듭니다. 참고: 시스템으로 지정 되지 않은 인터넷에 연결 하는 경우 가져오기 및 설치는 *[Microsoft Visual c + + 2015 재배포 가능](https://www.microsoft.com/download/details.aspx?id=53840)* .NET 핵심 Windows Server 호스팅 번들을 설치 하기 전에 합니다.
+1. <span data-ttu-id="57b0d-131">호스팅 시스템에 [.NET Core Windows Server 호스팅 번들](https://aka.ms/dotnetcore.2.0.0-windowshosting)을 설치합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-131">Install the [.NET Core Windows Server Hosting bundle](https://aka.ms/dotnetcore.2.0.0-windowshosting) on the hosting system.</span></span> <span data-ttu-id="57b0d-132">번들은 .NET Core 런타임, .NET Core 라이브러리 및 [ASP.NET Core 모듈](xref:fundamentals/servers/aspnet-core-module)을 설치합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-132">The bundle will install the .NET Core Runtime, .NET Core Library, and the [ASP.NET Core Module](xref:fundamentals/servers/aspnet-core-module).</span></span> <span data-ttu-id="57b0d-133">이 모듈은 IIS와 Kestrel 서버 사이에 역방향 프록시를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-133">The module creates the reverse-proxy between IIS and the Kestrel server.</span></span> <span data-ttu-id="57b0d-134">참고: 시스템이 인터넷에 연결되지 않으면 *[Microsoft Visual C++ 2015 재배포 가능 패키지](https://www.microsoft.com/download/details.aspx?id=53840)*을 구하여 설치한 후에 .NET Core Windows Server 호스팅 번들을 설치합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-134">Note: If the system doesn't have an Internet connection, obtain and install the *[Microsoft Visual C++ 2015 Redistributable](https://www.microsoft.com/download/details.aspx?id=53840)* before installing the .NET Core Windows Server Hosting bundle.</span></span>
 
-2. 시스템 다시 시작 하거나 실행 **net stop가 /y** 뒤 **net 시작 w3svc** 시스템 경로에 대 한 변경을 선택 하도록 명령 프롬프트에서.
-
-> [!NOTE]
-> 만 하려는 경우 호스트 [자체 포함된 배포](https://docs.microsoft.com/dotnet/articles/core/deploying/) 및 따라서 하지 않아도 시스템에.NET Core 런타임만 관리자 명령 프롬프트에서 설치 관리자를 실행 하 여 ASP.NET 핵심 모듈을 설치할 수 있는: **DotNetCore.1.0.3_1.1.0 WindowsHosting.exe OPT_INSTALL_LTS_REDIST&0; OPT_INSTALL_FTS_REDIST = =&0;**
+2. <span data-ttu-id="57b0d-135">시스템을 다시 시작하거나 명령 프롬프트에서 **net stop was /y**에 이어 **net start w3svc**를 실행하여 시스템 PATH에 대한 변경 내용을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-135">Restart the system or execute **net stop was /y** followed by **net start w3svc** from a command prompt to pick up a change to the system PATH.</span></span>
 
 > [!NOTE]
-> IIS 구성을 공유를 사용 하는 경우 참조 [IIS 구성을 공유를 사용 하 여 ASP.NET 핵심 모듈](xref:hosting/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration)합니다.
+> <span data-ttu-id="57b0d-136">IIS 공유 구성을 사용하는 경우 [IIS 공유 구성을 사용하는 ASP.NET Core 모듈](xref:hosting/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="57b0d-136">If you use an IIS Shared Configuration, see [ASP.NET Core Module with IIS Shared Configuration](xref:hosting/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration).</span></span>
 
-## <a name="install-web-deploy-when-publishing-with-visual-studio"></a>Visual Studio와 함께 게시 하는 경우 웹 배포 설치
+## <a name="install-web-deploy-when-publishing-with-visual-studio"></a><span data-ttu-id="57b0d-137">Visual Studio을 사용하여 게시할 때 웹 배포 설치</span><span class="sxs-lookup"><span data-stu-id="57b0d-137">Install Web Deploy when publishing with Visual Studio</span></span>
 
-Visual Studio에서 웹 배포로 응용 프로그램을 배포 하려는 경우 호스팅 시스템에 최신 버전의 웹 배포를 설치 합니다. 웹 배포를 설치 하려면 사용할 수는 [웹 플랫폼 설치 관리자 (WebPI)](https://www.microsoft.com/web/downloads/platform.aspx) 하거나 설치 관리자에서 직접 얻습니다는 [Microsoft 다운로드 센터](https://www.microsoft.com/search/result.aspx?q=webdeploy&form=dlc)합니다. WebPI를 사용 하 여 것이 좋습니다. WebPI는 독립 실행형 설치 프로그램 및 호스팅 공급자에 대 한 구성을 제공 합니다.
+<span data-ttu-id="57b0d-138">Visual Studio에서 웹 배포를 사용하여 응용 프로그램을 배포하려는 경우 호스팅 시스템에 최신 버전의 웹 배포를 설치합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-138">If you intend to deploy your applications with Web Deploy in Visual Studio, install the latest version of Web Deploy on the hosting system.</span></span> <span data-ttu-id="57b0d-139">웹 배포를 설치하려면 [WebPI(웹 플랫폼 설치 관리자)](https://www.microsoft.com/web/downloads/platform.aspx)를 사용하거나 [Microsoft 다운로드 센터](https://www.microsoft.com/search/result.aspx?q=webdeploy&form=dlc)에서 설치 관리자를 직접 구할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-139">To install Web Deploy, you can use the [Web Platform Installer (WebPI)](https://www.microsoft.com/web/downloads/platform.aspx) or obtain an installer directly from the [Microsoft Download Center](https://www.microsoft.com/search/result.aspx?q=webdeploy&form=dlc).</span></span> <span data-ttu-id="57b0d-140">WebPI를 사용하는 것이 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-140">The preferred method is to use WebPI.</span></span> <span data-ttu-id="57b0d-141">WebPI는 호스팅 공급자에 대한 독립 실행형 설치 및 구성을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-141">WebPI offers a standalone setup and a configuration for hosting providers.</span></span>
 
-## <a name="application-configuration"></a>응용 프로그램 구성
+## <a name="application-configuration"></a><span data-ttu-id="57b0d-142">응용 프로그램 구성</span><span class="sxs-lookup"><span data-stu-id="57b0d-142">Application configuration</span></span>
 
-### <a name="enabling-the-iisintegration-components"></a>IISIntegration 구성 요소를 사용 하도록 설정
+### <a name="enabling-the-iisintegration-components"></a><span data-ttu-id="57b0d-143">IISIntegration 구성 요소 사용</span><span class="sxs-lookup"><span data-stu-id="57b0d-143">Enabling the IISIntegration components</span></span>
 
-종속성을 포함 하는 *Microsoft.AspNetCore.Server.IISIntegration* 응용 프로그램 종속성에 패키지 합니다. IIS 통합 미들웨어를 추가 하 여 응용 프로그램에 통합 된 *합니다. UseIISIntegration()* 확장 메서드를 *WebHostBuilder()*합니다. 코드 호출 *합니다. UseIISIntegration()* 코드 이식성에 영향을 주지 않습니다.
+<span data-ttu-id="57b0d-144">응용 프로그램 종속성에 *Microsoft.AspNetCore.Server.IISIntegration* 패키지에 대한 종속성을 포함시킵니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-144">Include a dependency on the *Microsoft.AspNetCore.Server.IISIntegration* package in the application dependencies.</span></span> <span data-ttu-id="57b0d-145">*.UseIISIntegration()* 확장 메서드를 *WebHostBuilder()*에 추가하여 IIS 통합 미들웨어를 응용 프로그램에 통합합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-145">Incorporate IIS Integration middleware into the application by adding the *.UseIISIntegration()* extension method to *WebHostBuilder()*.</span></span> <span data-ttu-id="57b0d-146">*.UseIISIntegration()*을 호출하는 코드는 코드 이식성에 영향을 주지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-146">Note that code calling *.UseIISIntegration()* does not affect code portability.</span></span>
 
 ```csharp
 var host = new WebHostBuilder()
@@ -86,9 +83,9 @@ var host = new WebHostBuilder()
     .Build();
 ```
 
-### <a name="setting-iisoptions-for-the-iisintegration-service"></a>IISOptions IISIntegration 서비스에 대 한 설정
+### <a name="setting-iisoptions-for-the-iisintegration-service"></a><span data-ttu-id="57b0d-147">IISIntegration 서비스에 대한 IISOptions 설정</span><span class="sxs-lookup"><span data-stu-id="57b0d-147">Setting IISOptions for the IISIntegration service</span></span>
 
-구성 하려면 *IISIntegration* 서비스 옵션에 대 한 서비스 구성을 포함, *IISOptions* 에서 *ConfigureServices*합니다.
+<span data-ttu-id="57b0d-148">*IISIntegration* 서비스 옵션을 구성하려면 *ConfigureServices*에 *IISOptions*에 대한 서비스 구성을 포함시킵니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-148">To configure *IISIntegration* service options, include a service configuration for *IISOptions* in *ConfigureServices*.</span></span>
 
 ```csharp
 services.Configure<IISOptions>(options => {
@@ -96,350 +93,422 @@ services.Configure<IISOptions>(options => {
 });
 ```
 
-| 옵션 | 설정|
+| <span data-ttu-id="57b0d-149">옵션</span><span class="sxs-lookup"><span data-stu-id="57b0d-149">Option</span></span> | <span data-ttu-id="57b0d-150">설정</span><span class="sxs-lookup"><span data-stu-id="57b0d-150">Setting</span></span>|
 | --- | --- | 
-| AutomaticAuthentication | True 이면 인증 미들웨어를 도착 요청 사용자 alter 제네릭 과제에 응답 합니다. False 이면 인증 미들웨어만 id 제공 되며 챌린지에 theAuthenticationScheme 하 여 명시적으로 지정 하는 경우 응답 |
-| ForwardClientCertificate | True 및 `MS-ASPNETCORE-CLIENTCERT` 가 있으면 요청 헤더는 `ITLSConnectionFeature` 채워집니다. |
-| ForwardWindowsAuthentication | True 이면 인증 미들웨어 플랫폼 처리기 windows 인증을 사용 하 여 인증 하려고 합니다. False 이면 인증 미들웨어 추가 되지 않습니다. |
+| <span data-ttu-id="57b0d-151">AutomaticAuthentication</span><span class="sxs-lookup"><span data-stu-id="57b0d-151">AutomaticAuthentication</span></span> | <span data-ttu-id="57b0d-152">true이면 인증 미들웨어에서 사용자 연결 요청을 변경하고 제네릭 챌린지에 응답합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-152">If true, the authentication middleware will alter the request user arriving and respond to generic challenges.</span></span> <span data-ttu-id="57b0d-153">false이면 theAuthenticationScheme을 통해 명시적으로 지시하는 경우에만 인증 미들웨어에서 ID를 제공하고 챌린지에 응답합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-153">If false,the authentication middleware will only provide identity and respond to challenges when explicitly indicated by theAuthenticationScheme</span></span> |
+| <span data-ttu-id="57b0d-154">ForwardClientCertificate</span><span class="sxs-lookup"><span data-stu-id="57b0d-154">ForwardClientCertificate</span></span> | <span data-ttu-id="57b0d-155">true이고 `MS-ASPNETCORE-CLIENTCERT` 요청 헤더가 있으면 `ITLSConnectionFeature`가 채워집니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-155">If true and the `MS-ASPNETCORE-CLIENTCERT` request header is present, the `ITLSConnectionFeature` will be populated.</span></span> |
+| <span data-ttu-id="57b0d-156">ForwardWindowsAuthentication</span><span class="sxs-lookup"><span data-stu-id="57b0d-156">ForwardWindowsAuthentication</span></span> | <span data-ttu-id="57b0d-157">true이면 인증 미들웨어에서 플랫폼 처리기 Windows 인증을 사용하여 인증하려고 합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-157">If true, authentication middleware will attempt to authenticate using platform handler windows authentication.</span></span> <span data-ttu-id="57b0d-158">false이면 인증 미들웨어가 추가되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-158">If false, authentication middleware won’t be added.</span></span> |
 
-### <a name="webconfig"></a>web.config
+### <a name="webconfig"></a><span data-ttu-id="57b0d-159">web.config</span><span class="sxs-lookup"><span data-stu-id="57b0d-159">web.config</span></span>
 
-*web.config* 파일 ASP.NET 핵심 모듈을 구성 하 고 다른 IIS 구성을 제공 합니다. 만들기, 변환 및 게시 *web.config* 에 의해 처리 됩니다 `Microsoft.NET.Sdk.Web`, 맨 위에 있는 프로젝트의 SDK를 설치할 때 포함 된 프로그램 *.csproj* 파일인 `<Project Sdk="Microsoft.NET.Sdk.Web">`합니다.
+<span data-ttu-id="57b0d-160">*web.config* 파일은 ASP.NET Core 모듈을 구성하고 다른 IIS 구성을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-160">The *web.config* file configures the ASP.NET Core Module and provides other IIS configuration.</span></span> <span data-ttu-id="57b0d-161">*web.config* 만들기, 변환 및 게시는 `<Project Sdk="Microsoft.NET.Sdk.Web">` *.csproj* 파일의 맨 위에 프로젝트의 SDK를 설정할 때 포함되는 `Microsoft.NET.Sdk.Web`을 통해 처리됩니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-161">Creating, transforming, and publishing *web.config* is handled by `Microsoft.NET.Sdk.Web`, which is included when you set your project's SDK at the top of your *.csproj* file, `<Project Sdk="Microsoft.NET.Sdk.Web">`.</span></span> <span data-ttu-id="57b0d-162">MSBuild 대상이 *web.config* 파일을 변환하지 못하게 하려면 프로젝트 파일에 `true` 설정이 포함된 **\<IsTransformWebConfigDisabled>** 속성을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-162">To prevent the MSBuild target from transforming your *web.config* file, add the **\<IsTransformWebConfigDisabled>** property to your project file with a setting of `true`:</span></span>
 
-없는 경우는 *web.config* 함께 게시 하면 프로젝트의 파일 *dotnet 게시* 또는 Visual Studio와 함께 게시, 게시 된 출력에서을 파일이 만들어집니다. 올바른 변환 되는 파일이 프로젝트에 있는 경우 *processPath* 및 *인수* ASP.NET 핵심 모듈을 구성 하려면 게시 된 출력으로 이동 합니다. 변환 파일에 포함 되어 있는 IIS 구성 설정을 수정 하지 않는 합니다.
-
-## <a name="deploy-the-application"></a>응용 프로그램 배포
-
-1. 대상 IIS 시스템에서 응용 프로그램의 게시 된 폴더와 설명 되어 있는 파일을 포함할 폴더를 만듭니다 [디렉터리 구조](xref:hosting/directory-structure)합니다.
-
-2. 만든 폴더를 만듭니다를 *로그* (로깅을 사용 하도록 설정 하려면) 하는 경우 응용 프로그램을 보관할 폴더를 기록 합니다. 응용 프로그램을 배포 하려는 경우는 *로그* 폴더 페이로드에이 단계를 건너뛸 수 있습니다.
-
-3. **IIS 관리자**, 새 웹 사이트를 만듭니다. 제공을 **사이트 이름** 설정 하 고는 **실제 경로** 만든 응용 프로그램의 배포 폴더에 있습니다. 제공 된 **바인딩** 구성 웹 사이트를 만듭니다.
-
-4. 응용 프로그램 풀 설정 **No 관리 코드**합니다. ASP.NET Core 별도 프로세스에서 실행 하 고 런타임에 관리 합니다.
-
-5. 열기는 **웹 사이트 추가** 창입니다.
-
-   ![웹 사이트의 사이트 상황에 맞는 메뉴에서 추가 클릭 합니다.](iis/_static/add-website-context-menu-ws2016.png)
-
-6. 웹 사이트를 구성 합니다.
-
-   ![사이트 이름, 실제 경로 및 웹 사이트 추가 단계에서 호스트 이름을 제공 합니다.](iis/_static/add-website-ws2016.png)
-
-7. 에 **응용 프로그램 풀** 패널의 **응용 프로그램 풀 편집** 웹 사이트의 응용 프로그램 풀을 마우스 오른쪽 단추로 클릭 하 고 선택 하 여 창 **기본 설정...** 팝업 메뉴에서 합니다.
-
-   ![응용 프로그램 풀의 상황에 맞는 메뉴에서 기본 설정을 선택 합니다.](iis/_static/apppools-basic-settings-ws2016.png)
-
-8. 설정의 **.NET CLR 버전** 를 **No 관리 코드**합니다.
-
-   ![.NET CLR 버전에 대 한 관리 되는 코드를 설정 합니다.](iis/_static/edit-apppool-ws2016.png)
-   
-> [!NOTE]
-> 응용 프로그램 풀의 기본 id를 변경 하는 경우 **ApplicationPoolIdentity**, 새 id에는 응용 프로그램의 폴더 및 데이터베이스에 액세스 하는 데 필요한 권한이 있는지 확인 합니다.
-
-## <a name="deploy-the-application"></a>응용 프로그램 배포
-대상 IIS 시스템에서 만든 폴더에 응용 프로그램을 배포 합니다. 웹 배포는 배포에 대 한 권장 되는 메커니즘입니다. 웹 배포에 대 한 대안 다음과 같습니다.
-
-### <a name="web-deploy-with-visual-studio"></a>Visual Studio와 함께 웹 배포
-만들기는 [Visual Studio에서 게시 프로필](https://msdn.microsoft.com/library/dd465337(v=vs.110).aspx#Anchor_0) 클릭 하 고는 **게시** 응용 프로그램을 배포 하는 단추입니다. 호스팅 공급자가 게시 프로필 또는 만들기에 대 한 지원을 제공 하는 경우 해당 프로필을 다운로드 하 여 Visual Studio를 사용 하 여 가져옵니다 **웹 게시** 대화 합니다.
-
-![대화 상자 페이지를 게시 합니다.](iis/_static/pub-dialog.png)
-
-### <a name="web-deploy-outside-of-visual-studio"></a>Visual Studio 외부에서 웹 배포
-명령줄에서 Visual Studio 외부에서 웹 배포을 사용할 수도 있습니다. 자세한 내용은 참조 [웹 배포 도구](https://technet.microsoft.com/library/dd568996(WS.10).aspx)합니다.
-
-### <a name="alternatives-to-web-deploy"></a>웹에 대 한 대안을 배포
-웹 배포를 사용 하지 않으려는 하거나 Visual Studio를 사용 하지 않는 경우 Xcopy, Robocopy, PowerShell 등 호스팅 시스템에 응용 프로그램을 이동 하려면 여러 가지 방법 중 하나를 사용할 수 있습니다. Visual Studio 사용자가 사용할 수는 [게시할 샘플](https://github.com/aspnet/vsweb-publish/blob/master/samples/samples.md)합니다.
-
-## <a name="browse-the-website"></a>웹 사이트 찾아보기
-![Microsoft Edge 브라우저 IIS 시작 페이지를 로드 했습니다.](iis/_static/browsewebsite.png)
-   
->[!WARNING]
-> .NET core 응용 프로그램은 IIS와 Kestrel 서버 간의 역방향 프록시를 통해 호스트 됩니다. 역방향 프록시를 만들기 위해는 *web.config* 파일은 IIS에 제공 된 웹 사이트 실제 경로 배포 된 응용 프로그램의 콘텐츠 루트 경로 (일반적으로 응용 프로그램 기본 경로)에 있어야 합니다. 등의 하위 폴더를 비롯 하 여 응용 프로그램의 실제 경로에 중요 한 파일이 있는 *my_application.runtimeconfig.json*, *my_application.xml* (XML 문서 주석) 및 *my_application.deps.json*합니다. *web.config* 파일에 IIS가 이러한 파일 및 기타 중요 한 파일을 처리 하지 않도록 하는 Kestrel 역방향 프록시를 만드는 데 필요 합니다. **따라서 것이 중요 하는*web.config* 이름이 바뀌거나 제거에서 deployment.* * 파일은 실수로 되지
-
-## <a name="create-a-data-protection-registry-hive"></a>데이터 보호 레지스트리 하이브를 만들기
-
-ASP.NET 응용 프로그램에서 사용 되는 데이터 보호 키 레지스트리 하이브는 응용 프로그램에 대 한 외부에 저장 됩니다. 지정된 된 응용 프로그램에 대 한 키를 유지 하기 위해 응용 프로그램의 응용 프로그램 풀에 대 한 레지스트리 하이브를 만들어야 합니다.
-
-독립 실행형 IIS 설치를 사용할 수는 [데이터 보호 조항 AutoGenKeys.ps1 PowerShell 스크립트](https://github.com/aspnet/DataProtection/blob/dev/Provision-AutoGenKeys.ps1) ASP.NET 핵심 응용 프로그램과 함께 사용 되는 각 응용 프로그램 풀입니다. 레지스트리에서 키를 유지 됩니다.
-
-웹 팜 시나리오에 해당 데이터 보호 키 고리를 저장 하는 UNC 경로 사용 하 여 응용 프로그램을 구성할 수 있습니다. 기본적으로 데이터 보호 키를 암호화 되지 됩니다. x509를 배포할 수 있습니다 키 고리를 암호화 하는 각 컴퓨터에는 인증서입니다. 참조 [데이터 보호 구성](xref:security/data-protection/configuration/overview#data-protection-configuring) 대 한 자세한 내용은 합니다.
-
-> [!WARNING]
-> 데이터 보호는 인증에 사용 되는 포함 하 여 다양 한 ASP.NET 미들웨어를 사용 합니다. 사용자 고유의 코드에서 데이터 보호 Api를 구체적으로 호출 하지 않으면 경우에 배포 스크립트 또는 사용자 코드에서 데이터 보호를 구성 해야 합니다. 기본적으로 IIS를 사용 하는 경우 데이터 보호를 구성 하지 않은 경우 키를 메모리에 보관 하 고 응용 프로그램이 종료 되거나 다시 시작 되 면 삭제 됩니다. 이 다음 예를 들어, 무효화 쿠키 인증으로 작성 된 쿠키와 사용자가 다시 로그인 해야 합니다.
-
-## <a name="configuration-of-sub-applications"></a>하위 응용 프로그램의 구성
-
-응용 프로그램 루트 응용 프로그램이 IIS 사이트의 루트 응용 프로그램을 추가 하는 경우 *web.config* 파일에 포함 되어야는 `<handlers>` 섹션에서 응용 프로그램에 대 한 처리기로 ASP.NET 핵심 모듈을 추가 합니다. 응용 프로그램 루트 응용 프로그램에 추가 포함 하지 않아야는 `<handlers>` 섹션입니다. 반복 하는 경우는 `<handlers>` 하위-응용 프로그램에서의 섹션 *web.config* 파일을 하위 응용 프로그램을 탐색 하려고 할 때 잘못 된 구성 파일을 참조 하는 500.19 (내부 서버 오류) 표시 됩니다.
-
-## <a name="configuration-of-iis-with-webconfig"></a>Web.config의 IIS 구성
-
-IIS 구성을 계속 받습니다는 `<system.webServer>` 섹션 *web.config* 역방향 프록시 구성에 적용 하는 IIS 기능에 대 한 합니다. 예를 들어 동적 압축을 사용 하 여 IIS가 시스템 수준에서 구성 하지만 있습니다 해당 설정을 사용 하 여 앱에 대 한 사용 하지 않도록 설정할 수는 `<urlCompression>` 앱의 요소 *web.config* 파일입니다. 자세한 내용은 참조는 [에 대 한 구성 참조 `<system.webServer>` ](https://www.iis.net/configreference/system.webserver), [ASP.NET 핵심 모듈 구성 참조](xref:hosting/aspnet-core-module), 및 [ASP.NET 코어를 사용 하 여 IIS 모듈](xref:hosting/iis-modules)합니다.
-
-## <a name="configuration-sections-of-webconfig"></a>Web.config의 구성 섹션
-
-으로 구성 된.NET Framework 응용 프로그램과 달리는 `<system.web>`, `<appSettings>`, `<connectionStrings>`, 및 `<location>` 요소 *web.config*, ASP.NET 핵심 응용 프로그램은 다른 구성 공급자를 사용 하 여 구성 됩니다. 자세한 내용은 참조 [구성](xref:fundamentals/configuration)합니다.
-
-## <a name="application-pools"></a>응용 프로그램 풀
-
-단일 시스템에 여러 웹 사이트를 호스팅하는 경우 자체 응용 프로그램 풀에서 각 응용 프로그램을 실행 하 여 응용 프로그램을 서로 격리 해야 합니다. IIS **웹 사이트 추가** 대화 기본적으로이 동작 합니다. 제공 하는 경우는 **사이트 이름**, 텍스트는 자동으로 전송 되는 **응용 프로그램 풀** 텍스트 상자에 붙여넣습니다. 새 응용 프로그램 풀 사이트 이름을 사용 하 여 웹 사이트를 추가할 때 생성 됩니다.
-
-## <a name="application-pool-identity"></a>응용 프로그램 풀 Id
-
-응용 프로그램 풀 id 계정을 만들고 도메인 또는 로컬 계정을 관리 하지 않고도 고유 계정으로 응용 프로그램을 실행할 수 있습니다. IIS 8.0 이상에 IIS Admin 작업자 프로세스 (WAS)는 가상 계정이 새 응용 프로그램 풀의 이름으로를 만들어 기본적으로이 계정으로 응용 프로그램 풀의 작업자 프로세스를 실행 합니다. IIS 관리 콘솔의 응용 프로그램 풀에 대 한 고급 설정에서 Id를 사용 하도록 설정 되어 있는지를 확인 **ApplicationPoolIdentity** 아래 그림과 같이 합니다.
-
-![응용 프로그램 풀에 대 한 고급 설정 대화 상자](iis/_static/apppool-identity.png)
-
-IIS 관리 프로세스는 Windows 보안 시스템에서 응용 프로그램 풀의 이름으로 한 보안 식별자를 만듭니다. 이 id;를 사용 하 여 리소스를 보호할 수 있습니다. 그러나이 id는 실제 사용자 계정이 아닙니다 및 Windows 사용자 관리 콘솔에 나타나지 않습니다.
-
-IIS 작업자 프로세스 응용 프로그램에 액세스를 상승 된 권한을 부여 해야 할 경우에 응용 프로그램이 포함 된 디렉터리에 대 한 액세스 제어 목록 (ACL)을 수정 해야 합니다.
-
-1. Windows 탐색기를 열고 디렉터리로 이동 합니다.
-
-2. 마우스 오른쪽 단추로 클릭 하 여 디렉터리 **속성**합니다.
-
-3. 아래는 **보안** 탭을 클릭는 **편집** 단추 차례로 **추가** 단추입니다.
-
-4. 클릭 된 **위치** 단추 및 시스템을 선택 했는지 확인 합니다.
-
-5. Enter **IIS AppPool\DefaultAppPool** 에서 **선택할 개체 이름을 입력** 텍스트 상자에 붙여넣습니다.
-
-  ![사용자 또는 응용 프로그램 폴더에 대 한 그룹 대화 상자를 선택 합니다.](iis/_static/select-users-or-groups-1.png)
-
-6. 클릭 하 고 **이름 확인** 단추 클릭 한 후 **확인**합니다.
-
-  ![사용자 또는 응용 프로그램 폴더에 대 한 그룹 대화 상자를 선택 합니다.](iis/_static/select-users-or-groups-2.png)
-
-또한 이렇게 하려면 사용 하 여 명령 프롬프트를 통해 **ICACLS** 도구:
-
-```console
-ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool" :F
+```xml
+<PropertyGroup>
+  <IsTransformWebConfigDisabled>true</IsTransformWebConfigDisabled>
+</PropertyGroup>
 ```
 
-## <a name="troubleshooting-tips"></a>문제 해결 팁
+<span data-ttu-id="57b0d-163">프로젝트에 *web.config* 파일이 없으면’ *dotnet publish* 또는 Visual Studio 게시를 사용하여 게시할 때 게시되는 출력에 해당 파일이 만들어집니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-163">If you don't have a *web.config* file in the project when you publish with *dotnet publish* or with Visual Studio publish, the file is created for you in published output.</span></span> <span data-ttu-id="57b0d-164">프로젝트에 이 파일이 있는 경우 올바른 *processPath* 및 *arguments*를 사용하여 변환되어 ASP.NET Core 모듈을 구성하고 게시된 출력으로 이동합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-164">If you have the file in your project, it's transformed with the correct *processPath* and *arguments* to configure the ASP.NET Core Module and moved to published output.</span></span> <span data-ttu-id="57b0d-165">변환은 파일에 포함된 IIS 구성 설정에 영향을 주지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-165">The transformation doesn't touch IIS configuration settings that you've included in the file.</span></span>
 
-IIS 배포 문제를 진단 하려는 브라우저 출력 연구, 시스템의 검사 **응용 프로그램** 를 통해 로그온 **이벤트 뷰어**를 사용 하도록 설정 하 고 `stdout` 로깅. **ASP.NET 핵심 모듈** 로그 섹션에 제공 된 경로에 *stdoutLogFile* 의 특성은 `<aspNetCore>` 요소에 *web.config*합니다. 특성 값에 제공 된 경로에 있는 모든 폴더는 배포에 존재 해야 합니다. 으로 설정 해야 *stdoutLogEnabled = "true"*합니다. 사용 하는 응용 프로그램은 `Microsoft.NET.Sdk.Web` 만들려면 SDK를는 *web.config* 파일의 기본값은 *stdoutLogEnabled* 설정을 *false*수동으로 제공 해야 하므로 *web.config* 파일을 사용 하도록 설정 하기 위해 파일을 수정 하거나 `stdout` 로깅.
+## <a name="create-the-iis-website"></a><span data-ttu-id="57b0d-166">IIS 웹 사이트 만들기</span><span class="sxs-lookup"><span data-stu-id="57b0d-166">Create the IIS Website</span></span>
 
-일반적인 오류에 표시 되지 않습니다 브라우저, 응용 프로그램 로그 및 ASP.NET 핵심 모듈 로그 모듈 될 때까지 *startupTimeLimit* (기본값: 120 초) 및 *startupRetryCount* (기본값: 2)를 통과 합니다. 따라서 모듈에서 응용 프로그램에 대 한 프로세스를 시작 하지를 추론 하기 전에 전체&6; 분을 기다리십시오.
+1. <span data-ttu-id="57b0d-167">대상 IIS 시스템에서는 [디렉터리 구조](xref:hosting/directory-structure)에서 설명하는 응용 프로그램의 게시된 폴더와 파일을 포함할 폴더를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-167">On the target IIS system, create a folder to contain the application's published folders and files, which are described in [Directory Structure](xref:hosting/directory-structure).</span></span>
 
-빠르게 응용 프로그램이 제대로 작동 하는지 확인 하려면 Kestrel에서 직접 응용 프로그램을 실행 하는 것입니다. 응용 프로그램 프레임 워크 종속 배포로 게시 하는 경우 실행 **dotnet my_application.dll** 배포 폴더에 있는 가장 응용 프로그램에 IIS 실제 경로입니다. 응용 프로그램 배포는 자체 포함 된 배포로 게시 하는 경우 명령 프롬프트에서 직접 응용 프로그램의 실행 파일을 실행 **my_application.exe**, 배포 폴더에 있습니다. 응용 프로그램을 찾을 수 있어야 Kestrel 기본 포트 5000에서 수신 하는 경우 `http://localhost:5000/`합니다. 응용 프로그램 응답 Kestrel 끝점 주소에서 일반적으로 IIS ASP.NET 핵심 모듈 Kestrel 구성 하 고 자체 응용 프로그램 내에서 가능성이 적은 문제 가능성이 높습니다 관련 되어 있습니다.
+2. <span data-ttu-id="57b0d-168">만든 폴더 내에서 *logs* 폴더를 만들어 응용 프로그램 로그를 보관합니다(로깅을 사용하려는 경우).</span><span class="sxs-lookup"><span data-stu-id="57b0d-168">Within the folder you created, create a *logs* folder to hold application logs (if you plan to enable logging).</span></span> <span data-ttu-id="57b0d-169">페이로드에 *logs* 폴더가 있는 응용 프로그램을 배포하려는 경우 이 단계를 건너뛸 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-169">If you plan to deploy your application with a *logs* folder in the payload, you may skip this step.</span></span>
 
-스타일 시트, 스크립트 또는 응용 프로그램의 정적 파일에서 이미지에 대 한 간단한 정적 파일 요청을 수행 하는 Kestrel 서버가 제대로 작동 하 고 IIS 역방향 프록시에 있는지 확인 하는 한 가지 방법은 *wwwroot* 를 사용 하 여 [정적 파일 미들웨어](xref:fundamentals/static-files)합니다. 응용 프로그램 정적 파일을 사용할 수 있어도 MVC 뷰 및 기타 끝점 실패 하는 IIS ASP.NET 핵심 모듈 Kestrel 구성 하 고 응용 프로그램 (예: MVC 라우팅 또는 500 내부 서버 오류) 자체 내에서 간단할수록 가능성이 관련이 더 문제가입니다.
+3. <span data-ttu-id="57b0d-170">**IIS 관리자**에서 새 웹 사이트를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-170">In **IIS Manager**, create a new website.</span></span> <span data-ttu-id="57b0d-171">**사이트 이름**을 제공하고 **실제 경로**를 만든 응용 프로그램의 배포 폴더로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-171">Provide a **Site name** and set the **Physical path** to the application's deployment folder that you created.</span></span> <span data-ttu-id="57b0d-172">**바인딩** 구성을 제공하고 웹 사이트를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-172">Provide the **Binding** configuration and create the website.</span></span>
 
-환경 변수를 추가 하 고 일시적으로 수 Kestrel IIS 뒤 정상적으로 시작 하는 경우 응용 프로그램은 성공적으로 로컬로 실행 한 후 시스템에서 실행 되지 않습니다 *web.config* 설정 하는 `ASPNETCORE_ENVIRONMENT` 를 `Development`합니다. 이 통해 환경에 응용 프로그램 시작, 재정의 하지 않는으로 [개발자 예외 페이지](xref:fundamentals/error-handling) 표시 응용 프로그램이 실행 될 때 시스템에 있습니다. 에 대 한 환경 변수를 설정 `ASPNETCORE_ENVIRONMENT` 이렇게에서만 권장 됩니다 노출 되지 않은 준비/테스트 시스템에 대 한 인터넷에 있습니다. 환경 변수를 제거 해야는 *web.config* 파일을 완료 합니다. 통해 환경 변수 설정에 대 한 내용은 *web.config* 역방향 프록시를 참조 하십시오. [environmentVariables 자식 요소의 aspNetCore](xref:hosting/aspnet-core-module#setting-environment-variables)합니다.
+4. <span data-ttu-id="57b0d-173">응용 프로그램 풀을 **관리 코드 없음**으로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-173">Set the application pool to **No Managed Code**.</span></span> <span data-ttu-id="57b0d-174">ASP.NET Core는 별도의 프로세스에서 실행되며 런타임을 관리합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-174">ASP.NET Core runs in a separate process and manages the runtime.</span></span>
 
-대부분의 경우에서 응용 프로그램 로깅은 응용 프로그램 또는 역방향 프록시 문제 해결에 도움이 됩니다. 참조 [로깅](xref:fundamentals/logging) 에 대 한 자세한 내용은 합니다.
+5. <span data-ttu-id="57b0d-175">**웹 사이트 추가** 창을 엽니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-175">Open the **Add Website** window.</span></span>
 
-마지막 문제 해결 팁 앱 내에서 개발 컴퓨터 또는 패키지 버전에.NET Core SDK 중 하나를 업그레이드 한 후 실행에 실패 하는 앱에 적용 됩니다. 일부 경우에 모순 된 패키지 주요 업그레이드를 수행할 때 응용 프로그램을 중단 될 수 있습니다. 삭제 하 여 이러한 문제를 대부분 해결할 수 있습니다는 `bin` 및 `obj` 의 선택을 취소 하는 프로젝트의 폴더에서 캐시 패키지 `%UserProfile%\.nuget\packages\` 및 `%LocalAppData%\Nuget\v3-cache`, 프로젝트, 복원 및 시스템에서 이전 배포 응용 프로그램을 다시 배포 하기 전에 완전히 삭제 되었는지 확인 합니다.
+   ![[사이트] 상황에 맞는 메뉴에서 [웹 사이트 추가]를 클릭합니다.](iis/_static/add-website-context-menu-ws2016.png)
+
+6. <span data-ttu-id="57b0d-177">웹 사이트를 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-177">Configure the website.</span></span>
+
+   ![[웹 사이트 추가] 단계에서 사이트 이름, 실제 경로 및 호스트 이름을 제공합니다.](iis/_static/add-website-ws2016.png)
+
+7. <span data-ttu-id="57b0d-179">**응용 프로그램 풀** 패널에서 웹 사이트의 응용 프로그램 풀을 마우스 오른쪽 단추로 클릭하고 팝업 메뉴에서 **기본 설정...**을 선택하여 **응용 프로그램 풀 편집** 창을 엽니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-179">In the **Application Pools** panel, open the **Edit Application Pool** window by right-clicking on the website's application pool and selecting **Basic Settings...** from the popup menu.</span></span>
+
+   ![[응용 프로그램 풀]의 상황에 맞는 메뉴에서 [기본 설정]을 선택합니다.](iis/_static/apppools-basic-settings-ws2016.png)
+
+8. <span data-ttu-id="57b0d-181">**.NET CLR 버전**을 **관리 코드 없음**으로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-181">Set the **.NET CLR version** to **No Managed Code**.</span></span>
+
+   ![관리 코드 없음으로 설정된 .NET CLR 버전](iis/_static/edit-apppool-ws2016.png)
+     
+    <span data-ttu-id="57b0d-183">참고: **.NET CLR 버전**을 **관리 코드 없음**으로 설정하는 것은 선택 사항입니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-183">Note: Setting the **.NET CLR version** to **No Managed Code** is optional.</span></span> <span data-ttu-id="57b0d-184">ASP.NET Core에서는 데스크톱 CLR을 로드할 필요가 없습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-184">ASP.NET Core doesn't rely on loading the desktop CLR.</span></span>
+
+9. <span data-ttu-id="57b0d-185">프로세스 모델 ID에 적절한 권한이 있는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-185">Confirm the process model identity has the proper permissions.</span></span>
+
+    <span data-ttu-id="57b0d-186">응용 프로그램 풀의 기본 ID(**프로세스 모델** > **ID**)를 **ApplicationPoolIdentity**에서 다른 ID로 변경하는 경우, 새 ID에 응용 프로그램 폴더, 데이터베이스 및 기타 필요한 리소스에 액세스하는 데 필요한 권한이 있는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-186">If you change the default identity of the application pool (**Process Model** > **Identity**) from **ApplicationPoolIdentity** to another identity, verify that the new identity has the required permissions to access the application's folder, database, and other required resources.</span></span>
+   
+## <a name="deploy-the-application"></a><span data-ttu-id="57b0d-187">응용 프로그램 배포</span><span class="sxs-lookup"><span data-stu-id="57b0d-187">Deploy the application</span></span>
+<span data-ttu-id="57b0d-188">대상 IIS 시스템에서 만든 폴더에 응용 프로그램을 배포합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-188">Deploy the application to the folder you created on the target IIS system.</span></span> <span data-ttu-id="57b0d-189">웹 배포는 배포에 권장되는 메커니즘입니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-189">Web Deploy is the recommended mechanism for deployment.</span></span> <span data-ttu-id="57b0d-190">웹 배포에 대한 대안은 아래와 같습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-190">Alternatives to Web Deploy are listed below.</span></span>
+
+<span data-ttu-id="57b0d-191">게시된 배포용 앱이 실행되고 있지 않은지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-191">Confirm that the published app for deployment isn't running.</span></span> <span data-ttu-id="57b0d-192">앱이 실행 중이면 *publish* 폴더의 파일이 잠겨 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-192">Files in the *publish* folder are locked when the app is running.</span></span> <span data-ttu-id="57b0d-193">잠긴 파일을 복사할 수 없으므로 배포를 수행할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-193">Deployment can't occur because locked files can't be copied.</span></span>
+
+### <a name="web-deploy-with-visual-studio"></a><span data-ttu-id="57b0d-194">Visual Studio를 사용한 웹 배포</span><span class="sxs-lookup"><span data-stu-id="57b0d-194">Web Deploy with Visual Studio</span></span>
+<span data-ttu-id="57b0d-195">웹 배포에서 사용할 게시 프로필을 만드는 방법은 [Visual Studio 및 MSBuild용 게시 프로필을 만들어 ASP.NET Core 앱 배포](xref:publishing/web-publishing-vs#publish-profiles) 항목을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="57b0d-195">See [Create publish profiles for Visual Studio and MSBuild, to deploy ASP.NET Core apps](xref:publishing/web-publishing-vs#publish-profiles) topic to learn how to create a publish profile for use with Web Deploy.</span></span> <span data-ttu-id="57b0d-196">호스팅 공급자에서 게시 프로필을 제공하거나 이 프로필을 만들 수 있도록 지원하는 경우 Visual Studio **게시** 대화 상자를 사용하여 해당 프로필을 다운로드하고 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-196">If your hosting provider supplies a Publish Profile or support for creating one, download their profile and import it using the Visual Studio **Publish** dialog.</span></span>
+
+![게시 대화 상자 페이지](iis/_static/pub-dialog.png)
+
+### <a name="web-deploy-outside-of-visual-studio"></a><span data-ttu-id="57b0d-198">Visual Studio 외부에서 웹 배포</span><span class="sxs-lookup"><span data-stu-id="57b0d-198">Web Deploy outside of Visual Studio</span></span>
+<span data-ttu-id="57b0d-199">명령줄을 통해 Visual Studio 외부에서 웹 배포를 사용할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-199">You can also use Web Deploy outside of Visual Studio from the command line.</span></span> <span data-ttu-id="57b0d-200">자세한 내용은 [웹 배포 도구](https://technet.microsoft.com/library/dd568996(WS.10).aspx)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="57b0d-200">For more information, see [Web Deployment Tool](https://technet.microsoft.com/library/dd568996(WS.10).aspx).</span></span>
+
+### <a name="alternatives-to-web-deploy"></a><span data-ttu-id="57b0d-201">웹 배포에 대한 대안</span><span class="sxs-lookup"><span data-stu-id="57b0d-201">Alternatives to Web Deploy</span></span>
+<span data-ttu-id="57b0d-202">웹 배포를 사용하지 않거나 Visual Studio를 사용하지 않으려면 Xcopy, Robocopy 또는 PowerShell과 같이 여러 가지 방법 중 하나를 사용하여 응용 프로그램을 호스팅 시스템으로 이동할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-202">If you don't wish to use Web Deploy or are not using Visual Studio, you may use any of several methods to move the application to the hosting system, such as Xcopy, Robocopy, or PowerShell.</span></span> <span data-ttu-id="57b0d-203">Visual Studio 사용자는 [게시 샘플(영문)](https://github.com/aspnet/vsweb-publish/blob/master/samples/samples.md)을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-203">Visual Studio users may use the [Publish Samples](https://github.com/aspnet/vsweb-publish/blob/master/samples/samples.md).</span></span>
+
+## <a name="browse-the-website"></a><span data-ttu-id="57b0d-204">웹 사이트 찾아보기</span><span class="sxs-lookup"><span data-stu-id="57b0d-204">Browse the website</span></span>
+![IIS 시작 페이지가 로드된 Microsoft Edge 브라우저](iis/_static/browsewebsite.png)
+   
+>[!WARNING]
+> <span data-ttu-id="57b0d-206">.NET Core 응용 프로그램은 IIS와 Kestrel 서버 간의 역방향 프록시를 통해 호스팅됩니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-206">.NET Core applications are hosted via a reverse-proxy between IIS and the Kestrel server.</span></span> <span data-ttu-id="57b0d-207">역방향 프록시를 만들려면 *web.config* 파일이 IIS에 제공되는 웹 사이트 실제 경로인 배포된 응용 프로그램의 콘텐츠 루트 경로(일반적으로 응용 프로그램 기본 경로)에 있어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-207">In order to create the reverse-proxy, the *web.config* file must be present at the content root path (typically the app base path) of the deployed application, which is the website physical path provided to IIS.</span></span> <span data-ttu-id="57b0d-208">중요한 파일은 *my_application.runtimeconfig.json*, *my_application.xml*(XML 문서 주석) 및 *my_application.deps.json*과 같은 하위 폴더를 포함한 앱의 실제 경로에 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-208">Sensitive files exist on the app's physical path, including subfolders, such as *my_application.runtimeconfig.json*, *my_application.xml* (XML Documentation comments), and *my_application.deps.json*.</span></span> <span data-ttu-id="57b0d-209">*web.config* 파일은 Kestrel에 대한 역방향 프록시를 만들어 IIS에서 이러한 파일 및 기타 중요한 파일을 제공하지 못하도록 하는 데 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-209">The *web.config* file is required to create the reverse proxy to Kestrel, which prevents IIS from serving these and other sensitive files.</span></span> <span data-ttu-id="57b0d-210">**따라서 *web.config* 파일을 실수로 이름을 변경하거나 배포에서 제거하지 않아야 합니다.**</span><span class="sxs-lookup"><span data-stu-id="57b0d-210">**Therefore, it is important that the *web.config* file is never accidently renamed or removed from the deployment.**</span></span>
+
+## <a name="data-protection"></a><span data-ttu-id="57b0d-211">데이터 보호</span><span class="sxs-lookup"><span data-stu-id="57b0d-211">Data protection</span></span>
+
+<span data-ttu-id="57b0d-212">ASP.NET Core 응용 프로그램은 다음 조건에서 키 링을 메모리에 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-212">An ASP.NET Core application will store the keyring in memory under the following condition:</span></span>
+
+* <span data-ttu-id="57b0d-213">웹 사이트가 IIS 뒤에 호스팅됩니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-213">A website is hosted behind IIS.</span></span>
+* <span data-ttu-id="57b0d-214">데이터 보호 스택이 영구 저장소에 키 링을 저장하도록 구성되지 않았습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-214">The Data Protection stack has not been configured to store the keyring in a persistent store.</span></span>
+
+<span data-ttu-id="57b0d-215">키 링이 메모리에 저장되는 경우 앱을 다시 시작할 때 다음과 같이 됩니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-215">If the keyring is stored in memory, when the app restarts:</span></span>
+
+* <span data-ttu-id="57b0d-216">모든 폼 인증 토큰이 유효하지 않게 됩니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-216">All forms authentication tokens will be invalid.</span></span> 
+* <span data-ttu-id="57b0d-217">사용자가 다음 요청에서 다시 로그인해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-217">Users will need to login again on their next request.</span></span> 
+* <span data-ttu-id="57b0d-218">키 링으로 보호한 데이터가 더 이상 보호되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-218">Any data you protected with the keyring will no longer be unprotected.</span></span>
+
+> [!WARNING]
+> <span data-ttu-id="57b0d-219">데이터 보호는 인증에 사용되는 것을 포함하여 여러 ASP.NET 미들웨어에서 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-219">Data Protection is used by several ASP.NET middlewares, including those used in authentication.</span></span> <span data-ttu-id="57b0d-220">사용자 고유 코드에서 데이터 보호 API를 특별히 호출하지 않아도 배포 스크립트 또는 사용자 고유 코드를 사용하여 데이터 보호를 구성해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-220">Even if you do not specifically call any Data Protection APIs from your own code you should configure Data Protection with a deployment script or in your own code.</span></span> <span data-ttu-id="57b0d-221">데이터 보호를 구성하지 않으면 기본적으로 키가 메모리에 보관되어 응용 프로그램을 다시 시작할 때 삭제됩니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-221">If you do not configure data protection, by default the keys will be held in memory and discarded when your app restarts.</span></span> <span data-ttu-id="57b0d-222">다시 시작하면 쿠키 인증으로 작성된 모든 쿠키가 무효화되고 사용자가 다시 로그인해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-222">Restarting will invalidate any cookies written by the cookie authentication and users will have to login again.</span></span>
+
+<span data-ttu-id="57b0d-223">IIS에서 데이터 보호를 구성하려면 다음 방법 중 하나를 사용해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-223">To configure Data Protection under IIS you must use one of the following approaches:</span></span>
+
+* <span data-ttu-id="57b0d-224">[PowerShell 스크립트](https://github.com/aspnet/DataProtection/blob/dev/Provision-AutoGenKeys.ps1)를 실행하여 적절한 레지스트리 항목을 만듭니다(예: `.\Provision-AutoGenKeys.ps1 DefaultAppPool`).</span><span class="sxs-lookup"><span data-stu-id="57b0d-224">Run a [powershell script](https://github.com/aspnet/DataProtection/blob/dev/Provision-AutoGenKeys.ps1) to create suitable registry entries (For example,  `.\Provision-AutoGenKeys.ps1 DefaultAppPool`).</span></span> <span data-ttu-id="57b0d-225">이렇게 하면 키가 레지스트리에 저장되고, 컴퓨터 수준 키가 있는 DPAPI를 사용하여 보호됩니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-225">This will store keys in the registry, protected using DPAPI with a machine wide key.</span></span>
+* <span data-ttu-id="57b0d-226">사용자 프로필을 로드하도록 IIS 응용 프로그램 풀을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-226">Configure the IIS Application Pool to load the user profile.</span></span> <span data-ttu-id="57b0d-227">이 설정은 응용 프로그램 풀에 대한 **고급 설정** 아래의 **프로세스 모델** 섹션에 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-227">This setting is in the **Process Model** section under the **Advanced Settings** for the application pool.</span></span> <span data-ttu-id="57b0d-228">**사용자 프로필**을 `True`로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-228">Set **Load User Profile** to `True`.</span></span> <span data-ttu-id="57b0d-229">이렇게 하면 사용자 프로필 디렉터리 아래에 키가 저장되고, 응용 프로그램 풀에 사용되는 사용자 계정과 관련된 키가 있는 DPAPI를 사용하여 보호됩니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-229">This will store keys under the user profile directory, and protected using DPAPI with a key specific to the user account used for the app pool.</span></span>
+* <span data-ttu-id="57b0d-230">[파일 시스템을 키 링 저장소로 사용](https://docs.microsoft.com/aspnet/core/security/data-protection/configuration/overview)하도록 응용 프로그램 코드를 조정합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-230">Adjust your application code to [use the file system as a key ring store](https://docs.microsoft.com/aspnet/core/security/data-protection/configuration/overview).</span></span> <span data-ttu-id="57b0d-231">X509 인증서를 사용하여 키 링을 보호하고 신뢰할 수 있는 인증서인지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-231">Use an X509 certificate to protect the key ring and ensure it is a trusted certificate.</span></span> <span data-ttu-id="57b0d-232">예를 들어 자체 서명된 인증서인 경우 신뢰할 수 있는 루트 저장소에 배치해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-232">For example, if it is a self signed certificate you must place it in the Trusted Root store.</span></span>
+
+<span data-ttu-id="57b0d-233">웹 팜에서 IIS를 사용하는 경우 다음을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-233">When using IIS in a web farm:</span></span>
+
+* <span data-ttu-id="57b0d-234">모든 컴퓨터에서 액세스할 수 있는 파일 공유를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-234">Use a file share all machines can access.</span></span>
+* <span data-ttu-id="57b0d-235">각 시스템에 X509 인증서를 배포합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-235">Deploy an X509 certificate to each machine.</span></span>  <span data-ttu-id="57b0d-236">[코드에 데이터 보호](https://docs.asp.net/en/latest/security/data-protection/configuration/overview.html)를 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-236">Configure [data protection in code](https://docs.asp.net/en/latest/security/data-protection/configuration/overview.html).</span></span>
+
+### <a name="1-create-a-data-protection-registry-hive"></a><span data-ttu-id="57b0d-237">1. 데이터 보호 레지스트리 하이브 만들기</span><span class="sxs-lookup"><span data-stu-id="57b0d-237">1. Create a Data Protection Registry Hive</span></span>
+
+<span data-ttu-id="57b0d-238">ASP.NET 응용 프로그램에서 사용하는 데이터 보호 키는 응용 프로그램 외부의 레지스트리 하이브에 저장됩니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-238">Data Protection keys used by ASP.NET applications are stored in registry hives external to the applications.</span></span> <span data-ttu-id="57b0d-239">지정된 응용 프로그램의 키를 유지하려면 해당 응용 프로그램의 응용 프로그램 풀에 대한 레지스트리 하이브를 만들어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-239">To persist the keys for a given application, you must create a registry hive for the application's application pool.</span></span>
+
+<span data-ttu-id="57b0d-240">독립 실행형 IIS 설치의 경우 ASP.NET Core 응용 프로그램에서 사용되는 각 응용 프로그램 풀에 대해 [Data Protection Provision-AutoGenKeys.ps1 PowerShell 스크립트](https://github.com/aspnet/DataProtection/blob/dev/Provision-AutoGenKeys.ps1)를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-240">For standalone IIS installations, you may use the [Data Protection Provision-AutoGenKeys.ps1 PowerShell script](https://github.com/aspnet/DataProtection/blob/dev/Provision-AutoGenKeys.ps1) for each application pool used with an ASP.NET Core application.</span></span> <span data-ttu-id="57b0d-241">이 스크립트는 작업자 프로세스 계정에만 ACL로 지정된 특수 레지스트리 키를 HKLM 레지스트리에 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-241">This script will create a special registry key in the HKLM registry that is ACLed only to the worker process account.</span></span> <span data-ttu-id="57b0d-242">미사용 키는 DPAPI를 사용하여 암호화됩니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-242">Keys are encrypted at rest using DPAPI.</span></span>
+
+<span data-ttu-id="57b0d-243">웹 팜 시나리오에서는 UNC 경로를 사용하여 데이터 보호 키 링을 저장하도록 응용 프로그램을 구성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-243">In web farm scenarios, an application can be configured to use a UNC path to store its data protection key ring.</span></span> <span data-ttu-id="57b0d-244">기본적으로 데이터 보호 키는 암호화되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-244">By default, the data protection keys are not encrypted.</span></span> <span data-ttu-id="57b0d-245">이러한 공유에 대한 파일 권한은 응용 프로그램이 실행되는 Windows 계정으로 제한되어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-245">You should ensure that the file permissions for such a share are limited to the Windows account the application runs as.</span></span> <span data-ttu-id="57b0d-246">또한 X509 인증서를 사용하여 미사용 키를 보호하도록 선택할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-246">In addition you may choose to protect keys at rest using an X509 certificate.</span></span> <span data-ttu-id="57b0d-247">사용자가 인증서를 업로드하여 사용자의 신뢰할 수 있는 인증서 저장소에 배치하고 사용자의 응용 프로그램이 실행될 모든 컴퓨터에서 인증서를 사용할 수 있도록 하는 메커니즘을 고려해야 할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-247">You may wish to consider a mechanism to allow users to upload certificates, place them into the user's trusted certificate store, and ensure they are available on all machines the user's application will run on.</span></span> <span data-ttu-id="57b0d-248">자세한 내용은 [데이터 보호 구성](xref:security/data-protection/configuration/overview#data-protection-configuring)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="57b0d-248">See [Configuring Data Protection](xref:security/data-protection/configuration/overview#data-protection-configuring) for details.</span></span>
+
+### <a name="2-configure-the-iis-application-pool-to-load-the-user-profile"></a><span data-ttu-id="57b0d-249">2. 사용자 프로필을 로드하도록 IIS 응용 프로그램 풀 구성</span><span class="sxs-lookup"><span data-stu-id="57b0d-249">2. Configure the IIS Application Pool to load the user profile</span></span>
+<span data-ttu-id="57b0d-250">이 설정은 응용 프로그램 풀에 대한 [고급 설정] 아래의 [프로세스 모델] 섹션에 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-250">This setting is in the Process Model section under the Advanced Settings for the application pool.</span></span> <span data-ttu-id="57b0d-251">사용자 프로필 로드를 True로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-251">Set Load User Profile to True.</span></span> <span data-ttu-id="57b0d-252">이렇게 하면 사용자 프로필 디렉터리 아래에 키가 저장되고, 응용 프로그램 풀에 사용되는 사용자 계정과 관련된 키가 있는 DPAPI를 사용하여 보호됩니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-252">This will store keys under the user profile directory, and protected using DPAPI with a key specific to the user account used for the app pool.</span></span>
+
+### <a name="3-machine-wide-policy-for-data-protection"></a><span data-ttu-id="57b0d-253">3. 데이터 보호에 대한 컴퓨터 수준 정책</span><span class="sxs-lookup"><span data-stu-id="57b0d-253">3. Machine-wide policy for data protection</span></span>
+
+<span data-ttu-id="57b0d-254">데이터 보호 시스템은 데이터 보호 API를 사용하는 모든 응용 프로그램에 대한 기본 [컴퓨터 수준 정책](xref:security/data-protection/configuration/machine-wide-policy#data-protection-configuration-machinewidepolicy) 설정을 제한적으로 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-254">The data protection system has limited support for setting default [machine-wide policy](xref:security/data-protection/configuration/machine-wide-policy#data-protection-configuration-machinewidepolicy) for all applications that consume the data protection APIs.</span></span> <span data-ttu-id="57b0d-255">자세한 내용은 [데이터 보호](xref:security/data-protection/index) 설명서를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="57b0d-255">See the [data protection](xref:security/data-protection/index) documentation for more details.</span></span>
+
+## <a name="configuration-of-sub-applications"></a><span data-ttu-id="57b0d-256">하위 응용 프로그램 구성</span><span class="sxs-lookup"><span data-stu-id="57b0d-256">Configuration of sub-applications</span></span>
+
+<span data-ttu-id="57b0d-257">루트 응용 프로그램 아래에 추가된 하위 응용 프로그램은 ASP.NET Core 모듈을 처리기로 포함하지 않아야 합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-257">Sub applications added under the root application shouldn't include the ASP.NET Core Module as a handler.</span></span> <span data-ttu-id="57b0d-258">하위 응용 프로그램의 *web.config* 파일에 모듈을 처리기로 추가하면 하위 응용 프로그램을 검색하려고 할 때 잘못된 구성 파일을 참조하는 500.19(내부 서버 오류)가 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-258">If you add the module as a handler in a sub-application's *web.config* file, you receive a 500.19 (Internal Server Error) referencing the faulty config file when you attempt to browse the sub app.</span></span> <span data-ttu-id="57b0d-259">다음 예제에서는 ASP.NET Core 하위 응용 프로그램에 대해 게시된 *web.config* 파일의 내용을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-259">The following example shows the contents of a published *web.config* file for an ASP.NET Core sub app:</span></span>
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <system.webServer>
+    <aspNetCore processPath="dotnet" 
+        arguments=".\MyApp.dll" 
+        stdoutLogEnabled="false" 
+        stdoutLogFile=".\logs\stdout" />
+  </system.webServer>
+</configuration>
+```
+
+<span data-ttu-id="57b0d-260">ASP.NET Core 응용 프로그램 아래에 비ASP .NET Core 하위 응용 프로그램을 호스팅하려는 경우 하위 응용 프로그램의 *web.config* 파일에서 상속된 처리기를 명시적으로 제거해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-260">If you intend to host a non-ASP.NET Core sub app underneath an ASP.NET Core app, you must explicitly remove the inherited handler in the sub app *web.config* file:</span></span>
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <system.webServer>
+    <handlers>
+      <remove name="aspNetCore"/>
+    </handlers>
+    <aspNetCore processPath="dotnet" 
+        arguments=".\MyApp.dll" 
+        stdoutLogEnabled="false" 
+        stdoutLogFile=".\logs\stdout" />
+  </system.webServer>
+</configuration>
+```
+
+<span data-ttu-id="57b0d-261">*web.config* 파일을 사용하여 ASP.NET Core 모듈을 구성하는 방법에 대한 자세한 내용은 [ASP.NET Core 모듈 소개](xref:fundamentals/servers/aspnet-core-module) 항목 및 [ASP.NET Core 모듈 구성 참조](xref:hosting/aspnet-core-module)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="57b0d-261">For more information on configuring the ASP.NET Core Module with the *web.config* file, see the [Introduction to ASP.NET Core Module](xref:fundamentals/servers/aspnet-core-module) topic and the [ASP.NET Core Module configuration reference](xref:hosting/aspnet-core-module).</span></span>
+
+## <a name="configuration-of-iis-with-webconfig"></a><span data-ttu-id="57b0d-262">web.config를 사용하여 IIS 구성</span><span class="sxs-lookup"><span data-stu-id="57b0d-262">Configuration of IIS with web.config</span></span>
+
+<span data-ttu-id="57b0d-263">IIS 구성은 여전히 역방향 프록시 구성에 적용되는 IIS 기능에 대한 *web.config*에 포함된 `<system.webServer>` 섹션의 영향을 받습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-263">IIS configuration is still influenced by the `<system.webServer>` section of *web.config* for those IIS features that apply to a reverse proxy configuration.</span></span> <span data-ttu-id="57b0d-264">예를 들어 시스템 수준에서 동적 압축을 사용하도록 IIS를 구성했을 수 있지만, 응용 프로그램의 *web.config* 파일에서 `<urlCompression>` 요소를 사용하여 응용 프로그램의 해당 설정을 사용하지 않도록 설정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-264">For example, you may have IIS configured at the system level to use dynamic compression, but you could disable that setting for an app with the `<urlCompression>` element in the app's *web.config* file.</span></span> <span data-ttu-id="57b0d-265">자세한 내용은 [`<system.webServer>`에 대한 구성 참조](https://www.iis.net/configreference/system.webserver), [ASP.NET Core 모듈 구성 참조](xref:hosting/aspnet-core-module) 및 [ASP.NET Core와 함께 IIS 모듈 사용](xref:hosting/iis-modules)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="57b0d-265">For more information, see the [configuration reference for `<system.webServer>`](https://www.iis.net/configreference/system.webserver), [ASP.NET Core Module Configuration Reference](xref:hosting/aspnet-core-module), and [Using IIS Modules with ASP.NET Core](xref:hosting/iis-modules).</span></span> <span data-ttu-id="57b0d-266">격리된 응용 프로그램 풀(IIS 10.0 이상에서 지원됨)에서 실행되는 개별 응용 프로그램에 대한 환경 변수를 설정해야 하는 경우 [\<environmentVariables> 환경 변수](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) 항목의 *AppCmd.exe 명령* 섹션을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="57b0d-266">If you need to set environment variables for individual apps running in isolated Application Pools (supported on IIS 10.0+), see the *AppCmd.exe command* section of the [Environment Variables \<environmentVariables>](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) topic in the IIS reference documentation.</span></span>
+
+## <a name="configuration-sections-of-webconfig"></a><span data-ttu-id="57b0d-267">web.config 구성 섹션</span><span class="sxs-lookup"><span data-stu-id="57b0d-267">Configuration sections of web.config</span></span>
+
+<span data-ttu-id="57b0d-268">*web.config*의 `<system.web>`, `<appSettings>`, `<connectionStrings>` 및 `<location>` 요소로 구성된 .NET Framework 응용 프로그램과 달리 ASP.NET Core 응용 프로그램은 다른 구성 공급자를 사용하여 구성됩니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-268">Unlike .NET Framework applications that are configured with the `<system.web>`, `<appSettings>`, `<connectionStrings>`, and `<location>` elements in *web.config*, ASP.NET Core apps are configured using other configuration providers.</span></span> <span data-ttu-id="57b0d-269">자세한 내용은 [구성](xref:fundamentals/configuration)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="57b0d-269">For more information, see [Configuration](xref:fundamentals/configuration).</span></span>
+
+## <a name="application-pools"></a><span data-ttu-id="57b0d-270">응용 프로그램 풀</span><span class="sxs-lookup"><span data-stu-id="57b0d-270">Application Pools</span></span>
+
+<span data-ttu-id="57b0d-271">단일 시스템에서 여러 웹 사이트를 호스팅하는 경우 각 응용 프로그램을 자체의 응용 프로그램 풀에서 실행하여 응용 프로그램을 서로 격리해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-271">When hosting multiple websites on a single system, you should isolate the applications from each other by running each app in its own application pool.</span></span> <span data-ttu-id="57b0d-272">IIS **웹 사이트 추가** 대화 상자에서는 이 동작이 기본적으로 설정되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-272">The IIS **Add Website** dialog defaults to this behavior.</span></span> <span data-ttu-id="57b0d-273">**사이트 이름**을 제공하면 해당 텍스트가 **응용 프로그램 풀** 텍스트 상자로 자동으로 전송됩니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-273">When you provide a **Site name**, the text is automatically transferred to the **Application pool** textbox.</span></span> <span data-ttu-id="57b0d-274">웹 사이트를 추가할 때 해당 사이트 이름을 사용하여 새 응용 프로그램 풀이 만들어집니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-274">A new application pool will be created using the site name when you add the website.</span></span>
+
+## <a name="application-pool-identity"></a><span data-ttu-id="57b0d-275">응용 프로그램 풀 ID</span><span class="sxs-lookup"><span data-stu-id="57b0d-275">Application Pool Identity</span></span>
+
+<span data-ttu-id="57b0d-276">응용 프로그램 풀 ID 계정을 사용하면 도메인 또는 로컬 계정을 만들고 관리할 필요 없이 고유한 계정으로 응용 프로그램을 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-276">An application pool identity account allows you to run an application under a unique account without having to create and manage domains or local accounts.</span></span> <span data-ttu-id="57b0d-277">IIS 8.0 이상에서 IIS 관리 작업자 프로세스(WAS)는 새 응용 프로그램 풀의 이름으로 가상 계정을 만들고, 기본적으로 이 계정으로 응용 프로그램 풀의 작업자 프로세스를 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-277">On IIS 8.0+, the IIS Admin Worker Process (WAS) will create a virtual account with the name of the new application pool and run the application pool's worker processes under this account by default.</span></span> <span data-ttu-id="57b0d-278">IIS 관리 콘솔의 응용 프로그램 풀에 대한 [고급 설정]에서 아래 이미지와 같이 ID에서 **ApplicationPoolIdentity**를 사용하도록 설정되어 있는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-278">In the IIS Management Console, under Advanced Settings for your application pool, ensure that the Identity is set to use **ApplicationPoolIdentity** as shown in the image below.</span></span>
+
+![응용 프로그램 풀 고급 설정 대화 상자](iis/_static/apppool-identity.png)
+
+<span data-ttu-id="57b0d-280">IIS 관리 프로세스는 Windows 보안 시스템에 응용 프로그램 풀 이름이 포함된 보안 식별자를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-280">The IIS management process creates a secure identifier with the name of the application pool in the Windows Security System.</span></span> <span data-ttu-id="57b0d-281">리소스는 이 ID를 사용하여 보호할 수 있습니다. 그러나 이 ID는 실제 사용자 계정이 아니며 Windows 사용자 관리 콘솔에 표시되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-281">Resources can be secured by using this identity; however, this identity is not a real user account and won't show up in the Windows User Management Console.</span></span>
+
+<span data-ttu-id="57b0d-282">응용 프로그램에 대한 높은 액세스 권한을 IIS 작업자 프로세스에 부여해야 하는 경우 응용 프로그램이 포함된 디렉터리에 대한 ACL(액세스 제어 목록)을 수정해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-282">If you need to grant the IIS worker process elevated access to your application, you will need to modify the Access Control List (ACL) for the directory containing your application.</span></span>
+
+1. <span data-ttu-id="57b0d-283">[Windows 탐색기]를 열고 해당 하위 디렉터리로 이동합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-283">Open Windows Explorer and navigate to the directory.</span></span>
+
+2. <span data-ttu-id="57b0d-284">디렉터리를 마우스 오른쪽 단추로 클릭하고 **속성**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-284">Right click on the directory and click **Properties**.</span></span>
+
+3. <span data-ttu-id="57b0d-285">**보안** 탭 아래에서 **편집** 단추를 클릭한 다음 **추가** 단추를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-285">Under the **Security** tab, click the **Edit** button and then the **Add** button.</span></span>
+
+4. <span data-ttu-id="57b0d-286">**위치** 단추를 클릭하고 시스템이 선택되어 있는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-286">Click the **Locations** button and make sure you select your system.</span></span>
+
+5. <span data-ttu-id="57b0d-287">**선택할 개체 이름 입력** 텍스트 상자에서 **IIS AppPool\DefaultAppPool**을 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-287">Enter **IIS AppPool\DefaultAppPool** in **Enter the object names to select** textbox.</span></span>
+
+  ![응용 프로그램 폴더에 대한 사용자 또는 그룹 선택 대화 상자](iis/_static/select-users-or-groups-1.png)
+
+6. <span data-ttu-id="57b0d-289">**이름 확인** 단추를 클릭한 다음 **확인**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-289">Click the **Check Names** button and then click **OK**.</span></span>
+
+  ![응용 프로그램 폴더에 대한 사용자 또는 그룹 선택 대화 상자](iis/_static/select-users-or-groups-2.png)
+
+<span data-ttu-id="57b0d-291">**ICACLS** 도구를 사용하여 명령 프롬프트를 통해 이 작업을 수행할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-291">You can also do this via a command prompt using **ICACLS** tool:</span></span>
+
+```console
+ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
+```
+
+## <a name="troubleshooting-tips"></a><span data-ttu-id="57b0d-292">문제 해결 팁</span><span class="sxs-lookup"><span data-stu-id="57b0d-292">Troubleshooting tips</span></span>
+
+<span data-ttu-id="57b0d-293">IIS 배포 관련 문제를 진단하려면 브라우저 출력을 검토하고 **이벤트 뷰어**를 통해 시스템의 **응용 프로그램** 로그를 검사하고 `stdout` 로깅을 사용하도록 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-293">To diagnose problems with IIS deployments, study browser output, examine the system's **Application** log through **Event Viewer**, and enable `stdout` logging.</span></span> <span data-ttu-id="57b0d-294">**ASP.NET Core 모듈** 로그는 *web.config*에 있는 `<aspNetCore>` 요소의 *stdoutLogFile* 특성에 제공된 경로에 있습니다. 특성 값에 제공된 경로의 모든 폴더가 배포에 있어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-294">The **ASP.NET Core Module** log will be found on the path provided in the *stdoutLogFile* attribute of the `<aspNetCore>` element in *web.config*. Any folders on the path provided in the attribute value must exist in the deployment.</span></span> <span data-ttu-id="57b0d-295">*stdoutLogEnabled="true"*도 설정해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-295">You must also set *stdoutLogEnabled="true"*.</span></span> <span data-ttu-id="57b0d-296">`Microsoft.NET.Sdk.Web` SDK를 사용하여 *web.config* 파일을 만드는 응용 프로그램은 기본적으로 *stdoutLogEnabled* 설정을 *false*로 설정하므로 직접 *web.config* 파일을 제공하거나 `stdout` 로깅을 사용하도록 파일을 수정합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-296">Applications that use the `Microsoft.NET.Sdk.Web` SDK to create the *web.config* file will default the *stdoutLogEnabled* setting to *false*, so you must manually provide the *web.config* file or modify the file in order to enable `stdout` logging.</span></span>
+
+<span data-ttu-id="57b0d-297">*startupTimeLimit*(기본값: 120초) 및 *startupRetryCount*(기본값: 2) 모듈이 통과할 때까지 일반적인 몇 가지 오류는 브라우저, 응용 프로그램 로그 및 ASP.NET Core 모듈 로그에 표시되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-297">Several of the common errors do not appear in the browser, Application Log, and ASP.NET Core Module Log until the module *startupTimeLimit* (default: 120 seconds) and *startupRetryCount* (default: 2) have passed.</span></span> <span data-ttu-id="57b0d-298">따라서 모듈에서 응용 프로그램의 프로세스를 시작하지 못했다고 추론될 때까지 6분 정도 기다립니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-298">Therefore, wait a full six minutes before deducing that the module has failed to start a process for the application.</span></span>
+
+<span data-ttu-id="57b0d-299">응용 프로그램이 제대로 작동하는지 확인하는 빠른 방법은 Kestrel에서 직접 응용 프로그램을 실행하는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-299">One quick way to determine if the application is working properly is to run the application directly on Kestrel.</span></span> <span data-ttu-id="57b0d-300">응용 프로그램이 프레임워크 종속 배포로 게시된 경우 응용 프로그램의 IIS 실제 경로인 배포 폴더에 있는 **dotnet my_application.dll**을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-300">If the application was published as a framework-dependent deployment, execute **dotnet my_application.dll** in the deployment folder, which is the IIS physical path to the application.</span></span> <span data-ttu-id="57b0d-301">응용 프로그램이 자체 포함 배포로 게시된 경우 명령 프롬프트에서 직접 응용 프로그램의 실행 파일, 즉 배포 폴더에 있는 **my_application.exe**를 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-301">If the application was published as a self-contained deployment, run the application's executable directly from a command prompt, **my_application.exe**, in the deployment folder.</span></span> <span data-ttu-id="57b0d-302">Kestrel이 5000 기본 포트에서 수신 대기중인 경우 `http://localhost:5000/`에서 응용 프로그램을 찾아 볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-302">If Kestrel is listening on default port 5000, you should be able to browse the application at `http://localhost:5000/`.</span></span> <span data-ttu-id="57b0d-303">응용 프로그램이 Kestrel 끝점 주소에서 정상적으로 응답하는 경우, 문제는 IIS-ASP.NET Core 모듈-Kestrel 구성과 관련이 있으며 응용 프로그램 자체 내에서 관련되었을 가능성은 낮습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-303">If the application responds normally at the Kestrel endpoint address, the problem is more likely related to the IIS-ASP.NET Core Module-Kestrel configuration and less likely within the application itself.</span></span>
+
+<span data-ttu-id="57b0d-304">Kestrel 서버에 대한 IIS 역방향 프록시가 제대로 작동하는지 확인하는 한 가지 방법은 [정적 파일 미들웨어](xref:fundamentals/static-files)를 사용하여 *wwwroot*에 있는 응용 프로그램의 정적 파일에서 스타일시트, 스크립트 또는 이미지에 대한 간단한 정적 파일 요청을 수행하는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-304">One way to determine if the IIS reverse proxy to the Kestrel server is working properly is to perform a simple static file request for a stylesheet, script, or image from the application's static files in *wwwroot* using [Static File middleware](xref:fundamentals/static-files).</span></span> <span data-ttu-id="57b0d-305">응용 프로그램에서 정적 파일을 제공할 수 있지만 MVC보기와 다른 끝점에서 오류가 발생하는 경우, 문제는 IIS-ASP.NET Core 모듈-Kestrel 구성과 관련이 없으며 응용 프로그램 자체 내에서 관련되었을 가능성이 높습니다(예: MVC 라우팅 또는 500 내부 서버 오류).</span><span class="sxs-lookup"><span data-stu-id="57b0d-305">If the application can serve static files but MVC Views and other endpoints are failing, the problem is less likely related to the IIS-ASP.NET Core Module-Kestrel configuration and more likely within the application itself (for example, MVC routing or 500 Internal Server Error).</span></span>
+
+<span data-ttu-id="57b0d-306">Kestrel이 IIS 뒤에서 정상적으로 시작되지만 로컬에서 성공적으로 실행한 후에 시스템에서 응용 프로그램이 실행되지 않으면 임시로 *web.config*에 환경 변수를 추가하여 `ASPNETCORE_ENVIRONMENT`를 `Development`로 설정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-306">When Kestrel starts normally behind IIS but the app won't run on the system after successfully running locally, you can temporarily add an environment variable to *web.config* to set the `ASPNETCORE_ENVIRONMENT` to `Development`.</span></span> <span data-ttu-id="57b0d-307">응용 프로그램 시작에서 환경을 재정의하지 않는다면 시스템에서 응용 프로그램이 실행될 때 [개발자 예외 페이지](xref:fundamentals/error-handling)가 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-307">As long as you don't override the environment in app startup, this will allow the [developer exception page](xref:fundamentals/error-handling) to appear when the app is run on the system.</span></span> <span data-ttu-id="57b0d-308">이 방식으로 `ASPNETCORE_ENVIRONMENT`에 대한 환경 변수를 설정하는 것은 인터넷에 노출되지 않은 준비/테스트 시스템에만 적용하는 것이 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-308">Setting the environment variable for `ASPNETCORE_ENVIRONMENT` in this way is only recommended for staging/testing systems that are not exposed to the Internet.</span></span> <span data-ttu-id="57b0d-309">완료되면 반드시 *web.config* 파일에서 해당 환경 변수를 제거해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-309">Be sure you remove the environment variable from the *web.config* file when finished.</span></span> <span data-ttu-id="57b0d-310">*web.config*를 통해 역방향 프록시에 대한 환경 변수를 설정하는 방법에 대한 자세한 내용은[aspNetCore의 environmentVariables 자식 요소](xref:hosting/aspnet-core-module#setting-environment-variables)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="57b0d-310">For information on setting environment variables via *web.config* for the reverse proxy, see [environmentVariables child element of aspNetCore](xref:hosting/aspnet-core-module#setting-environment-variables).</span></span>
+
+<span data-ttu-id="57b0d-311">응용 프로그램 로깅을 사용하면 대부분의 경우에서 응용 프로그램 또는 역방향 프록시 문제를 해결하는 데 도움이 됩니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-311">In most cases, enabling application logging will assist in troubleshooting problems with application or the reverse proxy.</span></span> <span data-ttu-id="57b0d-312">자세한 내용은 [로깅](xref:fundamentals/logging)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="57b0d-312">See [Logging](xref:fundamentals/logging) for more information.</span></span>
+
+<span data-ttu-id="57b0d-313">마지막 문제 해결 팁은 개발 컴퓨터의 .NET Core SDK 또는 응용프로그램 내의 패키지 버전을 업그레이드한 후에 실행되지 않는 응용프로그램에 관한 것입니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-313">Our last troubleshooting tip pertains to apps that fail to run after upgrading either the .NET Core SDK on the development machine or package versions within the app.</span></span> <span data-ttu-id="57b0d-314">경우에 따라 중요한 업그레이드를 수행할 때 일관되지 않은 패키지로 인해 응용 프로그램이 중단될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-314">In some cases, incoherent packages may break an app when performing major upgrades.</span></span> <span data-ttu-id="57b0d-315">프로젝트의 `bin` 및 `obj` 폴더를 삭제하고, `%UserProfile%\.nuget\packages\` 및 `%LocalAppData%\Nuget\v3-cache`에 있는 패키지 캐시를 지우고, 프로젝트를 복원하고, 해당 응용 프로그램을 다시 배포하기 전에 시스템의 이전 배포가 완전히 삭제되었는지 확인하여 이러한 문제를 대부분 수정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-315">You can fix most of these issues by deleting the `bin` and `obj` folders in the project, clearing package caches at `%UserProfile%\.nuget\packages\` and `%LocalAppData%\Nuget\v3-cache`, restoring the project, and confirming that your prior deployment on the system has been completely deleted prior to re-deploying the app.</span></span>
 
 >[!TIP]
-> 패키지 캐시의 선택을 취소 하는 편리한 방법을 얻을 수는 `NuGet.exe` 에서 도구를 [NuGet.org](https://www.nuget.org/), 시스템 경로 추가 하 고 실행 `nuget locals all -clear` 명령 프롬프트에서.
+> <span data-ttu-id="57b0d-316">패키지 캐시를 지우는 편리한 방법은 [NuGet.org](https://www.nuget.org/)에서 `NuGet.exe` 도구를 구하여 시스템 PATH에 추가하고 명령 프롬프트에서 `nuget locals all -clear`를 실행하는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-316">A convenient way to clear package caches is to obtain the `NuGet.exe` tool from [NuGet.org](https://www.nuget.org/), add it to your system PATH, and execute `nuget locals all -clear` from a command prompt.</span></span>
 
-## <a name="common-errors"></a>일반적인 오류
+## <a name="common-errors"></a><span data-ttu-id="57b0d-317">일반적인 오류</span><span class="sxs-lookup"><span data-stu-id="57b0d-317">Common errors</span></span>
 
-다음은 하지 오류의 전체 목록입니다. 아래에 있는 의견 섹션에 자세한 오류 메시지를을 남겨 주세요 여기에 나열 되지 오류가 발생 해야 합니다.
+<span data-ttu-id="57b0d-318">다음은 모든 오류를 나열한 목록이 아닙니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-318">The following is not a complete list of errors.</span></span> <span data-ttu-id="57b0d-319">여기에 나열되지 않은 오류가 발생하면 아래의 참고 섹션에 자세한 오류 메시지를 남겨 주세요.</span><span class="sxs-lookup"><span data-stu-id="57b0d-319">Should you encounter an error not listed here, please leave a detailed error message in the comments section below.</span></span>
 
-### <a name="installer-unable-to-obtain-vc-redistributable"></a>설치 관리자를 VC + + 재배포 가능 패키지를 가져올 수 없습니다.
+### <a name="installer-unable-to-obtain-vc-redistributable"></a><span data-ttu-id="57b0d-320">설치 관리자에서 VC++ 재배포 가능 패키지를 가져올 수 없음</span><span class="sxs-lookup"><span data-stu-id="57b0d-320">Installer unable to obtain VC++ Redistributable</span></span>
 
-* **설치 관리자 예외:** 0x80072efd 또는 0x80072f76-알 수 없는 오류
+* <span data-ttu-id="57b0d-321">**설치 관리자 예외:** 0x80072efd 또는 0x80072f76 - 지정되지 않은 오류</span><span class="sxs-lookup"><span data-stu-id="57b0d-321">**Installer Exception:** 0x80072efd or 0x80072f76 - Unspecified error</span></span>
 
-* **설치 관리자 로그 Exception†:** 오류 0x80072efd 또는 0x80072f76: EXE 패키지를 실행 하지 못했습니다.
+* <span data-ttu-id="57b0d-322">**설치 관리자 로그 예외&#8224;:** 오류 0x80072efd 또는 0x80072f76: EXE 패키지를 실행하지 못했습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-322">**Installer Log Exception&#8224;:** Error 0x80072efd or 0x80072f76: Failed to execute EXE package</span></span>
 
-  †The 로그는 C:\Users\\{USER}\AppData\Local\Temp\dd_DotNetCoreWinSvrHosting__{timestamp}.log 합니다.
+  <span data-ttu-id="57b0d-323">&#8224;로그는 C:\Users\\{USER}\AppData\Local\Temp\dd_DotNetCoreWinSvrHosting__{timestamp}.log에 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-323">&#8224;The log is located at C:\Users\\{USER}\AppData\Local\Temp\dd_DotNetCoreWinSvrHosting__{timestamp}.log.</span></span>
 
-문제 해결:
+<span data-ttu-id="57b0d-324">문제 해결:</span><span class="sxs-lookup"><span data-stu-id="57b0d-324">Troubleshooting:</span></span>
 
-* 시스템 번들을 호스팅하는 서버를 설치 하는 동안 인터넷에 액세스할 수 없는 경우이 예외는 설치 관리자를 얻을 수 없거나 하는 경우는 *Microsoft Visual c + + 2015 재배포 가능*합니다. 설치 관리자를 얻을 수 있습니다는 [Microsoft 다운로드 센터](https://www.microsoft.com/download/details.aspx?id=53840)합니다. 설치 관리자에서 알 수 없으면 호스트 프레임 워크 종속 배포 하는 데 필요한.NET Core 런타임을 받지 못할 수 있습니다. 프레임 워크 종속 배포 호스트, 프로그램에서 런타임이 설치 되어 있는지 확인 하려는 경우 &amp; 기능입니다. 런타임 설치 관리자를 얻을 수 있습니다 [.NET 다운로드](https://www.microsoft.com/net/download/core)합니다. 런타임에 설치한 후 시스템 다시 시작 하거나 실행 하 여 IIS를 다시 시작 **net stop가 /y** 뒤 **net 시작 w3svc** 명령 프롬프트에서.
+* <span data-ttu-id="57b0d-325">시스템에서 서버 호스팅 번들을 설치하지만 인터넷에 액세스할 수 없는 경우 이 예외는 설치 관리자에서 *Microsoft Visual C++ 2015 재배포 가능 패키지*를 얻을 수 없을 때 발생합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-325">If the system does not have Internet access while installing the server hosting bundle, this exception will occur when the installer is prevented from obtaining the *Microsoft Visual C++ 2015 Redistributable*.</span></span> <span data-ttu-id="57b0d-326">[Microsoft 다운로드 센터](https://www.microsoft.com/download/details.aspx?id=53840)에서 설치 관리자를 얻을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-326">You may obtain an installer from the [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=53840).</span></span> <span data-ttu-id="57b0d-327">설치 관리자에 오류가 발생하면 프레임워크 종속 배포를 호스팅하는 데 필요한 .NET Core 런타임을 받지 못할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-327">If the installer fails, you may not receive the .NET Core runtime required to host framework-dependent deployments.</span></span> <span data-ttu-id="57b0d-328">프레임워크 종속 배포를 호스팅하려면 [프로그램 &amp; 기능]에서 런타임이 설치되어 있는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-328">If you plan to host framework-dependent deployments, confirm that the runtime is installed in Programs &amp; Features.</span></span> <span data-ttu-id="57b0d-329">[.NET 다운로드](https://www.microsoft.com/net/download/core)에서 런타임 설치 관리자를 얻을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-329">You may obtain a runtime installer from [.NET Downloads](https://www.microsoft.com/net/download/core).</span></span> <span data-ttu-id="57b0d-330">런타임을 설치한 후 시스템을 다시 시작하거나 명령 프롬프트에서 **net stop was /y**에 이어 **net start w3svc**를 실행하여 IIS를 다시 시작합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-330">After installing the runtime, restart the system or restart IIS by executing **net stop was /y** followed by **net start w3svc** from a command prompt.</span></span>
 
-### <a name="os-upgrade-removed-the-32-bit-aspnet-core-module"></a>OS 업그레이드는 32 비트 ASP.NET 핵심 모듈 제거
+### <a name="os-upgrade-removed-the-32-bit-aspnet-core-module"></a><span data-ttu-id="57b0d-331">OS 업그레이드에서 32비트 ASP.NET Core 모듈이 제거됨</span><span class="sxs-lookup"><span data-stu-id="57b0d-331">OS upgrade removed the 32-bit ASP.NET Core Module</span></span>
 
-* **응용 프로그램 로그:** 모듈 DLL **C:\WINDOWS\system32\inetsrv\aspnetcore.dll** 를 로드 하지 못했습니다. 데이터 오류입니다.
+* <span data-ttu-id="57b0d-332">**응용 프로그램 로그:** 모듈 DLL **C:\WINDOWS\system32\inetsrv\aspnetcore.dll**을(를) 로드하지 못했습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-332">**Application Log:** The Module DLL **C:\WINDOWS\system32\inetsrv\aspnetcore.dll** failed to load.</span></span> <span data-ttu-id="57b0d-333">데이터 오류입니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-333">The data is the error.</span></span>
 
-문제 해결:
+<span data-ttu-id="57b0d-334">문제 해결:</span><span class="sxs-lookup"><span data-stu-id="57b0d-334">Troubleshooting:</span></span>
 
-* 비-운영 체제 파일에 **C:\Windows\SysWOW64\inetsrv** 디렉터리는 운영 체제 동안 보존 되지 않습니다 업그레이드 합니다. ASP.NET Core 모듈이 OS 업그레이드를 하기 전에 설치 되어 있어야 하 고 다음 운영 체제 업그레이드 한 후 모든 AppPool 32 비트 모드에서 실행 하려고 하는 경우이 문제가 발생 합니다. OS 업그레이드 후 ASP.NET 핵심 모듈을 복구 합니다. 참조 [.NET 핵심 Windows Server 호스팅 번들을 설치](#install-the-net-core-windows-server-hosting-bundle)합니다. 선택 **복구** 설치 관리자를 실행 하는 경우.
+* <span data-ttu-id="57b0d-335">OS를 업그레이드하는 동안 **C:\Windows\SysWOW64\inetsrv** 디렉터리에 있는 비OS 파일은 보존되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-335">Non-OS files in the **C:\Windows\SysWOW64\inetsrv** directory are not preserved during an OS upgrade.</span></span> <span data-ttu-id="57b0d-336">OS를 업그레이드하기 전에 ASP.NET Core 모듈을 설치한 다음 OS를 업그레이드한 후에 32비트 모드에서 AppPool을 실행하려고 하면 이 문제가 발생합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-336">If you have the ASP.NET Core Module installed prior to an OS upgrade and then try to run any AppPool in 32-bit mode after an OS upgrade, you will encounter this issue.</span></span> <span data-ttu-id="57b0d-337">OS를 업그레이드한 후에 ASP.NET Core 모듈을 복구합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-337">After an OS upgrade, repair the ASP.NET Core Module.</span></span> <span data-ttu-id="57b0d-338">[.NET Core Windows Server 호스팅 번들 설치](#install-the-net-core-windows-server-hosting-bundle)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="57b0d-338">See [Install the .NET Core Windows Server Hosting bundle](#install-the-net-core-windows-server-hosting-bundle).</span></span> <span data-ttu-id="57b0d-339">설치 관리자를 실행할 때 **복구**를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-339">Select **Repair** when you run the installer.</span></span>
 
-### <a name="platform-conflicts-with-rid"></a>RID 사용 하 여 플랫폼 충돌
+### <a name="platform-conflicts-with-rid"></a><span data-ttu-id="57b0d-340">플랫폼이 RID와 충돌함</span><span class="sxs-lookup"><span data-stu-id="57b0d-340">Platform conflicts with RID</span></span>
 
-* **브라우저:** HTTP 오류 502.5-프로세스 실패
+* <span data-ttu-id="57b0d-341">**브라우저:** HTTP 오류 502.5 - 프로세스 오류</span><span class="sxs-lookup"><span data-stu-id="57b0d-341">**Browser:** HTTP Error 502.5 - Process Failure</span></span>
 
-* **응용 프로그램 로그:** 응용 프로그램 ' MACHINE/WEBROOT/APPHOST/MY_APPLICATION ' 실제 루트와 ' c:\{경로}\' 명령줄으로 프로세스를 시작 하지 못했습니다. ' "c:\\{경로} \my_application. { exe | dll을 (를) "', 오류 코드 = '&0;x80004005: ff입니다.
+* <span data-ttu-id="57b0d-342">**응용 프로그램 로그:** 실제 루트 'C:\{PATH}\'이(가) 있는 응용 프로그램 'MACHINE/WEBROOT/APPHOST/MY_APPLICATION'에서 "C:\\{PATH}\my_application.{exe|dll}" 명령줄로 프로세스를 시작하지 못했습니다., 오류 코드 = '0x80004005 : ff.</span><span class="sxs-lookup"><span data-stu-id="57b0d-342">**Application Log:** Application 'MACHINE/WEBROOT/APPHOST/MY_APPLICATION' with physical root 'C:\{PATH}\' failed to start process with commandline '"C:\\{PATH}\my_application.{exe|dll}" ', ErrorCode = '0x80004005 : ff.</span></span>
 
-* **ASP.NET 핵심 모듈 로그:** 처리 되지 않은 예외: System.BadImageFormatException: 'my_application.dll' 파일 또는 어셈블리를 로드할 수 없습니다. 잘못 된 형식으로 프로그램을 로드 하려고 했습니다.
+* <span data-ttu-id="57b0d-343">**ASP.NET Core 모듈 로그:** 처리되지 않은 예외: System.BadImageFormatException: 파일이나 어셈블리 'my_application.dll'을(를) 로드할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-343">**ASP.NET Core Module Log:** Unhandled Exception: System.BadImageFormatException: Could not load file or assembly 'my_application.dll'.</span></span> <span data-ttu-id="57b0d-344">프로그램을 잘못된 형식으로 로드하려고 했습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-344">An attempt was made to load a program with an incorrect format.</span></span>
 
-문제 해결:
+<span data-ttu-id="57b0d-345">문제 해결:</span><span class="sxs-lookup"><span data-stu-id="57b0d-345">Troubleshooting:</span></span>
 
-* Kestrel 응용 프로그램이 로컬로 실행을 확인 합니다. 프로세스 오류를 응용 프로그램 내의 문제 때문일 수 있습니다. 자세한 내용은 참조 [문제 해결 팁](#troubleshooting-tips)합니다.
+* <span data-ttu-id="57b0d-346">응용 프로그램이 Kestrel에서 로컬로 실행되는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-346">Confirm that the application runs locally on Kestrel.</span></span> <span data-ttu-id="57b0d-347">프로세스 오류는 응용 프로그램 내의 문제 때문일 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-347">A process failure might be the result of a problem within the application.</span></span> <span data-ttu-id="57b0d-348">자세한 내용은 [문제 해결 팁](#troubleshooting-tips)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="57b0d-348">For more information, see [Troubleshooting tips](#troubleshooting-tips).</span></span>
 
-* 설정 하지 않은 있는지 확인 한 `<PlatformTarget>` 에 프로그램 *.csproj* RID와 충돌 하는 합니다. 예를 들어 지정 하지 않는 한 `<PlatformTarget>` 의 `x86` 의 RID를 사용 하 여 게시 및 `win10-x64`를 사용 하 여 *dotnet 게시-c-r win10-x64 릴리스* 하거나 설정 하 여는 `<RuntimeIdentifiers>` 에 프로그램 *.csproj* 를 `win10-x64`. 프로젝트 경고나 오류 없이 게시 않지만 시스템에 위의 기록 된 예외와 함께 실패 합니다.
+* <span data-ttu-id="57b0d-349">*.csproj*에서 RID와 충돌하는 `<PlatformTarget>`을 설정하지 않았는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-349">Confirm that you didn't set a `<PlatformTarget>` in your *.csproj* that conflicts with the RID.</span></span> <span data-ttu-id="57b0d-350">예를 들어 *dotnet publish -c Release -r win10-x64*를 사용하거나 *.csproj*의 `<RuntimeIdentifiers>`를 `win10-x64`로 설정하여 `x86`인 `<PlatformTarget>`를 지정하지 않고 `win10-x64`인 RID를 사용하여 게시하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-350">For example, don't specify a `<PlatformTarget>` of `x86` and publish with an RID of `win10-x64`, either by using *dotnet publish -c Release -r win10-x64* or by setting the `<RuntimeIdentifiers>` in your *.csproj* to `win10-x64`.</span></span> <span data-ttu-id="57b0d-351">프로젝트는 경고 또는 오류 없이 게시되지만 시스템에서 위와 같이 로깅된 예외와 함께 실패합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-351">The project will publish without warning or error but fail with the above logged exceptions on the system.</span></span>
 
-* 이 예외가 응용 프로그램을 업그레이드할 때 Azure 앱 배포에 대해 발생 하 고 이전 배포에서 모든 파일을 수동으로 삭제 최신 어셈블리를 배포 합니다. 호환 되지 않는 어셈블리 느린 될 수는 `System.BadImageFormatException` 업그레이드 된 응용 프로그램을 배포 하는 경우는 예외입니다.
+* <span data-ttu-id="57b0d-352">Azure 앱 배포에서 응용 프로그램을 업그레이드하고 새 어셈블리를 배포할 때 이 예외가 발생하면 이전 배포에서 모든 파일을 수동으로 삭제합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-352">If this exception occurs for an Azure Apps deployment when upgrading an application and deploying newer assemblies, manually delete all files from the prior deployment.</span></span> <span data-ttu-id="57b0d-353">호환되지 않는 어셈블리가 오랫동안 남아 있으면 업그레이드된 응용 프로그램을 배포할 때 `System.BadImageFormatException` 예외가 발생할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-353">Lingering incompatible assemblies can result in a `System.BadImageFormatException` exception when deploying an upgraded app.</span></span>
 
-### <a name="uri-endpoint-wrong-or-stopped-website"></a>URI 끝점 잘못 되었거나 중지 된 웹 사이트
+### <a name="uri-endpoint-wrong-or-stopped-website"></a><span data-ttu-id="57b0d-354">URI 끝점이 잘못되었거나 중지된 웹 사이트</span><span class="sxs-lookup"><span data-stu-id="57b0d-354">URI endpoint wrong or stopped website</span></span>
 
-* **브라우저:** ERR_CONNECTION_REFUSED
+* <span data-ttu-id="57b0d-355">**브라우저:** ERR_CONNECTION_REFUSED</span><span class="sxs-lookup"><span data-stu-id="57b0d-355">**Browser:** ERR_CONNECTION_REFUSED</span></span>
 
-* **응용 프로그램 로그:** 항목이
+* <span data-ttu-id="57b0d-356">**응용 프로그램 로그:** 항목 없음</span><span class="sxs-lookup"><span data-stu-id="57b0d-356">**Application Log:** No entry</span></span>
 
-* **ASP.NET 핵심 모듈 로그:** 로그 파일이 생성 되지 않았습니다
+* <span data-ttu-id="57b0d-357">**ASP.NET Core 모듈 로그:** 로그 파일이 만들어지지 않았습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-357">**ASP.NET Core Module Log:** Log file not created</span></span>
 
-문제 해결:
+<span data-ttu-id="57b0d-358">문제 해결:</span><span class="sxs-lookup"><span data-stu-id="57b0d-358">Troubleshooting:</span></span>
 
-* 응용 프로그램에 대 한 올바른 URI 끝점을 사용 하는 것을 확인 합니다. 바인딩을 확인 합니다.
+* <span data-ttu-id="57b0d-359">응용 프로그램에 올바른 URI 끝점을 사용하고 있는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-359">Confirm you are using the correct URI endpoint for the application.</span></span> <span data-ttu-id="57b0d-360">바인딩을 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-360">Check your bindings.</span></span>
 
-* IIS 웹 사이트에 없는 확인는 *Stopped* 상태입니다.
+* <span data-ttu-id="57b0d-361">IIS 웹 사이트가 *중지됨* 상태가 아닌지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-361">Confirm that the IIS website is not in the *Stopped* state.</span></span>
 
-### <a name="corewebengine-or-w3svc-server-features-disabled"></a>CoreWebEngine 또는 W3SVC 서버 기능 사용 안 함
+### <a name="corewebengine-or-w3svc-server-features-disabled"></a><span data-ttu-id="57b0d-362">CoreWebEngine 또는 W3SVC 서버 기능이 사용되지 않음</span><span class="sxs-lookup"><span data-stu-id="57b0d-362">CoreWebEngine or W3SVC server features disabled</span></span>
 
-* **OS 예외:** ASP.NET 핵심 모듈을 사용 하 여 IIS 7.0 CoreWebEngine 및 W3SVC 기능을 설치 해야 합니다.
+* <span data-ttu-id="57b0d-363">**OS 예외:** ASP.NET Core 모듈을 사용하려면 IIS 7.0 CoreWebEngine 및 W3SVC 기능이 설치되어 있어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-363">**OS Exception:** The IIS 7.0 CoreWebEngine and W3SVC features must be installed to use the ASP.NET Core Module.</span></span>
 
-문제 해결:
+<span data-ttu-id="57b0d-364">문제 해결:</span><span class="sxs-lookup"><span data-stu-id="57b0d-364">Troubleshooting:</span></span>
 
-* 적절 한 역할 및 기능을 설정 했는지 확인 합니다. 참조 [IIS 구성](#iis-configuration)합니다.
+* <span data-ttu-id="57b0d-365">적절한 역할과 기능을 사용하도록 설정했는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-365">Confirm that you have enabled the proper role and features.</span></span> <span data-ttu-id="57b0d-366">[IIS 구성](#iis-configuration)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="57b0d-366">See [IIS Configuration](#iis-configuration).</span></span>
 
-### <a name="incorrect-website-physical-path-or-application-missing"></a>실제 경로 잘못 된 웹 사이트 또는 응용 프로그램이 없습니다.
+### <a name="incorrect-website-physical-path-or-application-missing"></a><span data-ttu-id="57b0d-367">잘못된 웹 사이트 실제 경로 또는 누락된 응용 프로그램</span><span class="sxs-lookup"><span data-stu-id="57b0d-367">Incorrect website physical path or application missing</span></span>
 
-* **브라우저:** 403 사용할 수 없음-액세스가 거부 되었습니다 **-또는--** 403.14 사용할 수 없음-웹 서버가이 디렉터리의 내용을 표시 하지 못하도록 구성 됩니다.
+* <span data-ttu-id="57b0d-368">**브라우저:** 403 사용할 수 없음 - 액세스가 거부되었습니다.  **- 또는 -**  403.14 사용할 수 없음 - 웹 서버가 이 디렉터리의 내용을 표시하지 못하도록 구성되었습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-368">**Browser:** 403 Forbidden - Access is denied **--OR--** 403.14 Forbidden - The Web server is configured to not list the contents of this directory.</span></span>
 
-* **응용 프로그램 로그:** 항목이
+* <span data-ttu-id="57b0d-369">**응용 프로그램 로그:** 항목 없음</span><span class="sxs-lookup"><span data-stu-id="57b0d-369">**Application Log:** No entry</span></span>
 
-* **ASP.NET 핵심 모듈 로그:** 로그 파일이 생성 되지 않았습니다
+* <span data-ttu-id="57b0d-370">**ASP.NET Core 모듈 로그:** 로그 파일이 만들어지지 않았습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-370">**ASP.NET Core Module Log:** Log file not created</span></span>
 
-문제 해결:
+<span data-ttu-id="57b0d-371">문제 해결:</span><span class="sxs-lookup"><span data-stu-id="57b0d-371">Troubleshooting:</span></span>
 
-* IIS 웹 사이트 확인 **기본 설정** 및 실제 응용 프로그램 폴더입니다. IIS 웹 사이트에 있는 폴더에 응용 프로그램 인지 확인 **실제 경로**합니다.
+* <span data-ttu-id="57b0d-372">IIS 웹 사이트 **기본 설정**과 실제 응용 프로그램 폴더를 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-372">Check the IIS website **Basic Settings** and the physical application folder.</span></span> <span data-ttu-id="57b0d-373">응용 프로그램이 IIS 웹 사이트 **실제 경로**의 폴더에 있는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-373">Confirm that the application is in the folder at the IIS website **Physical path**.</span></span>
 
-### <a name="incorrect-role-module-not-installed-or-incorrect-permissions"></a>잘못 된 역할, 설치 되지 않은 모듈 또는 잘못 된 사용 권한
+### <a name="incorrect-role-module-not-installed-or-incorrect-permissions"></a><span data-ttu-id="57b0d-374">잘못된 역할, 설치되지 않은 모듈 또는 잘못된 권한</span><span class="sxs-lookup"><span data-stu-id="57b0d-374">Incorrect role, module not installed, or incorrect permissions</span></span>
 
-* **브라우저:** 내부 서버 오류 500.19-페이지에 대 한 관련된 구성 데이터가 잘못 되어 요청된 된 페이지를 액세스할 수 없습니다.
+* <span data-ttu-id="57b0d-375">**브라우저:** 500.19 내부 서버 오류 - 요청된 페이지와 관련된 구성 데이터가 잘못되어 해당 페이지에 액세스할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-375">**Browser:** 500.19 Internal Server Error - The requested page cannot be accessed because the related configuration data for the page is invalid.</span></span>
 
-* **응용 프로그램 로그:** 항목이
+* <span data-ttu-id="57b0d-376">**응용 프로그램 로그:** 항목 없음</span><span class="sxs-lookup"><span data-stu-id="57b0d-376">**Application Log:** No entry</span></span>
 
-* **ASP.NET 핵심 모듈 로그:** 로그 파일이 생성 되지 않았습니다
+* <span data-ttu-id="57b0d-377">**ASP.NET Core 모듈 로그:** 로그 파일이 만들어지지 않았습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-377">**ASP.NET Core Module Log:** Log file not created</span></span>
 
-문제 해결:
+<span data-ttu-id="57b0d-378">문제 해결:</span><span class="sxs-lookup"><span data-stu-id="57b0d-378">Troubleshooting:</span></span>
 
-* 적절 한 역할을 설정 했는지 확인 합니다. 참조 [IIS 구성](#iis-configuration)합니다.
+* <span data-ttu-id="57b0d-379">적절한 역할을 사용하도록 설정했는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-379">Confirm that you have enabled the proper role.</span></span> <span data-ttu-id="57b0d-380">[IIS 구성](#iis-configuration)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="57b0d-380">See [IIS Configuration](#iis-configuration).</span></span>
 
-* 확인 **프로그램 &amp; 기능** 있는지 확인 하 고는 **Microsoft ASP.NET 핵심 모듈** 설치가 완료 된 후입니다. 하는 경우는 **Microsoft ASP.NET 핵심 모듈** 있지 않으면 설치 된 프로그램 목록에 있는 모듈을 설치 합니다. 참조 [.NET 핵심 Windows Server 호스팅 번들을 설치](#install-the-net-core-windows-server-hosting-bundle)합니다.
+* <span data-ttu-id="57b0d-381">**프로그램 &amp; 기능**을 확인하고 **Microsoft ASP.NET Core 모듈**이 설치되어 있는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-381">Check **Programs &amp; Features** and confirm that the **Microsoft ASP.NET Core Module** has been installed.</span></span> <span data-ttu-id="57b0d-382">**Microsoft ASP.NET Core 모듈**이 설치된 프로그램 목록에 없으면 해당 모듈을 설치합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-382">If the **Microsoft ASP.NET Core Module** is not present in the list of installed programs, install the module.</span></span> <span data-ttu-id="57b0d-383">[.NET Core Windows Server 호스팅 번들 설치](#install-the-net-core-windows-server-hosting-bundle)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="57b0d-383">See [Install the .NET Core Windows Server Hosting bundle](#install-the-net-core-windows-server-hosting-bundle).</span></span>
 
-* 다음 사항을 확인는 **응용 프로그램 풀 > 프로세스 모델 > Identity** 로 설정 된 **ApplicationPoolIdentity** 또는 사용자의 사용자 지정 id에 응용 프로그램의 배포 폴더에 액세스할 수 있는 권한이 있습니다.
+* <span data-ttu-id="57b0d-384">**응용 프로그램 풀> 프로세스 모델 > ID**가 **ApplicationPoolIdentity**로 설정되어 있는지 또는 사용자 지정 ID에 응용 프로그램의 배포 폴더에 액세스할 수 있는 올바른 권한아 있는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-384">Make sure that the **Application Pool > Process Model > Identity** is set to **ApplicationPoolIdentity** or your custom identity has the correct permissions to access the application's deployment folder.</span></span>
 
-### <a name="incorrect-processpath-missing-path-variable-hosting-bundle-not-installed-systemiis-not-restarted-vc-redistributable-not-installed-or-dotnetexe-access-violation"></a>잘못 된 processPath, 누락 된 PATH 변수, 설치 되지 않은 호스팅 번들, 시스템/IIS를 다시 시작 하지, VC + + 재배포 가능 패키지를 설치 하지 또는 dotnet.exe 액세스 위반
+### <a name="incorrect-processpath-missing-path-variable-hosting-bundle-not-installed-systemiis-not-restarted-vc-redistributable-not-installed-or-dotnetexe-access-violation"></a><span data-ttu-id="57b0d-385">잘못된 processPath, 누락된 PATH 변수, 설치되지 않은 호스팅 번들, 다시 시작되지 않은 시스템/IIS, 설치되지 않은 VC++ 재배포 가능 패키지 또는 dotnet.exe 액세스 위반</span><span class="sxs-lookup"><span data-stu-id="57b0d-385">Incorrect processPath, missing PATH variable, hosting bundle not installed, system/IIS not restarted, VC++ Redistributable not installed, or dotnet.exe access violation</span></span>
 
-* **브라우저:** HTTP 오류 502.5-프로세스 실패
+* <span data-ttu-id="57b0d-386">**브라우저:** HTTP 오류 502.5 - 프로세스 오류</span><span class="sxs-lookup"><span data-stu-id="57b0d-386">**Browser:** HTTP Error 502.5 - Process Failure</span></span>
 
-* **응용 프로그램 로그:** 응용 프로그램 ' MACHINE/WEBROOT/APPHOST/MY_APPLICATION ' 실제 루트와 ' c:\\{경로}\' commandline '".\my_application.exe" ' 오류 코드와 프로세스를 시작 하지 못했습니다 ' 0x80070002 =: 0.
+* <span data-ttu-id="57b0d-387">**응용 프로그램 로그:** 실제 루트 'C:\\{PATH}\'이(가) 있는 응용 프로그램 'MACHINE/WEBROOT/APPHOST/MY_APPLICATION'에서 '".\my_application.exe"' 명령줄로 프로세스를 시작하지 못했습니다., 오류 코드 = '0x80070002 : 0.</span><span class="sxs-lookup"><span data-stu-id="57b0d-387">**Application Log:** Application 'MACHINE/WEBROOT/APPHOST/MY_APPLICATION' with physical root 'C:\\{PATH}\' failed to start process with commandline '".\my_application.exe" ', ErrorCode = '0x80070002 : 0.</span></span>
 
-* **ASP.NET 핵심 모듈 로그:** 로그 파일 생성 되지만 비어
+* <span data-ttu-id="57b0d-388">**ASP.NET Core 모듈 로그:** 로그 파일이 만들어졌지만 비어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-388">**ASP.NET Core Module Log:** Log file created but empty</span></span>
 
-문제 해결:
+<span data-ttu-id="57b0d-389">문제 해결:</span><span class="sxs-lookup"><span data-stu-id="57b0d-389">Troubleshooting:</span></span>
 
-* Kestrel 응용 프로그램이 로컬로 실행을 확인 합니다. 프로세스 오류를 응용 프로그램 내의 문제 때문일 수 있습니다. 자세한 내용은 참조 [문제 해결 팁](#troubleshooting-tips)합니다.
+* <span data-ttu-id="57b0d-390">응용 프로그램이 Kestrel에서 로컬로 실행되는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-390">Confirm that the application runs locally on Kestrel.</span></span> <span data-ttu-id="57b0d-391">프로세스 오류는 응용 프로그램 내의 문제 때문일 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-391">A process failure might be the result of a problem within the application.</span></span> <span data-ttu-id="57b0d-392">자세한 내용은 [문제 해결 팁](#troubleshooting-tips)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="57b0d-392">For more information, see [Troubleshooting tips](#troubleshooting-tips).</span></span>
 
-* 확인는 *processPath* 특성에 `<aspNetCore>` 요소에 *web.config* 이 있는지 확인 하려면 *dotnet* 프레임 워크 종속 배포 또는 *.\my_application.exe* 자체 포함 된 배포에 대 한 합니다.
+* <span data-ttu-id="57b0d-393">*web.config*의 `<aspNetCore>` 요소에서 *processPath* 특성을 확인하여 프레임워크 종속 배포에 대한 *dotnet*인지 또는 자체 포함 배포에 대한 *\my_application.exe*인지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-393">Check the *processPath* attribute on the `<aspNetCore>` element in *web.config* to confirm that it is *dotnet* for a framework-dependent deployment or *.\my_application.exe* for a self-contained deployment.</span></span>
 
-* 프레임 워크에 종속적인 배포용 *dotnet.exe* 경로 설정을 통해 액세스할 수 없습니다. 확인 하는 * C:\Program Files\dotnet\* 시스템 경로 설정에 있습니다.
+* <span data-ttu-id="57b0d-394">프레임워크 종속 배포의 경우 *dotnet.exe*에서 PATH 설정을 통해 액세스하지 못할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-394">For a framework-dependent deployment, *dotnet.exe* might not be accessible via the PATH settings.</span></span> <span data-ttu-id="57b0d-395">시스템 PATH 설정에 *C:\Program Files\dotnet\*이 있는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-395">Confirm that *C:\Program Files\dotnet\* exists in the System PATH settings.</span></span>
 
-* 프레임 워크에 종속적인 배포용 *dotnet.exe* 응용 프로그램 풀의 사용자 id에 액세스할 수 없습니다. AppPool 사용자 id에 대 한 액세스에 확인 된 *C:\Program Files\dotnet* 디렉터리입니다. AppPool 사용자 id에 대해 구성 된 거부 규칙 확인은 *C:\Program Files\dotnet* 및 응용 프로그램 디렉터리입니다.
+* <span data-ttu-id="57b0d-396">프레임워크 종속 배포의 경우 *dotnet.exe*에서 응용 프로그램 풀의 사용자 ID에 액세스하지 못할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-396">For a framework-dependent deployment, *dotnet.exe* might not be accessible for the user identity of the Application Pool.</span></span> <span data-ttu-id="57b0d-397">AppPool 사용자 ID에 *C:\Program Files\dotnet* 디렉터리에 대한 액세스 권한이 있는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-397">Confirm that the AppPool user identity has access to the *C:\Program Files\dotnet* directory.</span></span> <span data-ttu-id="57b0d-398">*C:\Program Files\dotnet* 및 응용 프로그램 디렉터리에 AppPool 사용자 ID에 대해 구성된 거부 규칙이 없는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-398">Confirm that there are no deny rules configured for the AppPool user identity on the *C:\Program Files\dotnet* and application directories.</span></span>
 
-* 프레임 워크 종속 배포 배포 및.NET Core IIS를 다시 시작 하지 않고 설치 않은 될 수 있습니다. 서버를 다시 시작 하거나 실행 하 여 IIS를 다시 시작 **net stop가 /y** 뒤 **net 시작 w3svc** 명령 프롬프트에서.
+* <span data-ttu-id="57b0d-399">프레임워크 종속 배포를 배포한 다음 IIS를 다시 시작하지 않고 .NET Core를 설치했을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-399">You may have deployed a framework-dependent deployment and installed .NET Core without restarting IIS.</span></span> <span data-ttu-id="57b0d-400">서버를 다시 시작하거나 명령 프롬프트에서 **net stop was /y**에 이어 **net start w3svc**를 실행하여 IIS를 다시 시작합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-400">Either restart the server or restart IIS by executing **net stop was /y** followed by **net start w3svc** from a command prompt.</span></span>
 
-* .NET Core 런타임 호스팅 시스템에 설치 하지 않고 프레임 워크 종속 배포를 배포 했을 수 있습니다. 경우 하려는 프레임 워크 종속 배포를 배포 하 고 실행 하는.NET Core 런타임 설치 하지 않은 **번들 installer.NET 핵심 Windows Server 호스팅** 시스템에 있습니다. 참조 [.NET 핵심 Windows Server 호스팅 번들을 설치](#install-the-net-core-windows-server-hosting-bundle)합니다. 인터넷에 연결 하지 않고 시스템에.NET Core 런타임을 설치를 시도 하는 경우 가져올에서 런타임을 [.NET 다운로드](https://www.microsoft.com/net/download/core) 호스팅 번들 설치 관리자를 실행 관리자 명령 프롬프트에서 설치를 사용 하 여 모듈 및 **DotNetCore.1.1.0 WindowsHosting.exe OPT_INSTALL_LTS_REDIST&0; OPT_INSTALL_FTS_REDIST = =&0;**합니다. 시스템을 다시 시작 하거나 실행 하 여 IIS를 다시 시작 하 여 설치를 완료 **net stop가 /y** 뒤 **net 시작 w3svc** 명령 프롬프트에서.
+* <span data-ttu-id="57b0d-401">호스팅 시스템에 .NET Core 런타임을 설치하지 않고 프레임워크 종속 배포를 배포했을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-401">You may have deployed a framework-dependent deployment without installing the .NET Core runtime on the hosting system.</span></span> <span data-ttu-id="57b0d-402">프레임워크 종속 배포를 배포하려고 하지만 .NET Core 런타임을 설치하지 않은 경우 시스템에서 **.NET Core Windows Server 호스팅 번들 설치 관리자**를 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-402">If you're attempting to deploy a framework-dependent deployment and have not installed the .NET Core runtime, run the **.NET Core Windows Server Hosting bundle installer** on the system.</span></span> <span data-ttu-id="57b0d-403">[.NET Core Windows Server 호스팅 번들 설치](#install-the-net-core-windows-server-hosting-bundle)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="57b0d-403">See [Install the .NET Core Windows Server Hosting bundle](#install-the-net-core-windows-server-hosting-bundle).</span></span> <span data-ttu-id="57b0d-404">인터넷에 연결되지 않은 시스템에 .NET Core 런타임을 설치하려는 경우 [.NET 다운로드](https://www.microsoft.com/net/download/core)에서 런타임을 얻은 다음 호스팅 번들 설치 관리자를 실행하여 ASP.NET Core 모듈을 설치합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-404">If you are attempting to install the .NET Core runtime on a system without an Internet connection, obtain the runtime from [.NET Downloads](https://www.microsoft.com/net/download/core) and run the hosting bundle installer to install the ASP.NET Core Module.</span></span> <span data-ttu-id="57b0d-405">설치를 완료하려면 시스템을 다시 시작하거나 명령 프롬프트에서 **net stop was /y**에 이어 **net start w3svc**를 실행하여 IIS를 다시 시작합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-405">Complete the installation by restarting the system or restarting IIS by executing **net stop was /y** followed by **net start w3svc** from a command prompt.</span></span>
 
-* 프레임 워크 종속 배포 배포 및.NET Core 시스템/IIS를 다시 시작 하지 않고 설치 않은 될 수 있습니다. 시스템을 다시 시작 하거나 실행 하 여 IIS를 다시 시작 **net stop가 /y** 뒤 **net 시작 w3svc** 명령 프롬프트에서.
+* <span data-ttu-id="57b0d-406">프레임워크 종속 배포를 배포한 다음 시스템/IIS를 다시 시작하지 않고 .NET Core를 설치했을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-406">You may have deployed a framework-dependent deployment and installed .NET Core without restarting the system/IIS.</span></span> <span data-ttu-id="57b0d-407">시스템을 다시 시작하거나 명령 프롬프트에서 **net stop was /y**에 이어 **net start w3svc**를 실행하여 IIS를 다시 시작합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-407">Either restart the system or restart IIS by executing **net stop was /y** followed by **net start w3svc** from a command prompt.</span></span>
 
-* 프레임 워크 종속 배포 배포 했을 수 및 *Microsoft Visual c + + 2015 재배포 가능 (x64)* 시스템에 설치 되지 않았습니다. 설치 관리자를 얻을 수 있습니다는 [Microsoft 다운로드 센터](https://www.microsoft.com/download/details.aspx?id=53840)합니다.
+* <span data-ttu-id="57b0d-408">프레임워크 종속 배포를 배포했을 수 있지만 *Microsoft Visual C++ 2015(x64) 재배포 가능 패키지*가 시스템에 설치되어 있지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-408">You may have deployed a framework-dependent deployment and the *Microsoft Visual C++ 2015 Redistributable (x64)* is not installed on the system.</span></span> <span data-ttu-id="57b0d-409">[Microsoft 다운로드 센터](https://www.microsoft.com/download/details.aspx?id=53840)에서 설치 관리자를 얻을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-409">You may obtain an installer from the [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=53840).</span></span>
 
-### <a name="incorrect-arguments-of-aspnetcore-element"></a>잘못 된 인수를 \<aspNetCore\> 요소
+### <a name="incorrect-arguments-of-aspnetcore-element"></a><span data-ttu-id="57b0d-410">\<aspNetCore\> 요소의 잘못된 인수</span><span class="sxs-lookup"><span data-stu-id="57b0d-410">Incorrect arguments of \<aspNetCore\> element</span></span>
 
-* **브라우저:** HTTP 오류 502.5-프로세스 실패
+* <span data-ttu-id="57b0d-411">**브라우저:** HTTP 오류 502.5 - 프로세스 오류</span><span class="sxs-lookup"><span data-stu-id="57b0d-411">**Browser:** HTTP Error 502.5 - Process Failure</span></span>
 
-* **응용 프로그램 로그:** 응용 프로그램 ' MACHINE/WEBROOT/APPHOST/MY_APPLICATION ' 실제 루트와 ' c:\\{경로}\' 명령줄 오류 코드 ' "dotnet".\my_application.dll'와 프로세스를 시작 하지 못했습니다 ' 0x80004005 =: 80008081 합니다.
+* <span data-ttu-id="57b0d-412">**응용 프로그램 로그:** 실제 루트 'C:\\{PATH}\'이(가) 있는 응용 프로그램 'MACHINE/WEBROOT/APPHOST/MY_APPLICATION'에서 '"dotnet" .\my_application.dll' 명령줄로 프로세스를 시작하지 못했습니다., 오류 코드 = '0x80004005 : 80008081.</span><span class="sxs-lookup"><span data-stu-id="57b0d-412">**Application Log:** Application 'MACHINE/WEBROOT/APPHOST/MY_APPLICATION' with physical root 'C:\\{PATH}\' failed to start process with commandline '"dotnet" .\my_application.dll', ErrorCode = '0x80004005 : 80008081.</span></span>
 
-* **ASP.NET 핵심 모듈 로그:** 실행 하려면 응용 프로그램이 없습니다: 'PATH\my_application.dll'
+* <span data-ttu-id="57b0d-413">**ASP.NET Core 모듈 로그:** 실행할 응용 프로그램이 없습니다.: 'PATH\my_application.dll'</span><span class="sxs-lookup"><span data-stu-id="57b0d-413">**ASP.NET Core Module Log:** The application to execute does not exist: 'PATH\my_application.dll'</span></span>
 
-문제 해결:
+<span data-ttu-id="57b0d-414">문제 해결:</span><span class="sxs-lookup"><span data-stu-id="57b0d-414">Troubleshooting:</span></span>
 
-* Kestrel 응용 프로그램이 로컬로 실행을 확인 합니다. 프로세스 오류를 응용 프로그램 내의 문제 때문일 수 있습니다. 자세한 내용은 참조 [문제 해결 팁](#troubleshooting-tips)합니다.
+* <span data-ttu-id="57b0d-415">응용 프로그램이 Kestrel에서 로컬로 실행되는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-415">Confirm that the application runs locally on Kestrel.</span></span> <span data-ttu-id="57b0d-416">프로세스 오류는 응용 프로그램 내의 문제 때문일 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-416">A process failure might be the result of a problem within the application.</span></span> <span data-ttu-id="57b0d-417">자세한 내용은 [문제 해결 팁](#troubleshooting-tips)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="57b0d-417">For more information, see [Troubleshooting tips](#troubleshooting-tips).</span></span>
 
-* 검사는 *인수* 특성에 `<aspNetCore>` 요소에 *web.config* 중 하나 인지 확인 하려면 (a) *.\my_applciation.dll* 프레임 워크 종속 배포; 또는 (b) 현재, 빈 문자열에 대 한 (*인수 = ""*), 또는 응용 프로그램의 인수 목록 (*인수 = "arg1, arg2,..."*) 자체 포함 된 배포에 대 한.
+* <span data-ttu-id="57b0d-418">*web.config*의 `<aspNetCore>` 요소에서 *arguments* 특성을 검사하여 (a) 프레임워크 종속 배포에 대한 *.\my_applciation.dll*인지, 또는 (b) 없는 경우 빈 문자열(*arguments=""*)이거나 자체 포함 배포에 대한 응용 프로그램의 인수(*arguments="arg1, arg2, ..."*) 목록인지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-418">Examine the *arguments* attribute on the `<aspNetCore>` element in *web.config* to confirm that it is either (a) *.\my_applciation.dll* for a framework-dependent deployment; or (b) not present, an empty string (*arguments=""*), or a list of your application's arguments (*arguments="arg1, arg2, ..."*) for a self-contained deployment.</span></span>
 
-### <a name="missing-net-framework-version"></a>누락 된.NET Framework 버전
+### <a name="missing-net-framework-version"></a><span data-ttu-id="57b0d-419">누락된 .NET Framework 버전</span><span class="sxs-lookup"><span data-stu-id="57b0d-419">Missing .NET Framework version</span></span>
 
-* **브라우저:** 502.3 잘못 된 게이트웨이-요청을 라우팅하는 동안 연결 오류가 했습니다.
+* <span data-ttu-id="57b0d-420">**브라우저:** 502.3 잘못된 게이트웨이 - 요청을 라우팅하는 동안 연결 오류가 발생했습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-420">**Browser:** 502.3 Bad Gateway - There was a connection error while trying to route the request.</span></span>
 
-* **응용 프로그램 로그:** ErrorCode 물리적 루트와 응용 프로그램 ' MACHINE/WEBROOT/APPHOST/MY_APPLICATION ' = ' c:\\{경로}\' 명령줄 오류 코드 ' "dotnet".\my_application.dll'와 프로세스를 시작 하지 못했습니다 ' 0x80004005 =: 80008081 합니다.
+* <span data-ttu-id="57b0d-421">**응용 프로그램 로그:** 오류 코드 = 실제 루트 'C:\\{PATH}\'이(가) 있는 응용 프로그램 'MACHINE/WEBROOT/APPHOST/MY_APPLICATION'에서 '"dotnet" .\my_application.dll' 명령줄로 프로세스를 시작하지 못했습니다., 오류 코드 = '0x80004005 : 80008081.</span><span class="sxs-lookup"><span data-stu-id="57b0d-421">**Application Log:** ErrorCode = Application 'MACHINE/WEBROOT/APPHOST/MY_APPLICATION' with physical root 'C:\\{PATH}\' failed to start process with commandline '"dotnet" .\my_application.dll', ErrorCode = '0x80004005 : 80008081.</span></span>
 
-* **ASP.NET 핵심 모듈 로그:** 메서드, 파일 또는 어셈블리 예외 없습니다. 메서드, 파일 또는 예외에 지정 된 어셈블리는.NET Framework 메서드, 파일 또는 어셈블리.
+* <span data-ttu-id="57b0d-422">**ASP.NET Core 모듈 로그:** 메서드, 파일 또는 어셈블리 예외가 없습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-422">**ASP.NET Core Module Log:** Missing method, file, or assembly exception.</span></span> <span data-ttu-id="57b0d-423">예외에 지정된 메서드, 파일 또는 어셈블리는 .NET Framework 메서드, 파일 또는 어셈블리입니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-423">The method, file, or assembly specified in the exception is a .NET Framework method, file, or assembly.</span></span>
 
-문제 해결:
+<span data-ttu-id="57b0d-424">문제 해결:</span><span class="sxs-lookup"><span data-stu-id="57b0d-424">Troubleshooting:</span></span>
 
-* 시스템에서 누락 된.NET Framework 버전을 설치 합니다.
+* <span data-ttu-id="57b0d-425">시스템에서 누락된 .NET Framework 버전을 설치합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-425">Install the .NET Framework version missing from the system.</span></span>
 
-* 프레임 워크 종속 배포의 경우 올바른 런타임 시스템에 설치 되어 있는지 확인 합니다. 예제에서는 1.0에서 1.1로 프로젝트를 업그레이드, 호스팅 시스템에 배포 하 고이 예외를 수신 하는 경우 확인에 대 한 호스팅 시스템에 1.1 framework를 설치 합니다.
+* <span data-ttu-id="57b0d-426">프레임워크 종속 배포의 경우 시스템에 올바른 런타임이 설치되어 있는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-426">For a framework-dependent deployment, confirm that you have the correct runtime installed on the system.</span></span> <span data-ttu-id="57b0d-427">예를 들어 프로젝트를 1.0에서 1.1로 업그레이드하고 호스팅 시스템에 배포한 다음 이 예외가 발생하면 호스팅 시스템에 Framework 1.1을 설치해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-427">For example if you upgrade a project from 1.0 to 1.1, deploy to the hosting system, and receive this exception, ensure you install the 1.1 framework on the hosting system.</span></span>
 
-### <a name="stopped-application-pool"></a>중지 된 응용 프로그램 풀
+### <a name="stopped-application-pool"></a><span data-ttu-id="57b0d-428">중지된 응용 프로그램 풀</span><span class="sxs-lookup"><span data-stu-id="57b0d-428">Stopped Application Pool</span></span>
 
-* **브라우저:** 503 서비스를 사용할 수 없음
+* <span data-ttu-id="57b0d-429">**브라우저:** 503 서비스를 사용할 수 없음</span><span class="sxs-lookup"><span data-stu-id="57b0d-429">**Browser:** 503 Service Unavailable</span></span>
 
-* **응용 프로그램 로그:** 항목이
+* <span data-ttu-id="57b0d-430">**응용 프로그램 로그:** 항목 없음</span><span class="sxs-lookup"><span data-stu-id="57b0d-430">**Application Log:** No entry</span></span>
 
-* **ASP.NET 핵심 모듈 로그:** 로그 파일이 생성 되지 않았습니다
+* <span data-ttu-id="57b0d-431">**ASP.NET Core 모듈 로그:** 로그 파일이 만들어지지 않았습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-431">**ASP.NET Core Module Log:** Log file not created</span></span>
 
-문제 해결
+<span data-ttu-id="57b0d-432">문제 해결</span><span class="sxs-lookup"><span data-stu-id="57b0d-432">Troubleshooting</span></span>
 
-* 응용 프로그램 풀에 없는 확인은 *Stopped* 상태입니다.
+* <span data-ttu-id="57b0d-433">응용 프로그램 풀이 *중지됨* 상태가 아닌지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-433">Confirm that the Application Pool is not in the *Stopped* state.</span></span>
 
-### <a name="iis-integration-middleware-not-implemented"></a>IIS 통합 미들웨어 구현 되지 않았습니다
+### <a name="iis-integration-middleware-not-implemented"></a><span data-ttu-id="57b0d-434">IIS 통합 미들웨어가 구현되지 않음</span><span class="sxs-lookup"><span data-stu-id="57b0d-434">IIS Integration middleware not implemented</span></span>
 
-* **브라우저:** HTTP 오류 502.5-프로세스 실패
+* <span data-ttu-id="57b0d-435">**브라우저:** HTTP 오류 502.5 - 프로세스 오류</span><span class="sxs-lookup"><span data-stu-id="57b0d-435">**Browser:** HTTP Error 502.5 - Process Failure</span></span>
 
-* **응용 프로그램 로그:** 응용 프로그램 ' MACHINE/WEBROOT/APPHOST/MY_APPLICATION ' 실제 루트와 ' c:\\{경로}\' 명령줄을 사용 하 여 프로세스를 만든 ' "c:\\{경로} \my_application. { exe | dll을 (를) "' 하지만 손상 또는 응답 하지 않았습니다 또는 ErrorCode 주어진된 포트 '{PORT}'에서 수신 하지 않은 '0x800705b4' =
+* <span data-ttu-id="57b0d-436">**응용 프로그램 로그:** 실제 루트 'C:\\{PATH}\'이(가) 있는 응용 프로그램 'MACHINE/WEBROOT/APPHOST/MY_APPLICATION'에서 '"C:\\{PATH}\my_application.{exe|dll}"'명령줄로 프로세스를 만들었지만 지정된 포트 '{PORT}'에서 충돌하거나 응답하지 않거나 수신 대기하지 않습니다., 오류 코드 = '0x800705b4'</span><span class="sxs-lookup"><span data-stu-id="57b0d-436">**Application Log:** Application 'MACHINE/WEBROOT/APPHOST/MY_APPLICATION' with physical root 'C:\\{PATH}\' created process with commandline '"C:\\{PATH}\my_application.{exe|dll}" ' but either crashed or did not reponse or did not listen on the given port '{PORT}', ErrorCode = '0x800705b4'</span></span>
 
-* **ASP.NET 핵심 모듈 로그:** 로그 파일 생성 되 고 정상 작동을 보여 줍니다.
+* <span data-ttu-id="57b0d-437"> **ASP.NET Core 모듈 로그:**  로그 파일이 만들어졌고 정상 작동을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-437">**ASP.NET Core Module Log:** Log file created and shows normal operation.</span></span>
 
-문제 해결
+<span data-ttu-id="57b0d-438">문제 해결</span><span class="sxs-lookup"><span data-stu-id="57b0d-438">Troubleshooting</span></span>
 
-* Kestrel 응용 프로그램이 로컬로 실행을 확인 합니다. 프로세스 오류를 응용 프로그램 내의 문제 때문일 수 있습니다. 자세한 내용은 참조 [문제 해결 팁](#troubleshooting-tips)합니다.
+* <span data-ttu-id="57b0d-439">응용 프로그램이 Kestrel에서 로컬로 실행되는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-439">Confirm that the application runs locally on Kestrel.</span></span> <span data-ttu-id="57b0d-440">프로세스 오류는 응용 프로그램 내의 문제 때문일 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-440">A process failure might be the result of a problem within the application.</span></span> <span data-ttu-id="57b0d-441">자세한 내용은 [문제 해결 팁](#troubleshooting-tips)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="57b0d-441">For more information, see [Troubleshooting tips](#troubleshooting-tips).</span></span>
 
-* 호출 하 여 IIS 통합 미들웨어를 올바르게 참조 한 확인은 *합니다. UseIISIntegration()* 메서드를 응용 프로그램의 *WebHostBuilder()*합니다.
+* <span data-ttu-id="57b0d-442">응용 프로그램의 *WebHostBuilder()*에서 *.UseIISIntegration()* 메서드를 호출하여 IIS 통합 미들웨어를 올바르게 참조했는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-442">Confirm that you have correctly referenced the IIS Integration middleware by calling the *.UseIISIntegration()* method on the application's *WebHostBuilder()*.</span></span>
 
-### <a name="sub-application-includes-a-handlers-section"></a>하위 응용 프로그램에는 \<처리기\> 섹션
+### <a name="sub-application-includes-a-handlers-section"></a><span data-ttu-id="57b0d-443">하위 응용 프로그램에 \<handlers\> 섹션이 포함되어 있음</span><span class="sxs-lookup"><span data-stu-id="57b0d-443">Sub-application includes a \<handlers\> section</span></span>
 
-* **브라우저:** HTTP 오류 500.19-내부 서버 오류
+* <span data-ttu-id="57b0d-444">**브라우저:** HTTP 오류 500.19 - 내부 서버 오류</span><span class="sxs-lookup"><span data-stu-id="57b0d-444">**Browser:** HTTP Error 500.19 - Internal Server Error</span></span>
 
-* **응용 프로그램 로그:** 항목이
+* <span data-ttu-id="57b0d-445">**응용 프로그램 로그:** 항목 없음</span><span class="sxs-lookup"><span data-stu-id="57b0d-445">**Application Log:** No entry</span></span>
 
-* **ASP.NET 핵심 모듈 로그:** 로그 파일이 만들어지고 루트 응용 프로그램에 대 한 일반 작업을 보여 줍니다. 로그 파일을 하위 응용 프로그램을 위해 만들어지지 않았습니다.
+* <span data-ttu-id="57b0d-446">**ASP.NET Core 모듈 로그:** 로그 파일이 만들어졌고 루트 응용 프로그램에 대해 정상 작동을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-446">**ASP.NET Core Module Log:** Log file created and shows normal operation for the root application.</span></span> <span data-ttu-id="57b0d-447">하위 응용 프로그램에 대한 로그 파일이 만들어지지 않았습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-447">Log file not created for the sub-application.</span></span>
 
-문제 해결
+<span data-ttu-id="57b0d-448">문제 해결</span><span class="sxs-lookup"><span data-stu-id="57b0d-448">Troubleshooting</span></span>
 
-* 확인 하는 하위-응용 프로그램의 *web.config* 파일에 포함 되지 않습니다는 `<handlers>` 섹션입니다.
+* <span data-ttu-id="57b0d-449">하위 응용 프로그램의 *web.config* 파일에 `<handlers>` 섹션이 포함되어 있지 않은지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-449">Confirm that the sub-application's *web.config* file doesn't include a `<handlers>` section.</span></span>
 
-### <a name="application-configuration-general-issue"></a>응용 프로그램 구성에 대 한 일반 문제
+### <a name="application-configuration-general-issue"></a><span data-ttu-id="57b0d-450">일반적인 응용 프로그램 구성 문제</span><span class="sxs-lookup"><span data-stu-id="57b0d-450">Application configuration general issue</span></span>
 
-* **브라우저:** HTTP 오류 502.5-프로세스 실패
+* <span data-ttu-id="57b0d-451">**브라우저:** HTTP 오류 502.5 - 프로세스 오류</span><span class="sxs-lookup"><span data-stu-id="57b0d-451">**Browser:** HTTP Error 502.5 - Process Failure</span></span>
 
-* **응용 프로그램 로그:** 응용 프로그램 ' MACHINE/WEBROOT/APPHOST/MY_APPLICATION ' 실제 루트와 ' c:\\{경로}\' 명령줄을 사용 하 여 프로세스를 만든 ' "c:\\{경로} \my_application. { exe | dll을 (를) "' 하지만 손상 또는 응답 하지 않았습니다 또는 ErrorCode 주어진된 포트 '{PORT}'에서 수신 하지 않은 '0x800705b4' =
+* <span data-ttu-id="57b0d-452">**응용 프로그램 로그:** 실제 루트 'C:\\{PATH}\'이(가) 있는 응용 프로그램 'MACHINE/WEBROOT/APPHOST/MY_APPLICATION'에서 '"C:\\{PATH}\my_application.{exe|dll}"'명령줄로 프로세스를 만들었지만 지정된 포트 '{PORT}'에서 충돌하거나 응답하지 않거나 수신 대기하지 않습니다., 오류 코드 = '0x800705b4'</span><span class="sxs-lookup"><span data-stu-id="57b0d-452">**Application Log:** Application 'MACHINE/WEBROOT/APPHOST/MY_APPLICATION' with physical root 'C:\\{PATH}\' created process with commandline '"C:\\{PATH}\my_application.{exe|dll}" ' but either crashed or did not reponse or did not listen on the given port '{PORT}', ErrorCode = '0x800705b4'</span></span>
 
-* **ASP.NET 핵심 모듈 로그:** 로그 파일 생성 되지만 비어
+* <span data-ttu-id="57b0d-453">**ASP.NET Core 모듈 로그:** 로그 파일이 만들어졌지만 비어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-453">**ASP.NET Core Module Log:** Log file created but empty</span></span>
 
-문제 해결
+<span data-ttu-id="57b0d-454">문제 해결</span><span class="sxs-lookup"><span data-stu-id="57b0d-454">Troubleshooting</span></span>
 
-* 이 일반 예외는 프로세스를 대부분 응용 프로그램 구성 문제 때문에 시작 하지 못했음을 나타냅니다. 참조 [디렉터리 구조](xref:hosting/directory-structure)응용 프로그램의 파일을 배포 하는 적절 한 폴더 및 응용 프로그램의 구성 파일이 있는지 확인 하 고 응용 프로그램 및 환경에 대 한 올바른 설정을 포함 합니다. 자세한 내용은 참조 [문제 해결 팁](#troubleshooting-tips)합니다.
+* <span data-ttu-id="57b0d-455">이 일반 예외는 응용 프로그램 구성 문제로 인해 프로세스가 시작되지 못했음을 나타냅니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-455">This general exception indicates that the process failed to start, most likely due to an application configuration issue.</span></span> <span data-ttu-id="57b0d-456">[디렉터리 구조](xref:hosting/directory-structure)를 참조하여 응용 프로그램의 배포된 파일과 폴더가 적절하고, 응용 프로그램의 구성 파일이 있고, 응용 프로그램과 환경에 대한 올바른 설정을 포함하고 있는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="57b0d-456">Referring to [Directory Structure](xref:hosting/directory-structure), confirm that your application's deployed files and folders are appropriate and that your application's configuration files are present and contain the correct settings for your app and environment.</span></span> <span data-ttu-id="57b0d-457">자세한 내용은 [문제 해결 팁](#troubleshooting-tips)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="57b0d-457">For more information, see [Troubleshooting tips](#troubleshooting-tips).</span></span>
 
-## <a name="resources"></a>리소스
+## <a name="resources"></a><span data-ttu-id="57b0d-458">리소스</span><span class="sxs-lookup"><span data-stu-id="57b0d-458">Resources</span></span>
 
-* [ASP.NET 핵심 모듈 개요](xref:fundamentals/servers/aspnet-core-module)
+* [<span data-ttu-id="57b0d-459">ASP.NET Core 모듈 소개</span><span class="sxs-lookup"><span data-stu-id="57b0d-459">Introduction to ASP.NET Core Module</span></span>](xref:fundamentals/servers/aspnet-core-module)
 
-* [ASP.NET 핵심 모듈 구성 참조](xref:hosting/aspnet-core-module)
+* [<span data-ttu-id="57b0d-460">ASP.NET Core 모듈 구성 참조</span><span class="sxs-lookup"><span data-stu-id="57b0d-460">ASP.NET Core Module configuration reference</span></span>](xref:hosting/aspnet-core-module)
 
-* [ASP.NET Core IIS 모듈 사용](xref:hosting/iis-modules)
+* [<span data-ttu-id="57b0d-461">ASP.NET Core와 함께 IIS 모듈 사용</span><span class="sxs-lookup"><span data-stu-id="57b0d-461">Using IIS Modules with ASP.NET Core</span></span>](xref:hosting/iis-modules)
 
-* [ASP.NET Core 소개](../index.md)
+* [<span data-ttu-id="57b0d-462">ASP.NET Core 소개</span><span class="sxs-lookup"><span data-stu-id="57b0d-462">Introduction to ASP.NET Core</span></span>](../index.md)
 
-* [공식 Microsoft IIS 사이트](http://www.iis.net/)
+* [<span data-ttu-id="57b0d-463">공식 Microsoft IIS 사이트</span><span class="sxs-lookup"><span data-stu-id="57b0d-463">The Official Microsoft IIS Site</span></span>](http://www.iis.net/)
 
-* [Microsoft TechNet 라이브러리: Windows Server](https://technet.microsoft.com/library/bb625087.aspx)
-
+* [<span data-ttu-id="57b0d-464">Microsoft TechNet 라이브러리: Windows Server</span><span class="sxs-lookup"><span data-stu-id="57b0d-464">Microsoft TechNet Library: Windows Server</span></span>](https://technet.microsoft.com/library/bb625087.aspx)
