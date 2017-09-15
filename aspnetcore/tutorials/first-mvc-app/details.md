@@ -1,54 +1,54 @@
 ---
-title: "세부 정보를 검사 하 고 메서드를 삭제 합니다. | Microsoft 문서"
+title: "세부 정보 및 삭제 메서드 검사"
 author: rick-anderson
-description: "세부 정보 컨트롤러 메서드와 뷰를 간단한 ASP.NET 핵심 MVC 앱에서."
-keywords: ASP.NET Core
+description: "간단한 ASP.NET Core MVC 앱에서 세부 정보 컨트롤러 메서드 및 보기."
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 03/07/2017
-ms.topic: article
+ms.topic: get-started-article
 ms.assetid: 870192b4-8d4f-45c7-8c14-83d02bc0ad79
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/details
-translationtype: Machine Translation
-ms.sourcegitcommit: f93c93002fec0088a7040cd53f31fd5b5a62fea7
-ms.openlocfilehash: 2224062796bcf10c90aa6edca817875408375b1d
-ms.lasthandoff: 03/23/2017
-
+ms.openlocfilehash: bab93a2faa122d9d6d2e71367519baa09bd76bd1
+ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/11/2017
 ---
-# <a name="examining-the-details-and-delete-methods"></a>세부 정보를 검사 하 고 메서드를 삭제 합니다.
+# <a name="examining-the-details-and-delete-methods"></a>세부 정보 및 삭제 메서드 검사
 
-[Rick Anderson](https://twitter.com/RickAndMSFT)
+작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-영화 컨트롤러를 열고 검사는 `Details` 메서드:
+Movie 컨트롤러를 열고 `Details` 메서드를 검사합니다.
 
-[!code-csharp[주](start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_details)]
+[!code-csharp[Main](start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_details)]
 
-메서드를 호출 하는 HTTP 요청을 보여 주는 메모를 추가 하는 작업 메서드에이 생성 하는 MVC 스 캐 폴딩 엔진입니다. 이 세 개의 URL 세그먼트로 된 GET 요청이 경우에 `Movies` 컨트롤러는 `Details` 메서드 및 `id` 값입니다. 이러한 세그먼트 시작에 정의 된 것을 기억 하십시오.
+이 작업 메서드를 만든 MVC 스캐폴딩 엔진은 메서드를 호출하는 HTTP 요청을 보여 주는 설명을 추가합니다. 이 경우 3개의 URL 세그먼트인 `Movies` 컨트롤러, `Details` 메서드 및 `id` 값을 가진 GET 요청입니다. 이러한 세그먼트 회수는 *Startup.cs*에서 정의됩니다.
 
-[!code-csharp[주](start-mvc/sample/MvcMovie/Startup.cs?highlight=5&name=snippet_1)]
+[!code-csharp[Main](start-mvc/sample/MvcMovie/Startup.cs?highlight=5&name=snippet_1)]
 
-EF를 사용 하면 쉽게 사용 하 여 데이터를 검색 하는 `SingleOrDefaultAsync` 메서드. 메서드에 구성 하는 중요 한 보안 기능 코드는 검색 방법에서 발견 한 편의 영화 것으로 작업을 수행 하기 전에 확인 하는 합니다. 예를 들어 해커 오류가 발생할 수 사이트로 링크에서 만든 URL을 변경 하 여 `http://localhost:xxxx/Movies/Details/1` 와 같이 `http://localhost:xxxx/Movies/Details/12345` (또는 실제 영화는 표시 되지 않은 다른 값)입니다. Null 영화에 대 한 확인 하지 않은 경우 응용 프로그램 예외를 throw 합니다.
+EF를 통해 `SingleOrDefaultAsync` 메서드를 사용하는 데이터를 쉽게 검색할 수 있습니다. 메서드에 기본 구성된 중요한 보안 기능은 검색 메서드가 이를 사용하여 어떠한 작업을 시도하기 전에 동영상을 발견했는지 코드에서 확인하는 것입니다. 예를 들어 해커는 링크에서 만든 URL을 `http://localhost:xxxx/Movies/Details/1`에서 `http://localhost:xxxx/Movies/Details/12345`(또는 실제 동영상을 표시하지 않는 다른 값)와 같은 URL로 변경하여 사이트에 오류를 발생시킬 수 있습니다. Null 동영상을 검사하지 않은 경우 앱은 예외를 throw합니다.
 
-검사는 `Delete` 및 `DeleteConfirmed` 메서드.
+`Delete` 및 `DeleteConfirmed` 메서드를 검사합니다.
 
-[!code-csharp[주](start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_delete)]
+[!code-csharp[Main](start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_delete)]
 
-이때는 `HTTP GET Delete` 메서드는 지정한 동영상 삭제 되지 않고 반환 합니다 동영상의 보기 (HttpPost)를 제출할 수 있습니다 삭제 합니다. GET에 대 한 응답에서 delete 작업 수행 요청 하거나 편집 작업을 수행 하는 매우 만드는 작업 또는 데이터를 변경 하는 기타 작업이 보안 허점을 열립니다.
+`HTTP GET Delete` 메서드는 지정된 동영상을 삭제하지 않고 삭제를 제출(HttpPost)할 수 있는 동영상의 보기를 반환합니다. GET 요청에 대한 응답에서 삭제 작업 수행(또는 해당 문제를 위해 편집 작업 수행, 작업 만들기 또는 데이터를 변경하는 기타 작업)은 보안 허점을 야기합니다.
 
-`[HttpPost]` 메서드는 데이터를 삭제 하는 이름이 `DeleteConfirmed` 고유 서명 또는 이름을 HTTP POST 메서드를 제공 합니다. 두 메서드 시그니처는 다음과 같습니다.
+데이터를 삭제하는 `[HttpPost]` 메서드는 HTTP POST 메서드에 고유한 서명 또는 이름을 제공하기 위해 `DeleteConfirmed`로 이름이 지정됩니다. 두 개의 메서드 서명은 다음과 같습니다.
 
-[!code-csharp[주](start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_delete2)]
+[!code-csharp[Main](start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_delete2)]
 
-[!code-csharp[주](start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_delete3)]
+[!code-csharp[Main](start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_delete3)]
 
 
-공용 언어 런타임 (CLR) 오버 로드 된 메서드는 시그니처가 고유 매개 변수 (메서드 이름은 같지만 서로 다른 매개 변수 목록)에 필요 합니다. 그러나 여기 필요한 두 개의 `Delete` 메서드-GET-과 게시물에 대 한 동일한 매개 변수 시그니처에 있는 합니다. (둘 다 필요 단일 정수를 매개 변수로 허용 합니다.)
+CLR(공용 언어 런타임)은 고유한 매개 변수 서명을 갖기 위해 오버로드된 메서드가 필요합니다(동일한 메서드 이름이지만 다른 매개 변수의 목록). 그러나 여기에서 두 개의 `Delete` 메서드가 필요합니다. 하나는 GET에 대한 것이며 다른 하나는 POST에 대한 것입니다. 두 메서드에는 동일한 매개 변수 서명이 있습니다. (모두 매개 변수로 단일 정수를 허용해야 합니다.)
 
-두 가지 방법으로이 문제에, 하나는 메서드를 서로 다른 이름을 지정 하는 것입니다. 앞의 예제에서 줘 스 캐 폴딩 메커니즘입니다. 그러나이 작은 문제가 발생 되었습니다: ASP.NET URL의 세그먼트 작업 메서드 이름으로 매핑되고 메서드 이름을 바꾸면 정상적으로 라우팅 못할 해당 메서드를 찾을 수 있습니다. 솔루션을 추가 하는 예제에서 확인할 수는 `ActionName("Delete")` 특성을 `DeleteConfirmed` 메서드가 있습니다. 해당 특성이 매핑하기 위해 라우팅 시스템에 대 한 POST 요청에 대 한 /Delete/를 포함 하는 URL을 찾을 수 있도록는 `DeleteConfirmed` 메서드.
+이 문제에 대한 두 가지의 방법이 있습니다. 하나는 메서드에 서로 다른 이름을 지정하는 것입니다. 앞의 예에서 스캐폴딩 메커니즘이 수행한 것입니다. 그러나 이는 작은 문제를 가져옵니다. ASP.NET은 URL의 세그먼트를 이름으로 작업 메서드에 매핑하고 메서드의 이름을 바꾸면 정상적으로 라우팅하여 해당 메서드를 찾을 수 없게 됩니다. 솔루션은 예제에서 확인한 것으로, `ActionName("Delete")` 특성을 `DeleteConfirmed` 메서드에 추가하는 것입니다. 해당 특성은 POST 요청에 대한 /Delete/를 포함하는 URL이 `DeleteConfirmed` 메서드를 찾도록 라우팅 시스템에 대한 매핑을 수행합니다.
 
-동일한 이름 및 시그니처가 있는 메서드에 대 한 또 다른 일반적인 작업 주위 인위적으로 POST 메서드 추가 포함 하도록의 시그니처를 변경 하는 것 (사용 되지 않는) 매개 변수입니다. 즉, 어떤 작업이 이루어졌는지 이전 게시물에 추가 하는 경우는 `notUsed` 매개 변수입니다. 여기에 대해 동일한 작업을 수행할 수는 `[HttpPost] Delete` 메서드:
+동일한 이름 및 서명을 가진 메서드에 대한 또 다른 일반적인 해결책은 POST 메서드의 서명을 추가(사용되지 않는) 매개 변수를 포함하도록 인위적으로 변경하는 것입니다. 즉, `notUsed` 매개 변수를 추가했을 때 이전 게시에서 수행했던 작업입니다. `[HttpPost] Delete` 메서드에 대해 여기에서 동일한 작업을 수행할 수 있습니다.
 
 ```csharp
 // POST: Movies/Delete/6
@@ -56,7 +56,7 @@ EF를 사용 하면 쉽게 사용 하 여 데이터를 검색 하는 `SingleOrDe
 public async Task<IActionResult> Delete(int id, bool notUsed)
 ```
 
-ASP.NET 핵심 MVC에 대 한이 소개 완료 주셔서 감사 합니다. 두면 설명을 드립니다. [MVC 및 EF 코어 시작](xref:data/ef-mvc/intro) 이 자습서에는 뛰어난 부합 됩니다.
+ASP.NET Core MVC에 대한 이 소개를 완료해 주셔서 감사합니다. 의견을 남겨 주세요. [MVC 및 EF Core 시작](xref:data/ef-mvc/intro)은 이 자습서에 대한 뛰어난 후속편입니다.
 
 >[!div class="step-by-step"]
 [이전](validation.md)

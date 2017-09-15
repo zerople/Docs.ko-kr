@@ -1,8 +1,8 @@
 ---
-title: "소비자 Api | Microsoft 문서"
+title: "소비자 API"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,23 +11,22 @@ ms.assetid: dff0cde2-6612-4b32-bafc-c00bf6d370f2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/consumer-apis/index
-translationtype: Machine Translation
-ms.sourcegitcommit: 010b730d2716f9f536fef889bc2f767afb648ef4
-ms.openlocfilehash: 1ed165818b02dbcbddb51a3a2eeb21c811d6c82d
-ms.lasthandoff: 03/23/2017
-
+ms.openlocfilehash: f689acf9af51276631749ac2a5ca2ec21f1cfcb5
+ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/11/2017
 ---
-# <a name="consumer-apis"></a>소비자 Api
+# <a name="consumer-apis"></a>소비자 API
 
-* [소비자 Api 개요](overview.md)
+* [소비자 API 개요](overview.md)
 
-* [목적은 문자열](purpose-strings.md)
+* [용도 문자열](purpose-strings.md)
 
-* [목적은 계층 구조 및 다중 테 넌 트](purpose-strings-multitenancy.md)
+* [용도 계층 구조 및 다중 테넌트](purpose-strings-multitenancy.md)
 
 * [암호 해시](password-hashing.md)
 
-* [보호 된 페이로드의 수명을 제한](limited-lifetime-payloads.md)
+* [보호된 페이로드의 수명 제한](limited-lifetime-payloads.md)
 
-* [보호 해제 페이로드 키를 갖는 해지 되었습니다.](dangerous-unprotect.md)
-
+* [호출된 키가 속한 페이로드 보호 해제](dangerous-unprotect.md)

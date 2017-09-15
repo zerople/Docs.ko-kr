@@ -1,0 +1,1 @@
+이 자습서에서는 컨트롤러와 보기를 통해 ASP.NET Core MVC에 설명합니다. Razor Pages는 ASP.NET Core 2.0의 새로운 대체 기능으로, 웹 UI를 쉽게 빌드하고 생산성을 높일 수 있는 페이지 기반 프로그래밍 모델입니다. 이 자습서의 Razor 버전은 [Razor Pages 자습서](xref:mvc/razor-pages/index)를 참조하세요. 

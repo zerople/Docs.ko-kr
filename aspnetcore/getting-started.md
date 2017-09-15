@@ -1,53 +1,53 @@
 ---
-title: "ASP.NET Core 시작 | Microsoft 문서"
+title: "ASP.NET Core 2.0 시작"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core
+description: "ASP.NET Core를 사용하여 간단한 Hello World 앱을 만들고 실행하는 빠른 자습서입니다."
+keywords: "ASP.NET Core, 자습서, 시작"
 ms.author: riande
 manager: wpickett
-ms.date: 10/14/2016
-ms.topic: article
+ms.date: 08/07/2017
+ms.topic: get-started-article
 ms.assetid: 73543e9d-d9d5-47d6-9664-17a9beea6cd3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: getting-started
-translationtype: Machine Translation
-ms.sourcegitcommit: 6c8955d9a80bf614f4d5b4284a2f09792ea1152e
-ms.openlocfilehash: 5b4760da70b79684852de92f2e7a677a3c586868
-ms.lasthandoff: 03/23/2017
-
+ms.openlocfilehash: 3399df3958093da9117b013736b1cb370fd6beb2
+ms.sourcegitcommit: 297ee5d2f3b3b24eb8a2c4a25195c9e2973cb91b
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/14/2017
 ---
-# <a name="getting-started-with-aspnet-core"></a>ASP.NET Core 시작 하기
+# <a name="getting-started-with-aspnet-core"></a>ASP.NET Core 시작
 
-1.  설치 [.NET Core](https://microsoft.com/net/core)
+> [!NOTE]
+> 이러한 지침은 최신 버전의 ASP.NET Core에 대한 것입니다. 이전 버전을 시작하려고 하나요? [이 자습서의 1.1 버전](xref:getting-started-1.1)을 참조하세요.
 
-2.  새.NET Core 프로젝트를 만듭니다.
+1. [.NET Core](https://microsoft.com/net/core/)를 설치합니다.
 
-    ```console
-    mkdir aspnetcoreapp
-    cd aspnetcoreapp
-    dotnet new web
-    ```
+2. 새 .NET Core 프로젝트를 만듭니다.
 
-3.  패키지를 복원 합니다.
+   macOS 및 Linux에서 터미널 창을 엽니다. Windows에서 명령 프롬프트를 엽니다.
 
-    ```console
-    dotnet restore
-    ```
+   ```terminal
+   mkdir aspnetcoreapp
+   cd aspnetcoreapp
+   dotnet new web
+   ```
+    
+4. 앱을 실행합니다.
 
-4.  앱을 실행 (의 `dotnet run` 명령 만료 되었을 때 응용 프로그램을 빌드할 수):
+   `dotnet run` 명령은 필요한 경우 앱을 먼저 빌드합니다.
 
-    ```console
-    dotnet run
-    ```
+   ```terminal
+   dotnet run
+   ```
 
-5.  로 이동`http://localhost:5000`
+5. `http://localhost:5000`으로 이동
 
-## <a name="next-steps"></a>다음 단계
+### <a name="next-steps"></a>다음 단계
 
-더 많은 시작 자습서를 참조 하십시오. [ASP.NET 핵심 자습서](tutorials/index.md)
+시작 자습서는 [ASP.NET Core 자습서](tutorials/index.md)를 참조하세요.
 
-ASP.NET 핵심 개념과 아키텍처에 대 한 소개를 참조 하십시오. [ASP.NET 핵심 소개](index.md) 및 [ASP.NET 핵심 기본](fundamentals/index.md)합니다.
+ASP.NET Core 개념 및 아키텍처에 대한 소개는 [ASP.NET Core 소개](index.md) 및 [ASP.NET Core 기본 사항](fundamentals/index.md)을 참조하세요.
 
-ASP.NET 핵심 응용 프로그램에.NET Core 또는.NET Framework 런타임을 사용할 수 있습니다. 자세한 내용은 참조 [.NET Core와.NET Framework 간의 선택](https://docs.microsoft.com/dotnet/articles/standard/choosing-core-framework-server)합니다.
-
+ASP.NET Core 앱은 .NET Core 또는 .NET Framework 기본 클래스 라이브러리 및 런타임을 사용할 수 있습니다. 자세한 내용은 [.NET Core와 .NET Framework 중에 선택](https://docs.microsoft.com/dotnet/articles/standard/choosing-core-framework-server)을 참조하세요.
