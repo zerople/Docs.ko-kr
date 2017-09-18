@@ -1,11 +1,20 @@
 ---
-title: "Id 구성"
+title: "ASP.NET Core Id 구성"
+author: AdrienTorris
+description: "ASP.NET Core Id 기본값을 이해 하 고 사용자 지정 값을 사용 하도록 다양 한 Id 속성을 구성 합니다."
+keywords: "ASP.NET Core, Identity, 인증, 보안"
+ms.author: scaddie
+manager: wpickett
+ms.date: 09/18/2017
+ms.topic: article
+ms.technology: aspnet
+ms.prod: asp.net-core
 uid: security/authentication/identity-configuration
-ms.openlocfilehash: 7ccd89360a8c7f5c8c6dfac76df42898e18a116a
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 629fcc2941b2d2fda9604a3eac04be3d0f5294b2
+ms.sourcegitcommit: ddefc78270bd9b5ae0b1bd8de6c45f6977e7dceb
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/18/2017
 ---
 # <a name="configure-identity"></a>Id 구성
 
