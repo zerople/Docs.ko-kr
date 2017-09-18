@@ -6,7 +6,7 @@
 
   ![장르, 가격, 릴리스 날짜, 제목에 대한 필드가 포함된 뷰 만들기](../../tutorials/first-mvc-app/adding-model/_static/movies.png)
 
-* `Price` 필드에는 소수점 또는 쉼표를 입력할 수 없습니다. 소수점으로 쉼표(“,”)를 사용하는 영어가 아닌 로캘 및 미국 영어가 아닌 날짜 형식에 대해 [jQuery 유효성 검사](http://jqueryvalidation.org/)를 지원하려면 앱을 전역화하는 단계를 수행해야 합니다. 자세한 내용은 https://github.com/aspnet/Docs/issues/4076 및 [추가 리소스](#additional-resources)를 참조하세요. 이제 10 같은 정수를 입력하면 됩니다.
+* `Price` 필드에는 소수점 또는 쉼표를 입력할 수 없습니다. 소수점으로 쉼표(“,”)를 사용하는 영어가 아닌 로캘 및 미국 영어가 아닌 날짜 형식에 대해 [jQuery 유효성 검사](https://jqueryvalidation.org/)를 지원하려면 앱을 전역화하는 단계를 수행해야 합니다. 자세한 내용은 https://github.com/aspnet/Docs/issues/4076 및 [추가 리소스](#additional-resources)를 참조하세요. 이제 10 같은 정수를 입력하면 됩니다.
 
 <a name="displayformatdatelocal"></a>
 

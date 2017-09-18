@@ -3,7 +3,7 @@
 위의 코드:
 
 * 빈 컨트롤러 클래스를 정의합니다. 다음 섹션에서는 API를 구현하는 메서드를 추가합니다.
-* 생성자는 [종속성 주입](xref:fundamentals/dependency-injection)을 사용하여 컨트롤러에 데이터베이스 컨텍스트(`TodoContext `)를 삽입할 수 있습니다. 컨트롤러의 [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) 메서드 각각에서 데이터베이스 컨텍스트를 사용합니다.
+* 생성자는 [종속성 주입](xref:fundamentals/dependency-injection)을 사용하여 컨트롤러에 데이터베이스 컨텍스트(`TodoContext `)를 삽입할 수 있습니다. 컨트롤러의 [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) 메서드 각각에서 데이터베이스 컨텍스트를 사용합니다.
 * 항목이 없는 경우 생성자는 메모리 내 데이터베이스에 항목을 추가합니다.
 
 ## <a name="getting-to-do-items"></a>할 일 항목 가져오기

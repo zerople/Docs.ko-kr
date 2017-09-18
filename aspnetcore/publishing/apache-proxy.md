@@ -11,15 +11,15 @@ ms.assetid: fa9b0cb7-afb3-4361-9e7e-33afffeaca0c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/apache-proxy
-ms.openlocfilehash: 831e2fa148e52f6447e9065f5949785627d5e248
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 9dc22ea20a6ae2e2477f9e6db95ddabecc038dcb
+ms.sourcegitcommit: f8f6b5934bd071a349f5bc1e389365c52b1c00fa
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/14/2017
 ---
 # <a name="set-up-a-hosting-environment-for-aspnet-core-on-linux-with-apache-and-deploy-to-it"></a>Linux에서 Apache를 사용하여 ASP.NET Core에 대한 호스팅 환경을 설정하고 해당 환경에 배포
 
-작성자: [Shayne Boyer](https://www.github.com/spboyer)
+작성자: [Shayne Boyer](https://github.com/spboyer)
 
 Apache는 널리 사용되는 HTTP 서버이고 Nginx와 비슷한 HTTP 트래픽을 리디렉션하도록 프록시로 구성할 수 있습니다. 이 가이드에서는 CentOS 7의 Apache를 설정하고 역방향 프록시로 사용하여 들어오는 연결을 시작하고 Kestrel에서 실행되는 ASP.NET Core 응용 프로그램으로 리디렉션하는 방법에 대해 알아봅니다. 이를 위해 *mod_proxy* 확장 및 기타 관련 Apache 모듈을 사용합니다.
 
@@ -134,7 +134,8 @@ Apache를 다시 시작합니다.
     WorkingDirectory=/var/aspnetcore/hellomvc
     ExecStart=/usr/local/bin/dotnet /var/aspnetcore/hellomvc/hellomvc.dll
     Restart=always
-    RestartSec=10                                          # Restart service after 10 seconds if dotnet service crashes
+    # Restart service after 10 seconds if dotnet service crashes
+    RestartSec=10
     SyslogIdentifier=dotnet-example
     User=apache
     Environment=ASPNETCORE_ENVIRONMENT=Production 

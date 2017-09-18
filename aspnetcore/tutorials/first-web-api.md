@@ -10,17 +10,17 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-web-api
-ms.openlocfilehash: c57c73c6f9c60874ef88749b838ed1cc1d353ead
-ms.sourcegitcommit: 7fef13045e98d716c589a2982613dad261694a65
+ms.openlocfilehash: 4aab61c7ee4498b33a4ea8bbec6033ce9828e2af
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/12/2017
 ---
 #<a name="create-a-web-api-with-aspnet-core-and-visual-studio-for-windows"></a>ASP.NET Core 및 Windows용 Visual Studio를 사용하여 Web API 만들기
 
 작성자: [Rick Anderson](https://twitter.com/RickAndMSFT) 및 [Mike Wasson](https://github.com/mikewasson)
 
-이 자습서에서는 “할 일” 항목 모음을 관리하기 위한 Web API를 빌드합니다. UI는 빌드하지 않습니다.
+이 자습서에서는 “할 일” 항목 목록을 관리하기 위한 웹 API를 빌드합니다. UI는 빌드하지 않습니다.
 
 이 자습서는 세 가지 버전이 있습니다.
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 08/31/2017
 
 [!INCLUDE[install 2.0](../includes/install2.0.md)]
 
-ASP.NET Core 1.1 버전에 대해서는 [이 PDF](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/_static/_webAPI.pdf)를 참조하세요.
+ASP.NET Core 1.1 버전에 대해서는 [이 PDF](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/first-web-api/_static/_webAPI.pdf)를 참조하세요.
 
 ## <a name="create-the-project"></a>프로젝트를 만듭니다.
 
@@ -66,7 +66,7 @@ Visual Studio에서 CTRL+F5를 눌러 앱을 시작합니다. Visual Studio가 �
 
 참고: 모델 클래스는 프로젝트의 아무 곳에나 이동할 수 있지만 일반적으로 *Models* 폴더를 사용합니다.
 
-`TodoItem` 클래스를 추가합니다. *Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스**를 선택합니다. 클래스 이름을 `TodoItem`으로 지정하고 **추가**를 선택합니다.
+`TodoItem` 클래스를 추가합니다. *Models* 폴더를 마우스 오른쪽 단추로 클릭하고 **추가** > **클래스**를 선택합니다. 클래스 이름을 `TodoItem`로 지정하고 **추가**를 선택합니다.
 
 생성된 코드를 다음으로 바꿉니다.
 

@@ -11,11 +11,11 @@ ms.assetid: 1d18b589-1638-4dc6-1638-fb0f41998d78
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app-xplat/start-mvc
-ms.openlocfilehash: 82ce5bbc695b190759ac2c05cdceebb5f7854eb7
-ms.sourcegitcommit: e6a8f171f26fab1b2195a2d7f14e7d258a2e690e
+ms.openlocfilehash: cfce91271ca21dd800fb68a14389606ce6d835f5
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="getting-started-with-aspnet-core-mvc--on-mac-linux-or-windows"></a>Mac, Linux 또는 Windows에서 ASP.NET Core MVC 시작
 
@@ -31,11 +31,11 @@ ms.lasthandoff: 08/23/2017
 
 ## <a name="install-vs-code-and-net-core"></a>VS Code 및 .NET Core 설치 
 
-이 자습서에서는 [.NET Core 2.0.0 SDK](https://dot.net/core) 이상이 필요합니다. ASP.NET Core 1.1 버전에 대해서는 [PDF](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-mvc-app-mac/start-mvc/8-23-17.pdf)를 참조하세요.
+이 자습서에서는 [.NET Core 2.0.0 SDK](https://www.microsoft.com/net/core) 이상이 필요합니다. ASP.NET Core 1.1 버전에 대해서는 [PDF](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/first-mvc-app-mac/start-mvc/8-23-17.pdf)를 참조하세요.
 
 다음을 설치합니다.
 
-* [.NET Core 2.0.0 SDK](https://dot.net/core) 이상.
+* [.NET Core 2.0.0 SDK](https://www.microsoft.com/net/core) 이상.
 * [Visual Studio Code](https://code.visualstudio.com)
 * VS Code [C# 확장](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) 
 
@@ -75,9 +75,9 @@ VS Code가 [Kestrel](xref:fundamentals/servers/kestrel) 웹 서버를 시작하�
 - [통합 터미널](https://code.visualstudio.com/docs/editor/integrated-terminal)
 - [바로 가기 키](https://code.visualstudio.com/docs/getstarted/keybindings#_keyboard-shortcuts-reference)
 
-  - [Mac 바로 가기 키](https://go.microsoft.com/fwlink/?linkid=832143)
-  - [Linux 바로 가기 키](https://go.microsoft.com/fwlink/?linkid=832144)
-  - [Windows 바로 가기 키](https://go.microsoft.com/fwlink/?linkid=832145)
+  - [Mac 바로 가기 키](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf)
+  - [Linux 바로 가기 키](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf)
+  - [Windows 바로 가기 키](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
 
 >[!div class="step-by-step"]
 [다음 - 컨트롤러 추가](adding-controller.md)

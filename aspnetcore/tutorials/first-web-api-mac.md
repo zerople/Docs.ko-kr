@@ -1,27 +1,27 @@
 ---
 title: "ASP.NET Core 및 Mac용 Visual Studio를 사용하여 Web API 만들기"
-author: rick-anderson
 description: "ASP.NET Core MVC 및 Mac용 Visual Studio를 사용하여 Web API 만들기"
-keywords: "ASP.NET Core, WebAPI, Web API, REST, mac, macOS, HTTP, 서비스, HTTP 서비스"
+author: rick-anderson
 ms.author: riande
-manager: wpickett
-ms.date: 5/24/2017
+ms.date: 09/15/2017
 ms.topic: get-started-article
-ms.assetid: 830b4af5-ed14-1638-7734-764a6f13a8f6
-ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-web-api-mac
-ms.openlocfilehash: 08619d3b4ab2d6fdb04794dcbafac0b696dd8504
-ms.sourcegitcommit: 3273675dad5ac3e1dc1c589938b73db3f7d6660a
+helpviewer_heywords: ASP.NET Core, WebAPI, Web API, REST, mac, macOS, HTTP, Service, HTTP Service
+ms.technology: aspnet
+keywords: "ASP.NET Core, WebAPI, Web API, REST, mac, macOS, HTTP, 서비스, HTTP 서비스"
+manager: wpickett
+ms.openlocfilehash: 992059f7abd7650f82c1307acf3ba3219a6fcbb5
+ms.sourcegitcommit: 0a3f215b4f665afc6f2678642968eea698102346
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/18/2017
 ---
 # <a name="create-a-web-api-with-aspnet-core-mvc-and-visual-studio-for-mac"></a>ASP.NET Core MVC 및 Mac용 Visual Studio를 사용하여 Web API 만들기
 
 작성자: [Rick Anderson](https://twitter.com/RickAndMSFT) 및 [Mike Wasson](https://github.com/mikewasson)
 
-이 자습서에서는 “할 일” 항목 모음을 관리하기 위한 Web API를 빌드합니다. UI는 빌드하지 않습니다.
+이 자습서에서는 “할 일” 항목 목록을 관리하기 위한 웹 API를 빌드합니다. UI는 빌드하지 않습니다.
 
 이 자습서는 세 가지 버전이 있습니다.
 
@@ -133,7 +133,7 @@ Visual Studio에서 **실행 > 디버깅 시작**을 선택하여 앱을 시작�
 
 [!code-csharp[Main](first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
-[`[HttpPost]`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/HttpPostAttribute/index.html) 특성으로 나타내는 HTTP POST 메서드입니다. [`[FromBody]`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/FromBodyAttribute/index.html) 특성은 HTTP 요청 본문에서 할 일 항목 값을 가져오도록 MVC에 지시합니다.
+[`[HttpPost]`](https://docs.microsoft.com/aspnet/core/api) 특성으로 나타내는 HTTP POST 메서드입니다. [`[FromBody]`](https://docs.microsoft.com/aspnet/core/api) 특성은 HTTP 요청 본문에서 할 일 항목 값을 가져오도록 MVC에 지시합니다.
 
 `CreatedAtRoute` 메서드는 서버에서 새 리소스를 만드는 HTTP POST 메서드의 표준 응답인 201 응답을 반환합니다. `CreatedAtRoute`는 응답에 대한 위치 헤더도 추가합니다. 위치 헤더는 새로 만들어진 할 일 항목의 URI를 지정합니다. [10.2.2 201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)(10.2.2 201 생성됨)를 참조하세요.
 
@@ -184,7 +184,7 @@ public IActionResult GetById(string id)
 }
 ```
 
-![204(콘텐츠 없음) 응답을 보여 주는 Postman 콘솔](first-web-api/_static/pmcput.png)
+![204(콘텐츠 없음) 응답을 보여주는 Postman 콘솔](first-web-api/_static/pmcput.png)
 
 ### <a name="delete"></a>삭제
 
@@ -192,7 +192,7 @@ public IActionResult GetById(string id)
 
 응답은 [204(콘텐츠 없음)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)입니다.
 
-![204(콘텐츠 없음) 응답을 보여 주는 Postman 콘솔](first-web-api/_static/pmd.png)
+![204(콘텐츠 없음) 응답을 보여주는 Postman 콘솔](first-web-api/_static/pmd.png)
 
 ## <a name="next-steps"></a>다음 단계
 
@@ -200,4 +200,4 @@ public IActionResult GetById(string id)
 * API 배포에 대한 자세한 내용은 [게시 및 배포](../publishing/index.md)를 참조하세요.
 * [샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/sample)
 * [Postman](https://www.getpostman.com/)
-* [Fiddler](http://www.fiddler2.com/fiddler2/)
+* [Fiddler](https://www.telerik.com/download/fiddler)

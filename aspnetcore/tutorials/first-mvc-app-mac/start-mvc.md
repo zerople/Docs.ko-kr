@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app-mac/start-mvc
-ms.openlocfilehash: b2e447cac0012ac41d06a70b1452c7d0523546cf
-ms.sourcegitcommit: e6a8f171f26fab1b2195a2d7f14e7d258a2e690e
+ms.openlocfilehash: 028d6d3246908a9cd44a6834449d2fdbc9cae0b8
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="getting-started-with-aspnet-core-mvc-and-visual-studio-for-mac"></a>ASP.NET Core MVC 및 Mac용 Visual Studio 시작
 
@@ -30,11 +30,11 @@ ms.lasthandoff: 08/23/2017
 
 ## <a name="prerequisites"></a>필수 구성 요소
 
-이 자습서에서는 [.NET Core 2.0.0 SDK](https://dot.net/core) 이상이 필요합니다. ASP.NET Core 1.1 버전에 대해서는 [PDF](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-mvc-app-mac/start-mvc/8-23-17.pdf)를 참조하세요.
+이 자습서에서는 [.NET Core 2.0.0 SDK](https://www.microsoft.com/net/core) 이상이 필요합니다. ASP.NET Core 1.1 버전에 대해서는 [PDF](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/first-mvc-app-mac/start-mvc/8-23-17.pdf)를 참조하세요.
 
 다음을 설치합니다.
 
-- [.NET Core 2.0.0 SDK](https://dot.net/core) 이상
+- [.NET Core 2.0.0 SDK](https://www.microsoft.com/net/core) 이상
 - [Visual Studio for Mac](https://www.visualstudio.com/vs/visual-studio-mac/)
 
 ## <a name="create-a-web-app"></a>웹앱 만들기
@@ -53,7 +53,7 @@ Visual Studio에서 **파일 > 새 솔루션**을 선택합니다.
 
 ### <a name="launch-the-app"></a>앱 시작
 
-Visual Studio에서 **실행 > 디버깅하지 않고 시작**을 선택하여 앱을 시작합니다. Visual Studio가 [IIS Express](http://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-overview)를 시작하고 브라우저를 실행하며 `http://localhost:port`로 이동합니다. 여기서 *포트*는 임의로 선택된 포트 번호입니다.
+Visual Studio에서 **실행 > 디버깅하지 않고 시작**을 선택하여 앱을 시작합니다. Visual Studio가 [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview)를 시작하고 브라우저를 실행하며 `http://localhost:port`로 이동합니다. 여기서 *포트*는 임의로 선택된 포트 번호입니다.
 
 ![새 프로젝트가 있는 브라우저](start-mvc/b1.png)
 

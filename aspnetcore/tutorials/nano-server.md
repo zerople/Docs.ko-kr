@@ -11,11 +11,11 @@ ms.assetid: 50922cf1-ca58-4006-9236-99b7ff2dd0cf
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/nano-server
-ms.openlocfilehash: affd5bb36f33aab5cdff6904016b628794462d97
-ms.sourcegitcommit: 26166785ad181a8519cb008800d71d96499b0499
+ms.openlocfilehash: 39e9dea5b3cbd43f41f8a9bceb5d5f8eb6adb16d
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/01/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="aspnet-core-with-iis-on-nano-server"></a>Nano Server의 ASP.NET Core 및 IIS
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 09/01/2017
 
 ## <a name="introduction"></a>소개
 
-Nano Server는 Server Core 또는 전체 서버보다 작은 공간, 강화된 보안 및 향상된 서비스를 지원하는 Windows Server 2016의 설치 옵션입니다. 180일 평가 버전에 대한 자세한 내용은 다운로드 링크는 [Nano Server documentation](https://technet.microsoft.com/library/mt126167.aspx)(Nano Server 설명서)을 참조하세요. 
+Nano Server는 Server Core 또는 전체 서버보다 작은 공간, 강화된 보안 및 향상된 서비스를 지원하는 Windows Server 2016의 설치 옵션입니다. 180일 평가 버전에 대한 자세한 내용은 다운로드 링크는 [Nano Server documentation](https://docs.microsoft.com/windows-server/get-started/getting-started-with-nano-server)(Nano Server 설명서)을 참조하세요. 
 
 Nano Server를 사용해 볼 수 있는 세 가지 간편한 방법이 있습니다. MS 계정으로 로그인할 경우:
 
@@ -106,7 +106,7 @@ IIS가 제대로 설정되어 있는지 빠르게 확인하려면 URL `http://19
 
 ## <a name="installing-the-aspnet-core-module-ancm"></a>ANCM(ASP.NET Core 모듈) 설치
 
-ASP.NET Core 모듈은 ASP.NET Core HTTP 수신기의 프로세스 관리를 수행하는 IIS 7.5+ 모듈로서, 관리하는 프로세스에 대한 요청을 프록시하는 데 사용됩니다. 현재는 IIS에 대한 ASP.NET Core 모듈을 설치하는 과정이 수동입니다. Nano가 아닌 일반 컴퓨터에서 [.NET Core Windows Server 호스팅 번들](https://aka.ms/dotnetcore.2.0.0-windowshosting)을 설치해야 합니다. 일반 컴퓨터에 번들을 설치한 후 이전에 만든 파일 공유에 다음 파일을 복사해야 합니다.
+ASP.NET Core 모듈은 ASP.NET Core HTTP 수신기의 프로세스 관리를 수행하는 IIS 7.5+ 모듈로서, 관리하는 프로세스에 대한 요청을 프록시하는 데 사용됩니다. 현재는 IIS에 대한 ASP.NET Core 모듈을 설치하는 과정이 수동입니다. Nano가 아닌 일반 컴퓨터에서 [.NET Core Windows Server 호스팅 번들](https://download.microsoft.com/download/B/1/D/B1D7D5BF-3920-47AA-94BD-7A6E48822F18/DotNetCore.2.0.0-WindowsHosting.exe)을 설치해야 합니다. 일반 컴퓨터에 번들을 설치한 후 이전에 만든 파일 공유에 다음 파일을 복사해야 합니다.
 
 IIS를 사용하는 일반 서버(Nano가 아님)에서 다음 복사 명령을 실행합니다.
 

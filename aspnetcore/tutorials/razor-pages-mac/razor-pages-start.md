@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages-mac/razor-pages-start
-ms.openlocfilehash: caadc3fcb3bb71abe0773aed4f6ff60a043e3a02
-ms.sourcegitcommit: d9ec19e5452af83648074db5d96c0a0f4f9e7f9a
+ms.openlocfilehash: 56ff18589d189b0d2760c761c58b5b030d02940b
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="getting-started-with-razor-pages-in-aspnet-core-with-visual-studio-for-mac"></a>Mac용 Visual Studio를 사용하여 ASP.NET Core에서 Razor 페이지 시작
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 08/29/2017
 
 다음을 설치합니다.
 
-* [.NET Core 2.0.0 SDK](https://dot.net/core) 이상
+* [.NET Core 2.0.0 SDK](https://www.microsoft.com/net/core) 이상
 * [Visual Studio for Mac](https://www.visualstudio.com/vs/visual-studio-mac/)
 
 ## <a name="create-a-razor-web-app"></a>Razor 웹앱 만들기
@@ -53,7 +53,7 @@ Visual Studio에서 **파일 > 열기**를 선택하고 *RazorPagesMovie.csproj*
 
 ### <a name="launch-the-app"></a>앱 시작
 
-Visual Studio에서 **실행 > 디버깅하지 않고 시작**을 선택하여 앱을 시작합니다. Visual Studio가 [IIS Express](http://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-overview)를 시작하고, 브라우저를 시작하고, `http://localhost:5000`으로 이동합니다.
+Visual Studio에서 **실행 > 디버깅하지 않고 시작**을 선택하여 앱을 시작합니다. Visual Studio가 [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview)를 시작하고, 브라우저를 시작하고, `http://localhost:5000`으로 이동합니다.
 
 다음 자습서에서는 프로젝트에 모델을 추가합니다.
 

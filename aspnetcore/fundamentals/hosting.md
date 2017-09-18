@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/hosting
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a1a789ff1bc6b3e3af99419e7d74d3fb46bb2345
-ms.sourcegitcommit: 368aabde4de3728a8e5a8c016a2ec61f9c0854bf
+ms.openlocfilehash: 4eb57cf80399abdb7c6d05546ea2b0d5718c56c3
+ms.sourcegitcommit: 0a3f215b4f665afc6f2678642968eea698102346
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/18/2017
 ---
 # <a name="hosting-in-aspnet-core"></a>ASP.NET Core에서 호스팅
 
@@ -34,7 +34,7 @@ ASP.NET Core 응용 프로그램 구성 및 실행 한 *호스트*, 응용 프�
 
 `CreateDefaultBuilder`다음 작업을 수행합니다.
 
-* 구성 [Kestrel](servers/kestrel.md) 웹 서버로 합니다.
+* 구성 [Kestrel](servers/kestrel.md) 웹 서버로 합니다. Kestrel 기본 옵션을 참조 하십시오. [는 Kestrel 옵션 섹션에서 ASP.NET Core 웹 서버 구현 Kestrel](xref:fundamentals/servers/kestrel#kestrel-options)합니다.
 * 설정 하는 콘텐츠 루트 [Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory)합니다.
 * 선택적 구성에서 로드 합니다.
   * *appsettings.json*합니다.
@@ -43,7 +43,7 @@ ASP.NET Core 응용 프로그램 구성 및 실행 한 *호스트*, 응용 프�
   * 환경 변수.
   * 명령줄 인수입니다.
 * 구성 [로깅](xref:fundamentals/logging) 사용 하 여 콘솔 및 디버그 출력에 대 한 [로그 필터링](xref:fundamentals/logging#log-filtering) 의 로깅 구성 섹션에 지정 된 규칙은 *appsettings.json* 또는 *appsettings 합니다. {환경}.json* 파일입니다.
-* 뒤에 IIS를 실행 하는 경우 기본 경로 사용 하는 경우 서버에서 수신 대기할 포트를 구성 하 여 IIS 통합할 수 있습니다는 [ASP.NET Core 모듈](xref:fundamentals/servers/aspnet-core-module)합니다. 이 모듈 Kestrel와 IIS 사이 역방향 프록시를 만듭니다. 또한 응용 프로그램을 구성 [시작 오류 캡처](#capture-startup-errors)합니다.
+* 뒤에 IIS를 실행 하면 [IIS 통합](xref:publishing/iis) 기본 경로 포트를 구성 하 여 서버 수신 대기할 때 사용 하는 [ASP.NET Core 모듈](xref:fundamentals/servers/aspnet-core-module)합니다. 모듈은 IIS와 Kestrel 간의 역방향 프록시를 만듭니다. 또한 응용 프로그램을 구성 [시작 오류 캡처](#capture-startup-errors)합니다. IIS 기본 옵션을 참조 하십시오. [IIS의 IIS와 Windows에서 호스트 ASP.NET Core 섹션 옵션](xref:publishing/iis#iis-options)합니다.
 
 *콘텐츠 루트* 호스트 MVC 뷰 파일과 같은 콘텐츠 파일을 검색 하는 위치를 결정 합니다. 기본 콘텐츠 루트는 [Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory)합니다. 이 인해 응용 프로그램 루트 폴더에서 시작 될 때 웹 프로젝트의 루트 폴더 콘텐츠 루트로 사용 하 여 (예를 들어 호출 [실행 dotnet](/dotnet/core/tools/dotnet-run) 프로젝트 폴더에서). 사용 되는 기본 이것이 [Visual Studio](https://www.visualstudio.com/) 및 [dotnet 새 템플릿을](/dotnet/core/tools/dotnet-new)합니다.
 

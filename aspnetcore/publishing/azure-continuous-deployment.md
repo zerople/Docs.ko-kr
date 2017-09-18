@@ -11,11 +11,11 @@ ms.assetid: 2707c7a8-2350-4304-9856-fda58e5c0a16
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/azure-continuous-deployment
-ms.openlocfilehash: b576ef6bce3b211afe7465f33dfe62c25dac1f62
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: a9efad38b1c75bd3a186b4ec85861357ecf744b9
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="continuous-deployment-to-azure-for-aspnet-core-with-visual-studio-and-git"></a>Visual Studio 및 Git을 사용하여 Azure에 ASP.NET Core 연속 배포
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 08/11/2017
 또한 [연속 배포를 사용하여 Azure Web App을 빌드하고 게시하기 위해 VSTS 사용](https://www.visualstudio.com/docs/build/get-started/aspnet-4-ci-cd-azure-automatic)을 참조하세요. 여기서는 Visual Studio Team Services를 사용하여 [Azure App Service](https://azure.microsoft.com/documentation/articles/app-service-changes-existing-services/)에 대한 CD(지속적인 업데이트) 워크플로를 구성하는 방법을 보여줍니다. Team Services의 Azure 지속적인 업데이트는 Azure App Service에 앱의 업데이트를 게시하는 강력한 배포 파이프라인을 간단하게 설정합니다. 파이프라인을 빌드하고, 테스트를 실행하고, 스테이징 슬롯에 배포하고, 프로덕션에 배포하도록 Azure Portal에서 구성할 수 있습니다.
 
 > [!NOTE]
-> 이 자습서를 완료하려면 Microsoft Azure 계정이 필요합니다. 계정이 없으면 [MSDN 구독자 혜택을 활성화](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)하거나 [평가판에 등록](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)할 수 있습니다.
+> 이 자습서를 완료하려면 Microsoft Azure 계정이 필요합니다. 계정이 없으면 [MSDN 구독자 혜택을 활성화](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)하거나 [평가판에 등록](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)할 수 있습니다.
 
 ## <a name="prerequisites"></a>필수 구성 요소
 
@@ -34,9 +34,9 @@ ms.lasthandoff: 08/11/2017
 
 * [Visual Studio](https://www.visualstudio.com)
 
-* [ASP.NET Core](http://go.microsoft.com/fwlink/?LinkId=627627)(런타임 및 도구)
+* [ASP.NET Core](https://download.microsoft.com/download/F/6/E/F6ECBBCC-B02F-424E-8E03-D47E9FA631B7/DotNetCore.1.0.1-VS2015Tools.Preview2.0.3.exe)(런타임 및 도구)
 
-* Windows용 [Git](http://git-scm.com/downloads)
+* Windows용 [Git](https://git-scm.com/downloads)
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core 웹앱 만들기
 
