@@ -11,11 +11,11 @@ ms.assetid: a8fb7eb7-e0e5-4394-84f3-1f1dbe012345
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/index
-ms.openlocfilehash: aa22d072a6ef0ff105d67c2bfc5c335511d6c0cd
-ms.sourcegitcommit: aa6951e0c2e62209bf7c25e3b3138f04eb92898d
+ms.openlocfilehash: e8045b8804d1e7915cd81d697d43a173e33a7119
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="security"></a>보안
 
@@ -27,10 +27,10 @@ ms.lasthandoff: 08/18/2017
     *   [SMS를 사용한 2단계 인증](authentication/2fa.md) 
     *   [ASP.NET Core ID 없이 쿠키 인증 사용](authentication/cookie.md)
     *   [Azure Active Directory](authentication/azure-active-directory/index.md)
-        *   [ASP.NET Core 웹앱에 Azure AD 통합](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore)
-        *   [Azure AD를 사용하여 WPF 응용 프로그램에서 ASP.NET Core Web API 호출](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore)
+        *   [ASP.NET Core 웹앱에 Azure AD 통합](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/)
+        *   [Azure AD를 사용하여 WPF 응용 프로그램에서 ASP.NET Core Web API 호출](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore/)
         *   [Azure AD를 사용하여 ASP.NET Core 웹 응용 프로그램에서 Web API 호출](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/)
-        *   [Azure AD B2C를 사용하여 ASP.NET Core 웹앱](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore-b2c/)
+        *   [Azure AD B2C를 사용하여 ASP.NET Core 웹앱](https://azure.microsoft.com/resources/samples/active-directory-b2c-dotnetcore-webapp/)
     *   [IdentityServer4를 사용하여 ASP.NET Core 앱 보호](https://identityserver4.readthedocs.io)
 *   [권한 부여](authorization/index.md)
     *   [소개](authorization/introduction.md)
@@ -41,7 +41,7 @@ ms.lasthandoff: 08/18/2017
     *   [사용자 지정 정책 기반 권한 부여](authorization/policies.md)
     *   [요구 사항 처리기의 종속성 주입](authorization/dependencyinjection.md)
     *   [리소스 기반 권한 부여](authorization/resourcebased.md)
-    *   [보기 기반 권한 부여](authorization/views.md)
+    *   [뷰 기반 권한 부여](authorization/views.md)
     *   [구성표로 ID 제한](authorization/limitingidentitybyscheme.md)
 *   [데이터 보호](data-protection/index.md)
     *   [데이터 보호 소개](data-protection/introduction.md)

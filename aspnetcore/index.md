@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: index
-ms.openlocfilehash: 10831719630bc638ce2f7424f53548518868d433
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: d8516643393cdf9175adc78ab98420dc1dc5d1d9
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 소개
 
@@ -44,7 +44,7 @@ ASP.NET Core는 다음과 같은 이점을 제공합니다.
 * Windows, macOS 및 Linux에서 빌드하고 실행할 수 있습니다.
 * 오픈 소스이며 커뮤니티에 중점을 둡니다.
 
-ASP.NET Core는 완전히 [NuGet](https://nuget.org) 패키지로 제공됩니다. 그러면 필요한 NuGet 패키지를 포함하도록 앱을 최적화할 수 있습니다. 작은 앱 노출 영역의 혜택에는 보안 강화, 서비스 절감, 성능 향상이 포함됩니다.
+ASP.NET Core는 완전히 [NuGet](https://www.nuget.org/) 패키지로 제공됩니다. 그러면 필요한 NuGet 패키지를 포함하도록 앱을 최적화할 수 있습니다. 작은 앱 노출 영역의 혜택에는 보안 강화, 서비스 절감, 성능 향상이 포함됩니다.
 
 ## <a name="build-web-apis-and-web-ui-using-aspnet-core-mvc"></a>ASP.NET Core MVC를 사용하여 웹 API 및 웹 UI 빌드
 
