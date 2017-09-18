@@ -11,11 +11,11 @@ ms.assetid: b67c3d4a-f2bf-4132-a48b-4b0d599d7981
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 949733119b4e3a4b8716f2bcc1f631949d5049bc
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 6bde59ddbf153ada36034765b390892ec2ed5997
+ms.sourcegitcommit: 98ecb0f1bae4886507b090c84ecd99ff1e5c46ed
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/17/2017
 ---
 # <a name="getting-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio-1-of-10"></a>Visual Studio (1 / 10)을 사용 하 여 Entity Framework Core 및 ASP.NET Core MVC 시작
 
@@ -30,7 +30,7 @@ Contoso 대학 샘플 웹 응용 프로그램에는 Entity Framework (EF) 코어
 EF 코어 2.0 EF의 최신 버전은 있지만 아직 되지 않은 EF의 모든 기능 6.x 합니다. EF 선택 하는 방법에 대 한 내용은 6.x 및 EF 코어 참조 [EF 코어 vs. EF6.x](https://docs.microsoft.com/ef/efcore-and-ef6/)합니다. EF를 선택 하는 경우 6.x 참조 [이 자습서 시리즈의 이전 버전](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application)합니다.
 
 > [!NOTE]
-> * 이 자습서의 ASP.NET Core 1.1 버전에 대 한 참조는 [PDF 형식으로이 자습서의 VS 2017 업데이트 2 버전](https://github.com/aspnet/Docs/blob/master/aspnetcore/data/efmvc/intro/_static/efmvc1.1.pdf)합니다.
+> * 이 자습서의 ASP.NET Core 1.1 버전에 대 한 참조는 [PDF 형식으로이 자습서의 VS 2017 업데이트 2 버전](https://github.com/aspnet/Docs/blob/master/aspnetcore/data/ef-mvc/intro/_static/efmvc1.1.pdf)합니다.
 > * 이 자습서의 Visual Studio 2015 버전을 보려면 [VS 2015 version of ASP.NET Core documentation in PDF format](https://github.com/aspnet/Docs/blob/master/aspnetcore/common/_static/aspnet-core-project-json.pdf)(ASP.NET Core의 VS 2015 버전 설명서(PDF 형식))을 참조하세요.
 
 ## <a name="prerequisites"></a>필수 구성 요소
@@ -204,7 +204,7 @@ ASP.NET Core 구현 [종속성 주입](../../fundamentals/dependency-injection.m
 
 ### <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
-연결 문자열은 SQL Server LocalDB 데이터베이스를 지정 합니다. LocalDB는 SQL Server Express 데이터베이스 엔진의 경량 버전 하며 응용 프로그램 개발의 경우 프로덕션 환경에서 사용 되지 않습니다. LocalDB 요청 시 시작 하 고 사용자 모드에서 실행 되므로 복잡 한 구성이 없습니다. 기본적으로 LocalDB 만듭니다 *.mdf* 데이터베이스 파일에는 `C:/Users/<user>` 디렉터리입니다.
+연결 문자열은 SQL Server LocalDB 데이터베이스를 지정 합니다. LocalDB는 SQL Server Express 데이터베이스 엔진의 경량 버전 하며 응용 프로그램 개발의 경우 프로덕션 환경에서 사용 되지 않습니다. LocalDB는 요청 시 시작하고 사용자 모드에서 실행되므로 복잡한 구성이 없습니다. 기본적으로 LocalDB 만듭니다 *.mdf* 데이터베이스 파일에는 `C:/Users/<user>` 디렉터리입니다.
 
 ## <a name="add-code-to-initialize-the-database-with-test-data"></a>테스트 데이터로 데이터베이스를 초기화 하는 코드를 추가 합니다.
 
@@ -242,7 +242,7 @@ Entity Framework에서 빈 데이터베이스를 만듭니다.  이 섹션에서
 
 * 마우스 오른쪽 단추로 클릭는 **컨트롤러** 폴더에 **솔루션 탐색기** 선택 **추가 > 스 캐 폴드 된 새 항목**합니다.
 
-* 에 **MVC 종속성 추가** 대화 상자에서 **최소 종속성**를 선택 하 고 **추가**합니다.
+* **MVC 종속성 추가** 대화 상자에서 **최소 종속성**을 선택하고 **추가**를 선택합니다.
 
   ![종속성 추가](intro/_static/add-depend.png)
 

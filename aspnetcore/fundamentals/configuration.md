@@ -1,5 +1,5 @@
 ---
-title: "ASP.NET Core에 대 한 구성"
+title: "ASP.NET Core의 구성"
 author: rick-anderson
 description: "여러 원본에서 ASP.NET Core 응용 프로그램을 구성 하는 구성 API를 사용 하는 방법에 알아봅니다."
 keywords: "ASP.NET Core, 구성, JSON, 구성"
@@ -11,15 +11,13 @@ ms.assetid: b3a5984d-e172-42eb-8a48-547e4acb6806
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration
-ms.openlocfilehash: 041bb04a3a3699a166a03338865da154403d8c07
-ms.sourcegitcommit: f535ce61c6a5e615bc6399b5d763c734396231f4
+ms.openlocfilehash: 7d591259587766a932a14bb030c76274101d16ac
+ms.sourcegitcommit: f8f6b5934bd071a349f5bc1e389365c52b1c00fa
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 09/14/2017
 ---
-<a name=fundamentals-configuration></a>
-
-# <a name="configuration-in-aspnet-core"></a>ASP.NET Core에 대 한 구성
+# <a name="configuration-in-aspnet-core"></a>ASP.NET Core의 구성
 
 [Rick Anderson](https://twitter.com/RickAndMSFT), [표시 Michaelis](http://intellitect.com/author/mark-michaelis/), [Steve Smith](https://ardalis.com/), 및 [김 Roth](https://github.com/danroth27)
 
@@ -287,7 +285,7 @@ public void CanBindObjectTree()
 
 [!code-json[Main](configuration/sample/CustomConfigurationProvider/appsettings.json)]
 
-다음은 표시 됩니다.
+다음이 표시됩니다.
 
 ```console
 key1=value_from_ef_1

@@ -5,16 +5,16 @@ description: "안전 하 게 개발 하는 동안 암호를 저장 하는 방법
 keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
-ms.date: 7/14/2017
+ms.date: 09/15/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/app-secrets
-ms.openlocfilehash: 56214c2fbdca84591c5c1a6b7f2451f33ee64ef0
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: e112cc5ef9cba5aff6470ce4b9b1091a3c2b2600
+ms.sourcegitcommit: f1271b218d7dfdc806ec8f411c81f3750130463d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/15/2017
 ---
 # <a name="safe-storage-of-app-secrets-during-development-in-aspnet-core"></a>ASP.NET Core에서 개발 하는 동안 앱 암호의 안전한 저장소
 
@@ -42,36 +42,19 @@ ms.lasthandoff: 09/12/2017
 >[!WARNING]
 > 암호 관리자 도구 저장 된 암호를 암호화 하지 않습니다 하 고 신뢰할 수 있는 저장소로 처리 되지 해야 합니다. 개발 용도로입니다. 키와 값은 사용자 프로필 디렉터리에는 JSON 구성 파일에 저장 됩니다.
 
-### <a name="visual-studio-2017-installing-the-secret-manager-tool"></a>암호 관리자 도구를 설치 하는 visual Studio 2017:
+## <a name="installing-the-secret-manager-tool"></a>암호 관리자 도구를 설치합니다.
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 솔루션 탐색기에서 프로젝트를 마우스 오른쪽 단추로 클릭 하 고 선택 **편집 \<project_name\>.csproj** 상황에 맞는 메뉴입니다. 강조 표시 된 줄을 추가 *.csproj* 파일과 연결 된 NuGet 패키지를 복원 하려면 저장:
 
-[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets.csproj?highlight=21)]
+[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
 
-솔루션 탐색기에서 프로젝트를 마우스 오른쪽 단추로 클릭 하 고 선택 **관리 사용자의 비밀** 상황에 맞는 메뉴입니다. 이 제스처를 새로 추가 `UserSecretsId` 내에서 노드는 `PropertyGroup` 의 *.csproj* 파일입니다. 또한 열립니다는 `secrets.json` 파일 텍스트 편집기에서.
+솔루션 탐색기에서 프로젝트를 다시 마우스 오른쪽 단추로 클릭 하 고 선택 **관리 사용자의 비밀** 상황에 맞는 메뉴입니다. 이 제스처를 새로 추가 `UserSecretsId` 내에서 노드는 `PropertyGroup` 의 *.csproj* 다음 샘플에 강조 표시 된 대로 파일:
 
-다음을 `secrets.json`에 추가합니다.
+[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets-after.csproj?highlight=4)]
 
-```json
-{
-    "MySecret": "ValueOfMySecret"
-}
-```
-
-### <a name="visual-studio-2015-installing-the-secret-manager-tool"></a>암호 관리자 도구를 설치 하는 visual Studio 2015:
-
-프로젝트를 열고 `project.json` 파일입니다. 에 대 한 참조를 추가 `Microsoft.Extensions.SecretManager.Tools` 내에서 `tools` 속성 및 연결 된 NuGet 패키지를 복원 하려면 저장:
-
-```json
-"tools": {
-    "Microsoft.Extensions.SecretManager.Tools": "1.0.0-preview2-final",
-    "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"
-},
-```
-
-솔루션 탐색기에서 프로젝트를 마우스 오른쪽 단추로 클릭 하 고 선택 **관리 사용자의 비밀** 상황에 맞는 메뉴입니다. 이 제스처를 새로 추가 `userSecretsId` 속성을 `project.json`합니다. 또한 열립니다는 `secrets.json` 파일 텍스트 편집기에서.
-
-다음을 `secrets.json`에 추가합니다.
+수정 된 저장 *.csproj* 파일도 열립니다는 `secrets.json` 파일 텍스트 편집기에서. 내용을 대체는 `secrets.json` 를 다음 코드로 파일:
 
 ```json
 {
@@ -79,11 +62,11 @@ ms.lasthandoff: 09/12/2017
 }
 ```
 
-### <a name="visual-studio-code-or-command-line-installing-the-secret-manager-tool"></a>Visual Studio Code 또는 명령줄: 보안 관리자 도구를 설치 합니다.
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-추가 `Microsoft.Extensions.SecretManager.Tools` 에 *.csproj* 파일을 실행 `dotnet restore`합니다.
+추가 `Microsoft.Extensions.SecretManager.Tools` 에 *.csproj* 파일을 실행 `dotnet restore`합니다. 명령줄을 사용 하 여 암호 관리자 도구를 설치 하려면 동일한 단계를 사용할 수 있습니다.
 
-[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets.csproj?highlight=21)]
+[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
 
 다음 명령을 실행 하 여 암호 관리자 도구를 테스트 합니다.
 
@@ -100,7 +83,7 @@ dotnet user-secrets -h
 
 추가 `UserSecretsId` 에서 프로젝트에 대 한는 *.csproj* 파일:
 
-[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets.csproj?range=7-9&highlight=2)]
+[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets-after.csproj?highlight=4)]
 
 암호 관리자 도구를 사용 하 여 암호를 설정할 수 있습니다. 예를 들어 프로젝트 디렉터리에서 명령 창에서 다음을 입력 합니다.
 
@@ -115,6 +98,8 @@ dotnet user-secrets set MySecret ValueOfMySecret --project c:\work\WebApp1\src\w
 ```
 
 또한 나열, 제거 및 앱 암호를 지울 수는 암호 관리자 도구를 사용할 수 있습니다.
+
+-----
 
 ## <a name="accessing-user-secrets-via-configuration"></a>구성을 통해 사용자의 비밀 정보에 액세스
 

@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 2f99a5d3db84c3fd3f7ebcb8bccd9a4b8bc8e2b8
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 8fe21b1a1ccb93c124dbd12a540b195400d45ef6
+ms.sourcegitcommit: f8f6b5934bd071a349f5bc1e389365c52b1c00fa
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/14/2017
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>계정 확인 및 ASP.NET 코어에서 암호 복구
 
@@ -117,7 +117,7 @@ config.SignIn.RequireConfirmedEmail = true;
 
 이 자습서에서는 SendGrid 전자 메일을 보내는 데 사용 됩니다. SendGrid 계정 및 전자 메일을 보내는 키 필요. 다른 전자 메일 공급자를 사용할 수 있습니다. ASP.NET Core 2.x 포함 `System.Net.Mail`, 응용 프로그램에서 전자 메일을 보낼 수 있습니다. 전자 메일을 보내는 SendGrid 또는 다른 전자 메일 서비스를 사용 하는 것이 좋습니다.
 
-[옵션 패턴](xref:fundamentals/configuration#options-config-objects) 사용자 계정 및 키 설정에 액세스 하는 데 사용 됩니다. 자세한 내용은 참조 [구성](xref:fundamentals/configuration#fundamentals-configuration)합니다.
+[옵션 패턴](xref:fundamentals/configuration#options-config-objects) 사용자 계정 및 키 설정에 액세스 하는 데 사용 됩니다. 자세한 내용은 참조 [구성](xref:fundamentals/configuration)합니다.
 
 전자 메일 보안 키를 인출 하는 클래스를 만듭니다. 이 샘플은 `AuthMessageSenderOptions` 클래스에 만들어집니다는 *Services/AuthMessageSenderOptions.cs* 파일입니다.
 
