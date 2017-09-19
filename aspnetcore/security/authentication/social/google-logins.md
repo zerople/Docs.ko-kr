@@ -2,31 +2,31 @@
 title: "ASP.NET Core에서 Google 외부 로그인 설정"
 author: rick-anderson
 description: "ASP.NET Core에서 Google 외부 로그인 설정"
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
-ms.date: 8/2/2017
+ms.date: 08/02/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/google-logins
-ms.openlocfilehash: c0bf20437dcdffc447dde3e6405cd6bf55bc8cfd
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: 7e37a8af4ae5a957483fa5f4a89ea4e8999a3d1d
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="configuring-google-authentication-in-aspnet-core"></a>ASP.NET Core에서 Google 인증 구성
 
 <a name=security-authentication-google-logins></a>
 
-여 [Valeriy Novytskyy](https://github.com/01binary) 및 [Rick Anderson](https://twitter.com/RickAndMSFT)
+작성자: [Valeriy Novytskyy](https://github.com/01binary) 및 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 이 자습서에서 만든 샘플 ASP.NET 코어 2.0 프로젝트를 사용 하 여 해당 Google + 계정으로 로그인 하 여 사용자가 사용할 수 있도록 하는 방법을 보여 줍니다.는 [이전 페이지](index.md)합니다. 수행 하 여 시작는 [공식 단계](https://developers.google.com/identity/sign-in/web/devconsole-project) Google API 콘솔에서 새 응용 프로그램을 만들려고 합니다.
 
 ## <a name="create-the-app-in-google-api-console"></a>Google API 콘솔에서 응용 프로그램 만들기
 
-* 로 이동 [https://console.developers.google.com/projectselector/apis/library](https://console.developers.google.com/projectselector/apis/library) 에 로그인 합니다. Google 계정 없는 경우 사용 하 여 **더 많은 옵션** > **[계정 만들기](https://accounts.google.com/SignUpWithoutGmail?service=cloudconsole&continue=https%3A%2F%2Fconsole.developers.google.com%2Fprojectselector%2Fapis%2Flibrary&ltmpl=api)**  새로 만들려면 링크:
+* 로 이동 [https://console.developers.google.com/projectselector/apis/library](https://console.developers.google.com/projectselector/apis/library) 에 로그인 합니다. Google 계정 없는 경우 사용 하 여 **더 많은 옵션** > **[계정 만들기](https://accounts.google.com/SignUpWithoutGmail?service=cloudconsole&continue=https%3A%2F%2Fconsole.developers.google.com%2Fprojectselector%2Fapis%2Flibrary&ltmpl=api) ** 새로 만들려면 링크:
 
 ![Google API 콘솔](index/_static/GoogleConsoleLogin.png)
 
@@ -96,7 +96,7 @@ Google와 같은 중요 한 설정이 연결 `Client ID` 및 `Client Secret` 사
 
    `dotnet add package Microsoft.AspNetCore.Authentication.Google`
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 Google 서비스에 추가 `ConfigureServices` 메서드에서 *Startup.cs* 파일:
 

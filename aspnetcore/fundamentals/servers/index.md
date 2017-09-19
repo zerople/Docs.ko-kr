@@ -11,11 +11,11 @@ ms.assetid: dba74f39-58cd-4dee-a061-6d15f7346959
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/index
-ms.openlocfilehash: 17124f1ef181a4f1572d9375ae8cd27ce8845016
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 54c8e1ad7d4de7f953d9801c214c0bd577304f46
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>ASP.NET Core의 웹 서버 구현
 
@@ -115,7 +115,7 @@ Kestrel이 지원하지 않는 WebListener가 필요한 경우 내부 네트워�
 
 ## <a name="notes-about-aspnet-core-server-infrastructure"></a>ASP.NET Core 서버 인프라에 대한 참고
 
-`Startup` 클래스 `Configure` 메서드에서 사용 가능한 [`IApplicationBuilder`](https://docs.microsoft.com/aspnet/core/api)는 [`IFeatureCollection`](https://docs.microsoft.com/aspnet/core/api) 형식의 `ServerFeatures` 속성을 노출합니다. Kestrel 및 WebListener는 둘 다 단일 기능인 [`IServerAddressesFeature`](https://docs.microsoft.com/aspnet/core/api)만 노출하지만, 다른 서버 구현이 추가 기능을 노출할 수 있습니다.
+`Startup` 클래스 `Configure` 메서드에서 사용 가능한 [`IApplicationBuilder`](/aspnet/core/api/microsoft.aspnetcore.builder.iapplicationbuilder)는 [`IFeatureCollection`](/aspnet/core/api/microsoft.aspnetcore.http.features.ifeaturecollection) 형식의 `ServerFeatures` 속성을 노출합니다. Kestrel 및 WebListener는 둘 다 단일 기능인 [`IServerAddressesFeature`](/aspnet/core/api/microsoft.aspnetcore.hosting.server.features.iserveraddressesfeature)만 노출하지만, 다른 서버 구현이 추가 기능을 노출할 수 있습니다.
 
 `IServerAddressesFeature`를 사용하여 런타임에 서버 구현이 바인딩된 포트를 확인할 수 있습니다.
 

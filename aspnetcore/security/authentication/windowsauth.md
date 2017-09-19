@@ -5,17 +5,17 @@ description: "ASP.NET Core에 Windows 인증을 구성 하는 방법"
 keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
-ms.date: 7/5/2017
+ms.date: 07/05/2017
 ms.topic: article
 ms.assetid: cf119f21-1a2b-49a2-b052-548ccb66ee83
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/windowsauth
-ms.openlocfilehash: aa401f956d74680efd3964203af3e8866b129887
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: f724584b43eb2be105cc8a207d5c7b6fec558881
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>ASP.NET Core에 Windows 인증을 구성 합니다.
 
@@ -40,7 +40,7 @@ Visual Studio에서 합니다.
 * 템플릿 목록에서 웹 응용 프로그램을 선택 합니다.
 * 인증 변경 단추를 선택 하 고 선택 **Windows 인증**합니다. 
 
-응용 프로그램을 실행 합니다. 사용자 이름 상단에 표시 됩니다. 응용 프로그램의 오른쪽입니다.
+앱을 실행합니다. 사용자 이름 상단에 표시 됩니다. 응용 프로그램의 오른쪽입니다.
 
 ![Windows 인증에 대 한 브라우저 스크린 샷](windowsauth/_static/browser-screenshot.png)
 

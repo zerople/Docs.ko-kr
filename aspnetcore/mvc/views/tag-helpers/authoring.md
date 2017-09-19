@@ -5,18 +5,18 @@ description: "ASP.NET Core에서 태그 도우미를 작성 하는 방법을 알
 keywords: "ASP.NET Core, 태그 도우미"
 ms.author: riande
 manager: wpickett
-ms.date: 6/14/2017
+ms.date: 06/14/2017
 ms.topic: article
 ms.assetid: 4f16d978-5695-4abf-a785-fdaabf3bbcb9
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/tag-helpers/authoring
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 97013d06273c0993b74cdacfa16cb0d655c73667
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 1a5222da1380c2fe768b287bfa1a49b300c02f2b
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="authoring-tag-helpers-in-aspnet-core-a-walkthrough-with-samples"></a>ASP.NET Core, 샘플을 연습에서에서 태그 도우미를 작성합니다.
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 09/12/2017
     public class Email : TagHelper
     ```
 
-2.  확인 하는 `EmailTagHelper` 우리의 모든 Razor 뷰를 사용할 수 있는 클래스, 추가 `addTagHelper` 지시문을 *Views/_ViewImports.cshtml* 파일: [!code-html [Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopyEmail.cshtml?highlight=2,3)]
+2.  확인 하는 `EmailTagHelper` 우리의 모든 Razor 뷰를 사용할 수 있는 클래스, 추가 `addTagHelper` 지시문을 *Views/_ViewImports.cshtml* 파일:[!code-html[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopyEmail.cshtml?highlight=2,3)]
     
     위의 코드에서는 와일드 카드 구문을 사용할 수 있는 모든 태그 도우미 어셈블리에서 지정 하 여 뒤의 첫 번째 문자열 `@addTagHelper` 로드할 태그 도우미를 지정 합니다 (사용 하 여 "*" 모든 태그 도우미에 대 한), 및 두 번째 문자열 "AuthoringTagHelpers" 태그 도우미에는 어셈블리를 지정 합니다. 또한 와일드 카드 구문을 사용 하 여 ASP.NET Core MVC 태그 도우미의 두 번째 줄을 제공 하는 확인 (해당 도우미에 대해서는 설명 [태그 도우미 소개](intro.md).) `@addTagHelper` 지시문 태그 도우미 Razor 뷰를 사용할 수 있도록 합니다. 또는 다음과 같이 태그 도우미의 정규화 된 이름 (FQN)를 제공할 수 있습니다.
     
@@ -108,7 +108,7 @@ ms.lasthandoff: 09/12/2017
 
 이 방법으로 속성 컬렉션에 현재 존재 하지 않는 "href" 특성에 대 한 작동 합니다. 사용할 수도 있습니다는 `output.Attributes.Add` 메서드를 태그 도우미 특성의 태그 특성 컬렉션의 끝에 추가 합니다.
 
-1.  태그가 업데이트는 *Views/Home/Contact.cshtml* 이러한 변경 내용과 파일을: [!code-html [Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/ContactCopy.cshtml?highlight=15,16)]
+1.  태그가 업데이트는 *Views/Home/Contact.cshtml* 이러한 변경 내용으로 파일:[!code-html[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/ContactCopy.cshtml?highlight=15,16)]
 
 2.  응용 프로그램을 실행 하 고 올바른 링크를 생성 하는지 확인 합니다.
     
@@ -155,7 +155,7 @@ ms.lasthandoff: 09/12/2017
 
     [!code-html[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/AboutBoldOnly.cshtml?highlight=7)]
 
-3.  응용 프로그램을 실행 합니다. 소스를 검사 하는 태그를 확인 하십시오. 즐겨 찾는 브라우저를 사용할 수 있습니다.
+3.  앱을 실행합니다. 소스를 검사 하는 태그를 확인 하십시오. 즐겨 찾는 브라우저를 사용할 수 있습니다.
 
     `[HtmlTargetElement]` 위의 특성에만 "bold"의 특성 이름을 제공 하는 HTML 태그를 대상으로 합니다. `<bold>` 요소 태그 도우미에서 수정 되지 않았습니다.
 
@@ -183,7 +183,7 @@ ms.lasthandoff: 09/12/2017
 
 1.  추가 *모델* 폴더입니다.
 
-2.  다음 추가 `WebsiteContext` 클래스는 *모델* 폴더:
+2.  다음 `WebsiteContext` 클래스를 *Models* 폴더에 추가합니다.
 
     [!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Models/WebsiteContext.cs)]
 
@@ -301,7 +301,7 @@ ms.lasthandoff: 09/12/2017
 
     [!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs?highlight=15-34&range=7-34)]
 
-5.  응용 프로그램을 실행 합니다. 링크로 www 텍스트를 렌더링 하지 않으면이 HTTP 텍스트를 확인 합니다. 두 클래스에 중단점을 배치 하면 HTTP 태그 도우미 클래스 첫 번째 실행 되는지 확인할 수 있습니다. 문제는 태그 도우미 출력에 캐시 되며 HTTP 태그 도우미의 캐시 된 출력 덮어씁니다 WWW 태그 도우미를 실행 하는 경우입니다. 이 자습서의 뒷부분에 나오는 태그 도우미에서 실행 되는 순서를 제어 하는 방법을 살펴보겠습니다. 다음 코드를 수정 하겠습니다.
+5.  앱을 실행합니다. 링크로 www 텍스트를 렌더링 하지 않으면이 HTTP 텍스트를 확인 합니다. 두 클래스에 중단점을 배치 하면 HTTP 태그 도우미 클래스 첫 번째 실행 되는지 확인할 수 있습니다. 문제는 태그 도우미 출력에 캐시 되며 HTTP 태그 도우미의 캐시 된 출력 덮어씁니다 WWW 태그 도우미를 실행 하는 경우입니다. 이 자습서의 뒷부분에 나오는 태그 도우미에서 실행 되는 순서를 제어 하는 방법을 살펴보겠습니다. 다음 코드를 수정 하겠습니다.
 
     [!code-csharp[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinkerCopy.cs?highlight=5,6,10,21,22,26&range=8-37)]
 

@@ -5,17 +5,17 @@ description: "ASP.NET Core 응용 프로그램에 대 한 열기 리디렉션 �
 keywords: "ASP.NET Core, 보안, 열기 리디렉션 공격"
 ms.author: riande
 manager: wpickett
-ms.date: 07/7/2017
+ms.date: 07/07/2017
 ms.topic: article
 ms.assetid: 4604e563-e91a-4ecd-b7ed-00b3f1eee2b5
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/preventing-open-redirects
-ms.openlocfilehash: 7a62b08d641de5a9df5c2f7d89bf6bf97ed8e39d
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 84354905d289847849719700de815502a0cb948f
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="preventing-open-redirect-attacks-in-an-aspnet-core-app"></a>ASP.NET Core 응용 프로그램에서 열려 리디렉션 공격 방지
 

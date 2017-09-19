@@ -5,17 +5,17 @@ description: "Mac용 Visual Studio를 사용하여 ASP.NET Core MVC/Entity Frame
 keywords: ASP.NET Core, MVC, Entity Framework, Visual Studio
 ms.author: riande
 manager: wpickett
-ms.date: 6/26/2017
+ms.date: 06/26/2017
 ms.topic: article
 ms.assetid: 959ff4ca-be2d-4444-acac-789e787146f3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app-mac/index
-ms.openlocfilehash: 009b002a0718f110e0e866d0fcbe9e9da0b79d79
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 1a0e4a5df45b3385ef44894d57030c886e0c47c5
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="create-a-web-app-with-aspnet-core-mvc-using-visual-studio-for-mac"></a>Mac용 Visual Studio를 사용하여 ASP.NET Core MVC로 웹앱 만들기
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 08/11/2017
 
 1. [시작](start-mvc.md)
 1. [컨트롤러 추가](adding-controller.md)
-1. [뷰 추가](adding-view.md)
+1. [보기 추가](adding-view.md)
 1. [모델 추가](adding-model.md)
 1. [SQLite](working-with-sql.md)
 1. [컨트롤러 메서드 및 보기](controller-methods-views.md)

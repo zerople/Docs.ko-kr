@@ -11,11 +11,11 @@ ms.assetid: d026a58c-67f4-411e-a410-c35f29c2c517
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/context-headers
-ms.openlocfilehash: 7befd983f6a45839868639708ec5cf45bf2df35f
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 5688ff2c36907231f88d45cef4ae1b1c60ab44ab
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="context-headers"></a>컨텍스트 헤더
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 09/12/2017
 
 ## <a name="background-and-theory"></a>배경 및 이론
 
-데이터 보호 시스템에 "키"를 제공할 수 있는 개체에는 암호화 서비스 인증을 의미 합니다. 각 키는 고유 id (GUID)로 식별 되 고 함께 전달 알고리즘 정보 및 entropic 자료. 각 키 고유 엔트로피 하지만 시스템을 적용할 수 없는 운반 하 고 키 링의 기존 키의 알고리즘 정보를 수정 하 여 수동으로 키 링을 변경할 수 있는 개발자를 위한 계정 해야 것입니다. 이러한 경우 지정 된 보안 요구 사항은 달성 하기 위해 데이터 보호 시스템에는의 개념이 [암호화 유연성](https://www.microsoft.com/research/publication/cryptographic-agility-and-its-relation-to-circular-encryption/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D121045), 안전 하 게 단일 entropic 값을 사용 하 여 여러 암호화 알고리즘에서 허용 하는 합니다.
+데이터 보호 시스템에 "키"를 제공할 수 있는 개체에는 암호화 서비스 인증을 의미 합니다. 각 키는 고유 id (GUID)로 식별 되 고 함께 전달 알고리즘 정보 및 entropic 자료. 각 키 고유 엔트로피 하지만 시스템을 적용할 수 없는 운반 하 고 키 링의 기존 키의 알고리즘 정보를 수정 하 여 수동으로 키 링을 변경할 수 있는 개발자를 위한 계정 해야 것입니다. 이러한 경우 지정 된 보안 요구 사항은 달성 하기 위해 데이터 보호 시스템에는의 개념이 [암호화 유연성](https://www.microsoft.com/en-us/research/publication/cryptographic-agility-and-its-relation-to-circular-encryption/), 안전 하 게 단일 entropic 값을 사용 하 여 여러 암호화 알고리즘에서 허용 하는 합니다.
 
 대부분의 암호화 유연성 지원 시스템 이렇게 페이로드 내부 알고리즘에 대 한 몇 가지 식별 정보가 포함 됩니다. 알고리즘의 OID는 일반적으로이 적합 합니다. 그러나 발생 했습니다. 한 가지 문제는 동일한 알고리즘을 지정 하려면 여러 가지: "AES" (CNG) 관리 되는 Aes, AesManaged, AesCryptoServiceProvider, AesCng, 및 RijndaelManaged (부여 된 특정 매개 변수) 클래스는 모든 실제로 동일한 올바른 OID를 이러한 모든 내용의 매핑을 유지 관리 하 고 작업을 해야 합니다. 개발자를 사용자 지정 알고리즘 (또는 AES의 다른 구현!)를 제공 하 려 해당 OID 인지 파악할 수 있어야 합니다. 이 여분의 등록 단계를 수행 하면 시스템 구성 크다고 합니다.
 

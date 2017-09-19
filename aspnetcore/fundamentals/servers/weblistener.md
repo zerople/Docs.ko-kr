@@ -11,11 +11,11 @@ ms.assetid: 0a7286e4-6428-424e-b5c4-5c98815cf61c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/weblistener
-ms.openlocfilehash: 93e8b99e7fbac88aabd347c077d923214ba7aebe
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 6d9f5d2a488935f9512a12c7ce6d2400f109abdb
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="weblistener-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 웹 서버 구현이 WebListener
 
@@ -80,7 +80,7 @@ WebListener는 Kestrel를 사용 하 여 가져올 수 없습니다 제공 하�
 
 * NuGet 패키지 설치 [Microsoft.AspNetCore.Server.WebListener](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.WebListener/)합니다. 도 설치 [Microsoft.Net.Http.Server](https://www.nuget.org/packages/Microsoft.Net.Http.Server/) 종속성으로 있습니다.
 
-* 호출 된 [ `UseWebListener` ](https://docs.microsoft.com/aspnet/core/api) 확장 메서드를 [WebHostBuilder](https://docs.microsoft.com/aspnet/core/api) 에 프로그램 `Main` 모든 WebListener를 지정 하는 메서드를 [옵션](https://github.com/aspnet/HttpSysServer/blob/rel/1.1.2/src/Microsoft.AspNetCore.Server.WebListener/WebListenerOptions.cs) 및 [ 설정](https://github.com/aspnet/HttpSysServer/blob/rel/1.1.2/src/Microsoft.Net.Http.Server/WebListenerSettings.cs) 다음 예제와 같이 필요한:
+* 호출 된 `UseWebListener` 확장 메서드를 [WebHostBuilder](/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilder) 에 프로그램 `Main` 모든 WebListener를 지정 하는 메서드를 [옵션](https://github.com/aspnet/HttpSysServer/blob/rel/1.1.2/src/Microsoft.AspNetCore.Server.WebListener/WebListenerOptions.cs) 및 [설정](https://github.com/aspnet/HttpSysServer/blob/rel/1.1.2/src/Microsoft.Net.Http.Server/WebListenerSettings.cs) 해야 하는 를 다음 예제와 같이:
 
   [!code-csharp[](weblistener/sample/Program.cs?name=snippet_Main&highlight=13-17)]
 

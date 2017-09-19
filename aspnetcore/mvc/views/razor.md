@@ -5,16 +5,16 @@ description: "Razor 구문에 자세히 설명"
 keywords: Razor, ASP.NET Core
 ms.author: riande
 manager: wpickett
-ms.date: 07/4/2017
+ms.date: 07/04/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/razor
-ms.openlocfilehash: 7648bc2ac7b9efd1653725cda749d6cd271bae77
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: fff2f98592473a9baf6a2d4e360fec3026b7210d
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="razor-syntax-for-aspnet-core"></a>ASP.NET Core에 대 한 razor 구문
 
@@ -36,7 +36,7 @@ Razor은 웹 페이지에 서버 기반 코드를 포함 하기 위한 태그 �
 
 ## <a name="razor-syntax"></a>Razor 구문
 
-Razor C# 지원 및 사용 하 여는 `@` C#으로 HTML에서 전환 기호입니다. Razor C# 식을 계산 하 고 HTML 출력에이 렌더링 합니다. Razor을 C# 또는 Razor 관련 마크업에 HTML에서 전환할 수 있습니다. 경우는 `@` 기호 뒤는 [Razor 예약 키워드](#razor-reserved-keywords) Razor 특정 태그에 전환, 그렇지 않으면 일반 C# 식으로 전환 합니다.
+Razor C# 지원 및 사용 하 여는 `@` C#으로 HTML에서 전환 기호입니다. Razor C# 식을 계산 하 고 HTML 출력에이 렌더링 합니다. Razor는 HTML에서 C# 또는 Razor 관련 태그로 전환될 수 있습니다. 경우는 `@` 기호 뒤는 [Razor 예약 키워드](#razor-reserved-keywords) Razor 특정 태그에 전환, 그렇지 않으면 일반 C# 식으로 전환 합니다.
 
 <a name=escape-at-label></a>
 
@@ -494,7 +494,7 @@ Razor 페이지에 노출 한 `Model` 모델 액세스에 대 한 속성 페이�
 
 전달 될 때 "[Rick@contoso.com](mailto:Rick@contoso.com)" 모델에서:
 
-   참조 [레이아웃](layout.md) 자세한 정보에 대 한 합니다.
+   자세한 내용은 [레이아웃](layout.md)을 참조하세요.
 
 ### `@inject`
 

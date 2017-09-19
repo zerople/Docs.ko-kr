@@ -2,32 +2,32 @@
 title: "Twitter 외부 로그인 설정"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
-ms.date: 11/1/2016
+ms.date: 11/01/2016
 ms.topic: article
 ms.assetid: E5931607-31C0-4B20-B416-85E3550F5EA8
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/twitter-logins
-ms.openlocfilehash: 800f98285859a54198b76411aea000384de05cd3
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: 401836c3782e5d9d31b13d7c94eb2f955045fa0c
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="configuring-twitter-authentication"></a>Twitter 인증 구성
 
 <a name=security-authentication-twitter-logins></a>
 
-여 [Valeriy Novytskyy](https://github.com/01binary) 및 [Rick Anderson](https://twitter.com/RickAndMSFT)
+작성자: [Valeriy Novytskyy](https://github.com/01binary) 및 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 이 자습서에서는 사용자 수 있도록 하는 방법을 보여 줍니다 [Twitter 계정으로 इ न क](https://dev.twitter.com/web/sign-in/desktop-browser) 에서 만든 샘플 ASP.NET 코어 2.0 프로젝트를 사용 하 여 [이전 페이지](index.md)합니다.
 
 ## <a name="create-the-app-in-twitter"></a>Twitter에서 앱을 만들
 
-* 로 이동 [https://apps.twitter.com/](https://apps.twitter.com/) 에 로그인 합니다. Twitter 계정 없는 경우 사용 하 여는  **[지금 등록](https://twitter.com/signup)**  링크를 만듭니다. 에 로그인 한 후의 **응용 프로그램 관리** 페이지가 표시 됩니다.
+* 로 이동 [https://apps.twitter.com/](https://apps.twitter.com/) 에 로그인 합니다. Twitter 계정 없는 경우 사용 하 여는 ** [지금 등록](https://twitter.com/signup) ** 링크를 만듭니다. 에 로그인 한 후의 **응용 프로그램 관리** 페이지가 표시 됩니다.
 
 ![Microsoft Edge에서 열려 있는 twitter 응용 프로그램 관리](index/_static/TwitterAppManage.png)
 
@@ -60,7 +60,7 @@ Twitter와 같은 중요 한 설정이 연결 `Consumer Key` 및 `Consumer Secre
 
    `dotnet add package Microsoft.AspNetCore.Authentication.Twitter`
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 Twitter 서비스에 추가 `ConfigureServices` 메서드에서 *Startup.cs* 파일:
 
