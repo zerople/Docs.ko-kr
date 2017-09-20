@@ -11,11 +11,11 @@ ms.assetid: 50922cf1-ca58-4006-9236-99b7ff2dd0cf
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/nano-server
-ms.openlocfilehash: 39e9dea5b3cbd43f41f8a9bceb5d5f8eb6adb16d
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: dd1f2c8de58ea8d3a57e64ecc519184400cb52c8
+ms.sourcegitcommit: ad01283f299d346cf757c4f4744c48634dc27e73
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/18/2017
 ---
 # <a name="aspnet-core-with-iis-on-nano-server"></a>Nano Server의 ASP.NET Core 및 IIS
 
@@ -165,12 +165,11 @@ New-IISConfigCollectionElement $modules -ConfigAttribute @{"name"="AspNetCoreMod
 
 ## <a name="installing-net-core-framework"></a>.NET Core Framework 설치
 
-Framework 종속(이식 가능) 앱을 게시한 경우 .NET Core는 대상 컴퓨터에 설치되어야 합니다. 원격 PowerShell 세션에서 다음 PowerShell 스크립트를 실행하여 Nano Server에 .NET Framework를 설치합니다.
+앱이 [FDD(프레임워크 종속 배포)](/dotnet/core/deploying/#framework-dependent-deployments-fdd)로 게시되는 경우 서버에 .NET Core를 설치해야 합니다. 원격 PowerShell 세션에서 [dotnet-install.ps1 PowerShell 스크립트](https://dot.net/v1/dotnet-install.ps1)를 사용하여 Nano Server에 .NET Core를 설치합니다. `-Version` 스위치를 사용하여 CLI 버전을 전달합니다.
 
-> [!NOTE]
-> FDD(Framework 종속 배포)와 SCD(자체 포함 배포)의 차이점을 알아보려면 [deployment options](https://docs.microsoft.com/dotnet/articles/core/deploying/)(배포 옵션)를 참조하세요.
-
-[!code-powershell[Main](nano-server/Download-Dotnet.ps1)]
+```console
+dotnet-install.ps1 -Version 2.0.0
+```
 
 ## <a name="publishing-the-application"></a>응용 프로그램 게시
 

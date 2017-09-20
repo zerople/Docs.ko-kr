@@ -5,17 +5,19 @@ description: "간단한 ASP.NET Core 앱에 모델을 추가합니다."
 keywords: "ASP.NET Core, MVC, 스캐폴드, 스캐폴딩"
 ms.author: riande
 manager: wpickett
-ms.date: 03/30/2017
+ms.devlang: csharp
+ms.date: 09/15/2017
 ms.topic: get-started-article
 ms.assetid: 8dc28498-eeee-1638-b903-b593059e9f39
 ms.technology: aspnet
-ms.prod: asp.net-core
+ms.prod: .net-core
+helpviewer_keywords: aspnet, csharp, mvc
 uid: tutorials/first-mvc-app-mac/adding-model
-ms.openlocfilehash: 4a158802a19011cbb45da1b3ca43d67706efe4cd
-ms.sourcegitcommit: d9e2c99c837078fcac0e315025f8fbfbd45ea6e8
+ms.openlocfilehash: 36819284073eb1cb20b19c41512944e34c54c6d3
+ms.sourcegitcommit: 3fece4e2869581df72090ff5e82af1a09d927699
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/15/2017
 ---
 [!INCLUDE[adding-model](../../includes/mvc-intro/adding-model1.md)]
 
@@ -82,7 +84,7 @@ dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMo
 * 동영상 컨트롤러(*Controllers/MoviesController.cs*)
 * 만들기, 삭제, 세부 정보, 편집 및 인덱스 페이지에 대한 Razor 뷰 파일(*Views/Movies/\*.cshtml*)
 
-[CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)(만들기, 읽기, 업데이트 및 삭제) 작업 메서드와 뷰를 자동으로 만드는 작업을 *스캐폴딩*이라고 합니다. 동영상 데이터베이스를 관리할 수 있는 완벽하게 작동하는 웹 응용 프로그램이 곧 제공됩니다.
+[CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete)(만들기, 읽기, 업데이트 및 삭제) 작업 메서드와 뷰를 자동으로 만드는 작업을 *스캐폴딩*이라고 합니다. 동영상 데이터베이스를 관리할 수 있는 완벽하게 작동하는 웹 응용 프로그램이 곧 제공됩니다.
 
 ### <a name="add-the-files-to-visual-studio"></a>Visual Studio에 파일 추가
 

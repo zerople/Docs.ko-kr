@@ -10,17 +10,17 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: bda00f290043251ad308192c5b1a873ae7cd0d85
-ms.sourcegitcommit: e832a9b9f41a8b26a8c88edfd8fc35b8bfd97d5d
+ms.openlocfilehash: 1b5f4297d4812fbbd60fb8b94446da205cd6bb55
+ms.sourcegitcommit: f303a457644ed034a49aa89edecb4e79d9028cb1
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="adding-a-new-field-to-a-razor-page"></a>Razor 페이지에 새 필드 추가
 
 작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-이 섹션에서는 [Entity Framework](http://docs.efproject.net/en/latest/platforms/aspnetcore/new-db.html) Code First 마이그레이션을 사용하여 모델에 새 필드를 추가하고 해당 변경 내용을 데이터베이스로 마이그레이션합니다.
+이 섹션에서는 [Entity Framework](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db) Code First 마이그레이션을 사용하여 모델에 새 필드를 추가하고 해당 변경 내용을 데이터베이스로 마이그레이션합니다.
 
 EF Code First를 사용하여 자동으로 데이터베이스를 만들 때 Code First는 데이터베이스에 테이블을 추가하여 데이터베이스의 스키마가 생성된 모델 클래스와 동기화되어 있는지 여부를 추적합니다. 동기화되어 있지 않은 경우 EF에서 예외를 throw합니다. 이렇게 하면 더 쉽게 일관성이 없는 데이터베이스/코드 문제를 찾을 수 있습니다.
 
@@ -105,4 +105,4 @@ Update-Database
 
 >[!div class="step-by-step"]
 [이전: 검색 추가](xref:tutorials/razor-pages/search)
-[다음: 새 필드 추가](xref:tutorials/razor-pages/new-field)
+[다음: 유효성 검사 추가](xref:tutorials/razor-pages/validation)

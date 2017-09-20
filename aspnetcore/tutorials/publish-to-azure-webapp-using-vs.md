@@ -11,11 +11,11 @@ ms.assetid: 78571e4a-a143-452d-9cf2-0860f85972e6
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: 14ce45f0cd15b2de39f722767df076d2c0313787
-ms.sourcegitcommit: 6ece943781d8a56784bb6160f14da85210d3fcea
+ms.openlocfilehash: 0c0ec1c7c1408b0460c594a47a3e5738cd170d5f
+ms.sourcegitcommit: d022d4b96795ee473fa3847a1d8a8c7430423a86
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/11/2017
+ms.lasthandoff: 09/13/2017
 ---
 # <a name="publish-an-aspnet-core-web-app-to-azure-app-service-using-visual-studio"></a>Visual Studio를 사용하여 Azure App Service에 ASP.NET Core 웹앱 게시
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 09/11/2017
 
 ## <a name="set-up-the-development-environment"></a>개발 환경 설정
 
-* [.NET Core + Visual Studio 도구](http://go.microsoft.com/fwlink/?LinkID=798306)를 설치합니다.
+* 최신 [Azure SDK for Visual Studio](https://www.visualstudio.com/vs/azure-tools/)를 설치합니다. SDK는 아직 없는 경우 Visual Studio를 설치합니다.
 
 * [Azure 계정](https://portal.azure.com/)을 확인합니다. [Azure 계정을 열](https://azure.microsoft.com/pricing/free-trial/)거나 [Visual Studio 구독자 혜택을 활성화](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)할 수 있습니다.
 
@@ -95,7 +95,7 @@ Visual Studio는 솔루션을 만듭니다.
 
 * 앱에 고유한 이름을 지정합니다. 
 
-* MSDN 구독을 선택합니다.
+* 구독을 선택합니다.
 
 * 리소스 그룹에 대해 **새로 만들기...**를 선택하고 새 리소스 그룹에 대한 이름을 입력합니다.
 
@@ -160,7 +160,7 @@ Visual Studio가 **App Service 만들기** 대화 상자로 돌아갑니다.
 
 * *Pages/About.cshtml* Razor 페이지를 편집하고 내용을 변경합니다. 예를 들어 단락을 수정하여 “Hello ASP.NET Core!” 문구를 표시할 수 있습니다.
 
-    [!code-html[정보](publish-to-azure-webapp-using-vs/sample/about.cshtml?highlight=9&range=1-9)]
+    [!code-html[About](publish-to-azure-webapp-using-vs/sample/about.cshtml?highlight=9&range=1-9)]
 
 * 프로젝트를 마우스 오른쪽 단추로 클릭하고 **게시...**를 선택합니다.
 

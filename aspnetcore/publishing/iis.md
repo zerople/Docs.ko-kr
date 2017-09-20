@@ -11,11 +11,11 @@ ms.assetid: a4449ad3-5bad-410c-afa7-dc32d832b552
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/iis
-ms.openlocfilehash: 351f3519643bc88fc3dd1c4fbac1c144c6837523
-ms.sourcegitcommit: 0a70706a3814d2684f3ff96095d1e8291d559cc7
+ms.openlocfilehash: 48e67add785fc1d7e79c659565afb1ec68c1defb
+ms.sourcegitcommit: f531d90646b9d261c5fbbffcecd6ded9185ae292
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/15/2017
 ---
 # <a name="set-up-a-hosting-environment-for-aspnet-core-on-windows-with-iis-and-deploy-to-it"></a>IIS가 있는 Windows에서 ASP.NET Core에 대한 호스팅 환경 설정 및 이 환경에 배포
 
@@ -66,22 +66,38 @@ ms.lasthandoff: 08/22/2017
 
 ## <a name="install-web-deploy-when-publishing-with-visual-studio"></a>Visual Studio을 사용하여 게시할 때 웹 배포 설치
 
-Visual Studio에서 웹 배포를 사용하여 응용 프로그램을 배포하려는 경우 호스팅 시스템에 최신 버전의 웹 배포를 설치합니다. 웹 배포를 설치하려면 [WebPI(웹 플랫폼 설치 관리자)](https://www.microsoft.com/web/downloads/platform.aspx)를 사용하거나 [Microsoft 다운로드 센터](https://www.microsoft.com/search/result.aspx?q=webdeploy&form=dlc)에서 설치 관리자를 직접 구할 수 있습니다. WebPI를 사용하는 것이 좋습니다. WebPI는 호스팅 공급자에 대한 독립 실행형 설치 및 구성을 제공합니다.
+Visual Studio에서 웹 배포를 사용하여 응용 프로그램을 배포하려는 경우 호스팅 시스템에 최신 버전의 웹 배포를 설치합니다. 웹 배포를 설치하려면 [WebPI(웹 플랫폼 설치 관리자)](https://www.microsoft.com/web/downloads/platform.aspx)를 사용하거나 [Microsoft 다운로드 센터](https://www.microsoft.com/download/details.aspx?id=43717)에서 설치 관리자를 직접 구할 수 있습니다. WebPI를 사용하는 것이 좋습니다. WebPI는 호스팅 공급자에 대한 독립 실행형 설치 및 구성을 제공합니다.
 
 ## <a name="application-configuration"></a>응용 프로그램 구성
 
 ### <a name="enabling-the-iisintegration-components"></a>IISIntegration 구성 요소 사용
 
-응용 프로그램 종속성에 *Microsoft.AspNetCore.Server.IISIntegration* 패키지에 대한 종속성을 포함시킵니다. *.UseIISIntegration()* 확장 메서드를 *WebHostBuilder()*에 추가하여 IIS 통합 미들웨어를 응용 프로그램에 통합합니다. *.UseIISIntegration()*을 호출하는 코드는 코드 이식성에 영향을 주지 않습니다.
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+일반적인 *Program.cs*는 [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder)를 호출하여 호스트 설정을 시작합니다. `CreateDefaultBuilder`는 [Kestrel](xref:fundamentals/servers/kestrel)을 웹 서버로 구성하고 [ASP.NET Core 모듈](xref:fundamentals/servers/aspnet-core-module)의 기본 경로 및 포트를 구성하여 IIS 통합을 구현합니다.
+
+```csharp
+public static IWebHost BuildWebHost(string[] args) =>
+    WebHost.CreateDefaultBuilder(args)
+        ...
+```
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
+응용 프로그램 종속성에 [Microsoft.AspNetCore.Server.IISIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IISIntegration/) 패키지에 대한 종속성을 포함시킵니다. *UseIISIntegration* 확장 메서드를 *WebHostBuilder*에 추가하여 IIS 통합 미들웨어를 응용 프로그램에 통합합니다.
 
 ```csharp
 var host = new WebHostBuilder()
     .UseKestrel()
-    .UseContentRoot(Directory.GetCurrentDirectory())
     .UseIISIntegration()
-    .UseStartup<Startup>()
-    .Build();
+    ...
 ```
+
+`UseKestrel` 및 `UseIISIntegration`이 둘 다 필요합니다. *UseIISIntegration*을 호출하는 코드는 코드 이식성에 영향을 주지 않습니다. 앱이 IIS 배후에서 실행되지 않는 경우(예를 들어 앱이 Kestrel에서 바로 실행되는 경우) `UseIISIntegration`은 작동하지 않습니다.
+
+---
+
+호스팅에 대한 자세한 내용은 [ASP.NET Core에서 호스팅](xref:fundamentals/hosting)을 참조하세요.
 
 ### <a name="setting-iisoptions-for-the-iisintegration-service"></a>IISIntegration 서비스에 대한 IISOptions 설정
 
@@ -154,7 +170,7 @@ services.Configure<IISOptions>(options => {
 ![게시 대화 상자 페이지](iis/_static/pub-dialog.png)
 
 ### <a name="web-deploy-outside-of-visual-studio"></a>Visual Studio 외부에서 웹 배포
-명령줄을 통해 Visual Studio 외부에서 웹 배포를 사용할 수도 있습니다. 자세한 내용은 [웹 배포 도구](https://technet.microsoft.com/library/dd568996(WS.10).aspx)를 참조하세요.
+명령줄을 통해 Visual Studio 외부에서 웹 배포를 사용할 수도 있습니다. 자세한 내용은 [웹 배포 도구](https://docs.microsoft.com/iis/publish/using-web-deploy/use-the-web-deployment-tool)를 참조하세요.
 
 ### <a name="alternatives-to-web-deploy"></a>웹 배포에 대한 대안
 웹 배포를 사용하지 않거나 Visual Studio를 사용하지 않으려면 Xcopy, Robocopy 또는 PowerShell과 같이 여러 가지 방법 중 하나를 사용하여 응용 프로그램을 호스팅 시스템으로 이동할 수 있습니다. Visual Studio 사용자는 [게시 샘플(영문)](https://github.com/aspnet/vsweb-publish/blob/master/samples/samples.md)을 사용할 수 있습니다.
@@ -185,12 +201,12 @@ IIS에서 데이터 보호를 구성하려면 다음 방법 중 하나를 사용
 
 * [PowerShell 스크립트](https://github.com/aspnet/DataProtection/blob/dev/Provision-AutoGenKeys.ps1)를 실행하여 적절한 레지스트리 항목을 만듭니다(예: `.\Provision-AutoGenKeys.ps1 DefaultAppPool`). 이렇게 하면 키가 레지스트리에 저장되고, 컴퓨터 수준 키가 있는 DPAPI를 사용하여 보호됩니다.
 * 사용자 프로필을 로드하도록 IIS 응용 프로그램 풀을 구성합니다. 이 설정은 응용 프로그램 풀에 대한 **고급 설정** 아래의 **프로세스 모델** 섹션에 있습니다. **사용자 프로필**을 `True`로 설정합니다. 이렇게 하면 사용자 프로필 디렉터리 아래에 키가 저장되고, 응용 프로그램 풀에 사용되는 사용자 계정과 관련된 키가 있는 DPAPI를 사용하여 보호됩니다.
-* [파일 시스템을 키 링 저장소로 사용](https://docs.microsoft.com/aspnet/core/security/data-protection/configuration/overview)하도록 응용 프로그램 코드를 조정합니다. X509 인증서를 사용하여 키 링을 보호하고 신뢰할 수 있는 인증서인지 확인합니다. 예를 들어 자체 서명된 인증서인 경우 신뢰할 수 있는 루트 저장소에 배치해야 합니다.
+* [파일 시스템을 키 링 저장소로 사용](xref:security/data-protection/configuration/overview)하도록 응용 프로그램 코드를 조정합니다. X509 인증서를 사용하여 키 링을 보호하고 신뢰할 수 있는 인증서인지 확인합니다. 예를 들어 자체 서명된 인증서인 경우 신뢰할 수 있는 루트 저장소에 배치해야 합니다.
 
 웹 팜에서 IIS를 사용하는 경우 다음을 수행합니다.
 
 * 모든 컴퓨터에서 액세스할 수 있는 파일 공유를 사용합니다.
-* 각 시스템에 X509 인증서를 배포합니다.  [코드에 데이터 보호](https://docs.asp.net/en/latest/security/data-protection/configuration/overview.html)를 구성합니다.
+* 각 시스템에 X509 인증서를 배포합니다.  [코드에 데이터 보호](https://docs.microsoft.com/aspnet/core/security/data-protection/configuration/overview)를 구성합니다.
 
 ### <a name="1-create-a-data-protection-registry-hive"></a>1. 데이터 보호 레지스트리 하이브 만들기
 
@@ -244,7 +260,7 @@ ASP.NET Core 응용 프로그램 아래에 비ASP .NET Core 하위 응용 프로
 
 ## <a name="configuration-of-iis-with-webconfig"></a>web.config를 사용하여 IIS 구성
 
-IIS 구성은 여전히 역방향 프록시 구성에 적용되는 IIS 기능에 대한 *web.config*에 포함된 `<system.webServer>` 섹션의 영향을 받습니다. 예를 들어 시스템 수준에서 동적 압축을 사용하도록 IIS를 구성했을 수 있지만, 응용 프로그램의 *web.config* 파일에서 `<urlCompression>` 요소를 사용하여 응용 프로그램의 해당 설정을 사용하지 않도록 설정할 수 있습니다. 자세한 내용은 [`<system.webServer>`에 대한 구성 참조](https://www.iis.net/configreference/system.webserver), [ASP.NET Core 모듈 구성 참조](xref:hosting/aspnet-core-module) 및 [ASP.NET Core와 함께 IIS 모듈 사용](xref:hosting/iis-modules)을 참조하세요. 격리된 응용 프로그램 풀(IIS 10.0 이상에서 지원됨)에서 실행되는 개별 응용 프로그램에 대한 환경 변수를 설정해야 하는 경우 [\<environmentVariables> 환경 변수](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) 항목의 *AppCmd.exe 명령* 섹션을 참조하세요.
+IIS 구성은 여전히 역방향 프록시 구성에 적용되는 IIS 기능에 대한 *web.config*에 포함된 `<system.webServer>` 섹션의 영향을 받습니다. 예를 들어 시스템 수준에서 동적 압축을 사용하도록 IIS를 구성했을 수 있지만, 응용 프로그램의 *web.config* 파일에서 `<urlCompression>` 요소를 사용하여 응용 프로그램의 해당 설정을 사용하지 않도록 설정할 수 있습니다. 자세한 내용은 [`<system.webServer>`에 대한 구성 참조](https://docs.microsoft.com/iis/configuration/system.webServer/), [ASP.NET Core 모듈 구성 참조](xref:hosting/aspnet-core-module) 및 [ASP.NET Core와 함께 IIS 모듈 사용](xref:hosting/iis-modules)을 참조하세요. 격리된 응용 프로그램 풀(IIS 10.0 이상에서 지원됨)에서 실행되는 개별 응용 프로그램에 대한 환경 변수를 설정해야 하는 경우 [\<environmentVariables> 환경 변수](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) 항목의 *AppCmd.exe 명령* 섹션을 참조하세요.
 
 ## <a name="configuration-sections-of-webconfig"></a>web.config 구성 섹션
 
@@ -369,7 +385,7 @@ Kestrel이 IIS 뒤에서 정상적으로 시작되지만 로컬에서 성공적�
 
 ### <a name="incorrect-website-physical-path-or-application-missing"></a>잘못된 웹 사이트 실제 경로 또는 누락된 응용 프로그램
 
-* **브라우저:** 403 사용할 수 없음 - 액세스가 거부되었습니다.  **- 또는 -**  403.14 사용할 수 없음 - 웹 서버가 이 디렉터리의 내용을 표시하지 못하도록 구성되었습니다.
+* **브라우저:** 403 사용할 수 없음 - 액세스가 거부되었습니다. ** - 또는 - ** 403.14 사용할 수 없음 - 웹 서버가 이 디렉터리의 내용을 표시하지 못하도록 구성되었습니다.
 
 * **응용 프로그램 로그:** 항목 없음
 
@@ -467,7 +483,7 @@ Kestrel이 IIS 뒤에서 정상적으로 시작되지만 로컬에서 성공적�
 
 * **응용 프로그램 로그:** 실제 루트 'C:\\{PATH}\'이(가) 있는 응용 프로그램 'MACHINE/WEBROOT/APPHOST/MY_APPLICATION'에서 '"C:\\{PATH}\my_application.{exe|dll}"'명령줄로 프로세스를 만들었지만 지정된 포트 '{PORT}'에서 충돌하거나 응답하지 않거나 수신 대기하지 않습니다., 오류 코드 = '0x800705b4'
 
-*  **ASP.NET Core 모듈 로그:**  로그 파일이 만들어졌고 정상 작동을 보여 줍니다.
+* ** ASP.NET Core 모듈 로그: ** 로그 파일이 만들어졌고 정상 작동을 보여 줍니다.
 
 문제 해결
 
@@ -509,6 +525,6 @@ Kestrel이 IIS 뒤에서 정상적으로 시작되지만 로컬에서 성공적�
 
 * [ASP.NET Core 소개](../index.md)
 
-* [공식 Microsoft IIS 사이트](http://www.iis.net/)
+* [공식 Microsoft IIS 사이트](https://www.iis.net/)
 
-* [Microsoft TechNet 라이브러리: Windows Server](https://technet.microsoft.com/library/bb625087.aspx)
+* [Microsoft TechNet 라이브러리: Windows Server](https://docs.microsoft.com/windows-server/windows-server-versions)

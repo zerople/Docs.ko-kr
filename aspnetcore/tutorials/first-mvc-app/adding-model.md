@@ -11,11 +11,11 @@ ms.assetid: 8dc28498-00ee-4d66-b903-b593059e9f39
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 8d0bebc22e1cfdc6d9b213d0c3159a7dab988020
-ms.sourcegitcommit: 0bd3f6ec577c648dd777877e97572ec2da1b36c4
+ms.openlocfilehash: 7469546494ec54bfe36bc5bd2f5f9702889ddf4a
+ms.sourcegitcommit: 2e61e287e220eddd5f3f4cd9147aa6417cfd9236
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/12/2017
 ---
 [!INCLUDE[adding-model](../../includes/mvc-intro/adding-model1.md)]
 
@@ -70,7 +70,7 @@ Visual Studio에서 다음을 만듭니다.
 * 동영상 컨트롤러(*Controllers/MoviesController.cs*)
 * 만들기, 삭제, 세부 정보, 편집 및 인덱스 페이지에 대한 Razor 뷰 파일(*Views/Movies/&ast;.cshtml*)
 
-[CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)(만들기, 읽기, 업데이트 및 삭제) 작업 메서드와 뷰 및 데이터베이스 컨텍스트의 자동 생성을 *스캐폴딩*이라고 합니다. 동영상 데이터베이스를 관리할 수 있는 완벽하게 작동하는 웹 응용 프로그램이 곧 제공됩니다.
+[CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete)(만들기, 읽기, 업데이트 및 삭제) 작업 메서드와 뷰 및 데이터베이스 컨텍스트의 자동 생성을 *스캐폴딩*이라고 합니다. 동영상 데이터베이스를 관리할 수 있는 완벽하게 작동하는 웹 응용 프로그램이 곧 제공됩니다.
 
 응용 프로그램을 실행하고 **Mvc Movie** 링크를 클릭하면 다음과 유사한 오류가 표시됩니다.
 
@@ -106,7 +106,7 @@ Add-Migration Initial
 Update-Database
 ```
 
-참고: PMC 문제가 있는 경우 [CLI 방식](#cli)을 참조하세요.
+**참고:** `Install-Package` 명령에서 오류가 발생할 경우 NuGet Package Manager를 열고 `Microsoft.EntityFrameworkCore.Tools` 패키지를 검색하세요. 그러면 패키지를 설치하거나 패키지가 이미 설치되어 있는지 확인할 수 있습니다. 또는 PMC 문제가 있는 경우 [CLI 방식](#cli)을 참조하세요.
 
 `Add-Migration` 명령은 초기 데이터베이스 스키마를 만드는 코드를 생성합니다. 스키마는 `DbContext`에 지정된 모델을 기반으로 합니다(*Data/MvcMovieContext.cs* 파일). `Initial` 인수는 마이그레이션 이름을 지정하는 데 사용됩니다. 모든 이름을 사용할 수 있지만 일반적으로 마이그레이션을 설명하는 이름을 선택합니다. 자세한 내용은 [마이그레이션 소개](xref:data/ef-mvc/migrations#introduction-to-migrations)를 참조하세요.
 

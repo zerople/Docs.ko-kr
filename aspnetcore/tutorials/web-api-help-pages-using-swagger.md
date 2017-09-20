@@ -11,11 +11,11 @@ ms.assetid: 54bb961d-29d9-4dee-8e2c-a93fc33c16f2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/web-api-help-pages-using-swagger
-ms.openlocfilehash: 92136a6e5db68b4d7e5245e38960e4a1f01bfb73
-ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
+ms.openlocfilehash: 647ab48fb83c5e2c79b5de371173bc644c65d831
+ms.sourcegitcommit: 98ecb0f1bae4886507b090c84ecd99ff1e5c46ed
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/17/2017
 ---
 # <a name="aspnet-web-api-help-pages-using-swagger"></a>Swagger를 사용한 ASP.NET Web API 도움말 페이지
 
@@ -25,11 +25,11 @@ ms.lasthandoff: 09/05/2017
 
 소비 응용 프로그램을 빌드할 경우 개발자가 API의 다양한 메서드를 이해하기 어려울 수 있습니다.
 
-[Swagger](http://swagger.io)와 .NET Core 구현 [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore)를 함께 사용하여 Web API에 대한 유용한 설명서와 도움말 페이지를 생성하는 것은 두서너 개의 NuGet 패키지를 추가하고 *Startup.cs*를 수정하는 것만큼 쉽습니다.
+[Swagger](https://swagger.io/)와 .NET Core 구현 [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore)를 함께 사용하여 Web API에 대한 유용한 설명서와 도움말 페이지를 생성하는 것은 두서너 개의 NuGet 패키지를 추가하고 *Startup.cs*를 수정하는 것만큼 쉽습니다.
 
 * [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore)는 ASP.NET Core Web API에 대한 Swagger 문서를 생성하기 위한 오픈 소스 프로젝트입니다.
 
-* [Swagger](http://swagger.io)는 대화형 설명서, 클라이언트 SDK 생성 및 검색 기능에 대한 지원을 가능하게 하는 RESTful API의 컴퓨터에서 읽을 수 있는 표현입니다.
+* [Swagger](https://swagger.io/)는 대화형 설명서, 클라이언트 SDK 생성 및 검색 기능에 대한 지원을 가능하게 하는 RESTful API의 컴퓨터에서 읽을 수 있는 표현입니다.
 
 이 자습서는 [ASP.NET Core MVC 및 Visual Studio를 사용하여 첫 번째 Web API 빌드](xref:tutorials/first-web-api)에 대한 샘플을 기반으로 빌드됩니다. 함께 수행해 보려면 [https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/sample](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/sample)에서 샘플을 다운로드합니다.
 
@@ -275,7 +275,7 @@ UI는 생성된 JSON 파일을 통해 실행되므로 다음 주석을 포함합
 
 ### <a name="data-annotations"></a>데이터 주석
 
-`System.ComponentModel.DataAnnotations`에 있는 특성으로 API 컨트롤러를 데코레이트하면 Swagger UI 구성 요소를 실행하는 데 도움이 됩니다.
+`System.ComponentModel.DataAnnotations`에 있는 특성으로 모델을 데코레이트하면 Swagger UI 구성 요소를 실행하는 데 도움이 됩니다.
 
 `[Required]` 특성을 `TodoItem` 클래스의 `Name` 속성에 추가합니다.
 
