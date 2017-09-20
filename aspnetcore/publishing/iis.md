@@ -11,11 +11,11 @@ ms.assetid: a4449ad3-5bad-410c-afa7-dc32d832b552
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/iis
-ms.openlocfilehash: 48e67add785fc1d7e79c659565afb1ec68c1defb
-ms.sourcegitcommit: f531d90646b9d261c5fbbffcecd6ded9185ae292
+ms.openlocfilehash: 8ffadc1dede4053faa129a3b224aace901e70e14
+ms.sourcegitcommit: ad01283f299d346cf757c4f4744c48634dc27e73
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/18/2017
 ---
 # <a name="set-up-a-hosting-environment-for-aspnet-core-on-windows-with-iis-and-deploy-to-it"></a>IIS가 있는 Windows에서 ASP.NET Core에 대한 호스팅 환경 설정 및 이 환경에 배포
 
@@ -99,21 +99,22 @@ var host = new WebHostBuilder()
 
 호스팅에 대한 자세한 내용은 [ASP.NET Core에서 호스팅](xref:fundamentals/hosting)을 참조하세요.
 
-### <a name="setting-iisoptions-for-the-iisintegration-service"></a>IISIntegration 서비스에 대한 IISOptions 설정
+### <a name="iis-options"></a>IIS 옵션
 
-*IISIntegration* 서비스 옵션을 구성하려면 *ConfigureServices*에 *IISOptions*에 대한 서비스 구성을 포함시킵니다.
+*IISIntegration* 서비스 옵션을 구성하려면 *ConfigureServices*에 *IISOptions*에 대한 서비스 구성을 포함합니다.
 
 ```csharp
-services.Configure<IISOptions>(options => {
-  ...
+services.Configure<IISOptions>(options => 
+{
+    ...
 });
 ```
 
-| 옵션 | 설정|
-| --- | --- | 
-| AutomaticAuthentication | true이면 인증 미들웨어에서 사용자 연결 요청을 변경하고 제네릭 챌린지에 응답합니다. false이면 theAuthenticationScheme을 통해 명시적으로 지시하는 경우에만 인증 미들웨어에서 ID를 제공하고 챌린지에 응답합니다. |
-| ForwardClientCertificate | true이고 `MS-ASPNETCORE-CLIENTCERT` 요청 헤더가 있으면 `ITLSConnectionFeature`가 채워집니다. |
-| ForwardWindowsAuthentication | true이면 인증 미들웨어에서 플랫폼 처리기 Windows 인증을 사용하여 인증하려고 합니다. false이면 인증 미들웨어가 추가되지 않습니다. |
+| 옵션                         | 기본 | 설정 |
+| ------------------------------ | ------- | ------- |
+| `AutomaticAuthentication`      | `true`  | `true`면 인증 미들웨어가 `HttpContext.User`를 설정하고 제네릭 과제에 응답합니다. `false`면 인증 미들웨어가 ID(`HttpContext.User`)만 제공하고, `AuthenticationScheme`에 의해 명시적으로 요청될 때 과제에 응답합니다. IIS에서 Windows 인증은 `AutomaticAuthentication`이 작동하기 위해 사용하도록 설정되어야 합니다. |
+| `AuthenticationDisplayName`    | `null`  | 로그인 페이지에서 사용자에게 나타나는 표시 이름을 설정합니다. |
+| `ForwardClientCertificate`     | `true`  | `true`면서 `MS-ASPNETCORE-CLIENTCERT` 요청 헤더가 있는 경우 `HttpContext.Connection.ClientCertificate`가 채워집니다. |
 
 ### <a name="webconfig"></a>web.config
 
@@ -449,7 +450,7 @@ Kestrel이 IIS 뒤에서 정상적으로 시작되지만 로컬에서 성공적�
 
 * 응용 프로그램이 Kestrel에서 로컬로 실행되는지 확인합니다. 프로세스 오류는 응용 프로그램 내의 문제 때문일 수 있습니다. 자세한 내용은 [문제 해결 팁](#troubleshooting-tips)을 참조하세요.
 
-* *web.config*의 `<aspNetCore>` 요소에서 *arguments* 특성을 검사하여 (a) 프레임워크 종속 배포에 대한 *.\my_applciation.dll*인지, 또는 (b) 없는 경우 빈 문자열(*arguments=""*)이거나 자체 포함 배포에 대한 응용 프로그램의 인수(*arguments="arg1, arg2, ..."*) 목록인지 확인합니다.
+* *web.config*의 `<aspNetCore>` 요소에서 *arguments* 특성을 검사하여 (a) 프레임워크 종속 배포에 대한 *.\my_application.dll*인지, 또는 (b) 없는 경우 빈 문자열(*arguments=""*)이거나 자체 포함 배포에 대한 응용 프로그램의 인수(*arguments="arg1, arg2, ..."*) 목록인지 확인합니다.
 
 ### <a name="missing-net-framework-version"></a>누락된 .NET Framework 버전
 
