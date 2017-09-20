@@ -10,11 +10,11 @@ ms.assetid: e6c1ff3c-5673-43bf-9c2d-077f6ada1f29
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: 9de39ce59633036c0dd850a7552bd3f4806c5431
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 149af0ce88d55527a42ba3b88d40047a61d510c9
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="sorting-filtering-paging-and-grouping---ef-core-with-aspnet-core-mvc-tutorial-3-of-10"></a>정렬, 필터링, 페이징 및 그룹화-EF 코어 ASP.NET Core MVC 자습서 (3 / 10)
 
@@ -67,7 +67,7 @@ Contoso 대학 샘플 웹 응용 프로그램에는 Entity Framework Core 및 Vi
 
 이 코드의 정보를 사용 하 여 `ViewData` 적절 한 쿼리 된 하이퍼링크를 설정 하는 속성 문자열 값입니다.
 
-페이지를 실행 하 고 클릭는 **성** 및 **등록 날짜** 확인 해당 정렬 하려면 열 머리글 작동 합니다.
+응용 프로그램 실행을 선택는 **학생** 탭을 클릭는 **성** 및 **등록 날짜** 확인 해당 정렬 하려면 열 머리글 작동 합니다.
 
 ![이름 순서로 학생 인덱스 페이지](sort-filter-page/_static/name-order.png)
 
@@ -94,9 +94,9 @@ Contoso 대학 샘플 웹 응용 프로그램에는 Entity Framework Core 및 Vi
 
 [!code-html[](intro/samples/cu/Views/Students/Index3.cshtml?range=9-23&highlight=5-13)]
 
-이 코드에서는 사용는 `<form>` [태그 도우미](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/intro) 검색 텍스트 상자 및 단추를 추가 합니다. 기본적으로는 `<form>` 태그 도우미 즉, 매개 변수가 URL 아니라 HTTP 메시지 본문에 쿼리 문자열로 전달 하는 POST로 양식 데이터를 전송 합니다. HTTP GET을 지정 하면 양식 데이터 변수로 전달 됩니다 URL에 쿼리 문자열, URL에 책갈피를 있습니다. 작업 업데이트 되지 않습니다 때 전달 되는 사용 해야 하는 W3C 지침 좋습니다.
+이 코드에서는 사용는 `<form>` [태그 도우미](xref:mvc/views/tag-helpers/intro) 검색 텍스트 상자 및 단추를 추가 합니다. 기본적으로는 `<form>` 태그 도우미 즉, 매개 변수가 URL 아니라 HTTP 메시지 본문에 쿼리 문자열로 전달 하는 POST로 양식 데이터를 전송 합니다. HTTP GET을 지정 하면 양식 데이터 변수로 전달 됩니다 URL에 쿼리 문자열, URL에 책갈피를 있습니다. 작업 업데이트 되지 않습니다 때 전달 되는 사용 해야 하는 W3C 지침 좋습니다.
 
-페이지를 실행 하 고 검색 문자열을 입력 한 다음 필터링이 작동 하는지 확인 하는 검색을 클릭 합니다.
+응용 프로그램을 실행, 선택는 **학생** 탭 검색 문자열을 입력 하 고 필터링이 작동 하는지 확인 하는 검색을 클릭 합니다.
 
 ![필터링 된 인덱스 페이지 학생](sort-filter-page/_static/filtering.png)
 
@@ -193,7 +193,7 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 </a>
 ```
 
-페이지를 실행 합니다.
+응용 프로그램을 실행 하 고 학생 페이지로 이동 합니다.
 
 ![학생 인덱스 페이징 링크가 있는 페이지](sort-filter-page/_static/paging.png)
 
@@ -241,7 +241,7 @@ LINQ 명령문 학생 엔터티 등록 날짜별으로 그룹화 각 그룹에 �
 
 [!code-html[](intro/samples/cu/Views/Home/About.cshtml)]
 
-응용 프로그램을 실행 하 고 클릭는 **에 대 한** 링크 합니다. 각 등록 날짜에 대 한 학생 수는 테이블에 표시 됩니다.
+응용 프로그램을 실행 하 고 정보 페이지로 이동 합니다. 각 등록 날짜에 대 한 학생 수는 테이블에 표시 됩니다.
 
 ![페이지 정보](sort-filter-page/_static/about.png)
 

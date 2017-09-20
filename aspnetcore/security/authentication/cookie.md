@@ -11,11 +11,11 @@ ms.assetid: 2bdcbf95-8d9d-4537-a4a0-a5ee439dcb62
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/cookie
-ms.openlocfilehash: 60ac318cb47b5a5b4c651c88e60d43772ce59958
-ms.sourcegitcommit: bd05f7ea8f87ad076ef6e8b704698ebcba5ca80c
+ms.openlocfilehash: b728c3d62b59f28f1d020b6f3732918a1fcdf4eb
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="using-cookie-authentication-without-aspnet-core-identity"></a>ASP.NET Core Identity 없이 쿠키 인증을 사용 하 여
 
@@ -29,7 +29,7 @@ ASP.NET Core 1.x 쿠키를 제공 합니다. [미들웨어](../../fundamentals/m
 
 ## <a name="adding-and-configuring"></a>추가 및 구성
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 다음 단계를 완료 합니다.
 
@@ -94,7 +94,7 @@ ASP.NET Core 1.x 쿠키를 제공 합니다. [미들웨어](../../fundamentals/m
 
 사용자 정보를 보관 하는 쿠키를 만들려면 먼저 생성 해야는 [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal) 쿠키에 serialize 하려는 정보를 보관 합니다. 적절 한 있으면 `ClaimsPrincipal` 개체, 다음 호출 컨트롤러 메서드 내:
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 await HttpContext.SignInAsync("MyCookieAuthenticationScheme", principal);
@@ -116,7 +116,7 @@ await HttpContext.Authentication.SignInAsync("MyCookieAuthenticationScheme", pri
 
 로그 아웃 현재 사용자를 해당 쿠키를 삭제 하려면 다음을 호출 컨트롤러 내:
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 await HttpContext.SignOutAsync("MyCookieAuthenticationScheme");
@@ -147,7 +147,7 @@ Task ValidateAsync(CookieValidatePrincipalContext context);
 
 ASP.NET Core Id의 일부로이 검사를 구현 하는 `SecurityStampValidator`합니다. 예제는 다음과 같습니다.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 public static class LastChangedValidator
@@ -236,7 +236,7 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
 
 [CookieAuthenticationOptions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.cookieauthenticationoptions) 만들려는 쿠키를 미세 조정할 수 있는 다양 한 구성 옵션 함께 클래스를 제공 합니다.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ASP.NET Core 2.x 쿠키를 구성 하는 데 사용 되는 Api를 통합 합니다. Api 사용 되지 않는 것으로 표시 된 1.x와 새 `Cookie` 형식의 속성이 `CookieBuilder` 에서 도입 된는 `CookieAuthenticationOptions` 클래스입니다. Api 2.x를 마이그레이션하는 것이 좋습니다.
 
@@ -306,7 +306,7 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
 
 브라우저 세션에서 유지 하는 id 및 쿠키를 전송 하는 것에 절대 만료 원하는 쿠키 만료를 할 수 있습니다. 이 지 속성에 로그인 또는 유사한 메커니즘에서 "암호 저장" 확인란을 통해 명시적 사용자 동의가 있는 경우에 설정 해야 합니다. 사용 하 여 이러한 작업을 할 수 있습니다는 `AuthenticationProperties` 에 매개 변수는 `SignInAsync` 때이 메서드가 호출 [id의 서명 및 쿠키를 만드는](xref:security/authentication/cookie#security-authentication-cookie-middleware-creating-a-cookie)합니다. 예:
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 await HttpContext.SignInAsync(
@@ -340,7 +340,7 @@ await HttpContext.Authentication.SignInAsync(
 
 <a name="security-authentication-absolute-expiry"></a>
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 await HttpContext.SignInAsync(

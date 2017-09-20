@@ -12,14 +12,14 @@ ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/DistributedCacheTagHelper
 ms.openlocfilehash: 2b260624fb2d85ab1a2625511397bcb4a85b6e77
-ms.sourcegitcommit: d022d4b96795ee473fa3847a1d8a8c7430423a86
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="distributed-cache-tag-helper"></a>분산된 캐시 태그 도우미
 
-으로 [Peter Kellner](http://peterkellner.net) 
+작성자: [Peter Kellner](http://peterkellner.net) 
 
 
 분산 캐시 태그 도우미 분산된 캐시 원본에 해당 콘텐츠를 캐시 하 여 ASP.NET Core 응용 프로그램의 성능이 크게 향상 하는 기능을 제공 합니다.

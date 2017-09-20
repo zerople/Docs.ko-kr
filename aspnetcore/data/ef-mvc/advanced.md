@@ -11,11 +11,11 @@ ms.assetid: 92a2986a-d005-4ff6-9559-6657fd466bb7
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: 210f8e8b91c2487e5c4b73fdeb6ff0d5aa35c0c5
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 70434d1c814af2a96493027c6a2ad87845cd5cae
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="advanced-topics---ef-core-with-aspnet-core-mvc-tutorial-10-of-10"></a>고급 항목-EF 코어 ASP.NET Core MVC 자습서 (10 / 10)
 
@@ -61,7 +61,7 @@ Entity Framework 사용의 장점 중 하나를 방지할 수 제한 된 데이�
 
 [!code-csharp[Main](intro/samples/cu/Controllers/HomeController.cs?name=snippet_Usings2)]
 
-정보 페이지를 실행 합니다. 이전과 동일한 데이터를 표시 합니다.
+응용 프로그램을 실행 하 고 정보 페이지로 이동 합니다. 이전과 동일한 데이터를 표시 합니다.
 
 ![페이지 정보](advanced/_static/about.png)
 
@@ -109,7 +109,7 @@ Note 프로덕션 코드를 업데이트 하는 항상 결과 유효한 데이�
 
 열기 *StudentsController.cs* 및는 `Details` 에 중단점을 설정 하는 메서드는 `if (student == null)` 문.
 
-디버그 모드에서 응용 프로그램을 실행 하 고 학생에 대 한 세부 정보 페이지로 이동 합니다.
+디버그 모드에서 앱을 실행 하 고 학생에 대 한 세부 정보 페이지로 이동 합니다.
 
 이동 하는 **출력** 디버그 표시 창 출력을 보고, 쿼리를 참조 하십시오.
 

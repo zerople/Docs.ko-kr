@@ -11,11 +11,11 @@ ms.assetid: 67bd162b-bfb7-4750-9e7f-705228b5288c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: 655fefc0f9d884300bea670795c39a7a9aa10bb8
-ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
+ms.openlocfilehash: 981a099630008eaf11599b17c4d4d5d6e86b8b90
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="updating-related-data---ef-core-with-aspnet-core-mvc-tutorial-7-of-10"></a>관련된 데이터-ASP.NET Core MVC 자습서 (7 / 10)와 함께 EF 코어 업데이트
 
@@ -71,7 +71,7 @@ HttpGet `Edit` 메서드 편집 중인 과정에 이미 할당 되어 있는 분
 
 ### <a name="modify-the-course-views"></a>과정 뷰 수정
 
-*Views/Courses/Create.cshtml*, "부서 선택" 옵션을 추가 하는 **부서** 드롭 다운 목록에서에서 캡션은 변경할 **DepartmentID** 를  **부서**, 유효성 검사 메시지를 추가 합니다.
+*Views/Courses/Create.cshtml*, "부서 선택" 옵션을 추가 하는 **부서** 드롭 다운 목록에서에서 캡션은 변경할 **DepartmentID** 를 ** 부서**, 유효성 검사 메시지를 추가 합니다.
 
 [!code-html[Main](intro/samples/cu/Views/Courses/Create.cshtml?highlight=2-6&range=29-34)]
 
@@ -91,14 +91,14 @@ HttpGet `Edit` 메서드 편집 중인 과정에 이미 할당 되어 있는 분
 
 ### <a name="test-the-course-pages"></a>테스트 과정 페이지
 
-실행의 **만들기** 페이지 (과정 인덱스 페이지를 표시 하 고 클릭 **새로 만들기**) 새 과정에 대 한 데이터를 입력 합니다.
+응용 프로그램을 실행, 선택는 **Courses** 탭을 클릭 **새로 만들기**, 새 과정에 대 한 데이터를 입력:
 
 ![코스 만들기 페이지](update-related-data/_static/course-create.png)
 
 
               **만들기**를 클릭합니다. Courses 인덱스 페이지가 목록에 추가 된 새 과정으로 표시 됩니다. 인덱스 페이지 목록에 있는 부서 이름과 관계가 올바르게 설정 되었는지 표시 하는 탐색 속성에서 제공 됩니다.
 
-실행 된 **편집** 페이지 (클릭 **편집** 과정 인덱스 페이지에는 과정에).
+클릭 **편집** Courses 인덱스 페이지에는 과정에 있습니다.
 
 ![과정 편집 페이지](update-related-data/_static/course-edit.png)
 
@@ -160,7 +160,7 @@ HttpGet `Edit` 메서드 편집 중인 과정에 이미 할당 되어 있는 분
 
 [!code-html[Main](intro/samples/cu/Views/Instructors/Edit.cshtml?range=30-34)]
 
-페이지 실행 (선택 된 **강사** 탭을 클릭 한 다음 **편집** 강사에). 변경 된 **사무실 위치** 클릭 **저장**합니다.
+응용 프로그램을 실행, 선택는 **강사** 탭을 클릭 한 다음 **편집** 강사에 합니다. 변경 된 **사무실 위치** 클릭 **저장**합니다.
 
 ![강사 편집 페이지](update-related-data/_static/instructor-edit-office.png)
 
@@ -216,7 +216,7 @@ Course 및 Instructor 엔터티 간의 다 대 다입니다. 추가 하 고 관�
 
 ### <a name="update-the-instructor-views"></a>강사 뷰 업데이트
 
-*Views/Instructors/Edit.cshtml*, 추가 **Courses** 을 추가 하 여 확인란의 배열로 필드 바로 다음 코드는 `div` 에 대 한 요소는 **Office**  필드 및 하기 전에 `div` 에 대 한 요소는 **저장** 단추입니다.
+*Views/Instructors/Edit.cshtml*, 추가 **Courses** 을 추가 하 여 확인란의 배열로 필드 바로 다음 코드는 `div` 에 대 한 요소는 **Office ** 필드 및 하기 전에 `div` 에 대 한 요소는 **저장** 단추입니다.
 
 <a id="notepad"></a>
 > [!NOTE] 
@@ -228,7 +228,7 @@ Course 및 Instructor 엔터티 간의 다 대 다입니다. 추가 하 고 관�
 
 확인란은 처음 렌더링 됩니다 때 (에 확인 표시)을 선택 하는 특성을 확인가 강사에 할당 하는 과정에 사용 되는 것입니다.
 
-강사 인덱스 페이지를 실행 하 고 클릭 **편집** 보려면 강사에는 **편집** 페이지.
+응용 프로그램을 실행, 선택는 **강사** 탭을 클릭 **편집** 보려면 강사에는 **편집** 페이지.
 
 ![Courses와 강사 편집 페이지](update-related-data/_static/instructor-edit-courses.png)
 
@@ -288,7 +288,7 @@ public ICollection<CourseAssignment> CourseAssignments
 
 [!code-html[Main](intro/samples/cu/Views/Instructors/Create.cshtml?range=29-61)]
 
-테스트를 실행 하 여는 **만들기** 페이지와 강사를 추가 합니다. 
+응용 프로그램을 실행 하는 강사가 만들어 테스트 합니다. 
 
 ## <a name="handling-transactions"></a>트랜잭션 처리
 

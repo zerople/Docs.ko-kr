@@ -11,11 +11,11 @@ ms.assetid: 0dd63913-a041-48b6-96a4-3aeaedbdf5d0
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: a9e255040c300bc5ce55a356e17e6912dbaeaf88
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: dde50f766dc9842089cbb0561b8bd6e2d8e7c34f
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="creating-a-complex-data-model---ef-core-with-aspnet-core-mvc-tutorial-5-of-10"></a>복잡 한 데이터 모델-EF 코어 ASP.NET Core MVC 자습서 (5/10) 만들기
 
@@ -41,27 +41,27 @@ Contoso 대학 샘플 웹 응용 프로그램에는 Entity Framework Core 및 Vi
 
 [!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
-`DataType` 특성 데이터베이스 내장 형식 보다 구체적인 데이터 형식을 지정 하는 데 사용 됩니다. 이 경우에 포함 하려고 날짜와 시간에서 날짜를 추적 하 합니다. `DataType` 날짜, 시간, 전화 번호, 통화, EmailAddress, 등과 같은 많은 데이터 형식의 열거형을 제공 합니다. `DataType` 특성 유형별 기능을 자동으로 제공 하도록 응용 프로그램 사용 하도록 설정할 수도 있습니다. 예를 들어 한 `mailto:` 에 대 한 링크를 만들 수 `DataType.EmailAddress`, 날짜 선택 기가 제공 될 수 있습니다 및 `DataType.Date` HTML5 지원 브라우저에서. `DataType` 특성 내보냅니다 HTML 5 `data-` (커맨드 데이터 대시) 특성을 HTML 5 브라우저 이해할 수 있습니다. `DataType` 특성 유효성을 검사 하지 않습니다.
+`DataType` 특성은 데이터베이스 내장 형식보다 구체적인 데이터 형식을 지정하는 데 사용됩니다. 이 경우에 포함 하려고 날짜와 시간에서 날짜를 추적 하 합니다. `DataType` 날짜, 시간, 전화 번호, 통화, EmailAddress, 등과 같은 많은 데이터 형식의 열거형을 제공 합니다. `DataType` 특성을 통해 응용 프로그램에서 자동으로 유형별 기능을 제공하도록 설정할 수도 있습니다. 예를 들어, `DataType.EmailAddress`에 대해 `mailto:` 링크를 만들고 HTML5를 지원하는 브라우저에서 `DataType.Date`에 대해 날짜 선택기를 제공할 수 있습니다. `DataType` 특성 내보냅니다 HTML 5 `data-` (커맨드 데이터 대시) 특성을 HTML 5 브라우저 이해할 수 있습니다. `DataType` 특성 유효성을 검사 하지 않습니다.
 
-`DataType.Date`표시 되는 날짜의 형식을 지정 하지 않습니다. 기본적으로 서버의 CultureInfo에 따라 기본 형식에 따라 데이터 필드가 표시 됩니다.
+`DataType.Date`는 표시되는 날짜의 서식을 지정하지 않습니다. 기본적으로 서버의 CultureInfo에 따라 기본 형식에 따라 데이터 필드가 표시 됩니다.
 
-`DisplayFormat` 특성 날짜 형식을 명시적으로 지정 하는 데 사용 됩니다.
+`DisplayFormat` 특성은 날짜 형식을 명시적으로 지정하는 데 사용됩니다.
 
 ```csharp
 [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
 ```
 
-`ApplyFormatInEditMode` 설정은 서식을 적용 해야 하는지도 값 편집을 위해 텍스트 상자에 표시 되 면을 지정 합니다. (하지 않을-일부 필드에 대 한 예를 들어 통화 값에 대 한 수 원하지 텍스트 상자에 통화 기호 편집 합니다.)
+`ApplyFormatInEditMode` 설정은 값이 편집을 위해 텍스트 상자에 표시될 때 서식 지정도 적용되어야 함을 지정합니다. (하지 않을-일부 필드에 대 한 예를 들어 통화 값에 대 한 수 원하지 텍스트 상자에 통화 기호 편집 합니다.)
 
 사용할 수는 `DisplayFormat` 하지만 자체를 기준으로 특성은 일반적으로 사용 하는 것이 좋습니다는 `DataType` 도 특성입니다. `DataType` 특성 데이터를 화면에 렌더링 하는 방법 전송할의 의미를 전달 하 고으로 볼 수 없는 다음과 같은 이점을 제공 `DisplayFormat`:
 
 * 브라우저는 HTML5 기능을 활성화할 수 (calendar 컨트롤, 로캘에 적합 한 통화 기호, 전자 메일 링크를 표시 하는 등 일부 클라이언트 쪽 입력 유효성 검사, 등입니다.).
 
-* 기본적으로 브라우저는 사용자의 로캘에 따른 올바른 형식을 사용 하 여 데이터를 렌더링 합니다.
+* 기본적으로 브라우저는 사용자의 로캘에 따른 올바른 형식을 사용하여 데이터를 렌더링합니다.
 
 자세한 내용은 참조는 [ \<입력 > 도우미 설명서 태그](../../mvc/views/working-with-forms.md#the-input-tag-helper)합니다.
 
-학생 인덱스 페이지를 다시 실행 하 고 등록 날짜에 대 한 번 더 이상 표시 됩니다. 동일한 학생 모델을 사용 하는 다른 보기에 적용 됩니다.
+응용 프로그램을 실행 하 고 페이지로 이동 하 여 학생 인덱스 등록 날짜에 대 한 번 더 이상 표시 됩니다. 동일한 학생 모델을 사용 하는 다른 보기에 적용 됩니다.
 
 ![학생 인덱스 페이지 시간 없이 날짜를 표시 합니다.](complex-data-model/_static/dates-no-times.png)
 
@@ -97,7 +97,7 @@ dotnet ef database update
 
 마이그레이션 파일 이름에 접두사로 타임 스탬프를 마이그레이션 요청 Entity Framework에서 사용 됩니다. 마이그레이션을 여러 건 update-database 명령을 실행 하기 전에 만들고 생성 된 순서에 적용 됩니다는 마이그레이션의 모든 합니다.
 
-만들기 페이지를 실행 하 고 50 자 보다 긴 이름 중 하나를 입력 합니다. 만들기를 클릭 하면 클라이언트 쪽 유효성 검사 오류 메시지가 표시 됩니다.
+응용 프로그램을 실행, 선택는 **학생** 탭을 클릭 **새로 만들기**, 50 자 보다 긴 이름 중 하나를 입력 합니다. 클릭할 때 **만들기**, 클라이언트 쪽 유효성 검사 오류 메시지를 표시 합니다.
 
 ![학생 인덱스 문자열 길이 오류를 보여주는 페이지](complex-data-model/_static/string-length-errors.png)
 
@@ -483,7 +483,7 @@ dotnet ef database update
 
 앱 발생을 실행 하는 `DbInitializer.Initialize` 메서드를 실행 하 고 새 데이터베이스를 채웁니다.
 
-데이터베이스에서 SSOX 앞에서 수행한 것 처럼를 열고 확장는 **테이블** 노드에서 모든 테이블 생성을 볼 수 있습니다. (아직 SSOX 이전 시점에서 열 경우 새로 고침 단추 클릭.)
+데이터베이스에서 SSOX 앞에서 수행한 것 처럼를 열고 확장는 **테이블** 노드에서 모든 테이블 생성을 볼 수 있습니다. (아직 이전 시점에서 열 SSOX 클릭는 **새로 고침** 단추입니다.)
 
 ![SSOX의 테이블](complex-data-model/_static/ssox-tables.png)
 

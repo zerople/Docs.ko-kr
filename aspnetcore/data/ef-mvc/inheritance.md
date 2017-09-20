@@ -11,11 +11,11 @@ ms.assetid: 41dc0db7-6f17-453e-aba6-633430609c74
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: 3c86dea145d2d4dec10c77e008f511cfe67975f9
-ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
+ms.openlocfilehash: 6102b426cb5aff78fedb9389df229cd8100e4f36
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="inheritance---ef-core-with-aspnet-core-mvc-tutorial-9-of-10"></a>상속-EF 코어 ASP.NET Core MVC 자습서 (9 / 10)
 
@@ -131,7 +131,7 @@ dotnet ef database update
 
 ## <a name="test-with-inheritance-implemented"></a>구현 상속으로 테스트
 
-사이트를 실행 하 고 다양 한 페이지를 시도 하십시오. 모든 항목이 작동 하기 전과 동일 합니다.
+응용 프로그램을 실행 하 고 다양 한 페이지를 시도 하십시오. 모든 항목이 작동 하기 전과 동일 합니다.
 
 **SQL Server 개체 탐색기**, 확장 **데이터 연결/SchoolContext** 차례로 **테이블**, 학생과 강사 테이블은 대체 하 여 참조 하 고는 사용자 테이블입니다. Person 테이블 디자이너를 열고 모두 사용은 Student 및 강사 테이블에 포함 되도록 열을 참조 하십시오.
 

@@ -11,11 +11,11 @@ ms.assetid: 6e1cd570-40f1-4b24-8b6e-7d2d27758f18
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 87aa7e63b1a08e457c5fdcbc052bfa039b8d2175
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 3393bb90d170cfc572d2307ec18f1a8e25bdce59
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="create-read-update-and-delete---ef-core-with-aspnet-core-mvc-tutorial-2-of-10"></a>만들기, 읽기, 업데이트 및 삭제-EF 코어 ASP.NET Core MVC 자습서 (2 / 10)
 
@@ -156,7 +156,7 @@ public class Student
 
 코드 *Views/Students/Create.cshtml* 사용 하 여 `label`, `input`, 및 `span` (유효성 검사 메시지의 경우)에 대 한 태그 각 필드에 대 한 도우미입니다.
 
-페이지를 선택 하 여 실행 된 **학생** 탭을 클릭 하 고 **새로 만들기**합니다.
+응용 프로그램을 실행, 선택는 **학생** 탭을 클릭 **새로 만들기**합니다.
 
 이름 및 날짜를 입력 합니다. 브라우저를 사용 하면 그렇게 하는 경우 잘못 된 날짜를 입력 하십시오. (일부 브라우저 강제로 날짜 선택을 사용할 수 있습니다.) 클릭 **만들기** 오류 메시지를 확인 합니다.
 
@@ -222,7 +222,7 @@ HttpPost 편집 동작 메서드를 다음 코드로 바꿉니다.
 
 ### <a name="test-the-edit-page"></a>편집 페이지를 테스트 합니다.
 
-응용 프로그램을 실행 하 고 선택 된 **학생** 탭을 클릭 한 다음는 **편집** 하이퍼링크입니다.
+응용 프로그램을 실행, 선택는 **학생** 탭을 클릭 한 다음는 **편집** 하이퍼링크입니다.
 
 ![학생 편집 페이지](crud/_static/student-edit.png)
 
@@ -264,7 +264,7 @@ Try catch 블록에서 HttpPost에 추가할 `Delete` 데이터베이스를 업�
 
 [!code-html[](intro/samples/cu/Views/Students/Delete.cshtml?range=7-9&highlight=2)]
 
-페이지를 선택 하 여 실행 된 **학생** 탭을 클릭 하 고는 **삭제** 하이퍼링크:
+응용 프로그램을 실행, 선택는 **학생** 탭을 클릭 한 **삭제** 하이퍼링크:
 
 ![삭제 확인 페이지](crud/_static/student-delete.png)
 

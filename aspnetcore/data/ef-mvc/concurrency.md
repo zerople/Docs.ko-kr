@@ -11,11 +11,11 @@ ms.assetid: 15e79e15-bda5-441d-80c7-8032a2628605
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: f44a4f842180b4001eb1428316c24fd9cacc39db
-ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
+ms.openlocfilehash: fc6b218034183a9153c1ef22c99d920a942d2d09
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="handling-concurrency-conflicts---ef-core-with-aspnet-core-mvc-tutorial-8-of-10"></a>동시성 충돌-ASP.NET Core MVC 자습서 (10의 8)와 함께 EF 핵심 처리
 
@@ -184,9 +184,7 @@ _context.Entry(departmentToUpdate).Property("RowVersion").OriginalValue = rowVer
 
 ## <a name="test-concurrency-conflicts-in-the-edit-page"></a>동시성 충돌 편집 페이지에서 테스트
 
-사이트를 실행 하 고 부서에서 부서 인덱스 페이지로 이동를 클릭 합니다.
-
-마우스 오른쪽 단추로 클릭는 **편집** 영어 부서 및 선택에 대 한 하이퍼링크 **새 탭에서 열기**, 클릭는 **편집** 영어 부서에 대 한 하이퍼링크입니다. 두 개의 브라우저 탭에는 이제 동일한 정보가 표시 됩니다.
+응용 프로그램을 실행 하 고 부서 인덱스 페이지로 이동 합니다. 마우스 오른쪽 단추로 클릭는 **편집** 영어 부서 및 선택에 대 한 하이퍼링크 **새 탭에서 열기**, 클릭는 **편집** 영어 부서에 대 한 하이퍼링크입니다. 두 개의 브라우저 탭에는 이제 동일한 정보가 표시 됩니다.
 
 첫 번째 브라우저 탭에서 필드를 변경 하 고 클릭 **저장**합니다.
 
@@ -255,7 +253,7 @@ public async Task<IActionResult> Delete(Department department)
 
 * 숨겨진된 필드에 대 한 추가 `RowVersion` 속성입니다.
 
-부서 인덱스 페이지를 실행 합니다. 마우스 오른쪽 단추로 클릭는 **삭제** 영어 부서 및 선택에 대 한 하이퍼링크 **새 탭에서 열기**, 첫 번째 탭에서을 클릭는 **편집** 영어 부서에 대 한 하이퍼링크입니다.
+응용 프로그램을 실행 하 고 부서 인덱스 페이지로 이동 합니다. 마우스 오른쪽 단추로 클릭는 **삭제** 영어 부서 및 선택에 대 한 하이퍼링크 **새 탭에서 열기**, 첫 번째 탭에서을 클릭는 **편집** 영어 부서에 대 한 하이퍼링크입니다.
 
 첫 번째 창에서 값 중 하나를 변경 하 고 클릭 **저장**:
 

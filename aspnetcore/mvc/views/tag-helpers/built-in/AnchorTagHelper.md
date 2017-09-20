@@ -11,15 +11,15 @@ ms.assetid: c045d485-d1dc-4cea-a675-46be83b7a011
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/AnchorTagHelper
-ms.openlocfilehash: f08e6a5288076d56b55843f1872bcfa8104f3923
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: fdb91836699b4dd334499cffa6c4c3961c5c020f
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="anchor-tag-helper"></a>앵커 태그 도우미
 
-으로 [Peter Kellner](http://peterkellner.net) 
+작성자: [Peter Kellner](http://peterkellner.net) 
 
 앵커 태그 도우미 향상 HTML 앵커 (`<a ... ></a>`) 새 특성을 추가 하 여는 태그입니다. 생성 된 링크 (에 `href` 태그) 새 특성을 사용 하 여 만들어집니다. 해당 URL에 https와 같은 선택적 프로토콜은 포함할 수 있습니다.
 
@@ -211,7 +211,7 @@ app.UseMvc(routes =>
 
         * *HomeController.cs*
 
-      * *레이아웃*
+      * *뷰*
 
         * *홈*
 

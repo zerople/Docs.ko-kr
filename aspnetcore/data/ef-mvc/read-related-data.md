@@ -11,11 +11,11 @@ ms.assetid: 71fec30f-8ea7-4ca8-96e3-d2e26c5be44e
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: a3badbfe365a99593b38fc3846a9984824438f16
-ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
+ms.openlocfilehash: e818411f2cc568afdfd0612a6367dc3e257d0dd7
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="reading-related-data---ef-core-with-aspnet-core-mvc-tutorial-6-of-10"></a>읽기 관련 데이터-EF 코어 ASP.NET Core MVC 자습서 (6 / 10)
 
@@ -85,7 +85,7 @@ Contoso 대학 샘플 웹 응용 프로그램에는 Entity Framework Core 및 Vi
   @Html.DisplayFor(modelItem => item.Department.Name)
   ```
 
-부서 이름의 목록을 보려면 페이지 (Contoso 대학 홈 페이지에 Courses 탭을 선택 하는 경우)를 실행 합니다.
+응용 프로그램을 실행 하 고 선택 된 **Courses** 부서 이름의 목록을 보려면 탭 합니다.
 
 ![Courses 인덱스 페이지](read-related-data/_static/courses-index.png)
 
@@ -203,7 +203,7 @@ Index 메서드가 관련된 데이터를 즉시 로드의 보기 모델에 저�
   <a asp-action="Index" asp-route-id="@item.ID">Select</a> |
   ```
 
-응용 프로그램을 실행 하 고 강사 탭을 선택 합니다. 페이지 관련된 OfficeAssignment 엔터티가 없는 경우 관련된 OfficeAssignment 엔터티 및 빈 테이블 셀의 Location 속성을 표시 합니다.
+응용 프로그램을 실행 하 고 선택 된 **강사** 탭 합니다. 페이지 관련된 OfficeAssignment 엔터티가 없는 경우 관련된 OfficeAssignment 엔터티 및 빈 테이블 셀의 Location 속성을 표시 합니다.
 
 ![강사 인덱스 페이지에는 아무 선택](read-related-data/_static/instructors-index-no-selection.png)
 
@@ -213,7 +213,7 @@ Index 메서드가 관련된 데이터를 즉시 로드의 보기 모델에 저�
 
 이 코드를 읽고는 `Courses` 과정의 목록을 표시 하려면 보기 모델의 속성입니다. 또한 제공는 **선택** 하이퍼링크에 선택한 과정의 ID를 전송 하는 `Index` 동작 메서드.
 
-페이지를 실행 하 고 강사를 선택 합니다. 이제 선택한 강사에 할당 하는 과정을 표시 하는 표를 표시 및 각 과정에 대 한 할당 된 부서 이름을 표시 합니다.
+페이지를 새로 고치고 강사를 선택 합니다. 이제 선택한 강사에 할당 하는 과정을 표시 하는 표를 표시 및 각 과정에 대 한 할당 된 부서 이름을 표시 합니다.
 
 ![강사 인덱스 페이지 강사 선택](read-related-data/_static/instructors-index-instructor-selected.png)
 
@@ -223,7 +223,7 @@ Index 메서드가 관련된 데이터를 즉시 로드의 보기 모델에 저�
 
 이 코드는 등록 과정에 학생의 목록을 표시 하기 위해 뷰 모델의 등록 속성을 읽습니다.
 
-페이지를 실행 하 고 강사를 선택 합니다. 그런 다음 등록 된 학생 자신의 등급의 목록을 보려면 과정을 선택 합니다.
+페이지를 다시 새로 고치십시오 하 고 강사를 선택 합니다. 그런 다음 등록 된 학생 자신의 등급의 목록을 보려면 과정을 선택 합니다.
 
 ![강사 인덱스 페이지 강사 및 선택한 과정](read-related-data/_static/instructors-index.png)
 
@@ -237,7 +237,7 @@ Index 메서드가 관련된 데이터를 즉시 로드의 보기 모델에 저�
 
 새 코드 삭제는 *ThenInclude* instructor 엔터티를 검색 하는 코드에서 등록 데이터에 대 한 메서드를 호출 합니다. 강사 및 과정을 선택 하는 경우 선택한 과정에 대 한 등록 엔터티 및 각 등록에 대해 학생 엔터티 강조 표시 된 코드를 검색 합니다.
 
-강사 인덱스 페이지를 지금 실행를 한 데이터를 검색 하는 방법을 변경 하지만 페이지에 표시 되는 내용에 차이가 없어야을 나타납니다.
+실행 데이터를 검색 하는 방법을 변경 하지만 이동 강사 인덱스 페이지를 지금 하는 응용 프로그램 페이지에 표시 되는 내용에 차이가 없어야 표시 됩니다.
 
 ## <a name="summary"></a>요약
 
