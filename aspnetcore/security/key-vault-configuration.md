@@ -10,11 +10,11 @@ ms.topic: article
 ms.assetid: 0292bdae-b3ed-4637-bd67-19b9bb8b65cb
 ms.prod: asp.net-core
 uid: security/key-vault-configuration
-ms.openlocfilehash: 72b6098b2a71957da338ef36beff4808201773f4
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 2c94daafec8d3b4051bd3091478521ab12a434bd
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="azure-key-vault-configuration-provider"></a>Azure 키 자격 증명 모음 구성 공급자
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 09/12/2017
 | `ClientId`     | Azure Active Directory 응용 프로그램 Id  | 627e911e-43cc-61d4-992e-12db9c81b413         |
 | `ClientSecret` | Azure Active Directory 응용 프로그램 키 | g58K3dtg59o1Pa e59v2Tx829w6VxTB2yv9sv/101di + = |
 
-[!code-csharp[프로그램](key-vault-configuration/samples/basic-sample/2.x/Program.cs?name=snippet1&highlight=2,7-10)]
+[!code-csharp[Program](key-vault-configuration/samples/basic-sample/2.x/Program.cs?name=snippet1&highlight=2,7-10)]
 
 ## <a name="creating-key-vault-secrets-and-loading-configuration-values-basic-sample"></a>주요 자격 증명 모음 암호 만들기 및 구성 값 (basic 샘플)를 로드 합니다.
 1. 키 자격 증명 모음 만들기 및 Azure Active Directory (Azure AD)의 지침에 따라 응용 프로그램에 대 한 설정 [Azure 키 자격 증명 모음 시작](https://azure.microsoft.com/documentation/articles/key-vault-get-started/)합니다.
@@ -83,7 +83,7 @@ ms.lasthandoff: 09/12/2017
 
 두 번째 샘플 응용 프로그램을 사용 하면 만들 되는 암호에 대 한 주요 자격 증명 모음에 `5000-AppSecret` (마침표 비밀 키 자격 증명 모음 이름에 허용 되지) 5.0.0.0 응용 프로그램의 버전에 대 한 앱 암호를 나타내는입니다. 에 대 한 암호를 만들면 다른 버전의 경우, 5.1.0.0 `5100-AppSecret`합니다. 각 응용 프로그램 버전으로 해당 구성에는 자체 비밀 값 로드 `AppSecret`, 비밀 로드 된 버전에서 제거 합니다. 샘플의 구현은 다음과 같습니다.
 
-[!code-csharp[구성 작성기](key-vault-configuration/samples/key-name-prefix-sample/2.x/Program.cs?name=snippet1&highlight=12)]
+[!code-csharp[Configuration builder](key-vault-configuration/samples/key-name-prefix-sample/2.x/Program.cs?name=snippet1&highlight=12)]
 
 [!code-csharp[PrefixKeyVaultSecretManager](key-vault-configuration/samples/key-name-prefix-sample/2.x/Startup.cs?name=snippet1)]
 

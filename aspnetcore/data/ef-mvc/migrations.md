@@ -2,7 +2,7 @@
 title: "ASP.NET Core MVC EF 코어 10-마이그레이션-4"
 author: tdykstra
 description: "이 자습서에서는 ASP.NET Core MVC 응용 프로그램에서 데이터 모델 변경 내용을 관리 하기 위한 EF 코어 마이그레이션 기능을 사용 하 여 시작 합니다."
-keywords: "ASP.NET Core, Entity Framework Core 마이그레이션"
+keywords: "ASP.NET Core, Entity Framework Core, 마이그레이션"
 ms.author: tdykstra
 manager: wpickett
 ms.date: 03/15/2017
@@ -11,11 +11,11 @@ ms.assetid: 81f6c9c2-a819-4f3a-97a4-4b0503b56c26
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: 4d81099d1ab97a8a49d96657153a54aa96dd6bf8
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: 638bef0cda14f53a326c66c6a5da3f3c1bb762c6
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="migrations---ef-core-with-aspnet-core-mvc-tutorial-4-of-10"></a>마이그레이션-EF 코어 ASP.NET Core MVC 자습서 (4 / 10)
 
@@ -31,11 +31,11 @@ Contoso 대학 샘플 웹 응용 프로그램에는 Entity Framework Core 및 Vi
 
 이 방법은 데이터베이스를 데이터 모델을 통해 동기화 유지 프로덕션 환경에 응용 프로그램을 배포할 때까지 잘 작동 합니다. 응용 프로그램에서 데이터를 보관 하 고 모든 될 때마다 손실 하지 않으려면를 일반적으로 저장 하는 프로덕션에서 실행 중인 경우에 새 열을 추가 하는 등 변경을 합니다. EF 코어 마이그레이션 기능 새 데이터베이스를 만드는 대신 데이터베이스 스키마를 업데이트 하는 EF를 사용 하 여이 문제를 해결 합니다.
 
-## <a name="entity-framework-core-nuget-packages-for-migrations"></a>마이그레이션에 대 한 entity Framework Core NuGet 패키지
+## <a name="entity-framework-core-nuget-packages-for-migrations"></a>마이그레이션을 위한 Entity Framework Core NuGet 패키지
 
 마이그레이션을 사용 하려면 사용할 수 있습니다는 **패키지 관리자 콘솔** (PMC) 또는 명령줄 인터페이스 (CLI).  이 자습서에는 CLI 명령을 사용 하는 방법을 보여 줍니다. PMC에 대 한 정보는 [이 자습서의 최종](#pmc)합니다.
 
-제공 되는 CLI (명령줄 인터페이스)에 대 한 EF 도구 [Microsoft.EntityFrameworkCore.Tools.DotNet](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools.DotNet)합니다. 이 패키지를 설치 하려면 추가 하는 `DotNetCliToolReference` 컬렉션에는 *.csproj* 표시 된 것 처럼 파일입니다. **참고:** 편집 하 여이 패키지를 설치 해야는 *.csproj* 파일; 사용할 수 없습니다는 `install-package` 패키지 관리자 GUI 나 명령입니다. 편집할 수는 *.csproj* 파일에서 프로젝트 이름을 마우스 오른쪽 단추로 클릭 하 여 **솔루션 탐색기** 선택 하 고 **편집 ContosoUniversity.csproj**합니다.
+CLI(명령줄 인터페이스)용 EF 도구는 [Microsoft.EntityFrameworkCore.Tools.DotNet](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools.DotNet)에서 제공됩니다. 이 패키지를 설치 하려면 추가 하는 `DotNetCliToolReference` 컬렉션에는 *.csproj* 표시 된 것 처럼 파일입니다. **참고:** *.csproj* 파일을 편집하여 이 패키지를 설치해야 합니다. `install-package` 명령이나 패키지 관리자 GUI를 사용할 수 없습니다. 편집할 수는 *.csproj* 파일에서 프로젝트 이름을 마우스 오른쪽 단추로 클릭 하 여 **솔루션 탐색기** 선택 하 고 **편집 ContosoUniversity.csproj**합니다.
 
 [!code-xml[](intro/samples/cu/ContosoUniversity.csproj?range=12-15&highlight=2)]
   
@@ -68,7 +68,7 @@ Contoso 대학 샘플 웹 응용 프로그램에는 Entity Framework Core 및 Vi
 
   ![명령 창 열기](migrations/_static/open-command-window.png)
 
-명령 창에서 다음 명령을 입력 합니다.
+명령 창에서 다음 명령을 입력합니다.
 
 ```console
 dotnet ef migrations add InitialCreate
@@ -87,11 +87,11 @@ Done. To undo this action, use 'ef migrations remove'
 > [!NOTE]
 > 오류 메시지가 표시 되 면 *없는 실행 파일을 일치 하는 명령 "dotnet-ef" 찾을*, 참조 [이 블로그 게시물](http://thedatafarm.com/data-access/no-executable-found-matching-command-dotnet-ef/) 문제 해결 도움말에 대 한 합니다.
 
-오류 메시지가 표시 되 면 "*... 파일에 액세스할 수 없습니다 ContosoUniversity.dll 다른 프로세스에서 사용 되 고 있으므로 합니다.* "Windows 시스템 트레이에서 찾기 IIS Express 아이콘을 마우스 오른쪽 단추로 클릭 차례로 클릭 **ContosoUniversity > 중지 사이트**합니다.
+오류 메시지가 표시 되 면 "*... 파일에 액세스할 수 없습니다 ContosoUniversity.dll 다른 프로세스에서 사용 되 고 있으므로 합니다. *"Windows 시스템 트레이에서 찾기 IIS Express 아이콘을 마우스 오른쪽 단추로 클릭 차례로 클릭 **ContosoUniversity > 중지 사이트**합니다.
 
 ## <a name="examine-the-up-and-down-methods"></a>위쪽을 검토 하 고 아래쪽 메서드
 
-실행 하는 시기는 `migrations add` 명령, EF에서 생성 한 코드를 처음부터 데이터베이스 만들기. 이 코드는는 *마이그레이션* 라는 파일에 폴더  *\<타임 스탬프 > _InitialCreate.cs*합니다. `Up` 의 메서드는 `InitialCreate` 클래스는 데이터 모델 엔터티 집합에 해당 하는 데이터베이스 테이블을 만듭니다 및 `Down` 다음 예제와 같이, 메서드 삭제 합니다.
+실행 하는 시기는 `migrations add` 명령, EF에서 생성 한 코드를 처음부터 데이터베이스 만들기. 이 코드는는 *마이그레이션* 라는 파일에 폴더 * \<타임 스탬프 > _InitialCreate.cs*합니다. `Up` 의 메서드는 `InitialCreate` 클래스는 데이터 모델 엔터티 집합에 해당 하는 데이터베이스 테이블을 만듭니다 및 `Down` 다음 예제와 같이, 메서드 삭제 합니다.
 
 [!code-csharp[Main](intro/samples/cu/Migrations/20170215220724_InitialCreate.cs?range=92-118)]
 
@@ -109,7 +109,7 @@ Done. To undo this action, use 'ef migrations remove'
 
 현재 데이터베이스 스키마, 코드에 표현 되므로 EF 코어 마이그레이션 만들려는 데이터베이스와 상호 작용할 필요가 없습니다. 마이그레이션에 추가 하면 EF 스냅숏 파일에 데이터 모델을 비교 하 여 변경 내용을 결정 합니다. EF는 데이터베이스를 업데이트 해야 하는 경우에 데이터베이스와 상호 작용 합니다. 
 
-명명 된 파일을 삭제 하 여 마이그레이션의 제거할 수 없습니다 만들 하는 마이그레이션 동기화 되어야 하는 스냅숏 파일에  *\<타임 스탬프 > _\<migrationname >.cs*합니다. 해당 파일을 삭제 하면 나머지 마이그레이션은 데이터베이스 스냅숏 파일와 동기화 됩니다. 사용자가 추가한 마지막 마이그레이션을 삭제 하려면 사용 하 여는 [dotnet ef 마이그레이션 제거](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove) 명령입니다.
+명명 된 파일을 삭제 하 여 마이그레이션의 제거할 수 없습니다 만들 하는 마이그레이션 동기화 되어야 하는 스냅숏 파일에 * \<타임 스탬프 > _\<migrationname >.cs*합니다. 해당 파일을 삭제 하면 나머지 마이그레이션은 데이터베이스 스냅숏 파일와 동기화 됩니다. 사용자가 추가한 마지막 마이그레이션을 삭제 하려면 사용 하 여는 [dotnet ef 마이그레이션 제거](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove) 명령입니다.
 
 ## <a name="apply-the-migration-to-the-database"></a>마이그레이션 데이터베이스에 적용
 

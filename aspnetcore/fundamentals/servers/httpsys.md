@@ -2,7 +2,7 @@
 title: "ASP.NET Core 웹 서버 구현이 HTTP.sys"
 author: rick-anderson
 description: "Windows에서 ASP.NET Core에 대 한 웹 서버 HTTP.sys를 소개합니다. IIS 없이 인터넷에 직접 연결에 사용할 수 있는 Kestrel 하는 대신을 HTTP.sys는 Http.Sys 커널 모드 드라이버를 기반 합니다."
-keywords: "ASP.NET Core, HttpSys, HTTP.sys, HttpListener, SSL url 접두사"
+keywords: "ASP.NET Core,HttpSys,HTTP.sys,HttpListener,url 접두사, SSL"
 ms.author: riande
 manager: wpickett
 ms.date: 08/07/2017
@@ -11,11 +11,11 @@ ms.assetid: 0a7286e4-6428-424e-b5c4-5c98815cf61c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 5ffe6b5d55d88cbcfa62dfacf1e6e896f1304e39
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 38ceb20c8901baadc7efbacb81a3598afce3f006
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 웹 서버 구현이 HTTP.sys
 

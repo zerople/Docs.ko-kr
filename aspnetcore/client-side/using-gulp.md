@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/using-gulp
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd617a99ad348c545cbf50f6aa461ca8f456d3a8
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: d2a2971a46d9d45a8fda5ac56073af608a0ede2b
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="introduction-to-using-gulp-in-aspnet-core"></a>ASP.NET Core에서 Gulp를 사용 하 여 소개 
 
@@ -305,7 +305,7 @@ Gulp를 사용 하 여 스테이징 및 프로덕션에 대 한 클라이언트 
 
     웹 앱에 대 한 속성 시트가 표시 됩니다.
 
-3.  클릭는 **디버그** 탭 합니다.
+3.  **디버그** 탭을 클릭합니다.
 
 4.  값으로 설정 된 **호스팅: 환경** 환경 변수를 `Production`합니다.
 

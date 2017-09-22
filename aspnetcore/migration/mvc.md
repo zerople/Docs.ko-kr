@@ -2,7 +2,7 @@
 title: "ASP.NET MVC에서 ASP.NET Core MVC로 마이그레이션"
 author: ardalis
 description: 
-keywords: "ASP.NET MVC에서 코어, 마이그레이션"
+keywords: "ASP.NET Core, MVC, 마이그레이션"
 ms.author: riande
 manager: wpickett
 ms.date: 03/07/2017
@@ -11,11 +11,11 @@ ms.assetid: 3155cc9e-d0c9-424b-886c-35c0ec6f9f4e
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/mvc
-ms.openlocfilehash: 2bd689626e867e0ea82fbebdf92447a6029aa35b
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 385ab7dfea5b92687a427bdfe9558462227113b1
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="migrating-from-aspnet-mvc-to-aspnet-core-mvc"></a>ASP.NET MVC에서 ASP.NET Core MVC로 마이그레이션
 
@@ -92,7 +92,7 @@ ms.lasthandoff: 09/12/2017
 <h1>Hello world!</h1>
 ```
 
-응용 프로그램을 실행 합니다.
+앱을 실행합니다.
 
 ![웹 응용 프로그램에서 Microsoft Edge 열기](mvc/_static/hello-world.png)
 
@@ -166,7 +166,7 @@ ASP.NET MVC 이전 프로젝트에서 사용 [부트스트랩](http://getbootstr
 
    * 대체 `@Styles.Render("~/Content/css")` 와 `<link>` 로드할 요소 *bootstrap.css* (아래 참조).
 
-   * 제거 `@Scripts.Render("~/bundles/modernizr")`합니다.
+   * `@Scripts.Render("~/bundles/modernizr")`를 제거합니다.
 
    * 주석으로 처리는 `@Html.Partial("_LoginPartial")` 줄 (한 줄으로 둘러싸고 `@*...*@`). 이후 자습서에서를 반환 합니다.
 

@@ -11,11 +11,11 @@ ms.assetid: 0e0fedcd-a7b4-4479-8ae0-36eab0229d7e
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: fundamentals/websockets
-ms.openlocfilehash: a5914ad0d1056db993fcbfa1f00dd3422fcc4b6e
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 8a6b5cc8ca8ac17f0e4c5b23f20013130cd472c8
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="introduction-to-websockets-in-aspnet-core"></a>ASP.NET Core에서 Websocket 소개
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 09/12/2017
 
 이 문서에는 ASP.NET Core에서 Websocket을 시작 하는 방법을 설명 합니다. [WebSocket](https://wikipedia.org/wiki/WebSocket) 은 TCP 연결을 통한 영구 양방향 통신 채널을 사용 하도록 설정 하는 프로토콜입니다. 웹 응용 프로그램에서 실시간 기능이 원하는 곳을 채팅, 주식 종목, 게임 등의 응용 프로그램에 대 한 사용 됩니다.
 
-[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/websockets/sample)합니다. 참조는 [다음 단계](#next-steps) 한 자세 합니다.
+[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/websockets/sample) 참조는 [다음 단계](#next-steps) 한 자세 합니다.
 
 
 ## <a name="prerequisites"></a>필수 구성 요소

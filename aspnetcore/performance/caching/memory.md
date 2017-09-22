@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/caching/memory
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1e2d43d837ba76c6ef8b5136f3751edb44d6606a
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: b5dca6a81a66ce2a8771f1a16e63834d6504d8b6
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="introduction-to-in-memory-caching-in-aspnet-core"></a>ASP.NET Core의 메모리 내 캐싱 소개
 
@@ -101,4 +101,4 @@ ASP.NET Core 몇 가지 다른 캐시를 지원합니다. 가장 간단한 캐�
 ### <a name="other-resources"></a>기타 리소스
 
 * [분산 캐시 사용](distributed.md)
-* [응답의 캐싱 미들웨어](middleware.md)
+* [응답 캐싱 미들웨어](middleware.md)

@@ -11,11 +11,11 @@ ms.assetid: ef7dad2a-7029-4ae5-8f06-1fbebedccaa4
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/configuration/default-settings
-ms.openlocfilehash: 913eda69f88ef05a990d9465024f4fa6b08cd1b7
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: c361af7d336fc0f7651e5d2f28d71515e2949c65
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="key-management-and-lifetime"></a>키 관리 및 수명
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 08/11/2017
 
 2. 사용자 프로필을 사용할 수 있는 경우 키 "%LOCALAPPDATA%\ASP.NET\DataProtection-Keys" 폴더에 저장 됩니다. 또한 운영 체제가 Windows 인 경우 DPAPI를 사용 하 여 암호화 되어야 합니다.
 
-3. 응용 프로그램을 IIS에서 호스트 하는 경우 키 하 게 포함 되었는지 작업자 프로세스 계정에만 있는 특별 한 레지스트리 키에서 HKLM 레지스트리 에서도 유지 됩니다. DPAPI를 사용 하 여 키 암호화 됩니다.
+3. 응용 프로그램을 IIS에서 호스트 하는 경우 키 하 게 포함 되었는지 작업자 프로세스 계정에만 있는 특별 한 레지스트리 키에서 HKLM 레지스트리 에서도 유지 됩니다. 미사용 키는 DPAPI를 사용하여 암호화됩니다.
 
 4. 이러한 조건 중가 일치 하는 경우 현재 프로세스 외부에서 키 유지 되지 않습니다. 종료 되 면 프로세스 생성 된 모든 키가 손실 됩니다.
 

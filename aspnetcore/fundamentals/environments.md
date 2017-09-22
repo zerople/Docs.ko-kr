@@ -11,11 +11,11 @@ ms.assetid: b5bba985-be12-4464-9a01-df3599b2a6f1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/environments
-ms.openlocfilehash: 8f8612fd9c92370d9b0a86572dca654a6a034916
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: b66ef7e3626effff1c66c37a86865699fa8866f9
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="working-with-multiple-environments"></a>여러 환경 작업
 
@@ -100,7 +100,7 @@ $Env:ASPNETCORE_ENVIRONMENT = "Development"
 
 **IIS 응용 프로그램 풀 당**
 
-로 설정 해야 하는 경우 (IIS 10.0 이상에서 지원 됨) 격리 된 응용 프로그램 풀에서 실행 되는 개별 앱에 대 한 환경 변수 참조는 *AppCmd.exe 명령을* 의 섹션은 [환경 변수 \< environmentVariables >](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) IIS의 항목을 참조 설명서입니다.
+격리된 응용 프로그램 풀(IIS 10.0 이상에서 지원됨)에서 실행되는 개별 응용 프로그램에 대한 환경 변수를 설정해야 하는 경우 [\<environmentVariables> 환경 변수](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) 항목의 *AppCmd.exe 명령* 섹션을 참조하세요.
 
 ### <a name="macos"></a>MacOS
 MacOS에 대 한 현재 환경 설정 구성 방법은 인라인 응용 프로그램을 실행 하는 경우

@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/using-browserlink
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b2ff38288cee3e9ca42a07c219521bb79a00a359
-ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
+ms.openlocfilehash: 211dd5d03e6b8414e0b2ed3234d8970c92f72452
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="introduction-to-browser-link-in-aspnet-core"></a>ASP.NET Core의 브라우저 링크를 소개 
 
@@ -61,7 +61,7 @@ app.UseBrowserLink();
 
 [!code-csharp[Main](./using-browserlink/sample/BrowserLinkSample/src/BrowserLinkSample/Startup.cs?highlight=1,4&range=40-44)]
 
-자세한 내용은 참조 [여러 환경 작업](../fundamentals/environments.md)합니다.
+자세한 내용은 [여러 환경 사용](../fundamentals/environments.md)을 참조하세요.
 
 ## <a name="how-to-use-browser-link"></a>브라우저 링크를 사용 하는 방법
 
@@ -85,7 +85,7 @@ Visual Studio 브라우저 링크 도구 모음 컨트롤 옆에 표시 ASP.NET 
 
 ![F 5를 눌러 드롭다운 메뉴](using-browserlink/_static/debug-target-dropdown-menu.png)
 
-한 번에 여러 브라우저를 열려면 선택 **브라우저 선택...**  동일한 드롭다운 목록에서 합니다.  원하는 브라우저를 선택 하려면 CTRL 키를 누른 채 클릭 **찾아보기**:
+한 번에 여러 브라우저를 열려면 선택 **브라우저 선택... ** 동일한 드롭다운 목록에서 합니다.  원하는 브라우저를 선택 하려면 CTRL 키를 누른 채 클릭 **찾아보기**:
 
 ![한 번에 다양 한 브라우저를 열으십시오](using-browserlink/_static/open-many-browsers-at-once.png)
 

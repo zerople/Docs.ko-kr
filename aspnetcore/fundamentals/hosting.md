@@ -5,18 +5,16 @@ description: "ASP.NET Core 응용 프로그램 시작 및 수명 관리를 담�
 keywords: "ASP.NET Core 웹 IWebHost, WebHostBuilder, IHostingEnvironment, IApplicationLifetime 호스트"
 ms.author: riande
 manager: wpickett
-ms.date: 09/10/2017
+ms.date: 09/21/2017
 ms.topic: article
-ms.assetid: 4e45311d-8d56-46e2-b99d-6f65b648a277
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/hosting
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4eb57cf80399abdb7c6d05546ea2b0d5718c56c3
-ms.sourcegitcommit: 0a3f215b4f665afc6f2678642968eea698102346
+ms.openlocfilehash: 455b992dc10129278f8e23366aac9d8bcbf5594c
+ms.sourcegitcommit: ef9784dd7500f22fb98b3591ebd73d57d4f67544
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/18/2017
+ms.lasthandoff: 09/21/2017
 ---
 # <a name="hosting-in-aspnet-core"></a>ASP.NET Core에서 호스팅
 
