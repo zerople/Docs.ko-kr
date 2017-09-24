@@ -11,15 +11,15 @@ ms.assetid: e55eb131-d42e-4bf6-b130-fd626082243c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: hosting/directory-structure
-ms.openlocfilehash: 9ec635b596520e3d19f4040758dd59c1cbca97f4
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: f406d866bb1c8ac2d4371c8ddf669fc08af0fada
+ms.sourcegitcommit: 8005eb4051e568d88ee58d48424f39916052e6e2
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/24/2017
 ---
 # <a name="directory-structure-of-published-aspnet-core-apps"></a>게시 된 ASP.NET Core 응용 프로그램의 디렉터리 구조
 
-으로 [Luke Latham](https://github.com/GuardRex)
+으로 [Luke Latham](https://github.com/guardrex)
 
 ASP.NET Core, 응용 프로그램 디렉터리에서에서 *게시*, 응용 프로그램 파일, config 파일, 정적 자산, 패키지 및 런타임 (앱에 대 한 자체 포함)의 구성 됩니다. 이전 버전의 ASP.NET 전체 응용 프로그램 웹 루트 디렉터리 안에 거주와 동일한 디렉터리 구조입니다.
 

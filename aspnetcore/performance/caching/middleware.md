@@ -10,15 +10,15 @@ ms.topic: article
 ms.assetid: f9267eab-2762-42ac-1638-4a25d2c9d67c
 ms.prod: asp.net-core
 uid: performance/caching/middleware
-ms.openlocfilehash: 4013619f738b3b8b58e45d9dfd205e7b75e056b4
-ms.sourcegitcommit: 029dd7fbc0793e84b9ed91f2b45624bbc187fb32
+ms.openlocfilehash: 07626ae7f40dc6f704d69d71cb7f95d318e6f503
+ms.sourcegitcommit: 8005eb4051e568d88ee58d48424f39916052e6e2
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/24/2017
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>ASP.NET Core의 미들웨어 캐싱 응답
 
-여 [Luke Latham](https://github.com/GuardRex) 및 [John Luo](https://github.com/JunTaoLuo)
+여 [Luke Latham](https://github.com/guardrex) 및 [John Luo](https://github.com/JunTaoLuo)
 
 [샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/middleware/samples)
 

@@ -10,15 +10,15 @@ ms.topic: article
 ms.assetid: 0292bdae-b3ed-4637-bd67-19b9bb8b65cb
 ms.prod: asp.net-core
 uid: security/key-vault-configuration
-ms.openlocfilehash: 2c94daafec8d3b4051bd3091478521ab12a434bd
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 5122918ff84d87dd9763d454412f83d6f2c60fcb
+ms.sourcegitcommit: 8005eb4051e568d88ee58d48424f39916052e6e2
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/24/2017
 ---
 # <a name="azure-key-vault-configuration-provider"></a>Azure 키 자격 증명 모음 구성 공급자
 
-여 [Luke Latham](https://github.com/GuardRex) 및 [Andrew Stanton 간호사](https://github.com/anurse)
+여 [Luke Latham](https://github.com/guardrex) 및 [Andrew Stanton 간호사](https://github.com/anurse)
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 

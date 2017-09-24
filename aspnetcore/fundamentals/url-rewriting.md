@@ -11,15 +11,15 @@ ms.assetid: e6130638-c410-4161-9921-b658ce988bd1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 05a92c4eee6b26e49831c11e1251aedba87ed717
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 44c78a6304eacc70cdee9bb0d9407376017abcac
+ms.sourcegitcommit: 8005eb4051e568d88ee58d48424f39916052e6e2
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/24/2017
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>URL의 ASP.NET Core 미들웨어를 다시 작성
 
-여 [Luke Latham](https://github.com/GuardRex) 및 [Mikael Mengistu](https://github.com/mikaelm12)
+여 [Luke Latham](https://github.com/guardrex) 및 [Mikael Mengistu](https://github.com/mikaelm12)
 
 [샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/)
 
