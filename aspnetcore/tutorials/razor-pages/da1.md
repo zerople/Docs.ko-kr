@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: 39b65f8af8304fabc6cf8d9a27992043f1e381a0
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 290d752ea5f177348ff3e749cc125e946ae6e763
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="updating-the-generated-pages"></a>생성된 페이지 업데이트
 
@@ -34,7 +34,6 @@ ms.lasthandoff: 09/12/2017
 
   ![바로 가기 메뉴는 **> 빠른 작업 및 리팩터링**을 표시합니다.](da1/qa.png)
 
-
 `using System.ComponentModel.DataAnnotations;`를 선택합니다.
 
   ![목록 위쪽의 System.ComponentModel.DataAnnotations 사용](da1/da.png)
@@ -47,9 +46,9 @@ ms.lasthandoff: 09/12/2017
 
 ![편집 링크 위로 마우스를 가져가면 나타나는 브라우저 창 및 http://localhost:1234/Movies/Edit/5의 링크 Url이 표시됩니다.](da1/edit7.png)
 
-**편집**, **세부 정보** 및 **삭제** 링크는 *Pages/Movies/Index.cshtml* 파일에서 [앵커 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/AnchorTagHelper)에 의해 생성됩니다.
+**편집**, **세부 정보** 및 **삭제** 링크는 *Pages/Movies/Index.cshtml* 파일에서 [앵커 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)에 의해 생성됩니다.
 
-[!code-cshtml[Main](razor-pages-start\snapshot_sample\RazorPagesMovie\Pages\Movie\Index.cshtml?highlight=16-18&range=32-)]
+[!code-cshtml[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
 
 [태그 도우미](xref:mvc/views/tag-helpers/intro)를 사용하면 서버 쪽 코드를 Razor 파일에서 HTML 요소를 만들고 렌더링하는 데 사용할 수 있습니다. 위의 코드에서 `AnchorTagHelper`는 Razor 페이지에서 HTML `href` 특성 값(경로는 상대적), `asp-page` 및 경로 ID(`asp-route-id`)를 동적으로 생성합니다. 자세한 내용은 [페이지에 대한 URL 생성](xref:mvc/razor-pages/index#url-generation-for-pages)을 참조하세요.
 
@@ -61,7 +60,6 @@ ms.lasthandoff: 09/12/2017
   <a href="/Movies/Details?id=1">Details</a> |
   <a href="/Movies/Delete?id=1">Delete</a>
 </td>
-
 ```
 
 동적으로 생성된 링크는 쿼리 문자열이 포함된 동영상 ID를 전달합니다(예: `http://localhost:5000/Movies/Details?id=2` ). 
@@ -86,7 +84,7 @@ ms.lasthandoff: 09/12/2017
 
 *Pages/Movies/Edit.cshtml.cs* 파일에서 `OnPostAsync` 메서드를 업데이트합니다. 다음 강조 표시된 코드는 변경 내용을 보여 줍니다.
 
-[!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movie/Edit.cshtml.cs?name=snippet1&highlight=17-24)]
+[!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit.cshtml.cs?name=snippet1&highlight=16-23)]
 
 앞의 코드는 첫 번째 동시 클라이언트가 동영상을 삭제하고 두 번째 동시 클라이언트가 동영상에 대한 변경 내용을 게시하는 경우에만 동시성 예외를 검색합니다.
 
@@ -101,7 +99,7 @@ ms.lasthandoff: 09/12/2017
 
 ### <a name="posting-and-binding-review"></a>검토 게시 및 바인딩
 
-*Pages/Movies/Edit.cshtml.cs* 파일을 검사합니다. [!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movie/Edit.cshtml.cs?name=snippet2)]
+*Pages/Movies/Edit.cshtml.cs* 파일을 검사합니다. [!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit.cshtml.cs?name=snippet2)]
 
 동영상/편집 페이지에 대해 HTTP GET 요청이 만들어지는 경우(예: `http://localhost:5000/Movies/Edit/2`):
 
@@ -113,10 +111,10 @@ ms.lasthandoff: 09/12/2017
 
 * 페이지에서 양식 값은 `Movie` 속성으로 바인딩됩니다. `[BindProperty]` 특성은 [모델 바인딩](xref:mvc/models/model-binding)을 활성화합니다.
 
-```csharp
-[BindProperty]
-public Movie Movie { get; set; }
-```
+  ```csharp
+  [BindProperty]
+  public Movie Movie { get; set; }
+  ```
 
 * 모델 상태에 오류가 있는 경우(예: `ReleaseDate`를 날짜로 변환할 수 없는 경우) 양식이 제출된 값으로 다시 게시됩니다.
 * 모델 오류가 없는 경우 동영상이 저장됩니다.
