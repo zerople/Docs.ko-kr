@@ -2,7 +2,7 @@
 title: "Mac, Linux 또는 Windows에서 ASP.NET Core MVC 소개"
 author: rick-anderson
 description: "Mac, Linux 또는 Windows에서 ASP.NET Core MVC 및 Visual Studio Code 시작"
-keywords: ASP.NET Core, MVC, VS Code, Visual Studio Code, Mac, Linux, Windows
+keywords: ASP.NET Core,MVC,VS Code,Visual Studio Code,Mac,Linux,Windows
 ms.author: riande
 manager: wpickett
 ms.date: 07/07/2017
@@ -11,11 +11,11 @@ ms.assetid: 1d18b589-1638-4dc6-1638-fb0f41998d78
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app-xplat/start-mvc
-ms.openlocfilehash: cfce91271ca21dd800fb68a14389606ce6d835f5
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 87ce5dca011a7bc37d34799db159d933c158cba1
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="getting-started-with-aspnet-core-mvc--on-mac-linux-or-windows"></a>Mac, Linux 또는 Windows에서 ASP.NET Core MVC 시작
 

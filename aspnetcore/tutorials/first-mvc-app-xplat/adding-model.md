@@ -1,21 +1,21 @@
 ---
-title: "모델 추가"
+title: "ASP.NET Core MVC 앱에 모델 추가."
 author: rick-anderson
 description: "간단한 ASP.NET Core 앱에 모델을 추가합니다."
-keywords: ASP.NET Core,
 ms.author: riande
-manager: wpickett
-ms.date: 03/30/2017
+ms.date: 09/18/2017
 ms.topic: get-started-article
-ms.assetid: 8dc28498-eeee-4666-b903-b593059e9f39
 ms.technology: aspnet
+keywords: "ASP.NET Core, WebAPI, Web API, REST, Mac, Linux, HTTP, 서비스, HTTP 서비스, VS Code"
 ms.prod: asp.net-core
+manager: wpickett
+ms.assetid: 8dc28498-eeee-4666-b903-b593059e9f39
 uid: tutorials/first-mvc-app-xplat/adding-model
-ms.openlocfilehash: c68466a645687b6fe0193e9deec2f32632e6f0e7
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 70aa344ca4ceafacf53907c925fd595e47104d7e
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 [!INCLUDE[adding-model1](../../includes/mvc-intro/adding-model1.md)]
 

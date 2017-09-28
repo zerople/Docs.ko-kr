@@ -2,22 +2,21 @@
 title: "ASP.NET MVC Core 앱에 모델 추가"
 author: rick-anderson
 description: "간단한 ASP.NET Core 앱에 모델을 추가합니다."
-keywords: "ASP.NET Core, MVC, 스캐폴드, 스캐폴딩"
+keywords: "ASP.NET Core,MVC,스캐폴드,스캐폴딩"
 ms.author: riande
 manager: wpickett
 ms.devlang: csharp
-ms.date: 09/15/2017
+ms.date: 09/22/2017
 ms.topic: get-started-article
 ms.assetid: 8dc28498-eeee-1638-b903-b593059e9f39
 ms.technology: aspnet
 ms.prod: .net-core
-helpviewer_keywords: aspnet, csharp, mvc
 uid: tutorials/first-mvc-app-mac/adding-model
-ms.openlocfilehash: 36819284073eb1cb20b19c41512944e34c54c6d3
-ms.sourcegitcommit: 3fece4e2869581df72090ff5e82af1a09d927699
+ms.openlocfilehash: 0e2c47c7d9903d6d300fa293dd0530a2f65f77d8
+ms.sourcegitcommit: e6bcd56a4b11e20ff55df004971f9ed384937342
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/22/2017
 ---
 [!INCLUDE[adding-model](../../includes/mvc-intro/adding-model1.md)]
 

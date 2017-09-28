@@ -6,7 +6,7 @@
 
 HTTP 끝점은 웹 응용 프로그램에서 대상으로 지정 가능한 URL(예: `http://localhost:1234/HelloWorld`)으로써 사용되는 프로토콜(`HTTP`), 웹 서버(TCP 포트 포함)의 네트워크 위치(`localhost:1234`) 및 대상 URI `HelloWorld`을 결합합니다.
 
-첫 번째 주석은 이 항목을 기본 URL에 "/HelloWorld/"를 추가하여 호출되는 [HTTP GET](http://www.w3schools.com/tags/ref_httpmethods.asp) 메서드라고 설명합니다. 두 번째 주석은 이 항목을 URL에 "/HelloWorld/Welcome/"를 추가하여 호출되는 [HTTP GET](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) 메서드를 지정합니다. 나중에 자습서에서 스캐폴딩 엔진을 사용하여 `HTTP POST` 메서드를 생성합니다.
+첫 번째 주석은 이 항목을 기본 URL에 "/HelloWorld/"를 추가하여 호출되는 [HTTP GET](https://www.w3schools.com/tags/ref_httpmethods.asp) 메서드라고 설명합니다. 두 번째 주석은 이 항목을 URL에 "/HelloWorld/Welcome/"를 추가하여 호출되는 [HTTP GET](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) 메서드를 지정합니다. 나중에 자습서에서 스캐폴딩 엔진을 사용하여 `HTTP POST` 메서드를 생성합니다.
 
 디버그가 아닌 모드로 앱을 실행하고 주소 표시줄의 경로에 "HelloWorld"를 추가합니다. `Index` 메서드가 문자열을 반환합니다.
 
@@ -46,7 +46,7 @@ URL의 일부 매개 변수 정보를 컨트롤러에 전달하도록 코드를 
 
 ![브라우저 창은 안녕하세요, Rick. NumTimes은 4입니다.라는 응용 프로그램 응답을 표시합니다.](../../tutorials/first-mvc-app/adding-controller/_static/rick4.png)
 
-위의 이미지에서 URL 세그먼트(`Parameters`)를 사용하지 않고 `name` 및 `numTimes` 매개 변수가 [쿼리 문자열](http://en.wikipedia.org/wiki/Query_string)로 전달됩니다. 위 URL에서 `?`(물음표)는 구분 기호이고 쿼리 문자열이 이어집니다. `&` 문자는 쿼리 문자열을 구분합니다.
+위의 이미지에서 URL 세그먼트(`Parameters`)를 사용하지 않고 `name` 및 `numTimes` 매개 변수가 [쿼리 문자열](https://wikipedia.org/wiki/Query_string)로 전달됩니다. 위 URL에서 `?`(물음표)는 구분 기호이고 쿼리 문자열이 이어집니다. `&` 문자는 쿼리 문자열을 구분합니다.
 
 `Welcome` 메서드를 다음 코드로 바꿉니다.
 

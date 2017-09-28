@@ -98,7 +98,7 @@ WebSocket이이 루프를 시작 하기 전에 수락 하면 미들웨어 파이
 
 ## <a name="next-steps"></a>다음 단계
 
-[샘플 응용 프로그램](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/websockets/sample) 이 함께 제공 되는 문서는 간단한 에코 응용 프로그램입니다. WebSocket 연결 하는 웹 페이지가 고 서버 항목만 다시 클라이언트에 수신 된 모든 메시지. (해당 설정 있지 않은 IIS Express와 Visual Studio에서 실행) 하는 명령 프롬프트에서 실행 http://localhost:5000로 이동 합니다. 웹 페이지 왼쪽 위에 연결 상태를 보여 줍니다.
+[샘플 응용 프로그램](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/websockets/sample) 이 함께 제공 되는 문서는 간단한 에코 응용 프로그램입니다. WebSocket 연결 하는 웹 페이지가 고 서버 항목만 다시 클라이언트에 수신 된 모든 메시지. (해당 설정 있지 않은 IIS Express와 Visual Studio에서 실행) 하는 명령 프롬프트에서 실행 http://localhost:5000 로 이동 합니다. 웹 페이지 왼쪽 위에 연결 상태를 보여 줍니다.
 
 ![웹 페이지의 초기 상태](websockets/_static/start.png)
 

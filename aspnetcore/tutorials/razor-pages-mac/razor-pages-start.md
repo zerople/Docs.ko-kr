@@ -5,16 +5,16 @@ description: "Mac용 Visual Studio를 사용하여 ASP.NET Core에서 Razor 페�
 keywords: "ASP.NET Core, Razor 페이지, 스캐폴딩, Entity Framework Core, EF, EF Core, 데이터베이스, mac, macOS, Mac용 Visual Studio"
 ms.author: riande
 manager: wpickett
-ms.date: 7/27/2017
+ms.date: 07/27/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages-mac/razor-pages-start
-ms.openlocfilehash: 56ff18589d189b0d2760c761c58b5b030d02940b
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 9431e8160011d1485925db5cc4f9f83bf7381e97
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="getting-started-with-razor-pages-in-aspnet-core-with-visual-studio-for-mac"></a>Mac용 Visual Studio를 사용하여 ASP.NET Core에서 Razor 페이지 시작
 
@@ -39,7 +39,7 @@ cd RazorPagesMovie
 dotnet run
 ```
 
-이전 명령은 [.NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/dotnet)를 사용하여 Razor 페이지 프로젝트를 만들고 실행합니다. 브라우저를 열고 http://localhost:5000으로 이동하여 응용 프로그램을 봅니다.
+이전 명령은 [.NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/dotnet)를 사용하여 Razor 페이지 프로젝트를 만들고 실행합니다. 브라우저를 열고 http://localhost:5000 으로 이동하여 응용 프로그램을 봅니다.
 
 ![홈 또는 인덱스 페이지](../razor-pages/razor-pages-start/_static/home.png)
 

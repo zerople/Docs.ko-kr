@@ -1,5 +1,5 @@
 
-다음 자습서에서는 [DataAnnotations](http://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx)를 다룹니다. [Display](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayattribute.aspx) 특성은 필드의 이름에 표시할 대상을 지정합니다(이 경우 "ReleaseDate" 대신 "Release Date"). [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx) 특성은 필드에 저장된 시간 정보가 표시되지 않도록 데이터의 형식(날짜)을 지정합니다.
+다음 자습서에서는 [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6)를 다룹니다. [Display](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) 특성은 필드의 이름에 표시할 대상을 지정합니다(이 경우 "ReleaseDate" 대신 "Release Date"). [DataType](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) 특성은 필드에 저장된 시간 정보가 표시되지 않도록 데이터의 형식(날짜)을 지정합니다.
 
 `Movies` 컨트롤러로 이동하고 **편집** 링크 위에 마우스 포인터를 놓으면 대상 URL이 표시됩니다.
 
@@ -35,7 +35,7 @@ ASP.NET Core는 `http://localhost:1234/Movies/Edit/4`를 매개 변수 `Id`가 4
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2)]
 
-`[Bind]` 특성은 하나의 [과도 게시](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost) 방지 방법입니다. 변경하려는 속성만 `[Bind]` 특성에 포함해야 합니다. 자세한 내용은 [과도 게시로부터 컨트롤러 보호](http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost)를 참조하세요. [ViewModels](http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/)는 과도 게시를 방지하기 위한 다른 방법을 제공합니다.
+`[Bind]` 특성은 하나의 [과도 게시](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost) 방지 방법입니다. 변경하려는 속성만 `[Bind]` 특성에 포함해야 합니다. 자세한 내용은 [과도 게시로부터 컨트롤러 보호](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application)를 참조하세요. [ViewModels](http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/)는 과도 게시를 방지하기 위한 다른 방법을 제공합니다.
 
 두 번째 `Edit` 작업 메서드는 `[HttpPost]` 특성 뒤에 옵니다.
 
@@ -89,7 +89,7 @@ ASP.NET Core는 `http://localhost:1234/Movies/Edit/4`를 매개 변수 `Id`가 4
 * [태그 도우미 소개](xref:mvc/views/tag-helpers/intro)
 * [태그 도우미 작성](xref:mvc/views/tag-helpers/authoring)
 * [요청 위조 방지](xref:security/anti-request-forgery)
-* [과도 게시로부터 컨트롤러 보호](http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost)
+* [과도 게시로부터 컨트롤러 보호](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application)
 * [ViewModels](http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/)
 * [Form 태그 도우미](xref:mvc/views/working-with-forms)
 * [Input 태그 도우미](xref:mvc/views/working-with-forms)

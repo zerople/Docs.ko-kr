@@ -5,16 +5,16 @@ description: "스캐폴딩을 통해 생성된 Razor 페이지를 설명합니�
 keywords: "ASP.NET Core, Razor 페이지, Razor, MVC"
 ms.author: riande
 manager: wpickett
-ms.date: 7/27/2017
+ms.date: 07/27/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: 1b7a41a0e1383ba287e4ddce53b33761a96a3129
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 77462ede7b88ed22695b9ea701a7333e1667e548
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="scaffolded-razor-pages-in-aspnet-core"></a>ASP.NET Core의 스캐폴드된 Razor 페이지
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 09/12/2017
 
 ## <a name="the-create-delete-details-and-edit-pages"></a>만들기, 삭제, 세부 정보 및 편집 페이지.
 
-*Pages/Movies/Index.cshtml.cs* 코드 숨김 파일을 살펴봅니다. [!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movie/Index.cshtml.cs)]
+Pages/Movies/Index.cshtml.cs 코드 숨김 파일을 살펴봅니다. [!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movie/Index.cshtml.cs)]
 
 Razor 페이지는 `PageModel`에서 파생됩니다. 일반적으로 `PageModel` 파생 클래스를 `<PageName>Model`이라고 합니다. 생성자는 [종속성 주입](xref:fundamentals/dependency-injection)을 사용하여 `MovieContext`를 페이지에 추가합니다. 모든 스캐폴드된 페이지가 이 패턴을 따릅니다.
 

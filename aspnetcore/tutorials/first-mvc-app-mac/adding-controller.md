@@ -2,7 +2,7 @@
 title: "ASP.NET Core MVC 앱에 컨트롤러 추가"
 author: rick-anderson
 description: "Mac의 Visual Studio를 사용하여 기본 ASP.NET Core MVC 앱에 컨트롤러를 추가하는 방법"
-keywords: "ASP.NET Core, MVC, 컨트롤러"
+keywords: "ASP.NET Core,MVC,컨트롤러"
 ms.author: riande
 manager: wpickett
 ms.date: 06/28/2017
@@ -11,11 +11,11 @@ ms.assetid: e04b6666-d0de-4d99-b78f-d6a0c4634a87
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app-mac/adding-controller
-ms.openlocfilehash: 26c27a56638f6af81d98cd3e540c7b06117915fb
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 3a5a05d21844a30f2482841488dd7d92e5ba0475
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="adding-a-controller-to-an-aspnet-core-mvc-app-with-visual-studio-for-mac"></a>Mac용 Visual Studio를 사용하여 ASP.NET Core MVC 앱에 컨트롤러 추가
 

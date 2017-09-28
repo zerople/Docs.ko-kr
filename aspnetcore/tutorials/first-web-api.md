@@ -5,16 +5,16 @@ description: "ASP.NET Core MVC 및 Windows용 Visual Studio를 사용하여 Web 
 keywords: "ASP.NET Core, WebAPI, Web API, REST, HTTP, 서비스, HTTP 서비스"
 ms.author: riande
 manager: wpickett
-ms.date: 8/15/2017
+ms.date: 08/15/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-web-api
-ms.openlocfilehash: 4aab61c7ee4498b33a4ea8bbec6033ce9828e2af
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 617b11cd7652e393c06446c62138802e4a4e90df
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/19/2017
 ---
 #<a name="create-a-web-api-with-aspnet-core-and-visual-studio-for-windows"></a>ASP.NET Core 및 Windows용 Visual Studio를 사용하여 Web API 만들기
 

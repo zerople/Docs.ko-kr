@@ -11,11 +11,11 @@ helpviewer_heywords: ASP.NET Core, WebAPI, Web API, REST, mac, macOS, HTTP, Serv
 ms.technology: aspnet
 keywords: "ASP.NET Core, WebAPI, Web API, REST, mac, macOS, HTTP, 서비스, HTTP 서비스"
 manager: wpickett
-ms.openlocfilehash: 992059f7abd7650f82c1307acf3ba3219a6fcbb5
-ms.sourcegitcommit: 0a3f215b4f665afc6f2678642968eea698102346
+ms.openlocfilehash: 6835cdefcc001452a3ffc8f4fd6a2f55f7274692
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/18/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="create-a-web-api-with-aspnet-core-mvc-and-visual-studio-for-mac"></a>ASP.NET Core MVC 및 Mac용 Visual Studio를 사용하여 Web API 만들기
 
@@ -133,7 +133,7 @@ Visual Studio에서 **실행 > 디버깅 시작**을 선택하여 앱을 시작�
 
 [!code-csharp[Main](first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
-[`[HttpPost]`](https://docs.microsoft.com/aspnet/core/api) 특성으로 나타내는 HTTP POST 메서드입니다. [`[FromBody]`](https://docs.microsoft.com/aspnet/core/api) 특성은 HTTP 요청 본문에서 할 일 항목 값을 가져오도록 MVC에 지시합니다.
+[`[HttpPost]`](/aspnet/core/api/microsoft.aspnetcore.mvc.httppostattribute) 특성으로 나타내는 HTTP POST 메서드입니다. [`[FromBody]`](/aspnet/core/api/microsoft.aspnetcore.mvc.frombodyattribute) 특성은 HTTP 요청 본문에서 할 일 항목 값을 가져오도록 MVC에 지시합니다.
 
 `CreatedAtRoute` 메서드는 서버에서 새 리소스를 만드는 HTTP POST 메서드의 표준 응답인 201 응답을 반환합니다. `CreatedAtRoute`는 응답에 대한 위치 헤더도 추가합니다. 위치 헤더는 새로 만들어진 할 일 항목의 URI를 지정합니다. [10.2.2 201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)(10.2.2 201 생성됨)를 참조하세요.
 

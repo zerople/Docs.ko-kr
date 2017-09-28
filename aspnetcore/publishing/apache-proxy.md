@@ -1,7 +1,7 @@
 ---
 title: "Apache를 사용하여 Linux에서 ASP.NET Core 호스트"
 description: "CentOS에서 Apache를 역방향 프록시 서버로 설정하여 Kestrel에서 실행되는 ASP.NET Core 웹 응용 프로그램에 HTTP 트래픽을 리디렉션하는 방법을 알아봅니다."
-keywords: "ASP.NET Core, Apache, CentOS, 역방향 프록시, Linux, mod_proxy, httpd, 호스팅"
+keywords: "ASP.NET Core,Apache,CentOS,역방향 프록시,Linux,mod_proxy,httpd,호스팅"
 author: spboyer
 ms.author: spboyer
 manager: wpickett
@@ -11,11 +11,11 @@ ms.assetid: fa9b0cb7-afb3-4361-9e7e-33afffeaca0c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/apache-proxy
-ms.openlocfilehash: 9dc22ea20a6ae2e2477f9e6db95ddabecc038dcb
-ms.sourcegitcommit: f8f6b5934bd071a349f5bc1e389365c52b1c00fa
+ms.openlocfilehash: 34ede2fdebe0e9516f62e39618e7adba3c8c89db
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="set-up-a-hosting-environment-for-aspnet-core-on-linux-with-apache-and-deploy-to-it"></a>Linux에서 Apache를 사용하여 ASP.NET Core에 대한 호스팅 환경을 설정하고 해당 환경에 배포
 

@@ -5,16 +5,16 @@ description: "ASP.NET Core에서 Razor 페이지 앱에 모델 추가"
 keywords: "ASP.NET Core, Razor 페이지, Razor, MVC"
 ms.author: riande
 manager: wpickett
-ms.date: 7/27/2017
+ms.date: 07/27/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/modelz
-ms.openlocfilehash: 1a08ecf1ee12fa0860cb6a18c1a63eaff2ddfbed
-ms.sourcegitcommit: d9ec19e5452af83648074db5d96c0a0f4f9e7f9a
+ms.openlocfilehash: 8e370decfd81e62022478b0ab695ff876e5e0a10
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="adding-a-model-to-a-razor-pages-app"></a>Razor 페이지 앱에 모델 추가
 

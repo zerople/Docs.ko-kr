@@ -4,7 +4,7 @@
 
 이 자습서에서는 `Movies` 테이블에 새 필드를 추가합니다. 스키마를 변경하는 경우 데이터베이스를 삭제하고 새 데이터베이스를 만듭니다(새 필드 추가). 유지할 프로덕션 데이터가 없는 경우 이 워크플로는 개발 초기에 잘 작동합니다.
 
-앱을 배포하고 유지해야 하는 데이터가 있으면 스키마를 변경해야 하는 경우 DB를 삭제할 수 없습니다. Entity Framework [Code First 마이그레이션](http://docs.efproject.net/en/latest/platforms/aspnetcore/new-db.html)을 사용하면 스키마를 업데이트하고 데이터 손실 없이 데이터베이스를 마이그레이션할 수 있습니다. 마이그레이션은 SQL Server를 사용하는 경우 인기 있는 기능이지만 SQLlite는 다양한 마이그레이션 스키마 작업을 지원하지 않으므로 매우 간단하게 마이그레이션할 수 있습니다. 자세한 내용은 [SQLite 제한 사항](https://docs.microsoft.com/ef/core/providers/sqlite/limitations)을 참조하세요.
+앱을 배포하고 유지해야 하는 데이터가 있으면 스키마를 변경해야 하는 경우 DB를 삭제할 수 없습니다. Entity Framework [Code First 마이그레이션](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db)을 사용하면 스키마를 업데이트하고 데이터 손실 없이 데이터베이스를 마이그레이션할 수 있습니다. 마이그레이션은 SQL Server를 사용하는 경우 인기 있는 기능이지만 SQLlite는 다양한 마이그레이션 스키마 작업을 지원하지 않으므로 매우 간단하게 마이그레이션할 수 있습니다. 자세한 내용은 [SQLite 제한 사항](https://docs.microsoft.com/ef/core/providers/sqlite/limitations)을 참조하세요.
 
 ## <a name="adding-a-rating-property-to-the-movie-model"></a>영화 모델에 등급 속성 추가
 

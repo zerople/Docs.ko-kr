@@ -11,11 +11,11 @@ ms.assetid: ff8fd9b8-7c98-424d-8641-7524e23bf541
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/working-with-sql
-ms.openlocfilehash: d06a957f41d4d8928f825c7a795b3d1518ab4421
-ms.sourcegitcommit: c496ec8d5483e7de79b20d06127da7a6cbdac108
+ms.openlocfilehash: e44b6de13540d93337bf9a128d287808cffbfb46
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="working-with-sql-server-localdb"></a>SQL Server LocalDB 사용
 

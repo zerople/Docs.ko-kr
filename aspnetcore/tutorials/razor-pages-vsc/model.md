@@ -5,16 +5,16 @@ description: "Mac용 Visual Studio를 사용하여 ASP.NET Core에서 Razor 페�
 keywords: "ASP.NET Core, Razor 페이지, Razor, MVC, 모델"
 ms.author: riande
 manager: wpickett
-ms.date: 8/27/2017
+ms.date: 08/27/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages-vsc/model
-ms.openlocfilehash: 39b069f8c81ca9460abc33b32b0bcc27118939cb
-ms.sourcegitcommit: d9ec19e5452af83648074db5d96c0a0f4f9e7f9a
+ms.openlocfilehash: 445c13542bd4a7561eb6aa509b1aabe47cb45468
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="adding-a-model-to-a-razor-pages-app-in-aspnet-core-with-visual-studio-for-mac"></a>Mac용 Visual Studio를 사용하여 ASP.NET Core에서 Razor 페이지 앱에 모델 추가
 
@@ -42,7 +42,8 @@ CLI(명령줄 인터페이스)용 EF 도구는 [Microsoft.EntityFrameworkCore.To
 * **파일 > 파일 열기**를 선택하고 *RazorPagesMovie.csproj* 파일을 선택합니다.
 * 다음 코드에서 강조 표시된 대로 `<DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />`을 추가합니다.
 
-[!code-xml[](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/RazorPagesMovie.cli.csproj?highlight=10)] [!INCLUDE[model 3](../../includes/RP/model3.md)]
+[!code-xml[](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/RazorPagesMovie.cli.csproj?highlight=10)]
+[!INCLUDE[model 3](../../includes/RP/model3.md)]
 
 <a name="scaffold"></a>
 ### <a name="scaffold-the-movie-model"></a>Movie 모델 스캐폴드
