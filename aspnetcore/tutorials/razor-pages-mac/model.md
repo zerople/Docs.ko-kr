@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages-mac/model
-ms.openlocfilehash: d000da06face3080cf81de4dc15a2596f2bfa7ea
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: 648ecd3a782fa489b727982ce5f7a2087539bf38
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="adding-a-model-to-a-razor-pages-app-in-aspnet-core-with-visual-studio-for-mac"></a>Mac용 Visual Studio를 사용하여 ASP.NET Core에서 Razor 페이지 앱에 모델 추가
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 09/19/2017
 
 [!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices2&highlight=3-6)]
 
-줄 `services.AddDbContext<MovieContext>(options =>`에서 빨간색 물결선을 마우스 오른쪽 단추로 클릭합니다(예: `MovieContext`). **빠른 수정 > using RazorPagesMovie.Models;**을 선택합니다. Visual Studio가 using 문을 추가합니다.
+줄 `services.AddDbContext<MovieContext>(options =>`에서 빨간색 물결선을 마우스 오른쪽 단추로 클릭합니다(예: `MovieContext`). **빠른 수정 > RazorPagesMovie.Models 사용**을 선택합니다. Visual Studio가 using 문을 추가합니다.
 
 프로젝트를 빌드하여 오류가 없는지 확인합니다.
 
@@ -47,15 +47,15 @@ CLI(명령줄 인터페이스)용 EF 도구는 [Microsoft.EntityFrameworkCore.To
 
 *.csproj* 파일을 편집하려면:
 
-* **파일 > 열기**를 선택하고 *.csproj* 파일을 선택합니다.
+* **파일** > **열기**를 선택한 다음, *.csproj* 파일을 선택합니다.
 * **옵션**을 선택합니다.
 * **연결 프로그램**을 **소스 코드 편집기**로 변경합니다.
 
 ![csproj 파일 편집](model/csproj.png)
 
-다음 코드에서는 업데이트된 *csproj* 파일을 보여 줍니다.
+`Microsoft.EntityFrameworkCore.Tools.DotNet` 도구 참조를 두 번째 **\<ItemGroup>**에 추가합니다.
 
-[!code-xml[](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/RazorPagesMovie.cli.csproj?highlight=10)]
+[!code-xml[Main](../../tutorials/razor-pages/razor-pages-start/snapshot_cli_sample/RazorPagesMovie/RazorPagesMovie.cli.csproj?range=12-16&highlight=4)]
 
 [!INCLUDE[model3](../../includes/RP/model3.md)]
 [!INCLUDE[model 4x](../../includes/RP/model4x.md)]
