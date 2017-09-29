@@ -2,7 +2,7 @@
 title: "컨트롤러 작업에 대 한 라우팅을"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 03/14/2017
@@ -11,11 +11,11 @@ ms.assetid: 26250a4d-bf62-4d45-8549-26801cf956e9
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/routing
-ms.openlocfilehash: da67124ffc874c4f83fff077c6429e9f3e571587
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 5a0b5399f7441035cb1231a009681ca22b07ab4e
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="routing-to-controller-actions"></a>컨트롤러 작업에 대 한 라우팅을
 
@@ -103,8 +103,6 @@ app.UseMvc(routes =>
 
 `UseMvc`및 `UseMvcWithDefaultRoute` 의 인스턴스를 추가 `RouterMiddleware` 미들웨어 파이프라인을 합니다. MVC는 미들웨어와 직접 상호 작용 하지 않고 및 라우팅을 사용 하 여 요청을 처리 합니다. MVC의 인스턴스를 통해 경로에 연결 되어 `MvcRouteHandler`합니다. 내부 코드 `UseMvc` 다음과 유사 합니다.
 
-<!-- literal_block {"ids": [], "names": [], "backrefs": [], "dupnames": [], "xml:space": "preserve", "classes": []} -->
-
 ```csharp
 var routes = new RouteBuilder(app);
 
@@ -125,8 +123,6 @@ app.UseRouter(routes.Build());
 ## <a name="conventional-routing"></a>기존 라우팅
 
 `default` 경로:
-
-<!-- literal_block {"ids": [], "names": [], "backrefs": [], "dupnames": [], "xml:space": "preserve", "classes": []} -->
 
 ```csharp
 routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
@@ -152,15 +148,13 @@ routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
 내 여러 경로 추가할 수 `UseMvc` 에 대 한 더 많은 호출을 추가 하 여 `MapRoute`합니다. 이렇게 하면 여러 규칙을 정의 하거나와 같은 특정 작업을 지정 된 규칙에 따른 경로를 추가할 수 있습니다.
 
-<!-- literal_block {"ids": [], "names": [], "backrefs": [], "dupnames": [], "xml:space": "preserve", "classes": []} -->
-
 ```csharp
 app.UseMvc(routes =>
 {
    routes.MapRoute("blog", "blog/{*article}",
             defaults: new { controller = "Blog", action = "Article" });
    routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
-}
+});
 ```
 
 `blog` 경로 여기는 *전용된 규칙에 따른 경로*,이 규칙에 따른 라우팅 시스템을 사용 하지만 특정 작업의 전용를 의미 합니다. 이후 `controller` 및 `action` 매개 변수로 경로 템플릿을에 나타나지 않습니다, 기본값을 하나만 사용할 수 있습니다 및 따라서이 경로 작업에 매핑됩니다 항상 `BlogController.Article`합니다.
@@ -177,8 +171,6 @@ app.UseMvc(routes =>
 ### <a name="disambiguating-actions"></a>작업을 명확히 구분
 
 두 가지 동작 라우팅을 통해 일치 MVC 명확 하 '가장' 후보를 선택 합니다. 그렇지 않으면 예외를 throw 하 게 해야 합니다. 예:
-
-<!-- literal_block {"ids": [], "names": [], "backrefs": [], "dupnames": [], "xml:space": "preserve", "classes": []} -->
 
 ```csharp
 public class ProductsController : Controller
@@ -284,8 +276,6 @@ public class MyDemoController : Controller
 
 특성 라우팅을 수행할 수도의 사용은 `Http[Verb]` 와 같은 특성 `HttpPostAttribute`합니다. 이러한 특성의 모든 경로 템플릿을 사용할 수 있습니다. 이 예에서는 동일한 경로 템플릿을 일치 하는 두 가지 동작을 보여 줍니다.
 
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
-
 ```csharp
 [HttpGet("/products")]
 public IActionResult ListProducts()
@@ -339,8 +329,6 @@ public class ProductsApiController : Controller
 ### <a name="combining-routes"></a>조합 경로
 
 특성 라우팅을 덜 반복적인를 하려면 컨트롤러에서 경로 특성 경로 특성에는 개별 작업와 결합 됩니다. 컨트롤러에 정의 된 경로 템플릿은 모든 작업에 대 한 경로 템플릿에 앞에 추가 됩니다. 컨트롤러에서 경로 특성을 배치 하면 **모든** 컨트롤러의 동작 특성 라우팅을 사용 합니다.
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
 ```csharp
 [Route("products")]
@@ -432,8 +420,6 @@ public class ProductsController : MyBaseController
 
 동일한 작업에 도달 하는 여러 경로 정의 하는 라우팅 지원 특성입니다. 가장 일반적인 사용의 동작을 모방 하는 것은 *기본 규칙에 따른 경로* 다음 예제와 같이:
 
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
-
 ```csharp
 [Route("[controller]")]
 public class ProductsController : Controller
@@ -445,8 +431,6 @@ public class ProductsController : Controller
 ```
 
 다중 경로 특성은 컨트롤러에 배치 하는 각 작업 메서드에 대 한 경로 특성와 결합 합니다. 각 의미 합니다.
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
 ```csharp
 [Route("Store")]
@@ -460,8 +444,6 @@ public class ProductsController : Controller
 ```
 
 경우 다중 경로 특성 (구현 하는 `IActionConstraint`) 각 작업 제약 조건 정의 된 특성에서 경로 템플릿을 사용 하 여 결합 한 다음 동작을에 배치 됩니다.
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
 ```csharp
 [Route("api/[controller]")]
@@ -630,8 +612,6 @@ public Task<IActionResult> Edit(int id, Customer customer)
 
 기존의 라우팅은 라고 하는 경로 정의의 특별 한 종류를 사용할 수는 *전용된 규칙에 따른 경로*합니다. 아래 예제에서는 경로 이름은 `blog` 는 전용된 규칙에 따른 경로입니다.
 
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
-
 ```csharp
 app.UseMvc(routes =>
 {
@@ -687,8 +667,6 @@ app.UseMvc(routes =>
 경로 대 한 값 영역 내에서 동작을 실행할 때는 `area` 을으로 사용할 수는 *앰비언트 값* URL 생성에 사용할 라우팅에 대 한 합니다. 즉, 기본적으로 영역 헤드 하도록 *스티커* 다음 샘플에 표시 된 대로 URL 생성에 대 한 합니다.
 
 [!code-csharp[Main](routing/sample/AreasRouting/Startup.cs?name=snippet3)]
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {"linenostart": 1}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#", "source": "/Users/shirhatti/src/Docs/aspnet/mvc/controllers/routing/sample/AreasRouting/Areas/Duck/Controllers/UsersController.cs"} -->
 
 [!code-csharp[Main](routing/sample/AreasRouting/Areas/Duck/Controllers/UsersController.cs)]
 

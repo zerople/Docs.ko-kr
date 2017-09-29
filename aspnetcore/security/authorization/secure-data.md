@@ -10,11 +10,11 @@ ms.assetid: abeb2f8e-dfbf-4398-a04c-338a613a65bc
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: security/authorization/secure-data
-ms.openlocfilehash: 54a737f140a8434035e5fc5abfefa458fdb69321
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 036ff9a682dc17ead991c85a9d5dd9c4b6a7d0c7
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>권한 부여에 의해 보호 되는 사용자 데이터와 ASP.NET Core 응용 프로그램 만들기
 
@@ -107,7 +107,7 @@ dotnet ef database update
 
 [!code-csharp[Main](secure-data/samples/final/Startup.cs?name=snippet_SSL&highlight=1)]
 
-Visual Studio를 사용 하 여 참조 [SSL/HTTPS에 대 한 IIS Express 설정](xref:security/enforcing-ssl#set-up-iis-express-for-sslhttps)합니다. 참조를 HTTPS로 HTTP 요청을 리디렉션할 [URL 다시 쓰기 미들웨어](xref:fundamentals/url-rewriting)합니다. Visual Studio 코드를 사용 하 여 테스트 인증서를 SSL에 대 한 포함 되지 않은 로컬 플랫폼에 대 한 테스트 하거나 경우:
+참조를 HTTPS로 HTTP 요청을 리디렉션할 [URL 다시 쓰기 미들웨어](xref:fundamentals/url-rewriting)합니다. Visual Studio 코드를 사용 하 여 테스트 인증서를 SSL에 대 한 포함 되지 않은 로컬 플랫폼에 대 한 테스트 하거나 경우:
 
 - 설정 `"LocalTest:skipSSL": true` 에 *appsettings.json* 파일입니다.
 

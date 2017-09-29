@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/tag-helpers/authoring
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1a5222da1380c2fe768b287bfa1a49b300c02f2b
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: fe1dc0949afced0c7c9ca1236c2f1bb4fe78b00e
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="authoring-tag-helpers-in-aspnet-core-a-walkthrough-with-samples"></a>ASP.NET Core, 샘플을 연습에서에서 태그 도우미를 작성합니다.
 
@@ -243,8 +243,6 @@ ms.lasthandoff: 09/19/2017
 
 2.  내용을 대체는 *Views/Home/Index.cshtml* 다음 태그로 파일:
 
-    <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Index.cshtml", "ids": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
-    
     ```cshtml
     @using AuthoringTagHelpers.Models
     @model WebsiteContext

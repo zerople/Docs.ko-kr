@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/working-with-forms
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2fe774a1ae02ab5ea168c19045fcc8664c0273a6
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: ff6fee6eee539fc77b6c6180a816daa760202848
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="introduction-to-using-tag-helpers-in-forms-in-aspnet-core"></a>태그 도우미를 사용 하 여 폼에 ASP.NET Core 소개
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 09/22/2017
      <!-- Input and Submit elements -->
      <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
     </form>
-   ```
+```
 
 MVC 런타임에서 생성 된 `action` Form 태그 도우미 특성에서 특성 값 `asp-controller` 및 `asp-action`합니다. Form 태그 도우미도 숨겨진 생성 [요청 확인 토큰](https://docs.microsoft.com/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) 교차 사이트 요청 위조를 방지 하기 위해 (함께 사용할 경우의 `[ValidateAntiForgeryToken]` HTTP Post 작업 메서드에 특성). 순수 HTML 폼 교차 사이트 요청 위조 로부터 보호 하는 것은 어려운, Form 태그 도우미를이 서비스를 제공 합니다.
 
@@ -63,13 +63,11 @@ MVC 런타임에서 생성 된 `action` Form 태그 도우미 특성에서 특�
 
 보기 중 많은 *뷰/계정* 폴더 (새 웹 앱을 만들 때 생성 *개별 사용자 계정*) 포함 된 [asp-경로-returnurl](https://docs.microsoft.com/aspnet/core/mvc/views/working-with-forms) 특성:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {"hl_lines": [2]}} -->
-
-```none
+```cshtml
 <form asp-controller="Account" asp-action="Login"
      asp-route-returnurl="@ViewData["ReturnUrl"]"
      method="post" class="form-horizontal" role="form">
-   ```
+```
 
 >[!NOTE]
 >기본 제공된 템플릿과 함께 `returnUrl` 만 자동으로 채워집니다 권한 있는 리소스에 액세스 하려고 하지만 되지 인증 하거나 때 권한을 부여 합니다. 무단된 액세스를 시도 하면 보안 미들웨어 리디렉션됩니다 사용 하 여 로그인 페이지에는 `returnUrl` 설정 합니다.
@@ -82,7 +80,7 @@ MVC 런타임에서 생성 된 `action` Form 태그 도우미 특성에서 특�
 
 ```HTML
 <input asp-for="<Expression Name>" />
-   ```
+```
 
 입력된 태그 도우미:
 
@@ -157,7 +155,7 @@ Type expected
        <button type="submit">Register</button>
      <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
    </form>
-   ```
+```
 
 에 적용할 데이터 주석은 `Email` 및 `Password` 속성은 모델에서 메타 데이터를 생성 합니다. 모델 메타 데이터를 사용 하 고 생성 하는 입력 태그 도우미 [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) `data-val-*` 특성 (참조 [모델 유효성 검사](../models/validation.md)). 이러한 특성에는 입력된 필드를 연결할 유효성 검사기에 설명 합니다. 이렇게 하면 비 가시적인 HTML5 및 [jQuery](https://jquery.com/) 유효성 검사 합니다. 비 가시적인 특성 형식에는 `data-val-rule="Error Message"`, 여기서 규칙은 유효성 검사 규칙의 이름 (예: `data-val-required`, `data-val-email`, `data-val-maxlength`등.) 오류 메시지가 특성에서 제공 하는 경우에 대 한 값으로 표시 됩니다는 `data-val-rule` 특성입니다. 폼의 특성은 또한 `data-val-ruleName-argumentName="argumentValue"` 예를 들어,는 규칙에 대 한 추가 세부 정보를 제공 하는 `data-val-maxlength-max="1024"` 합니다.
 
@@ -209,7 +207,7 @@ Type expected
 
 ```HTML
 <input type="text" id="Address_AddressLine1" name="Address.AddressLine1" value="" />
-   ```
+```
 
 ### <a name="expression-names-and-collections"></a>식 이름 및 컬렉션
 
@@ -225,7 +223,7 @@ public IActionResult Edit(int id, int colorIndex)
        ViewData["Index"] = colorIndex;
        return View(GetPerson(id));
    }
-   ```
+```
 
 다음 Razor 특정 액세스 하는 방법을 보여 줍니다. `Color` 요소:
 
@@ -274,8 +272,6 @@ public IActionResult Edit(int id, int colorIndex)
 
 다음 HTML 생성 됩니다.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [2, 3, 4, 5, 6, 7, 8]}} -->
-
 ```HTML
 <form method="post" action="/Demo/RegisterTextArea">
   <textarea data-val="true"
@@ -314,7 +310,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 ```HTML
 <label for="Email">Email Address</label>
-   ```
+```
 
 생성 된 레이블 태그 도우미의 `for` 와 연결 된 id는 "Email"의 특성 값의 `<input>` 요소입니다. 태그 도우미 생성 일관 된 `id` 및 `for` 요소 제대로 연결 될 수 있도록 합니다. 이 샘플의 캡션을에서 제공 되는 `Display` 특성입니다. 모델에 포함 하지 않은 경우는 `Display` 특성 캡션 식의 속성 이름 것입니다.
 
@@ -334,7 +330,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 ```HTML
 <span asp-validation-for="Email"></span>
-   ```
+```
 
 유효성 검사 메시지 태그 도우미 다음 HTML을 생성 합니다.
 
@@ -382,8 +378,6 @@ public IActionResult Edit(int id, int colorIndex)
 
 생성 된 HTML (모델은 유효) 하는 경우:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [2, 3, 8, 9, 12, 13]}} -->
-
 ```HTML
 <form action="/DemoReg/Register" method="post">
   <div class="validation-summary-valid" data-valmsg-summary="true">
@@ -427,13 +421,11 @@ HTTP POST `Index` 메서드 선택 항목을 표시 합니다.
 
 `Index` 보기:
 
-[!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?highlight=4)]
+[!code-cshtml[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?highlight=4)]
 
 ("CA" 선택)로 다음 HTML을 생성 합니다.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [2, 3, 4, 5, 6]}} -->
-
-```HTML
+```html
 <form method="post" action="/">
      <select id="Country" name="Country">
        <option value="MX">Mexico</option>
@@ -443,7 +435,7 @@ HTTP POST `Index` 메서드 선택 항목을 표시 합니다.
        <br /><button type="submit">Register</button>
      <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
    </form>
-   ```
+```
 
 > [!NOTE]
 > 사용 하지 않는 것이 좋습니다 `ViewBag` 또는 `ViewData` 선택 태그 도우미와 합니다. 뷰 모델은 MVC 메타 데이터를 제공할에 더 강력 하 고 문제를 줄일 일반적으로 합니다.
@@ -472,8 +464,6 @@ HTTP POST `Index` 메서드 선택 항목을 표시 합니다.
 
 다음 HTML 생성 됩니다.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [4, 5]}} -->
-
 ```HTML
   <form method="post" action="/Home/IndexEnum">
          <select data-val="true" data-val-required="The EnumCountry field is required."
@@ -488,7 +478,7 @@ HTTP POST `Index` 메서드 선택 항목을 표시 합니다.
          <br /><button type="submit">Register</button>
          <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
     </form>
-   ```
+```
 
 ### <a name="option-group"></a>옵션 그룹
 
@@ -503,8 +493,6 @@ HTML [ \<optgroup >](https://www.w3.org/wiki/HTML/Elements/optgroup) 뷰 모델 
 ![옵션 그룹 예제](working-with-forms/_static/grp.png)
 
 생성 된 HTML:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}} -->
 
 ```HTML
  <form method="post" action="/Home/IndexGroup">
@@ -536,8 +524,6 @@ HTML [ \<optgroup >](https://www.w3.org/wiki/HTML/Elements/optgroup) 뷰 모델 
 [!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexMultiSelect.cshtml?highlight=4)]
 
 다음 HTML을 생성합니다.
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [3]}} -->
 
 ```HTML
 <form method="post" action="/Home/IndexMultiSelect">
@@ -572,8 +558,6 @@ HTML [ \<optgroup >](https://www.w3.org/wiki/HTML/Elements/optgroup) 뷰 모델 
 [!code-HTML[Main](working-with-forms/sample/final/Views/Home/IndexOption.cshtml)]
 
 올바른 `<option>` 요소가 선택 됩니다 (포함 된 `selected="selected"` 특성) 현재에 따라 `Country` 값입니다.
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [5]}} -->
 
 ```HTML
  <form method="post" action="/Home/IndexEmpty">

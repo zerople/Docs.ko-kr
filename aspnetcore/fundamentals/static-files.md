@@ -1,7 +1,7 @@
 ---
 title: "ASP.NET Core에 정적 파일 작업"
 author: rick-anderson
-description: "정적 파일 작업"
+description: "ASP.NET Core에 정적 파일 작업"
 keywords: "ASP.NET Core, 정적 파일, 정적 자산, HTML, CSS, JavaScript"
 ms.author: riande
 manager: wpickett
@@ -12,13 +12,13 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/static-files
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 11457cb8684e98147447303ae4653b74414a11fb
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 69a4542c9b2a0d7091d05d42029e68384b760dd7
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
-# <a name="introduction-to-working-with-static-files-in-aspnet-core"></a>ASP.NET Core에서 정적 파일로 작업 소개
+# <a name="working-with-static-files-in-aspnet-core"></a>ASP.NET Core에 정적 파일 작업
 
 <a name=fundamentals-static-files></a>
 
@@ -199,7 +199,7 @@ ASP.NET 정적 파일 미들웨어 거의 400 알려진된 파일 콘텐츠 형�
 ### <a name="considerations"></a>고려 사항
 
 >[!WARNING]
-> `UseDirectoryBrowser`및 `UseStaticFiles` 비밀 정보를 누출 할 수 있습니다. 하는 것이 좋습니다 있습니다 **하지** 사용 디렉터리 프로덕션 환경에서 검색 합니다. 주의를 사용 하는 디렉터리에 대 한 `UseStaticFiles` 또는 `UseDirectoryBrowser` 대로 전체 디렉터리와 모든 하위 디렉터리를 액세스할 수 있습니다. 와 같은 자체 디렉터리에 공용 콘텐츠를 유지 하는 것이 좋습니다 * \<콘텐츠 루트 > / wwwroot*, 응용 프로그램 뷰, 구성 파일 등에서 떨어진 곳입니다.
+> `UseDirectoryBrowser`및 `UseStaticFiles` 비밀 정보를 누출 할 수 있습니다. 하는 것이 좋습니다 있습니다 **하지** 사용 디렉터리 프로덕션 환경에서 검색 합니다. 주의를 사용 하는 디렉터리에 대 한 `UseStaticFiles` 또는 `UseDirectoryBrowser` 대로 전체 디렉터리와 모든 하위 디렉터리를 액세스할 수 있습니다. 와 같은 자체 디렉터리에 공용 콘텐츠를 유지 하는 것이 좋습니다  *\<콘텐츠 루트 > / wwwroot*, 응용 프로그램 뷰, 구성 파일 등에서 떨어진 곳입니다.
 
 * 노출 된 콘텐츠에 대 한 Url `UseDirectoryBrowser` 및 `UseStaticFiles` 는 대/소문자 구분 및 해당 내부 파일 시스템의 문자 제한이 적용 됩니다. 예를 들어 Windows 대/소문자 구분, 이지만 Mac 및 Linux 하지 않습니다.
 

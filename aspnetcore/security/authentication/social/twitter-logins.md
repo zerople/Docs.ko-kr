@@ -11,11 +11,11 @@ ms.assetid: E5931607-31C0-4B20-B416-85E3550F5EA8
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/twitter-logins
-ms.openlocfilehash: 401836c3782e5d9d31b13d7c94eb2f955045fa0c
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: 87be0bdd4637cff609a4908b303a13272656e2a4
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="configuring-twitter-authentication"></a>Twitter 인증 구성
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 09/19/2017
 
 ## <a name="create-the-app-in-twitter"></a>Twitter에서 앱을 만들
 
-* 로 이동 [https://apps.twitter.com/](https://apps.twitter.com/) 에 로그인 합니다. Twitter 계정 없는 경우 사용 하 여는 ** [지금 등록](https://twitter.com/signup) ** 링크를 만듭니다. 에 로그인 한 후의 **응용 프로그램 관리** 페이지가 표시 됩니다.
+* 로 이동 [https://apps.twitter.com/](https://apps.twitter.com/) 에 로그인 합니다. Twitter 계정 없는 경우 사용 하 여는  **[지금 등록](https://twitter.com/signup)**  링크를 만듭니다. 에 로그인 한 후의 **응용 프로그램 관리** 페이지가 표시 됩니다.
 
 ![Microsoft Edge에서 열려 있는 twitter 응용 프로그램 관리](index/_static/TwitterAppManage.png)
 
@@ -65,6 +65,10 @@ Twitter와 같은 중요 한 설정이 연결 `Consumer Key` 및 `Consumer Secre
 Twitter 서비스에 추가 `ConfigureServices` 메서드에서 *Startup.cs* 파일:
 
 ```csharp
+services.AddIdentity<ApplicationUser, IdentityRole>()
+        .AddEntityFrameworkStores<ApplicationDbContext>()
+        .AddDefaultTokenProviders();
+
 services.AddAuthentication().AddTwitter(twitterOptions =>
 {
     twitterOptions.ConsumerKey = Configuration["Authentication:Twitter:ConsumerKey"];
@@ -72,7 +76,7 @@ services.AddAuthentication().AddTwitter(twitterOptions =>
 });
 ```
 
-`AddAuthentication` 만 메서드 한 번 추가 하는 경우 여러 인증 공급자입니다. 에 대 한 후속 호출 이전에 구성 된 모든 재정의의 가능성이 있는 [AuthenticationOptions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.authenticationoptions) 속성입니다.
+[!INCLUDE[default settings configuration](includes/default-settings.md)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 

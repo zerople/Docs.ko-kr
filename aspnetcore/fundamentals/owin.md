@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/owin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9edacb494c38d7812f9e3826ab9277cd1dffd675
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: cd32d6929f16a619ad2cc8c7752a0373cbdff034
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="introduction-to-open-web-interface-for-net-owin"></a>.NET (OWIN)에 대 한 웹 인터페이스를 열려면 소개
 
@@ -55,15 +55,11 @@ public Task OwinHello(IDictionary<string, object> environment)
 
     return responseStream.WriteAsync(responseBytes, 0, responseBytes.Length);
 }
-
-
 ```
 
 샘플 서명을 반환는 `Task` 수락 하 고는 `IDictionary<string, object>` OWIN에 필요 합니다.
 
 다음 코드를 추가 하는 방법을 보여 줍니다는 `OwinHello` (위에 표시 된)으로 ASP.NET 파이프라인에 미들웨어는 `UseOwin` 확장 메서드.
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {"linenostart": 1}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#", "source": "/Users/shirhatti/src/Docs/aspnet/fundamentals/owin/sample/src/OwinSample/Startup.cs"} -->
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -73,8 +69,6 @@ public void Configure(IApplicationBuilder app)
         pipeline(next => OwinHello);
     });
 }
-
-
 ```
 
 OWIN 파이프라인 내에서 수행 하는 기타 작업을 구성할 수 있습니다.
@@ -84,8 +78,6 @@ OWIN 파이프라인 내에서 수행 하는 기타 작업을 구성할 수 있�
 
 > [!NOTE]
 > 여러 번 호출 `UseOwin` 은 성능상의 이유로 권장 되지 않음. OWIN 구성 요소는 함께 그룹화 하는 경우 가장 잘 작동 합니다.
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
 ```csharp
 app.UseOwin(pipeline =>
@@ -112,8 +104,6 @@ OWIN 기반 서버 ASP.NET 응용 프로그램을 호스팅할 수 있습니다.
 `Start`구성 하 고이 경우에 일련의 구문 분석 하는 주소는 IServerAddressesFeature 설정 하는 fluent API 호출을 통해 수행 된 서버를 시작 하는 일을 담당 합니다. fluent 구성을 `_builder` 요청에서 처리 되는 변수를 지정는 `appFunc` 메서드 이전에 정의 된 합니다. 이 `Func` 들어오는 요청을 처리할을 요청할 때마다 호출 됩니다.
 
 추가 `IWebHostBuilder` 확장을 쉽게 추가 하 고 Nowin 서버를 구성 합니다.
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {"hl_lines": [11], "linenostart": 1}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#", "source": "/Users/shirhatti/src/Docs/aspnet/fundamentals/owin/sample/src/NowinSample/NowinWebHostBuilderExtensions.cs"} -->
 
 ```csharp
 using System;
@@ -147,8 +137,6 @@ namespace Microsoft.AspNetCore.Hosting
 ```
 
 이 위치를에서 확장을 호출 하 여 사용자 지정이 서버를 사용 하 여 ASP.NET 응용 프로그램을 실행 하는 데 필요한에 있는 모든 *Program.cs*:
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {"hl_lines": [15], "linenostart": 1}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#", "source": "/Users/shirhatti/src/Docs/aspnet/fundamentals/owin/sample/src/NowinSample/Program.cs"} -->
 
 ```csharp
 
@@ -184,8 +172,6 @@ ASP.NET에 대 한 자세한 [서버](servers/index.md)합니다.
 ## <a name="run-aspnet-core-on-an-owin-based-server-and-use-its-websockets-support"></a>OWIN 기반 서버에서 ASP.NET Core를 실행 하 고 해당 Websocket 지원 사용
 
 OWIN 기반 서버의 기능의 또 다른 예를 활용 하 여 ASP.NET 코어는 Websocket 같은 기능에 액세스 합니다. 이전 예제에서 사용 되는.NET OWIN 웹 서버에 ASP.NET Core 응용 프로그램에서 사용할 수 있는 기본 제공 되는 웹 소켓에 대 한 지원. 다음 예제에서는 Websocket을 지원 하 고 Websocket 통해 서버에 보낸 모든 항목이 다시 에코 하는 단순한 웹 앱을 보여 줍니다.
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {"hl_lines": [7, 9, 10], "linenostart": 1}, "backrefs": [], "dupnames": [], "linenos": true, "classes": [], "xml:space": "preserve", "language": "c#", "source": "/Users/shirhatti/src/Docs/aspnet/fundamentals/owin/sample/src/NowinWebSockets/Startup.cs"} -->
 
 ```csharp
 public class Startup
@@ -240,8 +226,6 @@ public class Startup
 ## <a name="owin-environment"></a>OWIN 환경입니다.
 
 사용 하 여 OWIN 환경을 구성할 수는 `HttpContext`합니다.
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
 ```csharp
 

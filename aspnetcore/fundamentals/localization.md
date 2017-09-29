@@ -11,11 +11,11 @@ ms.assetid: 7f275a09-f118-41c9-88d1-8de52d6a5aa1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/localization
-ms.openlocfilehash: 2a760343566d2c2be591983e20830b5207a2199b
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 85a192bf0b2eb245ecdaaa8ffa1c8dd2f43b45b0
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>전역화 및 지역화 ASP.NET Core
 
@@ -39,41 +39,41 @@ ASP.NET Core를 사용 하 여 다국어 웹 사이트 만들기 하도록 사�
 
 ASP.NET Core에 도입 된 `IStringLocalizer` 및 `IStringLocalizer<T>` 지역화 된 응용 프로그램을 개발할 때 생산성을 향상 하도록 설계 되었습니다. `IStringLocalizer`사용 하 여는 [ResourceManager](https://docs.microsoft.com/dotnet/api/system.resources.resourcemanager) 및 [ResourceReader](https://docs.microsoft.com/dotnet/api/system.resources.resourcereader) 런타임 시 문화권별 리소스를 제공 합니다. 간단한 인터페이스에는 인덱서 및 `IEnumerable` 지역화 된 문자열을 반환 합니다. `IStringLocalizer`리소스 파일에는 기본 언어 문자열을 저장 하도록 요구 하지 않습니다. 지역화를 위한 대상으로 하는 응용 프로그램을 개발할 수 있으며 초기 개발에에서 리소스 파일을 만들 필요가 없습니다. 아래 코드 지역화에 대 한 "에 대 한 Title" 문자열을 래핑하는 방법을 보여 줍니다.
 
-[!code-csharp[Main](localization/sample/Controllers/AboutController.cs)]
+[!code-csharp[Main](localization/sample/Localization/Controllers/AboutController.cs)]
 
 위의 코드에는 `IStringLocalizer<T>` 구현에서 가져온 [종속성 주입](dependency-injection.md)합니다. "에 대 한 Title"의 지역화 된 값을 찾을 수 없습니다는 경우 인덱서 키 반환 되 면, 즉 "에 대 한 Title" 문자열입니다. 앱의 언어 리터럴 문자열 기본값을 그대로 수 있으며 응용 프로그램 개발에 집중할 수 있도록 로컬라이저의에서 래핑할 수 있습니다. 기본 언어를 사용 하 여 앱을 개발 하 고이 정보를 먼저 기본 리소스 파일을 만들지 않고 지역화 단계에 대 한 준비 합니다. 또는 기존의 접근 방식을 사용 하 고 기본 언어 문자열을 검색 하 여 키를 입력 수 있습니다. 대부분의 개발자 하지 않는 경우 기본 언어의 새 워크플로 *.resx* 파일과 단순히 문자열 리터럴은 래핑 응용 프로그램을 지역화 하는 오버 헤드를 줄일 수 있습니다. 다른 개발자가 쉽게 하 긴 문자열 리터럴과 함께 작동 하 고 지역화 된 문자열을 업데이트 하려면 쉽게 만들 수 것 처럼 일반적인 작업 흐름을 선호 합니다.
 
 사용 하 여는 `IHtmlLocalizer<T>` HTML을 포함 하는 리소스에 대 한 구현 합니다. `IHtmlLocalizer`HTML은 리소스 문자열이 아닌 리소스 문자열에 서식이 지정 된 인수를 인코딩합니다. 값만 아래 샘플에서 강조 표시 `name` 매개 변수는 HTML로 인코딩하지 합니다.
 
-[!code-csharp[Main](../fundamentals/localization/sample/Controllers/BookController.cs?highlight=3,5,20&start=1&end=24)]
+[!code-csharp[Main](../fundamentals/localization/sample/Localization/Controllers/BookController.cs?highlight=3,5,20&start=1&end=24)]
 
 참고: 일반적으로 원하는 텍스트와 HTML이 아닌 필드를 지역화 합니다.
 
 가장 낮은 수준에서 얻을 수 있습니다 `IStringLocalizerFactory` 부재 중 [종속성 주입](dependency-injection.md):
 
-[!code-csharp[Main](localization/sample/Controllers/TestController.cs?start=9&end=26&highlight=7-13)]
+[!code-csharp[Main](localization/sample/Localization/Controllers/TestController.cs?start=9&end=26&highlight=7-13)]
 
 위의 코드를 보여 줍니다 각각 두 개의 팩터리 메서드를 만듭니다.
 
 영역에서 컨트롤러로 지역화 된 문자열을 분할 하거나 방금 하나 이상 포함 수 있습니다. 샘플 응용 프로그램을 더미 클래스 이름은 `SharedResource` 공유 리소스에 사용 됩니다.
 
-[!code-csharp[Main](localization/sample/Resources/SharedResource.cs)]
+[!code-csharp[Main](localization/sample/Localization/Resources/SharedResource.cs)]
 
 사용 하 여 일부 개발자는 `Startup` 전역 또는 공유 문자열을 포함 하는 클래스입니다.  아래 샘플에는 `InfoController` 및 `SharedResource` 지역화 담당자에 게 사용 됩니다.
 
-[!code-csharp[Main](localization/sample/Controllers/InfoController.cs?range=9-26)]
+[!code-csharp[Main](localization/sample/Localization/Controllers/InfoController.cs?range=9-26)]
 
 ## <a name="view-localization"></a>보기 지역화
 
 `IViewLocalizer` 서비스 제공에 대 한 지역화 된 문자열을 [보기](https://docs.microsoft.com/aspnet/core)합니다. `ViewLocalizer` 클래스는이 인터페이스를 구현 하 고 보기 파일 경로에서 리소스는 위치를 찾습니다. 다음 코드의 기본 구현을 사용 하는 방법을 보여 줍니다 `IViewLocalizer`:
 
-[!code-HTML[Main](localization/sample/Views/Home/About.cshtml)]
+[!code-HTML[Main](localization/sample/Localization/Views/Home/About.cshtml)]
 
 기본 구현은 `IViewLocalizer` 보기의 파일 이름에 따라 리소스 파일을 찾습니다. 공유 전역 리소스 파일을 사용할 수 있는 옵션이 있습니다. `ViewLocalizer`사용 하 여 지역화 구현 `IHtmlLocalizer`Razor HTML 하지 않으므로 지역화 된 문자열을 인코딩합니다. 리소스 문자열을 매개 변수화 할 수 및 `IViewLocalizer` 는 매개 변수가 있지만 리소스 문자열이 아니라 HTML 인코드 합니다. Razor에 다음 태그를 고려 합니다.
 
-```HTML
+```cshtml
 @Localizer["<i>Hello</i> <b>{0}!</b>", UserManager.GetUserName(User)]
-   ```
+```
 
 프랑스어 리소스 파일은 다음 포함할 수 있습니다.
 
@@ -89,7 +89,7 @@ ASP.NET Core에 도입 된 `IStringLocalizer` 및 `IStringLocalizer<T>` 지역�
 
 보기에서 공유 리소스 파일을 사용 하려면 주입 `IHtmlLocalizer<T>`:
 
-[!code-HTML[Main](../fundamentals/localization/sample/Views/Test/About.cshtml?highlight=5,12)]
+[!code-HTML[Main](../fundamentals/localization/sample/Localization/Views/Test/About.cshtml?highlight=5,12)]
 
 ## <a name="dataannotations-localization"></a>DataAnnotations 지역화
 
@@ -98,7 +98,7 @@ DataAnnotations 오류 메시지와 지역화 되므로 `IStringLocalizer<T>`합
 * Resources/ViewModels.Account.RegisterViewModel.fr.resx
 * Resources/ViewModels/Account/RegisterViewModel.fr.resx
 
-[!code-csharp[Main](localization/sample/ViewModels/Account/RegisterViewModel.cs?start=9&end=26)]
+[!code-csharp[Main](localization/sample/Localization/ViewModels/Account/RegisterViewModel.cs?start=9&end=26)]
 
 ASP.NET Core MVC 1.1.0 및 더 높은, 비-유효성 검사 특성의 지역화 됩니다. ASP.NET Core 1.0 MVC는 **하지** 유효성 검사 아닌 특성에 대 한 지역화 된 문자열을 조회 합니다.
 
@@ -107,7 +107,7 @@ ASP.NET Core MVC 1.1.0 및 더 높은, 비-유효성 검사 특성의 지역화 
 
 다음 코드에는 여러 클래스를 사용 하 여 유효성 검사 특성에 대 한 리소스 문자열을 사용 하는 방법을 보여 줍니다.
 
-```
+```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddMvc()
@@ -182,7 +182,7 @@ Visual Studio 2017 미리 보기 버전 15.3를 사용 하는 경우에 리소�
 
 ### <a name="adding-other-cultures"></a>다른 문화권에 맞게 추가
 
-각 언어 및 culture 조합 (기본 언어)와 다른 고유한 리소스 파일이 필요합니다. ISO 언어 코드를 파일 이름에 있는 새 리소스 파일을 만들어 서로 다른 문화권 및 로캘에 대 한 리소스 파일을 만듭니다 (예를 들어 **en-우리**, **fr ca**, 및 ** en gb**). 파일 이름 사이 이러한 ISO 코드 위치 및 *.resx* 에서 같이 파일 이름 확장명을 *Welcome.es MX.resx* (스페인어/멕시코). 중립 문화권에 따라 언어를 지정 하려면 국가 코드를 제거 (`MX` 앞의 예제에서). 스페인어 중립 문화권 리소스 파일 이름이 *Welcome.es.resx*합니다.
+각 언어 및 culture 조합 (기본 언어)와 다른 고유한 리소스 파일이 필요합니다. ISO 언어 코드를 파일 이름에 있는 새 리소스 파일을 만들어 서로 다른 문화권 및 로캘에 대 한 리소스 파일을 만듭니다 (예를 들어 **en-우리**, **fr ca**, 및  **en gb**). 파일 이름 사이 이러한 ISO 코드 위치 및 *.resx* 에서 같이 파일 이름 확장명을 *Welcome.es MX.resx* (스페인어/멕시코). 중립 문화권에 따라 언어를 지정 하려면 국가 코드를 제거 (`MX` 앞의 예제에서). 스페인어 중립 문화권 리소스 파일 이름이 *Welcome.es.resx*합니다.
 
 ## <a name="implement-a-strategy-to-select-the-languageculture-for-each-request"></a>각 요청에 대 한 언어/문화권을 선택 하는 전략을 구현 합니다.  
 
@@ -190,7 +190,7 @@ Visual Studio 2017 미리 보기 버전 15.3를 사용 하는 경우에 리소�
 
 지역화에 구성 된 `ConfigureServices` 메서드:
 
-[!code-csharp[Main](localization/sample/Program.cs?name=snippet1)]
+[!code-csharp[Main](localization/sample/Localization/Program.cs?name=snippet1)]
 
 * `AddLocalization`서비스 컨테이너를 지역화 서비스를 추가합니다. 위의 코드는 또한 "리소스"에 대 한 리소스 경로 설정합니다.
 
@@ -202,7 +202,7 @@ Visual Studio 2017 미리 보기 버전 15.3를 사용 하는 경우에 리소�
 
 현재 요청에 설정 된 지역화에 [미들웨어](middleware.md)합니다. 지역화 미들웨어에서 사용 되는 `Configure` 방식의 *Program.cs* 파일입니다. 확인 요청 문화권을 확인할 수 있는 모든 미들웨어 하기 전에 지역화 미들웨어를 구성 해야 합니다 (예를 들어 `app.UseMvcWithDefaultRoute()`).
 
-[!code-csharp[Main](localization/sample/Program.cs?name=snippet2)]
+[!code-csharp[Main](localization/sample/Localization/Program.cs?name=snippet2)]
 
 `UseRequestLocalization`초기화 한 `RequestLocalizationOptions` 개체입니다. 모든 요청 목록에서의 `RequestCultureProvider` 에 `RequestLocalizationOptions` 열거 및 요청 culture를 성공적으로 결정할 수 있는 첫 번째 공급자가 사용 됩니다. 기본 공급자에서 제공 된 `RequestLocalizationOptions` 클래스:
 
@@ -287,15 +287,15 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 이 샘플 **Localization.StarterWeb** 프로젝션 할 [GitHub](https://github.com/aspnet/entropy) 설정 하는 UI가 포함 된 `Culture`합니다. *Views/Shared/_SelectLanguagePartial.cshtml* 파일을 사용 하면 지원 되는 culture의 목록에서 culture를 지정할 수 있습니다.
 
-[!code-HTML[Main](localization/sample/Views/Shared/_SelectLanguagePartial.cshtml)]
+[!code-HTML[Main](localization/sample/Localization/Views/Shared/_SelectLanguagePartial.cshtml)]
 
 *Views/Shared/_SelectLanguagePartial.cshtml* 파일이에 추가 되는 `footer` 모든 보기에 사용할 수 있도록 레이아웃 파일의 섹션:
 
-[!code-HTML[Main](localization/sample/Views/Shared/_Layout.cshtml?range=43-56&highlight=10)]
+[!code-HTML[Main](localization/sample/Localization/Views/Shared/_Layout.cshtml?range=43-56&highlight=10)]
 
 `SetLanguage` 메서드 문화권 쿠키를 설정 합니다.
 
-[!code-csharp[Main](localization/sample/Controllers/HomeController.cs?range=57-67)]
+[!code-csharp[Main](localization/sample/Localization/Controllers/HomeController.cs?range=57-67)]
 
 연결할 수 없습니다는 *_SelectLanguagePartial.cshtml* 이 프로젝트에 대 한 샘플 코드에 있습니다. **Localization.StarterWeb** 프로젝션 할 [GitHub](https://github.com/aspnet/entropy) 흐름 하는 코드가 `RequestLocalizationOptions` 는 Razor 통해 부분에 [종속성 주입](dependency-injection.md) 컨테이너입니다.
 

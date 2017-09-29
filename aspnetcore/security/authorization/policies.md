@@ -2,7 +2,7 @@
 title: "사용자 지정 정책 기반 권한 부여"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,11 +11,11 @@ ms.assetid: e422a1b2-dc4a-4bcc-b8d9-7ee62009b6a3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/policies
-ms.openlocfilehash: dd7187f67887bb39a5ff425dcbae0927c7565cb8
-ms.sourcegitcommit: 41e3e007512c175a42910bc69678f3f0403cab04
+ms.openlocfilehash: 5021b5d20f6d9b9a4d8889f25b5e41f2c9306f64
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/01/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="custom-policy-based-authorization"></a>사용자 지정 정책 기반 권한 부여
 
@@ -24,8 +24,6 @@ ms.lasthandoff: 09/01/2017
 내부적는 [역할 권한 부여](roles.md#security-authorization-role-based) 및 [권한 부여 클레임](claims.md#security-authorization-claims-based) 요구 사항의 사용, 요구 사항 및 미리 구성 된 정책에 대 한 처리기를 확인 합니다. 이러한 빌딩 블록을 사용 하면 코드를 다시 사용할 수는 다양 한 작업에 대 한 허용 및 쉽게 테스트할 권한 부여 구조에서 권한 부여 평가 표현할 수 있도록 합니다.
 
 권한 부여 정책 하나 이상의 요구 사항으로 구성 되며 응용 프로그램 시작 시에 권한 부여 서비스 구성의 일부로 등록 `ConfigureServices` 에 *Startup.cs* 파일입니다.
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -44,8 +42,6 @@ public void ConfigureServices(IServiceCollection services)
 
 사용 하 여 정책이 적용 되는 `Authorize` 예를 들어 정책 이름을 지정 하 여 특성
 
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
-
 ```csharp
 [Authorize(Policy="Over21")]
 public class AlcoholPurchaseRequirementsController : Controller
@@ -63,8 +59,6 @@ public class AlcoholPurchaseRequirementsController : Controller
 ## <a name="requirements"></a>요구 사항
 
 권한 부여 요구 사항은 현재 사용자 보안 주체를 평가 하는 정책을 사용할 수 있는 데이터 매개 변수 컬렉션입니다. 보호 최소 보존 기간 정책 요구 사항이 있는 경우 단일 매개 변수를 최소 보존 기간 요구 사항을 구현 해야 `IAuthorizationRequirement`합니다. 빈, 표식 인터페이스입니다. 매개 변수가 있는 최소 연령 요구 사항을 다음과 같이; 구현 될 수 있습니다.
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
 ```csharp
 public class MinimumAgeRequirement : IAuthorizationRequirement
@@ -89,8 +83,6 @@ public class MinimumAgeRequirement : IAuthorizationRequirement
 <a name=security-authorization-handler-example></a>
 
 최소 보존 기간 처리기는 다음과 같습니다.
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
 ```csharp
 public class MinimumAgeHandler : AuthorizationHandler<MinimumAgeRequirement>
@@ -128,8 +120,6 @@ public class MinimumAgeHandler : AuthorizationHandler<MinimumAgeRequirement>
 
 예를 들어 처리기 구성 하는 동안 서비스 컬렉션에 등록 합니다.
 
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
-
 ```csharp
 
 public void ConfigureServices(IServiceCollection services)
@@ -165,8 +155,6 @@ public void ConfigureServices(IServiceCollection services)
 ## <a name="why-would-i-want-multiple-handlers-for-a-requirement"></a>이유는 여러 처리기는 요구 사항에 대 한?
 
 에 있는 것으로 평가 하려는 경우에는 **또는** 별로 단일 요구 사항에 대해 여러 처리기를 구현 합니다. 예를 들어 Microsoft는 주요 카드를 사용 하는 열만 있는 문. 키 카드를 집에 두면는 접수원이 임시 스티커 인쇄를 문을 열립니다. 이 시나리오에서는 단일 반드시 그래야 할 것 *EnterBuilding*, 하지만 단일 요구 사항 검사 하나씩 여러 처리기입니다.
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
 ```csharp
 public class EnterBuildingRequirement : IAuthorizationRequirement
@@ -209,8 +197,6 @@ public class HasTemporaryStickerHandler : AuthorizationHandler<EnterBuildingRequ
 
 예를 들어 이전 `BadgeEntryHandler` ; 다음과 같이 다시 작성할 수 있습니다
 
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
-
 ```csharp
 services.AddAuthorization(options =>
     {
@@ -232,8 +218,6 @@ services.AddAuthorization(options =>
 MVC의 인스턴스를 전달 하는 예를 들어 `Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext` 다른 MVC HttpContext RouteData 및 모든 항목에 액세스 하는 데 사용 되는 리소스 속성에 제공 합니다.
 
 사용 하 여 `Resource` 속성은 특정 프레임 워크입니다. 정보를 사용 하 여 `Resource` 속성에는 권한 부여 정책을 특정 프레임 워크를 제한 합니다. 캐스팅 해야는 `Resource` 사용 하 여 속성의 `as` 키워드 및 다음 확인은 캐스트에 성공 코드 충돌 하지 않는 되도록와 `InvalidCastExceptions` ; 다른 프레임 워크에서 실행할 때
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
 ```csharp
 if (context.Resource is Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext mvcContext)

@@ -11,11 +11,11 @@ ms.assetid: bc8b4ba3-e9ba-48fd-b1eb-cd48ff6bc7a1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: b83bd4a24ccf7e90e9df06d6a8e229a2d5c6699a
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: f6b454da838308adddaaddb84073722f647af379
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="dependency-injection-into-controllers"></a>컨트롤러에 대 한 종속성 주입
 
@@ -49,8 +49,6 @@ ASP.NET Core 기본적으로 지원 되는 생성자 기반 종속성 주입 MVC
 
 지금 응용 프로그램을 실행 하는 경우 오류를 발생 가능성이 합니다.
 
-<!-- literal_block {"ids": [], "xml:space": "preserve"} -->
-
 ```
 An unhandled exception occurred while processing the request.
 
@@ -73,8 +71,6 @@ Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceP
 > 참조 [테스트 컨트롤러 논리](testing.md) 종속성을 명시적으로 요청 하는 방법에 알아보려면 [http://deviq.com/explicit-dependencies-principle/](http://deviq.com/explicit-dependencies-principle/) 컨트롤러에 더 쉽게 코드를 테스트 합니다.
 
 ASP.NET Core 기본 종속성 주입 서비스를 요청 하는 클래스에 대 한 단일 생성자만 지원 합니다. 둘 이상의 생성자가 있으면 내용의 된 예외가 나타날 수 있습니다.
-
-<!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
 ```
 An unhandled exception occurred while processing the request.

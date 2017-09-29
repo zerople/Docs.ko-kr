@@ -1,7 +1,7 @@
 ---
 title: "ASP.NET Core MVC에서 모델 유효성 검사"
-author: rick-anderson
-description: "ASP.NET Core MVC에서 모델 유효성 검사를 소개합니다."
+author: rachelappel
+description: "ASP.NET Core MVC에서 모델 유효성 검사에 알아봅니다."
 keywords: "ASP.NET Core, MVC에서 유효성 검사"
 ms.author: riande
 manager: wpickett
@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/validation
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0874d3b677cee2859da9eb85b0573811abbed12a
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: efbc68e898cadd06d61fa69914fe08f3a12ba802
+ms.sourcegitcommit: 8b5733f1cd5d2c2b6d432bf82fcd4be2d2d6b2a3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="introduction-to-model-validation-in-aspnet-core-mvc"></a>ASP.NET Core MVC에서 모델 유효성 검사 소개
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 09/22/2017
 
 다음은 이러한는 주석이 추가 된 `Movie` 동영상과 TV 프로그램에 대 한 정보를 저장 하는 응용 프로그램에서 모델입니다. 대부분의 속성 필요 하며 여러 문자열 속성에는 길이 요구 사항이입니다. 또한는에 대 한 숫자 범위 제한이 `Price` 속성을 0에서 $999.99, 사용자 지정 유효성 검사 특성을 합니다.
 
-[!code-csharp[Main](validation/sample/Movie.cs?range=6-31)]
+[!code-csharp[Main](validation/sample/Movie.cs?range=6-29)]
 
 단순히 모델을 통해 읽을 쉽게 코드를 유지 하기 위해이 앱에 대 한 데이터에 대 한 규칙이 표시 됩니다. 다음은 여러 인기 있는 기본 제공 유효성 검사 특성입니다.
 
@@ -61,6 +61,18 @@ ms.lasthandoff: 09/22/2017
 MVC에서 파생 된 모든 특성을 지원 `ValidationAttribute` 유효성 검사를 위해서입니다. 많은 유용한 유효성 검사 특성에서 확인할 수 있습니다는 [System.ComponentModel.DataAnnotations](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations) 네임 스페이스입니다.
 
 제공 하는 기본 제공 특성 보다 더 많은 기능을 할 수 있는 인스턴스가 있을 수 있습니다. 해당 시간에 대 한 사용자 지정 유효성 검사 특성에서 파생 하 여 만들 수 있습니다 `ValidationAttribute` 구현 하 여 모델을 변경 하거나 `IValidatableObject`합니다.
+
+## <a name="notes-on-the-use-of-the-required-attribute"></a>필수 특성의 사용에 대 한 참고 사항
+
+비 null을 허용 하지 [값 형식](/dotnet/csharp/language-reference/keywords/value-types) (같은 `decimal`, `int`, `float`, 및 `DateTime`)이 기본적으로 필요 하 고 필요 하지 않습니다는 `Required` 특성입니다. 표시 된 null이 아닌 형식에 대 한 없는 서버 쪽 유효성 검사를 수행 하는 응용 프로그램 `Required`합니다.
+
+MVC 모델 바인딩 유효성 검사 및 유효성 검사 특성으로 관련 되지 않습니다는 누락 값 또는 공백 nullable이 아닌 형식에 대 한 포함 된 양식 필드 전송을 거부 합니다. 없는 경우에는 `BindRequired` 특성 모델 바인딩 대상 속성에 양식 필드 없는 nullable이 아닌 형식에 대 한 누락 된 데이터를 무시에서 들어오는 양식 데이터입니다.
+
+[BindRequired 특성](/aspnet/core/api/microsoft.aspnetcore.mvc.modelbinding.bindrequiredattribute) (참조도 [특성으로 모델 바인딩 동작 사용자 지정](xref:mvc/models/model-binding#customize-model-binding-behavior-with-attributes))는 양식 데이터를 완료 하는 데 유용 합니다. 속성에 적용 하는 경우 모델 바인딩 시스템이 해당 속성에 대 한 값이 필요 합니다. 형식에 적용 하는 경우 모델 바인딩 시스템이 모든 해당 형식의 속성에 대 한 값이 필요 합니다.
+
+사용 하는 경우는 [Nullable\<T > 형식](/dotnet/csharp/programming-guide/nullable-types/) (예를 들어 `decimal?` 또는 `System.Nullable<decimal>`) 하 고 표시 `Required`, 속성 (nullable 표준 형식인 경우 처럼 서버 쪽 유효성 검사가 수행 됩니다 예제에서는 한 `string`).
+
+클라이언트 쪽 유효성 검사 모델 속성을 표시 한에 해당 하는 양식 필드의 값이 필요 `Required` 하 고 nullable이 아닌 형식 속성으로 표시 하지 않은 `Required`합니다. `Required`클라이언트 쪽 유효성 검사 오류 메시지를 제어 하 사용할 수 있습니다.
 
 ## <a name="model-state"></a>모델 상태
 
@@ -104,15 +116,15 @@ MVC는 계속 필드에 도달할 때까지 유효성 검사 오류 (기본적�
 
 여기에 표시 된 대로 작동 하도록 클라이언트 쪽 유효성 검사에 대 한 위치에서 적절 한 JavaScript 스크립트 참조 하 여 뷰에 있어야 합니다.
 
-[!code-html[Main](validation/sample/Views/Shared/_Layout.cshtml?range=37)]
+[!code-cshtml[Main](validation/sample/Views/Shared/_Layout.cshtml?range=37)]
 
-[!code-html[Main](validation/sample/Views/Shared/_ValidationScriptsPartial.cshtml)]
+[!code-cshtml[Main](validation/sample/Views/Shared/_ValidationScriptsPartial.cshtml)]
 
 MVC는 데이터 유효성 검사 및 JavaScript를 사용 하 여 오류 메시지를 표시 하려면 모델 속성의 형식 메타 데이터 외에도 유효성 검사 특성을 사용 합니다. MVC 폼 요소에서 사용 하 여 모델을 렌더링을 사용 하는 경우 [태그 도우미](xref:mvc/views/tag-helpers/intro) 또는 [HTML 도우미](xref:mvc/views/overview) HTML 5를 추가 합니다 [데이터 특성](http://w3c.github.io/html/dom.html#embedding-custom-non-visible-data-with-the-data-attributes) 로 유효성 검사를 필요로 하는 폼 요소에서 다음과 같습니다. MVC에서는 오류가 발생 하는 `data-` 기본 제공 및 사용자 지정 특성에 대 한 특성입니다. 다음과 같이 관련 태그 도우미를 사용 하 여 클라이언트에서 유효성 검사 오류를 표시할 수 있습니다.
 
-[!code-html[Main](validation/sample/Views/Movies/Create.cshtml?highlight=4,5&range=19-25)]
+[!code-cshtml[Main](validation/sample/Views/Movies/Create.cshtml?highlight=4,5&range=19-25)]
 
-위의 태그 도우미 아래 HTML을 렌더링합니다. 다음에 유의 `data-` HTML의 특성에 대 한 유효성 검사 특성에 해당 출력은 `ReleaseDate` 속성입니다. `data-val-required` 릴리스 날짜 필드에 사용자 이름을 입력 하지 않는 경우에 함께 제공 되는 메시지가 표시 됩니다. 표시할 오류 메시지를 포함 하는 특성을 아래 `<span>` 요소입니다.
+위의 태그 도우미 아래 HTML을 렌더링합니다. 다음에 유의 `data-` HTML의 특성에 대 한 유효성 검사 특성에 해당 출력은 `ReleaseDate` 속성입니다. `data-val-required` 릴리스 날짜 필드에 사용자 이름을 입력 하지 않는 경우에 함께 제공 되는 메시지가 표시 됩니다. 표시할 오류 메시지를 포함 하는 특성을 아래  **\<걸쳐 >** 요소입니다.
 
 ```html
 <form action="/Movies/Create" method="post">
@@ -147,11 +159,11 @@ MVC 유형 특성 값을 사용 하 여를 재정의할 수 있는 속성의.NET
 
 ```html
 <input class="form-control" type="datetime"
-data-val="true"
-data-val-classicmovie="Classic movies must have a release year earlier than 1960."
-data-val-classicmovie-year="1960"
-data-val-required="The ReleaseDate field is required."
-id="ReleaseDate" name="ReleaseDate" value="" />
+    data-val="true"
+    data-val-classicmovie="Classic movies must have a release year earlier than 1960."
+    data-val-classicmovie-year="1960"
+    data-val-required="The ReleaseDate field is required."
+    id="ReleaseDate" name="ReleaseDate" value="" />
 ```
 
 비 가시적인 유효성 검사에서 데이터를 사용 하는 `data-` 특성 오류 메시지를 표시 합니다. 그러나 jQuery 규칙을 인식 하지 못합니다 또는 jQuery의에 추가 될 때까지 메시지 `validator` 개체입니다. 라는 메서드를 추가 하는 아래 예제에서이 확인할 `classicmovie` jQuery로 사용자 지정 클라이언트 유효성 검사 코드가 포함 된 `validator` 개체입니다.

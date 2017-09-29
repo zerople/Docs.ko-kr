@@ -11,15 +11,15 @@ ms.assetid: b3a5984d-e172-42eb-8a48-547e4acb6806
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration
-ms.openlocfilehash: 7d591259587766a932a14bb030c76274101d16ac
-ms.sourcegitcommit: f8f6b5934bd071a349f5bc1e389365c52b1c00fa
+ms.openlocfilehash: 379030df4ca91a38fce251aeaab9c5dfaf11e915
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core의 구성
 
-[Rick Anderson](https://twitter.com/RickAndMSFT), [표시 Michaelis](http://intellitect.com/author/mark-michaelis/), [Steve Smith](https://ardalis.com/), 및 [김 Roth](https://github.com/danroth27)
+[Rick Anderson](https://twitter.com/RickAndMSFT), [표시 Michaelis](http://intellitect.com/author/mark-michaelis/), [Steve Smith](https://ardalis.com/), [김 Roth](https://github.com/danroth27), 및 [Luke Latham](https://github.com/guardrex)
 
 구성 API 앱 이름-값 쌍의 목록에 따라 구성 하는 방법을 제공 합니다. 여러 원본에서 런타임에 구성 읽기입니다. 여러 수준 계층에 이름-값 쌍을 그룹화 할 수 있습니다. 에 대 한 구성 공급자가 있습니다.
 
@@ -295,55 +295,187 @@ key3=value_from_json_3
 
 ## <a name="commandline-configuration-provider"></a>명령줄 구성 공급자
 
-다음 샘플 마지막 CommandLine 구성 공급자를 사용 합니다.
+[CommandLine 구성 공급자](/aspnet/core/api/microsoft.extensions.configuration.commandline.commandlineconfigurationprovider) 런타임에 구성에 대 한 키-값 쌍 명령줄 인수를 받습니다.
 
-[!code-csharp[Main](configuration/sample/CommandLine/Program.cs)]
+[보기 또는 CommandLine 구성 샘플 다운로드](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/sample/CommandLine)
+
+### <a name="setting-up-the-provider"></a>공급자를 설정합니다.
+
+# <a name="basic-configurationtabbasicconfiguration"></a>[기본 구성](#tab/basicconfiguration)
+
+명령줄 구성을 활성화 하려면 호출는 `AddCommandLine` 인스턴스의 확장 메서드 [ConfigurationBuilder](/api/microsoft.extensions.configuration.configurationbuilder):
+
+[!code-csharp[Main](configuration/sample_snapshot/CommandLine/Program.cs?highlight=18,21)]
+
+코드를 실행 다음과 같은 출력이 표시 됩니다.
+
+```console
+MachineName: MairaPC
+Left: 1980
+```
+
+값을 변경 하는 명령줄에 키-값 쌍 인수를 전달 `Profile:MachineName` 및 `App:MainWindow:Left`:
+
+```console
+dotnet run Profile:MachineName=BartPC App:MainWindow:Left=1979
+```
+
+콘솔 창에 표시 됩니다.
+
+```console
+MachineName: BartPC
+Left: 1979
+```
+
+명령줄 구성의 다른 구성 공급자가 제공 되는 구성을 재정의 하려면 `AddCommandLine` 마지막에 `ConfigurationBuilder`:
+
+[!code-csharp[Main](configuration/sample_snapshot/CommandLine/Program2.cs?range=11-16&highlight=1,5)]
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+정적 편의 메서드를 사용 하는 일반적인 ASP.NET Core 2.x 앱 `CreateDefaultBuilder` 호스트를 작성 합니다.
+
+[!code-csharp[Main](configuration/sample_snapshot/Program.cs?highlight=12)]
+
+`CreateDefaultBuilder`선택적 구성에서 로드 *appsettings.json*, *appsettings. { 환경}.json*, [사용자의 비밀](xref:security/app-secrets) (에 `Development` 환경), 환경 변수 및 명령줄 인수입니다. 명령줄 구성 공급자 마지막에 호출 됩니다. 공급자를 마지막 호출 구성 집합을 다른 구성 공급자가 재정의 하는 런타임 시 전달 되는 명령줄 인수 앞서 호출 수 있습니다.
+
+위해 *appsettings* 파일은 `reloadOnChange` 를 사용할 수 있습니다. 명령줄 인수는 일치 하는 구성 값이 재정의 됩니다는 *appsettings* 응용 프로그램 시작 후 파일이 변경 되었습니다.
+
+> [!NOTE]
+> 사용 하는 대신는 `CreateDefaultBuilder` 메서드를 사용 하 여 호스트를 만드는 [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) 하 고 사용 하 여 구성을 수동으로 작성 [ConfigurationBuilder](/api/microsoft.extensions.configuration.configurationbuilder) ASP.NET Core에서 지원 됩니다 2.x 합니다. 자세한 내용은 ASP.NET Core 1.x 탭을 참조 하십시오.
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
+만들기는 [ConfigurationBuilder](/api/microsoft.extensions.configuration.configurationbuilder) 호출는 `AddCommandLine` CommandLine 구성 공급자를 사용 하는 메서드. 공급자를 마지막 호출 구성 집합을 다른 구성 공급자가 재정의 하는 런타임 시 전달 되는 명령줄 인수 앞서 호출 수 있습니다. 구성을 사용 하 여 적용 [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) 와 `UseConfiguration` 메서드:
+
+[!code-csharp[Main](configuration/sample_snapshot/CommandLine/Program2.cs?highlight=11,15,19)]
+
+---
+
+### <a name="arguments"></a>인수
+
+명령줄에 전달 된 인수는 다음 표에 표시 된 두 형식 중 하나를 따라야 합니다.
+
+| 인수 형식                                                     | 예제        |
+| ------------------------------------------------------------------- | :------------: |
+| 단일 인수: 등호로 구분 된 키-값 쌍 (`=`) | `key1=value`   |
+| 두 개의 인수 순서: 공백으로 구분 되는 키-값 쌍    | `/key1 value1` |
+
+**단일 인수**
+
+값은 등호 따라야 합니다. (`=`). 값은 null 일 수 있습니다 (예를 들어 `mykey=`).
+
+키 접두사가 있을 수 있습니다.
+
+| 키 접두사               | 예제         |
+| ------------------------ | :-------------: |
+| 접두사 없음                | `key1=value1`   |
+| 단일 대시 (`-`) &#8224; | `-key2=value2`  |
+| 대시 두 개 (`--`)        | `--key3=value3` |
+| 슬래시 (`/`)      | `/key4=value4`  |
+
+&#8224; 단일 대시 접두사를 사용 하 여 키 (`-`) 제공 되어야 [매핑 전환](#switch-mappings), 아래에서 설명 합니다.
+
+예제 명령입니다.
+
+```console
+dotnet run key1=value1 -key2=value2 --key3=value3 /key4=value4
+```
+
+참고: 경우 `-key1` 에 존재 하지는 [매핑 전환](#switch-mappings) 구성 공급자에 게 제공는 `FormatException` throw 됩니다.
+
+**두 인수 중 시퀀스**
+
+값은 null 일 수 없으며 공백으로 구분 하 여 키를 수행 해야 합니다.
+
+키에 접두사가 있어야 합니다.
+
+| 키 접두사               | 예제         |
+| ------------------------ | :-------------: |
+| 단일 대시 (`-`) &#8224; | `-key1 value1`  |
+| 대시 두 개 (`--`)        | `--key2 value2` |
+| 슬래시 (`/`)      | `/key3 value3`  |
+
+&#8224; 단일 대시 접두사를 사용 하 여 키 (`-`) 제공 되어야 [매핑 전환](#switch-mappings), 아래에서 설명 합니다.
+
+예제 명령입니다.
+
+```console
+dotnet run -key1 value1 --key2 value2 /key3 value3
+```
+
+참고: 경우 `-key1` 에 존재 하지는 [매핑 전환](#switch-mappings) 구성 공급자에 게 제공는 `FormatException` throw 됩니다.
+
+### <a name="duplicate-keys"></a>중복 키
+
+중복 키가 제공 하는 경우 마지막 키-값 쌍이 사용 됩니다.
+
+### <a name="switch-mappings"></a>스위치 매핑
+
+사용 하 여 구성을 수동으로 작성할 때 `ConfigurationBuilder`, 스위치 매핑 사전에 선택적으로 제공할 수는 `AddCommandLine` 메서드. 스위치 매핑을 통해 키 이름을 교체 논리를 제공할 수 있습니다.
+
+스위치 매핑 사전을 사용 되는 경우 명령줄 인수에 의해 제공 된 키와 일치 하는 키에 대 한 사전을 확인 됩니다. 명령줄 키가 사전에 없으면 사전 값 (키 교체) 구성을 설정 하려면 다시 전달 됩니다. 스위치 매핑이 단일에 대시가 접두사로 명령줄 키 필요 (`-`).
+
+매핑 사전 키 규칙을 전환 합니다.
+
+* 스위치 대시로 시작 해야 합니다 (`-`) 나 더블 대시 (`--`).
+* 스위치 매핑 사전에 중복 키를 사용할 수 없습니다.
+
+다음 예제에서는 `GetSwitchMappings` 메서드를 사용 하면 단일 대시를 사용 하 여 명령줄 인수 (`-`) 접두사를 입력 하 고 선행 하위 키 접두사를 방지 합니다.
+
+[!code-csharp[Main](configuration/sample/CommandLine/Program.cs?highlight=10-19,32)]
+
+사전 제공 된 명령줄 인수를 제공 하지 않고 `AddInMemoryCollection` 구성 값을 설정 합니다. 다음 명령을 사용 하 여 응용 프로그램을 실행 합니다.
+
+```console
+dotnet run
+```
+
+콘솔 창에 표시 됩니다.
+
+```console
+MachineName: RickPC
+Left: 1980
+```
 
 구성 설정에 전달 하려면 다음을 사용 합니다.
 
 ```console
-dotnet run /Profile:MachineName=Bob /App:MainWindow:Left=1234
+dotnet run /Profile:MachineName=DahliaPC /App:MainWindow:Left=1984
 ```
 
-표시 합니다.
+콘솔 창에 표시 됩니다.
 
 ```console
-Hello Bob
-Left 1234
+MachineName: DahliaPC
+Left: 1984
 ```
 
-`GetSwitchMappings` 메서드를 사용 하면 `-` 대신 `/` 하 고 선행 하위 키 접두사를 제거 합니다. 예:
+스위치 매핑 사전을 만든 후 다음 표에 표시 되는 데이터를 포함 합니다.
+
+| Key            | 값                 |
+| -------------- | --------------------- |
+| `-MachineName` | `Profile:MachineName` |
+| `-Left`        | `App:MainWindow:Left` |
+
+키 전환 사전을 사용을 보여 주기 위해 다음 명령을 실행 합니다.
 
 ```console
-dotnet run -MachineName=Bob -Left=7734
+dotnet run -MachineName=ChadPC -Left=1988
 ```
 
-표시:
+명령줄 키 바뀝니다. 콘솔 창에 대 한 구성 값을 표시 `Profile:MachineName` 및 `App:MainWindow:Left`:
 
 ```console
-Hello Bob
-Left 7734
+MachineName: ChadPC
+Left: 1988
 ```
-
-명령줄 인수 (null 일 수) 값을 포함 해야 합니다. 예:
-
-```console
-dotnet run /Profile:MachineName=
-```
-
-정상 이지만
-
-```console
-dotnet run /Profile:MachineName
-```
-
-예외가 발생 합니다. 해당 스위치 매핑이 지원 되지 않습니다는 대 한-또는--의 명령줄 스위치 접두사를 지정 하는 경우 예외가 throw 됩니다.
 
 ## <a name="the-webconfig-file"></a>Web.config 파일
 
 A *web.config* 파일은 IIS 또는 IIS Express에서 응용 프로그램을 호스팅하는 경우에 필요 합니다. *web.config* AspNetCoreModule IIS에서 앱을 시작 하도록 설정 합니다. 설정 *web.config* AspNetCoreModule iis 응용 프로그램을 시작 하 고 다른 IIS 설정 및 모듈 구성에 사용 하도록 설정 합니다. Visual Studio를 사용 하는 경우 삭제 *web.config*, Visual Studio는 새 이름을 만듭니다.
 
-### <a name="additional-notes"></a>추가 참고 사항
+## <a name="additional-notes"></a>추가 참고 사항
 
 * DI (dependency Injection) 후 까지의 설정 되지 않은 `ConfigureServices` 가 호출 됩니다.
 * 구성 시스템이 DI 인식 되지 않습니다.
@@ -351,9 +483,10 @@ A *web.config* 파일은 IIS 또는 IIS Express에서 응용 프로그램을 호
   * `IConfigurationRoot`루트 노드에 대해 사용 합니다. 다시 로드를 트리거할 수 있습니다.
   * `IConfigurationSection`구성 값의 섹션을 나타냅니다. `GetSection` 및 `GetChildren` 메서드는 반환 된 `IConfigurationSection`합니다.
 
-### <a name="additional-resources"></a>추가 리소스
+## <a name="additional-resources"></a>추가 리소스
 
 * [여러 환경 사용](environments.md)
 * [개발 중 안전한 앱 비밀 저장소](../security/app-secrets.md)
+* [ASP.NET Core에서 호스팅](xref:fundamentals/hosting)
 * [종속성 주입](dependency-injection.md)
 * [Azure Key Vault 구성 공급자](xref:security/key-vault-configuration)

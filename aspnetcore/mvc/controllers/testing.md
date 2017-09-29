@@ -11,11 +11,11 @@ ms.assetid: dd4135ec-2b15-410c-b3fb-3d12eed4a1ac
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/testing
-ms.openlocfilehash: e8a464e75dea3a0ec08c13a11888884e6bb6a4c7
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 5d81e0193fb042993452ed314e70fb63573e615c
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="testing-controller-logic-in-aspnet-core"></a>ASP.NET Core에서 컨트롤러 논리를 테스트합니다.
 
@@ -122,9 +122,7 @@ ASP.NET MVC 응용 프로그램의 컨트롤러는 작고 사용자 인터페이
 
 각 통합 테스트 클래스에 구성 된 `TestServer` ASP.NET Core 응용 프로그램 실행 합니다. 기본적으로 `TestServer` 실행 중인 위치-이 경우 테스트 프로젝트 폴더는 폴더에 웹 응용 프로그램 호스트 합니다. 따라서 하려고 하면 테스트 컨트롤러 작업을 반환 하는 `ViewResult`,이 오류가 표시 될 수 있습니다.
 
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "none"} -->
-
-```none
+```
 The view 'Index' was not found. The following locations were searched:
 (list of locations)
 ```

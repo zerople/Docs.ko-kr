@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/razor
-ms.openlocfilehash: 066fe3b2486c63bd4de2ccb865ad432a67846d77
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 0e65f0e9f672f9f93256ebc039ea0db2e4ef5ae0
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="razor-syntax-for-aspnet-core"></a>ASP.NET Core에 대 한 razor 구문
 
@@ -30,7 +30,7 @@ Razor은 웹 페이지에 서버 기반 코드를 포함 하기 위한 태그 �
 
 ```html
 <p>Hello World</p>
-   ```
+```
 
 가 변경 하지로 렌더링 `<p>Hello World</p>` 서버입니다.
 
@@ -42,15 +42,15 @@ Razor C# 지원 및 사용 하 여는 `@` C#으로 HTML에서 전환 기호입�
 
 포함 된 HTML `@` 기호는 두 번째 이스케이프 되어야 할 수 있습니다 `@` 기호입니다. 예:
 
-```html
+```cshtml
 <p>@@Username</p>
-   ```
+```
 
 다음 HTML을 렌더링 합니다.
 
-```html
+```cshtml
 <p>@Username</p>
-   ```
+```
 
 <a name=razor-email-ref></a>
 
@@ -91,16 +91,14 @@ C#을 제외한 `await` 키워드 암시적 식 공백을 포함 해서는 안 �
 
 ```html
 <p>Last week: 7/7/2016 4:39:52 PM - TimeSpan.FromDays(7)</p>
-   ```
+```
 
 연결 된 식 결과 텍스트에 명시적 식을 사용할 수 있습니다.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {"hl_lines": [5]}} -->
-
-```none
+```cshtml
 @{
     var joe = new Person("Joe", 33);
- }
+}
 
 <p>Age@(joe.Age)</p>
 ```
@@ -113,15 +111,15 @@ C#을 제외한 `await` 키워드 암시적 식 공백을 포함 해서는 안 �
 
 C# 식을 문자열로 평가 하는 인코딩된 HTML입니다. C# 식을 계산 하는 `IHtmlContent` 통해 직접 렌더링 되는 *IHtmlContent.WriteTo*합니다. C# 식으로 계산 하지는 *IHtmlContent* 문자열로 변환 됩니다 (여 *ToString*) 되 고 렌더링 하기 전에 인코딩된 합니다. 예를 들어, 다음 Razor 태그:
 
-```html
+```cshtml
 @("<span>Hello World</span>")
-   ```
+```
 
 이 HTML을 렌더링합니다.
 
 ```html
 &lt;span&gt;Hello World&lt;/span&gt;
-   ```
+```
 
 브라우저에서 렌더링는:
 
@@ -134,15 +132,15 @@ C# 식을 문자열로 평가 하는 인코딩된 HTML입니다. C# 식을 계�
 
 다음 Razor 태그:
 
-```html
+```cshtml
 @Html.Raw("<span>Hello World</span>")
-   ```
+```
 
 이 HTML을 렌더링합니다.
 
 ```html
 <span>Hello World</span>
-   ```
+```
 
 <a name=razor-code-blocks-label></a>
 
@@ -162,7 +160,7 @@ Razor 코드 블록 시작 `@` 묶여 및 `{}`합니다. 식에서와 달리 C# 
 
 ```html
 <p>The rendered result: Hello World</p>
-   ```
+```
 
 <a name=implicit-transitions-label></a>
 
@@ -170,7 +168,7 @@ Razor 코드 블록 시작 `@` 묶여 및 `{}`합니다. 식에서와 달리 C# 
 
 코드 블록에 기본 언어는 C#, 하지만 HTML로 다시 전환할 수 있습니다. 코드 블록 내에서 HTML HTML 렌더링으로 다시 전환 됩니다.
 
-```none
+```cshtml
 @{
     var inCSharp = true;
     <p>Now in HTML, was in C# @inCSharp</p>
@@ -183,9 +181,7 @@ Razor 코드 블록 시작 `@` 묶여 및 `{}`합니다. 식에서와 달리 C# 
 
 HTML을 렌더링 해야 하는 코드 블록의 하위 섹션을 정의 하려면 Razor와 함께 렌더링 사이의 문자를 둘러싸고 `<text>` 태그:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {"hl_lines": [4]}} -->
-
-```none
+```cshtml
 @for (var i = 0; i < people.Length; i++)
 {
     var person = people[i];
@@ -201,9 +197,7 @@ HTML을 렌더링 해야 하는 코드 블록의 하위 섹션을 정의 하려�
 
 코드 블록 안에 줄의 나머지 부분을 HTML로 렌더링, 사용 된 `@:` 구문:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {"hl_lines": [4]}} -->
-
-```none
+```cshtml
 @for (var i = 0; i < people.Length; i++)
 {
     var person = people[i];
@@ -223,7 +217,7 @@ HTML을 렌더링 해야 하는 코드 블록의 하위 섹션을 정의 하려�
 
 `@if` 제품군 제어 코드 실행 하는 경우:
 
-```none
+```cshtml
 @if (value % 2 == 0)
 {
     <p>The value was even</p>
@@ -232,7 +226,7 @@ HTML을 렌더링 해야 하는 코드 블록의 하위 섹션을 정의 하려�
 
 `else`및 `else if` 필요 하지 않습니다는 `@` 기호:
 
-```none
+```cshtml
 @if (value % 2 == 0)
 {
     <p>The value was even</p>
@@ -249,7 +243,7 @@ else
 
 다음과 같이 switch 문을 사용할 수 있습니다.
 
-```none
+```cshtml
 @switch (value)
 {
     case 1:
@@ -268,7 +262,7 @@ else
 
 템플릿 기반 HTML 제어 문을 반복을 렌더링할 수 있습니다. 예를 들어, 사람 목록이 렌더링 하려면:
 
-```none
+```cshtml
 @{
     var people = new Person[]
     {
@@ -282,7 +276,7 @@ else
 
 `@for`
 
-```none
+```cshtml
 @for (var i = 0; i < people.Length; i++)
 {
     var person = people[i];
@@ -293,7 +287,7 @@ else
 
 `@foreach`
 
-```none
+```cshtml
 @foreach (var person in people)
 {
     <p>Name: @person.Name</p>
@@ -303,7 +297,7 @@ else
 
 `@while`
 
-```none
+```cshtml
 @{ var i = 0; }
 @while (i < people.Length)
 {
@@ -317,7 +311,7 @@ else
 
 `@do while`
 
-```none
+```cshtml
 @{ var i = 0; }
 @do
 {
@@ -333,7 +327,7 @@ else
 
 C#의 using 문을 사용 하는 개체가 삭제 되도록 합니다. Razor의 동일한이 메커니즘 수 만드는 데 사용할 추가 콘텐츠를 포함 하는 HTML 도우미입니다. 예를 들어, HTML 도우미와 폼 태그를 렌더링 하 이용 하면는 `@using` 문:
 
-```none
+```cshtml
 @using (Html.BeginForm())
 {
     <div>
@@ -356,7 +350,7 @@ C#의 using 문을 사용 하는 개체가 삭제 되도록 합니다. Razor의 
 
 Razor에 임계 섹션 lock 문을 보호 하는 기능이 있습니다.
 
-```none
+```cshtml
 @lock (SomeLock)
 {
     // Do critical section work
@@ -367,7 +361,7 @@ Razor에 임계 섹션 lock 문을 보호 하는 기능이 있습니다.
 
 Razor 주석 C# 및 HTML을 지원합니다. 다음 태그:
 
-```none
+```cshtml
 @{
     /* C# comment. */
     // Another C# comment.
@@ -377,14 +371,14 @@ Razor 주석 C# 및 HTML을 지원합니다. 다음 태그:
 
 서버도 렌더링 됩니다.
 
-```none
+```cshtml
 <!-- HTML comment -->
 ```
 
 Razor 주석 페이지를 렌더링 하기 전에 서버에서 제거 됩니다. Razor를 사용 하 여 `@*  *@` 를 주석을 구분 합니다. 다음 코드 주석 처리 되어, 있으므로 서버는 모든 태그를 렌더링 하지 않습니다.
 
-```none
- @*
+```cshtml
+@*
  @{
      /* C# comment. */
      // Another C# comment.
@@ -431,33 +425,33 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 
 `@model` 지시문 Razor 페이지에 전달 하는 모델의 유형을 지정 합니다. 이 도구는 다음 구문을 사용합니다.
 
-```none
+```cshtml
 @model TypeNameOfModel
-   ```
+```
 
 예를 들어, 개별 사용자 계정으로 ASP.NET Core MVC 응용 프로그램을 만들면는 *Views/Account/Login.cshtml* Razor 뷰 모델 선언이 있습니다.
 
-```csharp
+```cshtml
 @model LoginViewModel
-   ```
+```
 
 앞의 클래스 예제에서 생성 된 클래스에서 상속 `RazorPage<dynamic>`합니다. 추가 하 여는 `@model` 상속 된 기능을 제어 합니다. 예
 
-```csharp
+```cshtml
 @model LoginViewModel
-   ```
+```
 
 다음 클래스를 생성합니다.
 
 ```csharp
 public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
-   ```
+```
 
 Razor 페이지에 노출 한 `Model` 모델 액세스에 대 한 속성 페이지에 전달 합니다.
 
-```html
+```cshtml
 <div>The Login Email: @Model.Email</div>
-   ```
+```
 
 `@model` 지시문이이 속성의 형식을 지정 된 (지정 하 여는 `T` 에 `RazorPage<T>` 페이지에 대 한 생성 된 클래스에서 파생 된). 지정 하지 않으면는 `@model` 지시문은 `Model` 속성 유형 중 하나가 됩니다 `dynamic`합니다. 모델의 값은 컨트롤러에서 뷰에 전달 됩니다. 참조 [강력한 형식 모델 및 @model 키워드](../../tutorials/first-mvc-app/adding-model.md#strongly-typed-models-keyword-label) 자세한 정보에 대 한 합니다.
 
@@ -465,9 +459,9 @@ Razor 페이지에 노출 한 `Model` 모델 액세스에 대 한 속성 페이�
 
 `@inherits` 지시문 Razor 페이지 상속 된 클래스의 모든 권한을 제공 합니다.
 
-```none
+```cshtml
 @inherits TypeNameOfClassToInheritFrom
-   ```
+```
 
 예를 들어, 다음과 같은 사용자 지정 Razor 페이지 유형 몇 가정해 보겠습니다.
 
@@ -487,7 +481,7 @@ Razor 페이지에 노출 한 `Model` 모델 액세스에 대 한 속성 페이�
 
 이 HTML 태그를 생성 합니다.
 
-```none
+```cshtml
 <div>The Login Email: Rick@contoso.com</div>
 <div>Custom text: Hello World</div>
 ```
@@ -506,9 +500,9 @@ Razor 페이지에 노출 한 `Model` 모델 액세스에 대 한 속성 페이�
 
 `@functions` 지시문 Razor 페이지를 함수 수준 콘텐츠를 추가할 수 있습니다. 사용되는 구문은 다음과 같습니다.
 
-```none
+```cshtml
 @functions { // C# Code }
-   ```
+```
 
 예:
 
@@ -516,9 +510,9 @@ Razor 페이지에 노출 한 `Model` 모델 액세스에 대 한 속성 페이�
 
 다음 HTML 태그를 생성 합니다.
 
-```none
+```cshtml
 <div>From method: Hello</div>
-   ```
+```
 
 생성 된 Razor C#는 다음과 같습니다.
 

@@ -11,11 +11,11 @@ ms.assetid: 0db145cb-41a5-448a-b889-72e2d789ad7f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/identity
-ms.openlocfilehash: b5a9bab4399714c481d4f38eeeaeba19d8bdd5b2
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: ed96266f06eb473fa3c3e1cc81b2b58fcd89f29e
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="migrating-authentication-and-identity"></a>마이그레이션 인증 및 Id
 
@@ -52,8 +52,6 @@ public void ConfigureServices(IServiceCollection services)
 이 시점에서 ASP.NET MVC 프로젝트에서 사용한 아직 하지 않은 위의 코드에서 참조 하는 형식은 두 가지가: `ApplicationDbContext` 및 `ApplicationUser`합니다. 새 *모델* 폴더에서 ASP.NET Core 프로젝트를 하 고 이러한 형식에 해당를 두 개의 클래스를 추가 합니다. ASP.NET MVC에서 이러한 클래스의 버전을 찾이 됩니다 `/Models/IdentityModels.cs`, 있지만 명확 하 게 되므로 마이그레이션된 프로젝트에서 클래스 마다 파일 하나를 사용 하는 것입니다.
 
 ApplicationUser.cs:
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
 ```csharp
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -93,8 +91,6 @@ ASP.NET Core MVC 시작 웹 프로젝트는 사용자의 많은 사용자 지정
 
 사용 하 여 해당 업데이트 하 여 컴파일하는 데 만들 있습니다 Startup.cs 파일 위치에 이러한 파일을 통해 문:
 
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
-
 ```csharp
 using Microsoft.Framework.ConfigurationModel;
 using Microsoft.AspNetCore.Hosting;
@@ -110,9 +106,7 @@ using Microsoft.AspNetCore.Identity;
 
 _Layout.cshtml; 업데이트 주석 처리 제거는 @Html.Partial 줄:
 
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "none"} -->
-
-```none
+```cshtml
       <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
     </ul>
     @*@Html.Partial("_LoginPartial")*@
@@ -124,9 +118,7 @@ _Layout.cshtml; 업데이트 주석 처리 제거는 @Html.Partial 줄:
 
 다음 코드로 _LoginPartial.cshtml 업데이트 (모든 내용을 바꾸기):
 
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
-
-```csharp
+```cshtml
 @inject SignInManager<User> SignInManager
 @inject UserManager<User> UserManager
 

@@ -10,11 +10,11 @@ ms.topic: article
 ms.assetid: f9267eab-2762-42ac-1638-4a25d2c9d67c
 ms.prod: asp.net-core
 uid: performance/caching/middleware
-ms.openlocfilehash: 07626ae7f40dc6f704d69d71cb7f95d318e6f503
-ms.sourcegitcommit: 8005eb4051e568d88ee58d48424f39916052e6e2
+ms.openlocfilehash: f07b0cb44542b7da140d519e883c67901d6327e2
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/24/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>ASP.NET Core의 미들웨어 캐싱 응답
 
@@ -105,6 +105,17 @@ if (responseCachingFeature != null)
 | 날짜 | 캐시에서 서비스를 제공할 때는 `Date` 원래 응답에 제공 되지 않은 경우 헤더는 미들웨어에서 설정 됩니다. |
 | 콘텐츠 길이 | 캐시에서 서비스를 제공할 때는 `Content-Length` 원래 응답에 제공 되지 않은 경우 헤더는 미들웨어에서 설정 됩니다. |
 | 보존 기간 | `Age` 원래 응답으로 전송 하는 헤더는 무시 됩니다. 캐시 된 응답을 처리 하는 경우 새 값을 계산 하는 미들웨어입니다. |
+
+## <a name="caching-respects-request-cache-control-directives"></a>요청 캐시 제어 지시문은 존중 캐싱
+
+미들웨어의 규칙을 적용 된 [HTTP 1.1 캐싱 사양](https://tools.ietf.org/html/rfc7234#section-5.2)합니다. 규칙 (를) 처리할 유효한 캐시가 필요한 `Cache-Control` 클라이언트에서 보낸 헤더입니다. 사양에서 클라이언트 요청을 만들 수는 `no-cache` 헤더 값과 모든 요청에 대 한 새 응답을 생성 하는 서버를 강제 합니다. 현재는 개발자가 캐싱 동작을 제어할 미들웨어 공식 캐싱 사양을 준수 하기 때문에 미들웨어를 사용 하는 경우.
+
+[미들웨어 향상 될](https://github.com/aspnet/ResponseCaching/issues/96) 캐싱 시나리오에 대 한 미들웨어 구성 허용 여기서 요청 `Cache-Control` 된 캐시 된 응답을 제공 하도록 결정할 때 헤더를 무시 해야 합니다. 더 많이 제어할 캐싱 동작을 검색 하는 경우 ASP.NET 코어의 다른 캐싱 기능을 탐색 합니다. 다음 항목을 참조하십시오.
+
+* [ASP.NET Core의 메모리 내 캐싱 소개](xref:performance/caching/memory)
+* [분산된 캐시 사용](xref:performance/caching/distributed)
+* [ASP.NET Core MVC에서에서 태그 도우미를 캐시 합니다.](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
+* [분산된 캐시 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
 
 ## <a name="troubleshooting"></a>문제 해결
 캐싱 동작 없는 경우 예상 대로, 응답은 캐시할 수 되며 들어오는 헤더는 요청 및 응답의 나가는 헤더를 검사 하 여 캐시에서 제공 되 고 수 있는지 확인 합니다. 사용 하도록 설정 [로깅](xref:fundamentals/logging) 디버깅할 때 도움이 될 수 있습니다. 캐싱 동작 및 응답을 캐시에서 검색 되는 경우의 미들웨어 로그입니다.

@@ -11,17 +11,17 @@ ms.assetid: 66DB4B94-C78C-4005-BA03-3D982B87C268
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: 1602a7fa801f77c259e3e3a37d60e02606cf5bac
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: cb4ea63664f29e39c2dd26cbf814a484a295ec6c
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="configuring-microsoft-account-authentication"></a>Microsoft 계정 인증 구성
 
 <a name=security-authentication-microsoft-logins></a>
 
-여 [Valeriy Novytskyy](https://github.com/01binary) 및 [Rick Anderson](https://twitter.com/RickAndMSFT)
+작성자: [Valeriy Novytskyy](https://github.com/01binary) 및 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 이 자습서에서 만든 샘플 ASP.NET 코어 2.0 프로젝트를 사용 하 여 자신의 Microsoft 계정으로 로그인 하 여 사용자가 사용할 수 있도록 하는 방법을 보여 줍니다.는 [이전 페이지](index.md)합니다.
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 09/12/2017
 
 ![대화 상자에 로그인](index/_static/MicrosoftDevLogin.png)
 
-Microsoft 계정이 없는 경우 탭 ** [만드세요!](https://signup.live.com/signup?wa=wsignin1.0&rpsnv=13&ct=1478151035&rver=6.7.6643.0&wp=SAPI_LONG&wreply=https%3a%2f%2fapps.dev.microsoft.com%2fLoginPostBack&id=293053&aadredir=1&contextid=D70D4F21246BAB50&bk=1478151036&uiflavor=web&uaid=f0c3de863a914c358b8dc01b1ff49e85&mkt=EN-US&lc=1033&lic=1)** 로그인 한 후 리디렉션됩니다 **내 응용 프로그램이** 페이지:
+Microsoft 계정이 없는 경우 탭  **[만드세요!](https://signup.live.com/signup?wa=wsignin1.0&rpsnv=13&ct=1478151035&rver=6.7.6643.0&wp=SAPI_LONG&wreply=https%3a%2f%2fapps.dev.microsoft.com%2fLoginPostBack&id=293053&aadredir=1&contextid=D70D4F21246BAB50&bk=1478151036&uiflavor=web&uaid=f0c3de863a914c358b8dc01b1ff49e85&mkt=EN-US&lc=1033&lic=1)** 로그인 한 후 리디렉션됩니다 **내 응용 프로그램이** 페이지:
 
 ![Microsoft 개발자 포털에서 Microsoft Edge 열기](index/_static/MicrosoftDev.png)
 
@@ -83,6 +83,10 @@ Microsoft와 같은 중요 한 설정이 연결 `Application ID` 및 `Password` 
 Microsoft 계정 서비스에 추가 `ConfigureServices` 메서드에서 *Startup.cs* 파일:
 
 ```csharp
+services.AddIdentity<ApplicationUser, IdentityRole>()
+        .AddEntityFrameworkStores<ApplicationDbContext>()
+        .AddDefaultTokenProviders();
+
 services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
 {
     microsoftOptions.ClientId = Configuration["Authentication:Microsoft:ApplicationId"];
@@ -90,7 +94,7 @@ services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
 });
 ```
 
-`AddAuthentication` 만 메서드 한 번 추가 하는 경우 여러 인증 공급자입니다. 에 대 한 후속 호출 이전에 구성 된 모든 재정의의 가능성이 있는 [AuthenticationOptions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.authenticationoptions) 속성입니다.
+[!INCLUDE[default settings configuration](includes/default-settings.md)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 

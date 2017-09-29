@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/startup
-ms.openlocfilehash: 009df1416c822018d6e88912cc77e525c7349c34
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 94db2ff530b5de7fe357cfb591d09b984cb248f9
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="application-startup-in-aspnet-core"></a>ASP.NET Core 응용 프로그램 시작
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 09/22/2017
 
 ## <a name="the-startup-class"></a>시작 클래스입니다.
 
-ASP.NET Core 응용 프로그램에서는 한 `Startup` 클래스입니다. 일반적으로는 `Startup` 클래스 이름이 "시작"입니다. 에 시작 클래스 이름을 지정 하는 `Main` 프로그램의 [WebHostBuilderExtensions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilderextensions) [ `UseStartup<TStartup>` ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilderextensions#Microsoft_AspNetCore_Hosting_WebHostBuilderExtensions_UseStartup__1_Microsoft_AspNetCore_Hosting_IWebHostBuilder_) 메서드. 참조 [호스팅](xref:fundamentals/hosting) 에 대 한 자세한 내용은 `WebHostBuilder`, 하기 전에 실행 되는 `Startup`합니다.
+ASP.NET Core 응용 프로그램에서는 한 `Startup` 클래스 이름으로 지정 된 `Startup` 규칙에 따라 합니다. 에 시작 클래스 이름을 지정 하는 `Main` 프로그램의 [WebHostBuilderExtensions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilderextensions) [ `UseStartup<TStartup>` ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilderextensions#Microsoft_AspNetCore_Hosting_WebHostBuilderExtensions_UseStartup__1_Microsoft_AspNetCore_Hosting_IWebHostBuilder_) 메서드. 참조 [호스팅](xref:fundamentals/hosting) 에 대 한 자세한 내용은 `WebHostBuilder`, 하기 전에 실행 되는 `Startup`합니다.
 
 별도 정의한 `Startup` 다양 한 환경 및 적절 한 런타임 시 선택 하나에 대 한 클래스입니다. 지정 하는 경우 `startupAssembly` 에 [WebHost 구성](https://docs.microsoft.com/aspnet/core/fundamentals/hosting?tabs=aspnetcore2x#configuring-a-host) 호스팅 옵션을 해당 시작 어셈블리를 로드 하 고 검색할 또는 `Startup` 또는 `Startup[Environment]` 유형입니다. 현재 환경 우선 순위가 지정 해당 이름 접미사 일치, 하면 앱에서 실행 되는 클래스는 *개발* 환경 모두 포함 하 고는 `Startup` 및 `StartupDevelopment` 클래스는 `StartupDevelopment` 클래스 됩니다. 사용. 참조 [FindStartupType](https://github.com/aspnet/Hosting/blob/rel/1.1.0/src/Microsoft.AspNetCore.Hosting/Internal/StartupLoader.cs) 에 `StartupLoader` 및 [여러 환경 작업](environments.md#startup-conventions)합니다.
 

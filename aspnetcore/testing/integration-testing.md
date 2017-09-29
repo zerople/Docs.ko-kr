@@ -2,20 +2,20 @@
 title: "ASP.NET Core에서 통합 테스트"
 author: ardalis
 description: "응용 프로그램의 구성 요소가 제대로 작동 하는지 확인 하는 테스트 ASP.NET Core 통합을 사용 하는 방법."
-keywords: "ASP.NET Core 통합 테스트"
+keywords: "통합 테스트, Razor, ASP.NET Core"
 ms.author: riande
 manager: wpickett
-ms.date: 02/14/2017
+ms.date: 09/25/2017
 ms.topic: article
 ms.assetid: 40d534f2-89b3-4b09-9c2c-3494bf9991c9
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: testing/integration-testing
-ms.openlocfilehash: 02018299c9bd1d194c2c70c14f518786e803d572
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: fab1fb0e64debd8488713b3518cb3bc90182616b
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="integration-testing-in-aspnet-core"></a>ASP.NET Core에서 통합 테스트
 
@@ -64,6 +64,23 @@ ASP.NET Core 통합 테스트 프로젝트에 추가할 수 있으며, 호스팅
 ![테스트 탐색기](integration-testing/_static/test-explorer.png)
 
 단위 테스트에 대해 자세히 알아볼 수 있습니다는 [단위 테스트](https://docs.microsoft.com/dotnet/articles/core/testing/unit-testing-with-dotnet-test) 문서.
+
+
+### <a name="integration-testing-mvcrazor"></a>통합 Mvc Razor/테스트
+
+Razor 뷰를 포함 하는 테스트 프로젝트를 사용 하려면 `<PreserveCompilationContext>` 로 설정에서 true는 *.csproj* 파일:
+
+
+```xml
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+```
+
+이 요소가 없습니다. 프로젝트에는 다음과 유사한 오류가 생성 됩니다.
+```
+Microsoft.AspNetCore.Mvc.Razor.Compilation.CompilationFailedException: 'One or more compilation failures occurred:
+ooebhccx.1bd(4,62): error CS0012: The type 'Attribute' is defined in an assembly that is not referenced. You must add a reference to assembly 'netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51'.
+```
+
 
 ## <a name="refactoring-to-use-middleware"></a>미들웨어를 사용 하도록 리팩터링
 

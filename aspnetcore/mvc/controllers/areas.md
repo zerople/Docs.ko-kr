@@ -11,11 +11,11 @@ ms.assetid: 5e16d5e8-5696-4cb2-8ec7-d36be305c922
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/areas
-ms.openlocfilehash: 0f388ba090ada11a0ac7937606cbcd5a89d6263e
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 3096d6404ff9c7e34eefcfb1990e7bf1ccab27ba
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="areas"></a>영역
 
@@ -105,8 +105,6 @@ services.Configure<RazorViewEngineOptions>(options =>
 
 폴더 계층 구조를 정의 하 고 나면 영역 연결 된 각 컨트롤러에 MVC를 지시 해야 합니다. 그렇게 하려면 사용 하 여 컨트롤러 이름을 데코레이팅하여는 `[Area]` 특성입니다.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [4]}} -->
-
 ```csharp
 ...
    namespace MyStore.Areas.Products.Controllers
@@ -130,8 +128,6 @@ services.Configure<RazorViewEngineOptions>(options =>
    ```
 
 새로 만든된 사용자 영역을 사용 하는 경로 정의를 설정 합니다. [컨트롤러 작업에 대 한 라우팅을](routing.md) 문서 특성 경로와 규칙에 따른 경로 사용 하는 등의 route 정의 만드는 방법에 대 한 정보를 확인할 이동 합니다. 이 예제에서는 규칙에 따른 경로 사용 합니다. 이 위해 열고는 *Startup.cs* 파일을 추가 하 여 수정는 `areaRoute` 라는 아래 경로 정의 합니다.
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [4, 5, 6]}} -->
 
 ```csharp
 ...

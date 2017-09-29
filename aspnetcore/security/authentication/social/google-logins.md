@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/google-logins
-ms.openlocfilehash: 7e37a8af4ae5a957483fa5f4a89ea4e8999a3d1d
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: 8723a74250ff1b0a63139057bfc17fdd31dd169e
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="configuring-google-authentication-in-aspnet-core"></a>ASP.NET Core에서 Google 인증 구성
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 09/19/2017
 
 ## <a name="create-the-app-in-google-api-console"></a>Google API 콘솔에서 응용 프로그램 만들기
 
-* 로 이동 [https://console.developers.google.com/projectselector/apis/library](https://console.developers.google.com/projectselector/apis/library) 에 로그인 합니다. Google 계정 없는 경우 사용 하 여 **더 많은 옵션** > **[계정 만들기](https://accounts.google.com/SignUpWithoutGmail?service=cloudconsole&continue=https%3A%2F%2Fconsole.developers.google.com%2Fprojectselector%2Fapis%2Flibrary&ltmpl=api) ** 새로 만들려면 링크:
+* 로 이동 [https://console.developers.google.com/projectselector/apis/library](https://console.developers.google.com/projectselector/apis/library) 에 로그인 합니다. Google 계정 없는 경우 사용 하 여 **더 많은 옵션** > **[계정 만들기](https://accounts.google.com/SignUpWithoutGmail?service=cloudconsole&continue=https%3A%2F%2Fconsole.developers.google.com%2Fprojectselector%2Fapis%2Flibrary&ltmpl=api)**  새로 만들려면 링크:
 
 ![Google API 콘솔](index/_static/GoogleConsoleLogin.png)
 
@@ -101,6 +101,10 @@ Google와 같은 중요 한 설정이 연결 `Client ID` 및 `Client Secret` 사
 Google 서비스에 추가 `ConfigureServices` 메서드에서 *Startup.cs* 파일:
 
 ```csharp
+services.AddIdentity<ApplicationUser, IdentityRole>()
+        .AddEntityFrameworkStores<ApplicationDbContext>()
+        .AddDefaultTokenProviders();
+
 services.AddAuthentication().AddGoogle(googleOptions =>
 {
     googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
@@ -108,7 +112,7 @@ services.AddAuthentication().AddGoogle(googleOptions =>
 });
 ```
 
-`AddAuthentication` 만 메서드 한 번 추가 하는 경우 여러 인증 공급자입니다. 에 대 한 후속 호출 이전에 구성 된 모든 재정의의 가능성이 있는 [AuthenticationOptions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.authenticationoptions) 속성입니다.
+[!INCLUDE[default settings configuration](includes/default-settings.md)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 

@@ -11,11 +11,11 @@ ms.assetid: db9a86ab-46c2-40e0-baed-86e38c16af1f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/middleware
-ms.openlocfilehash: cb39d74b9293b3ab341beba08d2f0af90261ca5f
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 881cabdbb7814b36d97a977b30389506b99d16b9
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="aspnet-core-middleware-fundamentals"></a>ASP.NET Core 미들웨어 기본 사항
 
@@ -44,7 +44,7 @@ ASP.NET Core 요청 파이프라인의 요청 대리자, 즉,이 다이어그램
 
 ![요청 처리 패턴 도착, 세 가지 middlewares 및 응용 프로그램이 응답을 통해 처리 요청을 표시 합니다. 각 미들웨어 해당 논리를 실행 하 고 핸드 오프 next () 문에 다음 미들웨어를 요청 합니다. 세 번째 미들웨어가 요청을 처리 한 후는 처리를 위한 추가 각 next () 문 다음에 클라이언트에 대 한 응답으로 응용 프로그램에서 없어지기 전에 이전 두 middlewares를 통해 다시 오른손 합니다.](middleware/_static/request-delegate-pipeline.png)
 
-각 대리자 이전 및 다음 대리자 이후 작업을 수행할 수 있습니다. 또한 대리자 요청 파이프라인을 단락 (short-circuiting) 호출 하는 다음 대리자에는 요청을 통과 하지 결정할 수 있습니다. 방지할 수 있는 불필요 한 작업을 허용 하기 때문에 단락 (short-circuiting)은 바람직한 경우가 많습니다. 예를 들어 정적 파일 미들웨어 정적 파일에 대 한 요청을 반환 하 고 나머지 파이프라인 단락 (short-circuit) 수 있습니다. 예외 처리 대리자 파이프라인의 이후 단계에서 발생 하는 예외를 catch 할 수 있으므로 파이프라인, 초기에 호출 해야 합니다.
+각 대리자 이전 및 다음 대리자 이후 작업을 수행할 수 있습니다. 또한 대리자 요청 파이프라인을 단락 (short-circuiting) 호출 하는 다음 대리자에는 요청을 통과 하지 결정할 수 있습니다. 불필요 한 작업을 방지 하기 때문에 단락 (short-circuiting)은 바람직한 경우가 많습니다. 예를 들어 정적 파일 미들웨어 정적 파일에 대 한 요청을 반환 하 고 나머지 파이프라인 단락 (short-circuit) 수 있습니다. 예외 처리 대리자 파이프라인의 이후 단계에서 발생 하는 예외를 catch 할 수 있으므로 파이프라인, 초기에 호출 해야 합니다.
 
 가장 간단한 가능한 ASP.NET Core 응용 프로그램은 모든 요청을 처리 하는 단일 요청 대리자를 설정 합니다. 이 경우 실제 요청 파이프라인에 포함 되지 않습니다. 대신, 단일 익명 함수는 모든 HTTP 요청에 대 한 응답으로 호출 됩니다.
 

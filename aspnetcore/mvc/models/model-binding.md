@@ -11,11 +11,11 @@ ms.assetid: b355a48e-a15c-4d58-b69c-899763613a97
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/model-binding
-ms.openlocfilehash: 597d4058a410e0b5991b1d5a74c9fc7bfe8171b8
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 92085829d2a37a2aa6080aeb34a5e14be95e02d8
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="model-binding"></a>모델 바인딩
 
@@ -32,8 +32,6 @@ MVC는 HTTP 요청을 받으면 컨트롤러의 특정 동작 메서드에 라�
 `http://contoso.com/movies/edit/2`
 
 경로 템플릿을 다음과 같은, 이후 `{controller=Home}/{action=Index}/{id?}`, `movies/edit/2` 라우팅하는 `Movies` 컨트롤러 및 해당 `Edit` 작업 메서드. 또한 호출 하는 선택적 매개 변수 허용 `id`합니다. 동작 메서드에 대 한 코드는 코드는 다음과 같아야 합니다.
-
-<!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "csharp"} -->
 
 ```csharp
 public IActionResult Edit(int? id)
@@ -71,7 +69,7 @@ The link works but generates an error when building with DocFX
 
 * `IFormFile``IEnumerable<IFormFile>`: HTTP 요청의 일부인 하나 이상의 업로드 된 파일입니다.
 
-* `CancelationToken`: 비동기 컨트롤러의 작업을 취소 하는 데 사용 합니다.
+* `CancellationToken`: 비동기 컨트롤러의 작업을 취소 하는 데 사용 합니다.
 
 이러한 형식은 클래스 형식에 액션 매개 변수 또는 속성에 바인딩할 수 있습니다.
 
@@ -107,15 +105,13 @@ MVC에는 다른 소스에 해당 기본 모델 바인딩 동작을 직접 사�
 
 ASP.NET 선택에 따라 입력된 포맷터는 [Content-type](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html) 헤더 및 매개 변수의 형식 있으면 다음을 지정 하지 않으면 적용 되는 특성입니다. XML을 사용 하 시겠습니까 아니면 다른 형식 구성 해야에서 하는 경우는 *Startup.cs* 파일인 없지만 년 5 월 첫 번째가에 대 한 참조를 얻으려고 `Microsoft.AspNetCore.Mvc.Formatters.Xml` NuGet을 사용 하 여 합니다. 시작 코드는 코드는 다음과 같아야 합니다.
 
-<!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "csharp"} -->
-
 ```csharp
 public void ConfigureServices(IServiceCollection services)
-   {
-       services.AddMvc()
-          .AddXmlSerializerFormatters();
+{
+    services.AddMvc()
+        .AddXmlSerializerFormatters();
    }
-   ```
+```
 
 코드에서 *Startup.cs* 파일에 포함 되어는 `ConfigureServices` 메서드는 `services` 인수 ASP.NET 응용 프로그램에 대 한 서비스를 만드는 데 사용할 수 있습니다. 이 샘플에서는 XML 포맷터 MVC는이 응용 프로그램에 제공 하는 서비스로 추가 됩니다. `options` 에 전달 된 인수는 `AddMvc` 메서드 추가 하 고 응용 프로그램 시작 시 MVC에서 필터, 포맷터 및 기타 시스템 옵션을 관리할 수 있습니다. 다음 적용 하는 `Consumes` 특성을 컨트롤러 클래스 또는 작업 메서드를 원하는 형식으로 작동 합니다.
 

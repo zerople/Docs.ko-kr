@@ -11,11 +11,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/tag-helpers/intro
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 10471210075dc8a5366b7d5170d6594c2e66ce94
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 06644b8359fb5ccc2e61a17a4c6e20e354d5ceef
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="introduction-to-tag-helpers-in-aspnet-core"></a>ASP.NET Core에서 태그 도우미 소개 
 
@@ -67,9 +67,7 @@ ms.lasthandoff: 09/22/2017
 
 프로젝트에 포함 된 경우는 `EmailTagHelper` 기본 네임 스페이스를 가진 (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`), 태그 도우미의 정규화 된 이름 (FQN)를 제공할 수 있습니다.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [3]}} -->
-
-```html
+```cshtml
 @using AuthoringTagHelpers
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @addTagHelper AuthoringTagHelpers.TagHelpers.EmailTagHelper, AuthoringTagHelpers

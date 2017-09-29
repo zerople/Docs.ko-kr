@@ -1,7 +1,7 @@
 ---
 title: "ASP.NET Core MVC 개요"
 author: ardalis
-description: 
+description: "ASP.NET Core MVC 웹 응용 프로그램을 빌드하기 위한 풍부한 프레임 워크는 방법과 모델-뷰-컨트롤러를 사용 하 여 Api 디자인 패턴에 알아봅니다."
 keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
@@ -11,11 +11,11 @@ ms.assetid: 89af38d1-52e0-4db7-b791-dbce909b0714
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/overview
-ms.openlocfilehash: 67394b066c18a149a97b957d6478ba8301ea8147
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 2492b6aa4602dbbf3b9cd3dca00d40690c640cab
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>ASP.NET Core MVC 개요
 
@@ -92,8 +92,6 @@ routes.MapRoute(name: "Default", template: "{controller=Home}/{action=Index}/{id
 
 *라우팅 특성* 컨트롤러와 응용 프로그램의 경로 정의 하는 특성을 사용 하 여 동작 데코레이팅하여 라우팅 정보를 지정할 수 있습니다. 즉, route 정의 컨트롤러 및 작업 자신이 연결 옆에 배치 됩니다.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [1, 4]}} -->
-
 ```csharp
 [Route("api/[controller]")]
 public class ProductsController : Controller
@@ -118,8 +116,6 @@ public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = 
 
 ASP.NET Core MVC 지원 [유효성 검사](models/validation.md) 데이터 주석 유효성 검사 특성으로 모델 개체를 데코레이팅하여 합니다. 유효성 검사 특성 값은 서버에 게시 전에 클라이언트 쪽에서 확인으로 컨트롤러 작업 전에 서버에 호출 됩니다.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [4, 5, 8, 9]}} -->
-
 ```csharp
 using System.ComponentModel.DataAnnotations;
 public class LoginViewModel
@@ -138,8 +134,6 @@ public class LoginViewModel
 ```
 
 컨트롤러 동작:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [3]}} -->
 
 ```csharp
 public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
@@ -161,17 +155,15 @@ ASP.NET Core에서 기본적으로 지원 [종속성 주입 (DI)](../fundamental
 
 앱 ´ ï ´ [종속성 주입 보이는 파일](views/dependency-injection.md)를 사용 하 여는 `@inject` 지시문:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [1]}} -->
-
-```html
+```cshtml
 @inject SomeService ServiceName
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>@ServiceName.GetTitle</title>
+    <title>@ServiceName.GetTitle</title>
 </head>
 <body>
-  <h1>@ServiceName.GetTitle</h1>
+    <h1>@ServiceName.GetTitle</h1>
 </body>
 </html>
 ```
@@ -185,7 +177,6 @@ ASP.NET Core에서 기본적으로 지원 [종속성 주입 (DI)](../fundamental
 [Authorize]
    public class AccountController : Controller
    {
-
 ```
 
 ### <a name="areas"></a>영역
@@ -224,7 +215,7 @@ Mvc에서 razor 뷰 수 강력한 형식 모델에 따라 합니다. 컨트롤�
 
 다음 보기 형식의 모델을 정의 하는 예를 들어 `IEnumerable<Product>`:
 
-```html
+```cshtml
 @model IEnumerable<Product>
 <ul>
     @foreach (Product p in Model)
@@ -240,9 +231,7 @@ Mvc에서 razor 뷰 수 강력한 형식 모델에 따라 합니다. 컨트롤�
 
 -양식, 링크, 로드 자산 및 점점-공용 GitHub 리포지토리에 및 NuGet로 훨씬 더 사용할 수 있는 패키지 만들기와 같은 일반적인 작업에 대 한 기본 제공 태그 도우미 여러 가지가 있습니다. 태그 도우미 C#에서 작성 하 고 요소 이름, 특성 이름 또는 부모 태그를 기반으로 하는 HTML 요소를 대상입니다. 예를 들어 기본적으로 제공 된 LinkTagHelper에 대 한 링크를 만드는 데 사용할 수는 `Login` 의 작업은 `AccountsController`:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [3]}} -->
-
-```html
+```cshtml
 <p>
     Thank you for confirming your email.
     Please <a asp-controller="Account" asp-action="Login">Click here to Log in</a>.
@@ -251,9 +240,7 @@ Mvc에서 razor 뷰 수 강력한 형식 모델에 따라 합니다. 컨트롤�
 
 `EnvironmentTagHelper` 는 개발, 스테이징 또는 프로덕션 같은 런타임 환경에 따라 (예: 원시 또는 최소화 된) 보기에서 다른 스크립트를 포함 하는 데 사용할 수 있습니다.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [1, 3, 4, 9]}} -->
-
-```html
+```cshtml
 <environment names="Development">
     <script src="~/lib/jquery/dist/jquery.js"></script>
 </environment>

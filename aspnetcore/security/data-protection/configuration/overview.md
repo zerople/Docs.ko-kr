@@ -2,7 +2,7 @@
 title: "데이터 보호를 구성합니다."
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,11 +11,11 @@ ms.assetid: 0e4881a3-a94d-4e35-9c1c-f025d65dcff0
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 39fab796c24456d61a6a103c4a3f7a8722b4718c
-ms.sourcegitcommit: bd05f7ea8f87ad076ef6e8b704698ebcba5ca80c
+ms.openlocfilehash: 9361dcec89a0f35067181523cc56637d629614ff
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="configuring-data-protection"></a>데이터 보호를 구성합니다.
 
@@ -67,8 +67,6 @@ public void ConfigureServices(IServiceCollection services)
 
 <a name=data-protection-code-sample-application-name></a>
 
-<!-- literal_block {"ids": ["data-protection-code-sample-application-name"], "linenos": false, "names": ["data-protection-code-sample-application-name"], "xml:space": "preserve", "language": "csharp"} -->
-
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
@@ -113,7 +111,7 @@ public void ConfigureServices(IServiceCollection services)
 
 데이터 보호 스택의 새로 생성 된 키로 사용 되는 기본 알고리즘을 변경 하는 허용 합니다. 이 작업을 수행 하는 가장 간단한 방법은에서 같이 구성 콜백에서 UseCryptographicAlgorithms를 호출 하는 것은 아래 예제입니다.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 services.AddDataProtection()
@@ -150,7 +148,7 @@ UseCryptographicAlgorithms 호출을 사용 하면 미리 정의 된 기본 제�
 
 ### <a name="specifying-custom-managed-algorithms"></a>관리 되는 사용자 지정 알고리즘을 지정
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 관리 되는 사용자 지정 알고리즘을 지정 하려면 구현 형식을 가리키는 ManagedAuthenticatedEncryptorConfiguration 인스턴스를 만듭니다.
 
@@ -199,7 +197,7 @@ serviceCollection.AddDataProtection()
 
 ### <a name="specifying-custom-windows-cng-algorithms"></a>사용자 지정 Windows CNG 알고리즘 지정
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 CBC 모드 암호화 + HMAC 유효성 검사를 사용 하 여 사용자 지정 Windows CNG 알고리즘을 지정 하려면 알고리즘 정보를 포함 하는 CngCbcAuthenticatedEncryptorConfiguration 인스턴스를 만듭니다.
 
@@ -246,7 +244,7 @@ services.AddDataProtection()
 > [!NOTE]
 > 블록 대칭 암호화 알고리즘 ≥ 128 비트의 키 길이 ≥ 64 비트의 블록 크기 있고 PKCS #7 안쪽 여백 사용 하 여 CBC 모드 암호화를 지원 해야 합니다. 해시 알고리즘의 다이제스트 크기 있어야 합니다. > = 128 비트 및 BCRYPT_ALG_HANDLE_HMAC_FLAG 플래그로 열기를 지원 해야 합니다. \*공급자 속성은 지정된 된 알고리즘에 대 한 기본 공급자를 사용 하려면 null로 설정할 수 있습니다. 참조는 [BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx) 자세한 정보에 대 한 설명서입니다.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 Galois/카운터 모드 암호화 + 유효성 검사를 사용 하 여 사용자 지정 Windows CNG 알고리즘을 지정 하려면 알고리즘 정보를 포함 하는 CngGcmAuthenticatedEncryptorConfiguration 인스턴스를 만듭니다.
 
@@ -292,4 +290,4 @@ services.AddDataProtection()
 ### <a name="see-also"></a>참고 항목
 
 * [비 DI 인식 시나리오](non-di-scenarios.md)
-* [컴퓨터 단위 정책](machine-wide-policy.md)
+* [컴퓨터 수준 정책](machine-wide-policy.md)
