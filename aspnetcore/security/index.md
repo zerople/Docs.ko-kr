@@ -11,11 +11,11 @@ ms.assetid: a8fb7eb7-e0e5-4394-84f3-1f1dbe012345
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/index
-ms.openlocfilehash: e8045b8804d1e7915cd81d697d43a173e33a7119
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: f173d03f55a1ce52222a75c023f9e8a20d5c60dc
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="security"></a>보안
 
@@ -79,7 +79,6 @@ ms.lasthandoff: 09/12/2017
 *   [개발 중 안전한 앱 비밀 저장소](app-secrets.md)
 *   [Azure Key Vault 구성 공급자](key-vault-configuration.md)
 *   [SSL 적용](enforcing-ssl.md)
-*   [개발용 HTTPS 설정](https.md)
 *   [요청 위조 방지](anti-request-forgery.md)
 *   [오픈 리디렉션(Open Redirect) 공격 방지](preventing-open-redirects.md)
 *   [교차 사이트 스크립팅 방지](cross-site-scripting.md)
