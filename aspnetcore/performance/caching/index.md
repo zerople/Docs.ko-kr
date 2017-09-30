@@ -2,7 +2,7 @@
 title: "캐싱"
 author: ardalis
 description: "성능 향상을 위해 캐싱을 사용하는 방법을 보여줍니다."
-keywords: "ASP.NET Core, 캐싱, 성능"
+keywords: "ASP.NET Core,캐싱,성능"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: 1e73cf62-8862-4341-8816-83be1a3edc96
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/caching/index
-ms.openlocfilehash: 67c92ce4daf3db64909a12062c514b6c64c181c7
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 35c57c9c684308d9e4ee7c42216f5ef65b72885b
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/22/2017
 ---
-# <a name="caching"></a><span data-ttu-id="13149-104">캐싱</span><span class="sxs-lookup"><span data-stu-id="13149-104">Caching</span></span>
+# <a name="caching"></a>캐싱
 
-* [<span data-ttu-id="13149-105">메모리 내 캐싱</span><span class="sxs-lookup"><span data-stu-id="13149-105">In Memory Caching</span></span>](memory.md)
-* [<span data-ttu-id="13149-106">분산 캐시 사용</span><span class="sxs-lookup"><span data-stu-id="13149-106">Working with a Distributed Cache</span></span>](distributed.md)
-* [<span data-ttu-id="13149-107">응답 캐싱</span><span class="sxs-lookup"><span data-stu-id="13149-107">Response Caching</span></span>](response.md)
-* [<span data-ttu-id="13149-108">응답 캐싱 미들웨어</span><span class="sxs-lookup"><span data-stu-id="13149-108">Response caching middleware</span></span>](middleware.md)
+* [메모리 내 캐싱](memory.md)
+* [분산 캐시 사용](distributed.md)
+* [응답 캐싱](response.md)
+* [응답 캐싱 미들웨어](middleware.md)
