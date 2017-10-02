@@ -1,233 +1,341 @@
 ---
-title: "뷰 개요"
+title: "ASP.NET Core MVC에서 뷰"
 author: ardalis
-description: 
-keywords: ASP.NET Core,
+description: "보기에서 응용 프로그램의 데이터 표시 및 ASP.NET Core MVC에서 사용자 상호 작용을 처리 하는 방법을 알아봅니다."
+keywords: "ASP.NET Core MVC, razor, viewmodel, viewdata, viewbag을 보려면"
 ms.author: riande
 manager: wpickett
-ms.date: 10/14/2016
+ms.date: 09/26/2017
 ms.topic: article
 ms.assetid: 668c320d-c050-45e3-8161-2f460dc93b2f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/overview
-ms.openlocfilehash: 3b33c13f2385d3b07ba9b6f0bc0fd560abc3735c
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: f40feb0466854080cc749a83c546ce857d850902
+ms.sourcegitcommit: e4a1df2a5a85f299322548809e547a79b380bb92
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/29/2017
 ---
-# <a name="rendering-html-with-views-in-aspnet-core-mvc"></a><span data-ttu-id="02660-103">ASP.NET Core MVC에서 뷰가 포함 된 HTML 렌더링</span><span class="sxs-lookup"><span data-stu-id="02660-103">Rendering HTML with views in ASP.NET Core MVC</span></span>
+# <a name="views-in-aspnet-core-mvc"></a><span data-ttu-id="76c90-104">ASP.NET Core MVC에서 뷰</span><span class="sxs-lookup"><span data-stu-id="76c90-104">Views in ASP.NET Core MVC</span></span>
 
-<span data-ttu-id="02660-104">으로 [Steve Smith](https://ardalis.com/)</span><span class="sxs-lookup"><span data-stu-id="02660-104">By [Steve Smith](https://ardalis.com/)</span></span>
+<span data-ttu-id="76c90-105">여 [Steve Smith](https://ardalis.com/) 및 [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="76c90-105">By [Steve Smith](https://ardalis.com/) and [Luke Latham](https://github.com/guardrex)</span></span>
 
-<span data-ttu-id="02660-105">ASP.NET Core MVC 컨트롤러 사용 하 여 서식이 지정 된 결과 반환할 수 *뷰*합니다.</span><span class="sxs-lookup"><span data-stu-id="02660-105">ASP.NET Core MVC controllers can return formatted results using *views*.</span></span>
+<span data-ttu-id="76c90-106">에 **M**odel-**V**뷰-**C**ontroller (MVC) 패턴의 *보기* 응용 프로그램의 데이터 프레젠테이션 및 사용자 상호 작용을 처리 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-106">In the **M**odel-**V**iew-**C**ontroller (MVC) pattern, the *view* handles the app's data presentation and user interaction.</span></span> <span data-ttu-id="76c90-107">뷰의 HTML 서식 파일은 포함 된 [Razor 태그](xref:mvc/views/razor)합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-107">A view is an HTML template with embedded [Razor markup](xref:mvc/views/razor).</span></span> <span data-ttu-id="76c90-108">Razor 태그는 HTML 태그를 클라이언트에 전송 되는 웹 페이지를 생성 하기 위해 상호 작용 하는 코드입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-108">Razor markup is code that interacts with HTML markup to produce a webpage that's sent to the client.</span></span>
 
-## <a name="what-are-views"></a><span data-ttu-id="02660-106">뷰는 무엇입니까?</span><span class="sxs-lookup"><span data-stu-id="02660-106">What are Views?</span></span>
+<span data-ttu-id="76c90-109">ASP.NET Core MVC 뷰는 *.cshtml* 사용 하는 파일의 [C# 프로그래밍 언어](/dotnet/csharp/) Razor 태그에 있습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-109">In ASP.NET Core MVC, views are *.cshtml* files that use the [C# programming language](/dotnet/csharp/) in Razor markup.</span></span> <span data-ttu-id="76c90-110">파일 보기 각 응용 프로그램의 이름으로 그룹화 됩니다는 일반적으로 [컨트롤러](xref:mvc/controllers/actions)합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-110">Usually, view files are grouped into folders named for each of the app's [controllers](xref:mvc/controllers/actions).</span></span> <span data-ttu-id="76c90-111">폴더에 저장 됩니다는에 *뷰* 응용 프로그램의 루트 폴더:</span><span class="sxs-lookup"><span data-stu-id="76c90-111">The folders are stored in a in a *Views* folder at the root of the app:</span></span>
 
-<span data-ttu-id="02660-107">모델-뷰-컨트롤러 (MVC) 패턴에는 *보기* 앱과 사용자의 상호 작용의 프레젠테이션 세부 정보를 캡슐화 합니다.</span><span class="sxs-lookup"><span data-stu-id="02660-107">In the Model-View-Controller (MVC) pattern, the *view* encapsulates the presentation details of the user's interaction with the app.</span></span> <span data-ttu-id="02660-108">뷰는 클라이언트로 전송할 콘텐츠를 생성 하는 포함 된 코드를 사용 하 여 HTML 템플릿을입니다.</span><span class="sxs-lookup"><span data-stu-id="02660-108">Views are HTML templates with embedded code that generate content to send to the client.</span></span> <span data-ttu-id="02660-109">사용 하 여 뷰 [Razor 구문을](razor.md), 코드가 최소한의 코드 또는 공식 절차와 HTML 상호 작용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="02660-109">Views use [Razor syntax](razor.md), which allows code to interact with HTML with minimal code or ceremony.</span></span>
+![Visual Studio의 솔루션 탐색기에서 뷰 폴더를 열고 About.cshtml, Contact.cshtml, 및 Index.cshtml 파일 표시에 대해 홈 폴더와](overview/_static/views_solution_explorer.png)
 
-<span data-ttu-id="02660-110">ASP.NET Core MVC 뷰는 *.cshtml* 에서 기본적으로 저장 된 파일을 *뷰* 응용 프로그램 내에서 폴더입니다.</span><span class="sxs-lookup"><span data-stu-id="02660-110">ASP.NET Core MVC views are *.cshtml* files stored by default in a *Views* folder within the application.</span></span> <span data-ttu-id="02660-111">일반적으로 각 컨트롤러에는 특정 컨트롤러 작업에 대 한 보기 된 고유한 폴더에 포함 됩니다.</span><span class="sxs-lookup"><span data-stu-id="02660-111">Typically, each controller will have its own folder, in which are views for specific controller actions.</span></span>
+<span data-ttu-id="76c90-113">*홈* 컨트롤러로 표시 됩니다는 *홈* 폴더는 *뷰* 폴더입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-113">The *Home* controller is represented by a *Home* folder inside the *Views* folder.</span></span> <span data-ttu-id="76c90-114">*홈* 폴더에 대 한 뷰는 *에 대 한*, *연락처*, 및 *인덱스* (홈페이지) 웹 페이지입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-114">The *Home* folder contains the views for the *About*, *Contact*, and *Index* (homepage) webpages.</span></span> <span data-ttu-id="76c90-115">사용자는 이러한 세 가지 웹 페이지에서 컨트롤러 작업 중 하나를 요청할 때는 *홈* 빌드하고 웹 페이지를 사용자에 게 반환 하는 데는 세 개의 뷰로 있는 컨트롤러 결정 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-115">When a user requests one of these three webpages, controller actions in the *Home* controller determine which of the three views is used to build and return a webpage to the user.</span></span>
 
-![솔루션 탐색기에서 views 폴더](overview/_static/views_solution_explorer.png)
+<span data-ttu-id="76c90-116">사용 하 여 [레이아웃](xref:mvc/views/layout) 코드 반복을 줄이고 제공 일관 된 웹 페이지 섹션도 록 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-116">Use [layouts](xref:mvc/views/layout) to provide consistent webpage sections and reduce code repetition.</span></span> <span data-ttu-id="76c90-117">레이아웃은 머리글, 탐색 및 메뉴 요소 및 바닥글에 종종 포함 됩니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-117">Layouts often contain the header, navigation and menu elements, and the footer.</span></span> <span data-ttu-id="76c90-118">머리글 및 바닥글에는 일반적으로 다양 한 메타 데이터 요소와 스크립트 및 스타일 자산에 대 한 링크에 대 한 상용구 태그를 포함 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-118">The header and footer usually contain boilerplate markup for many metadata elements and links to script and style assets.</span></span> <span data-ttu-id="76c90-119">레이아웃 보기에서이 상용구 태그를 방지 하는 데 도움이 됩니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-119">Layouts help you avoid this boilerplate markup in your views.</span></span>
 
-<span data-ttu-id="02660-113">특정 작업 보기 외에도 [부분 뷰](partial.md), [레이아웃 및 기타 특수 보기 파일](layout.md) 는 반복을 절감 하 고 응용 프로그램의 보기 내에서 다시 사용할 수 있도록 허용 하는 데 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="02660-113">In addition to action-specific views, [partial views](partial.md), [layouts, and other special view files](layout.md) can be used to help reduce repetition and allow for reuse within the app's views.</span></span>
+<span data-ttu-id="76c90-120">[부분 뷰](xref:mvc/views/partial) 재사용 가능한 부분 뷰를 관리 하 여 코드 중복을 줄입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-120">[Partial views](xref:mvc/views/partial) reduce code duplication by managing reusable parts of views.</span></span> <span data-ttu-id="76c90-121">예를 들어, 부분 뷰 여러 뷰에 표시 되는 블로그 웹 사이트에는 만든이 약력에 유용 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-121">For example, a partial view is useful for an author biography on a blog website that appears in several views.</span></span> <span data-ttu-id="76c90-122">저자 약력 일반 보기 콘텐츠 이며 웹 페이지에 대 한 콘텐츠를 생성 하기 위해 실행할 코드가 필요 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-122">An author biography is ordinary view content and doesn't require code to execute in order to produce the content for the webpage.</span></span> <span data-ttu-id="76c90-123">저자 약력 콘텐츠는 부분 뷰를 사용 하 여이 콘텐츠 유형에 대 한 이상적인 이므로 단독으로 모델 바인딩에서 보기를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-123">Author biography content is available to the view by model binding alone, so using a partial view for this type of content is ideal.</span></span>
 
-## <a name="benefits-of-using-views"></a><span data-ttu-id="02660-114">뷰를 사용할 때의 이점</span><span class="sxs-lookup"><span data-stu-id="02660-114">Benefits of Using Views</span></span>
+<span data-ttu-id="76c90-124">[구성 요소 확인](xref:mvc/views/view-components) 를 부분적으로 유사한 뷰는 반복 되는 코드를 줄일 수 있습니다 이러한 트래픽은 매우 웹 페이지를 렌더링 하는 데 서버에서 실행 하는 코드를 필요로 하는 콘텐츠 보기에 적합 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-124">[View components](xref:mvc/views/view-components) are similar to partial views in that they allow you to reduce repetitive code, but they're appropriate for view content that requires code to run on the server in order to render the webpage.</span></span> <span data-ttu-id="76c90-125">뷰 구성 요소는 렌더링 된 콘텐츠에 쇼핑 카트 웹 사이트와 같은 데이터베이스 상호 작용 해야 하는 경우에 유용 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-125">View components are useful when the rendered content requires database interaction, such as for a website shopping cart.</span></span> <span data-ttu-id="76c90-126">뷰 구성 요소를 웹 페이지 출력을 생성 하기 위해 바인딩 모델링 제한 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-126">View components aren't limited to model binding in order to produce webpage output.</span></span>
 
-<span data-ttu-id="02660-115">뷰를 제공 [문제의 분리](http://deviq.com/separation-of-concerns/) 별도로 비즈니스 논리에서 사용자 인터페이스 수준 태그를 캡슐화 하는 MVC 응용 프로그램 내에서.</span><span class="sxs-lookup"><span data-stu-id="02660-115">Views provide [separation of concerns](http://deviq.com/separation-of-concerns/) within an MVC app, encapsulating user interface level markup separately from business logic.</span></span> <span data-ttu-id="02660-116">ASP.NET MVC 뷰 사용 [Razor 구문을](razor.md) HTML 태그 및 서버 쪽 논리 단계를 전환할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="02660-116">ASP.NET MVC views use [Razor syntax](razor.md) to make switching between HTML markup and server side logic painless.</span></span> <span data-ttu-id="02660-117">일반적으로 반복적인 측면의 응용 프로그램의 사용자 인터페이스를 사용 하 여 뷰 간에 쉽게 다시 사용할 수 [레이아웃 및 공유 지시문](layout.md) 또는 [부분 뷰](partial.md)합니다.</span><span class="sxs-lookup"><span data-stu-id="02660-117">Common, repetitive aspects of the app's user interface can easily be reused between views using [layout and shared directives](layout.md) or [partial views](partial.md).</span></span>
+## <a name="benefits-of-using-views"></a><span data-ttu-id="76c90-127">뷰를 사용할 때의 이점</span><span class="sxs-lookup"><span data-stu-id="76c90-127">Benefits of using views</span></span>
 
-## <a name="creating-a-view"></a><span data-ttu-id="02660-118">보기를 만드는 방법</span><span class="sxs-lookup"><span data-stu-id="02660-118">Creating a View</span></span>
+<span data-ttu-id="76c90-128">뷰를 설정 하는 데는 [ **S**eparation **o**f **C**oncerns (SoC) 디자인](http://deviq.com/separation-of-concerns/) 사용자 인터페이스 태그를 구분 하 여 MVC 응용 프로그램 내에서 응용 프로그램의 다른 부분입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-128">Views help to establish a [**S**eparation **o**f **C**oncerns (SoC) design](http://deviq.com/separation-of-concerns/) within an MVC app by separating the user interface markup from other parts of the app.</span></span> <span data-ttu-id="76c90-129">SoC 디자인에서는 여러 가지 이점을 제공 하는 응용 프로그램 모듈식, 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-129">Following SoC design makes your app modular, which provides several benefits:</span></span>
 
-<span data-ttu-id="02660-119">에 컨트롤러에만 적용 되는 뷰가 생성 됩니다는 *뷰 / [ControllerName]* 폴더입니다.</span><span class="sxs-lookup"><span data-stu-id="02660-119">Views that are specific to a controller are created in the *Views/[ControllerName]* folder.</span></span> <span data-ttu-id="02660-120">컨트롤러 간에 공유 되는 뷰에 배치 되는 */뷰/공유* 폴더입니다.</span><span class="sxs-lookup"><span data-stu-id="02660-120">Views that are shared among controllers are placed in the */Views/Shared* folder.</span></span> <span data-ttu-id="02660-121">연결 된 컨트롤러 작업을 동일 파일 보기 이름을 지정 하 고 추가 된 *.cshtml* 파일 확장명입니다.</span><span class="sxs-lookup"><span data-stu-id="02660-121">Name the view file the same as its associated controller action, and add the *.cshtml* file extension.</span></span> <span data-ttu-id="02660-122">에 대 한 보기를 만드는 예는 *에 대 한* 작업에는 *홈* 컨트롤러를 만들면 됩니다는 *About.cshtml* 파일에  * /뷰/홈*폴더입니다.</span><span class="sxs-lookup"><span data-stu-id="02660-122">For example, to create a view for the *About* action on the *Home* controller, you would create the *About.cshtml* file in the */Views/Home* folder.</span></span>
+* <span data-ttu-id="76c90-130">앱이 하므로 더 잘 구성 된 유지 관리 하기가 더 쉽습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-130">The app is easier to maintain because it's better organized.</span></span> <span data-ttu-id="76c90-131">뷰는 일반적으로 응용 프로그램 기능에 의해 그룹화 됩니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-131">Views are generally grouped by app feature.</span></span> <span data-ttu-id="76c90-132">이렇게 하면 보다 쉽게 기능에 대해 작업할 때 관련 된 뷰를 찾을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-132">This makes it easier to find related views when working on a feature.</span></span>
+* <span data-ttu-id="76c90-133">앱의 일부 밀접 하 게 결합 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-133">The parts of the app aren't tightly coupled.</span></span> <span data-ttu-id="76c90-134">작성 하 고 비즈니스 논리와 데이터 액세스 구성 요소가 별도로 응용 프로그램의 뷰를 업데이트할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-134">You can build and update the app's views separately from the business logic and data access components.</span></span> <span data-ttu-id="76c90-135">반드시 응용 프로그램의 다른 부분을 업데이트 하지 않고 응용 프로그램의 뷰를 수정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-135">You can modify the views of the app without necessarily having to update other parts of the app.</span></span>
+* <span data-ttu-id="76c90-136">응용 프로그램의 사용자 인터페이스 부분 뷰는 별도 단위 테스트 하는 것이 쉽습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-136">It's easier to test the user interface parts of the app because the views are separate units.</span></span>
+* <span data-ttu-id="76c90-137">더 나은 조직으로 인해 확률이 실수로 반복 부분은 사용자 인터페이스를 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-137">Due to better organization, it's less likely that you'll accidently repeat sections of the user interface.</span></span>
 
-<span data-ttu-id="02660-123">샘플 보기 파일 (*About.cshtml*):</span><span class="sxs-lookup"><span data-stu-id="02660-123">A sample view file (*About.cshtml*):</span></span>
+## <a name="creating-a-view"></a><span data-ttu-id="76c90-138">보기를 만드는 방법</span><span class="sxs-lookup"><span data-stu-id="76c90-138">Creating a view</span></span>
 
-<span data-ttu-id="02660-124">[!code-html[Main](../../common/samples/WebApplication1/Views/Home/About.cshtml)]</span><span class="sxs-lookup"><span data-stu-id="02660-124">[!code-html[Main](../../common/samples/WebApplication1/Views/Home/About.cshtml)]</span></span>
+<span data-ttu-id="76c90-139">에 컨트롤러에만 적용 되는 뷰가 생성 됩니다는 *뷰 / [ControllerName]* 폴더입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-139">Views that are specific to a controller are created in the *Views/[ControllerName]* folder.</span></span> <span data-ttu-id="76c90-140">컨트롤러 간에 공유 되는 뷰에 배치 되는 *뷰/공유* 폴더입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-140">Views that are shared among controllers are placed in the *Views/Shared* folder.</span></span> <span data-ttu-id="76c90-141">뷰를 만들려면 새 파일을 추가 하 고 동일한 이름으로 연결 된 컨트롤러 작업으로 지정 된 *.cshtml* 파일 확장명입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-141">To create a view, add a new file and give it the same name as its associated controller action with the *.cshtml* file extension.</span></span> <span data-ttu-id="76c90-142">에 대 한 보기를 만들려면는 *에 대 한* 작업에는 *홈* 컨트롤러를 만듭니다는 *About.cshtml* 파일에 *뷰/홈* 폴더:</span><span class="sxs-lookup"><span data-stu-id="76c90-142">To create a view for the *About* action in the *Home* controller, create an *About.cshtml* file in the *Views/Home* folder:</span></span>
 
-<span data-ttu-id="02660-125">*Razor* 코드도 표시 되는 `@` 기호입니다.</span><span class="sxs-lookup"><span data-stu-id="02660-125">*Razor* code is denoted by the `@` symbol.</span></span> <span data-ttu-id="02660-126">C# 문에 Razor가 중괄호 코드 블록을 off로 설정 내에서 실행 됩니다 (`{` `}`), "정보" 할당과 같은 하는 `ViewData["Title"]` 위에 표시 된 요소입니다.</span><span class="sxs-lookup"><span data-stu-id="02660-126">C# statements are run within Razor code blocks set off by curly braces (`{` `}`), such as the assignment of "About" to the `ViewData["Title"]` element shown above.</span></span> <span data-ttu-id="02660-127">Razor를 단순히 값과 참조 하 여 HTML 내에서 값을 표시 하려면 사용할 수는 `@` 기호, 내에서 표시 된 것 처럼는 `<h2>` 및 `<h3>` 위의 요소입니다.</span><span class="sxs-lookup"><span data-stu-id="02660-127">Razor can be used to display values within HTML by simply referencing the value with the `@` symbol, as shown within the `<h2>` and `<h3>` elements above.</span></span>
+[!code-cshtml[Main](../../common/samples/WebApplication1/Views/Home/About.cshtml)]
 
-<span data-ttu-id="02660-128">이 뷰를 담당 하 고 출력의 부분에만 집중 합니다.</span><span class="sxs-lookup"><span data-stu-id="02660-128">This view focuses on just the portion of the output for which it is responsible.</span></span> <span data-ttu-id="02660-129">페이지의 레이아웃의 나머지와 다른 공용 보기의 요소를 다른 곳에서 지정 됩니다.</span><span class="sxs-lookup"><span data-stu-id="02660-129">The rest of the page's layout, and other common aspects of the view, are specified elsewhere.</span></span> <span data-ttu-id="02660-130">에 대 한 자세한 내용은 [레이아웃 및 공유 뷰 논리](layout.md)합니다.</span><span class="sxs-lookup"><span data-stu-id="02660-130">Learn more about [layout and shared view logic](layout.md).</span></span>
+<span data-ttu-id="76c90-143">*Razor* 로 시작 태그는 `@` 기호입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-143">*Razor* markup starts with the `@` symbol.</span></span> <span data-ttu-id="76c90-144">C#을 배치 하 여 실행된 C# 문 내에서 코드 [Razor 코드 블록](xref:mvc/views/razor#razor-code-blocks) 중괄호을 off로 설정 (`{ ... }`).</span><span class="sxs-lookup"><span data-stu-id="76c90-144">Run C# statements by placing C# code within [Razor code blocks](xref:mvc/views/razor#razor-code-blocks) set off by curly braces (`{ ... }`).</span></span> <span data-ttu-id="76c90-145">예를 들어 "정보"의 할당을 참조 `ViewData["Title"]` 위에 표시 된 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-145">For example, see the assignment of "About" to `ViewData["Title"]` shown above.</span></span> <span data-ttu-id="76c90-146">단순히 값과 참조 하 여 HTML 내에서 값을 표시할 수 있습니다는 `@` 기호입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-146">You can display values within HTML by simply referencing the value with the `@` symbol.</span></span> <span data-ttu-id="76c90-147">내용을 참조는 `<h2>` 및 `<h3>` 위의 요소입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-147">See the contents of the `<h2>` and `<h3>` elements above.</span></span>
 
-## <a name="how-do-controllers-specify-views"></a><span data-ttu-id="02660-131">보기를 지정 하는 컨트롤러 어떻게 해야 하나요?</span><span class="sxs-lookup"><span data-stu-id="02660-131">How do Controllers Specify Views?</span></span>
+<span data-ttu-id="76c90-148">위에 표시 된 콘텐츠 보기에는 사용자에 게 렌더링 되는 전체 웹 페이지의 일부일 뿐입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-148">The view content shown above is only part of the entire webpage that's rendered to the user.</span></span> <span data-ttu-id="76c90-149">페이지의 레이아웃의 나머지 및 다른 일반적인 보기의 요소에는 다른 보기 파일에서 지정 됩니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-149">The rest of the page's layout and other common aspects of the view are specified in other view files.</span></span> <span data-ttu-id="76c90-150">자세한 내용은 참조는 [레이아웃 항목](xref:mvc/views/layout)합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-150">To learn more, see the [Layout topic](xref:mvc/views/layout).</span></span>
 
-<span data-ttu-id="02660-132">뷰는으로 작업에서 일반적으로 반환 되는 `ViewResult`합니다.</span><span class="sxs-lookup"><span data-stu-id="02660-132">Views are typically returned from actions as a `ViewResult`.</span></span> <span data-ttu-id="02660-133">동작 메서드에서 만들고 반환할 수는 `ViewResult` 를 직접 하지만 일반적으로 컨트롤러에서 상속 하는 경우 `Controller`, 단순히 사용할는 `View` 도우미 메서드를이 예제로 보여 줍니다:</span><span class="sxs-lookup"><span data-stu-id="02660-133">Your action method can create and return a `ViewResult` directly, but more commonly if your controller inherits from `Controller`, you'll simply use the `View` helper method, as this example demonstrates:</span></span>
+## <a name="how-controllers-specify-views"></a><span data-ttu-id="76c90-151">컨트롤러 뷰를 지정 하는 방법</span><span class="sxs-lookup"><span data-stu-id="76c90-151">How controllers specify views</span></span>
 
-<span data-ttu-id="02660-134">*HomeController.cs*</span><span class="sxs-lookup"><span data-stu-id="02660-134">*HomeController.cs*</span></span>
+<span data-ttu-id="76c90-152">뷰는으로 작업에서 일반적으로 반환 되는 [ViewResult](/aspnet/core/api/microsoft.aspnetcore.mvc.viewresult)의 형식인 [ActionResult](/aspnet/core/api/microsoft.aspnetcore.mvc.actionresult)합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-152">Views are typically returned from actions as a [ViewResult](/aspnet/core/api/microsoft.aspnetcore.mvc.viewresult), which is a type of [ActionResult](/aspnet/core/api/microsoft.aspnetcore.mvc.actionresult).</span></span> <span data-ttu-id="76c90-153">동작 메서드에서 만들고 반환할 수는 `ViewResult` 를 직접 하지만 일반적으로 수행 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-153">Your action method can create and return a `ViewResult` directly, but that isn't commonly done.</span></span> <span data-ttu-id="76c90-154">대부분의 컨트롤러에서 상속 하므로 [컨트롤러](/aspnet/core/api/microsoft.aspnetcore.mvc.controller)를 그대로 사용 하면는 `View` 반환 하는 도우미 메서드는 `ViewResult`:</span><span class="sxs-lookup"><span data-stu-id="76c90-154">Since most controllers inherit from [Controller](/aspnet/core/api/microsoft.aspnetcore.mvc.controller), you simply use the `View` helper method to return the `ViewResult`:</span></span>
 
-<span data-ttu-id="02660-135">[!code-csharp[Main](../../common/samples/WebApplication1/Controllers/HomeController.cs?highlight=5&range=16-21)]</span><span class="sxs-lookup"><span data-stu-id="02660-135">[!code-csharp[Main](../../common/samples/WebApplication1/Controllers/HomeController.cs?highlight=5&range=16-21)]</span></span>
+<span data-ttu-id="76c90-155">*HomeController.cs*</span><span class="sxs-lookup"><span data-stu-id="76c90-155">*HomeController.cs*</span></span>
 
-<span data-ttu-id="02660-136">`View` 도우미 메서드에 응용 프로그램 개발자에 대 한 반환 보기 쉽게 수행할 수 있도록 몇 가지 오버 로드 합니다.</span><span class="sxs-lookup"><span data-stu-id="02660-136">The `View` helper method has several overloads to make returning views easier for app developers.</span></span> <span data-ttu-id="02660-137">뷰에 전달할를 모델 개체와 함께 뷰를 반환 하려면 선택적으로 지정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="02660-137">You can optionally specify a view to return, as well as a model object to pass to the view.</span></span>
+[!code-csharp[Main](../../common/samples/WebApplication1/Controllers/HomeController.cs?highlight=5&range=16-21)]
 
-<span data-ttu-id="02660-138">이 작업을 반환 하는 경우는 *About.cshtml* 위에 표시 된 뷰를 렌더링할:</span><span class="sxs-lookup"><span data-stu-id="02660-138">When this action returns, the *About.cshtml* view shown above is rendered:</span></span>
+<span data-ttu-id="76c90-156">이 작업을 반환 하는 경우는 *About.cshtml* 마지막 섹션에 표시 된 보기는 다음과 같은 웹 페이지로 렌더링 됩니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-156">When this action returns, the *About.cshtml* view shown in the last section is rendered as the following webpage:</span></span>
 
-![페이지 정보](overview/_static/about-page.png)
+![Edge 브라우저에서 렌더링 된 페이지에 대 한](overview/_static/about-page.png)
 
-### <a name="view-discovery"></a><span data-ttu-id="02660-140">검색 보기</span><span class="sxs-lookup"><span data-stu-id="02660-140">View Discovery</span></span>
+<span data-ttu-id="76c90-158">`View` 도우미 메서드에 몇 가지 오버 로드 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-158">The `View` helper method has several overloads.</span></span> <span data-ttu-id="76c90-159">필요에 따라 다음을 지정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-159">You can optionally specify:</span></span>
 
-<span data-ttu-id="02660-141">작업 뷰를 반환 하는 경우 프로세스를 호출할 *보기 검색* 이루어집니다.</span><span class="sxs-lookup"><span data-stu-id="02660-141">When an action returns a view, a process called *view discovery* takes place.</span></span> <span data-ttu-id="02660-142">이 프로세스는 뷰 파일을 사용할 것을 결정 합니다.</span><span class="sxs-lookup"><span data-stu-id="02660-142">This process determines which view file will be used.</span></span> <span data-ttu-id="02660-143">런타임은 컨트롤러 관련 보기 먼저 찾습니다 일치 하는 뷰 이름에 대 한 특정 보기 파일을 지정 하지 않으면는 *Shared* 폴더입니다.</span><span class="sxs-lookup"><span data-stu-id="02660-143">Unless a specific view file is specified, the runtime looks for a controller-specific view first, then looks for matching view name in the *Shared* folder.</span></span>
+* <span data-ttu-id="76c90-160">반환할 명시적 보기:</span><span class="sxs-lookup"><span data-stu-id="76c90-160">An explicit view to return:</span></span>
 
-<span data-ttu-id="02660-144">작업 반환 하는 경우는 `View` 메서드를 다음과 같이 `return View();`, 뷰 이름으로 작업 이름이 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="02660-144">When an action returns the `View` method, like so `return View();`, the action name is used as the view name.</span></span> <span data-ttu-id="02660-145">예를 들어이 값이 "Index" 라는 작업 메서드에서 호출 된 경우 "Index"의 뷰 이름 전달 같을 수 합니다.</span><span class="sxs-lookup"><span data-stu-id="02660-145">For example, if this were called from an action method named "Index", it would be equivalent to passing in a view name of "Index".</span></span> <span data-ttu-id="02660-146">뷰 이름을 명시적으로 메서드에 전달 될 수 있습니다 (`return View("SomeView");`).</span><span class="sxs-lookup"><span data-stu-id="02660-146">A view name can be explicitly passed to the method (`return View("SomeView");`).</span></span> <span data-ttu-id="02660-147">이러한 경우 모두 보기 검색에서 일치 하는 파일의 보기를 검색합니다.</span><span class="sxs-lookup"><span data-stu-id="02660-147">In both of these cases, view discovery searches for a matching view file in:</span></span>
+  ```csharp
+  return View("Orders");
+  ```
+* <span data-ttu-id="76c90-161">A [모델](xref:mvc/models/model-binding) 에 전달 하는 보기:</span><span class="sxs-lookup"><span data-stu-id="76c90-161">A [model](xref:mvc/models/model-binding) to pass to the the view:</span></span>
 
-   1. <span data-ttu-id="02660-148">뷰 /\<ControllerName > /\<ViewName >.cshtml</span><span class="sxs-lookup"><span data-stu-id="02660-148">Views/\<ControllerName>/\<ViewName>.cshtml</span></span>
+  ```csharp
+  return View(Orders);
+  ```
+* <span data-ttu-id="76c90-162">뷰를 모두 모델:</span><span class="sxs-lookup"><span data-stu-id="76c90-162">Both a view and a model:</span></span>
 
-   2. <span data-ttu-id="02660-149">뷰/공유/\<ViewName >.cshtml</span><span class="sxs-lookup"><span data-stu-id="02660-149">Views/Shared/\<ViewName>.cshtml</span></span>
+  ```csharp
+  return View("Orders", Orders);
+  ```
 
->[!TIP]
-> <span data-ttu-id="02660-150">단순히 반환 규칙 다음과 좋습니다 `View()` 수행 되므로 더 유연 하 고 코드를 리팩터링하면 쉽게 가능한 경우 작업에서 합니다.</span><span class="sxs-lookup"><span data-stu-id="02660-150">We recommend following the convention of simply returning `View()` from actions when possible, as it results in more flexible, easier to refactor code.</span></span>
+### <a name="view-discovery"></a><span data-ttu-id="76c90-163">검색 보기</span><span class="sxs-lookup"><span data-stu-id="76c90-163">View discovery</span></span>
 
-<span data-ttu-id="02660-151">뷰 이름 대신 뷰 파일 경로 제공할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="02660-151">A view file path can be provided instead of a view name.</span></span> <span data-ttu-id="02660-152">응용 프로그램 루트에서 시작 하는 절대 경로 사용 하는 경우 (필요에 따라부터 "/" 또는 "~ /"), *.cshtml* 확장 파일 경로의 일부로 지정 해야 합니다 (예를 들어 `return View("Views/Home/About.cshtml");`).</span><span class="sxs-lookup"><span data-stu-id="02660-152">If using an absolute path starting at the application root (optionally starting with "/" or "~/"), the *.cshtml* extension must be specified as part of the file path (for example, `return View("Views/Home/About.cshtml");`).</span></span> <span data-ttu-id="02660-153">또는 컨트롤러 해당 언어별 디렉터리 내에서 상대 경로 사용할 수는 *뷰* 서로 다른 디렉터리에 뷰를 지정 하는 디렉터리 (예를 들어 `return View("../Manage/Index");` 내는 `HomeController`).</span><span class="sxs-lookup"><span data-stu-id="02660-153">Alternatively, you can use a relative path from the controller-specific directory within the *Views* directory to specify views in different directories (for example, `return View("../Manage/Index");` inside the `HomeController`).</span></span> <span data-ttu-id="02660-154">마찬가지로, 현재 컨트롤러 관련 디렉터리를 이동할 수 있습니다 (예를 들어 `return View("./About");`).</span><span class="sxs-lookup"><span data-stu-id="02660-154">Similarly, you can traverse the current controller-specific directory (for example, `return View("./About");`).</span></span> <span data-ttu-id="02660-155">상대 경로 사용 하지 않는 *.cshtml* 확장 합니다.</span><span class="sxs-lookup"><span data-stu-id="02660-155">Note that relative paths don't use the *.cshtml* extension.</span></span> <span data-ttu-id="02660-156">위에서 언급 한 대로 컨트롤러, 작업 및 유지 관리 및 명확성에 대 한 뷰 간의 관계를 반영 하도록 뷰에 대 한 파일 구조를 구성 하는 모범 사례를 따릅니다.</span><span class="sxs-lookup"><span data-stu-id="02660-156">As previously mentioned, follow the best practice of organizing the file structure for views to reflect the relationships among controllers, actions, and views for maintainability and clarity.</span></span>
+<span data-ttu-id="76c90-164">작업 뷰를 반환 하는 경우 프로세스를 호출할 *보기 검색* 이루어집니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-164">When an action returns a view, a process called *view discovery* takes place.</span></span> <span data-ttu-id="76c90-165">이 프로세스 보기 이름을 기반으로 어떤 보기 파일을 사용 하는 것을 결정 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-165">This process determines which view file is used based on the view name.</span></span> 
 
-> [!NOTE]
-> <span data-ttu-id="02660-157">[부분 뷰](partial.md) 및 [구성 요소 확인](view-components.md) (비슷하지만 동일 하지 않은) 검색 메커니즘을 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="02660-157">[Partial views](partial.md) and [view components](view-components.md) use similar (but not identical) discovery mechanisms.</span></span>
+<span data-ttu-id="76c90-166">작업 반환 하는 경우는 `View` 메서드 (`return View();`) 및 지정 하지 않으면 뷰, 뷰 이름으로 작업 이름이 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-166">When an action returns the `View` method (`return View();`) and a view isn't specified, the action name is used as the view name.</span></span> <span data-ttu-id="76c90-167">예를 들어는 *에 대 한* `ActionResult` 메서드 컨트롤러의 이름은 뷰 파일에 대 한 검색 *About.cshtml*합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-167">For example, the *About* `ActionResult` method name of the controller is used to search for a view file named *About.cshtml*.</span></span> <span data-ttu-id="76c90-168">런타임은 먼저는 *뷰 / [ControllerName]* 뷰에 대 한 폴더입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-168">First, the runtime looks in the *Views/[ControllerName]* folder for the view.</span></span> <span data-ttu-id="76c90-169">일치 하는 뷰를 찾지 못하는 경우 검색 된 *Shared* 폴더 뷰에 대 한 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-169">If it doesn't find a matching view there, it searches the *Shared* folder for the view.</span></span>
 
-> [!NOTE]
-> <span data-ttu-id="02660-158">사용자 지정을 사용 하 여 뷰 응용 프로그램 내에에 대 한 기본 규칙을 사용자 지정할 수 있습니다 `IViewLocationExpander`합니다.</span><span class="sxs-lookup"><span data-stu-id="02660-158">You can customize the default convention regarding where views are located within the app by using a custom `IViewLocationExpander`.</span></span>
+<span data-ttu-id="76c90-170">암시적으로 반환 하는 경우 문제가 되지 않습니다는 `ViewResult` 와 `return View();` 에 보기 이름을 명시적으로 전달 하거나는 `View` 메서드 `return View("<ViewName>");`합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-170">It doesn't matter if you implicitly return the `ViewResult` with `return View();` or explicitly pass the view name to the `View` method with `return View("<ViewName>");`.</span></span> <span data-ttu-id="76c90-171">두 경우 모두 뷰의 검색이이 순서에서 일치 하는 파일의 보기에 대 한 검색합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-171">In both cases, view discovery searches for a matching view file in this order:</span></span>
 
->[!TIP]
-> <span data-ttu-id="02660-159">뷰 이름은 대/소문자 구분 내부 파일 시스템에 따라 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="02660-159">View names may be case sensitive depending on the underlying file system.</span></span> <span data-ttu-id="02660-160">운영 체제에서 호환성을 위해 컨트롤러 및 작업 이름 및 관련된 보기 폴더와 파일 이름을 간의 대/소문자를 항상 일치 합니다.</span><span class="sxs-lookup"><span data-stu-id="02660-160">For compatibility across operating systems, always match case between controller and action names and associated view folders and filenames.</span></span>
+   1. <span data-ttu-id="76c90-172">*뷰 /\[ControllerName]\[ViewName].cshtml*</span><span class="sxs-lookup"><span data-stu-id="76c90-172">*Views/\[ControllerName]\[ViewName].cshtml*</span></span>
+   1. <span data-ttu-id="76c90-173">*뷰/공유/\[ViewName].cshtml*</span><span class="sxs-lookup"><span data-stu-id="76c90-173">*Views/Shared/\[ViewName].cshtml*</span></span>
 
-## <a name="passing-data-to-views"></a><span data-ttu-id="02660-161">데이터 뷰를 전달</span><span class="sxs-lookup"><span data-stu-id="02660-161">Passing Data to Views</span></span>
+<span data-ttu-id="76c90-174">뷰 이름 대신 뷰 파일 경로 제공할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-174">A view file path can be provided instead of a view name.</span></span> <span data-ttu-id="76c90-175">응용 프로그램 루트에서 시작 하는 절대 경로 사용 하는 경우 (필요에 따라부터 "/" 또는 "~ /"), *.cshtml* 확장을 지정 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-175">If using an absolute path starting at the app root (optionally starting with "/" or "~/"), the *.cshtml* extension must be specified:</span></span>
 
-<span data-ttu-id="02660-162">여러 가지 메커니즘을 사용 하 여 보기에 데이터를 전달할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="02660-162">You can pass data to views using several mechanisms.</span></span> <span data-ttu-id="02660-163">지정 하는 가장 강력한 방법입니다는 *모델* 보기에서 유형 (라고 하는 *viewmodel*, 비즈니스 도메인 모델 형식 구별 하기 위해), 이러한 형식의 인스턴스 보기에 전달 된 후 동작입니다.</span><span class="sxs-lookup"><span data-stu-id="02660-163">The most robust approach is to specify a *model* type in the view (commonly referred to as a *viewmodel*, to distinguish it from business domain model types), and then pass an instance of this type to the view from the action.</span></span> <span data-ttu-id="02660-164">데이터 보기를 전달 하는 모델 또는 모델 보기를 사용 하는 것이 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="02660-164">We recommend you use a model or view model to pass data to a view.</span></span> <span data-ttu-id="02660-165">따라서 강력한 형식 검사를 활용 하기 위해 보기 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="02660-165">This allows the view to take advantage of strong type checking.</span></span> <span data-ttu-id="02660-166">사용 하 여 보기에 대 한 모델을 지정할 수는 `@model` 지시문:</span><span class="sxs-lookup"><span data-stu-id="02660-166">You can specify a model for a view using the `@model` directive:</span></span>
+```csharp
+return View("Views/Home/About.cshtml");
+```
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [1]}} -->
+<span data-ttu-id="76c90-176">없이 서로 다른 디렉터리에 뷰를 지정 하는 상대 경로 사용할 수도 있습니다는 *.cshtml* 확장 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-176">You can also use a relative path to specify views in different directories without the *.cshtml* extension.</span></span> <span data-ttu-id="76c90-177">내에서 `HomeController`를 반환할 수 있습니다는 *인덱스* 볼 수 프로그램 *관리* 상대 경로 사용 하 여 뷰:</span><span class="sxs-lookup"><span data-stu-id="76c90-177">Inside the `HomeController`, you can return the *Index* view of your *Manage* views with a relative path:</span></span>
 
-```html
+```csharp
+return View("../Manage/Index");
+```
+
+<span data-ttu-id="76c90-178">마찬가지로, 현재 컨트롤러 관련 디렉터리를 나타낼 수 있습니다는 ". /" 접두사:</span><span class="sxs-lookup"><span data-stu-id="76c90-178">Similarly, you can indicate the current controller-specific directory with the "./" prefix:</span></span>
+
+```csharp
+return View("./About");
+```
+
+<span data-ttu-id="76c90-179">[부분 뷰](xref:mvc/views/partial) 및 [구성 요소 확인](xref:mvc/views/view-components) (비슷하지만 동일 하지 않은) 검색 메커니즘을 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-179">[Partial views](xref:mvc/views/partial) and [view components](xref:mvc/views/view-components) use similar (but not identical) discovery mechanisms.</span></span>
+
+<span data-ttu-id="76c90-180">사용자 지정을 사용 하 여 응용 프로그램 내에 있는 뷰는 방법에 대 한 기본 규칙을 사용자 지정할 수 있습니다 [IViewLocationExpander](/aspnet/core/api/microsoft.aspnetcore.mvc.razor.iviewlocationexpander)합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-180">You can customize the default convention for how views are located within the app by using a custom [IViewLocationExpander](/aspnet/core/api/microsoft.aspnetcore.mvc.razor.iviewlocationexpander).</span></span>
+
+<span data-ttu-id="76c90-181">검색 보기는 파일 이름으로 뷰 파일을 찾는 데 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-181">View discovery relies on finding view files by file name.</span></span> <span data-ttu-id="76c90-182">기본 파일 시스템은 대/소문자 구분, 하는 경우 뷰 이름이 아마도 대/소문자 구분 됩니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-182">If the underlying file system is case sensitive, view names are probably case sensitive.</span></span> <span data-ttu-id="76c90-183">운영 체제에서 호환성을 위해 대/소문자 컨트롤러 및 작업 이름 및 관련된 보기 폴더와 파일 이름 사이입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-183">For compatibility across operating systems, match case between controller and action names and associated view folders and file names.</span></span> <span data-ttu-id="76c90-184">대/소문자 구분 파일 시스템으로 작업 하는 동안 파일 보기를 찾을 수 없는 오류가 발생 하는 경우 요청 된 뷰 파일과 실제 보기 파일 이름 간의 대/소문자와 일치 하는지 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-184">If you encounter an error that a view file can't be found while working with a case-sensitive file system, confirm that the casing matches between the requested view file and the actual view file name.</span></span>
+
+<span data-ttu-id="76c90-185">컨트롤러, 작업 및 유지 관리 및 명확성에 대 한 뷰 간의 관계를 반영 하기 위해 보기에 대 한 파일 구조를 구성 하는 모범 사례를 따릅니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-185">Follow the best practice of organizing the file structure for your views to reflect the relationships among controllers, actions, and views for maintainability and clarity.</span></span>
+
+## <a name="passing-data-to-views"></a><span data-ttu-id="76c90-186">보기에 데이터를 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-186">Passing data to views</span></span>
+
+<span data-ttu-id="76c90-187">여러 가지 방법으로 사용 하 여 보기에 데이터를 전달할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-187">You can pass data to views using several approaches.</span></span> <span data-ttu-id="76c90-188">지정 하는 가장 강력한 방법입니다는 [모델](xref:mvc/models/model-binding) 보기에는 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-188">The most robust approach is to specify a [model](xref:mvc/models/model-binding) type in the view.</span></span> <span data-ttu-id="76c90-189">이 모델은 일반적으로 라고는 *viewmodel*합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-189">This model is commonly referred to as a *viewmodel*.</span></span> <span data-ttu-id="76c90-190">동작에서 보기를 viewmodel 형식의 인스턴스로 전달 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-190">You pass an instance of the viewmodel type to the view from the action.</span></span>
+
+<span data-ttu-id="76c90-191">활용 하기 위해 뷰를 사용 하면 데이터 보기를 전달 하는 viewmodel를 사용 하 여 *강력한* 형식 검사 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-191">Using a viewmodel to pass data to a view allows the view to take advantage of *strong* type checking.</span></span> <span data-ttu-id="76c90-192">*강력한 형식화* (또는 *강력한 형식의*) 모든 변수 및 상수에 명시적으로 정의 된 유형을 의미 (예를 들어 `string`, `int`, 또는 `DateTime`).</span><span class="sxs-lookup"><span data-stu-id="76c90-192">*Strong typing* (or *strongly-typed*) means that every variable and constant has an explicitly defined type (for example, `string`, `int`, or `DateTime`).</span></span> <span data-ttu-id="76c90-193">컴파일 타임에 보기에서 사용 되는 형식의 유효성이 검사 됩니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-193">The validity of types used in a view is checked at compile time.</span></span>
+
+<span data-ttu-id="76c90-194">도구와 같은 [Visual Studio](https://www.visualstudio.com/vs/) 또는 [Visual Studio Code](https://code.visualstudio.com/), 멤버 (모델의 속성)를 표시할 수도 적은 오류로 더 빠르게 코드를 작성 하는 데 도움이 되는 보기를 추가 하는 동안 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-194">Tooling, such as [Visual Studio](https://www.visualstudio.com/vs/) or [Visual Studio Code](https://code.visualstudio.com/), can also list members (properties of a model) while you're adding them to a view, which helps you write code faster with fewer errors.</span></span> <span data-ttu-id="76c90-195">이 기능은 라고 [IntelliSense](/visualstudio/ide/using-intellisense) Microsoft 도구에 있습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-195">This feature is called [IntelliSense](/visualstudio/ide/using-intellisense) in Microsoft tools.</span></span>
+
+<span data-ttu-id="76c90-196">사용 하 여 모델을 지정 된 `@model` 지시문입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-196">Specify a model using the `@model` directive.</span></span> <span data-ttu-id="76c90-197">사용 하 여 모델을 사용 하 여 `@Model`:</span><span class="sxs-lookup"><span data-stu-id="76c90-197">Use the model with `@Model`:</span></span>
+
+```cshtml
 @model WebApplication1.ViewModels.Address
-   <h2>Contact</h2>
-   <address>
-       @Model.Street<br />
-       @Model.City, @Model.State @Model.PostalCode<br />
-       <abbr title="Phone">P:</abbr>
-       425.555.0100
-   </address>
-   ```
 
-<span data-ttu-id="02660-167">모델 보기에 대해 지정 된 뷰에 전송 인스턴스가 사용 하 여 강력한 형식의 방식으로 액세스할 수 있습니다 `@Model` 위와 같이 합니다.</span><span class="sxs-lookup"><span data-stu-id="02660-167">Once a model has been specified for a view, the instance sent to the view can be accessed in a strongly-typed manner using `@Model` as shown above.</span></span> <span data-ttu-id="02660-168">뷰에 모델 형식의 인스턴스를 제공 하려면 컨트롤러 매개 변수로 전달 합니다.</span><span class="sxs-lookup"><span data-stu-id="02660-168">To provide an instance of the model type to the view, the controller passes it as a parameter:</span></span>
+<h2>Contact</h2>
+<address>
+    @Model.Street<br>
+    @Model.City, @Model.State @Model.PostalCode<br>
+    <abbr title="Phone">P:</abbr> 425.555.0100
+</address>
+```
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [13]}} -->
+<span data-ttu-id="76c90-198">보기에 모델을 제공 하려면 컨트롤러 매개 변수로 전달 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-198">To provide the model to the view, the controller passes it as a parameter:</span></span>
 
 ```csharp
 public IActionResult Contact()
-   {
-       ViewData["Message"] = "Your contact page.";
+{
+    ViewData["Message"] = "Your contact page.";
 
-       var viewModel = new Address()
-       {
-           Name = "Microsoft",
-           Street = "One Microsoft Way",
-           City = "Redmond",
-           State = "WA",
-           PostalCode = "98052-6399"
-       };
-       return View(viewModel);
-   }
-   ```
+    var viewModel = new Address()
+    {
+        Name = "Microsoft",
+        Street = "One Microsoft Way",
+        City = "Redmond",
+        State = "WA",
+        PostalCode = "98052-6399"
+    };
 
-<span data-ttu-id="02660-169">모델로 보기에 제공 될 수 있는 형식에 제한은 없습니다.</span><span class="sxs-lookup"><span data-stu-id="02660-169">There are no restrictions on the types that can be provided to a view as a model.</span></span> <span data-ttu-id="02660-170">응용 프로그램에 비즈니스 논리를 다른 곳에서 캡슐화 될 수 있도록 거의 또는 전혀 동작을 사용 하 여 CLR 개체 POCO (Plain Old) 보기 모델을 전달 것이 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="02660-170">We recommend passing Plain Old CLR Object (POCO) view models with little or no behavior, so that business logic can be encapsulated elsewhere in the app.</span></span> <span data-ttu-id="02660-171">이 방법의 예로 *주소* viewmodel 위의 예에서 사용:</span><span class="sxs-lookup"><span data-stu-id="02660-171">An example of this approach is the *Address* viewmodel used in the example above:</span></span>
+    return View(viewModel);
+}
+```
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [13]}} -->
+<span data-ttu-id="76c90-199">보기를 제공할 수 있는 모델 유형에 대해 제한은 없습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-199">There are no restrictions on the model types that you can provide to a view.</span></span> <span data-ttu-id="76c90-200">사용 하는 것이 좋습니다 **P**텍스트만 **O**ld **C**LR **O**되며 개체 (POCO) viewmodel 거의 또는 전혀 (메서드) 정의 된 동작입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-200">We recommend using **P**lain **O**ld **C**LR **O**bject (POCO) viewmodels with little or no behavior (methods) defined.</span></span> <span data-ttu-id="76c90-201">Viewmodel 클래스에 저장 되거나는 일반적으로 *모델* 폴더 또는 별도 *Viewmodel* 응용 프로그램의 루트 폴더에 있습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-201">Usually, viewmodel classes are either stored in the *Models* folder or a separate *ViewModels* folder at the root of the app.</span></span> <span data-ttu-id="76c90-202">*주소* viewmodel 위의 예제에서 사용 되는 라는 파일에 저장 된 POCO viewmodel *Address.cs*:</span><span class="sxs-lookup"><span data-stu-id="76c90-202">The *Address* viewmodel used in the example above is a POCO viewmodel stored in a file named *Address.cs*:</span></span>
 
 ```csharp
 namespace WebApplication1.ViewModels
-   {
-       public class Address
-       {
-           public string Name { get; set; }
-           public string Street { get; set; }
-           public string City { get; set; }
-           public string State { get; set; }
-           public string PostalCode { get; set; }
-       }
-   }
-   ```
+{
+    public class Address
+    {
+        public string Name { get; set; }
+        public string Street { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string PostalCode { get; set; }
+    }
+}
+```
 
 > [!NOTE]
-> <span data-ttu-id="02660-172">아무 것도 동일한 클래스를 사용 하 여 비즈니스 모델 유형 및 디스플레이 모델 유형에 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="02660-172">Nothing prevents you from using the same classes as your business model types and your display model types.</span></span> <span data-ttu-id="02660-173">그러나 이러한 및 별도로 유지 하거나 도메인 또는 지 속성이 모델에서 독립적으로 변경 하 여 뷰를 사용 하면 몇 가지 보안 이점을 제공할 수 있습니다 (사용자가 사용 하 여 응용 프로그램에 보내는 모델에 대 한 [모델 바인딩](../models/model-binding.md)).</span><span class="sxs-lookup"><span data-stu-id="02660-173">However, keeping them separate allows your views to vary independently from your domain or persistence model, and can offer some security benefits as well (for models that users will send to the app using [model binding](../models/model-binding.md)).</span></span>
+> <span data-ttu-id="76c90-203">아무 것도 동일한 클래스를 사용 하 여 프로그램 viewmodel 유형과 비즈니스 모델 유형에 대 한 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-203">Nothing prevents you from using the same classes for both your viewmodel types and your business model types.</span></span> <span data-ttu-id="76c90-204">그러나 별도 모델을 사용 하 여 다 하지 독립적으로 비즈니스 논리 및 데이터 액세스 부분 응용 프로그램의 사용자 보기 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-204">However, using separate models allows your views to vary independently from the business logic and data access parts of your app.</span></span> <span data-ttu-id="76c90-205">모델 및 viewmodel 분리도 이점을 보안 모델이 사용 하면 [모델 바인딩](xref:mvc/models/model-binding) 및 [유효성 검사](xref:mvc/models/validation) 사용자가 응용 프로그램에 전송 되는 데이터에 대 한 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-205">Separation of models and viewmodels also offers security benefits when models use [model binding](xref:mvc/models/model-binding) and [validation](xref:mvc/models/validation) for data sent to the app by the user.</span></span>
 
-### <a name="loosely-typed-data"></a><span data-ttu-id="02660-174">잘못 입력 한 데이터</span><span class="sxs-lookup"><span data-stu-id="02660-174">Loosely Typed Data</span></span>
+### <a name="weakly-typed-data-viewdata-and-viewbag"></a><span data-ttu-id="76c90-206">약한 형식의 데이터 (ViewData 및 ViewBag)</span><span class="sxs-lookup"><span data-stu-id="76c90-206">Weakly-typed data (ViewData and ViewBag)</span></span>
 
-<span data-ttu-id="02660-175">강력한 형식의 뷰 외에도 모든 보기를 사용 하면 데이터의 느슨한 형식의 컬렉션에 권한이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="02660-175">In addition to strongly typed views, all views have access to a loosely typed collection of data.</span></span> <span data-ttu-id="02660-176">이 컬렉션을 통해 참조 될 수 있습니다는 `ViewData` 또는 `ViewBag` 컨트롤러와 뷰는 속성입니다.</span><span class="sxs-lookup"><span data-stu-id="02660-176">This same collection can be referenced through either the `ViewData` or `ViewBag` properties on controllers and views.</span></span> <span data-ttu-id="02660-177">`ViewBag` 속성은 한 래퍼 `ViewData` 해당 컬렉션에 대 한 동적 뷰를 제공 하는입니다.</span><span class="sxs-lookup"><span data-stu-id="02660-177">The `ViewBag` property is a wrapper around `ViewData` that provides a dynamic view over that collection.</span></span> <span data-ttu-id="02660-178">별도 컬렉션 아닙니다.</span><span class="sxs-lookup"><span data-stu-id="02660-178">It is not a separate collection.</span></span>
+<span data-ttu-id="76c90-207">강력한 형식의 뷰 외에도 뷰는에 대 한 액세스는 *약한 형식의* (호출 또한 *자유로운 형식의*) 데이터의 컬렉션입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-207">In addition to strongly-typed views, views have access to a *weakly-typed* (also called *loosely-typed*) collection of data.</span></span> <span data-ttu-id="76c90-208">강력한 종류와 달리 *약한 형식* (또는 *형식 느슨한*)를 사용 하는 데이터 형식에 있는 명시적으로 선언 하지 않는 것을 의미 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-208">Unlike strong types, *weak types* (or *loose types*) means that you don't explicitly declare the type of data you're using.</span></span> <span data-ttu-id="76c90-209">적은 양의 컨트롤러와 뷰 간에 데이터를 전달 하기 위한 약한 형식의 데이터의 컬렉션을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-209">You can use the collection of weakly-typed data for passing small amounts of data in and out of controllers and views.</span></span>
 
-<span data-ttu-id="02660-179">`ViewData`통해 액세스 하는 사전 개체 `string` 키입니다.</span><span class="sxs-lookup"><span data-stu-id="02660-179">`ViewData` is a dictionary object accessed through `string` keys.</span></span> <span data-ttu-id="02660-180">저장 하 고, 개체를 검색할 수 있습니다 및 추출 하는 경우 특정 형식으로 캐스팅 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="02660-180">You can store and retrieve objects in it, and you'll need to cast them to a specific type when you extract them.</span></span> <span data-ttu-id="02660-181">사용할 수 있습니다 `ViewData` 뷰 (및 부분 뷰 및 레이아웃) 내에서 뿐 아니라, 보기에는 컨트롤러에서 데이터를 전달 하 합니다.</span><span class="sxs-lookup"><span data-stu-id="02660-181">You can use `ViewData` to pass data from a controller to views, as well as within views (and partial views and layouts).</span></span> <span data-ttu-id="02660-182">문자열 데이터를 저장 하 고 캐스트에 대 한 필요 없이 직접 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="02660-182">String data can be stored and used directly, without the need for a cast.</span></span>
+| <span data-ttu-id="76c90-210">데이터 전달는 중...</span><span class="sxs-lookup"><span data-stu-id="76c90-210">Passing data between a ...</span></span>                        | <span data-ttu-id="76c90-211">예제</span><span class="sxs-lookup"><span data-stu-id="76c90-211">Example</span></span>                                                                        |
+| ------------------------------------------------- | ------------------------------------------------------------------------------ |
+| <span data-ttu-id="76c90-212">컨트롤러와 뷰</span><span class="sxs-lookup"><span data-stu-id="76c90-212">Controller and a view</span></span>                             | <span data-ttu-id="76c90-213">드롭다운 목록을 데이터를 채웁니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-213">Populating a dropdown list with data.</span></span>                                          |
+| <span data-ttu-id="76c90-214">보기 및 [레이아웃 보기](xref:mvc/views/layout)</span><span class="sxs-lookup"><span data-stu-id="76c90-214">View and a [layout view](xref:mvc/views/layout)</span></span>   | <span data-ttu-id="76c90-215">설정의  **\<제목 >** 보기 파일에서는 레이아웃 보기의 요소 내용입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-215">Setting the **\<title>** element content in the layout view from a view file.</span></span>  |
+| <span data-ttu-id="76c90-216">[부분 뷰](xref:mvc/views/partial) 및 보기</span><span class="sxs-lookup"><span data-stu-id="76c90-216">[Partial view](xref:mvc/views/partial) and a view</span></span> | <span data-ttu-id="76c90-217">사용자 요청 하는 웹 페이지에 따라 데이터를 표시 하는 위젯입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-217">A widget that displays data based on the webpage that the user requested.</span></span>      |
 
-<span data-ttu-id="02660-183">에 대 한 일부 값을 설정 `ViewData` 동작에서:</span><span class="sxs-lookup"><span data-stu-id="02660-183">Set some values for `ViewData` in an action:</span></span>
+<span data-ttu-id="76c90-218">이 컬렉션을 통해 참조 될 수 있습니다는 `ViewData` 또는 `ViewBag` 컨트롤러와 뷰는 속성입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-218">This collection can be referenced through either the `ViewData` or `ViewBag` properties on controllers and views.</span></span> <span data-ttu-id="76c90-219">`ViewData` 속성은 약한 형식의 개체의 사전입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-219">The `ViewData` property is a dictionary of weakly-typed objects.</span></span> <span data-ttu-id="76c90-220">`ViewBag` 속성은 한 래퍼 `ViewData` 기본에 대 한 동적 속성을 제공 하는 `ViewData` 컬렉션입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-220">The `ViewBag` property is a wrapper around `ViewData` that provides dynamic properties for the underlying `ViewData` collection.</span></span>
+
+<span data-ttu-id="76c90-221">`ViewData`및 `ViewBag` 런타임에 동적으로 확인 됩니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-221">`ViewData` and `ViewBag` are dynamically resolved at runtime.</span></span> <span data-ttu-id="76c90-222">컴파일 타임 형식 검사를 제공 하지 않는 둘 다은 일반적으로 더 오류가 viewmodel를 사용 하는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-222">Since they don't offer compile-time type checking, both are generally more error-prone than using a viewmodel.</span></span> <span data-ttu-id="76c90-223">이러한 이유로, 일부 개발자가 최소한 또는 never를 사용 하려는 `ViewData` 및 `ViewBag`합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-223">For that reason, some developers prefer to minimally or never use `ViewData` and `ViewBag`.</span></span>
+
+<span data-ttu-id="76c90-224">**ViewData**</span><span class="sxs-lookup"><span data-stu-id="76c90-224">**ViewData**</span></span>
+
+<span data-ttu-id="76c90-225">`ViewData`이 [ViewDataDictionary](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) 개체를 통해 액세스 `string` 키입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-225">`ViewData` is a [ViewDataDictionary](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) object accessed through `string` keys.</span></span> <span data-ttu-id="76c90-226">문자열 데이터를 저장 하 고 캐스트에 대 한 필요 없이 직접 사용할 수 있지만 다른 캐스팅 해야 `ViewData` 추출 하면 특정 형식에 대 한 값 개체입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-226">String data can be stored and used directly without the need for a cast, but you must cast other `ViewData` object values to specific types when you extract them.</span></span> <span data-ttu-id="76c90-227">사용할 수 있습니다 `ViewData` 보기 및 보기를 포함 하 여 내에서 컨트롤러에서 데이터를 전달 하 [부분 뷰](xref:mvc/views/partial) 및 [레이아웃](xref:mvc/views/layout)합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-227">You can use `ViewData` to pass data from controllers to views and within views, including [partial views](xref:mvc/views/partial) and [layouts](xref:mvc/views/layout).</span></span>
+
+<span data-ttu-id="76c90-228">다음은 인사말 및 사용 하 여 주소에 대 한 값을 설정 하는 예제 `ViewData` 동작에서:</span><span class="sxs-lookup"><span data-stu-id="76c90-228">The following is an example that sets values for a greeting and an address using `ViewData` in an action:</span></span>
 
 ```csharp
 public IActionResult SomeAction()
-   {
-       ViewData["Greeting"] = "Hello";
-       ViewData["Address"]  = new Address()
-       {
-           Name = "Steve",
-           Street = "123 Main St",
-           City = "Hudson",
-           State = "OH",
-           PostalCode = "44236"
-       };
+{
+    ViewData["Greeting"] = "Hello";
+    ViewData["Address"]  = new Address()
+    {
+        Name = "Steve",
+        Street = "123 Main St",
+        City = "Hudson",
+        State = "OH",
+        PostalCode = "44236"
+    };
 
-       return View();
-   }
-   ```
+    return View();
+}
+```
 
-<span data-ttu-id="02660-184">보기에서 데이터와 함께 작동 합니다.</span><span class="sxs-lookup"><span data-stu-id="02660-184">Work with the data in a view:</span></span>
+<span data-ttu-id="76c90-229">보기에서 데이터와 함께 작동 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-229">Work with the data in a view:</span></span>
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [3, 6]}} -->
-
-```html
+```cshtml
 @{
-       // Requires cast
-       var address = ViewData["Address"] as Address;
-   }
+    // Since Address isn't a string, it requires a cast.
+    var address = ViewData["Address"] as Address;
+}
 
-   @ViewData["Greeting"] World!
+@ViewData["Greeting"] World!
 
-   <address>
-       @address.Name<br />
-       @address.Street<br />
-       @address.City, @address.State @address.PostalCode
-   </address>
-   ```
+<address>
+    @address.Name<br>
+    @address.Street<br>
+    @address.City, @address.State @address.PostalCode
+</address>
+```
 
-<span data-ttu-id="02660-185">`ViewBag` 개체에 저장 된 개체에 대 한 동적 액세스를 제공 `ViewData`합니다.</span><span class="sxs-lookup"><span data-stu-id="02660-185">The `ViewBag` objects provides dynamic access to the objects stored in `ViewData`.</span></span> <span data-ttu-id="02660-186">이 더 편리 캐스팅이 필요 하지 않으므로 작업할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="02660-186">This can be more convenient to work with, since it doesn't require casting.</span></span> <span data-ttu-id="02660-187">사용 하 여 위와 동일한 예제에서는 `ViewBag` 대신 강력한 형식의 `address` 보기에서 인스턴스:</span><span class="sxs-lookup"><span data-stu-id="02660-187">The same example as above, using `ViewBag` instead of a strongly typed `address` instance in the view:</span></span>
+<span data-ttu-id="76c90-230">**ViewBag**</span><span class="sxs-lookup"><span data-stu-id="76c90-230">**ViewBag**</span></span>
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [1, 4, 5, 6]}} -->
+<span data-ttu-id="76c90-231">`ViewBag`이 [DynamicViewData](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata) 에 저장 된 개체에 대 한 동적 액세스를 제공 하는 개체 `ViewData`합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-231">`ViewBag` is a [DynamicViewData](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata) object that provides dynamic access to the objects stored in `ViewData`.</span></span> <span data-ttu-id="76c90-232">`ViewBag`캐스팅 필요 하지 않으므로 작업할 더 편리할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-232">`ViewBag` can be more convenient to work with, since it doesn't require casting.</span></span> <span data-ttu-id="76c90-233">다음 예제에서는 사용 하는 방법을 보여 줍니다. `ViewBag` 사용 하 여 동일한 결과 함께 `ViewData` 위에:</span><span class="sxs-lookup"><span data-stu-id="76c90-233">The following example shows how to use `ViewBag` with the same result as using `ViewData` above:</span></span>
 
-```html
+```csharp
+public IActionResult SomeAction()
+{
+    ViewBag.Greeting = "Hello";
+    ViewBag.Address  = new Address()
+    {
+        Name = "Steve",
+        Street = "123 Main St",
+        City = "Hudson",
+        State = "OH",
+        PostalCode = "44236"
+    };
+
+    return View();
+}
+```
+
+```cshtml
 @ViewBag.Greeting World!
 
-   <address>
-       @ViewBag.Address.Name<br />
-       @ViewBag.Address.Street<br />
-       @ViewBag.Address.City, @ViewBag.Address.State @ViewBag.Address.PostalCode
-   </address>
-   ```
+<address>
+    @ViewBag.Address.Name<br>
+    @ViewBag.Address.Street<br>
+    @ViewBag.Address.City, @ViewBag.Address.State @ViewBag.Address.PostalCode
+</address>
+```
 
-> [!NOTE]
-> <span data-ttu-id="02660-188">둘 다 동일한 기본를 참조 하므로 `ViewData` 컬렉션을 혼합 하는 사이 일치 `ViewData` 및 `ViewBag` 읽고 편리 하 게 하는 경우 값을 쓸 때.</span><span class="sxs-lookup"><span data-stu-id="02660-188">Since both refer to the same underlying `ViewData` collection, you can mix and match between `ViewData` and `ViewBag` when reading and writing values, if convenient.</span></span>
+<span data-ttu-id="76c90-234">**ViewData 및 ViewBag를 동시에 사용 하 여**</span><span class="sxs-lookup"><span data-stu-id="76c90-234">**Using ViewData and ViewBag simultaneously**</span></span>
 
-### <a name="dynamic-views"></a><span data-ttu-id="02660-189">동적 뷰</span><span class="sxs-lookup"><span data-stu-id="02660-189">Dynamic Views</span></span>
+<span data-ttu-id="76c90-235">이후 `ViewData` 및 `ViewBag` 동일한 기본 참조 `ViewData` 컬렉션을 모두 사용할 수 있습니다 `ViewData` 및 `ViewBag` 혼합 및 경우에 읽기 및 쓰기 값 사이 일치 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-235">Since `ViewData` and `ViewBag` refer to the same underlying `ViewData` collection, you can use both `ViewData` and `ViewBag` and mix and match between them when reading and writing values.</span></span>
 
-<span data-ttu-id="02660-190">뷰는 형식에 전달 된 모델 인스턴스를 설치 했지만 모델 형식을 선언 하지 마십시오.이 인스턴스를 동적으로 참조할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="02660-190">Views that do not declare a model type but have a model instance passed to them can reference this instance dynamically.</span></span> <span data-ttu-id="02660-191">예를 들어 인스턴스의 `Address` 를 선언 하지 않습니다 하는 보기에 전달 되는 `@model`, 보기는 여전히 표시 된 것 처럼 동적으로 인스턴스 속성을 참조할 수:</span><span class="sxs-lookup"><span data-stu-id="02660-191">For example, if an instance of `Address` is passed to a view that doesn't declare an `@model`, the view would still be able to refer to the instance's properties dynamically as shown:</span></span>
+<span data-ttu-id="76c90-236">사용 하 여 제목을 설정 `ViewBag` 사용 하 여 설명 및 `ViewData` 맨 위에 있는 *About.cshtml* 보기:</span><span class="sxs-lookup"><span data-stu-id="76c90-236">Set the title using `ViewBag` and the description using `ViewData` at the top of an *About.cshtml* view:</span></span>
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [13, 16, 17, 18]}} -->
+```cshtml
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "About Contoso";
+    ViewData["Description"] = "Let us tell you about Contoso's philosophy and mission.";
+}
+```
+
+<span data-ttu-id="76c90-237">속성을 읽지만 사용 역방향 `ViewData` 및 `ViewBag`합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-237">Read the properties but reverse the use of `ViewData` and `ViewBag`.</span></span> <span data-ttu-id="76c90-238">에 *_Layout.cshtml* 파일을 사용 하 여 제목 가져오는 `ViewData` 사용 하 여 설명을 가져오는 및 `ViewBag`:</span><span class="sxs-lookup"><span data-stu-id="76c90-238">In the *_Layout.cshtml* file, obtain the title using `ViewData` and obtain the description using `ViewBag`:</span></span>
+
+```cshtml
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewData["Title"]</title>
+    <meta name="description" content="@ViewBag.Description">
+    ...
+```
+
+<span data-ttu-id="76c90-239">문자열에 대 한 캐스트 필요 하지 않는 `ViewData`합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-239">Remember that strings don't require a cast for `ViewData`.</span></span> <span data-ttu-id="76c90-240">사용할 수 있습니다 `@ViewData["Title"]` 캐스팅 하지 않은 채 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-240">You can use `@ViewData["Title"]` without casting.</span></span>
+
+<span data-ttu-id="76c90-241">모두 사용 하 여 `ViewData` 및 `ViewBag` 에 혼합 및 읽기 및 쓰기 속성 일치와 같은 시간 작동 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-241">Using both `ViewData` and `ViewBag` at the same time works, as does mixing and matching reading and writing the properties.</span></span> <span data-ttu-id="76c90-242">다음 태그 렌더링 됩니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-242">The following markup is rendered:</span></span>
 
 ```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>About Contoso</title>
+    <meta name="description" content="Let us tell you about Contoso's philosophy and mission.">
+    ...
+```
+
+<span data-ttu-id="76c90-243">**ViewBag ViewData 사이의 차이 요약**</span><span class="sxs-lookup"><span data-stu-id="76c90-243">**Summary of the differences between ViewData and ViewBag**</span></span>
+
+* `ViewData`
+  * <span data-ttu-id="76c90-244">파생 [ViewDataDictionary](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary)는와 같은 유용할 수 있는 사전 속성이 있으므로 `ContainsKey`, `Add`, `Remove`, 및 `Clear`합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-244">Derives from [ViewDataDictionary](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary), so it has dictionary properties that can be useful, such as `ContainsKey`, `Add`, `Remove`, and `Clear`.</span></span>
+  * <span data-ttu-id="76c90-245">사전에 키는 문자열이 공백을 사용할 수 있도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-245">Keys in the dictionary are strings, so whitespace is allowed.</span></span> <span data-ttu-id="76c90-246">예: `ViewData["Some Key With Whitespace"]`</span><span class="sxs-lookup"><span data-stu-id="76c90-246">Example: `ViewData["Some Key With Whitespace"]`</span></span>
+  * <span data-ttu-id="76c90-247">모든 형식 이외의 다른는 `string` 뷰를 인덱싱하지에 캐스팅 해야 `ViewData`합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-247">Any type other than a `string` must be cast in the view to use `ViewData`.</span></span>
+* `ViewBag`
+  * <span data-ttu-id="76c90-248">파생 [DynamicViewData](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata)점 표기법을 사용 하 여 동적 속성 만들기를 허용 하므로 (`@ViewBag.SomeKey = <value or object>`), 및 캐스트는 필요 없습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-248">Derives from [DynamicViewData](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata), so it allows the creation of dynamic properties using dot notation (`@ViewBag.SomeKey = <value or object>`), and no casting is required.</span></span> <span data-ttu-id="76c90-249">구문은 `ViewBag` 사용 하면 신속 하 게 컨트롤러와 뷰를 추가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-249">The syntax of `ViewBag` makes it quicker to add to controllers and views.</span></span>
+  * <span data-ttu-id="76c90-250">간단 하 게 null 값을 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-250">Simpler to check for null values.</span></span> <span data-ttu-id="76c90-251">예: `@ViewBag.Person?.Name`</span><span class="sxs-lookup"><span data-stu-id="76c90-251">Example: `@ViewBag.Person?.Name`</span></span>
+
+<span data-ttu-id="76c90-252">**ViewData 또는 ViewBag을 사용 하는 경우**</span><span class="sxs-lookup"><span data-stu-id="76c90-252">**When to use ViewData or ViewBag**</span></span>
+
+<span data-ttu-id="76c90-253">둘 다 `ViewData` 및 `ViewBag` 적은 양의 컨트롤러와 뷰 간에 데이터를 전달 하는 올바른 방법을 동등 하 게 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-253">Both `ViewData` and `ViewBag` are equally valid approaches for passing small amounts of data among controllers and views.</span></span> <span data-ttu-id="76c90-254">하나를 사용 하 여 (또는 둘 다)을 보였습니다 개인의 기본 설정 또는 해당 조직의 기본 설정을 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-254">The choice of which one to use (or both) comes down to personal preference or the preference of your organization.</span></span> <span data-ttu-id="76c90-255">일반적으로 개발자는 일관성 있게 사용 둘 중 하나입니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-255">Generally, developers are consistent in their use of one or the other.</span></span> <span data-ttu-id="76c90-256">사용 하거나 `ViewData` 어디에 나 사용 또는 `ViewBag` everywhere, 혼합 및 일치 시키려면 시작 하는데 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-256">They either use `ViewData` everywhere or use `ViewBag` everywhere, but you're welcome to mix and match them.</span></span> <span data-ttu-id="76c90-257">둘 다 런타임에 동적으로 해결 되 고 따라서 런타임 오류가 발생 하기 쉽습니다 되므로 주의 해 서 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-257">Since both are dynamically resolved at runtime and thus prone to causing runtime errors, use them carefully.</span></span> <span data-ttu-id="76c90-258">일부 개발자가 완전히 방지할 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-258">Some developers avoid them completely.</span></span>
+
+### <a name="dynamic-views"></a><span data-ttu-id="76c90-259">동적 뷰</span><span class="sxs-lookup"><span data-stu-id="76c90-259">Dynamic views</span></span>
+
+<span data-ttu-id="76c90-260">모델 선언 하지 마십시오 하는 뷰를 사용 하 여 입력 `@model` 있지만 이러한 메서드에 전달 된 모델 인스턴스를 갖는 (예를 들어 `return View(Address);`) 인스턴스 속성을 동적으로 참조할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-260">Views that don't declare a model type using `@model` but that have a model instance passed to them (for example, `return View(Address);`) can reference the instance's properties dynamically:</span></span>
+
+```cshtml
 <address>
-       @Model.Street<br />
-       @Model.City, @Model.State @Model.PostalCode<br />
-       <abbr title="Phone">P:</abbr>
-       425.555.0100
-   </address>
-   ```
+    @Model.Street<br>
+    @Model.City, @Model.State @Model.PostalCode<br>
+    <abbr title="Phone">P:</abbr> 425.555.0100
+</address>
+```
 
-<span data-ttu-id="02660-192">이 기능은 일부 유연성을 제공할 수 있지만 모든 컴파일 보호 또는 IntelliSense를 제공 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="02660-192">This feature can offer some flexibility, but does not offer any compilation protection or IntelliSense.</span></span> <span data-ttu-id="02660-193">속성이 존재 하지 않으면 페이지는 런타임 시 실패 합니다.</span><span class="sxs-lookup"><span data-stu-id="02660-193">If the property doesn't exist, the page will fail at runtime.</span></span>
+<span data-ttu-id="76c90-261">이 기능은 유연성을 제공 되지만 컴파일 보호 지정 또는 IntelliSense 기능이 제공 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-261">This feature offers flexibility but doesn't offer compilation protection or IntelliSense.</span></span> <span data-ttu-id="76c90-262">속성이 존재 하지 않으면 런타임 시 웹 페이지 생성이 실패 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-262">If the property doesn't exist, webpage generation fails at runtime.</span></span>
 
-## <a name="more-view-features"></a><span data-ttu-id="02660-194">더 많은 보기 기능</span><span class="sxs-lookup"><span data-stu-id="02660-194">More View Features</span></span>
+## <a name="more-view-features"></a><span data-ttu-id="76c90-263">더 많은 보기 기능</span><span class="sxs-lookup"><span data-stu-id="76c90-263">More view features</span></span>
 
-<span data-ttu-id="02660-195">[태그 도우미](tag-helpers/intro.md) 쉽게 서버 쪽 동작을 사용자 지정 코드 또는 도우미 보기 내에서 사용 하 여 필요 없이 기존 HTML 태그를 추가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="02660-195">[Tag helpers](tag-helpers/intro.md) make it easy to add server-side behavior to existing HTML tags, avoiding the need to use custom code or helpers within views.</span></span> <span data-ttu-id="02660-196">태그 도우미 특성으로 뷰 태그를 편집 하 고 다양 한 도구에서에서 렌더링할 수 있도록,에 익숙하지 않은 편집기에서 무시 되는 HTML 요소에 적용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="02660-196">Tag helpers are applied as attributes to HTML elements, which are ignored by editors that aren't familiar with them, allowing view markup to be edited and rendered in a variety of tools.</span></span> <span data-ttu-id="02660-197">태그 도우미는 여러 가지 그리고 허용 되는 특히 [양식 작업](working-with-forms.md) 훨씬 쉽습니다.</span><span class="sxs-lookup"><span data-stu-id="02660-197">Tag helpers have many uses, and in particular can make [working with forms](working-with-forms.md) much easier.</span></span>
+<span data-ttu-id="76c90-264">[태그 도우미](xref:mvc/views/tag-helpers/intro) 쉽게 기존 HTML 태그에 서버 쪽 동작을 추가 합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-264">[Tag Helpers](xref:mvc/views/tag-helpers/intro) make it easy to add server-side behavior to existing HTML tags.</span></span> <span data-ttu-id="76c90-265">태그 도우미를 사용 하 여 사용자 지정 코드 또는 보기 내에서 도우미를 작성할 필요가 방지할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-265">Using Tag Helpers avoids the need to write custom code or helpers within your views.</span></span> <span data-ttu-id="76c90-266">태그 도우미 HTML 요소에 특성으로 적용 되 고 처리할 수 있는 편집기에서 무시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-266">Tag helpers are applied as attributes to HTML elements and are ignored by editors that can't process them.</span></span> <span data-ttu-id="76c90-267">이 옵션을 사용 하면 편집 하 고 다양 한 도구에서에서 뷰 태그를 렌더링할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-267">This allows you to edit and render view markup in a variety of tools.</span></span>
 
-<span data-ttu-id="02660-198">사용자 지정 HTML 태그를 생성 얻을 수 있는 여러 기본 제공 HTML 도우미 및 (잠재적으로 자체 데이터 요구 사항 있음)의 더 복잡 한 UI 논리에 캡슐화 할 수 [구성 요소 보기](view-components.md)합니다.</span><span class="sxs-lookup"><span data-stu-id="02660-198">Generating custom HTML markup can be achieved with many built-in HTML Helpers, and more complex UI logic (potentially with its own data requirements) can be encapsulated in [View Components](view-components.md).</span></span> <span data-ttu-id="02660-199">뷰 구성 요소는 컨트롤러와 뷰 제공 하는 문제의 동일한 분리를 제공 하 고 일반적인 UI 요소에서 사용 하는 데이터를 처리 하는 동작 및 뷰에 대 한 필요성 제거할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="02660-199">View components provide the same separation of concerns that controllers and views offer, and can eliminate the need for actions and views to deal with data used by common UI elements.</span></span>
+<span data-ttu-id="76c90-268">사용자 지정 HTML 태그를 생성 하는 많은 기본 제공 HTML 도우미와 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-268">Generating custom HTML markup can be achieved with many built-in HTML Helpers.</span></span> <span data-ttu-id="76c90-269">더 복잡 한 사용자 인터페이스 논리에서 처리 될 수 [구성 요소 보기](xref:mvc/views/view-components)합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-269">More complex user interface logic can be handled by [View Components](xref:mvc/views/view-components).</span></span> <span data-ttu-id="76c90-270">뷰 구성 요소는 동일한 SoC 해당 컨트롤러를 제공 하 고 뷰 제공 됩니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-270">View components provide the same SoC that controllers and views offer.</span></span> <span data-ttu-id="76c90-271">동작 및 뷰가 공통 사용자 인터페이스 요소에 의해 사용 되는 데이터를 처리 하는 대 한 필요성을 제거할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-271">They can eliminate the need for actions and views that deal with data used by common user interface elements.</span></span>
 
-<span data-ttu-id="02660-200">ASP.NET Core의 다른 많은 요소와 마찬가지로 뷰 지원 [종속성 주입](../../fundamentals/dependency-injection.md), 서비스 수를 허용 [뷰에 주입 된](dependency-injection.md)합니다.</span><span class="sxs-lookup"><span data-stu-id="02660-200">Like many other aspects of ASP.NET Core, views support [dependency injection](../../fundamentals/dependency-injection.md), allowing services to be [injected into views](dependency-injection.md).</span></span>
+<span data-ttu-id="76c90-272">ASP.NET Core의 다른 많은 요소와 마찬가지로 뷰 지원 [종속성 주입](xref:fundamentals/dependency-injection), 서비스 수를 허용 [뷰에 주입 된](xref:mvc/views/dependency-injection)합니다.</span><span class="sxs-lookup"><span data-stu-id="76c90-272">Like many other aspects of ASP.NET Core, views support [dependency injection](xref:fundamentals/dependency-injection), allowing services to be [injected into views](xref:mvc/views/dependency-injection).</span></span>
