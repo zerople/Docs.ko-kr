@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 8c6e281e761e69908fc742d1f19c14a00de4bd46
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: 1d8d7805aafbf28fef044d09369a1dc76108b141
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="getting-started-with-razor-pages-in-aspnet-core"></a>ASP.NET Core에서 Razor 페이지 시작
 
@@ -28,11 +28,11 @@ ms.lasthandoff: 09/19/2017
 
 ## <a name="create-a-razor-web-app"></a>Razor 웹앱 만들기
 
-* Visual Studio **파일** 메뉴에서 **새로 만들기 > 프로젝트**를 선택합니다.
+* Visual Studio **파일** 메뉴에서 **새로 만들기** > **프로젝트**를 선택합니다.
 * 새 ASP.NET Core 웹 응용 프로그램을 만듭니다. 프로젝트 이름을 **RazorPagesMovie**로 지정합니다. 코드를 복사 후 붙여넣을 때 네임스페이스가 일치하도록 프로젝트 이름을 *RazorPagesMovie*로 지정해야 합니다.
- ![새 ASP.NET Core 웹 응용 프로그램](../../mvc/razor-pages/index/_static/np.png)
+  ![새 ASP.NET Core 웹 응용 프로그램](../../mvc/razor-pages/index/_static/np.png)
 * 드롭다운에서 **ASP.NET Core 2.0**을 선택하고 **웹 응용 프로그램**을 선택합니다.
- ![웹 응용 프로그램(Razor 페이지)](../../mvc/razor-pages/index/_static/np2.png)
+  ![웹 응용 프로그램(Razor 페이지)](../../mvc/razor-pages/index/_static/np2.png)
 
 Visual Studio 템플릿은 시작 프로젝트를 만듭니다.
 
@@ -48,4 +48,4 @@ Visual Studio 템플릿은 시작 프로젝트를 만듭니다.
 [!INCLUDE[razor-pages-start](../../includes/RP/razor-pages-start.md)]
 
 >[!div class="step-by-step"]
-[다음: 모델 추가](xref:tutorials/razor-pages/modelz)  
+[다음: 모델 추가](xref:tutorials/razor-pages/modelz)

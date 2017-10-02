@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/razor-pages/index
-ms.openlocfilehash: 72ab979c6c718544955ae5734903ec936fc5afbc
-ms.sourcegitcommit: 195b2b331434f74334c5c5b7dfeba62d744a1e38
+ms.openlocfilehash: 3112faa38bb9702f6856097e315c413f0974010d
+ms.sourcegitcommit: 3ba32b2b6425ed94604cb0f681db0d5bb5f8ad58
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>ASP.NET Core의 Razor 페이지 소개
 
@@ -157,11 +157,9 @@ Razor 페이지는 기본적으로 GET이 아닌 동사에만 속성을 바인�
 
 *Index.cshtml* 파일에는 각 연락처의 편집 링크를 만들기 위해 다음 태그가 포함됩니다.
 
-```cshtml
-<a asp-page="./Edit" asp-route-id="@contact.Id">edit</a>
-```
+[!code-cshtml[main](index/sample/RazorPagesContacts/Pages/Index.cshtml?range=21)]
 
-[앵커 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/AnchorTagHelper)는 [asp-route-{value}](xref:mvc/views/tag-helpers/builtin-th/AnchorTagHelper#route) 특성을 사용하여 편집 페이지 링크를 생성했습니다. 링크에는 연락처 ID와 함께 경로 데이터가 포함됩니다. 예를 들어, `http://localhost:5000/Edit/1`을 입력합니다.
+[앵커 태그 도우미](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)는 [asp-route-{value}](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#route) 특성을 사용하여 편집 페이지 링크를 생성했습니다. 링크에는 연락처 ID와 함께 경로 데이터가 포함됩니다. 예를 들어, `http://localhost:5000/Edit/1`을 입력합니다.
 
 *Pages/Edit.cshtml* 파일:
 
@@ -172,6 +170,34 @@ Razor 페이지는 기본적으로 GET이 아닌 동사에만 속성을 바인�
 *Pages/Edit.cshtml.cs* 파일:
 
 [!code-cs[main](index/sample/RazorPagesContacts/Pages/Edit.cshtml.cs)]
+
+또한 *Index.cshtml* 파일에는 각 고객 연락처의 삭제 단추를 만드는 표시가 포함됩니다.
+
+[!code-cshtml[main](index/sample/RazorPagesContacts/Pages/Index.cshtml?range=22-23)]
+
+삭제 단추가 HTML로 렌더링되는 경우 해당 `formaction`에는 다음을 위한 매개 변수가 포함됩니다.
+
+* `asp-route-id` 특성에서 지정된 고객 연락처 ID
+* `asp-page-handler` 특성에서 지정된 `handler`
+
+`1`이라는 고객 연락처 ID를 포함한 렌더링된 삭제 단추의 예는 다음과 같습니다.
+
+```html
+<button type="submit" formaction="/?id=1&amp;handler=delete">delete</button>
+```
+
+단추를 선택하면 양식 `POST` 요청이 서버에 전송됩니다. 이름 규칙에 따라 `OnPost[handler]Async` 구성표에 해당하는 `handler` 매개 변수 값을 기반으로 처리기 메서드의 이름을 선택합니다.
+
+`handler`가 이 예제에서 `delete`이기 때문에 `OnPostDeleteAsync` 처리기 메서드는 `POST` 요청을 처리하는 데 사용됩니다. `asp-page-handler`가 `remove`와 같은 다른 값으로 설정되면 `OnPostRemoveAsync`라는 이름의 페이지 처리기 메서드를 선택합니다.
+
+[!code-cs[main](index/sample/RazorPagesContacts/Pages/Index.cshtml.cs?range=26-37)]
+
+`OnPostDeleteAsync` 메서드는 다음과 같은 작업을 수행합니다.
+
+* 쿼리 문자열에서 `id`를 수용합니다.
+* `FindAsync`를 사용하여 고객 연락처의 데이터베이스를 쿼리합니다.
+* 고객 연락처를 찾으면 고객 연락처의 목록에서 제거됩니다. 데이터베이스가 업데이트됩니다.
+* `RedirectToPage`를 호출하여 루트 인덱스 페이지(`/Index`)를 리디렉션합니다.
 
 <a name="xsrf"></a>
 

@@ -11,11 +11,11 @@ ms.assetid: 54bb961d-29d9-4dee-8e2c-a93fc33c16f2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/web-api-help-pages-using-swagger
-ms.openlocfilehash: 647ab48fb83c5e2c79b5de371173bc644c65d831
-ms.sourcegitcommit: 98ecb0f1bae4886507b090c84ecd99ff1e5c46ed
+ms.openlocfilehash: 7eeb8f0517b8806cabdd59e7d81f8c2272238615
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/17/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="aspnet-web-api-help-pages-using-swagger"></a>Swagger를 사용한 ASP.NET Web API 도움말 페이지
 
@@ -343,7 +343,9 @@ Web API에서 데이터 주석 사용이 증가하면 UI 및 API 도움말 페�
 
 [!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/Startup.cs?name=snippet_Configure&highlight=3)]
 
-[Swagger UI GitHub 리포지토리](https://github.com/swagger-api/swagger-ui/tree/2.x/dist)에서 *dist* 폴더의 콘텐츠를 가져옵니다. 이 폴더에는 Swagger UI 페이지에 필요한 자산이 포함됩니다. 해당 폴더의 콘텐츠를 *wwwroot/swagger/ui* 폴더로 복사합니다.
+[Swagger UI GitHub 리포지토리](https://github.com/swagger-api/swagger-ui/tree/2.x/dist)에서 *dist* 폴더의 콘텐츠를 가져옵니다. 이 폴더에는 Swagger UI 페이지에 필요한 자산이 포함됩니다.
+
+*wwwroot/swagger/ui* 폴더를 만들고 *dist* 폴더의 콘텐츠를 복사합니다.
 
 다음 CSS가 포함된 *wwwroot/swagger/ui/css/custom.css* 파일을 만들어 페이지 헤더를 사용자 지정합니다.
 

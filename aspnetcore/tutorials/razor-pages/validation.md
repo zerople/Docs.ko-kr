@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: f8d86b48363675adaf27e2bed39f835f117e624a
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: 9a822457d1581a70d59c553eb28133815f395d7d
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="adding-validation-to-a-razor-page"></a>Razor 페이지에 유효성 검사 추가
 
@@ -128,8 +128,6 @@ public DateTime ReleaseDate { get; set; }
 
 [!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRatingDAmult.cs?name=snippet1)]
 
-Razor 페이지에 대한 이 소개를 완료해 주셔서 감사합니다. 의견을 남겨 주세요. [MVC 및 EF Core 시작](xref:data/ef-mvc/intro)은 이 자습서에 대한 뛰어난 후속편입니다.
-
 ## <a name="additional-resources"></a>추가 리소스
 
 * [양식 사용](xref:mvc/views/working-with-forms)
@@ -139,3 +137,4 @@ Razor 페이지에 대한 이 소개를 완료해 주셔서 감사합니다. 의
 
 >[!div class="step-by-step"]
 [이전: 새 필드 추가](xref:tutorials/razor-pages/new-field)
+[다음: 파일 업로드](xref:tutorials/razor-pages/uploading-files)
