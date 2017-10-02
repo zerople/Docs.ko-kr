@@ -11,11 +11,11 @@ ms.assetid: bbbcf9e4-3c4c-4f50-b91e-175fe9cae4e2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/routing
-ms.openlocfilehash: 8bce642576b6b2f9326425d30ef95168da8f47e5
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: 9d24c2956c24a7995b3eeffc19e8c0a827349493
+ms.sourcegitcommit: ed401027aac45c5938c917c7f518a33ceffe9f95
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 10/02/2017
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core의 라우팅
 
@@ -46,17 +46,17 @@ ms.lasthandoff: 10/01/2017
 
 URL 일치 하는 라우팅 디스패치 하 여 들어오는 요청을 하는 프로세스는 한 *처리기*합니다. 이 프로세스는 일반적으로 데이터를 기반으로 URL 경로에 하지만 요청에 있는 모든 데이터를 고려해 야 할 확장할 수 있습니다. 처리기를 분리 하는 요청을 디스패치 하는 기능은 키 크기와 복잡 한 응용 프로그램을 확장 합니다.
 
-들어오는 요청 입력는 `RouterMiddleware`, 호출 하는 `RouteAsync` 시퀀스의 각 경로에 메서드. `IRouter` 인스턴스 선택 것인지 *처리* 설정 하 여 요청에서 `RouteContext` `Handler` 에 null이 아닌 `RequestDelegate`합니다. 경로 요청에 대 한 처리기를 설정한 경우 처리가 중지 되 고 처리기 경로 요청을 처리 하도록 호출 됩니다. 미들웨어를 호출 하는 모든 경로 시도 하는 경우 요청에 대 한 처리기를 찾을 수 *다음* 요청 파이프라인의 다음 미들웨어를 호출 합니다.
+들어오는 요청 입력는 `RouterMiddleware`, 호출 하는 `RouteAsync` 시퀀스의 각 경로에 메서드. `IRouter` 인스턴스 선택 것인지 *처리* 설정 하 여 요청에서 `RouteContext.Handler` 에 null이 아닌 `RequestDelegate`합니다. 경로 요청에 대 한 처리기를 설정한 경우 처리가 중지 되 고 처리기 경로 요청을 처리 하도록 호출 됩니다. 미들웨어를 호출 하는 모든 경로 시도 하는 경우 요청에 대 한 처리기를 찾을 수 *다음* 요청 파이프라인의 다음 미들웨어를 호출 합니다.
 
-에 대 한 기본 입력 `RouteAsync` 는 `RouteContext` `HttpContext` 현재 요청과 연결 된입니다. `RouteContext.Handler` 및 `RouteContext` `RouteData` 경로가 일치 후 설정할 수 있는 출력 합니다.
+에 대 한 기본 입력 `RouteAsync` 는 `RouteContext.HttpContext` 현재 요청과 연결 된입니다. `RouteContext.Handler` 및 `RouteContext.RouteData` 경로가 일치 후 설정할 수 있는 출력 합니다.
 
 일치 하는 동안 `RouteAsync` 또한의 속성을 설정 합니다는 `RouteContext.RouteData` 를 지금까지 완료 요청 처리에 따라 적절 한 값입니다. 경로 요청을 일치 하는 경우는 `RouteContext.RouteData` 에 대 한 중요 한 상태 정보가 포함 됩니다는 *결과*합니다.
 
-`RouteData``Values` 사전 *경로 값* 경로에서 생성 합니다. 이러한 값은 일반적으로 URL을 토큰화 하 여 결정, 사용자 입력을 수락 하거나 응용 프로그램 내부 추가로 디스패치 내리는 데 사용할 수 있습니다.
+`RouteData.Values`사전 인 *경로 값* 경로에서 생성 합니다. 이러한 값은 일반적으로 URL을 토큰화 하 여 결정, 사용자 입력을 수락 하거나 응용 프로그램 내부 추가로 디스패치 내리는 데 사용할 수 있습니다.
 
-`RouteData``DataTokens` 일치 하는 경로 관련 된 추가 데이터의 속성 모음입니다. `DataTokens`응용 프로그램 경로에 따라 나중에 결정을 내릴 수 있도록 각 경로 사용 하 여 데이터 일치 하는 연결 상태를 지원 하기 위해 제공 됩니다. 이러한 값이 개발자 정의 하 고 수행 **하지** 어떤 방식으로든에서 라우팅의 동작에 영향을 줍니다. 또한 데이터 토큰에 보관 하는 값이 고 문자열을 쉽게 변환할 수 있어야 하는 경로 값을 달리 모든 형식의 수 있습니다.
+`RouteData.DataTokens`일치 하는 경로 관련 된 추가 데이터의 속성 모음이입니다. `DataTokens`응용 프로그램 경로에 따라 나중에 결정을 내릴 수 있도록 각 경로 사용 하 여 데이터 일치 하는 연결 상태를 지원 하기 위해 제공 됩니다. 이러한 값이 개발자 정의 하 고 수행 **하지** 어떤 방식으로든에서 라우팅의 동작에 영향을 줍니다. 또한 데이터 토큰에 보관 하는 값이 고 문자열을 쉽게 변환할 수 있어야 하는 경로 값을 달리 모든 형식의 수 있습니다.
 
-`RouteData``Routers` 은 목록에서 요청을 성공적으로 일치에 참여 하는 경로입니다. 경로 서로 중첩 될 수 있습니다 및 `Routers` 속성은 일치 하는 발생 하는 경로가 논리 트리를 통해 경로 반영 합니다. 일반적으로 첫 번째 항목 `Routers` 경로 컬렉션 이며 URL 생성을 위해 사용 해야 합니다. 마지막 항목 `Routers` 일치 하는 경로 처리기입니다.
+`RouteData.Routers`요청을 성공적으로 일치에 참여 하는 경로가 목록이입니다. 경로 서로 중첩 될 수 있습니다 및 `Routers` 속성은 일치 하는 발생 하는 경로가 논리 트리를 통해 경로 반영 합니다. 일반적으로 첫 번째 항목 `Routers` 경로 컬렉션 이며 URL 생성을 위해 사용 해야 합니다. 마지막 항목 `Routers` 일치 하는 경로 처리기입니다.
 
 ### <a name="url-generation"></a>URL 생성
 
@@ -66,11 +66,11 @@ URL 생성 비슷한 반복적인 프로세스를 따르지만 사용자 또는 
 
 입력 하는 주 `GetVirtualPath` 됩니다.
 
-* `VirtualPathContext` `HttpContext`
+* `VirtualPathContext.HttpContext`
 
-* `VirtualPathContext` `Values`
+* `VirtualPathContext.Values`
 
-* `VirtualPathContext` `AmbientValues`
+* `VirtualPathContext.AmbientValues`
 
 제공 된 경로 값에 주로 사용 하 여 경로 `Values` 및 `AmbientValues` 는 URL을 생성할 수와 값 포함을 결정 합니다. `AmbientValues` 라우팅 시스템을 사용 하 여 현재 요청을 일치 하는에서 생성 된 경로 값의 집합입니다. 반면, `Values` 은 현재 작업에 대 한 원하는 URL을 생성 하는 방법을 지정 하는 경로 값입니다. `HttpContext` 경로 서비스 또는 현재 컨텍스트와 연결 된 추가 데이터를 가져와야 할 경우에 제공 됩니다.
 
@@ -78,11 +78,11 @@ URL 생성 비슷한 반복적인 프로세스를 따르지만 사용자 또는 
 
 출력 `GetVirtualPath` 는 `VirtualPathData`합니다. `VirtualPathData`병렬 처리는 `RouteData`; 포함 된 `VirtualPath` 출력 URL 경로 의해 설정 해야 하는 몇 가지 추가 속성에 대 한 합니다.
 
-`VirtualPathData` `VirtualPath` 속성에 포함 된 *가상 경로* 경로 의해 생성 합니다. 필요에 따라 추가 경로 처리 해야 합니다. 예를 들어, HTML에서 생성 된 URL을 렌더링 하려는 경우 응용 프로그램의 기본 경로 앞에 추가 해야 합니다.
+`VirtualPathData.VirtualPath` 속성에 포함 된 *가상 경로* 경로 의해 생성 합니다. 필요에 따라 추가 경로 처리 해야 합니다. 예를 들어, HTML에서 생성 된 URL을 렌더링 하려는 경우 응용 프로그램의 기본 경로 앞에 추가 해야 합니다.
 
-`VirtualPathData` `Router` 성공적으로 URL을 생성 하는 경로에 대 한 참조입니다.
+`VirtualPathData.Router` 성공적으로 URL을 생성 하는 경로에 대 한 참조입니다.
 
-`VirtualPathData` `DataTokens` 속성은 URL을 생성 하는 경로 관련 된 추가 데이터의 사전입니다. 이의 병렬 처리 `RouteData.DataTokens`합니다.
+`VirtualPathData.DataTokens` 속성은 URL을 생성 하는 경로 관련 된 추가 데이터의 사전입니다. 이의 병렬 처리 `RouteData.DataTokens`합니다.
 
 ### <a name="creating-routes"></a>경로 만들기
 
