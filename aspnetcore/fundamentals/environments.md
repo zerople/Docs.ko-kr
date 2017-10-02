@@ -1,7 +1,7 @@
 ---
-title: "여러 환경 작업"
+title: "여러 환경에서 ASP.NET Core 작업"
 author: ardalis
-description: 
+description: "ASP.NET Core 여러 환경에 걸쳐 응용 프로그램 동작을 제어 하는 것에 대 한 지원에 제공 하는 방법에 대해 알아봅니다."
 keywords: "ASP.NET Core, 환경 설정, ASPNETCORE_ENVIRONMENT"
 ms.author: riande
 manager: wpickett
@@ -11,11 +11,11 @@ ms.assetid: b5bba985-be12-4464-9a01-df3599b2a6f1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/environments
-ms.openlocfilehash: b66ef7e3626effff1c66c37a86865699fa8866f9
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 054b3e9f1e2bcfe1e4a75eca4d9dc6326ee6e44f
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="working-with-multiple-environments"></a>여러 환경 작업
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 09/22/2017
 
 ASP.NET Core 개발, 스테이징 및 프로덕션 등의 여러 환경에 걸쳐 앱 동작을 제어 하기 위한 지원을 제공 합니다. 환경 변수는 해당 환경에 구성 된 응용 프로그램 런타임 환경을 나타내는 데 사용 됩니다.
 
-[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/environments/sample)
+[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/environments/sample) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="development-staging-production"></a>개발, 스테이징 프로덕션
 

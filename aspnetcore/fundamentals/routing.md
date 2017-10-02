@@ -1,7 +1,7 @@
 ---
 title: "ASP.NET Core의 라우팅"
 author: ardalis
-description: 
+description: "ASP.NET Core 라우팅 기능 경로 처리기에 들어오는 요청을 매핑하는 일을 담당 어떻게를 파악 합니다."
 keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
@@ -11,11 +11,11 @@ ms.assetid: bbbcf9e4-3c4c-4f50-b91e-175fe9cae4e2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/routing
-ms.openlocfilehash: 469c30cf66d28e82519d5eff7f2fc82d490827b7
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 8bce642576b6b2f9326425d30ef95168da8f47e5
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core의 라우팅
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 09/28/2017
 >[!IMPORTANT]
 > 이 문서에서는 라우팅 낮은 수준의 ASP.NET Core를 설명 합니다. ASP.NET Core MVC 라우팅에 대 한 참조 [컨트롤러 작업에 대 한 라우팅을](../mvc/controllers/routing.md)
 
-[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/routing/sample)
+[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/routing/sample) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="routing-basics"></a>라우팅 기본 사항
 

@@ -12,17 +12,17 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/caching/memory
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b5dca6a81a66ce2a8771f1a16e63834d6504d8b6
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 5ce865427b6ca44c76888908fdeea9cd45c881c4
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="introduction-to-in-memory-caching-in-aspnet-core"></a>ASP.NET Core의 메모리 내 캐싱 소개
 
 여 [Rick Anderson](https://twitter.com/RickAndMSFT), [John Luo](https://github.com/JunTaoLuo), 및 [Steve Smith](https://ardalis.com/)
 
-[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/memory/sample)
+[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/memory/sample) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="caching-basics"></a>캐싱 기본 사항
 

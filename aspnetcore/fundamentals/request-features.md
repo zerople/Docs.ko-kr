@@ -1,7 +1,7 @@
 ---
 title: "ASP.NET Core에서 기능을 요청"
 author: ardalis
-description: 
+description: "HTTP 요청 및 응답 ASP.NET Core에 대 한 인터페이스에 정의 되어 있는 관련 된 웹 서버 구현 정보에 알아봅니다."
 keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
@@ -11,11 +11,11 @@ ms.assetid: d1fbd23c-2ff9-4216-b908-0201ff3afb7c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/request-features
-ms.openlocfilehash: a10aefe3819fb03019575c36274dd164faf7086c
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: b689d82d16c6ef55485691b3474a070765c8144b
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="request-features-in-aspnet-core"></a>ASP.NET Core에서 기능을 요청
 

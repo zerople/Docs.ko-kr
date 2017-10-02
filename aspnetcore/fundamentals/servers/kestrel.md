@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/kestrel
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a961d46d7804b7ac7e570692fe42727feae3d5c9
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 451c36fc9095b6e076e5287c992b6163205c523b
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="introduction-to-kestrel-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 웹 서버 구현이 Kestrel 소개
 
@@ -34,11 +34,11 @@ Kestrel 모든 플랫폼 및 버전을 지 원하는.NET Core에서 지원 됩�
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-[보기 또는 2.x에 대 한 샘플 코드를 다운로드 합니다.](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/sample2)
+[보기 또는 2.x에 대 한 샘플 코드를 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/sample2) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-[보기 또는 1.x에 대 한 샘플 코드를 다운로드 합니다.](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/sample1)
+[보기 또는 1.x에 대 한 샘플 코드를 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/sample1) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
 
 ---
 

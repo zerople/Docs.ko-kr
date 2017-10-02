@@ -11,17 +11,17 @@ ms.assetid: de621887-c5c9-4ac8-9efd-f5cc0457a134
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/response-compression
-ms.openlocfilehash: ab004c038b82888aa57d5e25fcb69a06deec8411
-ms.sourcegitcommit: 8005eb4051e568d88ee58d48424f39916052e6e2
+ms.openlocfilehash: 7aea4db44764d5d8f47520adb6599e651e0e9000
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/24/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="response-compression-middleware-for-aspnet-core"></a>ASP.NET Core에 대 한 응답 압축 미들웨어
 
-으로 [Luke Latham](https://github.com/guardrex)
+[Luke Latham](https://github.com/guardrex)으로
 
-[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/response-compression/samples)
+[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/response-compression/samples) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
 
 네트워크 대역폭은 제한 된 리소스입니다. 일반적으로 응답의 크기를 줄이면 응용 프로그램의 응답성 종종 크게 증가 합니다. 페이로드 크기를 줄이기 위해 가지 방법은 응용 프로그램의 응답을 압축 하는 것입니다.
 

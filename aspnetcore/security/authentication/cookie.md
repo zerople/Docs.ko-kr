@@ -11,11 +11,11 @@ ms.assetid: 2bdcbf95-8d9d-4537-a4a0-a5ee439dcb62
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/cookie
-ms.openlocfilehash: af3ffe418521d5d97f5d14ca9c904c21b4d4ff89
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: e5c53a7044edb56e065b2dc1536343fdaf9fb007
+ms.sourcegitcommit: 7d8f4e3443a2989a64343f8fec83e6a4c4ed2f97
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 09/29/2017
 ---
 # <a name="using-cookie-authentication-without-aspnet-core-identity"></a>ASP.NET Core Identity 없이 쿠키 인증을 사용 하 여
 
@@ -259,8 +259,8 @@ ASP.NET Core 2.x 쿠키를 구성 하는 데 사용 되는 Api를 통합 합니�
 사용 하는 예제 `CookieAuthenticationOptions` 에 `ConfigureServices` 방식의 *Startup.cs* 뒤에 오는:
 
 ```csharp
-services.AddAuthentication()
-        .AddCookie(options =>
+services.AddAuthentication("MyCookieAuthenticationScheme")
+        .AddCookie("MyCookieAuthenticationScheme", options =>
         {
             options.Cookie.Name = "AuthCookie";
             options.Cookie.Domain = "contoso.com";

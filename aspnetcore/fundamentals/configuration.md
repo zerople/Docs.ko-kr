@@ -11,11 +11,11 @@ ms.assetid: b3a5984d-e172-42eb-8a48-547e4acb6806
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration
-ms.openlocfilehash: 379030df4ca91a38fce251aeaab9c5dfaf11e915
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: ca6b62dd4699536b24c3422a2a51fc3fe1744f0a
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core의 구성
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 09/28/2017
 
 각 구성 값 문자열 키에 매핑됩니다. 사용자 지정 설정을 deserialize 하는 데 기본 바인딩인 지원은 [POCO](https://wikipedia.org/wiki/Plain_Old_CLR_Object) 개체 (속성이 있는 간단한.NET 클래스).
 
-[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/sample)
+[보거나 다운로드 샘플 코드](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/sample) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="simple-configuration"></a>단순 구성
 

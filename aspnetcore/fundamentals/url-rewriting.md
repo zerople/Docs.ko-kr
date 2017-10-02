@@ -1,7 +1,7 @@
 ---
 title: "URL의 ASP.NET Core 미들웨어를 다시 작성"
 author: guardrex
-description: "다시 작성 및 ASP.NET Core 응용 프로그램에서 URL 다시 쓰기 미들웨어를 사용 하는 방법에 대 한 지침이 포함 된 리디렉션 URL 소개 합니다."
+description: "다시 작성 및 ASP.NET Core 응용 프로그램의 URL 재작성 미들웨어와 리디렉션 URL에 알아봅니다."
 keywords: "ASP.NET Core URL 재작성, URL 재작성, URL 리디렉션, 미들웨어, apache_mod 리디렉션 URL"
 ms.author: riande
 manager: wpickett
@@ -11,17 +11,17 @@ ms.assetid: e6130638-c410-4161-9921-b658ce988bd1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 44c78a6304eacc70cdee9bb0d9407376017abcac
-ms.sourcegitcommit: 8005eb4051e568d88ee58d48424f39916052e6e2
+ms.openlocfilehash: 0a4024edf13651e2ed7e0f87e554e8ba8d895619
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/24/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>URL의 ASP.NET Core 미들웨어를 다시 작성
 
 여 [Luke Latham](https://github.com/guardrex) 및 [Mikael Mengistu](https://github.com/mikaelm12)
 
-[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/)
+[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
 
 URL 다시 쓰기는 하나 이상의 미리 정의 된 규칙을 기반으로 하는 Url 요청을 수정 하는 작업입니다. URL 다시 작성 하는 위치 및 주소 밀접 하 게 연결 되지 않은 리소스 위치 및 해당 주소 간의 추상화를 만듭니다. URL 다시 쓰기는 중요 한 몇 가지 시나리오가 있습니다.
 * 이동 또는 이러한 리소스에 대 한 안정적인 로케이터를 유지 관리 하는 동안 서버 리소스를 일시적 또는 영구적으로 대체

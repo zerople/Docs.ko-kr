@@ -1,7 +1,7 @@
 ---
 title: "ASP.NET Core 응용 프로그램 시작"
 author: ardalis
-description: "ASP.NET Core 시작 클래스에 설명합니다."
+description: "ASP.NET Core 시작 클래스에서 서비스 및 응용 프로그램의 요청 파이프라인을 구성 하는 방법을 검색 합니다."
 keywords: "ASP.NET Core, 시작, 구성 메서드, ConfigureServices 메서드"
 ms.author: tdykstra
 manager: wpickett
@@ -10,17 +10,17 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/startup
-ms.openlocfilehash: 94db2ff530b5de7fe357cfb591d09b984cb248f9
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: bba0eafe3917fa850b3a07df8df6448409f4062d
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="application-startup-in-aspnet-core"></a>ASP.NET Core 응용 프로그램 시작
 
 여 [Steve Smith](https://ardalis.com/) 및 [Tom Dykstra](https://github.com/tdykstra/)
 
-`Startup` 클래스 서비스 및 응용 프로그램의 요청 파이프라인을 구성 합니다. 
+`Startup` 클래스 서비스 및 응용 프로그램의 요청 파이프라인을 구성 합니다.
 
 ## <a name="the-startup-class"></a>시작 클래스입니다.
 

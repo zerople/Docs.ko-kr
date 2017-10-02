@@ -11,11 +11,11 @@ ms.assetid: 4f0564b4-ed4e-4e1e-9755-c1144d21a0ef
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/webapi
-ms.openlocfilehash: 2dd2d40aef3803ad2f75504920a1174fee5c2444
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 4acb7ccf7f944df5d08ac7faa342f0c72cf9d1a7
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="migrating-from-aspnet-web-api"></a>ASP.NET Web API에서 마이그레이션
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 09/12/2017
 
 웹 Api는 다양 한 브라우저 및 모바일 장치를 포함 한 클라이언트를 연결할 HTTP 서비스입니다. ASP.NET Core MVC 웹 응용 프로그램의 단일 방법을 제공 하는 Web Api 작성에 대 한 지원이 포함 되어 있습니다. 이 문서에서 ASP.NET Core mvc 웹 API 구현 ASP.NET Web API에서 마이그레이션하는 데 필요한 단계 보여 줍니다.
 
-[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/migration/webapi/sample)
+[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/migration/webapi/sample) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="review-aspnet-web-api-project"></a>ASP.NET Web API 프로젝트 검토
 

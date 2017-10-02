@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/aspnet-core-module
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 479fc3a389168bb08e278aa3d9da3bf7df1b49f4
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 8ced1e667acb7d11954aea27de7701db89091fd9
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="introduction-to-aspnet-core-module"></a>ASP.NET Core 모듈 소개
 
@@ -28,7 +28,7 @@ ASP.NET Core 모듈 (ANCM)를 사용 하면 ASP.NET Core IIS 뒤에 있는 응�
 
 * Windows 7 및 Windows Server 2008 R2 이상
 
-[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/aspnet-core-module/sample)
+[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/aspnet-core-module/sample) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="what-aspnet-core-module-does"></a>ASP.NET Core 모듈에서 수행 하는 작업
 

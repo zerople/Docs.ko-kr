@@ -1,7 +1,7 @@
 ---
 title: "For.NET (OWIN) 열린 웹 인터페이스"
 author: ardalis
-description: ".NET (OWIN)에 대 한 웹 인터페이스를 소개 합니다."
+description: "ASP.NET Core 지 원하는 방법 열린 웹 인터페이스에 대 한.NET (OWIN), 웹 응용 프로그램 웹 서버에서 분리 될 수 있는 검색 합니다."
 keywords: "ASP.NET Core,.NET, OWIN에 대 한 열린 웹 인터페이스"
 ms.author: riande
 manager: wpickett
@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/owin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd32d6929f16a619ad2cc8c7752a0373cbdff034
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: e111a451bcc741f3e77f7ce756356cc1b57a5b52
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="introduction-to-open-web-interface-for-net-owin"></a>.NET (OWIN)에 대 한 웹 인터페이스를 열려면 소개
 
@@ -32,7 +32,7 @@ OWIN 두 프레임 워크를 함께 사용할 수 있는 서로 다른 개체 �
 
 참고: 이러한 어댑터를 사용 하 여 성능 비용이 수반 됩니다. Owin 패키지 또는 어댑터에만 ASP.NET Core 구성 요소를 사용 하 여 응용 프로그램 사용 하지 마십시오.
 
-[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/owin/sample)
+[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/owin/sample) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="running-owin-middleware-in-the-aspnet-pipeline"></a>ASP.NET 파이프라인에서 OWIN 미들웨어를 실행합니다.
 

@@ -11,11 +11,11 @@ ms.assetid: 80fb9e43-e4db-4af2-b2a8-e1364a712f69
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/dependency-injection
-ms.openlocfilehash: ff3ded36a04fdbba0628dc5f223bfd865d58612a
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 4586f50bc663b7269914dfff28b61342e3991a48
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="dependency-injection-into-views"></a>보기에는 종속성 주입
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 09/12/2017
 
 ASP.NET Core 지원 [종속성 주입](xref:fundamentals/dependency-injection) 뷰로 합니다. 이 지역화 또는 데이터 요소 보기를 채우는 경우에 필요 같은 보기 관련 서비스에 대 한 유용할 수 있습니다. 유지 관리 하는 것이 좋습니다 [문제의 분리](http://deviq.com/separation-of-concerns/) 컨트롤러와 뷰 사이입니다. 컨트롤러에서 대부분의 보기를 표시 하는 데이터에 전달 되어야 합니다.
 
-[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/dependency-injection/sample)
+[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/dependency-injection/sample) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="a-simple-example"></a>간단한 예
 

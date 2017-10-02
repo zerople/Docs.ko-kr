@@ -11,11 +11,11 @@ ms.assetid: 0a7286e4-6428-424e-b5c4-5c98815cf61c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/weblistener
-ms.openlocfilehash: 5eac2194dd0a49f89a3c348ec480bc8e1b3f0e54
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: f1abb3558546cd907c78b44d9353d9c9f1f5aff1
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="weblistener-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 웹 서버 구현이 WebListener
 
@@ -42,7 +42,7 @@ WebListener는 다음과 같은 기능을 지원합니다.
 
 - Windows 7 및 Windows Server 2008 R2 이상
 
-[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/weblistener/sample)
+[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/weblistener/sample) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="when-to-use-weblistener"></a>WebListener를 사용 하는 경우
 

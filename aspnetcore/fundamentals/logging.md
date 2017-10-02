@@ -1,7 +1,7 @@
 ---
 title: "ASP.NET Core 로그인"
 author: ardalis
-description: "로깅 프레임 워크에서 ASP.NET Core를 소개합니다. 각 기본 제공 로깅 공급자 및 인기 있는 일부 타사 공급자에 대 한 링크에 대 한 섹션이 포함 되어 있습니다."
+description: "ASP.NET Core에서 로깅 프레임 워크에 알아봅니다. 기본 제공 로깅 공급자를 검색 하 고 인기 있는 타사 공급자에 대 한 자세한 정보."
 keywords: "ASP.NET Core, 로깅, 로깅 providers,Microsoft.Extensions.Logging,ILogger,ILoggerFactory,LogLevel,WithFilter,TraceSource,EventLog,EventSource,scopes"
 ms.author: tdykstra
 manager: wpickett
@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/logging
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca81f01fe1c5026514eafedf852b4bc8f3b6fd21
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 9557e9f6915507450de3ffe500582839a28c3f0c
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="introduction-to-logging-in-aspnet-core"></a>ASP.NET Core 로그인 소개
 
@@ -26,11 +26,11 @@ ASP.NET Core 다양 한 로깅 공급자와 작동 하는 로깅 API를 지원 �
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/sample2)
+[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/sample2) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/sample)
+[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/sample) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
 
 ---
 

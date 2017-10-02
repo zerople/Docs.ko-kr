@@ -11,11 +11,11 @@ ms.assetid: bc8b4ba3-e9ba-48fd-b1eb-cd48ff6bc7a1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: f6b454da838308adddaaddb84073722f647af379
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 4c632f521cf314bcf8c84f40c52a580a26a5ceee
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="dependency-injection-into-controllers"></a>컨트롤러에 대 한 종속성 주입
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 09/28/2017
 
 ASP.NET Core MVC 컨트롤러의 생성자를 통해 명시적으로 해당 종속성을 요청 해야 합니다. 경우에 따라 개별 컨트롤러 작업에는 서비스 필요할 수 있습니다 및 컨트롤러 수준에서 요청할 수 있는 적합할 수 있습니다. 이 경우에 작업 메서드의 매개 변수로 서비스를 삽입할 수도 있습니다.
 
-[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/dependency-injection/sample)
+[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/dependency-injection/sample) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="dependency-injection"></a>종속성 주입
 

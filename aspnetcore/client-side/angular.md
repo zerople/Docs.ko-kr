@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/angular
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d271560476ee4efdffbd457e37eb769a7ae6ca25
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 4aecf9e9bd11cc7e2b36b40955178d9e9368c185
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="using-angularjs-for-single-page-applications-spas-with-aspnet-core"></a>AngularJS를 사용 하 여 ASP.NET Core 있는 단일 페이지 응용 프로그램 (SPAs)
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 09/22/2017
 
 이 문서에서는 AngularJS를 사용 하 여 SPA 스타일 ASP.NET 응용 프로그램을 빌드하는 방법에 설명 합니다.
 
-[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/client-side/angular/sample)
+[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/client-side/angular/sample) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="what-is-angularjs"></a>AngularJS 란?
 
@@ -63,7 +63,7 @@ AngularJS 응용 프로그램에 추가 하는 방법은 여러 가지가 있습
 
 ## <a name="key-components"></a>주요 구성 요소
 
-AngularJS와 같은 다양 한 주요 구성 요소에 포함 *지시문*, *템플릿*, *반복기*, *모듈*, * 컨트롤러*, *구성 요소*, *구성 요소 라우터* 등입니다. 이러한 구성 요소가 함께 작동 하 여 웹 페이지에 동작을 추가 하는 방법을 살펴보겠습니다.
+AngularJS와 같은 다양 한 주요 구성 요소에 포함 *지시문*, *템플릿*, *반복기*, *모듈*,  *컨트롤러*, *구성 요소*, *구성 요소 라우터* 등입니다. 이러한 구성 요소가 함께 작동 하 여 웹 페이지에 동작을 추가 하는 방법을 살펴보겠습니다.
 
 ### <a name="directives"></a>지시문
 

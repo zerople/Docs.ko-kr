@@ -10,11 +10,11 @@ ms.topic: article
 ms.assetid: 0292bdae-b3ed-4637-bd67-19b9bb8b65cb
 ms.prod: asp.net-core
 uid: security/key-vault-configuration
-ms.openlocfilehash: 5122918ff84d87dd9763d454412f83d6f2c60fcb
-ms.sourcegitcommit: 8005eb4051e568d88ee58d48424f39916052e6e2
+ms.openlocfilehash: c5d8506c1bc8e6364d01596a0c82e1da41eea4ca
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/24/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="azure-key-vault-configuration-provider"></a>Azure 키 자격 증명 모음 구성 공급자
 
@@ -24,15 +24,15 @@ ms.lasthandoff: 09/24/2017
 
 보기 또는 2.x에 대 한 샘플 코드를 다운로드 합니다.
 
-* [기본 샘플](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/basic-sample/2.x) -는 응용 프로그램에 보안 값을 읽습니다.
-* [키 이름 접두사 샘플](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/key-name-prefix-sample/2.x) -서로 다른 각 응용 프로그램 버전에 대 한 비밀 값 집합을 로드할 수 있는 응용 프로그램의 버전을 나타내는 키 이름 접두사를 사용 하 여 읽기 비밀 값입니다.
+* [기본 샘플](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/basic-sample/2.x) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))-는 응용 프로그램에 보안 값을 읽습니다.
+* [키 이름 접두사 샘플](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/key-name-prefix-sample/2.x) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))-서로 다른 각 응용 프로그램 버전에 대 한 비밀 값 집합을 로드할 수 있는 응용 프로그램의 버전을 나타내는 키 이름 접두사를 사용 하 여 읽기 비밀 값입니다.
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 보기 또는 1.x에 대 한 샘플 코드를 다운로드 합니다.
 
-* [기본 샘플](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/basic-sample/1.x) -는 응용 프로그램에 보안 값을 읽습니다.
-* [키 이름 접두사 샘플](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/key-name-prefix-sample/1.x) -서로 다른 각 응용 프로그램 버전에 대 한 비밀 값 집합을 로드할 수 있는 응용 프로그램의 버전을 나타내는 키 이름 접두사를 사용 하 여 읽기 비밀 값입니다. 
+* [기본 샘플](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/basic-sample/1.x) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))-는 응용 프로그램에 보안 값을 읽습니다.
+* [키 이름 접두사 샘플](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/key-name-prefix-sample/1.x) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))-서로 다른 각 응용 프로그램 버전에 대 한 비밀 값 집합을 로드할 수 있는 응용 프로그램의 버전을 나타내는 키 이름 접두사를 사용 하 여 읽기 비밀 값입니다. 
 
 ---
 

@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/spa-services
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0dbe5e3567bb4feea7e56cff3dcf75be5df88310
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: a93dae3edec73f1b5254aa60662834ca83de62fd
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="using-javascriptservices-for-creating-single-page-applications-with-aspnet-core"></a>ASP.NET Core 사용 단일 페이지 응용 프로그램을 만들기 위한 JavaScriptServices를 사용 하 여
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 09/12/2017
 
 단일 페이지 응용 프로그램 (SPA)에 내재 된 풍부한 사용자 환경이 때문에 웹 응용 프로그램의 인기 있는 형식입니다. 와 같은 클라이언트 쪽 SPA 프레임 워크 또는 라이브러리가, 통합 [각](https://angular.io/) 또는 [반응](https://facebook.github.io/react/), ASP.NET Core 것은 어려울 수와 같은 서버 쪽 프레임 워크입니다. [JavaScriptServices](https://github.com/aspnet/JavaScriptServices) 통합 프로세스에서 충돌을 줄이기 위해 개발 되었습니다. 다른 클라이언트와 서버 기술 스택 간에 원활 하 게 작업 수 있습니다.
 
-[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/client-side/spa-services/sample)
+[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/client-side/spa-services/sample) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
 
 <a name="what-is-js-services"></a>
 
@@ -264,7 +264,7 @@ dotnet new angular
     * 소스 맵이 제외 됩니다.
     * 묶음 및 축소를 통해 클라이언트 코드를 최적화합니다.
 
-ASP.NET Core 라는 환경 변수를 사용 하 여 `ASPNETCORE_ENVIRONMENT` 구성 모드를 저장할 수 있습니다. 참조 ** [환경 설정](xref:fundamentals/environments#setting-the-environment) ** 자세한 정보에 대 한 합니다.
+ASP.NET Core 라는 환경 변수를 사용 하 여 `ASPNETCORE_ENVIRONMENT` 구성 모드를 저장할 수 있습니다. 참조  **[환경 설정](xref:fundamentals/environments#setting-the-environment)**  자세한 정보에 대 한 합니다.
 
 ### <a name="running-with-net-core-cli"></a>.NET core CLI 실행
 

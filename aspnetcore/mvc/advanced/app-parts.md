@@ -11,15 +11,15 @@ ms.assetid: b355a48e-a15c-4d58-b69c-899963613a98
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/extensibility/app-parts
-ms.openlocfilehash: 77d3a58d58493bf1b0b760ab9037d2778ba23441
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: a260675e7461105d4f6a0c61fd13971663c268f2
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="application-parts-in-aspnet-core"></a>ASP.NET Core 응용 프로그램 파트
 
-[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample)
+[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
 
 *응용 프로그램 부분* 있는 MVC 컨트롤러를 뷰 구성 요소와 같은 기능을 응용 프로그램의 리소스에 대 한 추상화 되었거나 태그 도우미를 검색할 수 있습니다. 응용 프로그램 파트의 한 가지 예는 AssemblyPart 어셈블리 참조 및 표시 유형 및 컴파일 참조를 캡슐화 하는입니다. *공급자 기능* 응용 프로그램 부분을 ASP.NET Core MVC 응용 프로그램의 기능을 채우는 데 사용 합니다. 응용 프로그램 부분에 대 한 주요 사용 사례 검색 (또는 로드를 방지) 응용 프로그램을 구성할 수 있도록 하는 어셈블리에서 MVC 기능입니다.
 

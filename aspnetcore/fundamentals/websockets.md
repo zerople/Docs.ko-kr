@@ -1,7 +1,7 @@
 ---
 title: "ASP.NET Core에서 Websocket을 지원합니다."
 author: tdykstra
-description: "Websocket 이란 ASP.NET Core 및 사용 하는 방법을 지원 합니다."
+description: "ASP.NET Core에서 Websocket을 시작 하는 방법을 알아봅니다."
 keywords: ASP.NET Core, WebSockets
 ms.author: tdykstra
 manager: wpickett
@@ -11,11 +11,11 @@ ms.assetid: 0e0fedcd-a7b4-4479-8ae0-36eab0229d7e
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: fundamentals/websockets
-ms.openlocfilehash: 8a6b5cc8ca8ac17f0e4c5b23f20013130cd472c8
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 114d52d831668e5facd1142b5f9e5f68e7456f7e
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="introduction-to-websockets-in-aspnet-core"></a>ASP.NET Core에서 Websocket 소개
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 09/22/2017
 
 이 문서에는 ASP.NET Core에서 Websocket을 시작 하는 방법을 설명 합니다. [WebSocket](https://wikipedia.org/wiki/WebSocket) 은 TCP 연결을 통한 영구 양방향 통신 채널을 사용 하도록 설정 하는 프로토콜입니다. 웹 응용 프로그램에서 실시간 기능이 원하는 곳을 채팅, 주식 종목, 게임 등의 응용 프로그램에 대 한 사용 됩니다.
 
-[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/websockets/sample) 참조는 [다음 단계](#next-steps) 한 자세 합니다.
+[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/websockets/sample) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample)). 참조는 [다음 단계](#next-steps) 한 자세 합니다.
 
 
 ## <a name="prerequisites"></a>필수 구성 요소
@@ -98,7 +98,7 @@ WebSocket이이 루프를 시작 하기 전에 수락 하면 미들웨어 파이
 
 ## <a name="next-steps"></a>다음 단계
 
-[샘플 응용 프로그램](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/websockets/sample) 이 함께 제공 되는 문서는 간단한 에코 응용 프로그램입니다. WebSocket 연결 하는 웹 페이지가 고 서버 항목만 다시 클라이언트에 수신 된 모든 메시지. (해당 설정 있지 않은 IIS Express와 Visual Studio에서 실행) 하는 명령 프롬프트에서 실행 http://localhost:5000 로 이동 합니다. 웹 페이지 왼쪽 위에 연결 상태를 보여 줍니다.
+[샘플 응용 프로그램](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/websockets/sample) 이 함께 제공 되는 문서는 간단한 에코 응용 프로그램입니다. WebSocket 연결 하는 웹 페이지가 고 서버 항목만 다시 클라이언트에 수신 된 모든 메시지. (해당 설정 있지 않은 IIS Express와 Visual Studio에서 실행) 하는 명령 프롬프트에서 실행 http://localhost:5000로 이동 합니다. 웹 페이지 왼쪽 위에 연결 상태를 보여 줍니다.
 
 ![웹 페이지의 초기 상태](websockets/_static/start.png)
 

@@ -11,11 +11,11 @@ ms.assetid: 8468d859-ff32-4a92-9e62-08c4a9e36594
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/configuration
-ms.openlocfilehash: 62660f7e58467a69f540966df188747b6fde57fe
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 4cf2227db22fbfd7f0c6239dad0d0a470c35d28c
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="migrating-configuration"></a>구성 마이그레이션
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 09/12/2017
 
 이전 문서에서는 하기 시작 [ASP.NET Core mvc ASP.NET MVC 프로젝트 마이그레이션](mvc.md)합니다. 이 문서에서는 구성을 마이그레이션 했습니다.
 
-[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/migration/configuration/samples)
+[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/migration/configuration/samples) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="setup-configuration"></a>설치 구성
 

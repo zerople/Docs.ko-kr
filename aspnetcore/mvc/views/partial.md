@@ -11,11 +11,11 @@ ms.assetid: 4be1b12c-b74e-44ff-826b-99ce86e8d464
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/partial
-ms.openlocfilehash: 8f890009f71d4c1f693ee06dcd448e9803164aca
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 60f5255ca31accbffffec18053b29810977a5ff1
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="partial-views"></a>부분 뷰
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 09/22/2017
 
 ASP.NET Core MVC는 재사용 가능한 파트의 서로 다른 뷰 간에 공유 하려는 웹 페이지에 있는 경우에 유용 부분 뷰를 지원 합니다.
 
-[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/partial/sample)
+[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/partial/sample) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="what-are-partial-views"></a>부분 뷰는 무엇입니까?
 

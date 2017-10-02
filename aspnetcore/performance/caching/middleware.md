@@ -10,17 +10,17 @@ ms.topic: article
 ms.assetid: f9267eab-2762-42ac-1638-4a25d2c9d67c
 ms.prod: asp.net-core
 uid: performance/caching/middleware
-ms.openlocfilehash: f07b0cb44542b7da140d519e883c67901d6327e2
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: bc3350a7ef15c5c38aa072bab15cbddc7d0ee0fa
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>ASP.NET Core의 미들웨어 캐싱 응답
 
 여 [Luke Latham](https://github.com/guardrex) 및 [John Luo](https://github.com/JunTaoLuo)
 
-[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/middleware/samples)
+[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/middleware/samples) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
 
 이 문서에서 ASP.NET Core 응용 프로그램 응답 캐싱 미들웨어를 구성 하는 방법에 자세히 설명 합니다. 미들웨어는 응답에 캐시할 수 있는 경우, 저장소 응답 및 캐시에서 응답 하는 데 사용 결정 합니다. HTTP 캐시에 대 한 소개 및 `ResponseCache` 특성을 참조 하십시오. [응답 캐시](response.md)합니다.
 

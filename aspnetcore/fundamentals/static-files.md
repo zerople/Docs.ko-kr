@@ -1,7 +1,7 @@
 ---
 title: "ASP.NET Core에 정적 파일 작업"
 author: rick-anderson
-description: "ASP.NET Core에 정적 파일 작업"
+description: "ASP.NET Core에 정적 파일을 사용 하는 방법을 알아봅니다."
 keywords: "ASP.NET Core, 정적 파일, 정적 자산, HTML, CSS, JavaScript"
 ms.author: riande
 manager: wpickett
@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/static-files
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 69a4542c9b2a0d7091d05d42029e68384b760dd7
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: e099c4767958f153134e0fb6b3de8132ab1ead82
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="working-with-static-files-in-aspnet-core"></a>ASP.NET Core에 정적 파일 작업
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 09/28/2017
 
 HTML, CSS, 이미지 및 JavaScript와 같은 정적 파일은 ASP.NET Core 응용 프로그램을 클라이언트에 직접 제공할 수 있는 자산입니다.
 
-[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/static-files/sample)
+[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/static-files/sample) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="serving-static-files"></a>정적 파일 처리
 

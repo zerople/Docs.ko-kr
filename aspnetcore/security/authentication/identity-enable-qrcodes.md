@@ -5,20 +5,20 @@ description: "ASP.NET Core에서 인증자 앱에 대 한 QR 코드를 생성 �
 keywords: "ASP.NET Core, MVC에서 QR 코드를 생성, 인증자, 2FA"
 ms.author: riande
 manager: wpickett
-ms.date: 07/24/2017
+ms.date: 09/24/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity-enable-qrcodes
-ms.openlocfilehash: fcadf9ca0ad66bb0fd56efc248fc7534965b48b3
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 36a3dc542f3321c5e6ebaa078efd8bde3f50948f
+ms.sourcegitcommit: e4a1df2a5a85f299322548809e547a79b380bb92
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 09/29/2017
 ---
 # <a name="enabling-qr-code-generation-for-authenticator-apps-in-aspnet-core"></a>ASP.NET Core에서 인증자 앱에 대 한 QR 코드를 생성 하도록 설정
 
-참고:이 항목을 적용할 ASP.NET Core 2.x Razor 페이지를 사용 합니다.
+참고:이 항목을 적용할 ASP.NET Core 2.x
 
 ASP.NET Core authenticator 응용 프로그램에서 개별 인증에 대 한 지원이 포함 되어 있습니다. 시간 기반 일회용 암호 알고리즘 (TOTP)를 사용 하 여 요소 인증 (2FA) 인증자 앱을 두 개의 approch 2FA에 대 한 권장 업계 있습니다. 2FA TOTP를 사용 하 여는 SMS 2FA 하는 것이 좋습니다. Authenticator 앱에 있는 사용자는 자신의 사용자 이름과 암호를 확인 한 후에 들어가야 합니다. 6 to 8 자리 코드를 제공 합니다. 일반적으로 ऍ 스마트 폰에 설치 됩니다.
 
@@ -30,7 +30,7 @@ ASP.NET Core 웹 응용 프로그램 템플릿 인증자를 지원 하지만 QRC
 
 * 다운로드는 [qrcode.js javascript 라이브러리](https://davidshimjs.github.io/qrcodejs/) 에 `wwwroot\lib` 프로젝트의 폴더에에서 있습니다.
 
-* 에 *Pages\Account\Manage\EnableAuthenticator.cshtml* 파일을 찾아는 `Scripts` 파일의 끝 섹션:
+* *Pages\Account\Manage\EnableAuthenticator.cshtml* (Razor 페이지) 또는 *Views\Account\Manage\EnableAuthenticator.cshtml* (MVC)을 찾아는 `Scripts` 파일의 끝 섹션:
 
 ```cshtml
 @section Scripts {
@@ -89,3 +89,7 @@ QR 코드에 대 한 올바른 형식의 URL은에서 사용할 수는 있습니
 * `data-url`속성에는 `qrCodeData` 요소입니다. 
 
 사용 하 여 `@Html.Raw` 뷰에서 모델 속성에 액세스 (url에서 앰퍼샌드 double 인코딩할 및 QR 코드의 레이블 매개 변수는 무시 합니다. 그렇지 않은 경우).
+
+## <a name="totp-client-and-server-time-skew"></a>TOTP 클라이언트 및 서버 시간 차가
+
+TOTP 인증 서버와 인증자 장치 정확한 시간을 필요에 따라 달라 집니다. 토큰 30 초만 지속 됩니다. TOTP 2FA 로그인 실패 하는 경우 서버 시간이 정확 하 고 정확한 NTP 서비스에 동기화 된 가급적 인지 확인 합니다.

@@ -5,16 +5,16 @@ description:
 keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
-ms.date: 08/03/2017
+ms.date: 09/03/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: index
-ms.openlocfilehash: d8516643393cdf9175adc78ab98420dc1dc5d1d9
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 748c8c0b9dd0e6eab0d7347bbf89ed80c10bdb54
+ms.sourcegitcommit: e4a1df2a5a85f299322548809e547a79b380bb92
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/29/2017
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 소개
 
@@ -22,7 +22,7 @@ ms.lasthandoff: 09/12/2017
 
 ASP.NET Core는 클라우드 기반 인터넷에 연결된 최신 응용 프로그램을 빌드하기 위한 플랫폼 간 고성능 [오픈 소스](https://github.com/aspnet/home) 프레임워크입니다. ASP.NET Core를 사용하면 다음과 같은 작업을 수행할 수 있습니다.
 
-* 웹앱 및 서비스, IoT 앱 및 모바일 백 엔드를 빌드합니다.
+* 웹앱 및 서비스, [IoT](https://www.microsoft.com/en-us/internet-of-things/) 앱 및 모바일 백 엔드를 빌드합니다.
 * Windows, macOS 및 Linux에서 즐겨 찾는 개발 도구를 사용합니다.
 * 클라우드 또는 온-프레미스에 배포
 * [.NET Core 또는.NET Framework](https://docs.microsoft.com/dotnet/articles/standard/choosing-core-framework-server)를 실행합니다.
