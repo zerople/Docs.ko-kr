@@ -11,11 +11,11 @@ ms.assetid: dd4135ec-2b15-410c-b3fb-3d12eed4a1ac
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/testing
-ms.openlocfilehash: 5d81e0193fb042993452ed314e70fb63573e615c
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: b8ba5740c96b116f9be3feb1967b91c2d675a97d
+ms.sourcegitcommit: 5ee9b2ab62acaafe78ad06f1dc4ba624811ab630
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/02/2017
 ---
 # <a name="testing-controller-logic-in-aspnet-core"></a>ASP.NET Core에서 컨트롤러 논리를 테스트합니다.
 
@@ -47,7 +47,7 @@ ASP.NET MVC 응용 프로그램의 컨트롤러는 작고 사용자 인터페이
 단위 테스트를 사용자 지정 필터, 경로 등을 작성 하는 경우, 되지만 특정 컨트롤러 작업에서 테스트의 일부로 되지는 않습니다. 격리 된 상태에서 테스트 해야 합니다.
 
 > [!TIP]
-> [만들기 및 Visual Studio와 함께 단위 테스트 실행](https://www.visualstudio.com/docs/code/create-and-run-unit-tests-vs)합니다.
+> [만들기 및 Visual Studio와 함께 단위 테스트 실행](https://docs.microsoft.com/visualstudio/test/unit-test-your-code)합니다.
 
 단위 테스트를 보여 주기 위해 다음 컨트롤러를 검토 합니다. 브레인스토밍 세션의 목록을 표시 하 고 새로운 브레인스토밍 POST를 사용 하 여 만들어야 하는 세션을 허용 합니다.
 

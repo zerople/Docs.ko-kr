@@ -5,17 +5,17 @@ description: "ASP.NET Core 미들웨어 및 요청 파이프라인에 알아봅�
 keywords: "ASP.NET Core, 미들웨어, 파이프라인, 대리자"
 ms.author: riande
 manager: wpickett
-ms.date: 08/14/2017
+ms.date: 10/14/2017
 ms.topic: article
 ms.assetid: db9a86ab-46c2-40e0-baed-86e38c16af1f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/middleware
-ms.openlocfilehash: 3cd15c7e8ed4956e1d451f3bd5935fc175999d1f
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: 730b4c281a766059b16ca1c36bbeb9611b979b72
+ms.sourcegitcommit: 0f23400cae837e90927043aa0dfd6c31108a4e2c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 10/02/2017
 ---
 # <a name="aspnet-core-middleware-fundamentals"></a>ASP.NET Core 미들웨어 기본 사항
 
@@ -74,6 +74,26 @@ Configure 메서드 (아래 참조) 다음 미들웨어 구성 요소를 추가 
 3. 인증
 4. MVC
 
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+
+```csharp
+public void Configure(IApplicationBuilder app)
+{
+    app.UseExceptionHandler("/Home/Error"); // Call first to catch exceptions
+                                            // thrown in the following middleware.
+
+    app.UseStaticFiles();                   // Return static files and end pipeline.
+
+    app.UseAuthentication();               // Authenticate before you access
+                                           // secure resources.
+
+    app.UseMvcWithDefaultRoute();          // Add MVC to the request pipeline.
+}
+```
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
 ```csharp
 public void Configure(IApplicationBuilder app)
 {
@@ -89,11 +109,22 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
+-----------
+
 위의 코드에서 `UseExceptionHandler` 파이프라인에 추가 하는 첫 번째 미들웨어 구성 요소는-따라서 대 한 후속 호출에서 발생 하는 모든 예외를 catch 합니다.
 
 요청을 처리 하 고 나머지 구성 요소를 통과 하지 않고 단락 (short-circuit) 수 있도록 정적 파일 미들웨어 파이프라인 초기에 호출 됩니다. 정적 파일 미들웨어 제공 **없는** 권한 부여 확인 합니다. 모든 파일에서 제공 비롯 *wwwroot*, 공개적으로 사용할 수 있습니다. 참조 [정적 파일 작업](xref:fundamentals/static-files) 정적 파일을 보호 하는 방법에 대 한 합니다.
 
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+
+요청이 정적 파일 미들웨어에서 처리 되지 않으면 Identity 미들웨어 전달 됩니다 (`app.UseAuthentication`), 인증을 수행 하는 합니다. Identity 인증 되지 않은 요청을 단락 하지 않습니다. Identity 요청을 인증 하는 있지만 권한 부여 (및 거부) MVC가 특정 Razor 페이지 또는 컨트롤러 및 작업을 선택한 후에 발생 합니다.
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
 요청이 정적 파일 미들웨어에서 처리 되지 않으면 Identity 미들웨어 전달 됩니다 (`app.UseIdentity`), 인증을 수행 하는 합니다. Identity 인증 되지 않은 요청을 단락 하지 않습니다. Identity 요청을 인증 하는 있지만 권한 부여 (및 거부) MVC가 특정 컨트롤러와 작업을 선택한 후에 발생 합니다.
+
+-----------
 
 다음 예제는 정적 파일에 대 한 요청 응답 압축 미들웨어 하기 전에 정적 파일 미들웨어에서 처리 되는 곳 순서 미들웨어입니다. 정적 파일 미들웨어의이 순서는 압축 되지 않습니다. MVC 응답을 [UseMvcWithDefaultRoute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.mvcapplicationbuilderextensions#Microsoft_AspNetCore_Builder_MvcApplicationBuilderExtensions_UseMvcWithDefaultRoute_Microsoft_AspNetCore_Builder_IApplicationBuilder_) 압축할 수 있습니다.
 

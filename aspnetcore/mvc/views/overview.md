@@ -11,11 +11,11 @@ ms.assetid: 668c320d-c050-45e3-8161-2f460dc93b2f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/overview
-ms.openlocfilehash: f40feb0466854080cc749a83c546ce857d850902
-ms.sourcegitcommit: e4a1df2a5a85f299322548809e547a79b380bb92
+ms.openlocfilehash: d3fbdecaed87b3432f0532748a0833c833c65129
+ms.sourcegitcommit: a60a99104fe7a29e271667cead6a06b6d8258d03
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/29/2017
+ms.lasthandoff: 10/03/2017
 ---
 # <a name="views-in-aspnet-core-mvc"></a>ASP.NET Core MVC에서 뷰
 
@@ -40,13 +40,13 @@ ASP.NET Core MVC 뷰는 *.cshtml* 사용 하는 파일의 [C# 프로그래밍 �
 뷰를 설정 하는 데는 [ **S**eparation **o**f **C**oncerns (SoC) 디자인](http://deviq.com/separation-of-concerns/) 사용자 인터페이스 태그를 구분 하 여 MVC 응용 프로그램 내에서 응용 프로그램의 다른 부분입니다. SoC 디자인에서는 여러 가지 이점을 제공 하는 응용 프로그램 모듈식, 합니다.
 
 * 앱이 하므로 더 잘 구성 된 유지 관리 하기가 더 쉽습니다. 뷰는 일반적으로 응용 프로그램 기능에 의해 그룹화 됩니다. 이렇게 하면 보다 쉽게 기능에 대해 작업할 때 관련 된 뷰를 찾을 수 있습니다.
-* 앱의 일부 밀접 하 게 결합 되지 않습니다. 작성 하 고 비즈니스 논리와 데이터 액세스 구성 요소가 별도로 응용 프로그램의 뷰를 업데이트할 수 있습니다. 반드시 응용 프로그램의 다른 부분을 업데이트 하지 않고 응용 프로그램의 뷰를 수정할 수 있습니다.
+* 앱의 일부는 느슨하게 결합 되어 있습니다. 작성 하 고 비즈니스 논리와 데이터 액세스 구성 요소가 별도로 응용 프로그램의 뷰를 업데이트할 수 있습니다. 반드시 응용 프로그램의 다른 부분을 업데이트 하지 않고 응용 프로그램의 뷰를 수정할 수 있습니다.
 * 응용 프로그램의 사용자 인터페이스 부분 뷰는 별도 단위 테스트 하는 것이 쉽습니다.
 * 더 나은 조직으로 인해 확률이 실수로 반복 부분은 사용자 인터페이스를 합니다.
 
 ## <a name="creating-a-view"></a>보기를 만드는 방법
 
-에 컨트롤러에만 적용 되는 뷰가 생성 됩니다는 *뷰 / [ControllerName]* 폴더입니다. 컨트롤러 간에 공유 되는 뷰에 배치 되는 *뷰/공유* 폴더입니다. 뷰를 만들려면 새 파일을 추가 하 고 동일한 이름으로 연결 된 컨트롤러 작업으로 지정 된 *.cshtml* 파일 확장명입니다. 에 대 한 보기를 만들려면는 *에 대 한* 작업에는 *홈* 컨트롤러를 만듭니다는 *About.cshtml* 파일에 *뷰/홈* 폴더:
+에 컨트롤러에만 적용 되는 뷰가 생성 됩니다는 *뷰 / [ControllerName]* 폴더입니다. 컨트롤러 간에 공유 되는 뷰에 배치 되는 *뷰/공유* 폴더입니다. 뷰를 만들려면 새 파일을 추가 하 고 동일한 이름으로 연결 된 컨트롤러 작업으로 지정 된 *.cshtml* 파일 확장명입니다. 와 일치 하는 보기를 만들려면는 *에 대 한* 작업에는 *홈* 컨트롤러를 만듭니다는 *About.cshtml* 파일에 *뷰/홈*폴더:
 
 [!code-cshtml[Main](../../common/samples/WebApplication1/Views/Home/About.cshtml)]
 
@@ -88,7 +88,7 @@ ASP.NET Core MVC 뷰는 *.cshtml* 사용 하는 파일의 [C# 프로그래밍 �
 
 작업 뷰를 반환 하는 경우 프로세스를 호출할 *보기 검색* 이루어집니다. 이 프로세스 보기 이름을 기반으로 어떤 보기 파일을 사용 하는 것을 결정 합니다. 
 
-작업 반환 하는 경우는 `View` 메서드 (`return View();`) 및 지정 하지 않으면 뷰, 뷰 이름으로 작업 이름이 사용 됩니다. 예를 들어는 *에 대 한* `ActionResult` 메서드 컨트롤러의 이름은 뷰 파일에 대 한 검색 *About.cshtml*합니다. 런타임은 먼저는 *뷰 / [ControllerName]* 뷰에 대 한 폴더입니다. 일치 하는 뷰를 찾지 못하는 경우 검색 된 *Shared* 폴더 뷰에 대 한 합니다.
+기본적으로는 `View` 메서드 (`return View();`) 호출 될 작업 메서드와 같은 이름의 뷰를 반환 하는 것입니다. 예를 들어는 *에 대 한* `ActionResult` 메서드 컨트롤러의 이름은 뷰 파일에 대 한 검색 *About.cshtml*합니다. 런타임은 먼저는 *뷰 / [ControllerName]* 뷰에 대 한 폴더입니다. 일치 하는 뷰를 찾지 못하는 경우 검색 된 *Shared* 폴더 뷰에 대 한 합니다.
 
 암시적으로 반환 하는 경우 문제가 되지 않습니다는 `ViewResult` 와 `return View();` 에 보기 이름을 명시적으로 전달 하거나는 `View` 메서드 `return View("<ViewName>");`합니다. 두 경우 모두 뷰의 검색이이 순서에서 일치 하는 파일의 보기에 대 한 검색합니다.
 
@@ -127,7 +127,7 @@ return View("./About");
 
 활용 하기 위해 뷰를 사용 하면 데이터 보기를 전달 하는 viewmodel를 사용 하 여 *강력한* 형식 검사 합니다. *강력한 형식화* (또는 *강력한 형식의*) 모든 변수 및 상수에 명시적으로 정의 된 유형을 의미 (예를 들어 `string`, `int`, 또는 `DateTime`). 컴파일 타임에 보기에서 사용 되는 형식의 유효성이 검사 됩니다.
 
-도구와 같은 [Visual Studio](https://www.visualstudio.com/vs/) 또는 [Visual Studio Code](https://code.visualstudio.com/), 멤버 (모델의 속성)를 표시할 수도 적은 오류로 더 빠르게 코드를 작성 하는 데 도움이 되는 보기를 추가 하는 동안 합니다. 이 기능은 라고 [IntelliSense](/visualstudio/ide/using-intellisense) Microsoft 도구에 있습니다.
+[Visual Studio](https://www.visualstudio.com/vs/) 및 [Visual Studio Code](https://code.visualstudio.com/) 이라는 기능을 사용 하 여 강력한 형식의 클래스 멤버의 목록을 [IntelliSense](/visualstudio/ide/using-intellisense)합니다. viewmodel 속성을 확인 하려는 경우 다음에 마침표 viewmodel에 대 한 변수 이름을 입력 (`.`). 이 오류를 줄일 수 코드를 더 빠르게 작성할 수 있습니다.
 
 사용 하 여 모델을 지정 된 `@model` 지시문입니다. 사용 하 여 모델을 사용 하 여 `@Model`:
 
@@ -316,7 +316,7 @@ public IActionResult SomeAction()
 
 **ViewData 또는 ViewBag을 사용 하는 경우**
 
-둘 다 `ViewData` 및 `ViewBag` 적은 양의 컨트롤러와 뷰 간에 데이터를 전달 하는 올바른 방법을 동등 하 게 합니다. 하나를 사용 하 여 (또는 둘 다)을 보였습니다 개인의 기본 설정 또는 해당 조직의 기본 설정을 선택 합니다. 일반적으로 개발자는 일관성 있게 사용 둘 중 하나입니다. 사용 하거나 `ViewData` 어디에 나 사용 또는 `ViewBag` everywhere, 혼합 및 일치 시키려면 시작 하는데 합니다. 둘 다 런타임에 동적으로 해결 되 고 따라서 런타임 오류가 발생 하기 쉽습니다 되므로 주의 해 서 사용 합니다. 일부 개발자가 완전히 방지할 합니다.
+둘 다 `ViewData` 및 `ViewBag` 적은 양의 컨트롤러와 뷰 간에 데이터를 전달 하는 올바른 방법을 동등 하 게 합니다. 하나를 사용 하 여 (또는 둘 다)을 보였습니다 개인의 기본 설정 또는 해당 조직의 기본 설정을 선택 합니다. 혼합 일치 수 있지만 `ViewData` 및 `ViewBag` 개체 코드를 읽고 하나만 선택 하 고 일관 되 게 사용 하는 경우 유지 관리 하기가 더 쉽습니다. 둘 다 런타임에 동적으로 해결 되 고 따라서 런타임 오류가 발생 하기 쉽습니다 되므로 주의 해 서 사용 합니다. 일부 개발자가 완전히 방지할 합니다.
 
 ### <a name="dynamic-views"></a>동적 뷰
 
