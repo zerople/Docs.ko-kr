@@ -11,11 +11,11 @@ ms.assetid: 71fec30f-8ea7-4ca8-96e3-d2e26c5be44e
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: 37613d974fdf1766b187cdd05efc926ecc6a351b
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 778ef976fdbef70684ca26b0c7c548ffcc83ee00
+ms.sourcegitcommit: e45f8912ce32b4071bf7e83b8f8315cd8bba3520
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/04/2017
 ---
 # <a name="reading-related-data---ef-core-with-aspnet-core-mvc-tutorial-6-of-10"></a>읽기 관련 데이터-EF 코어 ASP.NET Core MVC 자습서 (6 / 10)
 
@@ -184,7 +184,7 @@ Index 메서드가 관련된 데이터를 즉시 로드의 보기 모델에 저�
   }
   ```
 
-* 추가 **Courses** 과정을 표시 하는 열에서 각 강사 배웠습니다. 참조 [명시적 줄 전환을 `@:` ](xref:mvc/views/razor#explicit-line-transition-with-label) 이 razor 구문에 대 한 자세한 합니다.
+* 추가 **Courses** 과정을 표시 하는 열에서 각 강사 배웠습니다. 참조 [명시적 줄 전환을 `@:` ](xref:mvc/views/razor#explicit-line-transition-with-) 이 razor 구문에 대 한 자세한 합니다.
 
 * 동적으로 추가 하는 추가 된 코드 `class="success"` 에 `tr` 선택한 강사의 요소입니다. 부트스트랩 클래스를 사용 하 여 선택된 된 행에 대 한 배경색을 설정 합니다.
 
