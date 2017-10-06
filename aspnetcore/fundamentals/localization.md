@@ -11,17 +11,17 @@ ms.assetid: 7f275a09-f118-41c9-88d1-8de52d6a5aa1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/localization
-ms.openlocfilehash: 85a192bf0b2eb245ecdaaa8ffa1c8dd2f43b45b0
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 9ff2fb92c81719c7278d70b5df5387f1244195bf
+ms.sourcegitcommit: e7f01a649f240b6b57118c53314ab82f7f36f2eb
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>전역화 및 지역화 ASP.NET Core
 
 여 [Rick Anderson](https://twitter.com/RickAndMSFT), [Damien Bowden](https://twitter.com/damien_bod), [구재석 Calixto](https://twitter.com/bartmax), [Nadeem Afana](https://twitter.com/NadeemAfana), 및 [Hisham Bin Ateya](https://twitter.com/hishambinateya)
 
-ASP.NET Core를 사용 하 여 다국어 웹 사이트 만들기 하도록 사이트를 더 광범위 한에 도달 하면 수 있습니다. ASP.NET Core 다른 언어와 문화권에 지역화를 위한 서비스 및 미들웨어를 제공 합니다.
+ASP.NET Core를 사용 하 여 다국어 웹 사이트 만들기 하도록 사이트를 더 광범위 한에 도달 하면 수 있습니다. ASP.NET Core는 다른 언어와 문화권으로의 지역화를 위한 서비스 및 미들웨어를 제공합니다.
 
 국제화 포함 [전역화](https://docs.microsoft.com/dotnet/api/system.globalization) 및 [지역화](https://docs.microsoft.com/dotnet/standard/globalization-localization/localization)합니다. 세계화는 서로 다른 culture를 지 원하는 응용 프로그램을 설계 하는 과정입니다. 세계화에는 입력, 표시 및 정의 된 집합이 특정 지역과 관련 된 언어 스크립트의 출력에 대 한 지원을 추가 합니다.
 
@@ -43,7 +43,7 @@ ASP.NET Core에 도입 된 `IStringLocalizer` 및 `IStringLocalizer<T>` 지역�
 
 위의 코드에는 `IStringLocalizer<T>` 구현에서 가져온 [종속성 주입](dependency-injection.md)합니다. "에 대 한 Title"의 지역화 된 값을 찾을 수 없습니다는 경우 인덱서 키 반환 되 면, 즉 "에 대 한 Title" 문자열입니다. 앱의 언어 리터럴 문자열 기본값을 그대로 수 있으며 응용 프로그램 개발에 집중할 수 있도록 로컬라이저의에서 래핑할 수 있습니다. 기본 언어를 사용 하 여 앱을 개발 하 고이 정보를 먼저 기본 리소스 파일을 만들지 않고 지역화 단계에 대 한 준비 합니다. 또는 기존의 접근 방식을 사용 하 고 기본 언어 문자열을 검색 하 여 키를 입력 수 있습니다. 대부분의 개발자 하지 않는 경우 기본 언어의 새 워크플로 *.resx* 파일과 단순히 문자열 리터럴은 래핑 응용 프로그램을 지역화 하는 오버 헤드를 줄일 수 있습니다. 다른 개발자가 쉽게 하 긴 문자열 리터럴과 함께 작동 하 고 지역화 된 문자열을 업데이트 하려면 쉽게 만들 수 것 처럼 일반적인 작업 흐름을 선호 합니다.
 
-사용 하 여는 `IHtmlLocalizer<T>` HTML을 포함 하는 리소스에 대 한 구현 합니다. `IHtmlLocalizer`HTML은 리소스 문자열이 아닌 리소스 문자열에 서식이 지정 된 인수를 인코딩합니다. 값만 아래 샘플에서 강조 표시 `name` 매개 변수는 HTML로 인코딩하지 합니다.
+사용 하 여는 `IHtmlLocalizer<T>` HTML을 포함 하는 리소스에 대 한 구현 합니다. `IHtmlLocalizer`HTML 리소스 문자열에 서식이 지정 된 인수를 인코딩하고 하지만 HTML이 아닌 자체 리소스 문자열 인코딩합니다. 값만 아래 샘플에서 강조 표시 `name` 매개 변수는 HTML로 인코딩하지 합니다.
 
 [!code-csharp[Main](../fundamentals/localization/sample/Localization/Controllers/BookController.cs?highlight=3,5,20&start=1&end=24)]
 
@@ -317,6 +317,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 * 언어 및 필요에 따라 영역 문화권: 않습니다.
 * 중립 문화권: 지정한 언어에 있지만 지역에 있지는 문화권입니다. (예를 들어 "en", "es")
 * 특정 문화권:는 지정한 언어 및 지역 하는 문화권입니다. (예를 들어 "EN-US", "EN-GB", "es CL")
+* Culture 부모: 특정 문화권을 포함 하는 중립 문화권입니다. (예를 들어 "en"는 "EN-US"와 "EN-GB"의 부모 문화권)
 * 로캘: 로캘의 문화권으로 동일 합니다.
 
 ## <a name="additional-resources"></a>추가 리소스
