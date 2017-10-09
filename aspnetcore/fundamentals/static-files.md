@@ -48,7 +48,7 @@ HTML, CSS, 이미지 및 JavaScript와 같은 정적 파일은 ASP.NET Core 응�
 "Microsoft.AspNetCore.StaticFiles" NuGet 패키지를 포함 해야 합니다.
 
 > [!NOTE]
-> `web root`기본적으로 *wwwroot* 있지만 디렉터리를 설정할 수는 `web root` ड ि र ॅ `UseWebRoot`합니다.
+> `web root`기본적으로 *wwwroot* 있지만 디렉터리를 설정할 수는 `web root` 디렉토리 `UseWebRoot`합니다.
 
 있다고 가정 하면 외부 사용 하려는 정적 파일이 있는 프로젝트 계층 구조는 `web root`합니다. 예:
 

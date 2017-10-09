@@ -311,7 +311,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
 | `maxlength(value)` | `{filename:maxlength(8)}` | `Richard` | 문자열에 8 개 미만의 자 이어야 합니다. |
 | `length(length)` | `{filename:length(12)}` | `somefile.txt` | 문자열에 정확 하 게 12 자 여야 합니다. |
 | `length(min,max)` | `{filename:length(8,16)}` | `somefile.txt` | 문자열 적어도 8 ~ 없습니다 개 이상의 16 자 여야 합니다. |
-| `min(value)` | `{age:min(18)}` | `19` | ं क ज ा 18 이상 |
+| `min(value)` | `{age:min(18)}` | `19` | 정수 값은 18 이상 이어야 합니다. |
 | `max(value)` | `{age:max(120)}` |  `91` | 정수 값 120 개 이하의 여야 합니다. |
 | `range(min,max)` | `{age:range(18,120)}` | `91` | 18 이상 하지만 120 개 이하의 정수 값 이어야 합니다. |
 | `alpha` | `{name:alpha}` | `Rick` | 문자열 알파벳 문자를 하나 이상 구성 되어야 합니다 (`a`-`z`, 대/소문자 구분) |
