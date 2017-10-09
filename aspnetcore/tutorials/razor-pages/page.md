@@ -10,8 +10,8 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: 3fd155c5e9a119717243a4bafff776fcbd06fab5
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 211d5fd3b8a736799155c2ab1c1cf92993e63fc3
+ms.sourcegitcommit: 3ba32b2b6425ed94604cb0f681db0d5bb5f8ad58
 ms.translationtype: HT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 09/28/2017
@@ -20,7 +20,7 @@ ms.lasthandoff: 09/28/2017
 
 작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-이 자습서에서는 [이전 자습서](xref:tutorials/razor-pages/page)에서 스캐폴딩을 통해 만든 Razor 페이지를 살펴봅니다. 
+이 자습서에서는 이전 자습서 항목 [모델 추가](xref:tutorials/razor-pages/model#scaffold-the-movie-model)에서 스캐폴딩을 통해 만든 Razor 페이지를 살펴봅니다. 
 
 샘플을 [보거나 다운로드합니다](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie).
 
@@ -145,5 +145,5 @@ Visual Studio에서는 `<form method="post">` 태그를 태그 도우미에 사�
 다음 자습서에서는 SQL Server LocalDB 및 데이터베이스 시딩에 대해 설명합니다.
 
 >[!div class="step-by-step"]
-[이전: 모델 추가](xref:tutorials/razor-pages/modelz)
+[이전: 모델 추가](xref:tutorials/razor-pages/model)
 [다음: SQL Server LocalDB](xref:tutorials/razor-pages/sql)

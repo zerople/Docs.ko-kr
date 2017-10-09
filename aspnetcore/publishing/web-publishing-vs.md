@@ -11,11 +11,11 @@ ms.assetid: 0377a02d-8fda-47a5-929a-24a16e1d2c93
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/web-publishing-vs
-ms.openlocfilehash: 8a2584363cbf418281cc0e2d796debe57fab846f
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: f010f9d90165ce4d6718fe1440e600985f21a01d
+ms.sourcegitcommit: f33fb9d648a611bb7b2b96291dd2176b230a9a43
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 09/29/2017
 ---
 # <a name="create-publish-profiles-for-visual-studio-and-msbuild-to-deploy-aspnet-core-apps"></a>Visual Studio 및 MSBuild에 대한 게시 프로필을 만들어 ASP.NET Core 앱 배포
 
@@ -202,7 +202,36 @@ Visual Studio를 사용하여 게시 프로필을 만들면 *Properties/PublishP
 
 ASP.NET Core에서 웹앱을 게시하는 방법에 대한 개요는 [게시 및 배포](index.md)를 참조하세요. [게시 및 배포](index.md)는 오픈 소스 프로젝트(https://github.com/aspnet/websdk)입니다.
 
-현재 `dotnet publish`에는 게시 프로필을 사용하는 기능이 없습니다. 게시 프로필을 사용하려면 `dotnet build`를 사용합니다. `dotnet build`는 프로젝트에서 MSBuild를 호출합니다. 또는 `msbuild`를 직접 호출합니다.
+ `dotnet publish`는 Msdeploy 폴더와 [KUDU](https://github.com/projectkudu/kudu/wiki) 게시 프로필을 사용할 수 있습니다.
+ 
+폴더(플랫폼 간에 작동)`dotnet publish WebApplication.csproj /p:PublishProfile=<FolderProfileName>`
+
+Msdeploy(msdeploy가 플랫폼 간이 아니기 때문에 현재 Windows에서만 작동):`dotnet publish WebApplication.csproj /p:PublishProfile=<MsDeployProfileName> /p:Password=<DeploymentPassword>`
+
+Msdeploy 패키지(msdeploy가 플랫폼 간이 아니기 때문에 현재 Windows에서만 작동): `dotnet publish WebApplication.csproj /p:PublishProfile=<MsDeployPackageProfileName>`
+
+위 샘플에서 `deployonbuild`를 `dotnet publish`로 전달하지 **마세요**.
+
+자세한 내용은 [Microsoft.NET.Sdk.Publish](https://github.com/aspnet/websdk#microsoftnetsdkpublish)를 참조하세요.
+
+`dotnet publish`는 모든 플랫폼에서 Azure에 게시하기 위해 KUDU API를 지원합니다. Visual Studio 게시는 KUDU API를 지원하지만 플랫폼 간 Azure에 게시에 대해 WebSDK에 의해 지원됩니다.
+
+다음 콘텐츠와 함께 *Properties/PublishProfiles* 폴더에 게시 프로필을 추가합니다.
+
+```xml
+<Project>
+<PropertyGroup>
+                <PublishProtocol>Kudu</PublishProtocol>
+                <PublishSiteName>nodewebapp</PublishSiteName>
+                <UserName>username</UserName>
+                <Password>password</Password>
+</PropertyGroup>
+</Project>
+```
+
+다음 명령을 실행하면 게시 콘텐츠가 압축되고 KUDU API를 사용하여 Azure에 게시됩니다.
+
+`dotnet publish /p:PublishProfile=Azure /p:Configuration=Release`
 
 게시 프로필을 사용할 경우 다음 MSBuild 속성을 설정합니다.
 

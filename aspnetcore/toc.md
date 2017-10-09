@@ -137,7 +137,7 @@
 ## [통합 테스트](testing/integration-testing.md)
 ## [컨트롤러 테스트](mvc/controllers/testing.md)
 ## [원격 디버깅](https://docs.microsoft.com/visualstudio/debugger/remote-debugging-azure)
-## [디버깅 스냅숏](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)
+## [스냅숏 디버깅](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)
 
 # [데이터 작업](data/index.md)
 ## [Visual Studio를 사용하여 ASP.NET Core 및 Entity Framework Core 시작](data/ef-mvc/index.md)
@@ -208,7 +208,8 @@
 #### [ASP.NET Core 웹앱에 Azure AD 통합](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/)
 #### [Azure AD를 사용하여 WPF 응용 프로그램에서 ASP.NET Core Web API 호출](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore/)
 #### [Calling a Web API in an ASP.NET Core Web Application Using Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/)(Azure AD를 사용하여 ASP.NET Core 웹 응용 프로그램에서 Web API 호출)
-### [Securing ASP.NET Core apps with IdentityServer4](https://identityserver4.readthedocs.io/)(IdentityServer4를 사용하여 ASP.NET Core 앱 보호)
+### [IdentityServer4를 사용하여 ASP.NET Core 앱 보호](https://identityserver4.readthedocs.io/)
+### [Azure App Service 인증(간편 인증)을 사용하여 ASP.NET Core 앱 보안](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview)
 ## [권한 부여](xref:security/authorization/index)
 ### [소개](xref:security/authorization/introduction)
 ### [권한 부여로 보호된 사용자 데이터를 사용하여 앱 만들기](xref:security/authorization/secure-data)
