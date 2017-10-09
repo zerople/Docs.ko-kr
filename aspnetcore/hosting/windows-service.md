@@ -11,11 +11,11 @@ ms.assetid: d9a65066-d7cb-47df-b046-64629c4d2c6f
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: hosting/windows-service
-ms.openlocfilehash: ca3b98f0b0405fcd5751cb7d9bc7a40257739084
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: 107436d2d49816d18d230b86636a5ee7e39610f2
+ms.sourcegitcommit: 58ccf3f7d592b28eaff3534b73a45d9d190ac8c8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="host-an-aspnet-core-app-in-a-windows-service"></a>Windows 서비스에서 ASP.NET Core 응용 프로그램 호스트
 
@@ -27,7 +27,7 @@ IIS를 사용 하지 않는 경우 Windows에서 ASP.NET Core 응용 프로그�
 
 ## <a name="prerequisites"></a>필수 구성 요소
 
-* 앱이.NET framework 런타임에서 실행 해야 합니다.  에 *.csproj* 파일,이 대 한 적절 한 값을 지정 [TargetFramework](https://docs.microsoft.com/nuget/schema/target-frameworks) 및 [RuntimeIdentifier](https://docs.microsoft.com/dotnet/articles/core/rid-catalog)합니다. 예를 들면 다음과 같습니다.
+* 앱을.NET Framework 런타임에 실행 해야 합니다.  에 *.csproj* 파일,이 대 한 적절 한 값을 지정 [TargetFramework](https://docs.microsoft.com/nuget/schema/target-frameworks) 및 [RuntimeIdentifier](https://docs.microsoft.com/dotnet/articles/core/rid-catalog)합니다. 예를 들면 다음과 같습니다.
 
   [!code-xml[](windows-service/sample/AspNetCoreService.csproj?range=3-6)]
 

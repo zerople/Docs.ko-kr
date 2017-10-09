@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 42fa98886f3e87e79ea1ea4a2223a79319676006
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 374111dfcf92132bbcf956eafb98a75f833ce2bb
+ms.sourcegitcommit: 94b7e0f95b92c98b182a93d2b3dc0287e5f97976
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/04/2017
 ---
 # <a name="working-with-sql-server-localdb-and-aspnet-core"></a>SQL Server LocalDB 및 ASP.NET Core 사용
 
@@ -60,7 +60,7 @@ LocalDB는 프로그램 개발용으로 대상이 지정된 SQL Server Express �
 DB에 동영상이 있는 경우 시드 이니셜라이저가 반환되고 동영상이 추가되지 않습니다.
 
 ```csharp
-if (context.Movies.Any())
+if (context.Movie.Any())
 {
     return;   // DB has been seeded.
 }

@@ -11,11 +11,11 @@ ms.assetid: 16efbacf-fe7b-4b41-84b0-06a1574b95c2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/new-field
-ms.openlocfilehash: 7d7e7055dd6dc0a2aefd8f4a0a170483b8504267
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 9c872a48aba4974ddac2e49ca40c944da356f0e0
+ms.sourcegitcommit: 79bbe7481c3d1297a0db8e41dd2b635b0f778264
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="adding-a-new-field"></a>새 필드 추가
 
@@ -77,7 +77,7 @@ EF Code First를 사용하여 자동으로 데이터베이스를 만들 때 Code
 
 PMC에서 다음 명령을 입력합니다.
 
-```PMC
+```powershell
 Add-Migration Rating
 Update-Database
 ```

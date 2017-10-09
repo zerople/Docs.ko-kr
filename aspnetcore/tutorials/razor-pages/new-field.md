@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: cab986d0a7b7ac68cdda36a558e9b05c429108d0
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 128b69513976a56104524bb803f2b8cb1daf1967
+ms.sourcegitcommit: 79bbe7481c3d1297a0db8e41dd2b635b0f778264
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="adding-a-new-field-to-a-razor-page"></a>Razor 페이지에 새 필드 추가
 
@@ -77,7 +77,7 @@ SqlException: Invalid column name 'Rating'.
 <a name="pmc"></a> **도구** 메뉴에서 **NuGet 패키지 관리자 > 패키지 관리자 콘솔**을 선택합니다.
 PMC에서 다음 명령을 입력합니다.
 
-```PMC
+```powershell
 Add-Migration Rating
 Update-Database
 ```
@@ -97,7 +97,7 @@ Update-Database
 * **확인**을 선택합니다.
 * [PMC](xref:tutorials/razor-pages/new-field#pmc)에서 데이터베이스를 업데이트합니다.
 
-  ```PMC
+  ```powershell
   Update-Database
   ```
 
