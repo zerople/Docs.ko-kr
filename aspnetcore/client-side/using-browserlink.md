@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/using-browserlink
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 67ddc58e38962bd876050739a2a1447be4f589bb
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 95062961877b8da843ce47fb1719ee85224fa8c8
+ms.sourcegitcommit: 9c27fa0f0c57ad611aa43f63afb9b9c9571d4a94
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="browser-link-in-aspnet-core"></a>ASP.NET Core에서 브라우저 링크 
 
@@ -81,7 +81,7 @@ Visual Studio 브라우저 링크 도구 모음 컨트롤 옆에 표시 ASP.NET 
 * 여러 브라우저에서 웹 응용 프로그램을 한 번에 새로 고칩니다.
 * 열기는 **브라우저 링크 대시보드에**합니다.
 * 또는 사용 안 함 **브라우저 링크**합니다. 참고: 브라우저 링크는 Visual Studio 2017 (15.3)에서 기본적으로 비활성화 됩니다.
-* CSS 자동 동기화를 사용 하지 않도록 설정 하거나 사용 합니다.
+* 또는 사용 안 함 [CSS 자동 동기화](#enable-or-disable-css-auto-sync)합니다.
 
 > [!NOTE]
 > 일부 Visual Studio 플러그 인, 특히 *웹 확장 팩 2015* 및 *웹 확장 팩 2017*, 브라우저 링크에 대 한 확장 된 기능을 제공 하지만 추가 기능 중 일부는 asp 작동 하지 않습니다. NET 핵심 프로젝트입니다.
