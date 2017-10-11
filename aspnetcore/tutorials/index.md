@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/index
-ms.openlocfilehash: b3ea7688eefa69171fd1179de42497c98cf9302e
-ms.sourcegitcommit: 4d9c6d47bded895f3d9a35e9550e31ae213c083c
+ms.openlocfilehash: 4962361aa0fc8a61cfc771ed3123a3bafdbe6100
+ms.sourcegitcommit: fe25b8163e9e4115915b3293936e9da646fff84f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 10/09/2017
 ---
 # <a name="aspnet-core-tutorials"></a>ASP.NET Core 자습서
 
@@ -41,7 +41,7 @@ ASP.NET Core 응용 프로그램을 개발하기 위해 다음 단계별 가이�
 * [ASP.NET Core 및 Mac용 Visual Studio를 사용하여 Web API 만들기](xref:tutorials/first-web-api-mac)
 * [ASP.NET Core 및 Windows용 Visual Studio를 사용하여 Web API 만들기](first-web-api.md)
 * [ASP.NET Core 및 Visual Studio Code를 사용하여 Web API 만들기](web-api-vsc.md)
-* [Swagger를 사용한 ASP.NET Web API 도움말 페이지](web-api-help-pages-using-swagger.md)
+* [Swagger를 사용한 ASP.NET Core Web API 도움말 페이지](web-api-help-pages-using-swagger.md)
 * [네이티브 모바일 응용 프로그램에 대한 백 엔드 웹 서비스 만들기](../mobile/native-mobile-backend.md)
 
 ## <a name="working-with-data"></a>데이터 작업

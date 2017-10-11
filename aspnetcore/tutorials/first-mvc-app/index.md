@@ -1,25 +1,24 @@
 ---
 title: "Windows에서 ASP.NET Core MVC를 사용하여 웹앱 만들기"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core,
+description: "Windows에서 Visual Studio를 사용하여 ASP.NET Core MVC로 웹앱을 만드는 방법에 대한 소개 목차입니다."
+keywords: "ASP.NET Core, MVC, 자습서, 소개"
 ms.author: riande
 manager: wpickett
-ms.date: 06/26/2017
+ms.date: 10/06/2017
 ms.topic: get-started-article
-ms.assetid: 959ff4ca-be2d-444c-ac04-789e787146f3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/index
-ms.openlocfilehash: b69f345e4b9d9996f48be7f07e436cde4e2d7fa4
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: 123ee5d08849a2a6f31e9299f45b20f3e5589e31
+ms.sourcegitcommit: ab91aad2680efc4eb5c0642746e2b981db7f81b8
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 10/10/2017
 ---
-# <a name="create-a-web-app-with-aspnet-core-mvc-using-visual-studio-on-windows"></a>Windows에서 Visual Studio를 사용하여 ASP.NET Core MVC로 웹앱 만들기
+# <a name="create-a-web-app-with-aspnet-core-mvc-using-visual-studio"></a>Visual Studio를 사용하여 ASP.NET Core MVC로 웹앱 만들기
 
-이 자습서 시리즈에서는 Visual Studio를 사용하여 ASP.NET Core MVC 웹앱을 빌드하는 기본 사항에 대해 알아봅니다. [!INCLUDE[consider RP](../../includes/razor.md)]
+ [!INCLUDE[consider RP](../../includes/razor.md)]
 
 1. [시작](start-mvc.md)
 1. [컨트롤러 추가](adding-controller.md)
