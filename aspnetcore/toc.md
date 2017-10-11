@@ -68,7 +68,7 @@
 ## [모바일 앱에 대한 백 엔드 서비스 만들기](mobile/native-mobile-backend.md)
 ## [Web API 빌드](mvc/web-api/index.md)
 ## [Web API 만들기](xref:tutorials/first-web-api-mac)
-### [Swagger를 사용한 ASP.NET Web API 도움말 페이지](tutorials/web-api-help-pages-using-swagger.md)
+### [Swagger를 사용한 ASP.NET Core Web API 도움말 페이지](tutorials/web-api-help-pages-using-swagger.md)
 ### [네이티브 모바일 응용 프로그램에 대한 백 엔드 서비스 만들기](mobile/native-mobile-backend.md)
 
 # [기본 사항](fundamentals/index.md)
@@ -279,7 +279,7 @@
 ## [ASP.NET Core 1.x에서 2.0으로](xref:migration/1x-to-2x/index)
 ### [인증 및 ID](xref:migration/1x-to-2x/identity-2x)
 
-# [API 참조](/aspnet/core/api/)
+# [API 참조](https://docs.microsoft.com/dotnet/api/?view=aspnetcore-2.0)
 
 # [2.0 릴리스 정보](aspnetcore-2.0.md)
 ## [1.1 릴리스 정보](aspnetcore-1.1.md)
