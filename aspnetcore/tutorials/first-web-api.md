@@ -52,7 +52,7 @@ Visual Studio에서 **파일** 메뉴 > **새로 만들기** > **프로젝트**�
 
 ### <a name="launch-the-app"></a>앱 시작
 
-Visual Studio에서 CTRL+F5를 눌러 앱을 시작합니다. Visual Studio가 브라우저를 시작하고 `http://localhost:port/api/values`로 이동합니다. 여기서 *port*는 임의로 선택된 포트 번호입니다. Chrome, Edge 및 Firefox에는 다음 내용이 표시됩니다.
+Visual Studio에서 CTRL+F5를 눌러 앱을 시작합니다. Visual Studio가 브라우저를 시작하고 `http://localhost:port/api/values`로 이동합니다. 여기서 *port*는 임의로 선택된 포트 번호입니다. Chrome, Microsoft Edge 및 Firefox에는 다음 내용이 표시됩니다.
 
 ```
 ["value1","value2"]
@@ -98,7 +98,7 @@ Visual Studio에서 CTRL+F5를 눌러 앱을 시작합니다. Visual Studio가 �
   
 ### <a name="launch-the-app"></a>앱 시작
 
-Visual Studio에서 CTRL+F5를 눌러 앱을 시작합니다. Visual Studio가 브라우저를 시작하고 `http://localhost:port/api/values`로 이동합니다. 여기서 *port*는 임의로 선택된 포트 번호입니다. Chrome, Edge 또는 Firefox를 사용할 경우 데이터가 표시됩니다. IE를 사용할 경우 IE에서 *values.json* 파일을 열거나 저장할지 묻는 메시지를 표시합니다. 방금 만든 `Todo` 컨트롤러(`http://localhost:port/api/todo`)로 이동합니다.
+Visual Studio에서 CTRL+F5를 눌러 앱을 시작합니다. Visual Studio가 브라우저를 시작하고 `http://localhost:port/api/values`로 이동합니다. 여기서 *port*는 임의로 선택된 포트 번호입니다. Chrome, Microsoft Edge 또는 Firefox를 사용할 경우 데이터가 표시됩니다. IE를 사용할 경우 IE에서 *values.json* 파일을 열거나 저장할지 묻는 메시지를 표시합니다. 방금 만든 `Todo` 컨트롤러(`http://localhost:port/api/todo`)로 이동합니다.
 
 [!INCLUDE[last part of web API](../includes/webApi/end.md)]
 

@@ -174,7 +174,7 @@ Type expected
 
 ### <a name="expression-names"></a>식 이름
 
-`asp-for` 특성 값은 한 `ModelExpression` 및 람다 식의 오른쪽입니다. 따라서 `asp-for="Property1"` 됩니다 `m => m.Property1` 생성된 된 코드 의미 하기 때문에에서 접두사로 사용 하 여 필요가 없습니다 `Model`합니다. 사용할 수는 "@" 문자는 인라인 식을 시작 하 고 앞으로 이동 하는 `m.`:
+`asp-for` 특성 값은 한 `ModelExpression` 및 람다 식의 오른쪽입니다. 따라서 `asp-for="Property1"` 됩니다 `m => m.Property1` 생성된 된 코드 의미 하기 때문에에서 접두사로 사용 하 여 필요가 없습니다 `Model`합니다. 사용할 수는 « @ » 문자는 인라인 식을 시작 하 고 앞으로 이동 하는 `m.`:
 
 ```HTML
 @{
