@@ -11,11 +11,11 @@ ms.assetid: 2bdcbf95-8d9d-4537-a4a0-a5ee439dcb62
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/cookie
-ms.openlocfilehash: e5c53a7044edb56e065b2dc1536343fdaf9fb007
-ms.sourcegitcommit: 7d8f4e3443a2989a64343f8fec83e6a4c4ed2f97
+ms.openlocfilehash: ea9c93e34a3242b5b3716404228edb8902baf625
+ms.sourcegitcommit: e3b1726cc04e80dc28464c35259edbd3bc39a438
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/29/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="using-cookie-authentication-without-aspnet-core-identity"></a>ASP.NET Core Identity 없이 쿠키 인증을 사용 하 여
 
@@ -76,7 +76,7 @@ ASP.NET Core 1.x 쿠키를 제공 합니다. [미들웨어](../../fundamentals/m
 
 * `AccessDeniedPath`-이 사용자 리소스에 액세스 하려고 시도 하지만 통과 하지 못하는 경우 요청 리디렉션하는 상대 경로 [권한 부여 정책](xref:security/authorization/policies#security-authorization-policies-based) 해당 리소스에 대 한 합니다.
 
-* `AuthenticationScheme`-특정 쿠키 인증 체계를 식별 하는 값입니다. 쿠키 인증의 여러 인스턴스가 있고 하려는 경우 유용 [인스턴스 하나에 대 한 권한 부여 제한](xref:security/authorization/limitingidentitybyscheme#security-authorization-limiting-by-scheme)합니다.
+* `AuthenticationScheme`-특정 쿠키 인증 체계를 식별 하는 값입니다. 쿠키 인증 및 응용 프로그램 해야의 여러 인스턴스가 있을 경우 유용 [인스턴스 하나에 대 한 권한 부여 제한](xref:security/authorization/limitingidentitybyscheme)합니다.
 
 * `AutomaticAuthenticate`-이 플래그는 ASP.NET Core에 대해서만 관련이 1.x 합니다. 쿠키 인증 모든 요청에 대해 실행 및 유효성 검사 하 고 자신이 만든 직렬화 된 모든 보안 주체를 다시 생성을 나타냅니다.
 

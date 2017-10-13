@@ -11,11 +11,11 @@ ms.assetid: 7f275a09-f118-41c9-88d1-8de52d6a5aa1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/localization
-ms.openlocfilehash: 9ff2fb92c81719c7278d70b5df5387f1244195bf
-ms.sourcegitcommit: e7f01a649f240b6b57118c53314ab82f7f36f2eb
+ms.openlocfilehash: b64af625dd280b40e3c743af9415e3a67155fe6e
+ms.sourcegitcommit: e9bd53f53c0ba148343cd2057c714a7c72ee81e9
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>전역화 및 지역화 ASP.NET Core
 
@@ -47,7 +47,7 @@ ASP.NET Core에 도입 된 `IStringLocalizer` 및 `IStringLocalizer<T>` 지역�
 
 [!code-csharp[Main](../fundamentals/localization/sample/Localization/Controllers/BookController.cs?highlight=3,5,20&start=1&end=24)]
 
-참고: 일반적으로 원하는 텍스트와 HTML이 아닌 필드를 지역화 합니다.
+**참고:** 만 텍스트와 HTML이 아닌 필드를 지역화 하려면 일반적으로 합니다.
 
 가장 낮은 수준에서 얻을 수 있습니다 `IStringLocalizerFactory` 부재 중 [종속성 주입](dependency-injection.md):
 
@@ -59,7 +59,7 @@ ASP.NET Core에 도입 된 `IStringLocalizer` 및 `IStringLocalizer<T>` 지역�
 
 [!code-csharp[Main](localization/sample/Localization/Resources/SharedResource.cs)]
 
-사용 하 여 일부 개발자는 `Startup` 전역 또는 공유 문자열을 포함 하는 클래스입니다.  아래 샘플에는 `InfoController` 및 `SharedResource` 지역화 담당자에 게 사용 됩니다.
+사용 하 여 일부 개발자는 `Startup` 전역 또는 공유 문자열을 포함 하는 클래스입니다. 아래 샘플에는 `InfoController` 및 `SharedResource` 지역화 담당자에 게 사용 됩니다.
 
 [!code-csharp[Main](localization/sample/Localization/Controllers/InfoController.cs?range=9-26)]
 
@@ -67,7 +67,7 @@ ASP.NET Core에 도입 된 `IStringLocalizer` 및 `IStringLocalizer<T>` 지역�
 
 `IViewLocalizer` 서비스 제공에 대 한 지역화 된 문자열을 [보기](https://docs.microsoft.com/aspnet/core)합니다. `ViewLocalizer` 클래스는이 인터페이스를 구현 하 고 보기 파일 경로에서 리소스는 위치를 찾습니다. 다음 코드의 기본 구현을 사용 하는 방법을 보여 줍니다 `IViewLocalizer`:
 
-[!code-HTML[Main](localization/sample/Localization/Views/Home/About.cshtml)]
+[!code-cshtml[Main](localization/sample/Localization/Views/Home/About.cshtml)]
 
 기본 구현은 `IViewLocalizer` 보기의 파일 이름에 따라 리소스 파일을 찾습니다. 공유 전역 리소스 파일을 사용할 수 있는 옵션이 있습니다. `ViewLocalizer`사용 하 여 지역화 구현 `IHtmlLocalizer`Razor HTML 하지 않으므로 지역화 된 문자열을 인코딩합니다. 리소스 문자열을 매개 변수화 할 수 및 `IViewLocalizer` 는 매개 변수가 있지만 리소스 문자열이 아니라 HTML 인코드 합니다. Razor에 다음 태그를 고려 합니다.
 
@@ -83,13 +83,11 @@ ASP.NET Core에 도입 된 `IStringLocalizer` 및 `IStringLocalizer<T>` 지역�
 
 렌더링된 된 보기에는 리소스 파일에서 HTML 태그를 포함 됩니다.
 
-메모:
-- 보기 지역화 "Localization.AspNetCore.TagHelpers" NuGet 패키지가 필요합니다.
-- 일반적으로 텍스트와 HTML이 아닌 필드를 지역화 하려고 합니다.
+**참고:** 만 텍스트와 HTML이 아닌 필드를 지역화 하려면 일반적으로 합니다.
 
 보기에서 공유 리소스 파일을 사용 하려면 주입 `IHtmlLocalizer<T>`:
 
-[!code-HTML[Main](../fundamentals/localization/sample/Localization/Views/Test/About.cshtml?highlight=5,12)]
+[!code-cshtml[Main](../fundamentals/localization/sample/Localization/Views/Test/About.cshtml?highlight=5,12)]
 
 ## <a name="dataannotations-localization"></a>DataAnnotations 지역화
 
@@ -287,11 +285,11 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 이 샘플 **Localization.StarterWeb** 프로젝션 할 [GitHub](https://github.com/aspnet/entropy) 설정 하는 UI가 포함 된 `Culture`합니다. *Views/Shared/_SelectLanguagePartial.cshtml* 파일을 사용 하면 지원 되는 culture의 목록에서 culture를 지정할 수 있습니다.
 
-[!code-HTML[Main](localization/sample/Localization/Views/Shared/_SelectLanguagePartial.cshtml)]
+[!code-cshtml[Main](localization/sample/Localization/Views/Shared/_SelectLanguagePartial.cshtml)]
 
 *Views/Shared/_SelectLanguagePartial.cshtml* 파일이에 추가 되는 `footer` 모든 보기에 사용할 수 있도록 레이아웃 파일의 섹션:
 
-[!code-HTML[Main](localization/sample/Localization/Views/Shared/_Layout.cshtml?range=43-56&highlight=10)]
+[!code-cshtml[Main](localization/sample/Localization/Views/Shared/_Layout.cshtml?range=43-56&highlight=10)]
 
 `SetLanguage` 메서드 문화권 쿠키를 설정 합니다.
 

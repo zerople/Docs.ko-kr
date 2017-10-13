@@ -11,11 +11,11 @@ ms.assetid: b5bba985-be12-4464-9a01-df3599b2a6f1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/environments
-ms.openlocfilehash: 2a92c50085e70b4a505913c86348ba5fe54f6d13
-ms.sourcegitcommit: 67811da1278c75cb10994602c13bd5adec3f0907
+ms.openlocfilehash: becdfa647acb6483b39f5421ab881c4817f31c40
+ms.sourcegitcommit: e3b1726cc04e80dc28464c35259edbd3bc39a438
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/04/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="working-with-multiple-environments"></a>여러 환경 작업
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 10/04/2017
 
 ASP.NET Core 개발, 스테이징 및 프로덕션 등의 여러 환경에 걸쳐 앱 동작을 제어 하기 위한 지원을 제공 합니다. 환경 변수는 해당 환경에 구성 된 응용 프로그램 런타임 환경을 나타내는 데 사용 됩니다.
 
-[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/environments/sample) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
+[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/environments/sample)([다운로드 방법](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="development-staging-production"></a>개발, 스테이징 프로덕션
 
@@ -50,7 +50,7 @@ IIS Express에 대 한 프로필은 다음과 같습니다.
 사용 되는 웹 서버를 다시 시작 될 때까지 프로젝트 프로필에 대 한 변경 내용이 적용 되지 않을 수 있습니다 (특히 Kestrel를 다시 시작 해야 해당 환경에 대해 변경 내용을 감지 합니다).
 
 >[!WARNING]
-> 에 저장 된 환경 변수가 *launchSettings.json* 어떤 방식으로든에서 보호 하지 않는 하 고 사용 하는 경우 프로젝트에 대 한 소스 코드 리포지토리의 일부가 됩니다. **이 파일에 자격 증명 또는 기타 보안 데이터를 저장 하지 마십시오.** 사용 하 여 이러한 데이터를 저장 해야 할 경우는 *암호 관리자* 에 설명 된 도구 [개발 하는 동안 앱 암호의 안전한 저장소](../security/app-secrets.md#security-app-secrets)합니다.
+> 에 저장 된 환경 변수가 *launchSettings.json* 어떤 방식으로든에서 보호 하지 않는 하 고 사용 하는 경우 프로젝트에 대 한 소스 코드 리포지토리의 일부가 됩니다. **이 파일에 자격 증명 또는 기타 보안 데이터를 저장 하지 마십시오.** 사용 하 여 이러한 데이터를 저장 해야 할 경우는 *암호 관리자* 에 설명 된 도구 [개발 하는 동안 앱 암호의 안전한 저장소](xref:security/app-secrets)합니다.
 
 ### <a name="staging"></a>스테이징
 
