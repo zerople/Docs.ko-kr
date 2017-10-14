@@ -10,20 +10,20 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/extensibility/core-crypto
-ms.openlocfilehash: 8ee4e380b154db7f1736edc793b56258655ddd52
-ms.sourcegitcommit: bd05f7ea8f87ad076ef6e8b704698ebcba5ca80c
+ms.openlocfilehash: 738bf6841b5364f89fa1bcdd11fc71d9be83c23b
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="core-cryptography-extensibility"></a>핵심 암호화 확장성
 
-<a name=data-protection-extensibility-core-crypto></a>
+<a name="data-protection-extensibility-core-crypto"></a>
 
 >[!WARNING]
 > 다음 인터페이스 중 하나를 구현 하는 형식은 스레드로부터 안전 해야 합니다. 여러 호출자에 대 한 합니다.
 
-<a name=data-protection-extensibility-core-crypto-iauthenticatedencryptor></a>
+<a name="data-protection-extensibility-core-crypto-iauthenticatedencryptor"></a>
 
 ## <a name="iauthenticatedencryptor"></a>IAuthenticatedEncryptor
 
@@ -40,12 +40,12 @@ ms.lasthandoff: 08/25/2017
 > [!NOTE]
 > IAuthenticatedEncryptor 인스턴스 자체 키 자료를 포함 하도록 실제로 필요 하지 않습니다. 예를 들어, 모든 작업에 대 한 HSM 구현 위임 될 수 있습니다.
 
-<a name=data-protection-extensibility-core-crypto-iauthenticatedencryptorfactory></a>
-<a name=data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor></a>
+<a name="data-protection-extensibility-core-crypto-iauthenticatedencryptorfactory"></a>
+<a name="data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor"></a>
 
 ## <a name="how-to-create-an-iauthenticatedencryptor"></a>IAuthenticatedEncryptor를 만드는 방법
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 **IAuthenticatedEncryptorFactory** 인터페이스를 만드는 방법을 알고 있는 형식을 나타냅니다는 [IAuthenticatedEncryptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptor) 인스턴스. API는 다음과 같습니다.
 
@@ -102,11 +102,11 @@ byte[] roundTripped = encryptor2.Decrypt(new ArraySegment<byte>(ciphertext), aad
 
 ---
 
-<a name=data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor></a>
+<a name="data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor"></a>
 
 ## <a name="iauthenticatedencryptordescriptor-aspnet-core-2x-only"></a>IAuthenticatedEncryptorDescriptor (ASP.NET 2.x만를 코어)
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 **IAuthenticatedEncryptorDescriptor** 인터페이스 자신을 XML로 내보낼 수 있는 형식을 나타냅니다. API는 다음과 같습니다.
 
@@ -120,7 +120,7 @@ byte[] roundTripped = encryptor2.Decrypt(new ArraySegment<byte>(ciphertext), aad
 
 IAuthenticatedEncryptor 및 IAuthenticatedEncryptorDescriptor 간의 주요 차이점은 설명자 암호기를 만들고 유효한 인수를 제공 하는 방법을 알고 있는 합니다. IAuthenticatedEncryptor를 구현이 SymmetricAlgorithm 및 KeyedHashAlgorithm 의존 하는 것이 좋습니다. 암호기의 역할 이러한 형식을 사용 하는 하지만 반드시 있는지 알 수 없으므로, 이러한 형식은 있었던 응용 프로그램 다시 시작 될 경우 자신을 다시 만드는 방법에 대 한 적절 한 설명을 아웃 실제로 쓸 수는 없습니다. 설명자가를 기반으로 더 높은 수준으로 동작합니다. 설명자 암호기 인스턴스를 만드는 방법을 알고 있으므로 (예: 필요한 알고리즘을 만드는 방법을 아는 것) 응용 프로그램 기본 설정 후 암호기 인스턴스 다시 만들 수 있도록 XML 형식의 정보를 serialize 할 수 있습니다.
 
-<a name=data-protection-extensibility-core-crypto-exporttoxml></a>
+<a name="data-protection-extensibility-core-crypto-exporttoxml"></a>
 
 설명자의 ExportToXml 루틴을 통해 serialize 할 수 있습니다. 이 루틴에는 두 개의 속성이 포함 된 XmlSerializedDescriptorInfo 반환: 설명자 및 형식을 나타내는 XElement 표현을 [IAuthenticatedEncryptorDescriptorDeserializer](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptordeserializer) 수 있음 해당 XElement 제공이 설명자 부활 하는 데 사용 합니다.
 
@@ -131,7 +131,7 @@ Serialize 된 설명자는 암호화 키 자료 같은 중요 한 정보를 포�
 
 Serialize 된 설명자 중요 한 정보를 포함 하지 않는 경우 수도 있습니다. HSM에 저장 된 암호화 키의 경우 다시 생각해 보세요. 설명자는 HSM 자료 일반 텍스트 형식으로 노출 되지는 않습니다 이후 자체 직렬화 할 때 키 자료 쓸 수 없습니다. 대신, 설명자 (HSM이 방식으로 내보낼 수 있음) 하는 경우 키 또는 키에 대 한 HSM의 고유 식별자의 키 래핑된 버전 기록 될 수 있습니다.
 
-<a name=data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptordeserializer></a>
+<a name="data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptordeserializer"></a>
 
 ## <a name="iauthenticatedencryptordescriptordeserializer"></a>IAuthenticatedEncryptorDescriptorDeserializer
 
@@ -152,7 +152,7 @@ IAuthenticatedEncryptorDescriptorDeserializer를 구현 하는 형식에는 다�
 
 ## <a name="the-top-level-factory"></a>최상위 팩터리
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET 2.x 핵심](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 **AlgorithmConfiguration** 클래스를 만드는 방법을 알고 있는 형식을 나타내는 [IAuthenticatedEncryptorDescriptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor) 인스턴스. 단일 API를 노출합니다.
 

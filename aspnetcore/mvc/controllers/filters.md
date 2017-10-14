@@ -11,11 +11,11 @@ ms.assetid: 531bda08-aa5b-4471-8f08-96add22c8683
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/filters
-ms.openlocfilehash: 215d165d0029bbf38ef37cdde57b80a15bff9ef9
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 34a5be6e77f8558c9b3c257575272e167ed95ea4
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="filters"></a>필터
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 09/22/2017
 
 프레임 워크 하위 클래스를 할 수 있는 기본 제공 특성 기반 필터를 포함 하 고 사용자 지정 합니다. 예를 들어 다음 결과 필터 응답에 대 한 헤더를 추가 합니다.
 
-<a name=add-header-attribute></a>
+<a name="add-header-attribute"></a>
 
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/AddHeaderAttribute.cs?highlight=5,16)]
 
@@ -167,7 +167,7 @@ ms.lasthandoff: 09/22/2017
 
 설정 하 여 언제 든 지 필터 파이프라인을 단락 수는 `Result` 속성에는 `context` 필터 메서드에 제공 된 매개 변수입니다. 예를 들어, 다음과 같은 리소스 필터 파이프라인의 나머지 부분에서 실행 되지 않도록합니다.
 
-<a name=short-circuiting-resource-filter></a>
+<a name="short-circuiting-resource-filter"></a>
 
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/ShortCircuitingResourceFilterAttribute.cs?highlight=12,13,14,15)]
 

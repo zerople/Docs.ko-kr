@@ -11,11 +11,11 @@ ms.assetid: bbbcf9e4-3c4c-4f50-b91e-175fe9cae4e2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/routing
-ms.openlocfilehash: 9d24c2956c24a7995b3eeffc19e8c0a827349493
-ms.sourcegitcommit: ed401027aac45c5938c917c7f518a33ceffe9f95
+ms.openlocfilehash: 5dd8bee7228587d7e13f128bc8f16102fb70a412
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/02/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core의 라우팅
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/02/2017
 >[!IMPORTANT]
 > 이 문서에서는 라우팅 낮은 수준의 ASP.NET Core를 설명 합니다. ASP.NET Core MVC 라우팅에 대 한 참조 [컨트롤러 작업에 대 한 라우팅을](../mvc/controllers/routing.md)
 
-[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/routing/sample) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
+[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/routing/sample)([다운로드 방법](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="routing-basics"></a>라우팅 기본 사항
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/02/2017
 
 에 연결 되어 라우팅는 [미들웨어](middleware.md) 하 여 파이프라인의 `RouterMiddleware` 클래스입니다. [ASP.NET MVC](../mvc/overview.md) 해당 구성의 일부분으로 라우팅 미들웨어 파이프라인에 추가 합니다. 독립 실행형 구성 요소로 라우팅을 사용 하는 방법에 대 한 자세한 내용은 [를 사용 하 여 라우팅-미들웨어](#using-routing-middleware)합니다.
 
-<a name=url-matching-ref></a>
+<a name="url-matching-ref"></a>
 
 ### <a name="url-matching"></a>일치 하는 URL
 
@@ -159,7 +159,7 @@ routes.MapRoute(
 
 ![지역 Windows 토큰](routing/_static/tokens.png)
 
-<a name=id1></a>
+<a name="id1"></a>
 
 ### <a name="url-generation"></a>URL 생성
 
@@ -311,7 +311,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
 | `maxlength(value)` | `{filename:maxlength(8)}` | `Richard` | 문자열에 8 개 미만의 자 이어야 합니다. |
 | `length(length)` | `{filename:length(12)}` | `somefile.txt` | 문자열에 정확 하 게 12 자 여야 합니다. |
 | `length(min,max)` | `{filename:length(8,16)}` | `somefile.txt` | 문자열 적어도 8 ~ 없습니다 개 이상의 16 자 여야 합니다. |
-| `min(value)` | `{age:min(18)}` | `19` | 정수 값은 18 이상 이어야 합니다. |
+| `min(value)` | `{age:min(18)}` | `19` | ं क ज ा 18 이상 |
 | `max(value)` | `{age:max(120)}` |  `91` | 정수 값 120 개 이하의 여야 합니다. |
 | `range(min,max)` | `{age:range(18,120)}` | `91` | 18 이상 하지만 120 개 이하의 정수 값 이어야 합니다. |
 | `alpha` | `{name:alpha}` | `Rick` | 문자열 알파벳 문자를 하나 이상 구성 되어야 합니다 (`a`-`z`, 대/소문자 구분) |

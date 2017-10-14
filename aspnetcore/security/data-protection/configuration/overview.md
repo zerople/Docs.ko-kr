@@ -11,19 +11,19 @@ ms.assetid: 0e4881a3-a94d-4e35-9c1c-f025d65dcff0
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 9361dcec89a0f35067181523cc56637d629614ff
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: d35e0e806999ffd2e0f8f82e0adfc940ea2b503d
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="configuring-data-protection"></a>데이터 보호를 구성합니다.
 
-<a name=data-protection-configuring></a>
+<a name="data-protection-configuring"></a>
 
 데이터 보호 시스템 초기화 될 때 일부 적용 [기본 설정](default-settings.md#data-protection-default-settings) 운영 환경에 따라 합니다. 이 설정은 일반적으로 단일 컴퓨터에서 실행 중인 응용 프로그램에 유용 합니다. 개발자는 이러한 변경 해야 할 수는 있는 경우에 따라 (아마도 규정 준수 상의 이유로 또는 여러 컴퓨터 간에 분산 되는 응용 프로그램 때문에), 이러한 시나리오에 대 한 데이터 보호 시스템 풍부한 구성 API를 제공 합니다.
 
-<a name=data-protection-configuration-callback></a>
+<a name="data-protection-configuration-callback"></a>
 
 확장 메서드가 AddDataProtection는 IDataProtectionBuilder 반환 하는 확장 메서드를 함께 결합할 수 옵션을 다양 한 데이터 보호를 구성 하려면 논리 노출 합니다. 예를 들어 % LOCALAPPDATA % (기본값) 대신 UNC 공유에서 키를 저장 하려면 시스템이 다음과 같이 구성.
 
@@ -38,7 +38,7 @@ public void ConfigureServices(IServiceCollection services)
 >[!WARNING]
 > 지 속성 키 위치를 변경 하면 시스템 더 이상 자동으로 암호화 키 미사용 DPAPI는 적절 한 암호화 메커니즘 인지 알 수 없기 때문.
 
-<a name=configuring-x509-certificate></a>
+<a name="configuring-x509-certificate"></a>
 
 시스템을 미사용 키는 ProtectKeysWith 중 하나를 호출 하 여 보호를 구성할 수 있습니다\* 구성 Api입니다. 아래 예제에서는 UNC 공유에서 키를 저장 하 고 저장 된 상태의 특정 X.509 인증서와 해당 키를 암호화 하는 것이 좋습니다.
 
@@ -65,7 +65,7 @@ public void ConfigureServices(IServiceCollection services)
 
 기본적으로 데이터 보호 시스템에서는 다른 응용 프로그램이 동일한 물리적 키 저장소를 공유 하는 경우에 합니다. 이렇게 하면 다른 사용자의 보호 된 페이로드를 이해 하는에서 응용 프로그램을 않습니다. 두 개의 서로 다른 응용 프로그램 간에 보호 된 페이로드를 공유 하려면 두 응용 프로그램에서 같이 동일한 응용 프로그램 이름을 전달 하는 시스템 구성의 아래 예제:
 
-<a name=data-protection-code-sample-application-name></a>
+<a name="data-protection-code-sample-application-name"></a>
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -75,7 +75,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-<a name=data-protection-configuring-disable-automatic-key-generation></a>
+<a name="data-protection-configuring-disable-automatic-key-generation"></a>
 
 마지막으로, 여기서 원하지 않는 만료 거의 도달 하면 자동으로 키를 롤백하기 위해 응용 프로그램 시나리오를 할 수 있습니다. 이러한 예로 여기서 기본 응용 프로그램은 키 관리 문제를 담당 하 고 키 링의 읽기 전용 보기를 단순히 포함 하는 모든 보조 응용 프로그램 기본 / 보조 관계를 설정 하는 응용 프로그램을 수 있습니다. 아래와 같이 시스템을 구성 하 여 키 링 읽기 전용으로 처리 하도록 보조 응용 프로그램을 구성할 수 있습니다.
 
@@ -87,7 +87,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-<a name=data-protection-configuration-per-app-isolation></a>
+<a name="data-protection-configuration-per-app-isolation"></a>
 
 ## <a name="per-application-isolation"></a>응용 프로그램 격리
 
@@ -105,7 +105,7 @@ public void ConfigureServices(IServiceCollection services)
 
 데이터 보호 시스템 (예: 경우 개발자 인스턴스화하지 자신 DataProtectionProvider 구체적인 형식을 통해) ASP.NET Core 호스트에서 제공 하지 않는, 응용 프로그램 격리 기본적으로 비활성화 되 고 동일한 키 지정에서 지 원하는 모든 응용 프로그램 자료 적절 한 목적으로 제공으로 페이로드를 공유할 수 있습니다. 이 환경에서 응용 프로그램 격리를 제공 하려면 구성 개체에서 SetApplicationName 메서드를 호출, 참조는 [코드 샘플](#data-protection-code-sample-application-name) 위에 있습니다.
 
-<a name=data-protection-changing-algorithms></a>
+<a name="data-protection-changing-algorithms"></a>
 
 ## <a name="changing-algorithms"></a>알고리즘 변경
 
@@ -144,7 +144,7 @@ UseCryptographicAlgorithms 호출을 사용 하면 미리 정의 된 기본 제�
 >[!TIP]
 > 알고리즘 변경 키 링의 기존 키 영향을 주지 않습니다. 새로 생성 된 키를만 영향을 줍니다.
 
-<a name=data-protection-changing-algorithms-custom-managed></a>
+<a name="data-protection-changing-algorithms-custom-managed"></a>
 
 ### <a name="specifying-custom-managed-algorithms"></a>관리 되는 사용자 지정 알고리즘을 지정
 
@@ -193,7 +193,7 @@ serviceCollection.AddDataProtection()
 > [!NOTE]
 > ≥ 128 비트의 키 길이 및 ≥ 64 비트의 블록 크기는 SymmetricAlgorithm 있어야 하 고 PKCS #7 안쪽 여백 사용 하 여 CBC 모드 암호화를 지원 해야 합니다. KeyedHashAlgorithm 다이제스트 크기인 있어야 합니다. > = 128 비트 키 길이 해시 알고리즘의 다이제스트 길이 지원 해야 하 고 있습니다. KeyedHashAlgorithm HMAC를 엄격 하 게 필요 하지 않습니다.
 
-<a name=data-protection-changing-algorithms-cng></a>
+<a name="data-protection-changing-algorithms-cng"></a>
 
 ### <a name="specifying-custom-windows-cng-algorithms"></a>사용자 지정 Windows CNG 알고리즘 지정
 

@@ -2,7 +2,7 @@
 title: "하위 키 파생 및 인증 된 암호화"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,22 +11,22 @@ ms.assetid: 34bb58a3-5a9a-41e5-b090-08f75b4bbefa
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/subkeyderivation
-ms.openlocfilehash: 24ce71b417599bea22b7fae8b384db599f9e907c
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: e070742b5d9966c4772fd2f0a6d637d98a46137c
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="subkey-derivation-and-authenticated-encryption"></a>하위 키 파생 및 인증 된 암호화
 
-<a name=data-protection-implementation-subkey-derivation></a>
+<a name="data-protection-implementation-subkey-derivation"></a>
 
 키 링에서 대부분의 키 엔트로피 형태의 되 고 나머지 "CBC 모드 암호화 + HMAC 유효성 검사" 없다는 알고리즘 정보가 더 또는 "GCM 암호화 + 유효성 검사"입니다. 이러한 경우이 키에 대 한 마스터 키 자료가 (또는 KM)로 포함 된 엔트로피 이라고 하 고 실제 암호화 작업에 대해 사용할 키를 파생 하는 키 파생 기능을 수행 했습니다.
 
 > [!NOTE]
 > 키가 추상이 고 아래와 같이 사용자 지정 구현을 동작 하지 않을 수 있습니다. 키에는 기본 제공 팩터리 중 하나를 사용 하는 것이 아니라 IAuthenticatedEncryptor 자체 구현을 제공 하는 경우에 더 이상이 섹션에서 설명 하는 메커니즘 적용 됩니다.
 
-<a name=data-protection-implementation-subkey-derivation-aad></a>
+<a name="data-protection-implementation-subkey-derivation-aad"></a>
 
 ## <a name="additional-authenticated-data-and-subkey-derivation"></a>추가 인증 된 데이터 및 하위 키 파생
 
@@ -42,7 +42,7 @@ AAD 세 구성 요소 모두의 튜플을 대 한 고유 이기 때문에 새에
 
 (K_E, K_H) SP800_108_CTR_HMACSHA512 = (K_M, AAD contextHeader | | keyModifier)
 
-NIST SP800 108 KDF 카운터 모드로 전화를 걸고 여기 (참조 [NIST SP800-108](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf)초, 합니다. 5.1)는 다음 매개 변수:
+NIST SP800 108 KDF 카운터 모드로 전화를 걸고 여기 (참조 [NIST SP800-108](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf), 초 5.1)는 다음 매개 변수:
 
 * 키 파생 키 (KDK) K_M =
 

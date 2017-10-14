@@ -11,15 +11,15 @@ ms.assetid: 285ae47d-e0bf-4b03-b0a8-2b1fb18bc3a1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/configuration/machine-wide-policy
-ms.openlocfilehash: 7ada940acfbb7fb0887fd7c0cd722bf62f211248
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: fde8f75422c9dd84311a65b21e1e38b47fbe0306
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="machine-wide-policy"></a>컴퓨터 단위 정책
 
-<a name=data-protection-configuration-machinewidepolicy></a>
+<a name="data-protection-configuration-machinewidepolicy"></a>
 
 Windows에서 실행 하는 경우 데이터 보호 시스템 데이터 보호를 사용 하는 모든 응용 프로그램에 대 한 기본 시스템 수준의 정책 설정에 대 한 지원이 제한 합니다. 일반적인 개념은는 관리자 컴퓨터에서 모든 응용 프로그램을 수동으로 업데이트 하지 않고도 (예: 알고리즘 또는 키 사용 수명) 일부 기본 설정을 변경 하려면 싶어할 수 있습니다.
 
@@ -42,7 +42,7 @@ Windows에서 실행 하는 경우 데이터 보호 시스템 데이터 보호�
 
 * [String]-KeyEscrowSinks 키 위탁 사용 되는 형식을 지정 합니다. 이 값은 세미콜론으로 구분 된 목록 키 에스크로 싱크를 여기서 목록의 각 요소는 어셈블리의 정규화 된 이름을 IKeyEscrowSink를 구현 하는 형식입니다.
 
-<a name=data-protection-encryption-types></a>
+<a name="data-protection-encryption-types"></a>
 
 ### <a name="encryption-types"></a>암호화 종류
 

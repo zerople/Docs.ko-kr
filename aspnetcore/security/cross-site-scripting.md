@@ -2,7 +2,7 @@
 title: "사이트 간 스크립팅 방지"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: 95790927-2bfe-445e-b1fd-429c2c7030ce
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/cross-site-scripting
-ms.openlocfilehash: 1816977837efd82f374a03d9f776db21358e2850
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: d0880fda4ee726bd30a48cce0907a3887f2a4545
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="preventing-cross-site-scripting"></a>사이트 간 스크립팅 방지
 
-<a name=security-cross-site-scripting></a>
+<a name="security-cross-site-scripting"></a>
 
 사이트 간 스크립팅 (XSS)은 공격자가 클라이언트 쪽 스크립트 (일반적으로 JavaScript) 웹 페이지에 배치할 수 있는 보안 취약점입니다. 공격자가 스크립트를 실행할 영향을 받는 페이지를 로드 하는 다른 사용자가 DOM 조작을 통해 웹 페이지의 내용을 변경 하거나 다른 페이지를 브라우저를 리디렉션하여 쿠키 및 세션 토큰을 도용 하는 공격자가 사용 하도록 설정 합니다. XSS 취약점은 일반적으로 응용 프로그램 사용자 입력을 사용 하 고 유효성 검사, 인코딩 또는 이스케이프 것 없이 페이지에서 출력 하는 경우에 발생 합니다.
 
@@ -183,7 +183,7 @@ var example = "\"Quoted Value with spaces and &\"";
 >[!WARNING]
 > URL 경로의 일부로 신뢰할 수 없는 입력을 사용 하지 마십시오. 항상 신뢰할 수 없는 입력 쿼리 문자열 값으로 전달 합니다.
 
-<a name=security-cross-site-scripting-customization></a>
+<a name="security-cross-site-scripting-customization"></a>
 
 ## <a name="customizing-the-encoders"></a>인코더를 사용자 지정
 

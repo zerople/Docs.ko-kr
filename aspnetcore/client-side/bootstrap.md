@@ -11,15 +11,15 @@ ms.assetid: bd27832c-2877-4b7b-9337-e009361d845f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/bootstrap
-ms.openlocfilehash: fc00bcce24d586865bf6a1d3f2f7e782a2f1c703
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: f89ad584600c3f12a936599de27f931aff0cd4b5
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="building-beautiful-responsive-sites-with-bootstrap"></a>부트스트랩을 사용한 beautiful 및 응답성이 뛰어난 사이트 구축
 
-<a name=bootstrap-index></a>
+<a name="bootstrap-index"></a>
 
 으로 [Steve Smith](https://ardalis.com/)
 

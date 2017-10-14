@@ -11,15 +11,15 @@ ms.assetid: 3606b251-8324-4485-8d52-582a2cd5cffb
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: ed84b6dc257d5fd9e4c1cf6106df3c8bd6e14f64
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: ce23931e72404347ebc17c69ae90e70cd15328bc
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="key-management-extensibility"></a>키 관리 확장성
 
-<a name=data-protection-extensibility-key-management></a>
+<a name="data-protection-extensibility-key-management"></a>
 
 >[!TIP]
 > 읽기는 [키 관리](../implementation/key-management.md#data-protection-implementation-key-management) 이러한 Api는 기본적인 개념 중 일부에 대해 설명 하는 대로이 섹션을 읽기 전에 섹션.
@@ -63,7 +63,7 @@ IKeyManager 인터페이스 일반 키 저장소, 검색 및 조작 하는 일�
 >[!WARNING]
 > IKeyManager를 작성 하는 고급 작업 및 대부분의 개발자는 시도 하지 않아야 합니다. 대신 대부분의 개발자가 제공 하는 기능 사용 해야는 [XmlKeyManager](xref:security/data-protection/extensibility/key-management#data-protection-extensibility-key-management-xmlkeymanager) 클래스입니다.
 
-<a name=data-protection-extensibility-key-management-xmlkeymanager></a>
+<a name="data-protection-extensibility-key-management-xmlkeymanager"></a>
 
 ## <a name="xmlkeymanager"></a>XmlKeyManager
 
@@ -139,7 +139,7 @@ IXmlRepository의 구현을 통해 전달 되는 XML을 구문 분석할 필요�
 
 기본 제공 구체적인 순위가 IXmlRepository를 구현 하는: FileSystemXmlRepository 및 RegistryXmlRepository 합니다. 참조는 [키 저장소 공급자 문서](../implementation/key-storage-providers.md#data-protection-implementation-key-storage-providers) 자세한 정보에 대 한 합니다. 사용자 지정 IXmlRepository 등록 것 될 다른 사용 하려면 적절 한 방식으로 백업 저장소, 예: Azure Blob 저장소입니다. 기본 저장소 응용 프로그램 전체를 변경 하려면 사용자 지정 singleton IXmlRepository 서비스 공급자에 등록 합니다.
 
-<a name=data-protection-extensibility-key-management-ixmlencryptor></a>
+<a name="data-protection-extensibility-key-management-ixmlencryptor"></a>
 
 ## <a name="ixmlencryptor"></a>IXmlEncryptor
 

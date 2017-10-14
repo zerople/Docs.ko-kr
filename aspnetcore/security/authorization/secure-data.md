@@ -10,11 +10,11 @@ ms.assetid: abeb2f8e-dfbf-4398-a04c-338a613a65bc
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: security/authorization/secure-data
-ms.openlocfilehash: 036ff9a682dc17ead991c85a9d5dd9c4b6a7d0c7
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 000b14ddc1adb56c029d3da8ab0754215403ba79
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>권한 부여에 의해 보호 되는 사용자 데이터와 ASP.NET Core 응용 프로그램 만들기
 
@@ -315,7 +315,7 @@ Visual Studio 코드를 사용 하 여 테스트 인증서를 SSL에 대 한 포
 
 [!code-csharp[Main](secure-data/samples/final/Authorization/ContactOperations.cs)]
 
-<a name=secure-data-add-resources-label></a>
+<a name="secure-data-add-resources-label"></a>
 
 ### <a name="additional-resources"></a>추가 리소스
 

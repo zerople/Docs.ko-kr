@@ -11,15 +11,15 @@ ms.assetid: 24ce40d8-9b83-4bae-9d4c-a66350fcc8f8
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/views
-ms.openlocfilehash: 82c0c7282de34e496f529d964f99121ae2805c5a
-ms.sourcegitcommit: e3b1726cc04e80dc28464c35259edbd3bc39a438
+ms.openlocfilehash: 58cafcfdc7946e82d1e0ea5de95e0e497b1b6bcf
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="view-based-authorization"></a>보기 기반 권한 부여
 
-<a name=security-authorization-views></a>
+<a name="security-authorization-views"></a>
 
 종종 개발자 표시, 숨기기 또는 그렇지 않으면 현재 사용자 id에 따라 UI를 수정 합니다. 권한 부여 서비스를 통해 MVC 뷰 내에서 액세스할 수 있습니다 [종속성 주입](../../fundamentals/dependency-injection.md#fundamentals-dependency-injection)합니다. Razor 뷰 사용을 권한 부여 서비스를 삽입할 수는 `@inject` 예를 들어 지시문 `@inject IAuthorizationService AuthorizationService` (필요 `@using Microsoft.AspNetCore.Authorization`). 모든 보기에서 권한 부여 서비스를 사용할 경우 배치 합니다.는 `@inject` 지시문에 `_ViewImports.cshtml` 파일에 `Views` 디렉터리입니다. 종속성 주입 보기에 대 한 자세한 내용은 참조 [뷰로 종속성 주입](../../mvc/views/dependency-injection.md)합니다.
 

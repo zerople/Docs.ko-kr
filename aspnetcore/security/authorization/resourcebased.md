@@ -11,15 +11,15 @@ ms.assetid: 0902ba17-5304-4a12-a2d4-e0904569e988
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/resourcebased
-ms.openlocfilehash: 7f7df52bf51a81558818836450997281a21b5839
-ms.sourcegitcommit: f303a457644ed034a49aa89edecb4e79d9028cb1
+ms.openlocfilehash: d3575619c53e77dadc293ea2bb7dc72501a8a1e3
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="resource-based-authorization"></a>리소스 기반 권한 부여
 
-<a name=security-authorization-resource-based></a>
+<a name="security-authorization-resource-based"></a>
 
 권한 부여 자주 액세스 되는 리소스에 따라 달라 집니다. 예를 들어, 문서 작성자 속성이 있을 수 있습니다. 리소스 권한 부여 평가 수행 하기 전에 문서 저장소에서 로드할 수 있도록 업데이트 문서 작성자만 허용 합니다. 이 같이 특성 평가 데이터 바인딩 전에 및 액션 내 리소스를 로드 하는 사용자 고유의 코드를 실행 하기 전에 권한 부여 특성으로 수행할 수 없습니다. 선언적 권한 부여 특성 메서드를 대신 명령적 권한 부여 개발자가 자신의 코드 내에 권한 부여 함수를 호출 하는 경우 사용 해야 했습니다.
 
@@ -50,7 +50,7 @@ Task<bool> AuthorizeAsync(ClaimsPrincipal user,
                           string policyName);
 ```
 
-<a name=security-authorization-resource-based-imperative></a>
+<a name="security-authorization-resource-based-imperative"></a>
 
 서비스를 호출 하려면 작업 내에서 리소스를 로드 한 다음 호출는 `AuthorizeAsync` 필요한 오버 로드 합니다. 예:
 

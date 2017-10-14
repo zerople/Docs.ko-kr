@@ -2,7 +2,7 @@
 title: "임시 데이터 보호 공급자"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: af6ea1d0-0d9d-41df-a870-5dda24978e2f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/key-storage-ephemeral
-ms.openlocfilehash: 6b564f082eefad993ac938407e0f3b657d83fb52
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: ee8dccac3ba990b110758042192779426b01fc53
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="ephemeral-data-protection-providers"></a>임시 데이터 보호 공급자
 
-<a name=data-protection-implementation-key-storage-ephemeral></a>
+<a name="data-protection-implementation-key-storage-ephemeral"></a>
 
 응용 프로그램 해야 throwaway IDataProtectionProvider 시나리오가 있습니다. 예를 들어 일회용 콘솔 응용 프로그램에서는 개발자를 시험만 될 수 있습니다 또는 응용 프로그램 자체는 임시로 (스크립팅 되었으므로 또는 단위 테스트 프로젝트). 이러한 시나리오를 지원 하기 위해 Microsoft.AspNetCore.DataProtection 패키지에는 형식 EphemeralDataProtectionProvider 포함 됩니다. 이 형식은 키 리포지토리가 전적으로 메모리에 유지 되 고 백업 저장소에 기록 되지 않습니다 IDataProtectionProvider의 기본 구현을 제공 합니다.
 

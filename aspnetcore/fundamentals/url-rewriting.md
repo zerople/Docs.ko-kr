@@ -11,17 +11,17 @@ ms.assetid: e6130638-c410-4161-9921-b658ce988bd1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 0a4024edf13651e2ed7e0f87e554e8ba8d895619
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: dde0b5673c9885db2fecbb24b384752e5ddf70eb
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>URL의 ASP.NET Core 미들웨어를 다시 작성
 
 여 [Luke Latham](https://github.com/guardrex) 및 [Mikael Mengistu](https://github.com/mikaelm12)
 
-[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
+[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/)([다운로드 방법](xref:tutorials/index#how-to-download-a-sample))
 
 URL 다시 쓰기는 하나 이상의 미리 정의 된 규칙을 기반으로 하는 Url 요청을 수정 하는 작업입니다. URL 다시 작성 하는 위치 및 주소 밀접 하 게 연결 되지 않은 리소스 위치 및 해당 주소 간의 추상화를 만듭니다. URL 다시 쓰기는 중요 한 몇 가지 시나리오가 있습니다.
 * 이동 또는 이러한 리소스에 대 한 안정적인 로케이터를 유지 관리 하는 동안 서버 리소스를 일시적 또는 영구적으로 대체
@@ -98,7 +98,7 @@ URL 재작성을 설정 하 고 규칙의 인스턴스를 만들어 리디렉션
 
 대체 문자열에 캡처된 그룹은 달러 기호를 사용 하 여 문자열에 삽입 (`$`) 다음 캡처의 시퀀스 번호입니다. 첫 번째 캡처 그룹 값에 따라 획득 된은 `$1`, 두 번째 `$2`, 하며 프로그램 정규식에서 캡처 그룹에 대 한 시퀀스에서 지속 합니다. 캡처된 그룹이 하나만 있는에서 경우 리디렉션 규칙 regex 샘플 응용 프로그램을 인 대체 문자열에 삽입 된 그룹이 하나만 있으므로 `$1`합니다. URL은 규칙을 적용 하면 `/redirected/1234/5678`합니다.
 
-<a name=url-redirect-to-secure-endpoint></a>
+<a name="url-redirect-to-secure-endpoint"></a>
 ### <a name="url-redirect-to-a-secure-endpoint"></a>보안 끝점을 URL 리디렉션
 사용 하 여 `AddRedirectToHttps` 동일한 호스트 및 HTTPS를 사용 하 여 경로에 HTTP 요청을 리디렉션할 수 (`https://`). 상태 코드는 제공 되지 않는 경우 미들웨어 302 (있음) 기본값이 됩니다. 포트를 제공 하지 않으면, 미들웨어 기본적으로 `null`를로 변경 하는 프로토콜을 의미 하는 `https://` 클라이언트 포트 443에서 리소스에 액세스 합니다. 상태 코드 301 (영구적 이동)로 설정 하 고 5001이 고 다른 포트로 변경 하는 방법을 보여 줍니다.
 ```csharp

@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/app-state
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f9c1d10101d23e105c4a8af41d851f69b1b6a175
-ms.sourcegitcommit: 9c27fa0f0c57ad611aa43f63afb9b9c9571d4a94
+ms.openlocfilehash: d4d10ef45d562f34c3f8b5ce025abaf763c862d3
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="introduction-to-session-and-application-state-in-aspnet-core"></a>ASP.NET Core에서 세션 및 응용 프로그램 상태 소개
 
@@ -43,6 +43,7 @@ ASP.NET Core 클라이언트 각 요청과 함께 서버에 전송 된 세션 ID
 
 ASP.NET Core MVC 노출 된 [TempData](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controller.tempdata?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_Controller_TempData) 속성에는 [컨트롤러](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controller?view=aspnetcore-2.0)합니다. 이 속성은 판독될 때까지 데이터를 저장합니다. `Keep` 및 `Peek` 메서드를 사용하여 삭제 없이 데이터를 검사할 수 있습니다. `TempData`단일 요청 보다 많이 필요한 데이터의 경우 리디렉션, 데 특히 유용 합니다. `TempData`이 공급자에 의해 구현 TempData 예를 들어 세션 상태 또는 쿠키를 사용 하 여 합니다.
 
+<a name="tempdata-providers"></a>
 ### <a name="tempdata-providers"></a>TempData 공급자
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
@@ -106,7 +107,7 @@ public void ConfigureServices(IServiceCollection services)
 
 캐싱은 데이터 저장 및 검색 하는 효율적인 방법입니다. 시간 및 기타 고려 사항에 따라 캐시 된 항목의 수명을 제어할 수 있습니다. 에 대 한 자세한 내용은 [캐싱](../performance/caching/index.md)합니다.
 
-<a name=session></a>
+<a name="session"></a>
 ## <a name="working-with-session-state"></a>세션 상태 사용
 
 ### <a name="configuring-session"></a>세션 구성
@@ -167,7 +168,7 @@ public void ConfigureServices(IServiceCollection services)
 
 다음 예제에서는 설정 및 가져오기는 int와 문자열을 보여 줍니다.
 
-[!code-csharp[Main](app-state/sample/src/WebAppSession/Controllers/HomeController.cs?name=snippet1)]
+[!code-csharp[Main](app-state/sample/src/WebAppSession/Controllers/HomeController.cs?range=8-27,49)]
 
 다음 확장 메서드를 추가 하는 경우 설정할 수 있으며 세션에 직렬화 가능 개체를 가져옵니다.
 
@@ -232,7 +233,7 @@ public class HomeController : Controller
 
 이 방법은 또한 반복 되는 코드에서 여러 위치에서 "매직 문자열"를 제거 하 여 이점이 있습니다.
 
-<a name=appstate-errors></a>
+<a name="appstate-errors"></a>
 
 ## <a name="application-state-data"></a>응용 프로그램 상태 데이터
 

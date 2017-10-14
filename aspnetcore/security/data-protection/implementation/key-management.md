@@ -2,7 +2,7 @@
 title: "키 관리"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: fb9b807a-d143-4861-9ddb-005d8796afa3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/key-management
-ms.openlocfilehash: 507c00edc5bade2427151ecadfed581817e4d088
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 687207cb6a1cea89166fd2b6172cdc0a013de4b3
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="key-management"></a>키 관리
 
-<a name=data-protection-implementation-key-management></a>
+<a name="data-protection-implementation-key-management"></a>
 
 데이터 보호 시스템에는 자동으로 보호 및 페이로드를 보호 해제 하는 데 사용 되는 마스터 키의 수명을 관리 합니다. 각 키는 4 개 단계 중 하나에 있을 수 있습니다.
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 08/11/2017
 
 예외가 있습니다. 응용 프로그램 개발자가 경우 [자동 키 생성을 사용 하지 않도록 설정](../configuration/overview.md#data-protection-configuring-disable-automatic-key-generation), 데이터 보호 시스템 것을 기본 키를 선택 해야 합니다. 대체 (fallback)이 시나리오에서는 시스템 시간이 클러스터의 다른 컴퓨터에 전파 하는 키에 지정 된 우선 가장 최근에 활성화 날짜, 사용 하 여 비 해지 키를 선택 합니다. 대체 (fallback) 시스템 결과적으로 만료 된 기본 키를 선택 될 수 있습니다. 대체 (fallback) 시스템의 기본 키로 해지 된 키를 선택 하지 않습니다 및 키 링 비어 있거나 모든 키가 해지 되었습니다. 시스템에서 생성 합니다 초기화 시 오류가 발생 합니다.
 
-<a name=data-protection-implementation-key-management-expiration></a>
+<a name="data-protection-implementation-key-management-expiration"></a>
 
 ## <a name="key-expiration-and-rolling"></a>키 만료 및 롤링
 

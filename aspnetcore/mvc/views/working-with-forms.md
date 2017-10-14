@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/working-with-forms
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff6fee6eee539fc77b6c6180a816daa760202848
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: da36985206521798d3bfe71f6372dc5cc4fca09a
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="introduction-to-using-tag-helpers-in-forms-in-aspnet-core"></a>태그 도우미를 사용 하 여 폼에 ASP.NET Core 소개
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 09/28/2017
 
 대부분의 경우에서 HTML 도우미 특정 태그 도우미에는 다른 방법은 제공 하지만 태그 도우미는 HTML 도우미를 대체 하지 않고 각 HTML 도우미에 대 한 태그 도우미 없기 인식 하는 것이 중요 합니다. 존재 하는 HTML 도우미 대신 경우 다룹니다.
 
-<a name=my-asp-route-param-ref-label></a>
+<a name="my-asp-route-param-ref-label"></a>
 
 ## <a name="the-form-tag-helper"></a>Form 태그 도우미
 
@@ -174,7 +174,7 @@ Type expected
 
 ### <a name="expression-names"></a>식 이름
 
-`asp-for` 특성 값은 한 `ModelExpression` 및 람다 식의 오른쪽입니다. 따라서 `asp-for="Property1"` 됩니다 `m => m.Property1` 생성된 된 코드 의미 하기 때문에에서 접두사로 사용 하 여 필요가 없습니다 `Model`합니다. 사용할 수는 « @ » 문자는 인라인 식을 시작 하 고 앞으로 이동 하는 `m.`:
+`asp-for` 특성 값은 한 `ModelExpression` 및 람다 식의 오른쪽입니다. 따라서 `asp-for="Property1"` 됩니다 `m => m.Property1` 생성된 된 코드 의미 하기 때문에에서 접두사로 사용 하 여 필요가 없습니다 `Model`합니다. 사용할 수는 "@" 문자는 인라인 식을 시작 하 고 앞으로 이동 하는 `m.`:
 
 ```HTML
 @{

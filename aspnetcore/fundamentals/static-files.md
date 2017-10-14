@@ -12,21 +12,21 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/static-files
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e099c4767958f153134e0fb6b3de8132ab1ead82
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: 40c9a799c6ac8a2ce712df4b8fbf3c142ef3fd82
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="working-with-static-files-in-aspnet-core"></a>ASP.NET Core에 정적 파일 작업
 
-<a name=fundamentals-static-files></a>
+<a name="fundamentals-static-files"></a>
 
 작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 HTML, CSS, 이미지 및 JavaScript와 같은 정적 파일은 ASP.NET Core 응용 프로그램을 클라이언트에 직접 제공할 수 있는 자산입니다.
 
-[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/static-files/sample) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
+[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/static-files/sample)([다운로드 방법](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="serving-static-files"></a>정적 파일 처리
 
@@ -48,7 +48,7 @@ HTML, CSS, 이미지 및 JavaScript와 같은 정적 파일은 ASP.NET Core 응�
 "Microsoft.AspNetCore.StaticFiles" NuGet 패키지를 포함 해야 합니다.
 
 > [!NOTE]
-> `web root`기본적으로 *wwwroot* 있지만 디렉터리를 설정할 수는 `web root` 디렉토리 `UseWebRoot`합니다.
+> `web root`기본적으로 *wwwroot* 있지만 디렉터리를 설정할 수는 `web root` ड ि र ॅ `UseWebRoot`합니다.
 
 있다고 가정 하면 외부 사용 하려는 정적 파일이 있는 프로젝트 계층 구조는 `web root`합니다. 예:
 

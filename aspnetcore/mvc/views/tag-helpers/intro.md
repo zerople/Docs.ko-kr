@@ -11,11 +11,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/tag-helpers/intro
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 06644b8359fb5ccc2e61a17a4c6e20e354d5ceef
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 78004aa370cac8b297fd7ede534260c83965ae79
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="introduction-to-tag-helpers-in-aspnet-core"></a>ASP.NET Core에서 태그 도우미 소개 
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 09/28/2017
 
 태그 도우미 범위가의 조합에 의해 제어 됩니다 `@addTagHelper`, `@removeTagHelper`, 및 "!" 옵트아웃 문자입니다.
 
-<a name=add-helper-label></a>
+<a name="add-helper-label"></a>
 
 ### <a name="addtaghelper-makes-tag-helpers-available"></a>`@addTagHelper`태그 도우미를 사용할 수 있도록 설정
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 09/28/2017
 
 앞에서 언급 한 바와 같이 추가 `@addTagHelper` 지시문을 *Views/_ViewImports.cshtml* 파일을 사용 하면 태그 도우미의 모든 뷰 파일에 사용할 수는 *뷰* 디렉터리 및 하위 디렉터리입니다. 사용할 수는 `@addTagHelper` 태그 도우미는 보기에만 노출 하는 데 옵트인 하려면 특정 보기 파일에 지시문입니다.
 
-<a name=remove-razor-directives-label></a>
+<a name="remove-razor-directives-label"></a>
 
 ### <a name="removetaghelper-removes-tag-helpers"></a>`@removeTagHelper`태그 도우미를 제거합니다.
 
@@ -104,7 +104,7 @@ ms.lasthandoff: 09/28/2017
 
 여는 태그와 닫는 태그에 태그 도우미 옵트아웃 문자를 적용 해야 합니다. (Visual Studio 편집기 자동으로 추가 옵트아웃 문자 닫는 태그를 지정 하 여는 태그를 하나 추가) 합니다. 옵트아웃 문자를 추가 하면 요소 및 태그 도우미 특성 구별 되는 글꼴에 더 이상 표시 됩니다.
 
-<a name=prefix-razor-directives-label></a>
+<a name="prefix-razor-directives-label"></a>
 
 ### <a name="using-taghelperprefix-to-make-tag-helper-usage-explicit"></a>사용 하 여 `@tagHelperPrefix` 명시적으로 만들어야 하 태그 도우미 사용
 
@@ -127,7 +127,7 @@ HTML을 작성 하는 것이 좋습니다. `<label>` 요소입니다. 입력으�
 
 ![이미지](intro/_static/label.png)
 
-뿐만 아니라 HTML 도움말 아이콘 하지만 가져올 수 있습니다 (의 "@" 기호가 그 아래에서 "<>").
+뿐만 아니라 HTML 도움말 아이콘 하지만 가져올 수 있습니다 (의 "@" symbol with "<>" 그 아래).
 
 ![이미지](intro/_static/tagSym.png)
 
