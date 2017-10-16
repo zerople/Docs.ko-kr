@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 374111dfcf92132bbcf956eafb98a75f833ce2bb
-ms.sourcegitcommit: 94b7e0f95b92c98b182a93d2b3dc0287e5f97976
+ms.openlocfilehash: 1e35ce49980bf026de35359cdf413961051e3bee
+ms.sourcegitcommit: e3b1726cc04e80dc28464c35259edbd3bc39a438
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/04/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="working-with-sql-server-localdb-and-aspnet-core"></a>SQL Server LocalDB 및 ASP.NET Core 사용
 
@@ -70,7 +70,7 @@ if (context.Movie.Any())
 
 *Program.cs* 파일에서 `Main` 메서드의 끝에 시드 이니셜라이저를 추가합니다.
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Program.cs?highlight=6,17-32)]
+[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Program.cs)]
 
 앱 테스트
 
