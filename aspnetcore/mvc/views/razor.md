@@ -1,30 +1,30 @@
 ---
 title: "ASP.NET Core에 대 한 razor 구문 참조"
-author: guardrex
+author: rick-anderson
 description: "웹 페이지에 서버 기반 코드를 포함 하는 것에 대 한 Razor 태그 구문에 알아봅니다."
 keywords: "ASP.NET Core, Razor, Razor 지시문"
 ms.author: riande
 manager: wpickett
-ms.date: 09/29/2017
+ms.date: 10/18/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/razor
-ms.openlocfilehash: 532e278597a0029b5bae93068af5b7b147c35688
-ms.sourcegitcommit: e45f8912ce32b4071bf7e83b8f8315cd8bba3520
+ms.openlocfilehash: 743c42b26c62d0e24b5d5b487b3154bc249fcff4
+ms.sourcegitcommit: a873f862c8e68b2cf2998aaed3dddd93eeba9e0f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/04/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="razor-syntax-for-aspnet-core"></a>ASP.NET Core에 대 한 razor 구문
 
-여 [Rick Anderson](https://twitter.com/RickAndMSFT), [Luke Latham](https://github.com/guardrex), 및 [Taylor Mullen](https://twitter.com/ntaylormullen)
+여 [Rick Anderson](https://twitter.com/RickAndMSFT), [Luke Latham](https://github.com/guardrex), [Taylor Mullen](https://twitter.com/ntaylormullen), 및 [Dan Vicarel](https://github.com/Rabadash8820)
 
 Razor은 웹 페이지에 서버 기반 코드를 포함 하는 것에 대 한 태그 구문입니다. Razor 구문 Razor 태그, C#, 및 HTML로 이루어져 있습니다. Razor를 일반적으로 들어 있는 파일을 *.cshtml* 파일 확장명입니다.
 
 ## <a name="rendering-html"></a>HTML 렌더링
 
-기본 Razor 언어 HTML입니다. 렌더링 HTML Razor 태그에서이 HTML 파일에서 HTML을 렌더링 하는 방법과 다르지 않습니다. HTML 태그에 배치 하는 경우는 *.cshtml* Razor 파일을 변경 하지 않고 서버에서 렌더링 됩니다.
+기본 Razor 언어 HTML입니다. 렌더링 HTML Razor 태그에서이 HTML 파일에서 HTML을 렌더링 하는 방법과 다르지 않습니다.  HTML 태그에서 *.cshtml* Razor 파일은 변경 하지 않고 서버에서 렌더링 됩니다.
 
 ## <a name="razor-syntax"></a>Razor 구문
 
@@ -59,11 +59,24 @@ HTML 특성 및 전자 메일 주소를 포함 하는 내용을 처리 하지 �
 <p>@DateTime.IsLeapYear(2016)</p>
 ```
 
-C# 제외 하 고 `await` 키워드, 암시적 식 공백을 포함 해서는 안 됩니다. C# 문에 명확한 종료 하는 경우 공간 intermingle 수 있습니다.
+C# 제외 하 고 `await` 키워드, 암시적 식 공백을 포함 해서는 안 됩니다. C# 문에 명확한 종료 있으면 공백은 혼합 수 있습니다.
 
 ```cshtml
 <p>@await DoSomething("hello", "world")</p>
 ```
+
+암시적 식 **없습니다** C# 제네릭, 대괄호 내의 문자가 포함 (`<>`) HTML 태그로 해석 됩니다. 다음 코드는 **하지** 유효 합니다.
+
+```cshtml
+<p>@GenericMethod<int>()</p>
+```
+
+위의 코드에서는 다음 중 하 나와 비슷한 컴파일러 오류가 생성 됩니다.
+
+ * "Int" 요소가 닫히지 않았습니다.  모든 요소가 하나 있어야 자체 닫거나는 짝이 되는 끝 태그가 있습니다.
+ *  메서드 그룹을 비 대리자 형식 'object' ' GenericMethod'으로 변환할 수 없습니다. 메서드를 호출 하 시겠습니까?' 
+ 
+제네릭 메서드 호출에 래핑되어야는 [명시적 Razor 식](#explicit-razor-expressions) 또는 [Razor 코드 블록](#razor-code-blocks)합니다. 이 제한에 적용 되지 않습니다 *.vbhtml* Razor Visual Basic 구문의 대괄호 대신 제네릭 형식 매개 변수 주위에 괄호를 배치 하기 때문에 파일입니다.
 
 ## <a name="explicit-razor-expressions"></a>명시적 Razor 식
 
@@ -85,7 +98,7 @@ Razor 식은 명시적으로 구성 될는 `@` 균형 잡힌 괄호 기호입니
 <p>Last week: 7/7/2016 4:39:52 PM - TimeSpan.FromDays(7)</p>
 ```
 
-연결 된 식 결과 텍스트에 명시적 식을 사용할 수 있습니다.
+명시적 식은 연결 된 식 결과 텍스트를 사용할 수 있습니다.
 
 ```cshtml
 @{
@@ -96,6 +109,26 @@ Razor 식은 명시적으로 구성 될는 `@` 균형 잡힌 괄호 기호입니
 ```
 
 명시적 식 없이 `<p>Age@joe.Age</p>` 전자 메일 주소로 처리 및 `<p>Age@joe.Age</p>` 렌더링 됩니다. 명시적 식을으로 쓸 때 `<p>Age33</p>` 렌더링 됩니다.
+
+
+제네릭 메서드의 입력에서 출력을 렌더링 하는 명시적 식을 사용할 수 있습니다 *.cshtml* 파일입니다. 대괄호 내의 문자가 암시적 식에서 (`<>`) HTML 태그로 해석 됩니다. 다음 태그는 **하지** 유효한 Razor:
+
+```cshtml
+<p>@GenericMethod<int>()</p>
+```
+
+위의 코드에서는 다음 중 하 나와 비슷한 컴파일러 오류가 생성 됩니다.
+
+ * "Int" 요소가 닫히지 않았습니다.  모든 요소가 하나 있어야 자체 닫거나는 짝이 되는 끝 태그가 있습니다.
+ *  메서드 그룹을 비 대리자 형식 'object' ' GenericMethod'으로 변환할 수 없습니다. 메서드를 호출 하 시겠습니까?' 
+ 
+ 다음 태그는 올바른 방법은 쓰기가이 코드를 보여 줍니다.  명시적 식으로 코드를 작성 합니다.
+
+```cshtml
+<p>@(GenericMethod<int>())</p>
+```
+
+참고:이 제한에 적용 되지 않습니다 *.vbhtml* Razor 파일입니다.  와 *.vbhtml* Razor 파일, Visual Basic 구문의 대괄호 대신 제네릭 형식 매개 변수 주위에 괄호를 배치 합니다.
 
 ## <a name="expression-encoding"></a>식 인코딩
 
@@ -159,7 +192,7 @@ Razor 코드 블록 시작 `@` 묶여 및 `{}`합니다. 식에서와 달리 C# 
 
 ### <a name="implicit-transitions"></a>암시적 변환
 
-코드 블록에 기본 언어는 C#, 하지만 HTML로 다시 전환할 수 있습니다.
+코드 블록에 기본 언어는 C#, 하지만 Razor 페이지를 HTML로 다시 전환 될 수 있습니다.
 
 ```cshtml
 @{
@@ -180,9 +213,12 @@ HTML 렌더링 해야 하는 코드 블록의 하위 섹션을 정의 하려면 
 }
 ```
 
-HTML 태그로 묶인 없는 HTML을 렌더링 하려면이 방법을 사용 합니다. HTML 또는 Razor 태그가 없는 Razor 런타임 오류가 발생 합니다.
+HTML 태그로 묶인 없는 HTML 렌더링 하기 위한이 방법을 사용 합니다. HTML 또는 Razor 태그가 없는 Razor 런타임 오류가 발생합니다.
 
- **\<텍스트 >** 태그에서 콘텐츠를 렌더링할 때 공백을 제어도 유용 합니다. 사이 있는 내용을는  **\<텍스트 >** 태그를 렌더링 하기 전이나 후에 공백이 없어야 하 고는  **\<텍스트 >** 태그의 HTML 출력에 나타납니다.
+ **\<텍스트 >** 태그는 콘텐츠를 렌더링할 때 공백을 제어 하는 데 유용 합니다.
+
+* 사이 있는 내용을는  **\<텍스트 >** 태그를 렌더링 합니다. 
+* 앞 이나 뒤에 공백이 없어야는  **\<텍스트 >** 태그가 HTML 출력에 나타납니다.
 
 ### <a name="explicit-line-transition-with-"></a>명시적 줄 전환을 @:
 
@@ -196,7 +232,9 @@ HTML 태그로 묶인 없는 HTML을 렌더링 하려면이 방법을 사용 합
 }
 ```
 
-없이 `@:` Razor 런타임 오류 코드에서 발생 합니다.
+없이 `@:` 코드에서는 Razor 런타임 오류가 생성 됩니다.
+
+경고: 추가 `@` Razor 파일의 문자는 블록의 뒷부분에 나오는 문에서 발생 한 컴파일러 오류 원인 발생할 수 있습니다. 이러한 컴파일러 오류 보고 된 오류 하기 전에 실제 오류가 발생 하기 때문에 이해 하기 어려울 수 있습니다.  이 오류는 단일 코드 블록으로 여러 암시적/명시적 식을 결합 이후에 자주 발생 합니다.
 
 ## <a name="control-structures"></a>제어 구조
 
@@ -230,7 +268,7 @@ else
 }
 ```
 
-다음과 같이 switch 문을 사용할 수 있습니다.
+다음 태그 switch 문을 사용 하는 방법을 보여 줍니다.
 
 ```cshtml
 @switch (value)
@@ -249,7 +287,7 @@ else
 
 ### <a name="looping-for-foreach-while-and-do-while"></a>반복 @for, @foreach, @while, 및 @do 동안
 
-템플릿 기반 HTML 제어 문을 반복을 렌더링할 수 있습니다. 사람 목록이 렌더링 합니다.
+템플릿 기반 HTML 제어 문을 반복 해 렌더링할 수 있습니다.  사람 목록이 렌더링 합니다.
 
 ```cshtml
 @{
@@ -262,7 +300,7 @@ else
 }
 ```
 
-다음 반복 문 중 하나를 사용할 수 있습니다.
+다음 반복 문이 지원 됩니다.
 
 `@for`
 
@@ -315,7 +353,8 @@ else
 
 ### <a name="compound-using"></a>복합@using
 
-C#에서는 `using` 문을 사용 하는 개체가 삭제 되도록 합니다. Razor, 동일한 메커니즘 추가 콘텐츠를 포함 하는 HTML 도우미 만들기에 사용 됩니다. 예를 들어, form 태그를 렌더링 하는 HTML 도우미를 사용할 수 있습니다는 `@using` 문:
+C#에서는 `using` 문을 사용 하는 개체가 삭제 되도록 합니다. Razor, 동일한 메커니즘 추가 콘텐츠를 포함 하는 HTML 도우미 만들기에 사용 됩니다. 다음 코드에서는 HTML 도우미와 form 태그를 렌더링는 `@using` 문:
+
 
 ```cshtml
 @using (Html.BeginForm())
@@ -328,7 +367,7 @@ C#에서는 `using` 문을 사용 하는 개체가 삭제 되도록 합니다. R
 }
 ```
 
-범위 수준 작업을 수행할 수도 있습니다 [태그 도우미](xref:mvc/views/tag-helpers/intro)합니다.
+범위 수준 작업을 수행할 수 있습니다 [태그 도우미](xref:mvc/views/tag-helpers/intro)합니다.
 
 ### <a name="try-catch-finally"></a>@trycatch, finally
 
@@ -417,7 +456,7 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 @model TypeNameOfModel
 ```
 
-개별 사용자 계정으로 ASP.NET Core MVC 응용 프로그램을 만들면는 *Views/Account/Login.cshtml* 보기 모델 선언이 있습니다.
+개별 사용자 계정을 사용 하 여 만든 ASP.NET Core MVC 응용 프로그램에 *Views/Account/Login.cshtml* 보기 모델 선언이 있습니다.
 
 ```cshtml
 @model LoginViewModel
@@ -435,17 +474,17 @@ Razor를 노출 한 `Model` 보기에 전달 된 모델에 액세스 하기 위�
 <div>The Login Email: @Model.Email</div>
 ```
 
-`@model` 지시문이이 속성의 유형을 지정 합니다. 지시문에 지정 된 `T` 에 `RazorPage<T>` 보기는 생성 된 클래스에서 파생 합니다. 지정 하지 않으면는 `@model` 지시문의 `Model` 속성은 형식이 `dynamic`합니다. 모델의 값은 컨트롤러에서 뷰에 전달 됩니다. 참조 [강력한 형식 모델 및 @model 키워드](xref:tutorials/first-mvc-app/adding-model#strongly-typed-models-keyword-label) 자세한 정보에 대 한 합니다.
+`@model` 지시문이이 속성의 유형을 지정 합니다. 지시문에 지정 된 `T` 에 `RazorPage<T>` 뷰는 생성 된 클래스에서 파생 합니다. 경우는 `@model` 지시문 iisn't 지정는 `Model` 속성은 형식이 `dynamic`합니다. 모델의 값은 컨트롤러에서 뷰에 전달 됩니다. 자세한 내용은 참조 하십시오. [강력한 형식 모델 및 @model 키워드입니다.
 
 ### <a name="inherits"></a>@inherits
 
-`@inherits` 지시문 보기 상속 된 클래스의 모든 권한을 제공 합니다.
+`@inherits` 지시문이 뷰가 상속 된 클래스의 모든 권한을 제공 합니다.
 
 ```cshtml
 @inherits TypeNameOfClassToInheritFrom
 ```
 
-다음은 사용자 지정 Razor 페이지 유형:
+다음 코드는 사용자 지정 Razor 페이지 유형:
 
 [!code-csharp[Main](razor/sample/Classes/CustomRazorPage.cs)]
 
@@ -459,11 +498,11 @@ Razor를 노출 한 `Model` 보기에 전달 된 모델에 액세스 하기 위�
 <div>Custom text: Gardyloo! - A Scottish warning yelled from a window before dumping a slop bucket on the street below.</div>
 ```
 
-사용할 수 없는 `@model` 및 `@inherits` 동일한 보기에 있습니다. 사용할 수 있습니다 `@inherits` 에 *_ViewImports.cshtml* 파일을 가져오므로 보기:
+ `@model`및 `@inherits` 동일한 보기에 사용할 수 있습니다.  `@inherits`에 있을 수 있습니다는 *_ViewImports.cshtml* 파일을 가져오므로 보기:
 
 [!code-cshtml[Main](razor/sample/Views/_ViewImportsModel.cshtml)]
 
-다음은 강력한 형식의 뷰의 예입니다.
+다음 코드는 강력한 형식의 뷰의 예:
 
 [!code-cshtml[Main](razor/sample/Views/Home/Login1.cshtml)]
 
@@ -476,11 +515,12 @@ Razor를 노출 한 `Model` 보기에 전달 된 모델에 액세스 하기 위�
 
 ### <a name="inject"></a>@inject
 
-`@inject` 지시문을 사용 하면 서비스에서 삽입 하 여 [서비스 컨테이너](xref:fundamentals/dependency-injection) 보기에 있습니다. 참조 [뷰로 종속성 주입](xref:mvc/views/dependency-injection) 자세한 정보에 대 한 합니다.
+
+`@inject` 지시문을 사용 하면 Razor 페이지에서 서비스를 삽입 하는 [서비스 컨테이너](xref:fundamentals/dependency-injection) 보기에 있습니다. 자세한 내용은 참조 [뷰로 종속성 주입](xref:mvc/views/dependency-injection)합니다.
 
 ### <a name="functions"></a>@functions
 
-`@functions` 지시문을 사용 하면 함수 수준 콘텐츠 뷰를 추가할 수 있습니다.
+`@functions` 지시문 Razor 페이지 보기에 기능 수준 콘텐츠를 추가할 수 있습니다.
 
 ```cshtml
 @functions { // C# Code }
@@ -502,7 +542,7 @@ Razor를 노출 한 `Model` 보기에 전달 된 모델에 액세스 하기 위�
 
 ### <a name="section"></a>@section
 
-`@section` 지시어와 함께 사용 되는 [레이아웃](xref:mvc/views/layout) HTML 페이지의 서로 다른 부분에 콘텐츠를 렌더링할 뷰를 사용할 수 있도록 합니다. 참조 [섹션](xref:mvc/views/layout#layout-sections-label) 자세한 정보에 대 한 합니다.
+`@section` 지시어와 함께 사용 되는 [레이아웃](xref:mvc/views/layout) HTML 페이지의 서로 다른 부분에 콘텐츠를 렌더링할 뷰를 사용할 수 있도록 합니다. 자세한 내용은 참조 [섹션](xref:mvc/views/layout#layout-sections-label)합니다.
 
 ## <a name="tag-helpers"></a>태그 도우미
 
@@ -574,4 +614,9 @@ Razor 뷰 엔진 뷰에 대 한 대/소문자 구분 조회를 수행 합니다.
   * 대/소문자 구분 파일 시스템에 (예: Linux, OSX와 `EmbeddedFileProvider`), 조회는 대/소문자 구분 합니다. 예를 들어 `return View("Test")` 구체적으로 일치 하는 항목 */Views/Home/Test.cshtml*합니다.
 * 뷰 미리 컴파일된: ASP.Net 2.0 이상 코어, 미리 컴파일된 뷰를 조회는 대/소문자 구분 모든 운영 체제에 있습니다. 동작은 Windows에서 물리적 파일 공급자의 동작과 동일 합니다. 미리 컴파일된 뷰를 두 가지 경우에만 다른 경우 조회 명확 하지 않습니다.
 
-개발자는 영역, 컨트롤러 및 작업 이름의 대/소문자를 파일 및 디렉터리 이름의 대/소문자와 일치 하는 것이 좋습니다. 이렇게 하면 배포에 기본 파일 시스템에 관계 없이 해당 뷰를 찾을 수 있습니다.
+개발자는의 대/소문자를 파일 및 디렉터리 이름의 대/소문자와 일치 하는 것이 좋습니다.
+
+    * 영역, 컨트롤러 및 작업 이름입니다. 
+    * Razor 페이지입니다.
+    
+대/소문자와 일치 하는 배포는 내부 파일 시스템에 관계 없이 해당 보기를 찾을 보장 합니다.
