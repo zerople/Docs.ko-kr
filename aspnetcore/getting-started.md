@@ -11,11 +11,11 @@ ms.assetid: 73543e9d-d9d5-47d6-9664-17a9beea6cd3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: getting-started
-ms.openlocfilehash: c81e1328fda6d1652ab937bd580be2342924d241
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 5cba57c23ab66475648b19cba3f9aaa02bea3dba
+ms.sourcegitcommit: d56f36805ce70470775da58db63c0965d65660d3
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/09/2017
 ---
 # <a name="getting-started-with-aspnet-core"></a>ASP.NET Core 시작
 
