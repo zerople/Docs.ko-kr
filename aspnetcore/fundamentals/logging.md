@@ -12,25 +12,25 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/logging
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9557e9f6915507450de3ffe500582839a28c3f0c
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: b2e991ea37b1b726e472d78d839143546ebd559f
+ms.sourcegitcommit: 29da58de11e20c9c60448e36e7075c6b13622624
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="introduction-to-logging-in-aspnet-core"></a>ASP.NET Core 로그인 소개
 
 여 [Steve Smith](https://ardalis.com/) 및 [Tom Dykstra](https://github.com/tdykstra)
 
-ASP.NET Core 다양 한 로깅 공급자와 작동 하는 로깅 API를 지원 합니다. 하나 이상의 대상에 로그를 보낼 기본 제공 공급자 수 있으며, 타사 로깅 프레임 워크에 연결할 수 있습니다. 이 문서에는 코드에는 기본 제공 로깅 API 및 공급자를 사용 하는 방법을 보여 줍니다.
+ASP.NET Core는 다양한 로깅 공급자를 사용하는 로깅 API를 지원합니다. 하나 이상의 대상에 로그를 보낼 기본 제공 공급자 수 있으며, 타사 로깅 프레임 워크에 연결할 수 있습니다. 이 문서에는 코드에는 기본 제공 로깅 API 및 공급자를 사용 하는 방법을 보여 줍니다.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/sample2) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
+[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/sample2)([다운로드 방법](xref:tutorials/index#how-to-download-a-sample))
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/sample) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
+[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/sample)([다운로드 방법](xref:tutorials/index#how-to-download-a-sample))
 
 ---
 
@@ -585,9 +585,6 @@ loggerFactory.AddTraceSource(sourceSwitchName);
 [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) 공급자 패키지 로그에는 Azure 앱 서비스 앱의 파일 시스템 및 텍스트 파일에 기록 [blob 저장소](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/#what-is-blob-storage) 는 Azure 저장소 계정에 있습니다. 공급자는 ASP.NET Core 1.1.0을 대상으로 하는 앱에 대해서만 사용할 수 있는 이후인 있습니다. 
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
-> [!NOTE]
-> ASP.NET Core 2.0 미리 보기에는입니다.  Azure 앱 서비스에 배포 될 때 최신 미리 보기 릴리스를 사용 하 여 만든 앱 실행 되지 않을 수 있습니다. Azure 앱 서비스 2.0을 실행은 ASP.NET 코어 2.0 출시 되 면 앱 및 Azure 앱 서비스 공급자는 여기에 설명 된 대로 작동 합니다.
 
 공급자 패키지 또는 호출 설치할 필요가 없습니다는 `AddAzureWebAppDiagnostics` 확장 메서드.  공급자가 Azure 앱 서비스에 앱을 배포할 때 응용 프로그램에 자동으로 사용할 수 있습니다.
 
