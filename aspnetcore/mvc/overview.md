@@ -1,7 +1,7 @@
 ---
 title: "ASP.NET Core MVC 개요"
 author: ardalis
-description: "모델-뷰-컨트롤러 디자인 패턴을 이용해서 웹 응용 프로그램 및 API를 구축하기 위한 풍부한 프레임워크인 ASP.NET Core MVC에 관해서 살펴봅니다."
+description: "모델-뷰-컨트롤러(MVC) 디자인 패턴을 이용해서 웹앱 및 API를 구축하기 위한 풍부한 프레임워크인 ASP.NET Core MVC에 관해서 살펴봅니다."
 keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
@@ -21,13 +21,13 @@ ms.lasthandoff: 09/28/2017
 
 작성자: [Steve Smith](https://ardalis.com/)
 
-ASP.NET Core MVC는 모델-뷰-컨트롤러 디자인 패턴을 이용해서 웹 응용 프로그램 및 API를 구축하기 위한 풍부한 프레임워크입니다. 
+ASP.NET Core MVC는 모델-뷰-컨트롤러(MVC) 디자인 패턴을 이용해서 웹앱 및 API를 구축하기 위한 풍부한 프레임워크입니다. 
 
 ## <a name="what-is-the-mvc-pattern"></a>MVC 패턴이란?
 
-모델-뷰-컨트롤러(MVC, Model-View-Controller) 아키텍처 패턴은 응용 프로그램을 모델, 뷰, 컨트롤러라는 세 가지 주요 구성 요소 그룹으로 구분합니다. 이 패턴은 [관심사의 분리(Separation of Concerns)](http://deviq.com/separation-of-concerns/)를 준수하는데 도움이 됩니다. MVC 패턴에서 사용자의 요청은 모델을 이용해서 사용자의 작업을 수행하거나 질의 결과를 조회하는 컨트롤러로 라우팅됩니다. 그러면 컨트롤러는 사용자에게 출력할 뷰를 선택한 다음, 필요한 모든 모델 데이터와 함께 뷰를 제공합니다.
+모델-뷰-컨트롤러(MVC, Model-View-Controller) 아키텍처 패턴은 응용 프로그램을 모델, 뷰, 컨트롤러라는 세 가지 주요 구성 요소 그룹으로 구분합니다. 이 패턴은 [관심사의 분리(Separation of Concerns)](http://deviq.com/separation-of-concerns/)를 준수하는 데 도움이 됩니다. MVC 패턴에서 사용자의 요청은 모델을 이용해서 사용자의 작업을 수행하거나 쿼리 결과를 조회하는 컨트롤러로 라우팅됩니다. 그러면 컨트롤러는 사용자에게 출력할 뷰를 선택한 다음, 필요한 모든 모델 데이터와 함께 뷰를 제공합니다.
 
-다음 그림은 세 가지 주요 구성 요소 및 구성 요소들 간의 참조 관계를 보여줍니다:
+다음 다이어그램은 세 가지 주요 구성 요소 및 이 구성 요소들 간의 참조 관계를 보여줍니다.
 
 ![MVC 패턴](overview/_static/mvc.png)
 
