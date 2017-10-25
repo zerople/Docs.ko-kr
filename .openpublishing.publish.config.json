@@ -8,7 +8,7 @@
       "build_source_folder": "aspnet",
       "build_output_subfolder": "aspnet",
       "locale": "ko-kr",
-      "open_to_public_contributors": false,
+      "open_to_public_contributors": true,
       "type_mapping": {
         "Conceptual": "Content",
         "ManagedReference": "Content",
