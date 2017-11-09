@@ -64,7 +64,7 @@ ms.lasthandoff: 10/03/2017
 
 <span data-ttu-id="e78fd-156">이 작업을 반환 하는 경우는 *About.cshtml* 마지막 섹션에 표시 된 보기는 다음과 같은 웹 페이지로 렌더링 됩니다.</span><span class="sxs-lookup"><span data-stu-id="e78fd-156">When this action returns, the *About.cshtml* view shown in the last section is rendered as the following webpage:</span></span>
 
-![Edge 브라우저에서 렌더링 된 페이지에 대 한](overview/_static/about-page.png)
+![Microsoft Edge 브라우저에서 렌더링 된 페이지에 대 한](overview/_static/about-page.png)
 
 <span data-ttu-id="e78fd-158">`View` 도우미 메서드에 몇 가지 오버 로드 합니다.</span><span class="sxs-lookup"><span data-stu-id="e78fd-158">The `View` helper method has several overloads.</span></span> <span data-ttu-id="e78fd-159">필요에 따라 다음을 지정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="e78fd-159">You can optionally specify:</span></span>
 
