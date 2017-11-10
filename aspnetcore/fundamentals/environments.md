@@ -11,11 +11,11 @@ ms.assetid: b5bba985-be12-4464-9a01-df3599b2a6f1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/environments
-ms.openlocfilehash: 054b3e9f1e2bcfe1e4a75eca4d9dc6326ee6e44f
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: becdfa647acb6483b39f5421ab881c4817f31c40
+ms.sourcegitcommit: e3b1726cc04e80dc28464c35259edbd3bc39a438
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="working-with-multiple-environments"></a>여러 환경 작업
 
@@ -23,11 +23,11 @@ ms.lasthandoff: 10/01/2017
 
 ASP.NET Core 개발, 스테이징 및 프로덕션 등의 여러 환경에 걸쳐 앱 동작을 제어 하기 위한 지원을 제공 합니다. 환경 변수는 해당 환경에 구성 된 응용 프로그램 런타임 환경을 나타내는 데 사용 됩니다.
 
-[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/environments/sample) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
+[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/environments/sample)([다운로드 방법](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="development-staging-production"></a>개발, 스테이징 프로덕션
 
-ASP.NET Core 특정 참조 [환경 변수](https://github.com/aspnet/Home/wiki), `ASPNETCORE_ENVIRONMENT` 를 응용 프로그램에서 현재 실행 중인 환경에 설명 합니다. 이 변수를 설정 값을 원하는 하지만 규칙에 따라 3 개의 값 사용: `Development`, `Staging`, 및 `Production`합니다. 이러한 샘플에서 사용 되는 값 및 ASP.NET Core와 함께 제공 되는 서식 파일을 찾을 수 있습니다.
+특정 환경 변수를 참조 하는 ASP.NET Core `ASPNETCORE_ENVIRONMENT` 를 응용 프로그램에서 현재 실행 중인 환경에 설명 합니다. 이 변수를 설정 값을 원하는 하지만 규칙에 따라 3 개의 값 사용: `Development`, `Staging`, 및 `Production`합니다. 이러한 샘플에서 사용 되는 값 및 ASP.NET Core와 함께 제공 되는 서식 파일을 찾을 수 있습니다.
 
 현재 환경 설정은 응용 프로그램 내에서 프로그래밍 방식으로 검색할 수 있습니다. 환경을 사용할 수는 또한 [태그 도우미](../mvc/views/tag-helpers/index.md) 의 특정 섹션에 포함 하도록 프로그램 [보기](../mvc/views/index.md) 현재 응용 프로그램 환경에 따라 합니다.
 
@@ -50,7 +50,7 @@ IIS Express에 대 한 프로필은 다음과 같습니다.
 사용 되는 웹 서버를 다시 시작 될 때까지 프로젝트 프로필에 대 한 변경 내용이 적용 되지 않을 수 있습니다 (특히 Kestrel를 다시 시작 해야 해당 환경에 대해 변경 내용을 감지 합니다).
 
 >[!WARNING]
-> 에 저장 된 환경 변수가 *launchSettings.json* 어떤 방식으로든에서 보호 하지 않는 하 고 사용 하는 경우 프로젝트에 대 한 소스 코드 리포지토리의 일부가 됩니다. **이 파일에 자격 증명 또는 기타 보안 데이터를 저장 하지 마십시오.** 사용 하 여 이러한 데이터를 저장 해야 할 경우는 *암호 관리자* 에 설명 된 도구 [개발 하는 동안 앱 암호의 안전한 저장소](../security/app-secrets.md#security-app-secrets)합니다.
+> 에 저장 된 환경 변수가 *launchSettings.json* 어떤 방식으로든에서 보호 하지 않는 하 고 사용 하는 경우 프로젝트에 대 한 소스 코드 리포지토리의 일부가 됩니다. **이 파일에 자격 증명 또는 기타 보안 데이터를 저장 하지 마십시오.** 사용 하 여 이러한 데이터를 저장 해야 할 경우는 *암호 관리자* 에 설명 된 도구 [개발 하는 동안 앱 암호의 안전한 저장소](xref:security/app-secrets)합니다.
 
 ### <a name="staging"></a>스테이징
 
@@ -76,7 +76,7 @@ IIS Express에 대 한 프로필은 다음과 같습니다.
 
 환경 설정에 대 한 메서드는 운영 체제에 따라 달라 집니다.
 
-### <a name="windows"></a>창
+### <a name="windows"></a>Windows
 설정 하는 `ASPNETCORE_ENVIRONMENT` 를 사용 하 여 앱이 시작 하는 경우 현재 세션에 대 한 `dotnet run`, 다음 명령을 사용 하는
 
 **명령줄**

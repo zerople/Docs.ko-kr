@@ -10,17 +10,17 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: 3fd155c5e9a119717243a4bafff776fcbd06fab5
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 7ae83b9bdadf5ebf8846b0c09c585da406708d12
+ms.sourcegitcommit: 94b7e0f95b92c98b182a93d2b3dc0287e5f97976
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/04/2017
 ---
 # <a name="scaffolded-razor-pages-in-aspnet-core"></a>ASP.NET Core의 스캐폴드된 Razor 페이지
 
 작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-이 자습서에서는 [이전 자습서](xref:tutorials/razor-pages/page)에서 스캐폴딩을 통해 만든 Razor 페이지를 살펴봅니다. 
+이 자습서에서는 이전 자습서 항목 [모델 추가](xref:tutorials/razor-pages/model#scaffold-the-movie-model)에서 스캐폴딩을 통해 만든 Razor 페이지를 살펴봅니다. 
 
 샘플을 [보거나 다운로드합니다](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie).
 
@@ -43,10 +43,10 @@ Razor는 HTML에서 C# 또는 Razor 관련 태그로 전환될 수 있습니다.
 다음 HTML 도우미에서 사용되는 람다 식을 살펴봅니다.
 
 ```cshtml
-@Html.DisplayNameFor(model => model.Movies[0].Title))
+@Html.DisplayNameFor(model => model.Movie[0].Title))
 ```
 
-`DisplayNameFor` HTML 도우미는 람다 식에서 참조되는 `Title` 속성을 검사하여 표시 이름을 확인합니다. 람다 식은 계산되는 것이 아니라 검사됩니다. 즉, `model`, `model.Movies` 또는 `model.Movies[0]`가 `null`이거나 비어 있을 경우 액세스 위반이 없습니다. 람다 식이 계산될 경우(예: `@Html.DisplayFor(modelItem => item.Title)` 사용) 모델의 속성 값이 계산됩니다.
+`DisplayNameFor` HTML 도우미는 람다 식에서 참조되는 `Title` 속성을 검사하여 표시 이름을 확인합니다. 람다 식은 계산되는 것이 아니라 검사됩니다. 즉, `model`, `model.Movie` 또는 `model.Movie[0]`가 `null`이거나 비어 있을 경우 액세스 위반이 없습니다. 람다 식이 계산될 경우(예: `@Html.DisplayFor(modelItem => item.Title)` 사용) 모델의 속성 값이 계산됩니다.
 
 <a name="md"></a>
 ### <a name="the-model-directive"></a>@model 지시문
@@ -145,5 +145,5 @@ Visual Studio에서는 `<form method="post">` 태그를 태그 도우미에 사�
 다음 자습서에서는 SQL Server LocalDB 및 데이터베이스 시딩에 대해 설명합니다.
 
 >[!div class="step-by-step"]
-[이전: 모델 추가](xref:tutorials/razor-pages/modelz)
+[이전: 모델 추가](xref:tutorials/razor-pages/model)
 [다음: SQL Server LocalDB](xref:tutorials/razor-pages/sql)

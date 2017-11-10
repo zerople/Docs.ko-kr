@@ -11,11 +11,11 @@ ms.assetid: 29f12d1f-9734-48bd-bf1a-cee53a8ab700
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/layout
-ms.openlocfilehash: 25aa5fc730d9076fdcf9d29cb5d9dfa75a246a1a
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 064621d8756b007c5b8859111bf3a03a0d7dda81
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="layout"></a>레이아웃
 
@@ -51,7 +51,7 @@ Razor 보기에 `Layout` 속성입니다. 이 속성을 설정 하 여 레이아
 
 기본적으로 모든 레이아웃 호출 해야 `RenderBody`합니다. 모든 위치에 대 한 호출 `RenderBody` 은 배치 하는 보기의 내용을 렌더링 됩니다.
 
-<a name=layout-sections-label></a>
+<a name="layout-sections-label"></a>
 
 ### <a name="sections"></a>섹션
 
@@ -77,7 +77,7 @@ Razor 보기에 `Layout` 속성입니다. 이 속성을 설정 하 여 레이아
 
 본문 및 Razor 페이지에서 모든 섹션 렌더링 하거나 무시 됩니다.
 
-<a name=viewimports></a>
+<a name="viewimports"></a>
 
 ## <a name="importing-shared-directives"></a>공유 지시문 가져오기
 
@@ -121,7 +121,7 @@ Razor 보기에 `Layout` 속성입니다. 이 속성을 설정 하 여 레이아
 
 * `@inject`: 각 속성에 대 한 보기에 가장 가까운 스택을 속성 이름이 같은 다른 재정의
 
-<a name=viewstart></a>
+<a name="viewstart"></a>
 
 ## <a name="running-code-before-each-view"></a>각 보기 전에 코드를 실행합니다.
 

@@ -11,11 +11,11 @@ ms.assetid: 26250a4d-bf62-4d45-8549-26801cf956e9
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/routing
-ms.openlocfilehash: 5a0b5399f7441035cb1231a009681ca22b07ab4e
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: cc3277400aee956f47c53e5a4f3d4e84d3a3d1a3
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="routing-to-controller-actions"></a>컨트롤러 작업에 대 한 라우팅을
 
@@ -118,7 +118,7 @@ app.UseRouter(routes.Build());
 
 `UseMvc`모든 경로 직접 정의 하지 않는 자리 표시자에 대 한 경로 컬렉션에 추가 `attribute` 경로입니다. 오버 로드 `UseMvc(Action<IRouteBuilder>)` 직접 경로 추가할 수 있습니다 하 고도 특성 라우팅을 지원 합니다.  `UseMvc`특성 경로 대 한 자리 표시자를 추가 하는 모든 해당 변형 중-특성 라우팅을 항상 구성 하는 방법에 관계 없이 사용할 수 및 `UseMvc`합니다. `UseMvcWithDefaultRoute`기본 경로 정의 하 고 특성 라우팅을 지원 합니다. [특성 라우팅을](#attribute-routing-ref-label) 특성 라우팅을 대 한 자세한 내용은 섹션에 포함 되어 있습니다.
 
-<a name=routing-conventional-ref-label></a>
+<a name="routing-conventional-ref-label"></a>
 
 ## <a name="conventional-routing"></a>기존 라우팅
 
@@ -190,7 +190,7 @@ public class ProductsController : Controller
 
 일치 하는 여러 경로가 및 MVC '최적의' 경로 찾을 수 없습니다, 예외를 throw 한 `AmbiguousActionException`합니다.
 
-<a name=routing-route-name-ref-label></a>
+<a name="routing-route-name-ref-label"></a>
 
 ### <a name="route-names"></a>경로 이름
 
@@ -210,7 +210,7 @@ app.UseMvc(routes =>
 
 경로 이름은 URL 일치 또는; 요청 처리에 영향을 미치지 않습니다 URL 생성에만 사용 됩니다. [라우팅](xref:fundamentals/routing) 에 대 한 상세 정보가 MVC 관련 도우미에서 URL 생성을 포함 하 여 URL 생성 합니다.
 
-<a name=attribute-routing-ref-label></a>
+<a name="attribute-routing-ref-label"></a>
 
 ## <a name="attribute-routing"></a>특성 라우팅
 
@@ -324,7 +324,7 @@ public class ProductsApiController : Controller
 > [!NOTE]
 > 이와 반대로 기존의 *기본 경로*, 정의 하는 `id` 매개 변수를 선택적으로 (`{id?}`). Api를 정확 하 게 지정 하는이 기능에 허용 하는 등의 이점도 `/products` 및 `/products/5` 를 다른 동작에 디스패치할 수 있습니다.
 
-<a name=routing-combining-ref-label></a>
+<a name="routing-combining-ref-label"></a>
 
 ### <a name="combining-routes"></a>조합 경로
 
@@ -369,7 +369,7 @@ public class HomeController : Controller
 }
 ```
 
-<a name=routing-ordering-ref-label></a>
+<a name="routing-ordering-ref-label"></a>
 
 ### <a name="ordering-attribute-routes"></a>특성 경로 순서 지정
 
@@ -382,7 +382,7 @@ public class HomeController : Controller
 > [!TIP]
 > 에 따라 방지 `Order`합니다. URL-스페이스를 올바르게 라우팅할 명시적 순서 값이 필요한 경우 됩니다 클라이언트 에서도 혼동 가능성이 높습니다. 일반적 특성 라우팅을 URL 일치 하는 올바른 경로 선택 합니다. URL 생성에 사용 되는 기본 순서 작동 하지 않는 경우 사용 하 여 경로 이름 재정의 적용할 때 보다 더 간단 일반적으로 `Order` 속성입니다.
 
-<a name=routing-token-replacement-templates-ref-label></a>
+<a name="routing-token-replacement-templates-ref-label"></a>
 
 ## <a name="token-replacement-in-route-templates-controller-action-area"></a>경로 템플릿에서 토큰을 바꾸지 ([컨트롤러] [action] [지역])
 
@@ -414,7 +414,7 @@ public class ProductsController : MyBaseController
 
 리터럴 토큰 대체 구분 기호에 맞게 `[` 또는 `]`, 문자를 반복 하 여 이스케이프 (`[[` 또는 `]]`).
 
-<a name=routing-multiple-routes-ref-label></a>
+<a name="routing-multiple-routes-ref-label"></a>
 
 ### <a name="multiple-routes"></a>여러 경로
 
@@ -458,7 +458,7 @@ public class ProductsController : Controller
 > [!TIP]
 > 작업에서 여러 경로 사용 하 여 강력한 보일 수를 간단 하 고 잘 정의 된 응용 프로그램의 URL 공간을 유지 하는 것이 좋습니다. 예를 들어 기존 클라이언트를 지원 하기 위해 필요한 경우에 작업에서 여러 경로 사용 합니다.
 
-<a name=routing-attr-options></a>
+<a name="routing-attr-options"></a>
 
 ### <a name="specifying-attribute-route-optional-parameters-default-values-and-constraints"></a>특성 경로 선택적 매개 변수, 기본값 및 제약 조건 지정
 
@@ -474,7 +474,7 @@ public IActionResult ShowProduct(int id)
 
 참조 [경로 템플릿 참조](../../fundamentals/routing.md#route-template-reference) 경로 템플릿 구문에 대 한 자세한 설명은 합니다.
 
-<a name=routing-cust-rt-attr-irt-ref-label></a>
+<a name="routing-cust-rt-attr-irt-ref-label"></a>
 
 ### <a name="custom-route-attributes-using-iroutetemplateprovider"></a>사용 하 여 사용자 지정 경로 특성`IRouteTemplateProvider`
 
@@ -495,7 +495,7 @@ public class MyApiControllerAttribute : Attribute, IRouteTemplateProvider
 
 위의 예제에서이 특성을 자동으로 설정 된 `Template` 를 `"api/[controller]"` 때 `[MyApiController]` 적용 됩니다.
 
-<a name=routing-app-model-ref-label></a>
+<a name="routing-app-model-ref-label"></a>
 
 ### <a name="using-application-model-to-customize-attribute-routes"></a>응용 프로그램 모델을 사용 하 여 특성 경로 사용자 지정 하려면
 
@@ -503,7 +503,7 @@ public class MyApiControllerAttribute : Attribute, IRouteTemplateProvider
 
 [!code-csharp[Main](routing/sample/main/NamespaceRoutingConvention.cs)]
 
-<a name=routing-mixed-ref-label></a>
+<a name="routing-mixed-ref-label"></a>
 
 ## <a name="mixed-routing-attribute-routing-vs-conventional-routing"></a>라우팅 혼합: 라우팅 vs 기존의 라우팅은 특성
 
@@ -514,7 +514,7 @@ MVC 응용 프로그램에 기존의 라우팅은 및 특성 라우팅을 사용
 > [!NOTE]
 > URL 경로 템플릿과 일치 한 후에 적용 하는 프로세스는 두 가지 유형의 라우팅 시스템을 구별 합니다. 기본 라우팅 경로 값을 일치 하는 모든 규칙에 따른 라우트된 동작의 조회 테이블에서 작업 및 컨트롤러 선택 사용 됩니다. 특성 라우팅을에서 각 템플릿에 이미 연결 되어 작업을 하 고 조회가 없습니다. 더 이상 필요 합니다.
 
-<a name=routing-url-gen-ref-label></a>
+<a name="routing-url-gen-ref-label"></a>
 
 ## <a name="url-generation"></a>URL 생성
 
@@ -567,7 +567,7 @@ MVC 라우팅 특성의 모든 동작의 조회 테이블을 작성 및 일치�
 > [!TIP]
 > 절대 URL을 만들려면 사용을 허용 하는 오버 로드는 `protocol`:`Url.Action("Buy", "Products", new { id = 17 }, protocol: Request.Scheme)`
 
-<a name=routing-gen-urls-route-ref-label></a>
+<a name="routing-gen-urls-route-ref-label"></a>
 
 ### <a name="generating-urls-by-route"></a>Url 경로 의해 생성
 
@@ -575,7 +575,7 @@ MVC 라우팅 특성의 모든 동작의 조회 테이블을 작성 및 일치�
 
 [!code-csharp[Main](routing/sample/main/Controllers/UrlGenerationControllerRouting.cs?name=snippet_1)]
 
-<a name=routing-gen-urls-html-ref-label></a>
+<a name="routing-gen-urls-html-ref-label"></a>
 
 ### <a name="generating-urls-in-html"></a>HTML에 Url을 생성합니다.
 
@@ -585,7 +585,7 @@ TagHelpers Url을 통해 생성 된 `form` TagHelper 및 `<a>` TagHelper 합니�
 
 뷰 내에서 `IUrlHelper` 를 통해 사용할 수는 `Url` 위의에서 포함 하지 않는 모든 임시 URL 생성에 대 한 속성.
 
-<a name=routing-gen-urls-action-ref-label></a>
+<a name="routing-gen-urls-action-ref-label"></a>
 
 ### <a name="generating-urls-in-action-results"></a>작업 결과에 URL을 생성합니다.
 
@@ -606,7 +606,7 @@ public Task<IActionResult> Edit(int id, Customer customer)
 
 작업 결과 팩터리 메서드는 메서드는 유사한 패턴에 따라 `IUrlHelper`합니다.
 
-<a name=routing-dedicated-ref-label></a>
+<a name="routing-dedicated-ref-label"></a>
 
 ### <a name="special-case-for-dedicated-conventional-routes"></a>전용된 기본 경로 대 한 특별 한 경우
 
@@ -625,7 +625,7 @@ app.UseMvc(routes =>
 
 규칙에 따른 전용된 경로 해당 경로 되지 않도록 하는 경로 매개 변수 없는 기본 값의 특별 한 동작에 의존 "너무 greedy"으로 URL 생성 합니다. 이 경우에 기본값은 `{ controller = Blog, action = Article }`, 않으며 `controller` 나 `action` 경로 매개 변수도 나타납니다. 라우팅 URL 생성을 수행할 때 제공 된 값 기본 값이 일치 해야 합니다. 사용 하 여 URL 생성 `blog` 실패 하 게 값 `{ controller = Home, action = Index }` 일치 하지 않습니다. `{ controller = Blog, action = Article }`합니다. 시도로 대체 다음 라우팅 `default`, 성공입니다.
 
-<a name=routing-areas-ref-label></a>
+<a name="routing-areas-ref-label"></a>
 
 ## <a name="areas"></a>영역
 
@@ -670,7 +670,7 @@ app.UseMvc(routes =>
 
 [!code-csharp[Main](routing/sample/AreasRouting/Areas/Duck/Controllers/UsersController.cs)]
 
-<a name=iactionconstraint-ref-label></a>
+<a name="iactionconstraint-ref-label"></a>
 
 ## <a name="understanding-iactionconstraint"></a>IActionConstraint 이해
 
@@ -695,7 +695,7 @@ public class ProductsController : Controller
 
 개념적으로 `IActionConstraint` 는 형태의 *오버 로드*, 하지만 동일한 URL 일치 하는 작업 간 오버은 동일한 이름 가진 메서드를 오버 로드를 대신 합니다. 또한 특성 라우팅을 사용 하 여 `IActionConstraint` 모두 고려 하 고 후보 다른 컨트롤러에서 작업에서 발생할 수 있습니다.
 
-<a name=iactionconstraint-impl-ref-label></a>
+<a name="iactionconstraint-impl-ref-label"></a>
 
 ### <a name="implementing-iactionconstraint"></a>IActionConstraint 구현
 

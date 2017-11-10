@@ -10,21 +10,21 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/metapackage
-ms.openlocfilehash: 23a07867874eb534c75c4e7b3be00c4a376f8a8b
-ms.sourcegitcommit: 4e45fd4e3f1374cd51cc931cee93c9d72631d9fc
+ms.openlocfilehash: ff25d80be907994f7ac3d64a8ffa39ae53278ba6
+ms.sourcegitcommit: 73bf6b222474d9f1f6aba3feaca4e191069d2121
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 10/03/2017
 ---
 #<a name="microsoftaspnetcoreall-metapackage-for-aspnet-core-2x"></a>ASP.NET Core에 대 한 Microsoft.AspNetCore.All metapackage 2.x
 
-이 기능을 사용 하려면 ASP.NET Core 2.x 합니다.
+이 기능을 사용 하려면 ASP.NET Core 2.x 대상.NET 2.x 핵심입니다.
 
-[Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) metapackage ASP.NET Core에 대 한 포함 됩니다.
+ASP.NET Core에 대한 [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) 메타패키지는 다음을 포함합니다.
 
-* 모든 ASP.NET Core 팀에서 패키지를 지원 합니다.
-* 지원 되는 모든 패키지는 Entity Framework 코어 
-* ASP.NET Core 및 Entity Framework 코어에서 사용 하는 내부 및 타사 종속성입니다. 
+* ASP.NET Core 팀에서 지원되는 모든 패키지
+* Entity Framework Core에서 지원되는 모든 패키지 
+* ASP.NET Core 및 Entity Framework Core에서 사용하는 내부 및 타사 종속성 
 
 ASP.NET Core의 모든 기능 2.x 및 Entity Framework Core 2.x에 포함 되는 `Microsoft.AspNetCore.All` 패키지 합니다. 기본 프로젝트 템플릿에이 패키지를 사용 합니다.
 

@@ -11,11 +11,11 @@ ms.assetid: dd4135ec-2b15-410c-b3fb-3d12eed4a1ac
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/testing
-ms.openlocfilehash: 5d81e0193fb042993452ed314e70fb63573e615c
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: aa60912e06946bd0df4936d33c88d3bf7b69984c
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="testing-controller-logic-in-aspnet-core"></a>ASP.NET Core에서 컨트롤러 논리를 테스트합니다.
 
@@ -47,7 +47,7 @@ ASP.NET MVC 응용 프로그램의 컨트롤러는 작고 사용자 인터페이
 단위 테스트를 사용자 지정 필터, 경로 등을 작성 하는 경우, 되지만 특정 컨트롤러 작업에서 테스트의 일부로 되지는 않습니다. 격리 된 상태에서 테스트 해야 합니다.
 
 > [!TIP]
-> [만들기 및 Visual Studio와 함께 단위 테스트 실행](https://www.visualstudio.com/docs/code/create-and-run-unit-tests-vs)합니다.
+> [만들기 및 Visual Studio와 함께 단위 테스트 실행](https://docs.microsoft.com/visualstudio/test/unit-test-your-code)합니다.
 
 단위 테스트를 보여 주기 위해 다음 컨트롤러를 검토 합니다. 브레인스토밍 세션의 목록을 표시 하 고 새로운 브레인스토밍 POST를 사용 하 여 만들어야 하는 세션을 허용 합니다.
 
@@ -84,7 +84,7 @@ ASP.NET MVC 응용 프로그램의 컨트롤러는 작고 사용자 인터페이
 
 웹 API (브레인스토밍 세션 및 세션에 새로운 아이디어를 추가 하는 방법을 관련 된 아이디어 목록) 기능을 노출 하는 응용 프로그램:
 
-<a name=ideas-controller></a>
+<a name="ideas-controller"></a>
 
 [!code-csharp[Main](testing/sample/TestingControllersSample/src/TestingControllersSample/Api/IdeasController.cs?highlight=21,22,27,30,31,32,33,34,35,36,41,42,46,52,65)]
 

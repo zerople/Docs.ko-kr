@@ -40,7 +40,7 @@ cd RazorPagesMovie
 dotnet run
 ```
 
-이전 명령은 [.NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/dotnet)를 사용하여 Razor 페이지 프로젝트를 만들고 실행합니다. 브라우저를 열고 http://localhost:5000으로 이동하여 응용 프로그램을 봅니다.
+이전 명령은 [.NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/dotnet)를 사용하여 Razor 페이지 프로젝트를 만들고 실행합니다. 브라우저를 열고 http://localhost:5000 으로 이동하여 응용 프로그램을 봅니다.
 
 ![홈 또는 인덱스 페이지](../razor-pages/razor-pages-start/_static/home.png)
 

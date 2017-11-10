@@ -1,5 +1,5 @@
 ---
-title: "For.NET (OWIN) 열린 웹 인터페이스"
+title: OWIN(Open Web Interface for .NET)
 author: ardalis
 description: "ASP.NET Core 지 원하는 방법 열린 웹 인터페이스에 대 한.NET (OWIN), 웹 응용 프로그램 웹 서버에서 분리 될 수 있는 검색 합니다."
 keywords: "ASP.NET Core,.NET, OWIN에 대 한 열린 웹 인터페이스"
@@ -12,17 +12,17 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/owin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e111a451bcc741f3e77f7ce756356cc1b57a5b52
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: e2ee970a1c9cd05ebee76b92c3e2c7c6c6cc6ef8
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="introduction-to-open-web-interface-for-net-owin"></a>.NET (OWIN)에 대 한 웹 인터페이스를 열려면 소개
 
 여 [Steve Smith](https://ardalis.com/) 및 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-ASP.NET Core.NET (OWIN)에 대 한 Open Web Interface를 지원합니다. OWIN 웹 응용 프로그램을 웹 서버에서 분리 될 수 있습니다. 요청과 관련된 응답을 처리 하는 파이프라인에 사용할 미들웨어에 대 한 표준 방법을 정의 합니다. ASP.NET Core 응용 프로그램 및 미들웨어 OWIN 기반 응용 프로그램, 서버 및 미들웨어와 상호 운용이 가능 합니다.
+ASP.NET Core는 OWIN(Open Web Interface for .NET)을 지원합니다. OWIN을 사용하면 웹앱을 웹 서버에서 분리할 수 있습니다. 요청과 관련된 응답을 처리 하는 파이프라인에 사용할 미들웨어에 대 한 표준 방법을 정의 합니다. ASP.NET Core 응용 프로그램 및 미들웨어 OWIN 기반 응용 프로그램, 서버 및 미들웨어와 상호 운용이 가능 합니다.
 
 OWIN 두 프레임 워크를 함께 사용할 수 있는 서로 다른 개체 모델을 허용 하는 분리 계층을 제공 합니다. `Microsoft.AspNetCore.Owin` 패키지는 두 개의 어댑터 구현을 제공 합니다.
 - OWIN에 대 한 ASP.NET Core 
@@ -32,7 +32,7 @@ OWIN 두 프레임 워크를 함께 사용할 수 있는 서로 다른 개체 �
 
 참고: 이러한 어댑터를 사용 하 여 성능 비용이 수반 됩니다. Owin 패키지 또는 어댑터에만 ASP.NET Core 구성 요소를 사용 하 여 응용 프로그램 사용 하지 마십시오.
 
-[보거나 다운로드 샘플 코드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/owin/sample) ([다운로드 하는 방법을](xref:tutorials/index#how-to-download-a-sample))
+[샘플 코드 보기 또는 다운로드](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/owin/sample)([다운로드 방법](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="running-owin-middleware-in-the-aspnet-pipeline"></a>ASP.NET 파이프라인에서 OWIN 미들웨어를 실행합니다.
 
@@ -91,7 +91,7 @@ app.UseOwin(pipeline =>
 });
 ```
 
-<a name=hosting-on-owin></a>
+<a name="hosting-on-owin"></a>
 
 ## <a name="using-aspnet-hosting-on-an-owin-based-server"></a>OWIN 기반 서버에서 ASP.NET 호스팅를 사용 하 여
 

@@ -11,11 +11,11 @@ ms.assetid: 3155cc9e-d0c9-424b-886c-35c0ec6f9f4e
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/mvc
-ms.openlocfilehash: 385ab7dfea5b92687a427bdfe9558462227113b1
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 7a4357da4cc97d7c60cc7e309add7583ef096597
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="migrating-from-aspnet-mvc-to-aspnet-core-mvc"></a>ASP.NET MVC에서 ASP.NET Core MVC로 마이그레이션
 
@@ -150,7 +150,7 @@ ASP.NET MVC 이전 프로젝트에서 사용 [부트스트랩](http://getbootstr
 
 참조 [Bower 클라이언트 쪽 패키지 관리](../client-side/bower.md) 자세한 정보에 대 한 합니다.
 
-<a name=migrate-layout-file></a>
+<a name="migrate-layout-file"></a>
 
 ## <a name="migrate-the-layout-file"></a>레이아웃 파일 마이그레이션
 
