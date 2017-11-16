@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/development-time-iis-support
 ms.openlocfilehash: a35a6fd9896c4c110d1b6680b6aaf718d29a18ab
-ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>ASP.NET Core용 Visual Studio의 개발 시간 IIS 지원
 

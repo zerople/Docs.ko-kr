@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/new-field
 ms.openlocfilehash: 9c872a48aba4974ddac2e49ca40c944da356f0e0
-ms.sourcegitcommit: 79bbe7481c3d1297a0db8e41dd2b635b0f778264
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="adding-a-new-field"></a>새 필드 추가
 

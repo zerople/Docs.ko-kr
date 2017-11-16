@@ -5,30 +5,28 @@ description: "ASP.NET Core MVC 및 Visual Studio 시작"
 keywords: ASP.NET Core, MVC
 ms.author: riande
 manager: wpickett
-ms.date: 08/07/2017
+ms.date: 10/07/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 6e233a0114967405a67b05365e0125620441efb4
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 4b86eb22e367d2305b7995421aec6f37008c5637
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="getting-started-with-aspnet-core-mvc-and-visual-studio"></a>ASP.NET Core MVC 및 Visual Studio 시작
 
 작성자: [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-이 자습서에서는 [Visual Studio 2017](https://www.visualstudio.com/)을 사용하여 ASP.NET Core MVC 웹앱을 빌드하는 기본 사항에 대해 알아봅니다. [!INCLUDE[consider RP](../../includes/razor.md)]
+[!INCLUDE[consider RP](../../includes/razor.md)]
 
 이 자습서는 세 가지 버전이 있습니다.
 
 * macOS: [Mac용 Visual Studio를 사용하여 ASP.NET Core MVC 앱 만들기](xref:tutorials/first-mvc-app-mac/start-mvc)
 * Windows: [Visual Studio를 사용하여 ASP.NET Core MVC 앱 만들기](xref:tutorials/first-mvc-app/start-mvc)
 * macOS, Linux 및 Windows: [Visual Studio Code를 사용하여 ASP.NET Core MVC 앱 만들기](xref:tutorials/first-mvc-app-xplat/start-mvc)
-
-이 자습서의 Visual Studio 2015 버전을 보려면 [VS 2015 version of ASP.NET Core documentation in PDF format](https://github.com/aspnet/Docs/blob/master/aspnetcore/common/_static/aspnet-core-project-json.pdf)(ASP.NET Core의 VS 2015 버전 설명서(PDF 형식))을 참조하세요.
 
 ## <a name="install-visual-studio-and-net-core"></a>Visual Studio 및 .NET Core 설치
 
