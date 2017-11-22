@@ -10,4 +10,4 @@ Razor를 사용하여 뷰 템플릿 파일을 만듭니다. Razor 기반 뷰 템
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_4)]
 
-앞의 코드는 `View` 개체를 반환합니다. 브라우저에 HTML 응답을 생성하기 위해 뷰 템플릿을 사용합니다. 위의 `Index` 메서드와 같은 컨트롤러 메서드(동작 메서드라고도 함)는 일반적으로 문자열과 같은 기본 형식이 아닌 [IActionResult](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.iactionresult)(또는 `ActionResult`에서 파생된 클래스)를 반환합니다.
+앞의 코드는 `View` 개체를 반환합니다. 브라우저에 HTML 응답을 생성하기 위해 뷰 템플릿을 사용합니다. 위의 `Index` 메서드와 같은 컨트롤러 메서드(동작 메서드라고도 함)는 일반적으로 문자열과 같은 형식이 아닌 [IActionResult](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.iactionresult)(또는 `ActionResult`에서 파생된 클래스)를 반환합니다.

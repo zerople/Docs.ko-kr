@@ -5,27 +5,27 @@ description:
 keywords: ASP.NET Core
 ms.author: riande
 manager: wpickett
-ms.date: 09/01/2017
+ms.date: 10/05/2017
 ms.topic: get-started-article
 ms.assetid: 78571e4a-a143-452d-9cf2-0860f85972e6
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: 0c0ec1c7c1408b0460c594a47a3e5738cd170d5f
-ms.sourcegitcommit: d022d4b96795ee473fa3847a1d8a8c7430423a86
+ms.openlocfilehash: 6f697ed4d8876a19cd058533e4f6a5d4f7cdc2fb
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="publish-an-aspnet-core-web-app-to-azure-app-service-using-visual-studio"></a>Visual Studio를 사용하여 Azure App Service에 ASP.NET Core 웹앱 게시
 
 작성자: [Rick Anderson](https://twitter.com/RickAndMSFT), [Cesar Blum Silveira](https://github.com/cesarbs) 및 [Rachel Appel](https://twitter.com/rachelappel)
 
-## <a name="set-up-the-development-environment"></a>개발 환경 설정
+Mac에서 작업하고 있는 경우 [Mac용 Visual Studio에서 Azure에 게시](https://blog.xamarin.com/publish-azure-visual-studio-mac/)를 참조하세요.
 
-* 최신 [Azure SDK for Visual Studio](https://www.visualstudio.com/vs/azure-tools/)를 설치합니다. SDK는 아직 없는 경우 Visual Studio를 설치합니다.
+## <a name="set-up"></a>설치
 
-* [Azure 계정](https://portal.azure.com/)을 확인합니다. [Azure 계정을 열](https://azure.microsoft.com/pricing/free-trial/)거나 [Visual Studio 구독자 혜택을 활성화](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)할 수 있습니다.
+* 계정이 없는 경우 [체험 Azure 계정](https://aka.ms/K5y5yh)을 엽니다. 
 
 ## <a name="create-a-web-app"></a>웹앱 만들기
 
@@ -186,8 +186,4 @@ Visual Studio가 **App Service 만들기** 대화 상자로 돌아갑니다.
 
 ### <a name="next-steps"></a>다음 단계
 
-* [ASP.NET Core MVC 및 Visual Studio 시작](first-mvc-app/start-mvc.md)
-
-* [ASP.NET Core 소개](../index.md)
-
-* [기본 사항](../fundamentals/index.md)
+* [Visual Studio 및 Git을 사용하여 Azure에 연속 배포](../publishing/azure-continuous-deployment.md)

@@ -5,7 +5,7 @@
 
 ![브라우저 창에서 편집 링크에 마우스를 가져가면 http://localhost:1234/Movies/Edit/5의 링크 Url이 표시됩니다.](../../tutorials/first-mvc-app/controller-methods-views/_static/edit7.png)
 
-**편집**, **세부 정보** 및 **삭제** 링크는 *Views/Movies/Index.cshtml* 파일MVC Core Anchor 태그 도우미에 의해 생성됩니다.
+**편집**, **세부 정보** 및 **삭제** 링크는 *Views/Movies/Index.cshtml* 파일의 Core MVC 앵커 태그 도우미에 의해 생성됩니다.
 
 [!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1-3&range=46-50)]
 

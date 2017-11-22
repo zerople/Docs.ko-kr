@@ -1,21 +1,20 @@
 ---
 title: "세부 정보 및 삭제 메서드 검사"
 author: rick-anderson
-description: "간단한 ASP.NET Core MVC 앱에서 세부 정보 컨트롤러 메서드 및 보기."
+description: "기본적인 ASP.NET Core MVC 앱의 세부 정보 컨트롤러 메서드 및 보기"
 keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 03/07/2017
 ms.topic: get-started-article
-ms.assetid: 870192b4-8d4f-45c7-8c14-83d02bc0ad79
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/details
-ms.openlocfilehash: bab93a2faa122d9d6d2e71367519baa09bd76bd1
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 43394106c9074f9487e1065a37a88eb017833bae
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="examining-the-details-and-delete-methods"></a>세부 정보 및 삭제 메서드 검사
 
@@ -55,6 +54,10 @@ CLR(공용 언어 런타임)은 고유한 매개 변수 서명을 갖기 위해 
 [ValidateAntiForgeryToken]
 public async Task<IActionResult> Delete(int id, bool notUsed)
 ```
+
+### <a name="publish-to-azure"></a>Azure에 게시
+
+Visual Studio를 사용하여 Azure에 이 앱을 게시하는 방법에 관한 지침은 [Visual Studio를 사용하여 Azure App Service에 ASP.NET Core 웹앱 게시](xref:tutorials/publish-to-azure-webapp-using-vs)를 참조하세요.  [명령줄](xref:tutorials/publish-to-azure-webapp-using-cli)에서도 앱을 게시할 수 있습니다.
 
 ASP.NET Core MVC에 대한 이 소개를 완료해 주셔서 감사합니다. 의견을 남겨 주세요. [MVC 및 EF Core 시작](xref:data/ef-mvc/intro)은 이 자습서에 대한 뛰어난 후속편입니다.
 

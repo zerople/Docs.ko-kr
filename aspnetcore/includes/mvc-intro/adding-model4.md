@@ -1,4 +1,4 @@
-위의 강조 표시된 코드는 [종속성 주입](xref:fundamentals/dependency-injection) 컨테이너에 추가된 영화 데이터베이스 컨텍스트를 표시합니다. 다음 `services.AddDbContext<MvcMovieContext>(options =>` 줄이 표시되지 않습니다(코드 참조). 데이터베이스가 연결 문자열을 사용하도록 지정합니다. `=>`은 [람다 연산자](https://docs.microsoft.com/dotnet/articles/csharp/language-reference/operators/lambda-operator)입니다.
+위의 강조 표시된 코드는 [종속성 주입](xref:fundamentals/dependency-injection) 컨테이너에 추가된 영화 데이터베이스 컨텍스트를 표시합니다(*Startup.cs* 파일). `services.AddDbContext<MvcMovieContext>(options =>`는 사용할 데이터베이스 및 연결 문자열을 지정합니다. `=>`은 [람다 연산자](https://docs.microsoft.com/dotnet/articles/csharp/language-reference/operators/lambda-operator)입니다.
 
 *Controllers/MoviesController.cs* 파일을 열고 생성자를 검사합니다.
 
@@ -8,7 +8,7 @@
 
 생성자는 [종속성 주입](xref:fundamentals/dependency-injection)을 사용하여 컨트롤러에 데이터베이스 컨텍스트(`MvcMovieContext `)를 삽입할 수 있습니다. 컨트롤러의 [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) 메서드 각각에서 데이터베이스 컨텍스트를 사용합니다.
 
-<a name=strongly-typed-models-keyword-label></a>
+<a name="strongly-typed-models-keyword-label"></a>
 
 ## <a name="strongly-typed-models-and-the-model-keyword"></a>강력한 형식의 모델 및 @model 키워드
 

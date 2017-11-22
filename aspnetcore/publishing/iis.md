@@ -11,11 +11,11 @@ ms.assetid: a4449ad3-5bad-410c-afa7-dc32d832b552
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/iis
-ms.openlocfilehash: 75fc1edec9050a4690a39d37307f2f95f5d534a5
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: e9e9019d5b879498e8800bb579c177dd3ad64061
+ms.sourcegitcommit: 96af03c9f44f7c206e68ae3ef8596068e6b4e5fd
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>IIS가 있는 Windows에서 ASP.NET Core 호스팅
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 09/28/2017
 
 ## <a name="install-the-net-core-windows-server-hosting-bundle"></a>.NET Core Windows Server 호스팅 번들 설치
 
-1. 호스팅 시스템에 [.NET Core Windows Server 호스팅 번들](https://aka.ms/dotnetcore.2.0.0-windowshosting)을 설치합니다. 번들은 .NET Core 런타임, .NET Core 라이브러리 및 [ASP.NET Core 모듈](xref:fundamentals/servers/aspnet-core-module)을 설치합니다. 이 모듈은 IIS와 Kestrel 서버 사이에 역방향 프록시를 만듭니다. 시스템이 인터넷에 연결되지 않은 경우 [Microsoft Visual C++ 2015 재배포 가능 패키지](https://www.microsoft.com/download/details.aspx?id=53840)를 설치한 후에 .NET Core Windows Server 호스팅 번들을 설치합니다.
+1. 호스팅 시스템에 [.NET Core Windows Server 호스팅 번들](https://download.microsoft.com/download/5/C/1/5C190037-632B-443D-842D-39085F02E1E8/DotNetCore.2.0.3-WindowsHosting.exe)을 설치합니다. 번들은 .NET Core 런타임, .NET Core 라이브러리 및 [ASP.NET Core 모듈](xref:fundamentals/servers/aspnet-core-module)을 설치합니다. 이 모듈은 IIS와 Kestrel 서버 사이에 역방향 프록시를 만듭니다. 시스템이 인터넷에 연결되지 않은 경우 [Microsoft Visual C++ 2015 재배포 가능 패키지](https://www.microsoft.com/download/details.aspx?id=53840)를 설치한 후에 .NET Core Windows Server 호스팅 번들을 설치합니다.
 
 2. 시스템을 다시 시작하거나 명령 프롬프트에서 **net stop was /y**에 이어 **net start w3svc**를 실행하여 시스템 PATH에 대한 변경 내용을 선택합니다.
 
@@ -117,7 +117,7 @@ services.Configure<IISOptions>(options =>
 
 ### <a name="webconfig"></a>web.config
 
-*web.config* 파일은 ASP.NET Core 모듈을 구성하고 다른 IIS 구성을 제공합니다. *web.config* 만들기, 변환 및 게시는 `<Project Sdk="Microsoft.NET.Sdk.Web">` 프로젝트(*.csproj*) 파일의 맨 위에 프로젝트의 SDK를 설정할 때 포함되는 `Microsoft.NET.Sdk.Web`을 통해 처리됩니다. MSBuild 대상이 *web.config* 파일을 변환하지 못하게 하려면 프로젝트 파일에 `true` 설정이 포함된 **\<IsTransformWebConfigDisabled>** 속성을 추가합니다.
+*web.config* 파일은 주로 ASP.NET Core 모듈을 구성합니다. 선택적으로 추가 IIS 구성 설정을 제공할 수 있습니다. *web.config*의 생성, 변환 및 게시는 .NET Core Web SDK(`Microsoft.NET.Sdk.Web`)에서 처리됩니다. SDK는 프로젝트 파일의 맨 위(*.csproj*), `<Project Sdk="Microsoft.NET.Sdk.Web">`에서 설정됩니다. SDK가 *web.config* 파일을 변환하지 못하게 하려면 프로젝트 파일에 `true` 설정을 갖는 **\<IsTransformWebConfigDisabled>** 속성을 추가합니다.
 
 ```xml
 <PropertyGroup>
@@ -221,7 +221,7 @@ ASP.NET 응용 프로그램에서 사용하는 데이터 보호 키는 응용 �
 
 독립 실행형 IIS 설치의 경우 ASP.NET Core 앱에서 사용되는 각 앱 풀에 대해 [Data Protection Provision-AutoGenKeys.ps1 PowerShell 스크립트](https://github.com/aspnet/DataProtection/blob/dev/Provision-AutoGenKeys.ps1)를 사용할 수 있습니다. 이 스크립트는 작업자 프로세스 계정에만 ACL로 지정된 특수 레지스트리 키를 HKLM 레지스트리에 만듭니다. 미사용 키는 DPAPI를 사용하여 암호화됩니다.
 
-웹 팜 시나리오에서는 UNC 경로를 사용하여 데이터 보호 키 링을 저장하도록 앱을 구성할 수 있습니다. 기본적으로 데이터 보호 키는 암호화되지 않습니다. 이러한 공유에 대한 파일 권한은 앱이 실행되는 Windows 계정으로 제한되어야 합니다. 또한 X509 인증서를 사용하여 미사용 키를 보호하도록 선택할 수 있습니다. 사용자가 인증서를 업로드하여 사용자의 신뢰할 수 있는 인증서 저장소에 배치하고 사용자의 앱이 실행될 모든 컴퓨터에서 인증서를 사용할 수 있도록 하는 메커니즘을 고려해야 할 수 있습니다. 자세한 내용은 [데이터 보호 구성](xref:security/data-protection/configuration/overview#data-protection-configuring)을 참조하세요.
+웹 팜 시나리오에서는 UNC 경로를 사용하여 데이터 보호 키 링을 저장하도록 앱을 구성할 수 있습니다. 기본적으로 데이터 보호 키는 암호화되지 않습니다. 이러한 공유에 대한 파일 권한은 앱이 실행되는 Windows 계정으로 제한되어야 합니다. 또한 X509 인증서를 사용하여 미사용 키를 보호하도록 선택할 수 있습니다. 사용자가 인증서를 업로드하여 사용자의 신뢰할 수 있는 인증서 저장소에 배치하고 사용자의 앱이 실행될 모든 컴퓨터에서 인증서를 사용할 수 있도록 하는 메커니즘을 고려해야 할 수 있습니다. 자세한 내용은 [데이터 보호 구성](xref:security/data-protection/configuration/overview)을 참조하세요.
 
 ### <a name="2-configure-the-iis-application-pool-to-load-the-user-profile"></a>2. 사용자 프로필을 로드하도록 IIS 응용 프로그램 풀 구성
 
@@ -229,7 +229,7 @@ ASP.NET 응용 프로그램에서 사용하는 데이터 보호 키는 응용 �
 
 ### <a name="3-machine-wide-policy-for-data-protection"></a>3. 데이터 보호에 대한 컴퓨터 수준 정책
 
-데이터 보호 시스템은 데이터 보호 API를 사용하는 모든 앱에 대한 기본 [컴퓨터 수준 정책](xref:security/data-protection/configuration/machine-wide-policy#data-protection-configuration-machinewidepolicy) 설정을 제한적으로 지원합니다. 자세한 내용은 [데이터 보호](xref:security/data-protection/index) 설명서를 참조하세요.
+데이터 보호 시스템은 데이터 보호 API를 사용하는 모든 앱에 대한 기본 [컴퓨터 수준 정책](xref:security/data-protection/configuration/machine-wide-policy) 설정을 제한적으로 지원합니다. 자세한 내용은 [데이터 보호](xref:security/data-protection/index) 설명서를 참조하세요.
 
 ## <a name="configuration-of-sub-applications"></a>하위 응용 프로그램 구성
 
@@ -326,7 +326,7 @@ Kestrel 서버에 대한 IIS 역방향 프록시가 제대로 작동하는지 �
 
 Kestrel이 IIS 뒤에서 정상적으로 시작되지만 로컬에서 성공적으로 실행한 후에 시스템에서 응용 프로그램이 실행되지 않으면 임시로 *web.config*에 환경 변수를 추가하여 `ASPNETCORE_ENVIRONMENT`를 `Development`로 설정할 수 있습니다. 앱 시작에서 환경을 재정의하지 않는다면 시스템에서 앱이 실행될 때 [개발자 예외 페이지](xref:fundamentals/error-handling)가 표시됩니다. 이 방식으로 `ASPNETCORE_ENVIRONMENT`에 대한 환경 변수를 설정하는 것은 인터넷에 노출되지 않은 준비/테스트 시스템에만 적용하는 것이 좋습니다. 완료되면 반드시 *web.config* 파일에서 해당 환경 변수를 제거해야 합니다. *web.config*를 통해 역방향 프록시에 대한 환경 변수를 설정하는 방법에 대한 자세한 내용은[aspNetCore의 environmentVariables 자식 요소](xref:hosting/aspnet-core-module#setting-environment-variables)를 참조하세요.
 
-응용 프로그램 로깅을 사용하면 대부분의 경우에서 앱 또는 역방향 프록시 문제를 해결하는 데 도움이 됩니다. 자세한 내용은 [로깅](xref:fundamentals/logging)을 참조하세요.
+응용 프로그램 로깅을 사용하면 대부분의 경우에서 앱 또는 역방향 프록시 문제를 해결하는 데 도움이 됩니다. 자세한 내용은 [로깅](xref:fundamentals/logging/index)을 참조하세요.
 
 마지막 문제 해결 팁은 개발 컴퓨터의 .NET Core SDK 또는 응용프로그램 내의 패키지 버전을 업그레이드한 후에 실행되지 않는 응용프로그램에 관한 것입니다. 경우에 따라 중요한 업그레이드를 수행할 때 일관되지 않은 패키지로 인해 응용 프로그램이 중단될 수 있습니다. 프로젝트의 `bin` 및 `obj` 폴더를 삭제하고, `%UserProfile%\.nuget\packages\` 및 `%LocalAppData%\Nuget\v3-cache`에 있는 패키지 캐시를 지우고, 프로젝트를 복원하고, 해당 응용 프로그램을 다시 배포하기 전에 시스템의 이전 배포가 완전히 삭제되었는지 확인하여 이러한 문제를 대부분 수정할 수 있습니다.
 
@@ -495,7 +495,7 @@ Kestrel이 IIS 뒤에서 정상적으로 시작되지만 로컬에서 성공적�
 
 * **응용 프로그램 로그:** 실제 루트 'C:\\{PATH}\'이(가) 있는 응용 프로그램 'MACHINE/WEBROOT/APPHOST/MY_APPLICATION'에서 '"C:\\{PATH}\my_application.{exe|dll}"'명령줄로 프로세스를 만들었지만 지정된 포트 '{PORT}'에서 충돌하거나 응답하지 않거나 수신 대기하지 않습니다., 오류 코드 = '0x800705b4'
 
-*  **ASP.NET Core 모듈 로그:**  로그 파일이 만들어졌고 정상 작동을 보여 줍니다.
+* **ASP.NET Core 모듈 로그:**  로그 파일이 만들어졌고 정상 작동을 보여 줍니다.
 
 문제 해결
 
