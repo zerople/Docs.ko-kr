@@ -51,8 +51,8 @@ ASP.NET Core는 완전히 [NuGet](https://www.nuget.org/) 패키지로 제공됩
 ASP.NET Core MVC에서는 [웹 API](xref:tutorials/index#building-web-apis) 및 [웹앱](xref:tutorials/index#building-web-applications)을 빌드하는 데 유용한 기능을 제공합니다.
 
 * [MVC(모델-뷰-컨트롤러) 패턴](xref:mvc/overview)을 통해 웹 API 및 웹앱을 [테스트 가능](testing/index.md)하게 합니다.
-* [Razor 페이지](xref:mvc/razor-pages/index)(2.0의 새로운 기능)는 웹 UI를 쉽게 빌드하고 생산성을 높일 수 있는 페이지 기반 프로그래밍 모델합니다.
-* [Razor 구문](xref:mvc/views/razor)은 [Razor 페이지](xref:mvc/razor-pages/index) 및 [MVC 뷰](xref:mvc/views/overview)에 생산적인 언어를 제공합니다.
+* [Razor 페이지](xref:mvc/razor-pages/index)(2.0의 새로운 기능)는 웹 UI를 쉽게 빌드하고 생산성을 높일 수 있는 페이지 기반 프로그래밍 모델입니다.
+* [Razor 구문](xref:mvc/views/razor)은 [Razor 페이지](xref:mvc/razor-pages/index) 및 [MVC 뷰](xref:mvc/views/overview)에 생산적인 언어입니다.
 * [태그 도우미](xref:mvc/views/tag-helpers/intro)를 사용하면 서버 쪽 코드를 Razor 파일에서 HTML 요소를 만들고 렌더링하는 데 사용할 수 있습니다.
 * [여러 데이터 형식 및 콘텐츠 협상](mvc/models/formatting.md)에 대한 기본 제공 지원을 통해 웹 API를 브라우저 및 모바일 장치를 포함한 다양한 클라이언트에 연결할 수 있습니다.
 * [모델 바인딩](xref:mvc/models/model-binding)은 작업 메서드 매개 변수에 HTTP 요청의 데이터를 자동으로 매핑합니다.
