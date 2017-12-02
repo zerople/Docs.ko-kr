@@ -20,7 +20,7 @@ ms.lasthandoff: 11/10/2017
 # <a name="get-started-with-aspnet-core"></a>ASP.NET Core 시작
 
 > [!NOTE]
-> 이러한 지침은 최신 버전의 ASP.NET Core에 대한 것입니다. 이전 버전을 시작하려고 하나요? [이 자습서의 1.1 버전](xref:getting-started-1.1)을 참조하세요.
+> 이 지침은 최신 버전의 ASP.NET Core에 대한 것입니다. 이전 버전으로 시작하려면 [이 자습서의 1.1 버전](xref:getting-started-1.1)을 참조하세요.
 
 1. [.NET Core](https://www.microsoft.com/net/core/)를 설치합니다.
 
