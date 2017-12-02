@@ -43,7 +43,7 @@ ms.lasthandoff: 11/10/2017
 
 5. [http://localhost:5000](http://localhost:5000)으로 이동합니다.
 
-6. *Pages/About.cshtml*을 열고 페이지를 수정하여 “Hello, world! 서버 시간은 @DateTime.Now입니다.” 메시지를 표시합니다.
+6. *Pages/About.cshtml*을 열고 페이지를 수정하여 “Hello, world! The time on the server is @DateTime.Now.” 메시지를 표시합니다.
 
     [!code-html[Main](getting-started/sample/getting-started/about.cshtml?highlight=9&range=1-9)]
 
